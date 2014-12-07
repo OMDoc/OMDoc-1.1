@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_premise">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_premise">
+
+<proof id="myproof" theory="foo" for="bar" style="la">
+<conclude id="concl" style="foo">
+<premise xref="blabla" rank="42"/>
+<premise xref="lala"/>
+<proof id="subproof" theory="theo" for="something">
+  <conclude id="xyz"/>
+</proof>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

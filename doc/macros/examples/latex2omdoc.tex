@@ -1,0 +1,257 @@
+\documentclass{article}
+\usepackage{../latex2omdoc}
+\usepackage{ed}
+\usepackage{url,moreverb,a4wide,array}
+\def\xml{{\sc XmL}}
+\def\xsl{{\sc XSL}}
+\def\openmath{{\sc OpenMath}}
+\def\omdocname{{\sc OMDoc}}
+\dtdurl{../../../dtd/omdoc.dtd}
+\begin{document}
+\title{Creating {\sc OMDoc} representations from {\LaTeX}}
+\author{Michael Kohlhase, Universit\"at des Saarlandes, Germany\\
+  \url{http://www.ags.uni-sb.de/~kohlhase}}
+\maketitle
+\begin{abstract}
+  In this paper we describe the {\LaTeX} style {\url{latex2omdoc.sty}} that allows
+  to create {\openmath} objects and {\omdocname} representations from inside
+  {\LaTeX} documents.
+  
+  This is useful when migrating existing mathematical texts from {\LaTeX}
+  representation, e.g. in papers to {\omdocname}, or as a maintainance tool for
+  authors that are more efficient/used to generating {\LaTeX} than {\xml}.
+\end{abstract}
+
+\section{Introduction}
+{\omdocname}~\cite{Kohlhase:otormd99} is an {\xml}~\cite{bray:XML97} representation
+format for mathematics based on {\openmath}~\cite{CapCoh:doms98}.  Since it is
+tedious to write the {\xml} and the {\openmath} objects in the original form, we
+provide {\LaTeX} macros that allow to specify it inside {\LaTeX} documents.
+
+
+
+\section{{\openmath} Objects}\label{sec:openmath}
+In this section, we will first briefly review the possible types of {\openmath}
+objects and show the two {\LaTeX} representations provided by the
+{\url{latex2omdoc}} style (full {\LaTeX} mode and abbreviation mode; see
+Figure~\ref{fig:openmath}).
+
+Both modes write the generated {\openmath} representations to an auxilary file
+that can be specified by the user in the {\tt omoutput} environment.
+{\verb+\begin{omoutput}[test.xml]+} will prepare a file {\url{test.xml}} for
+  output and direct all {\openmath} output to it. The default for the optional
+  argument is the name of the top-level {\LaTeX} file with extension {\tt xml},
+  {\verb+\end{omoutput}+} will close the file, so that it can for instance
+directly be inserted into the {\LaTeX} itself, say with a {\verb+\verbatiminput+}
+statement from the {\url{moreverb.sty}} style (see also the source of this
+document in section~\ref{sec:useful-macs}). Note that the second call to an
+{\tt omoutput} environment with the same file name will overwrite a first one.
+
+The {\tt omoutput} environment has a variant {\tt OMoutput}, which wraps the
+output with an {\xml} declaration, and declaration of the document type definition
+so that the result can be used as a standalone {\xml} file that can e.g. be
+validated. For this it is necessary to specify the specify the URL of the {\xml}
+document type definition (DTD) with the {\verb+\dtdurl+} command, the default
+setting is {\tt omdoc.dtd}, i.e. assuming that the dtd is in the same directory as
+the top-level {\LaTeX} file. For instance
+{\verb+\dtdurl{http://www.mathweb.org/dtd/omdoc.dtd}+} will use the current
+distribution version.
+
+Note that {\tt omoutput} and {\tt OMoutput} environments can be nested (both
+individually and among each other up to 15 levels), so that it is possible to
+generate more than one file at a time. Since the DTD will probably not vary
+between these, it is probably good to specify {\verb+\dtdurl+} in the document
+header.
+
+The abbreviation mode can be turned on by the environment given by the bracketings
+{\verb+\<+} and {\verb+\>+} or {\verb+\(+} and {\verb+\)+}. The latter differs
+from the former in that it additionally wraps an {\verb+<OMDOC>+} element
+bracketing in the output (this is often a useful abbreviation).
+
+Figure~\ref{fig:omabstr} shows an example of a $\lambda$-abstraction
+$\lambda X Y.X^{-Y}$ and figure~\ref{fig:omattr} an attribuition of the variable $X$
+with the type $(\iota\rightarrow o)$ and the color green.
+
+\input{figures}
+Note that these macros do not check for validity of the {\xml} output, this is
+left to an {\xml} validator. Moreover, little work has gone into generating good
+error messages. In particular, some of the macros in the abbreviated mode make
+assumptions about the {\openmath}-well-formedness; most notably, the start tag
+{\verb+{+} for an {\openmath} binding object only works, iff the next object is a
+valid {\openmath} symbol, i.e. of the form {\verb+#cd:name:+}.
+
+{\tt latex2omdoc.sty} also supports {\omdocname}'s {\tt id}/{\tt xref} extension
+to {\openmath} objects. In short, this allows to re-use {\openmath} objects by
+reference. For instance, the left hand side {\omdocname} element in
+figure~\ref{fig:reference} can be realized by the expresssion below it and has the
+same meaning as the {\openmath} object on the right hand side. {\tt
+  latex2omdoc.sty} provides two primitives for this: {\verb+~+} for adding {\tt
+  id} attributes to the next element. This takes one token as arguemnt, so if the
+attribute needs more than one letter, it has to be grouped by {\tt <} and {\tt >}.
+{\verb+^+} for adding {\tt xref} attributes to the next element, the same token
+conventions as above apply.
+
+\subsection{Defining Macros}\label{sec:macros}
+
+One of the primary advantages of using {\LaTeX} to generate {\omdocname} documents
+over directly writing them in a text editor is that {\LaTeX} allows to define
+macros. They can be simply be defined using {\LaTeX}'s {\verb+\(re)newcommand+},
+{\verb+\(re)newenvironment+} facilities. Currenly, {\url{latex2omdoc.sty}} only
+allws to use the full-form macros in definitions. For instance, we can use the
+definitions to simplify the attribuition example above to
+{\verb+\<\oftypeiogreen<$X:>\>+}.
+
+{\footnotesize\begin{verbatim}
+\newcommand{\typeio}%             the type of unary predicates on individuals
+{\begin{oma}\oms{mltt}{funtype}\oms{types}{individuals}\oms{types}{booleans}\end{oma}}
+
+\newcommand{\colgreen}%           the attribute value pair for the color green
+{\oms{colors}{colorattr}\oms{colors}{green}}
+
+\newcommand{oftypeiogreen}[1]%    attribuition stating that the content is of \typeio
+{\begin{omattr}\begin{omatp}\oms{ecc}{type}\typio\colgreen\end{omatp}#1\end{omattr}}
+\end{verbatim}
+}
+
+\section{{\omdocname} Elements}\label{sec:omdoc}
+In figure~\ref{fig:elements}, we have given an overview over the macros that write
+{\omdocname} material for the {\xml} file. Since these generate {\omdocname}
+output, they must be enclosed in an {\tt omdoc} environment. This is a variant of
+the {\tt OMoutput} environment that also wraps the content into an {\tt <omdoc>}
+element that is the {\xml} top-level element for {\omdocname} documents. 
+
+Note that as in the case of the {\openmath} macros described in
+section~\ref{sec:openmath}, they do not check for validity of the {\xml} output,
+this is left to an {\xml} validator.
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{tabular}{|>{\tt}l|l|l|l|}\hline
+{\rm macro}   & Type   & Arguments           & Env \\\hline\hline
+ omdoc        & root   & label               & + \\\hline
+ omgroup      & struc  & label, type         & + \\\hline
+ omtext       & text   & label               & + \\\hline
+ omCMP        & text   & [lang], label       & + \\\hline
+ omrsrelation & text   & type, for, from     & + \\\hline\hline
+ omassertion  & math   & label, theory, type & + \\\hline
+ omFMP        & math   &                     & + \\\hline
+ omassumption & math   & label               & + \\\hline
+ omconclusion & math   & label               & + \\\hline
+ omproof      & math   & label, for, theory  & + \\\hline
+ omexample    & math   & label, for          & + \\\hline\hline
+ omhypothesis & proof  & label               & + \\\hline
+ omderive     & proof  & label               & + \\\hline
+ omconclude   & proof  & label               & + \\\hline
+ ommethod     & proof  & theory, name        & - \\\hline
+ omparameter  & proof  & ----                & + \\\hline
+ ompremise    & proof  & refersto            & - \\\hline
+ omextpremise & proof  & href                & - \\\hline\hline
+ omsymbol     & theory & label               & + \\\hline
+ omstructure  & theory & label               & + \\\hline
+ omfeature    & theory & label               & + \\\hline
+ omcommonname & theory & [lang]              & + \\\hline
+ omdefinition & theory & label, for          & + \\\hline\hline
+ omexercise   & aux    & label, for          & + \\
+ omsolution   & aux    & label               & + \\\hline
+ omhint       & aux    & label               & + \\\hline
+ ommcgroup    & aux    & ----                & + \\\hline
+ ommc         & aux    & label               & + \\\hline
+ omchoice     & aux    & ----                & + \\\hline
+ omanswer     & aux    & verdict             & + \\\hline
+ omomlet      & aux    & href                & + \\\hline
+ omref        & aux    & tolabel             & - \\\hline
+\end{tabular}
+    \caption{\protect{\omdocname} elements}
+    \label{fig:elements}
+  \end{center}
+\end{figure}
+
+\section{Useful Redefinitions of commonly used Macros}\label{sec:useful-macs}
+
+The {\url{latex2omdoc.sty}} style file can be used as a migration tool from
+{\LaTeX} texts to {\omdocname} documents. In this section, we will present a set
+of useful macros that can be used transport much of the structure that is present
+in a well-structured mathematical {\LaTeX} document (definition, theorem, proof)
+into {\omdocname}.\ednote{continue}
+\begin{figure}[htbp]
+  \begin{center}
+    \fbox{\begin{minipage}{12cm}\scriptsize\verbatiminput{migrationex}\end{minipage}}
+    \caption{The file {\tt migrationex.tex}}
+    \label{fig:migrationex.tex}
+  \end{center}
+\end{figure}
+
+For instance there are the environments {\tt theorem}, {\tt lemma}, {\tt
+  corollay}, {\tt conjecture}, {\tt definition}, {\tt remark} that allwo to use
+the file {\url{migrationex.tex}}, in figure~\ref{fig:migrationex.tex} to generate
+the {\omdocname} file {\url{migration.xml}} in figure~\ref{fig:migrationex.xml},
+generating the DVI output in figure~\ref{fig:migrationex.dvi} in the process.
+\begin{figure}[htbp]
+  \begin{center}
+    \fbox{\begin{minipage}{12cm}\scriptsize\input{migrationex}\end{minipage}}
+    \caption{The DVI output of {\tt migrationex.tex}}
+    \label{fig:migrationex.dvi}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+    \fbox{\begin{minipage}{12cm}\scriptsize\verbatiminput{migrationex.xml}\end{minipage}}
+    \caption{The file {\tt migrationex.xml} generated form {\tt migrationex.tex}}
+    \label{fig:migrationex.xml}
+  \end{center}
+\end{figure}
+As we can see for migrating the a file with {\LaTeX} markup like the first part
+(above the comment) of {\url{migrationex.tex}} in
+figure~\ref{fig:migrationex.tex}, can be migrated by using the corresponding
+migration macros provided by {\url{latex2omdoc.sty}}, and adding the {\tt omverb }
+environment for all parts that should go to the {\xml} file verbatim.
+
+Of course we have to specify the language used in the texts in the document using
+a {\verb+\ommiglanguage+} statment and the {\omdocname} theory by
+{\verb+\ommigtheory+}. These two details go into the {\xml} file and cannot be
+deduced by {\url{latex2omdoc.sty}} itself.
+
+
+\section{Conclusion and Wishlist}\label{sec:concl}
+
+We have presented a {\LaTeX} style file that allows to generate {\omdocname}
+representations from {\LaTeX} files. This gives us a productivity tool for users
+that are accustomed to generating {\LaTeX}, or have large legacy {\LaTeX}
+representations of mathematical knowledge.
+
+This style file is far from finished, so please help it, if you can. The wishlist
+for {\url{latex2omdoc.sty}} includes the following items
+\begin{enumerate}
+\item Indentation in the {\xml} file, to make the output more readable. 
+\item a definition mechanism that uses the abbreviated form for {\openmath}
+  objects.
+\item better error messages, and some validity warnings. 
+\item extend the abbreviated mode by parser tags for {\tt <OMSTR>}, {\tt <OMI>},
+  {\tt <OMF>},\ldots
+\item an {\xsl} style sheet to generate {\tt latex2omdoc} input from {\omdocname}
+  representations.
+\end{enumerate}
+
+\bibliographystyle{alpha}
+\bibliography{miko}
+
+\newpage
+\begin{appendix}
+\section{A {\ttin{latex2omdoc}} Example}\label{sec:omdocex}
+In this section, we will look at an example of an {\omdocname} file generated by
+{\url{latex2omdoc.sty}} 
+\subsection{The \protect{\LaTeX} source file}
+{\scriptsize\verbatiminput{omdocex}}\newpage
+\subsection{The log information in the {\sc dvi} file}
+\input{omdocex}\newpage
+\subsection{The {\xml} document generated by this file}
+{\scriptsize\verbatiminput{\jobname.xml}}
+\end{appendix}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

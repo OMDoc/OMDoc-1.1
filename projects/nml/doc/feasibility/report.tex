@@ -1,0 +1,114 @@
+\documentclass{report}
+\usepackage{url,amssymb}%general
+\usepackage[show]{ed} %local
+\usepackage{moreverb}
+\def\omdoc{OMDoc}
+\title{Translating into a New Mathematical Language\\
+  A Feasibility Study}
+\author{\begin{minipage}{5cm}Michael Kohlhase\\
+  Carnegie Mellon University\\
+  \url{kohlhase+@cs.cmu.edu}
+\end{minipage}\qquad
+\begin{minipage}{5cm}Fairouz Kamareddine\\
+  Heriot Watt University\\
+  \url{fairouz@cee.hw.ac.uk}
+\end{minipage}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We go from CML to NML\ednote{complete}
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+bla bla\ednote{copy from the NML paper or the proposal}
+
+\section{The Pipeline}
+
+In this section we will work and an extended example that was also discussed
+in~\cite{paper}; In a mathematical textbook we might find the following fragment.
+
+\begin{quote}
+{\bf Definition.} Let $h \not = 0$, let $f$ be a function from $A$ to
+$\mathbb{R}$, $a \in A$ and $a+h \in A$.  Then $\frac{f(a+h) -
+f(a)}{h}$ is the {\em difference quotient\/} of $f$ in $a$ with
+difference $h$. We call $f$ {\em differentiable\/} at $x=a$ if
+$\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}$ exists.
+The function $\sqrt{|x|}$ is not differentiable at 0. 
+\end{quote} 
+
+\begin{small}
+\begin{boxedverbatim}
+{\bf Definition.} Let $h \not = 0$, let $f$ be a function from $A$ to
+$\mathbb{R}$, $a \in A$ and $a+h \in A$.  Then $\frac{f(a+h) -
+f(a)}{h}$ is the {\em difference quotient\/} of $f$ in $a$ with
+difference $h$. We call $f$ {\em differentiable\/} at $x=a$ if
+$\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}$ exists.
+The function $\sqrt{|x|}$ is not differentiable at 0. 
+\end{boxedverbatim}
+\end{small}
+\subsection{The {\omdoc} Original}
+\ednote{discuss the {\omdoc} here, say something about {\omdoc} in general}
+
+\subsection{New Mathematical Lanugage (NML)}
+\vspace{-0.08in}
+Both definitions require a context.  For convenience we first abbreviate:
+
+$\Gamma_1 = A \subseteq \mathbb{R}, f : A \rightarrow \mathbb{R}, a : A,
+h : \mathbb{R}, h \not = 0, a+h \in A $
+and 
+$\Gamma_2 = A \subseteq \mathbb{R}, f : A \rightarrow \mathbb{R}, a : A$ 
+
+The book consists of the
+$\circ$-concatenation of the following three lines:
+
+\vspace{-0.08in}
+\begin{quote} 
+\begin{tabular}{l c l} 
+$\Gamma_1$ & $~~\triangleright ~~$ & $ {\it the~difference~quotient~of~}f
+~ := ~ \frac{f(a+h)-f(a)}{h}$ \\ $\Gamma_2$ & $~~\triangleright ~~$ & $ f
+{\rm ~is~differentiable~at~}a := \lim_{h \rightarrow
+0}\frac{f(a+h)-f(a)}{h} {\rm ~exists~}$ \\ $\emptyset$ & $ ~~
+\triangleright ~~$ & $ \neg (\lambda_{x : \mathbb{R}}(\sqrt{|x|}) {\rm
+~is~differentiable~at~}0)$
+\end{tabular}
+\end{quote} 
+\vspace{-0.08in}
+A derivation leading to the book given above, needs many
+small steps, but can be constructed straightforwardly. We omit the
+derivation itself. We only give a number of remarks regarding it:
+\vspace{-0.08in}
+\begin{itemize} 
+\item In the  book we type $A$ by declaring it to be a
+{\it subset\/} of $\mathbb{R}$. This is not according to the
+rules. However, we may consider $A \subseteq \mathbb{R}$ to be
+shorthand for $x \in {\cal P}(\mathbb{R})$, which is a proper
+declaration. (The power set operator ${\cal P}$ should be accounted
+for in the preface, with weak in-type $(\tiset)$ and weak out-type $\tiset$.)
+\item Equality, addition, subtraction and division should also be
+weakly typed in the preface. 
+The same holds for $\raisebox{.5ex}{$\sqrt{}$}$, $|\ldots |$ and the 
+logical operator $\neg$.
+\item {\it Function application\/} as in $f(a)$ and $f(a+h)$ can be
+treated as a binary constant ${\tt appl}$ with weak in-type $(\ttt \times
+\ttt)$ and out-type $\ttt$.
+\end{itemize} 
+
+\begin{appendix}
+\chapter{The Documents in the Pipeline}
+\section{The Original}
+  {\scriptsize\listinginput[5]{1}{original.tex}}
+\section{The corresponding {\omdoc}}
+{\scriptsize\listinginput[5]{1}{../../examples/feasibility/orig.omdoc}}
+\end{appendix}
+\bibliographystyle{alpha}
+\ednotemessage
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="algebra.omdoc">
+ <metadata>
+  <Title>Formalizing Mathematics</Title>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-03T0703</Date>
+  <Description>
+   An example of how to encode mathematical knowledge into OMDoc starting with a
+   legacy mathematical text. 
+  </Description>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+
+<omgroup id="intro">
+ <metadata><Title>Introduction</Title></metadata>
+ <omtext id="intro.1">
+  <CMP>
+   In this chapter we will work an example of a stepwise formalization of
+   mathematical knowledge. This is the task of e.g. an editor of a mathematical
+   textbook preparing it for web-based publication.
+  </CMP>
+ </omtext>
+
+ <omtext id="intro.2">
+  <CMP>
+   Since <with id="OMDoc" style="acronym"/> only gives an infrastructure for
+   modeling mathematical content and not for the conceptualization of the
+   mathematical objects themselves, we will start from an informal, but rigorous
+   text: a fragment of Bourbaki's Algebra <with
+   style="citation">Bourbaki:a74</with> which we display in <ref xref="#bourbaki"
+   type="cite"/> for convenience.
+  </CMP>
+ </omtext>
+
+<omtext id="bourbaki">
+ <CMP><omlet type="figure" data="legacy"/></CMP>
+</omtext>
+
+ <omtext id="intro.3">
+  <CMP>
+   We will now formalize this piece of mathematical knowledge in three stages in the
+   next sections, discussing the design decisions as we go along.
+  </CMP>
+ </omtext>
+
+ <omtext id="intro.4">
+  <CMP>
+   In section <ref type="cite" xref="top-level"/> we discuss the first level of
+   formalization. At this level we just mark up the large-scale structure of the
+   text (which we assume to be given as <with style="acronym">LaTeX</with> source
+   code for simplicity) into <with style="acronym">OMDoc</with> elements. At this
+   level, we have only marked up the text structure and mathematical
+   statements. This allows us to annotate and extract some metadata and would
+   allow applications to slice the text into individual units, store it in data
+   bases like <with id="mbase" style="acronym"/>, or <ignore type="ednote">slicing
+   books</ignore>, or assemble the text slices into individualized books.
+   e.g. covering only a sub-topic of the orignial work.
+  </CMP>
+ </omtext>
+
+ <omtext id="intro.5">
+  <CMP>
+   However, all of the text itself, still contains the <with
+   style="acronym">LaTeX</with> markup for formulae, which is readable only by
+   experienced humans, and can in particular only be processed by
+  </CMP>
+ </omtext>
+
+
+ <omtext id="intro.6">
+  <CMP>
+   In section <ref xref="formulae" type="cite"/>, we will map all
+   mathematical objects in the text into <with style="acronym">OpenMath</with>
+   formulae,<ignore type="ednote">say something about the benefits</ignore>
+  </CMP>
+ </omtext>
+
+ <omtext id="intro.7">
+  <CMP>
+   Finally, in section <ref xref="formulae" type="cite"/> we will fully formalize
+   the mathematical knowledge. <ignore type="ednote">say something about the
+   benefits</ignore>
+  </CMP>
+ </omtext>
+</omgroup>
+
+<private id="legacy">
+  <metadata>
+  <Title>A fragment of Bourbaki's Algebra</Title>
+  <Creator role="trl">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-03T0703</Date>
+  <Description>A fragment of Bourbaki's Algebra</Description>
+  <Source>Nicolas Bourbaki, Algebra, Springer Verlag 1974</Source>
+  <Type>Text</Type>
+ </metadata>
+ <data format="application/LaTeX" href="legacy.tex"/>
+ <data format="image/jpg" href="legacy.jpeg"/>
+ <data format="application/postscript" href="legacy.ps"/>
+ <data format="application/pdf" href="legacy.pdf"/>
+</private>
+
+
+<omgroup id="top-level">
+<metadata>
+ <Title>Marking up the Top-Level Structure and Mathematical Statements</Title>
+</metadata>
+
+ <omtext id="top-level.1">
+  <CMP>
+   In this section we conver the mathematical text in <ref xref="#bourbaki"
+   type="cite"/> in a very simple-minded manner. At this level, we only care about
+   the top-level structure and the mathematical statements. We will explain the
+   features in detail by line numbers below.  <ignore type="ednote"> show
+   algebra1.omdoc</ignore>
+  </CMP>
+ </omtext>
+
+
+<omgroup id="statements">
+ <metadata>
+  <Title>Mathematical Statements</Title>
+ </metadata>
+ <omtext id="statements.1">
+  <CMP>
+   The main feature we see is the markup for mathematical statements,
+   i.e. definitions, theorems, ... Let us for instance see the definition of a
+   magma in <ref type="cite" xref="magma-def"/>. The outer element <with
+   style="element">definition</with>
+  </CMP>
+ </omtext>
+
+<omtext id="magma-def">
+ <CMP><omlet type="figure" data="magma-defp"/></CMP>
+</omtext>
+
+<private id="magma-defp">
+  <metadata>
+  <Title>A definition of a Magma</Title>
+  <Creator role="trl">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-03T0703</Date>
+  <Type>Text</Type>
+ </metadata>
+ <data format="application/omdoc+xml" href="algebra1.omdoc#magma.def"/>
+</private>
+</omgroup>
+</omgroup>
+
+<omgroup id="formulae">
+<metadata><Title>Marking up the Formulae</Title></metadata>
+
+<omtext id="formulae.intro">
+ <CMP>
+  In this section we will look at another <ignore type="ednote">continue</ignore>
+ </CMP>
+</omtext>
+</omgroup>
+
+<omgroup id="formalization">
+<metadata><Title>Full Formalization</Title></metadata>
+
+<omtext id="formalization.1">
+ <CMP>
+  In this section we will look at another <ignore type="ednote">continue</ignore>
+ </CMP>
+</omtext>
+</omgroup>
+</omdoc>

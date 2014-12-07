@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_assumption">
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2002-02-03</Date>
+</metadata>                                                                     
+<theory id="test_assumption">
+
+<axiom id="test">
+<FMP>
+<assumption id="as">
+<CMP>foo</CMP>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+</assumption>
+
+<conclusion id="co">
+<CMP>bar</CMP>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+</conclusion>
+</FMP>
+</axiom>
+
+</theory>
+</omdoc>
+

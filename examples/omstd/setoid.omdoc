@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="setoid-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary setoid.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">Olga Caprotti</Creator>
+  <Date> 1999-06-01 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/setoid.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> 
+    The definition of a setoid as a set with an equivalence relations
+    defined on its elements.		
+  </Description>
+</metadata>
+
+<theory id="setoid">
+  <symbol id="Setoid">
+    <CMP> The contructor for the type of set 
+      with an equivalence relation on it.
+    </CMP>
+    <commonname>Setoid</commonname>
+  </symbol>
+  <assertion id="Setoid-prop-1" type="lemma">
+    <CMP> Is defined as  
+      Lambda {Carrier:&gt; symtype; Eq: 	(relation Carrier)}.
+      SigmaType{ Carrier:&gt; symtype; 	
+      Eq: 	(relation Carrier);	
+      (equivalence Carrier Eq) }
+    </CMP>
+  </assertion>
+  <symbol id="make_Setoid">
+    <CMP> The contructor for the tuples consisting of a set, 
+      an equivalence relation on the set, and a proof that the relation 
+      is actually an equivalence relation.
+    </CMP>
+    <commonname>make Setoid</commonname>
+  </symbol>
+  <assertion id="make_Setoid-prop-1" type="lemma">
+    <CMP> Is defined as  
+      Lambda {Carrier:&gt; symtype; 
+      Eq: 	(relation Carrier)
+      proof: (equivalence Carrier Eq)}.
+      Tuple (Carrier,	Eq, proof)
+    </CMP>
+  </assertion>
+</theory>
+</omdoc>

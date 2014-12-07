@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_input">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_input">
+
+<code id="mycode">
+<data/>
+<input>
+<CMP>input</CMP>
+<CMP xml:lang="zh">shuru</CMP>
+<FMP/>
+<FMP/>
+</input>
+
+<output>
+<CMP>output</CMP>
+<CMP xml:lang="zh">shuchu</CMP>
+<FMP/>
+<FMP/>
+</output>
+
+<effect>
+<CMP>effect</CMP>
+<CMP xml:lang="zh">chengxiao</CMP>
+<FMP/>
+<FMP/>
+</effect>
+</code>      
+
+</theory>
+</omdoc>
+

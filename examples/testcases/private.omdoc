@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_private">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_private">
+
+<private id="mypriv" style="foo" for="bar" theory="myth" pto="bla"
+         pto-version="bl" type="myty" requires="something"
+         replaces="another">
+<metadata>
+<Title>metadata for private</Title>
+</metadata>
+<data format="foo" href="bar" size="42">some data</data>
+<data/>
+</private>
+
+</theory>
+</omdoc>
+

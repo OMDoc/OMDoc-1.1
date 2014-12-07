@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd" []>
+
+
+<!-- generated from latex2omdoc.tex, do not edit -->
+
+
+<omdoc id="top">
+
+<metadata>
+ <dc:Title xml:lang="en">
+ Monoids migrated from LaTeX
+ </dc:Title>
+</metadata>
+
+<theory id="monoids">
+<symbol id="Monoid.sym">
+<commonname xml:lang="eng">Monoid</commonname>
+</symbol>
+
+<definition id="1-{Monoid}" item="Monoid-{sym}">
+<metadata>
+ <dc:Title xml:lang="eng">
+ Monoid
+ </dc:Title>
+</metadata>
+
+<CMP xml:lang="eng" format="omtext">
+    A monoid is a semigroup with a unit element
+  
+</CMP>
+</definition>
+
+</theory>
+
+<omtext id="2-{Hauptsatz}">
+<metadata>
+ <dc:Title xml:lang="eng">
+ Hauptsatz
+ </dc:Title>
+</metadata>
+
+<rsrelation type="elaboration" for="monoids" />
+<CMP xml:lang="eng" format="omtext">
+    A monoid has at most one unit.
+  
+</CMP>
+</omtext>
+
+<assertion id="sin" theory="trig" type="theorem">
+<FMP>
+<OMOBJ><ominput format="mathematica">
+sin[1+1] == 2
+</ominput></OMOBJ>
+</FMP>
+
+</assertion>
+
+</omdoc>

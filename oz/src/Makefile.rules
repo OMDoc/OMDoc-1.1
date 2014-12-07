@@ -1,0 +1,4 @@
+omdoc.parser.ozf: $(OMDOCDTDFILES)
+	$(OZE) x-ozlib://mathweb/dtdtool.exe --dtd2parser \
+		--root=omdoc,metadata,OMOBJ $< -o $@
+

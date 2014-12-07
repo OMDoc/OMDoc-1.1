@@ -1,0 +1,103 @@
+\section{Project {\ifpdf{ActiveMath}\else{\activemath}\fi}}\label{sec:activemath}
+\begin{center}\large\sf
+Erica Melis, Eric Andr\`es, Jochen B\"udenbender, Adrian Frischauf,\\
+     George Goguadze, Paul Libbrecht, Martin Pollet, Carsten Ullrich\\
+\url{http://www.activemath.org/}
+\end{center}
+
+In a nutshell, {\activemath} is a generic web-based learning system that
+dynamically generates interactive (mathematics) courses adapted to the student's
+goals, preferences, capabilities, and knowledge.  The content is represented in
+{\omdoc} format with several extensions needed in an educational context. For each
+user, the appropriate content is retrieved from the knowledge base {\mbase} and
+the course is generated individually according to pedagogical rules.  Then the
+course is presented to the user via a standard web-browser. One of the exceptional
+features of {\activemath} is its integration of stand-alone mathematical service
+systems.
+
+Currently, a minimal authoring kit and a translation tool from restricted {\LaTeX}
+to {\omdoc} are provided to support authoring {\omdoc}s\footnote{See
+  \url{http://www.activemath.org/~paul/AuthoringComments/} for a description.}.
+
+In the near future, the authoring tools will have intelligent features and
+{\activemath} will integrate a user-adaptive suggestion and feedback mechanism in
+addition to the adaptive course generation. A comprehensive description of the
+system can be found in~\cite{activemathAIEDJ01}.
+
+\subsection{OMDoc Extensions}
+The {\activemath} DTD is an extension of the general {\omdoc} DTD, in particular,
+with pedagogically motivated extensions such as difficulty or abstractness of an
+example or exercise.
+
+{\activemath} will also differentiate exercises according to their type with
+values defining the user's required activity such as {\it check-question}, {\it
+  make-hypothesis}, {\it prove}, {\it model} or {\it explore} where e.g.,
+\textit{explore} means interactive exploration with the help of specified external
+system (such as \texttt{maple}, {\OMEGA}, or statistics software).
+
+Additional pedagogically motivated metadata elements will be introduced such as
+{\tt field} (e.g., {\it computer science},{\it math}, {\it economy}) and
+{\tt{learning\-context}} with values corresponding to school and university
+levels\footnote{These will be used to provide different content to users with
+  different background fields and at different levels.} in accordance with the
+Learning Object Metadata Standard\footnote{\url{http://ltsc.ieee.org/wg12/}}.
+Furthermore, the author can specify the pedagogical goal of an exercise, example,
+or elaboration, that is whether learning this item increases {\it knowledge}, {\it
+  comprehension}, {\it application}, or {\it transfer}.
+
+Finally, in {\activemath}, relations are going to be represented by the element
+{\tt relation}, defined in the {\activemath} DTD and classified by introducing a
+type of the relation. The type values are: {\it depends-on}, {\it
+  counterexam\-ple-for}, {\it similar-example}, {\it similar-exercise}, {\it
+  citation}, etc. The need for distinguishing the types of relations arises not
+only in educational contexts.
+
+Since we need certain additional {\omdoc} elements in the educational context, a
+common representation for proof methods, proof plans, algorithms will be added in
+the future, hopefully some of them even to the common {\omdoc} itself.
+
+%??verbosity ?? highlight
+
+
+\subsection{Adaptive Presentation}
+
+{\activemath} offers dynamically constructed courses that suit the learner's
+learning goals, her choosen learning scenarios, her presentation preferences, and
+knowledge mastery. To realize this, {\activemath} maintains a user model and its
+presentation tools include a course generator and pedagogical rules employed by
+the course generator.
+
+Presentation of the content is currently made in {\html} through {\xslt}
+transformations with adaptation to the users' taste through CSS filters.
+{\omdoc}'s semantic encoding allows to envision other output formats and some of
+them are under work.
+
+\subsection{Integration of External Systems}
+
+Currently, {\activemath} integrates the Computer Algebra Systems MuPad and Maple
+and the proof planner of {\OMEGA}, and statistics software. Moreover, an external
+student/exercise management systems will be integrated in 2002.  The distributed
+web-architecture of {\activemath} is well-suited for integrating external systems
+and also the OMDoc representation is -- in principle -- a basis for integrating
+different systems.
+
+Currently however, exercises and examples cannot simply pass {\omdoc}s or
+{\openmath} elements to the mathematical service systems because
+{\openmath}-phrasebooks are not available for most systems.  An instruction on how
+to write the OMDocs for exercises for which an external system is called can be
+found in {\url{http://www.ags.uni-sb.de/~adrianf/activemath}}. The abstract
+description of an exercise includes startup, shutdown, and eval instructions.
+
+\subsection{Current Status}
+
+The {\activemath} learning environment is alpha status of development.  Most of
+the basic features are becoming stable and new ones are being planned.  Authoring
+tools are under development but usage of QMath (see other implementations) is
+recommended and compatible.
+
+More information and a demo version of {\activemath} can be found from our
+web-page {\url{http://www.activemath.org/}}.
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 

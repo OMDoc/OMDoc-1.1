@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+\usepackage{letterwide,url,longtable,array}
+\usepackage{macros}   %local
+\title{{\omdoc}: An Open Markup Format for Mathematical Documents (Version 1.1)\\
+  Quick Reference Table}
+\author{Michael Kohlhase\\
+  Computer Science, Carnegie Mellon University\\
+  Pittsburgh, Pa 15213, USA\\
+  {\url{http://www.cs.cmu.edu/~kohlhase}}}
+\begin{document}
+\maketitle
+\def\element#1{{\tt{#1}}}
+\def\openmath{{\sc OpenMath}}
+
+ {\footnotesize\squicktable{%
+   \generaltable{& structure}\hline
+   \CFMPtable{& stat}\hline
+   \mathtable{& stat}\hline
+   \prooftable{& proof}\hline
+   \constitutivetable{& sthy}\hline
+   \adttable{& adt}\hline
+   \complextable{& cthy}\hline
+  \auxtable{& aux}\hline
+  \metadatatable{& meta}\hline
+  \prestable{& pres$}}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

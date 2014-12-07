@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="functions_alt.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:15
+    </Date>
+  </metadata>
+  <theory id="functions_alt-parameters">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56590" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56591" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="Drel" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="PRED"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56592" for="NIL" pto="pvs" pto-version="3.0" replaces="Drel">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="Rrel" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="PRED"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56593" for="NIL" pto="pvs" pto-version="3.0" replaces="Rrel">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56594" for="functions_alt" pto="pvs" pto-version="3.0" replaces="functions_alt-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory functions_alt
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="functions_alt_test">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56595" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56596" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="Drel" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="PRED"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56597" for="NIL" pto="pvs" pto-version="3.0" replaces="Drel">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="Rrel" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="PRED"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56598" for="NIL" pto="pvs" pto-version="3.0" replaces="Rrel">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="functions_alt-import-parameters" from="functions_alt-parameters"/>
+
+    <symbol id="preserves" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="functions_alt" name="D"/>
+            <OMS cd="functions_alt" name="R"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="preserves-def" for="preserves" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="functions_alt" name="preserves"/>
+            <OMA>
+              <OMS cd="functions" name="preserves"/>
+              <OMS cd="functions_alt" name="Drel"/>
+              <OMS cd="functions_alt" name="Rrel"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="inverts" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="functions_alt" name="D"/>
+            <OMS cd="functions_alt" name="R"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="inverts-def" for="inverts" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="functions_alt" name="inverts"/>
+            <OMA>
+              <OMS cd="functions" name="inverts"/>
+              <OMS cd="functions_alt" name="Drel"/>
+              <OMS cd="functions_alt" name="Rrel"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

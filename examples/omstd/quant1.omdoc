@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="quant1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary quant1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/quant1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds the definitions of the basic universal ("for all")
+    quantifier and existential ("there exists") quantifier. It is
+    intended to be `compatible' with the MathML elements representing
+    these quantifiers. 
+  </Description>
+</metadata>
+
+<theory id="quant1">
+
+<imports id="quant1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="quant1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="quant1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="quant1-imports-transc1" from="transc1.omdoc#transc1"/>
+<imports id="quant1-imports-logic1" from="logic1.omdoc#logic1"/>
+
+<symbol id="forall">
+  <CMP> 
+    This symbol represents the universal ("for all") quantifier which takes two
+    arguments. It must be placed within an OMBIND element. The first argument is the
+    bound variables (placed within an OMBVAR element), and the second is an expression. 
+  </CMP>
+  <commonname>forall</commonname>
+  <type system="sts">
+    <OMOBJ><OMS name="binder" cd="sts"/></OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-forall" for="forall">
+  <use  format="TeX">{\forall}</use>
+  <use  format="html|pmml">&#x02200;</use>
+  <use format="cmml" element="forall"/>
+  <use format="pvs">FORALL</use>
+</presentation>
+<example id="forall-ex-1" type="for" for="forall">
+  <CMP>An example to represent the statement that 
+    <OMOBJ><OMA xref="forall-ex-1.1"/></OMOBJ> for all x.</CMP>
+  <OMOBJ>
+    <OMBIND>
+      <OMS cd="quant1" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="forall-ex-1.1">
+	<OMS cd="relation1" name="leq"/>
+	<OMA>
+	  <OMS cd="arith1" name="abs"/>
+	  <OMA>
+	    <OMS cd="transc1" name="sin"/>
+	    <OMV name="x"/>
+	  </OMA>
+	</OMA>
+	<OMF dec="1.0"/>
+      </OMA>
+    </OMBIND>
+  </OMOBJ>
+</example>
+<symbol id="exists">
+  <CMP> 
+    This symbol represents the existential ("there exists") quantifier
+    which takes two arguments. It must be placed within an OMBIND element. The first
+    argument is the bound variables (placed within an OMBVAR element), and the second
+    is an expression.
+  </CMP>
+  <commonname>exists</commonname>
+  <type system="sts">
+    <OMOBJ><OMS name="binder" cd="sts"/></OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-exists" for="exists">
+  <use  format="TeX">{\exists}</use>
+  <use  format="html|pmml">&#x02203;</use>
+  <use format="cmml" element="exists"/>
+  <use format="pvs">EXISTS</use>
+</presentation>
+<example id="exists-ex-1" type="for" for="exists">
+  <CMP>
+    An example which represents the statement that there is no solution to
+    <OMOBJ><OMA xref="exists-ex-1.2"/></OMOBJ> for 
+    <OMOBJ><OMA xref="exists-ex-1.1"/></OMOBJ> that is: it is not true that there are
+    x,y,z,n with  <OMOBJ><OMA xref="exists-ex-1.1"/></OMOBJ> and 
+    <OMOBJ><OMA xref="exists-ex-1.2"/></OMOBJ>
+  </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="logic1" name="not"/>
+      <OMBIND>
+	<OMS cd="quant1" name="exists"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	  <OMV name="y"/>
+	  <OMV name="z"/>
+	  <OMV name="n"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA id="exists-ex-1.1">
+	    <OMS cd="relation1" name="gt"/>
+	    <OMV name="n"/>
+	    <OMI> 2 </OMI>
+	  </OMA>
+	  <OMA id="exists-ex-1.2">
+	    <OMS cd="relation1" name="eq"/>
+	    <OMA>
+	      <OMS cd="arith1" name="plus"/>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMV name="x"/>
+		<OMV name="n"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMV name="y"/>
+		<OMV name="n"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="arith1" name="power"/>
+	      <OMV name="z"/>
+	      <OMV name="n"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

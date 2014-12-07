@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="subrange_type.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="subrange_type-parameters">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56986" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="n" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56987" for="NIL" pto="pvs" pto-version="3.0" replaces="n">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56988" for="subrange_type" pto="pvs" pto-version="3.0" replaces="subrange_type-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory subrange_type
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="subrange_type_test">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56989" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="n" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56990" for="NIL" pto="pvs" pto-version="3.0" replaces="n">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="subrange_type-import-parameters" from="subrange_type-parameters"/>
+    <symbol id="subrange" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="subrange" for="subrange" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="integers" name="subrange"/>
+            <OMS cd="subrange_type" name="m"/>
+            <OMS cd="subrange_type" name="n"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+  </theory>
+</omdoc>

@@ -1,0 +1,681 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+<!--  An example of a chapter in a mathematical textbook. 
+           "Introduction to Real Analysis" by Bartle and Sherbert, Wiley, 1982.
+  -->
+
+<omdoc id="barshe.chap2"  catalogue="../omstd/catalogue.omdoc">
+
+<metadata>
+<Title>The Algebraic Properties of the real numbers</Title>
+<Creator role="edt">Michael Kohlhase</Creator> 
+<Contributor role="aut">Robert G. Bartle</Contributor>
+<Contributor role="aut">Donald R. Sherbert</Contributor>
+<Date>1999-08-10</Date>
+</metadata>
+
+<omtext id="barshe.intro" type="introduction">
+  <CMP xml:lang="en">
+  In this section we shall discuss the algebraic structure of the real number
+  system. This is done by first giving a list of basic properties  of addition and
+  multiplication. This list embodies all the essential algebraic properties of
+  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> in the sense that all other such properties can
+  be deduced as theorems. In the terminology of abstract algebra, the systems of
+  real numbers is a field with respect to addition and multiplication. The
+  properties listed in <ref xref="alg-prop-reals" type="cite"/> are known as the field axioms.
+ </CMP>
+</omtext>
+
+<theory id="barshe">
+<omtext id="barshe.theory.intro" type="introduction">
+<CMP>By a binary operation on a set 
+  <OMOBJ><OMV name="F"/></OMOBJ> we mean a function 
+  <OMOBJ><OMV name="B"/></OMOBJ> with domain 
+  <OMOBJ><OMA>
+     <OMS cd="set1" name="cartesian_product"/>
+     <OMV name="F"/>
+     <OMV name="F"/>
+   </OMA></OMOBJ>
+   and range in <OMOBJ><OMV name="F"/></OMOBJ>. 
+ Thus, a binary operation associates with each ordered pair 
+   <OMOBJ><OMA>
+     <OMS cd="set1" name="cartesian_product"/>
+     <OMV name="a"/>
+     <OMV name="b"/>
+   </OMA></OMOBJ>
+of elements of the set <OMOBJ><OMV name="F"/></OMOBJ> a unique element 
+  <OMOBJ><OMA><OMV name="B"/>
+    <OMV name="a"/>
+    <OMV name="b"/>
+  </OMA></OMOBJ>
+in <OMOBJ><OMV name="F"/></OMOBJ>.  
+</CMP>
+</omtext>
+
+<symbol id="binop">
+  <commonname>binary operation</commonname>
+</symbol>
+
+<symbol id="plus">
+  <commonname>addition on the real numbers</commonname>
+</symbol>
+
+<symbol id="times">
+  <commonname>multiplication on the real numbers</commonname>
+</symbol>
+
+<symbol id="zero-real">
+  <commonname>multiplication on the real numbers</commonname>
+</symbol>
+
+<presentation id="barshe.binop.pres" for="barshe.binop" parent="OMA" fixity="infix">
+  <use format="TeX">\circ</use>
+  <use format="html">*</use>
+</presentation>
+
+
+<omtext id="field-notation" type="elaboration" for="barshe">
+  <CMP>However, instead of using the
+     notation <OMOBJ><OMA><OMV name="B"/><OMV name="a"/><OMV  name="b"/></OMA></OMOBJ>, 
+     we use the conventional notations of 
+     <OMOBJ><OMA><OMS cd="barshe" name="real.plus"/><OMV name="a"/><OMV  name="b"/></OMA></OMOBJ> and
+     <OMOBJ><OMA><OMS cd="barshe" name="real.times"/><OMV name="a"/><OMV  name="b"/></OMA></OMOBJ>
+     when discussing the properties of addition and multiplication. Examples of
+     other binary operations can be found in the exercises.
+   </CMP>
+</omtext>
+
+<omtext id="real-struct-intro">
+  <CMP>
+    On the set <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> of real
+    numbers there are two binary operations, denoted by <OMOBJ><OMS
+    cd="barshe" name="real.plus"/></OMOBJ> and <OMOBJ><OMS cd="barshe"
+    name="real.times"/></OMOBJ> called addition and
+    multiplication, respectively.
+  </CMP>
+</omtext>
+
+<symbol id="real">
+    <commonname xml:lang="en">real numbers</commonname>
+    <commonname xml:lang="de">Reelle Zahlen</commonname>
+</symbol>
+
+<symbol id="real.plus">
+    <commonname xml:lang="en">Addition on the real numbers</commonname>
+</symbol>
+
+<symbol id="real.times">
+    <commonname>Multiplication on the real numbers</commonname>
+</symbol>
+
+<omtext id="sdlkfj">
+  <CMP>These operations on the real numbers satisfy the following properties:</CMP>
+</omtext>
+
+<axiom id="alg-prop-reals-A1">
+  <metadata>
+    <Title>commutative property of addition</Title>
+  </metadata>
+  <CMP>
+    <OMOBJ><OMA><OMS cd="relation1" name="eq"/>
+	     <OMA><OMS cd="barshe" name="real.plus"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+             </OMA>
+             <OMA><OMS cd="barshe" name="real.plus"/>
+                  <OMV name="b"/>
+                  <OMV  name="a"/>
+             </OMA>
+        </OMA></OMOBJ>
+        for all 
+        <OMOBJ><OMV name="a"/></OMOBJ>, <OMOBJ><OMV name="a"/></OMOBJ> in <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>
+  </CMP>
+  <FMP>
+       <OMOBJ><OMBIND>
+	  <OMS cd="quant1" name="forall"/>
+	  <OMBVAR>
+             <OMV name="a"/>
+  	     <OMV name="b"/>
+          </OMBVAR>
+	  <OMA><OMS cd="logic1" name="implies"/>
+             <OMA><OMS cd="logic1" name="and"/>
+                <OMA><OMS cd="set1" name="in"/><OMV name="a"/><OMS cd="barshe" name="real"/></OMA>
+                <OMA><OMS cd="set1" name="in"/><OMV name="b"/><OMS cd="barshe" name="real"/></OMA>
+             </OMA>
+             <OMA><OMS cd="relation1" name="eq"/>
+	       <OMA><OMS cd="barshe" name="real.plus"/><OMV name="a"/><OMV name="b"/></OMA>
+               <OMA><OMS cd="barshe" name="real.plus"/><OMV name="b"/><OMV  name="a"/></OMA>
+             </OMA>
+          </OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</axiom>
+
+<axiom id="alg-prop-reals-A2">
+     <metadata>
+       <Title>associative property of addition</Title>
+     </metadata>
+    <CMP>
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMA>
+          <OMS cd="arith1" name="plus"/>
+          <OMV name="a"/>
+          <OMV name="b"/>
+        </OMA>
+      <OMV name="c"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMV name="a"/>
+      <OMA>
+        <OMS cd="arith1" name="plus"/>
+        <OMV name="b"/>
+        <OMV name="c"/>
+      </OMA>
+    </OMA>
+  </OMA></OMOBJ>
+ for all <OMOBJ><OMV name="a"/></OMOBJ>, <OMOBJ><OMV name="b"/></OMOBJ>, <OMOBJ><OMV name="c"/></OMOBJ> in 
+	 <OMOBJ><OMS   cd="barshe" name="real"/></OMOBJ>
+    </CMP>
+</axiom>
+
+<axiom id="alg-prop-reals-A3">
+     <metadata>
+       <Title>existence of a zero element</Title>
+     </metadata>
+    <CMP>there exists an element <OMOBJ><OMI>0</OMI></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that   
+    <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMI>0</OMI>
+      <OMV name="a"/>
+    </OMA>
+    <OMV name="a"/>
+  </OMA></OMOBJ>
+  and   <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMV name="a"/>
+      <OMI>0</OMI>
+    </OMA>
+    <OMV name="a"/>
+  </OMA></OMOBJ> 
+  for all <OMOBJ><OMV name="a"/></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>
+    </CMP>
+</axiom>
+
+<axiom id="alg-prop-reals-A4">
+     <metadata>
+       <Title>Existence of negative elements</Title>
+     </metadata>
+    <CMP>
+    for each <OMOBJ><OMV name="a"/></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> there exists an
+            element   
+    <OMOBJ><OMA>
+    <OMS cd="arith1" name="minus"/><OMV name="a"/>
+    </OMA></OMOBJ> in <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that 
+      <OMOBJ><OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+        <OMS cd="arith1" name="plus"/>
+        <OMV name="a"/>
+        <OMA>
+          <OMS cd="arith1" name="minus"/><OMV name="a"/>
+        </OMA>
+      </OMA>
+      <OMI>0</OMI>
+    </OMA></OMOBJ> and 
+      <OMOBJ><OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+        <OMS cd="arith1" name="plus"/>
+        <OMA>
+          <OMS cd="arith1" name="minus"/><OMV name="a"/>
+        </OMA>
+        <OMV name="a"/>
+      </OMA>
+      <OMI>0</OMI>
+    </OMA></OMOBJ> 
+    </CMP>
+</axiom>
+
+<axiom id="alg-prop-reals-M1">
+     <metadata>
+       <Title>commutative property of multiplication</Title>
+     </metadata>
+    <CMP> 
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMV name="a"/>
+      <OMV name="b"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMV name="b"/>
+      <OMV name="a"/>
+    </OMA>
+  </OMA></OMOBJ>  for all 
+ <OMOBJ><OMV name="a"/></OMOBJ> and <OMOBJ><OMV name="b"/></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>
+    </CMP>
+</axiom>
+<axiom id="alg-prop-reals-M2">
+     <metadata>
+       <Title>Associative property of multiplication</Title>
+     </metadata>
+    <CMP>
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="a"/>
+        <OMV name="b"/>
+      </OMA>
+      <OMV name="c"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="a"/>
+        <OMV name="b"/>
+      </OMA>
+      <OMV name="c"/>
+    </OMA>
+  </OMA></OMOBJ>
+for all
+<OMOBJ><OMV name="a"/></OMOBJ>, <OMOBJ><OMV name="b"/></OMOBJ> and <OMOBJ><OMV name="c"/></OMOBJ>  in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> 
+    </CMP>
+</axiom>
+
+<axiom id="alg-prop-reals-M3">
+     <metadata>
+       <Title>Existence of a unit element</Title>
+     </metadata>
+    <CMP>there exists an element <OMOBJ><OMI>1</OMI></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> distinct from <OMOBJ><OMI>0</OMI></OMOBJ>
+        such that <OMOBJ><OMA><OMS cd="relation1" name="eq"/><OMA><OMS cd="arith1"
+        name="times"/><OMI>1</OMI><OMV name="a"/></OMA><OMV name="a"/></OMA></OMOBJ> and <OMOBJ><OMA><OMS cd="relation1" name="eq"/><OMV name="a"/><OMA><OMS cd="arith1"
+        name="times"/><OMI>1</OMI><OMV name="a"/></OMA></OMA></OMOBJ> for all <OMOBJ><OMV name="a"/></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>
+    </CMP>
+</axiom>
+<axiom id="alg-prop-reals-M4">
+     <metadata>
+       <Title>Existence of reciprocals</Title>
+     </metadata>
+    <CMP> for each
+ <OMOBJ><OMA>
+    <OMS cd="relation1" name="neq"/>
+    <OMV name="A"/>
+    <OMI>0</OMI>
+  </OMA></OMOBJ>
+in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> there exists an element
+  <OMOBJ><OMA>
+    <OMS cd="arith1" name="divide"/>
+    <OMI>1</OMI>
+    <OMV name="a"/>
+  </OMA></OMOBJ> 
+  in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that 
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMV name="a"/>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMI>1</OMI>
+        <OMV name="a"/>
+      </OMA>
+    </OMA>
+    <OMI>1</OMI>
+  </OMA></OMOBJ>
+    </CMP>
+</axiom>
+
+<axiom id="alg-prop-reals-D">
+     <metadata>
+       <Title>Distributive property of multiplication over addition</Title>
+     </metadata>
+    <CMP>
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="a"/>
+        <OMA>
+          <OMS cd="arith1" name="plus"/>
+          <OMV name="b"/>
+          <OMV name="c"/>
+        </OMA>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="a"/>
+        <OMV name="b"/>
+      </OMA>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="a"/>
+        <OMV name="c"/>
+      </OMA>
+    </OMA>
+  </OMA></OMOBJ>  and 
+
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+        <OMA>
+          <OMS cd="arith1" name="plus"/>
+          <OMV name="b"/>
+          <OMV name="c"/>
+        </OMA>
+        <OMV name="c"/>
+      </OMA>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="b"/>
+        <OMV name="a"/>
+      </OMA>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="c"/>
+        <OMV name="a"/>
+      </OMA>
+    </OMA>
+  </OMA></OMOBJ>
+ for all <OMOBJ><OMV name="a"/></OMOBJ>, <OMOBJ><OMV name="b"/></OMOBJ>, and
+ <OMOBJ><OMV name="c"/></OMOBJ> in <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>.
+    </CMP>
+</axiom>
+
+</theory>
+
+<assertion id="barshe-2-1-2-a"
+             type="theorem"
+             theory="barshe"> 
+        <CMP>
+        If <OMOBJ><OMV name="z"/></OMOBJ> and <OMOBJ><OMV
+        name="a"/></OMOBJ> are elements of <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> 
+	such that 
+	<OMOBJ><OMA><OMS cd="relation1" name="eq"/>
+	         <OMA><OMS cd="barshe" name="real.plus"/>
+                      <OMV name="z"/>
+                      <OMV name="a"/>
+                 </OMA>
+		 <OMV name="a"/>
+	       </OMA></OMOBJ>
+        then 
+	<OMOBJ><OMA><OMS cd="relation1" name="eq"/>
+	            <OMV name="z"/>
+                    <OMS cd="barshe" name="zero-real"/>
+               </OMA></OMOBJ>
+        </CMP>
+        <FMP>
+        <assumption id="A1">
+	  <CMP> <OMOBJ><OMV name="z"/></OMOBJ> is an  element of 
+             <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> 
+          </CMP>
+	</assumption>
+        <assumption id="A2">
+	  <CMP> <OMOBJ><OMV name="a"/></OMOBJ> is an element of 
+             <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> 
+          </CMP>
+	</assumption>
+        <assumption id="A3">
+   	    <OMOBJ>
+	      <OMA><OMS cd="relation1" name="eq"/>
+	        <OMA><OMS cd="barshe" name="real.plus"/>
+                     <OMV name="z"/>
+                     <OMV name="a"/>
+                </OMA>
+		<OMV name="a"/>
+	      </OMA>
+            </OMOBJ>
+	</assumption>
+        <conclusion id="Conc">
+            <OMOBJ>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+	        <OMV name="z"/>
+                <OMS cd="barshe" name="zero-real"/>
+              </OMA>
+            </OMOBJ>
+	</conclusion>
+        </FMP>
+    </assertion>
+
+<assertion id="barshe-2-1-2-b"
+           type="theorem"
+           theory="barshe"> 
+    <CMP>
+      If <OMOBJ><OMV name="u"/></OMOBJ> and
+   <OMOBJ><OMA>
+    <OMS cd="relation1" name="neq"/>
+    <OMV name="b"/>
+    <OMI>0</OMI>
+  </OMA></OMOBJ>
+  are elements of  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that
+   <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="u"/>
+        <OMV name="c"/>
+      </OMA>
+      <OMV name="b"/>
+    </OMA>
+    <OMV name="b"/>
+  </OMA></OMOBJ>, then 
+  <OMOBJ><OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMV name="u"/>
+    <OMI>1</OMI>
+  </OMA></OMOBJ>.
+  </CMP>
+  </assertion>
+
+<proof for="barshe-2-1-2-a"
+       id="barshe-2-1-2-proof-a-proof"
+       theory="barshe">
+    <metacomment id="barshe-2-1-2-proof-a-proof-m1">
+      <CMP>The hypothesis is that <OMOBJ><OMA><OMS cd="relation1" name="eq"/><OMA><OMS cd="arith1"
+        name="plus"/><OMV name="z"/><OMV name="a"/></OMA><OMV name="a"/></OMA></OMOBJ>.
+     </CMP>
+    </metacomment>
+    <derive id="barshe-2-1-2-proof-a-proof-D1">
+      <CMP> 
+        We add the element
+        <OMOBJ><OMA><OMS cd="arith1" name="unary-minus"/><OMV name="a"/></OMA></OMOBJ>, whose existence is given in (A4), to both sides to get 
+        (z + a) + (-a) = a + (-a).
+      </CMP>
+    </derive>
+    <derive id="barshe-2-1-2-proof-a-proof-D2">
+      <CMP> If we use (A2), (A4), and (A3) in succession on the left side, we obtain
+        (z + a) + (-a) = z + (a + (-a)) = z + 0 = z
+      </CMP>
+      <FMP>
+        <conclusion id="Conc1">
+           <OMOBJ>
+             <OMA>
+               <OMS cd="relation1" name="eq"/>
+ 	       <OMA>
+                 <OMS cd="arith1" name="plus"/>
+  	         <OMA>
+                   <OMS cd="arith1" name="plus"/>
+		   <OMV name="z"/>
+		   <OMV name="a"/>
+	         </OMA>
+ 	         <OMA>
+                   <OMS cd="arith1" name="minus"/>
+                   <OMV name="a"/>
+	         </OMA>
+               </OMA>
+               <OMV name="z"/>
+             </OMA>
+           </OMOBJ>
+        </conclusion>
+      </FMP>
+      <method xref="#byctx(eq-chain@assertion-level)"/>
+      <premise xref="alg-prop-reals-A2"/>
+      <premise xref="alg-prop-reals-A4"/>
+      <premise xref="alg-prop-reals-A3"/>
+      <proof for="barshe-2-1-2-proof-a-proof-D2"
+             id="barshe-2-1-2-proof-a-proof-D2-proof"
+             theory="barshe">
+        <derive id="barshe-2-1-2-proof-a-proof-D2-1">
+	   <CMP>By <OMOBJ><OMS cd="barshe" name="alg-prop-reals-A2"/></OMOBJ> we have z+(a+(-a))=a+(-a) 
+           </CMP>
+	   <FMP>
+	     <conclusion id="Conc2">
+               <CMP>(z+a)+(-a)=z+(a+(-a))</CMP>
+             </conclusion>
+	    </FMP>
+	   <method xref="#byctx(foralli-star@omega-base-calc)">
+  	     <OMOBJ><OMV name="z"/></OMOBJ>
+ 	     <OMOBJ><OMV name="a"/></OMOBJ>
+             <OMOBJ><OMA><OMS cd="arith1" name="minus"/><OMV name="a"/></OMA></OMOBJ>
+           </method>
+	   <premise xref="alg-prop-reals-A2"/>
+	</derive>
+        <derive id="barshe-2-1-2-proof-a-proof-D2-2">
+	   <CMP>Then we apply <OMOBJ><OMS cd="barshe" name="alg-prop-reals-A4"/></OMOBJ> and 
+                get (z+a)+(-a)=z+0 
+           </CMP>
+	   <FMP>
+  	     <conclusion id="Conc3">
+               <CMP>(z+a)+(-a)=z+0</CMP>
+             </conclusion>
+           </FMP>
+	   <method xref="#byctx(subst-eq@omega-base-calc)">
+              <OMOBJ><OMA>
+                <OMS cd="tree" name="position"/>
+                <OMI>2</OMI>
+              </OMA></OMOBJ>
+	   </method>
+	   <premise xref="barshe-2-1-2-proof-a-proof-D2-1"/>
+	   <premise xref="alg-prop-reals-A4"/>
+	</derive>
+        <conclude id="barshe-2-1-2-proof-a-proof-D2-3">
+	   <CMP>Finally we arrive at (z+a)+(-a)=z by applying 
+             <OMOBJ><OMS cd="barshe" name="alg-prop-reals-A3"/></OMOBJ>.
+           </CMP>
+	   <method xref="#byctx(subst-eq@omega-base-calc)">
+            <OMOBJ><OMA>
+              <OMS cd="tree" name="position"/>
+              <OMI>2</OMI>
+            </OMA></OMOBJ>
+	   </method>
+	   <premise xref="barshe-2-1-2-proof-a-proof-D2-2"/>
+	   <premise xref="alg-prop-reals-A3"/>
+	</conclude>
+      </proof>
+    </derive>
+    <derive id="barshe-2-1-2-proof-a-proof-D3">
+      <CMP>
+        If we use (A4) on the right side, we obtain a + (-a) = 0.
+      </CMP>
+      <FMP>
+        <conclusion id="Conc4">
+         <CMP> a + (-a) = 0</CMP> 
+        </conclusion>
+      </FMP>
+      <method xref="#byctx(foralli-star@omega-base-calc)">
+        <OMOBJ><OMV name="a"/></OMOBJ>
+      </method>
+      <premise xref="alg-prop-reals-A4"/>
+    </derive>
+    <conclude id="barshe-2-1-2-proof-a-proof-D4">
+       <CMP>Hence, we conclude that z = 0.</CMP>
+       <method xref="#byctx(apply-assertions@assertion-level)"/>
+       <premise xref="barshe-2-1-2-proof-a-proof-D1"/>
+       <premise xref="barshe-2-1-2-proof-a-proof-D2"/>
+       <premise xref="barshe-2-1-2-proof-a-proof-D3"/>
+       <proof id="barshe-2-1-2-proof-a-proof-D4-proof"
+              for="barshe-2-1-2-proof-a-proof-D4"
+              theory="barshe">
+         <derive id="barshe-2-1-2-proof-a-proof-D4-1">
+	   <CMP>
+             We apply <ref type="cite" xref="alg-prop-reals-A2"/> to the left hand side of 
+             <ref type="cite" xref="alg-prop-reals-A2"/> and arrive at z=a+(-a).
+	   </CMP>
+	   <FMP>
+	     <conclusion id="Conc5">
+               <CMP>z=a+(-a)</CMP>
+             </conclusion>
+           </FMP>
+	   <method xref="#byctx(subst-eq@omega-base-calc)">
+              <OMOBJ><OMA><OMS cd="tree" name="position"/><OMI>1</OMI></OMA></OMOBJ>
+           </method>
+	   <premise xref="alg-prop-reals-A1"/>
+	   <premise xref="alg-prop-reals-A2"/>
+	 </derive>
+         <conclude id="barshe-2-1-2-proof-a-proof-D4-2">
+	   <CMP>
+             We apply <ref type="cite" xref="barshe-2-1-2-proof-a-proof-D3"/> to the right hand side of 
+             <ref type="cite" xref="barshe-2-1-2-proof-a-proof-D4-1"/> and arrive at z=0.
+	   </CMP>
+	   <method xref="#byctx(subst-eq@omega-base-calc)">
+             <OMOBJ><OMA><OMS cd="tree" name="position"/><OMI>2</OMI></OMA></OMOBJ>
+           </method>
+	   <premise xref="alg-prop-reals-A3"/>
+	   <premise xref="barshe-2-1-2-proof-a-proof-D4-1"/>
+	 </conclude>
+       </proof>
+    </conclude>
+</proof>
+
+<exercise for="barshe-2-1-2-b"
+          id="barshe-2-1-2-b-proof">
+  <CMP>
+    The proof of (b) is left as an exercise.
+  </CMP>
+  <hint id="Hint1">
+     <CMP>Note that the hypothesis <OMOBJ><OMA><OMS cd="relation1" name="not-equal"/><OMV name="b"/><OMI>0</OMI></OMA></OMOBJ> is crucial.</CMP>
+  </hint>
+</exercise>
+
+<omtext id="Barshe-ue1"> 
+  <CMP>We next show that for a given 
+  element <OMOBJ><OMV name="a"/></OMOBJ> in  <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ>, the element -a and the
+  element 1/a (when <OMOBJ><OMA><OMS cd="relation1" name="not-equal"/><OMV name="a"/><OMI>0</OMI></OMA></OMOBJ>) are uniquely determined.
+</CMP>
+</omtext>
+
+<assertion id="barshe-2-1-3-a"
+           type="theorem"
+           theory="barshe">
+   <CMP>If <OMOBJ><OMV name="a"/></OMOBJ> and <OMOBJ><OMV name="b"/></OMOBJ> are elements of  
+    <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that a + b =0, then b = -a. 
+  </CMP>
+</assertion>
+
+<assertion id="barshe-2-1-3-b"
+           type="theorem"
+           theory="barshe">
+  <CMP>
+   If <OMOBJ><OMA><OMS cd="relation1" name="not-equal"/><OMV name="a"/><OMI>0</OMI></OMA></OMOBJ> and <OMOBJ><OMV name="b"/></OMOBJ> are elements of  
+   <OMOBJ><OMS cd="barshe" name="real"/></OMOBJ> such that <OMOBJ><OMA><OMS
+   cd="relation1" name="eq"/><OMA><OMS cd="arith1" name="times"/><OMV name="a"/><OMV name="b"/></OMA><OMI>1</OMI></OMA></OMOBJ>, then <OMOBJ><OMA><OMS
+   cd="relation1" name="eq"/><OMV name="b"/><OMA><OMS cd="arith1" name="over"/><OMI>1</OMI><OMV name="a"/></OMA></OMA></OMOBJ>.
+  </CMP>
+</assertion>
+</omdoc>

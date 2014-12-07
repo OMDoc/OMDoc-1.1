@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="deussen.chap5.omdoc" catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title xml:lang="en">Chapter 5: Congruence Relations in Semigroups</Title>
+  <Title xml:lang="de">Kapitel 5: Kongruenzrelationen in Halbgruppen</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Source>Deussen: Halbgruppen und Automaten, Springer Verlag, 
+   Heidleberger Taschenbuecher, Sammlung Informatik Nr. 99, 1971.
+  </Source>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+<theory id="deussen.chap5">
+
+<symbol id="left-congruence" kind="object" scope="global">
+<commonname  xml:lang="de">Linkskongruenz $\rho $ auf $G$</commonname>
+<commonname> left congruence</commonname>
+</symbol>
+
+
+<definition id="left-congruence.def" for="left-congruence" type="simple"><CMP  xml:lang="de"> Sei $\rho $ eine "Aquivalenzrelation auf der Halbgruppe $F. \rho $ hei"st  Linkskongruenz, wenn f"ur beliebige $g, f_1, f_2 \in F$ aus $f_1 \rho f_2$ folgt $(gf_1) \rho (gf_2)$ ,  Rechtskongruenz, wenn f"ur beliebige $g, f_1, f_2 \in F$ aus $f_1 \rho f_2$ folgt $(f_1g) \rho (f_2g)$ , und  Kongruenz, wenn $\rho $ zugleich Links- und Rechtskongruenz ist. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMV name="RHO"/><OMV name="G1"/><OMV name="G2"/></OMA>
+<OMA><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="G"/><OMV name="G1"/></OMA>
+<OMA><OMV name="F"/><OMV name="G"/><OMV name="G2"/></OMA></OMA></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-congruence" kind="object" scope="global">
+<commonname  xml:lang="de">Rechtskongruenz $\rho $ auf $G$</commonname>
+<commonname> right congruence</commonname>
+</symbol>
+
+<definition id="right-congruence.def" for="right-congruence" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="G2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMV name="RHO"/><OMV name="G1"/><OMV name="G2"/></OMA>
+<OMA><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="G1"/><OMV name="G"/></OMA>
+<OMA><OMV name="F"/><OMV name="G2"/><OMV name="G"/></OMA></OMA></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="congruence" kind="object" scope="global">
+<commonname  xml:lang="de">Kongruenz $\rho $ auf $G$</commonname>
+<commonname> congruence</commonname>
+</symbol>
+
+<definition id="congruence.def" for="congruence" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMV name="T"/></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="comp-cong-quot-set" kind="object" scope="global">
+<commonname  xml:lang="de">Verkn"upfung $\circ $ auf $G/\rho $ mit $\rho x \circ \rho y := \rho (xy)$</commonname>
+<commonname> composition inside of the quotient set $G/\rho $.</commonname>
+</symbol>
+
+
+<definition id="comp-cong-quot-set.def" for="comp-cong-quot-set" type="implicit"><CMP  xml:lang="de"> Ist $\rho $ eine Kongruenz, so kann man die Quotientenmenge $F/\rho $ zu einer Halbgruppe mit der Verkn"upfung $\circ $ machen, wenn man definiert $\rho f \circ \rho g  :=  \rho (fg)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="Y"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="quot-semi-groupG" kind="object" scope="global">
+<commonname  xml:lang="de">Quotientenhalbgruppe $G/\rho $</commonname>
+<commonname> quotient semigroup This problem cannot be easily encoded in Post because of the limitations of the language.</commonname>
+</symbol>
+
+<definition id="quot-semi-groupG.def" for="quot-semi-groupG" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMV name="*PAIR*"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="char-sub-group" kind="object" scope="global">
+<commonname  xml:lang="de">charakteristische Untergruppe $U = \rho 1$</commonname>
+<commonname> definition of $\rho 1 = U$ as characteristic subgroup.</commonname>
+</symbol>
+
+
+<definition id="char-sub-group.def" for="char-sub-group" type="simple"><CMP  xml:lang="de"> Sei also $F$ eine Gruppe und $\rho $ eine Linkskongruenz. Dann ist $\rho 1 = U$ eine Untergruppe von $F$. Mithin gilt $f \rho g  \Leftrightarrow  f \in g U$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap1" name="one"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+
+<symbol id="normal-divisor" kind="object" scope="global">
+<commonname  xml:lang="de">Normalteiler von G</commonname>
+<commonname> normal divisor</commonname>
+</symbol>
+
+
+<definition id="normal-divisor.def" for="normal-divisor" type="simple"><CMP  xml:lang="de"> Die Untergruppe $U$ erf"ullt die Bedingung $f U f^{-1} = U$ f"ur alle $f \in F$. Solche Untergruppen hei"sen  Normalteiler von $F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/><OMV name="U"/>
+<OMA><OMV name="INV"/><OMV name="X"/></OMA><OMV name="F"/></OMA><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="induced-left-congruence" kind="object" scope="global">
+<commonname  xml:lang="de">durch Linksideal L induzierte Linkskongruenz</commonname>
+<commonname> induced left congruence</commonname>
+</symbol>
+
+
+<definition id="induced-left-congruence.def" for="induced-left-congruence" type="implicit"><CMP  xml:lang="de"> Sei $L$ ein Linksideal in $F$, so ist $f \rho _L g  :\Leftrightarrow  f = g  \vee  f,g \in L$ eine Linkskongruenz, deren Klassen das Linksideal $L$ und die einelementigen Mengen $set(f)$ mit $f \in F\setminus L$ sind. "Ahnlich f"uhren Rechtsideale auf Rechtskongruenzen und zweiseitige Ideale auf Kongruenzen. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="induced-left-congruence"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="L"/><OMV name="X"/></OMA>
+<OMA><OMV name="L"/><OMV name="Y"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="induced-right-congruence" kind="object" scope="global">
+<commonname  xml:lang="de">durch Rechtsideal R induzierte Rechtskongruenz</commonname>
+<commonname> induced right congruence</commonname>
+</symbol>
+
+<definition id="induced-right-congruence.def" for="induced-right-congruence" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="induced-right-congruence"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="R"/><OMV name="X"/></OMA>
+<OMA><OMV name="R"/><OMV name="Y"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="induced-two-sided-congruence" kind="object" scope="global">
+<commonname  xml:lang="de">durch zweiseitiges Ideal Z induzierte zweiseitige Kongruenz</commonname>
+<commonname> induced two-sided congruence</commonname>
+</symbol>
+
+<definition id="induced-two-sided-congruence.def" for="induced-two-sided-congruence" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="induced-two-sided-congruence"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="T"/><OMV name="X"/></OMA>
+<OMA><OMV name="T"/><OMV name="Y"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="rees-quot-semi-group" kind="object" scope="global">
+<commonname  xml:lang="de">Reessche Quotientenhalbgruppe nachdem Ideal $J$</commonname>
+<commonname> the Rees quotient semigroup</commonname>
+</symbol>
+
+
+<definition id="rees-quot-semi-group.def" for="rees-quot-semi-group" type="simple"><CMP  xml:lang="de"> As in the definition of the quotient semigroup this problem cannot be easily encoded in Post because of the limitation of the language. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMV name="*PAIR*"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMV name="INDUCED-CONGRUENCE"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMV name="INDUCED-CONGRUENCE"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-normalizer" kind="object" scope="global">
+<commonname  xml:lang="de">Normalisator einer Linkskongruenz $\rho $ in $G$</commonname>
+<commonname> left normalizer</commonname>
+</symbol>
+
+
+<definition id="left-normalizer.def" for="left-normalizer" type="implicit"><CMP  xml:lang="de"> Sei $\rho $ eine Links- [Rechts-] Kongruenz in $F$. Die Menge $N(\rho ) := set(g \in F: \forall f \in F: (\rho f) \cdot g \subset \rho (fg))$ [$N(\rho ) := set(g \in F: \forall f \in F: g \cdot (\rho f) \subset \rho (gf))$] hei"st der  Normalisator von $\rho $ in $F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="Y"/></OMA><OMV name="X"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="Y"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-normalizer" kind="object" scope="global">
+<commonname  xml:lang="de">Normalisator einer Rechtskongruenz $\rho $ in $G$</commonname>
+<commonname> right normalizer</commonname>
+</symbol>
+
+<definition id="right-normalizer.def" for="right-normalizer" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="right-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="Y"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="restricted-equiv-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Einschr"ankung der "Aquivalenzrelation $\rho $ auf $T \subset G$</commonname>
+<commonname> the restriction of a relation</commonname>
+</symbol>
+
+
+<definition id="restricted-equiv-rel.def" for="restricted-equiv-rel" type="implicit">
+  <CMP  xml:lang="de"> Nun ist zwar f"ur eine Teilmenge $T \subset F$ $\rho $
+    nicht mehr "Aquivalenzrelation auf $T$ im Sinne der urspr"unglichen Definition,
+  wohl aber die  Ein\discretionary {-}{}{}schr"ankung $\rho \cap (T
+  \times T)$ von $\rho $ auf $T$. Etwas ungenau, aber sprachlich einfacher,
+  k"onnen wir dennoch von der "Aquivalenzrelation $\rho $ auf $T$ reden. 
+  </CMP>
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="T"/><OMV name="G"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/><OMV name="T"/><OMV name="G"/><OMV name="RHO"/></OMA><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="RHO"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="T"/><OMV name="X"/></OMA>
+<OMA><OMV name="T"/><OMV name="Y"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="restricted-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Einschr"ankung der "Aquivalenzrelation $\rho $ auf $T \subset G$</commonname>
+</symbol>
+
+
+<symbol id="normalizer-of-sub-group" kind="object" scope="global">
+<commonname  xml:lang="de">Normalisator einer Untergruppe $U$ von $G$</commonname>
+<commonname> normalizer of a subgroup</commonname>
+</symbol>
+
+
+<definition id="normalizer-of-sub-group.def" for="normalizer-of-sub-group" type="implicit">
+  <CMP  xml:lang="de"> 
+    Der Normalisator $N(\rho )$ einer Linkskongruenz auf einer
+    Gruppe $F$ ist wohl zu unterscheiden von dem  Normalisator der
+    Untergruppe $U$, der durch $N(U) := set( f \in F: f^{-1} U f = U)$ definiert
+    ist. 
+  </CMP>
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="normalizer-of-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="U"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/>
+<OMA><OMV name="INV"/><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/><OMV name="U"/><OMV name="X"/><OMV name="F"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+</theory>
+
+<assertion id="schker93.5.1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Danach induziert jedes $\varphi \in Hom(F,H)$ eine Kongruenz in $F$. </CMP>
+<CMP>Each semigroup-homomorphism $\varphi : F \rightarrow H$ induces a conguence in $F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMV name="F"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="F"/><OMV name="F"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="F"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="F"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $\rho $ eine "Aquivalenzrelation auf $F$, dann sind "aquivalent: I) $\rho $ ist Linkskongruenz [Rechtskongruenz] II) F"ur jedes $f \in F$ und $h \in F$ gilt $ h \cdot (\rho f) \subset \rho (hf)  [(\rho f) h \subset \rho (fh) ]$. </CMP>
+<CMP>If $\rho $ is an equivalence relation on $G$ then: $\rho $ is a left congruence $\Leftrightarrow $ $\forall x \in G$and $\forall y \in G:$ $y \cdot (\rho x) \subset \rho (yx)$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="Y"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="X"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="Y"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.2b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">If $\rho $ is an equivalence relation on $G$ then: $\rho $ is a right congruence  $\Leftrightarrow $ $ \forall x \in G$and $\forall y \in G:$ $(\rho x)y \subset \rho (xy)$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of-t"/><OMV name="G"/><OMV name="RHO"/><OMV name="X"/></OMA><OMV name="Y"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of-t"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Seien $\rho , \sigma $ Links- oder Rechtskongruenzen oder Kongruenzen, so ist 1. $\rho \cap \sigma $ Links- bzw. Rechtskongruenz bzw. Kongruenz 2. $\rho \sqcup \sigma := (\rho \cup \sigma )^t$ die kleinste Links- bzw. Rechtskongruenz bzw. Kongruenz, die $\sigma $ und $\rho $ enth"alt. </CMP>
+<CMP>$\rho , \sigma $ left congruences $\Rightarrow \rho \cap \sigma $ is a left congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3a2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ right congruences $\Rightarrow \rho \cap \sigma $ is a right congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3a3" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ congruences $\Rightarrow \rho \cap \sigma $ is a congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3b1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ left congruences $\Rightarrow \rho \sqcup \sigma $ is a left congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3b2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ right congruences $\Rightarrow \rho \sqcup \sigma $ is a right congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3b3" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ congruences $\Rightarrow \rho \sqcup \sigma $ is a congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3c1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ left congruences $\Rightarrow \rho \sqcup \sigma $ is the smallest left congruence containing $\rho $ and $\sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="MU"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="SIGMA"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="MU"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3c2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ right congruences $\Rightarrow \rho \sqcup \sigma $ is the smallest right congruence containing $\rho $ and $\sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="MU"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="SIGMA"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="MU"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.3c3" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\rho , \sigma $ congruences $\Rightarrow \rho \sqcup \sigma $ is the smallest congruence containing $\rho $ and $\sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="MU"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="SIGMA"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="G"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="MU"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.4" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">If $\rho $ is a congruence on $G$ with $\rho x_1 = \rho x_2$ and $\rho y_1 = \rho y_2$  $\Rightarrow \rho (x_1 y_1)=\rho (x_2y_2)$. By this theorem the well-definedness of the implicit definition is given. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="X1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="X2"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="Y1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/><OMV name="Y2"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="X1"/><OMV name="Y1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="G"/><OMV name="RHO"/>
+<OMA><OMV name="F"/><OMV name="X2"/><OMV name="Y2"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.5" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $\rho $ eine Kongruenz auf der Halbgruppe $F$. Die Quotientenmenge $F/\rho $ versehen mit der Verkn"upfung gem"a"s (5.4) hei"st  Quotientenhalbgruppe von $F$  nach $\rho $. </CMP>
+<CMP>The quotient set $G/\rho $ together with the composition forms a semigroup. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.6" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $\varphi : F \rightarrow H$ ein Epimorphismus und $\rho $ die von $\varphi $ induzierte Kongruenz, so gilt f"ur die Abbildungen $\natural : F \rightarrow F/\rho $ und $\Phi : F/\rho \rightarrow H$ mit $\natural (f) := \rho f$ und $\Phi (\rho f) := \varphi (f)$ $\natural $ ist ein Epimorphismus und $\Phi $ ein Isomorphismus auf $H$, ferner ist $\Phi \natural = \varphi $. </CMP>
+<CMP>the mapping $\natural : G \rightarrow G/\rho $ is a semigroup-epimorphism. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/><OMV name="G"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+
+<assertion id="schker93.5.6b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">The mapping $\Phi : G/\rho \rightarrow H$ is a semigroup-isomorphism. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-isomorphism"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA><OMV name="H"/><OMV name="H"/>
+<OMA><OMS cd="deussen.chap4" name="induced-mapping"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.6c" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$\Phi \natural = \varphi $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="PHI"/>
+<OMA><OMS cd="basic.algebra" name="comp"/>
+<OMA><OMS cd="deussen.chap4" name="induced-mapping"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.7" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Seien $\varphi _1 : F \rightarrow H_1$, $\varphi _2 : F \rightarrow H_2$ zwei Homomorphismen in die Halbgruppe $H_1$ bzw. $H_2$ und $\rho _1$ bzw. $\rho _2$ die induzierten Kongruenzen. 1. Gibt es einen Homomorphismus $\Phi : H_1 \rightarrow H_2$ mit $\Phi \varphi _1 = \varphi _2$, so ist $\rho _1 \subset \rho _2$. 2. Sei $\rho _1 \subset \rho _2$ und $\varphi _1$ surjektiv, so gibt es genau einen Homomor\discretionary {-}{}{}phismus $\Phi : H_1 \rightarrow H_2$ mit $\Phi \varphi _1 = \varphi _2$, und dieser Homomorphismus ist eindeutig bestimmt. Ist "uberdies $\varphi _2$ surjektiv, so ist es auch $\Phi $. </CMP>
+<CMP>Let $\varphi _1$ and $\varphi _2$ be homomorphisms into the semigroups $H_1$ and $H_2$ and $\rho _1$ and $\rho _2$ the corresponding induced congruences. If there exists a homomorphism $\Phi : H_1 \rightarrow H_2$ with $\Phi \varphi _1 = \varphi _2$ then $\rho _1 \subset \rho _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H1"/></OMA></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="H2"/></OMA></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H1"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H1"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.7b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $\varphi _1$ and $\varphi _2$ be homomorphisms into the semigroups $H_1$ and $H_2$ and $\rho _1$ and $\rho _2$ the corresponding induced congruences. Let further be $\rho _1 \subset \rho _2$ and $\varphi _1$ surjective, then there exists a homomorphism $\Phi : H_1 \rightarrow H_2$ with $\Phi \varphi _1 = \varphi _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H1"/></OMA></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="H2"/></OMA></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H1"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism "/><OMV name="G"/><OMV name="G"/><OMV name="H1"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="H1"/><OMV name="H1"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.7c" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $\varphi _1$ and $\varphi _2$ be homomorphisms into the semigroups $H_1$ and $H_2$ and $\rho _1$ and $\rho _2$ the corresponding induced congruences. Let further be $\rho _1 \subset \rho _2$ and $\varphi _1$ surjective, then there exists at most one homomorphism $\Phi : H_1 \rightarrow H_2$ with $\Phi \varphi _1 = \varphi _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H1"/></OMA></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="H2"/></OMA></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H1"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H1"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="H1"/><OMV name="H1"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI1"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="H1"/><OMV name="H1"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI2"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="PHI1"/><OMV name="PHI2"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.7d" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $\varphi _1$ and $\varphi _2$ be homomorphisms into the semigroups $H_1$ and $H_2$ and $\rho _1$ and $\rho _2$ the corresponding induced congruences. Let further be $\rho _1 \subset \rho _2$, $\varphi _1$ and $\varphi _2$ be surjective, then $\Phi : H_1 \rightarrow H_2$ is also surjective. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H1"/></OMA></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="H2"/></OMA></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H1"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H1"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="H1"/><OMV name="H1"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="H1"/><OMV name="H2"/><OMV name="PHI"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.8" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> $F/\rho _2$ ist homomorphes Bild von $F/\rho _1$ genau dann, wenn $\rho _1 \subset \rho _2$. </CMP>
+<CMP> Let $\varphi _1$ and $\varphi _2$ be homomorphisms into the semigroups $H_1$ and $H_2$ and $\rho _1$ and $\rho _2$ the corresponding induced congruences. Then: $\exists $ epimorphism $\Phi : G/\rho _1 \rightarrow G/\rho _2 \Leftrightarrow \rho _1 \subset \rho _2$. The formulation of this theorem is unsufficient in the book. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="H1"/></OMA></OMA></OMATP><OMV name="H1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="H2"/></OMA></OMA></OMATP><OMV name="H2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H1"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H2"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H1"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-homomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H2"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="quotient-set"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA></OMA></OMA></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="quotient-set"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA></OMA></OMA></OMA></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA><OMV name="PHI"/></OMA></OMBIND>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H1"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="G"/><OMV name="H2"/><OMV name="PHI2"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.9a" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $G$ be a group and $\rho $ a left congruence, then $\rho 1 = U$ is a subgroup of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.9b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $G$ be a group, $\rho $ a left congruence, $\rho 1 = U$, then: $ (x,y) \in \rho  \Leftrightarrow  x \in yU$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMV name="RHO"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="Y"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="F"/></OMA><OMV name="X"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.10" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">The subgroup $U$ of 5.9 fulfils the condition $xUx^{-1} = U$ for all <OMOBJ><OMV name="x"/></OMOBJ> in $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="normal-divisor"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="E"/><OMV name="INV"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11a1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the induced left congruence is indeed a left congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="induced-left-congruence"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11a2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the classes of the induced left congruence are the left ideal $L$ and the one element sets $set(x)$ with $x \in G \setminus L$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="set-of-all-equiv-classes"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap5" name="induced-left-congruence"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="L"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="not"/>
+<OMA><OMV name="L"/><OMV name="X"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="X"/><OMV name="X"/></OMA>
+<OMA><OMS cd="basic.algebra" name="singleton"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11b1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the induced right congruence is indeed a right congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="induced-right-congruence"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11b2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the classes of the induced right congruence are the right ideal $R$ and the one element sets $set(x)$ with $x \in G \setminus R$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="set-of-all-equiv-classes"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap5" name="induced-right-congruence"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="R"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="not"/>
+<OMA><OMV name="R"/><OMV name="X"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="X"/><OMV name="X"/></OMA>
+<OMA><OMS cd="basic.algebra" name="singleton"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11c1" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the induced two-sided congruence is indeed a two-sided congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="induced-two-sided-congruence"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="induced-two-sided-congruence"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.11c2" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">the classes of the induced two-sided congruence are the twosided ideal $J$ and the one element sets $set(x)$ with $x \in G \setminus J$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="set-of-all-equiv-classes"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap5" name="induced-two-sided-congruence"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="T"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="not"/>
+<OMA><OMV name="T"/><OMV name="X"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="X"/><OMV name="X"/></OMA>
+<OMA><OMS cd="basic.algebra" name="singleton"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.12" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $I$ ein zweiseitiges Ideal in $F$, so hei"st $F/I := F/\rho _I$ versehen mit der Verkn"upfung (5.4) die  Reessche Quotientenhalbgruppe nach dem Ideal I. </CMP>
+<CMP>If $I$ is a two-sided ideal of the semi-group $G$ then $G/I$ together with the composition of 5.4 forms a semi-group. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="G"/>
+<OMA><OMV name="INDUCED-CONGRUENCE"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="comp-cong-quot-set"/><OMV name="G"/><OMV name="F"/>
+<OMA><OMV name="INDUCED-CONGRUENCE"/><OMV name="J"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.13a" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">For a subset $T$ of $G$ the left congruence $\rho $ isno equivalence relation on $T$, but the restriction $\rho \cap (T \times T)$ of $\rho $ on $T$ is an equivalence relation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="T"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="T"/>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/>
+<OMA><OMV name="T"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.13b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">For a subset $T$ of $G$ is the right congruence $\rho $ no equivalence relation on $T$, but the restriction $\rho \cap (T \times T)$ of $\rho $ on $T$ is an equivalence relation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="T"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="T"/>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/><OMV name="T"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.13c" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> In diesem Sinne ist nun $N(\rho )$ die gr"o"ste Teilmenge von $F$, auf der die Linkskongruenz $\rho $ auch Rechtskongruenz, also Kongruenz schlechthin ist. </CMP>
+<CMP>On the left normalizer of $G$ the left congruence $\rho $ is also a right congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="G"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.13d" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">$N(\rho )$ is the largest subset of $G$, on which the left congruence $\rho $ is also a right congruence. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="X"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="X"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/><OMV name="X"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="X"/><OMV name="F"/>
+<OMA><OMS cd="deussen.chap5" name="restricted-rel"/><OMV name="X"/><OMV name="G"/><OMV name="RHO"/></OMA></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.14" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> $N(\rho )$ ist Unterhalbgruppe von $F$. </CMP>
+<CMP>The left normalizer $N(\rho )$ is a sub-semigroup of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.14b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">The right normalizer $N(\rho )$ is a sub-semigroup of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap5" name="right-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMS cd="deussen.chap5" name="right-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.15" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $F$ eine Gruppe und bezeichne $U$ wieder $\rho 1$. Es gilt also hier $N(\rho ) = set(f \in F : f^{-1} U f \subset U)$. </CMP>
+<CMP>Let $G$ be a group and $U = \rho 1$. Then there is $N(\rho ) = set(f \in F : f^{-1} U f \subset U)$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="INV"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/>
+<OMA><OMV name="INV"/><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/><OMV name="E"/></OMA><OMV name="X"/><OMV name="F"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/><OMV name="E"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.17" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de"> Sei $F$ eine Gruppe, $\rho $ eine Linkskongruenz in $F$ und $U = \rho 1$. Dann gilt 1. $n \in N(U)$ (genau dann), wenn $n,n^{-1} \in N(\rho )$ 2. $N(\rho )$ ist eine Vereinigung von Klassen nach $\rho $, d.h. es gilt f"ur alle $f\in F$ die Implikation $ fU \cap N(\rho ) \not =\emptyset \rightarrow fU \subset N(\rho )$ 3. $N(\rho ) \setminus N(U)$ ist ein zweiseitiges Ideal in der Halbgruppe $N(\rho )$. </CMP>
+<CMP>Let $G$ be a group, $\rho $ a left congruence in $G$ and $U = \rho 1$. Then: $n \in N(U) \Leftrightarrow n, n^{-1} \in N(\rho )$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="normalizer-of-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="U"/><OMV name="E"/><OMV name="INV"/></OMA><OMV name="N"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="N"/></OMA>
+<OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMV name="INV"/><OMV name="N"/></OMA></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.17b" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $G$ be a group, $\rho $ a left congruence in $G$ and $U = \rho 1$. Then $N(\rho )$ is a union of classes after $\rho $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="X"/><OMV name="U"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="X"/><OMV name="U"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.5.17c" theory="deussen.chap5" type="conjecture">
+<CMP  xml:lang="de">Let $G$ be a group, $\rho $ a left congruence in $G$ and $U = \rho 1$. Then $N(\rho ) \setminus N(U)$ is a twosided ideal in the semigroup $N(\rho )$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="left-congruence"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap5" name="char-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/><OMV name="E"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMS cd="basic.algebra" name="set-difference"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap5" name="normalizer-of-sub-group"/><OMV name="G"/><OMV name="F"/><OMV name="U"/><OMI>1</OMI><OMV name="INV"/></OMA></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap5" name="left-normalizer"/><OMV name="G"/><OMV name="F"/><OMV name="RHO"/></OMA><OMV name="F"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+
+<assertion id="consequence-N-INTERSECTION-1" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="n-intersection"/><OMI>1</OMI><OMV name="U"/></OMA>
+<OMA><OMV name="U"/><OMI>1</OMI></OMA></OMA>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-N-INTERSECTION-2" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="n-intersection"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA><OMV name="U"/></OMA>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMV name="U"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="n-intersection"/><OMV name="N"/><OMV name="U"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-N-UNION-1" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="n-union"/><OMI>1</OMI><OMV name="U"/></OMA>
+<OMA><OMV name="U"/><OMI>1</OMI></OMA></OMA>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-N-UNION-2" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMS cd="ind" name="ind"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="n-union"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA><OMV name="U"/></OMA>
+<OMA><OMS cd="set.theory" name="union"/>
+<OMA><OMV name="U"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="n-union"/><OMV name="N"/><OMV name="U"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-PAIR-1" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="pair"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="set.theory" name="pair"/><OMV name="S"/><OMV name="T"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="S"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="Y"/><OMV name="T"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-N-TUPLE-1" theory="set.theory" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="A"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="M"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="M"/></OMA><OMV name="A"/></OMA></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="n-tuple"/><OMV name="N"/><OMV name="X"/></OMA>
+<OMA><OMS cd="set.theory" name="n-tuple"/><OMV name="M"/><OMV name="Y"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="N"/><OMV name="M"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="N"/><OMS cd="set.theory" name="first-n-nats"/></OMA></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="X"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMV name="Y"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-SUB-SEMI-GROUP-1" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="non-empty"/><OMV name="U"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="U"/><OMV name="U"/><OMV name="F"/></OMA><OMV name="U"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-1" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-left-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-left-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-2" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-right-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-right-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-3" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="associative"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-left-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-left-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-4" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA><OMS cd="quant1" name="forall  "/>
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="associative"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-right-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-right-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMA></OMBIND></OMBIND></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-5" theory="deussen.chap1" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="monoid"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-SEMI-GROUP-ISOMORPHISM-1" theory="deussen.chap2" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-isomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-monomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-epimorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-ISOMORPHISM-1" theory="deussen.chap2" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="PHI"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="H"/><OMV name="H"/></OMA></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap2" name="group-isomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap2" name="group-monomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="group-epimorphism"/><OMV name="G"/><OMV name="G"/><OMV name="H"/><OMV name="H"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-SEMI-GROUP-AUTOMORPHISM-1" theory="deussen.chap2" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap2" name="semi-group-automorphism"/><OMV name="G"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="semi-group-isomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="G"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-GROUP-AUTOMORPHISM-1" theory="deussen.chap2" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap2" name="group-automorphism"/><OMV name="G"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap2" name="group-isomorphism"/><OMV name="G"/><OMV name="G"/><OMV name="G"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="consequence-G-KI-1" theory="deussen.chap3" type="conjecture">
+<FMP><OMOBJ>
+
+<OMA><OMS cd="deussen.chap1" name="sub-group"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-REFLEXIVE-1" theory="deussen.chap4" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap4" name="reflexive"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMV name="RHO"/><OMV name="S"/><OMV name="S"/></OMA></OMBIND></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-SYMMETRIC-1" theory="deussen.chap4" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap4" name="symmetric"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMV name="RHO"/><OMV name="S"/><OMV name="T"/></OMA>
+<OMA><OMV name="RHO"/><OMV name="T"/><OMV name="S"/></OMA></OMA></OMBIND></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-TRANSITIVE-1" theory="deussen.chap4" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap4" name="transitive"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="RHO"/><OMV name="R"/><OMV name="S"/></OMA>
+<OMA><OMV name="RHO"/><OMV name="S"/><OMV name="T"/></OMA></OMA>
+<OMA><OMV name="RHO"/><OMV name="R"/><OMV name="T"/></OMA></OMA></OMBIND></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+<assertion id="equivalence-EQUIV-CLASS-1" theory="deussen.chap4" type="conjecture">
+<FMP><OMOBJ>
+
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-class"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of-t"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA></OMA></OMBIND>
+</OMOBJ></FMP>
+</assertion>
+
+</omdoc>

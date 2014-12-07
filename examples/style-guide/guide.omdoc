@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="styleguide.omdoc">
+ <metadata>
+  <Title>A Style Guide for OMDoc</Title>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-03T0703</Date>
+  <Description>
+   A style guide for OMDoc. This discusses a set of paradigmatic examples of how
+   to encode mathematical knowledge into OMDoc. 
+  </Description>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+
+<ref xref="guide-styles.omdoc"/>
+
+<omgroup id="introduction">
+ <metadata><Title>Introduction</Title></metadata>
+ <omtext id="intro.1">
+  <CMP>
+   The <with style="acronym">OMDoc</with> format has been described in detail in <ref
+   xref="http://www.mathweb.org/omdoc/omdoc.ps" type="cite"/>. This document
+   complements it by a set of guidelines and worked examples to give some help to
+   the working mathematician.
+  </CMP>
+ </omtext>
+</omgroup>
+
+ <!-- explain something about OMdoc using the guide as an example itself -->
+ <ref xref="onguide.omdoc#"/>
+
+ <!-- formalizing an existing text in multiple passes -->
+ <ref xref="algebra.omdoc#"/>
+
+
+<omgroup id="conclusion">
+ <metadata>
+  <Title>Conclusion</Title>
+ </metadata>
+ <omtext id="concl.1">
+  <CMP>
+   This document tries to give some guidelines for encoding mathematical knowledge to
+   the working mathematician. 
+  </CMP>
+ </omtext>
+</omgroup>
+
+</omdoc>

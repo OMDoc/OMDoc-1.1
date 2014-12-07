@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="Fairctlops.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:41
+    </Date>
+  </metadata>
+  <theory id="Fairctlops-parameters">
+    <symbol id="state" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57069" for="NIL" pto="pvs" pto-version="3.0" replaces="state">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57070" for="Fairctlops" pto="pvs" pto-version="3.0" replaces="Fairctlops-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory Fairctlops
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="Fairctlops_test">
+    <symbol id="state" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57071" for="NIL" pto="pvs" pto-version="3.0" replaces="state">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="Fairctlops-import-parameters" from="Fairctlops-parameters"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <private id="G57072" for="K_conversion" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |K_conversion|
+        ]]>
+      </data>
+    </private>
+
+    <assertion id="CheckFair_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="Fairctlops" name="state"/>
+                    <OMS cd="booleans" name="boolean"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="Ff"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="Gflist"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="Fflist"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="Fflist"/>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="Ff"/>
+                  <OMV name="Gflist"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="x1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="x1"/>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="Fairctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="booleans" name="AND"/>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMV name="x"/>
+                          <OMV name="x1"/>
+                        </OMA>
+                        <OMA>
+                          <OMV name="Ff"/>
+                          <OMV name="x"/>
+                        </OMA>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMA>
+                          <OMS cd="list_props" name="length"/>
+                          <OMV name="Gflist"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="list_props" name="length"/>
+                          <OMV name="Fflist"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="CheckFair_TCC1-1" for="CheckFair_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TERMINATION-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="CheckFair" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="CheckFair-def" for="CheckFair" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="CheckFair"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="Q"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="Fflist"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="Fflist"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="pvs" name="funtype"/>
+                            <OMS cd="Fairctlops" name="state"/>
+                            <OMS cd="booleans" name="boolean"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="Ff"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="Gflist"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="ctlops" name="EU"/>
+                      <OMV name="N"/>
+                      <OMV name="f"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="Fairctlops" name="state"/>
+                            </OMATP>
+                            <OMV name="x1"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="AND"/>
+                          <OMA>
+                            <OMV name="f"/>
+                            <OMV name="x1"/>
+                          </OMA>
+                          <OMA>
+                            <OMBIND>
+                              <OMS cd="pvs" name="lambda"/>
+                              <OMBVAR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="Fairctlops" name="state"/>
+                                  </OMATP>
+                                  <OMV name="x"/>
+                                </OMATTR>
+                              </OMBVAR>
+                              <OMA>
+                                <OMS cd="booleans" name="AND"/>
+                                <OMA>
+                                  <OMV name="Ff"/>
+                                  <OMV name="x"/>
+                                </OMA>
+                                <OMA>
+                                  <OMA>
+                                    <OMS cd="ctlops" name="EX"/>
+                                    <OMV name="N"/>
+                                    <OMA>
+                                      <OMS cd="Fairctlops" name="CheckFair"/>
+                                      <OMV name="Q"/>
+                                      <OMV name="N"/>
+                                      <OMV name="f"/>
+                                      <OMV name="Gflist"/>
+                                    </OMA>
+                                  </OMA>
+                                  <OMV name="x"/>
+                                </OMA>
+                              </OMA>
+                            </OMBIND>
+                            <OMV name="x1"/>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMV name="Q"/>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_props" name="length"/>
+          <OMV name="Fflist"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <symbol id="FairEG" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairEG-def" for="FairEG" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairEG"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="mucalculus" name="nu"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="defined_types" name="pred"/>
+                        </OMATP>
+                        <OMV name="P"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="Fairctlops" name="CheckFair"/>
+                      <OMV name="P"/>
+                      <OMV name="N"/>
+                      <OMV name="f"/>
+                      <OMV name="Fflist"/>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairAF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairAF-def" for="FairAF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairAF"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="Fairctlops" name="state"/>
+                      </OMATP>
+                      <OMV name="x1"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="FairEG"/>
+                          <OMV name="N"/>
+                          <OMBIND>
+                            <OMS cd="pvs" name="lambda"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="Fairctlops" name="state"/>
+                                </OMATP>
+                                <OMV name="x"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMS cd="booleans" name="NOT"/>
+                              <OMA>
+                                <OMV name="f"/>
+                                <OMV name="x"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                        <OMV name="Fflist"/>
+                      </OMA>
+                      <OMV name="x1"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="Fair?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="Fair?-def" for="Fair?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="Fair?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="Fflist"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMA>
+                  <OMS cd="Fairctlops" name="FairEG"/>
+                  <OMV name="N"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="Fairctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="u"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMS cd="booleans" name="TRUE"/>
+                  </OMBIND>
+                </OMA>
+                <OMV name="Fflist"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairEX" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairEX-def" for="FairEX" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairEX"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="ctlops" name="EX"/>
+                  <OMV name="N"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="Fairctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMV name="f"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="Fair?"/>
+                          <OMV name="N"/>
+                          <OMV name="Fflist"/>
+                        </OMA>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairEU" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairEU-def" for="FairEU" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairEU"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="ctlops" name="EU"/>
+                  <OMV name="N"/>
+                  <OMV name="f"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="Fairctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMV name="g"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="Fair?"/>
+                          <OMV name="N"/>
+                          <OMV name="Fflist"/>
+                        </OMA>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairEF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairEF-def" for="FairEF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairEF"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="ctlops" name="EF"/>
+                  <OMV name="N"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="Fairctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMV name="f"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="Fair?"/>
+                          <OMV name="N"/>
+                          <OMV name="Fflist"/>
+                        </OMA>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairAX" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairAX-def" for="FairAX" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairAX"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="Fairctlops" name="state"/>
+                      </OMATP>
+                      <OMV name="x1"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="FairEX"/>
+                          <OMV name="N"/>
+                          <OMBIND>
+                            <OMS cd="pvs" name="lambda"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="Fairctlops" name="state"/>
+                                </OMATP>
+                                <OMV name="x"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMS cd="booleans" name="NOT"/>
+                              <OMA>
+                                <OMV name="f"/>
+                                <OMV name="x"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                        <OMV name="Fflist"/>
+                      </OMA>
+                      <OMV name="x1"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairAG" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairAG-def" for="FairAG" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairAG"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="Fairctlops" name="state"/>
+                      </OMATP>
+                      <OMV name="x1"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="FairEF"/>
+                          <OMV name="N"/>
+                          <OMBIND>
+                            <OMS cd="pvs" name="lambda"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="Fairctlops" name="state"/>
+                                </OMATP>
+                                <OMV name="x"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMS cd="booleans" name="NOT"/>
+                              <OMA>
+                                <OMV name="f"/>
+                                <OMV name="x"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                        <OMV name="Fflist"/>
+                      </OMA>
+                      <OMV name="x1"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="FairAU" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="Fairctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="list_adt" name="list"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="FairAU-def" for="FairAU" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="Fairctlops" name="FairAU"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="Fairctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="list_adt" name="list"/>
+                    </OMATP>
+                    <OMV name="Fflist"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="Fairctlops" name="state"/>
+                      </OMATP>
+                      <OMV name="x3"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="Fairctlops" name="state"/>
+                            </OMATP>
+                            <OMV name="x2"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="NOT"/>
+                          <OMA>
+                            <OMA>
+                              <OMA>
+                                <OMS cd="Fairctlops" name="FairEU"/>
+                                <OMV name="N"/>
+                                <OMBIND>
+                                  <OMS cd="pvs" name="lambda"/>
+                                  <OMBVAR>
+                                    <OMATTR>
+                                      <OMATP>
+                                        <OMS cd="pvs" name="type"/>
+                                        <OMS cd="Fairctlops" name="state"/>
+                                      </OMATP>
+                                      <OMV name="x"/>
+                                    </OMATTR>
+                                  </OMBVAR>
+                                  <OMA>
+                                    <OMS cd="booleans" name="NOT"/>
+                                    <OMA>
+                                      <OMV name="g"/>
+                                      <OMV name="x"/>
+                                    </OMA>
+                                  </OMA>
+                                </OMBIND>
+                                <OMBIND>
+                                  <OMS cd="pvs" name="lambda"/>
+                                  <OMBVAR>
+                                    <OMATTR>
+                                      <OMATP>
+                                        <OMS cd="pvs" name="type"/>
+                                        <OMS cd="Fairctlops" name="state"/>
+                                      </OMATP>
+                                      <OMV name="x1"/>
+                                    </OMATTR>
+                                  </OMBVAR>
+                                  <OMA>
+                                    <OMS cd="booleans" name="AND"/>
+                                    <OMA>
+                                      <OMBIND>
+                                        <OMS cd="pvs" name="lambda"/>
+                                        <OMBVAR>
+                                          <OMATTR>
+                                            <OMATP>
+                                              <OMS cd="pvs" name="type"/>
+                                              <OMS cd="Fairctlops" name="state"/>
+                                            </OMATP>
+                                            <OMV name="x"/>
+                                          </OMATTR>
+                                        </OMBVAR>
+                                        <OMA>
+                                          <OMS cd="booleans" name="NOT"/>
+                                          <OMA>
+                                            <OMV name="f"/>
+                                            <OMV name="x"/>
+                                          </OMA>
+                                        </OMA>
+                                      </OMBIND>
+                                      <OMV name="x1"/>
+                                    </OMA>
+                                    <OMA>
+                                      <OMBIND>
+                                        <OMS cd="pvs" name="lambda"/>
+                                        <OMBVAR>
+                                          <OMATTR>
+                                            <OMATP>
+                                              <OMS cd="pvs" name="type"/>
+                                              <OMS cd="Fairctlops" name="state"/>
+                                            </OMATP>
+                                            <OMV name="x"/>
+                                          </OMATTR>
+                                        </OMBVAR>
+                                        <OMA>
+                                          <OMS cd="booleans" name="NOT"/>
+                                          <OMA>
+                                            <OMV name="g"/>
+                                            <OMV name="x"/>
+                                          </OMA>
+                                        </OMA>
+                                      </OMBIND>
+                                      <OMV name="x1"/>
+                                    </OMA>
+                                  </OMA>
+                                </OMBIND>
+                              </OMA>
+                              <OMV name="Fflist"/>
+                            </OMA>
+                            <OMV name="x2"/>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                      <OMV name="x3"/>
+                    </OMA>
+                    <OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="Fairctlops" name="FairAF"/>
+                          <OMV name="N"/>
+                          <OMV name="g"/>
+                        </OMA>
+                        <OMV name="Fflist"/>
+                      </OMA>
+                      <OMV name="x3"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G57073" for="K_conversion" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |K_conversion|
+        ]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

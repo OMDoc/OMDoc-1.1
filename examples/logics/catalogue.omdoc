@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+
+<omdoc id="logics-catalogue">
+ <metadata>
+  <Title>A Catalogue for the Logics Theory-Collection</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020220</Date>
+  <Description> 
+    A Catalogue for the Logics Theory-Collection
+  </Description>
+</metadata>
+
+<catalogue>
+  <loc theory="truth-tables" omdoc="truthtables.omdoc"/> 
+  <loc theory="inference-rules" omdoc="inference-rules.omdoc"/> 
+
+<loc theory="truthval" omdoc="truthval.omdoc"/> 
+  <loc theory="truthval-nd" omdoc="truthval.omdoc"/> 
+  <loc theory="pl0" omdoc="pl0.omdoc"/> 
+  <loc theory="pl0-nd" omdoc="pl0.omdoc"/> 
+  <loc theory="skl0" omdoc="skl0.omdoc"/> 
+
+  <loc theory="ind" omdoc="ind.omdoc"/> 
+  <loc theory="pl1" omdoc="pl1.omdoc"/> 
+  <loc theory="pl1-nd" omdoc="pl1.omdoc"/> 
+  <loc theory="undefined" omdoc="undefined.omdoc"/> 
+  <loc theory="partial1" omdoc="partial1.omdoc"/> 
+  <loc theory="skl1" omdoc="skl1.omdoc"/> 
+
+  <loc theory="lambda-calc" omdoc="lambda-calc.omdoc"/> 
+  <loc theory="record-calc" omdoc="record-calc.omdoc"/> 
+  <loc theory="substitution" omdoc="substitution.omdoc"/> 
+
+  <loc theory="simpletypes" omdoc="simpletypes.omdoc"/> 
+  <loc theory="deptypes" omdoc="deptypes.omdoc"/> 
+
+  <loc theory="stlc" omdoc="stlc.omdoc"/> 
+  <loc theory="sthol" omdoc="sthol.omdoc"/> 
+  <loc theory="stholif" omdoc="sthol.omdoc"/> 
+  <loc theory="sthold" omdoc="sthol.omdoc"/> 
+  <loc theory="stholc" omdoc="sthol.omdoc"/> 
+
+  <loc theory="pvs" omdoc="pvs.omdoc"/> 
+  <loc theory="lutins" omdoc="lutins.omdoc"/> 
+</catalogue>
+</omdoc>

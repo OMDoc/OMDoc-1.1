@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="ctlops.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:40
+    </Date>
+  </metadata>
+  <theory id="ctlops-parameters">
+    <symbol id="state" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57059" for="NIL" pto="pvs" pto-version="3.0" replaces="state">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57060" for="ctlops" pto="pvs" pto-version="3.0" replaces="ctlops-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory ctlops
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="ctlops_test">
+    <symbol id="state" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57061" for="NIL" pto="pvs" pto-version="3.0" replaces="state">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="ctlops-import-parameters" from="ctlops-parameters"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <private id="G57062" for="K_conversion" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |K_conversion|
+        ]]>
+      </data>
+    </private>
+
+    <symbol id="EX" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="EX-def" for="EX" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="EX"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="ctlops" name="state"/>
+                      </OMATP>
+                      <OMV name="v"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="f"/>
+                      <OMV name="v"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="N"/>
+                      <OMV name="u"/>
+                      <OMV name="v"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="EG" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="EG-def" for="EG" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="EG"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="nu"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="Q"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMV name="f"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="ctlops" name="EX"/>
+                          <OMV name="N"/>
+                          <OMV name="Q"/>
+                        </OMA>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="EU" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="EU-def" for="EU" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="EU"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="mu"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="Q"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ctlops" name="state"/>
+                        </OMATP>
+                        <OMV name="x1"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMV name="g"/>
+                        <OMV name="x1"/>
+                      </OMA>
+                      <OMA>
+                        <OMBIND>
+                          <OMS cd="pvs" name="lambda"/>
+                          <OMBVAR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="ctlops" name="state"/>
+                              </OMATP>
+                              <OMV name="x"/>
+                            </OMATTR>
+                          </OMBVAR>
+                          <OMA>
+                            <OMS cd="booleans" name="AND"/>
+                            <OMA>
+                              <OMV name="f"/>
+                              <OMV name="x"/>
+                            </OMA>
+                            <OMA>
+                              <OMA>
+                                <OMS cd="ctlops" name="EX"/>
+                                <OMV name="N"/>
+                                <OMV name="Q"/>
+                              </OMA>
+                              <OMV name="x"/>
+                            </OMA>
+                          </OMA>
+                        </OMBIND>
+                        <OMV name="x1"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="EF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="EF-def" for="EF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="EF"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="ctlops" name="EU"/>
+                <OMV name="N"/>
+                <OMA>
+                  <OMS cd="K_conversion" name="K_conversion"/>
+                  <OMS cd="booleans" name="TRUE"/>
+                </OMA>
+                <OMV name="f"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="AX" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="AX-def" for="AX" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="AX"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="x1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="ctlops" name="EX"/>
+                      <OMV name="N"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="ctlops" name="state"/>
+                            </OMATP>
+                            <OMV name="x"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="NOT"/>
+                          <OMA>
+                            <OMV name="f"/>
+                            <OMV name="x"/>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                    <OMV name="x1"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="AF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="AF-def" for="AF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="AF"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="x1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="ctlops" name="EG"/>
+                      <OMV name="N"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="ctlops" name="state"/>
+                            </OMATP>
+                            <OMV name="x"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="NOT"/>
+                          <OMA>
+                            <OMV name="f"/>
+                            <OMV name="x"/>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                    <OMV name="x1"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="AG" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="AG-def" for="AG" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="AG"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="x1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="ctlops" name="EF"/>
+                      <OMV name="N"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="ctlops" name="state"/>
+                            </OMATP>
+                            <OMV name="x"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="NOT"/>
+                          <OMA>
+                            <OMV name="f"/>
+                            <OMV name="x"/>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                    <OMV name="x1"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="AU" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="ctlops" name="state"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="AU-def" for="AU" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ctlops" name="AU"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="ctlops" name="state"/>
+                      <OMS cd="booleans" name="bool"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ctlops" name="state"/>
+                    </OMATP>
+                    <OMV name="x3"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="ctlops" name="state"/>
+                          </OMATP>
+                          <OMV name="x2"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="booleans" name="NOT"/>
+                        <OMA>
+                          <OMA>
+                            <OMS cd="ctlops" name="EU"/>
+                            <OMV name="N"/>
+                            <OMBIND>
+                              <OMS cd="pvs" name="lambda"/>
+                              <OMBVAR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="ctlops" name="state"/>
+                                  </OMATP>
+                                  <OMV name="x"/>
+                                </OMATTR>
+                              </OMBVAR>
+                              <OMA>
+                                <OMS cd="booleans" name="NOT"/>
+                                <OMA>
+                                  <OMV name="g"/>
+                                  <OMV name="x"/>
+                                </OMA>
+                              </OMA>
+                            </OMBIND>
+                            <OMBIND>
+                              <OMS cd="pvs" name="lambda"/>
+                              <OMBVAR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="ctlops" name="state"/>
+                                  </OMATP>
+                                  <OMV name="x1"/>
+                                </OMATTR>
+                              </OMBVAR>
+                              <OMA>
+                                <OMS cd="booleans" name="AND"/>
+                                <OMA>
+                                  <OMBIND>
+                                    <OMS cd="pvs" name="lambda"/>
+                                    <OMBVAR>
+                                      <OMATTR>
+                                        <OMATP>
+                                          <OMS cd="pvs" name="type"/>
+                                          <OMS cd="ctlops" name="state"/>
+                                        </OMATP>
+                                        <OMV name="x"/>
+                                      </OMATTR>
+                                    </OMBVAR>
+                                    <OMA>
+                                      <OMS cd="booleans" name="NOT"/>
+                                      <OMA>
+                                        <OMV name="f"/>
+                                        <OMV name="x"/>
+                                      </OMA>
+                                    </OMA>
+                                  </OMBIND>
+                                  <OMV name="x1"/>
+                                </OMA>
+                                <OMA>
+                                  <OMBIND>
+                                    <OMS cd="pvs" name="lambda"/>
+                                    <OMBVAR>
+                                      <OMATTR>
+                                        <OMATP>
+                                          <OMS cd="pvs" name="type"/>
+                                          <OMS cd="ctlops" name="state"/>
+                                        </OMATP>
+                                        <OMV name="x"/>
+                                      </OMATTR>
+                                    </OMBVAR>
+                                    <OMA>
+                                      <OMS cd="booleans" name="NOT"/>
+                                      <OMA>
+                                        <OMV name="g"/>
+                                        <OMV name="x"/>
+                                      </OMA>
+                                    </OMA>
+                                  </OMBIND>
+                                  <OMV name="x1"/>
+                                </OMA>
+                              </OMA>
+                            </OMBIND>
+                          </OMA>
+                          <OMV name="x2"/>
+                        </OMA>
+                      </OMA>
+                    </OMBIND>
+                    <OMV name="x3"/>
+                  </OMA>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="ctlops" name="AF"/>
+                      <OMV name="N"/>
+                      <OMV name="g"/>
+                    </OMA>
+                    <OMV name="x3"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G57063" for="K_conversion" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |K_conversion|
+        ]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="linalg2-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary linalg2.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/linalg2.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD  treats matrices and vectors in a row oriented fashion
+    (using matrixrow's).
+  </Description>
+</metadata>
+
+<theory id="linalg2">
+
+<imports id="linalg2-imports-sts" from="sts.omdoc#sts"/>
+<imports id="linalg2-imports-mathmltypes" from="mathmltypes.omdoc#mathmltypes"/>
+
+<symbol id="vector">
+  <CMP>
+    This symbol represents an n-ary function used to construct (or describe)
+    vectors.  Vectors in this CD are considered to be row vectors and must 
+    therefore be transposed to be considered as column vectors.
+  </CMP>
+  <commonname>vector</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMV name="AbelianGroupMult"/>
+	</OMA>
+	<OMV name="Vector"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="vector-ex-1" type="for" for="vector">
+  <CMP>
+    An example of vector using n arguments. 
+    The specific vector constructed in this example is [3,6,9].</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="linalg2" name="vector"/>
+      <OMI> 3 </OMI>
+      <OMI> 6 </OMI>
+      <OMI> 9 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="matrixrow">
+  <CMP> This symbol is an n-ary constructor used to represent rows of
+    matrices. Its arguments should be members of a ring.
+  </CMP>
+  <commonname>matrixrow</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMV name="Ring"/>
+	</OMA>
+	<OMS name="vector_type" cd="mathmltypes"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-matrixrow" for="matrixrow" parent="OMA" separator="">
+  <use format="html" element="tr" lbrack="" rbrack="" 
+       crossref-symbol="no" larg-group="&lt;td&gt;"
+       rarg-group="&lt;/td&gt;"/>
+  <xslt format="pmml"><![CDATA[
+  <xsl:element name="mtr" namespace="http://www.w3.org/1998/Math/MathML">
+    <xsl:for-each select="*[position()&gt;1]">
+      <xsl:element name="mtd" namespace="http://www.w3.org/1998/Math/MathML">
+	<xsl:apply-templates select="."/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:element>]]>
+</xslt>
+<!-- need to use xslt here, since otherwise matrixrows will be enclosed in {,} -->
+<xslt format="TeX"><![CDATA[
+<xsl:if test="not(../om:OMS[1 and @cd='linalg2' and @name='matrix'])"> 
+  <xsl:text>\begin{array}{</xsl:text>
+  <xsl:for-each select="*[position()!=1]"><xsl:text>c</xsl:text></xsl:for-each>
+  <xsl:text>}&#xA;</xsl:text>
+</xsl:if>
+<xsl:for-each select="*[position()&gt;1]">
+  <xsl:apply-templates select="."/>
+  <xsl:if test="position()!=last()"><xsl:text> &amp; </xsl:text></xsl:if>
+</xsl:for-each>
+<xsl:if test="not(../om:OMS[1 and @cd='linalg2' and @name='matrix'])"> 
+  <xsl:text>&#xA;\end{array}&#xA;</xsl:text>
+</xsl:if>]]>
+</xslt>
+</presentation>     
+<example id="matrixrow-ex-1" type="for" for="matrixrow">
+  <CMP> Representation of a row of a matrix of length two containing 
+    the integers [1,0]</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="linalg2" name="matrixrow"/>
+      <OMI> 1 </OMI>
+      <OMI> 0 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="matrix">
+  <CMP>
+    This symbol is an n-ary matrix constructor which requires matrixrow's
+    as arguments. It is used to represent matrices.
+  </CMP>
+  <commonname>matrix</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMV name="MatrixRow"/>
+	</OMA>
+	<OMV name="Matrix"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-matrix" for="matrix" parent="OMA" separator="">
+  <use format="html" element="table" lbrack="" rbrack="" crossref-symbol="no"/>
+  <use format="pmml" element="mtable" lbrack="(" rbrack=")"
+       crossref-symbol="no"/>
+  <xslt format="TeX"><![CDATA[
+  <xsl:text>\left(\begin{array}{</xsl:text>
+  <xsl:for-each select="*[2]/*[position()!=1]"><xsl:text>c</xsl:text></xsl:for-each>
+  <xsl:text>}&#xA;</xsl:text>
+  <xsl:for-each select="*[position() &gt; 1]">
+    <xsl:apply-templates select="."/>
+    <xsl:if test="position()!=last()"><xsl:text>\\</xsl:text></xsl:if>
+    <xsl:text>&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>&#xA;\end{array}\right)&#xA;</xsl:text>]]>
+</xslt>
+</presentation>     
+<example id="matrix-ex-1" type="for" for="matrix">
+  <CMP>Representation of a 2x2 identity matrix</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="linalg2" name="matrix"/>
+      <OMA>
+	<OMS cd="linalg2" name="matrixrow"/>
+	<OMI> 1 </OMI>
+	<OMI> 0 </OMI>
+      </OMA>
+      <OMA>
+	<OMS cd="linalg2" name="matrixrow"/>
+	<OMI> 0 </OMI>
+	<OMI> 1 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="deussen.chap4.omdoc" catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title xml:lang="en">Chapter 4: Binary Relations</Title>
+  <Title xml:lang="de">Kapitel 4: Zweistellige Relationen</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Source>Deussen: Halbgruppen und Automaten, Springer Verlag, 
+    Heidleberger Taschenbuecher, Sammlung Informatik Nr. 99, 1971.</Source>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+<theory id="deussen.chap4">
+
+<symbol id="n-ary-rel" kind="object" scope="global">
+<commonname  xml:lang="de">n-stellige Relation $\rho $ auf der Menge $S$</commonname>
+</symbol>
+
+
+<definition id="n-ary-rel.def" for="n-ary-rel" type="simple"><CMP  xml:lang="de"> Eine $n$-stellige  Relation $\rho $ auf der Menge $S$ ist eine Teilmenge $\rho \subset S \times S \times ...\times S$ und man sagt: $s_1, s_2, ..., s_n$ stehen in der Relation $\rho $, wenn $(s_1, s_2, ..., s_n) \in \rho $. Ist $n = 2$ , so schreibt man auch $s_1 \rho s_2$ f"ur $(s_1, s_2) \in \rho $.</CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/>
+<OMA><OMS cd="set.theory" name="n-same-cart-prod"/><OMV name="N"/><OMV name="S"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="bin-all-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Allrelation</commonname>
+<commonname> universal relation</commonname>
+</symbol>
+
+
+<definition id="bin-all-rel.def" for="bin-all-rel" type="implicit"><CMP  xml:lang="de"> Die Relation., die auf jedes Paar $(s, s^\prime )$ zutrifft hei"st  Allrelation $\alpha = set((s, s^\prime ): s, s^\prime \in S) = S \times S$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA>
+<OMA><OMS cd="deussen.chap4" name="bin-all-rel"/><OMV name="S"/></OMA><OMV name="S"/><OMV name="T"/></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="bin-id-rel" kind="object" scope="global">
+<commonname  xml:lang="de">identische Relation, Gleichheitsrelation</commonname>
+<commonname> identical relation</commonname>
+</symbol>
+
+
+<definition id="bin-id-rel.def" for="bin-id-rel" type="implicit"><CMP  xml:lang="de"> Die  identische Relation oder die  Gleichheitsrelation trifft nur auf die Paare $(s,s)$ zu: $\imath = set((s,s) : s \in S)$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="bin-id-rel"/><OMV name="S"/></OMA><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="comp-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Komposition von $\rho $ unf $\sigma $</commonname>
+<commonname> the composition of two relations</commonname>
+</symbol>
+
+
+<definition id="comp-rel.def" for="comp-rel" type="implicit"><CMP  xml:lang="de"> Seien $\rho , \sigma $ zwei Relationen. Die Relation $\rho \circ \sigma $, definiert durch $(s,t) \in \rho \circ \sigma : \Leftrightarrow \exists r \in S : (s,r) \in \rho \wedge (r,t) \in \sigma $ hei"st die  Komposition von $\rho $ und $\sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="S"/><OMV name="T"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="RHO"/>
+<OMA><OMV name="S"/><OMV name="R"/></OMA></OMA>
+<OMA><OMV name="SIGMA"/>
+<OMA><OMV name="R"/><OMV name="T"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="power-rel" kind="object" scope="global">
+<commonname  xml:lang="de">$\rho ^n$</commonname>
+<commonname>$\rho ^n$</commonname>
+</symbol>
+
+
+<definition id="power-rel.def" for="power-rel" type="implicit"><CMP  xml:lang="de"> Potenzen einer Relation $\rho $ werden induktiv definiert durch $\rho ^1 := \rho ,  \rho ^{n+1} := \rho ^n \circ \rho $. </CMP>
+ <FMP><OMOBJ>  
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="power-rel"/><OMV name="S"/><OMV name="RHO"/><OMI>1</OMI></OMA><OMV name="RHO"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="power-rel"/><OMV name="S"/><OMV name="RHO"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="power-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="N"/></OMA><OMV name="RHO"/></OMA></OMA></OMA>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="converse-rel" kind="object" scope="global">
+<commonname  xml:lang="de">konverse Relation $\rho ^c$</commonname>
+<commonname> converse relation</commonname>
+</symbol>
+
+
+<definition id="converse-rel.def" for="converse-rel" type="implicit"><CMP  xml:lang="de"> Ist $\rho $ eine Relation, so ist die zu $\rho $  konverse Relation $\rho ^c$ definiert durch $(s,t) \in \rho ^c  \Leftrightarrow  (t,s) \in \rho $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="converse-rel"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="S"/><OMV name="T"/></OMA>
+<OMA><OMV name="RHO"/><OMV name="T"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-domain-of-s" kind="object" scope="global">
+<commonname  xml:lang="de">Vorbereich von $s$ unter $\rho $</commonname>
+<commonname> left domain of s</commonname>
+</symbol>
+
+
+<definition id="left-domain-of-s.def" for="left-domain-of-s" type="implicit"><CMP  xml:lang="de"> Ist $\rho $ eine Relation, so hei"sen die Mengen $\rho s  := set(t \in S : t \rho s)$  Vorbereich von $s$ (unter $\rho $), $t \rho  := set(s \in S : t \rho s)$  Nachbereich von $t$ (unter $\rho $), $V(\rho ) := \bigcup \limits _{s \in S} \rho s$   Vorbereich von $\rho $, $N(\rho ) := \bigcup \limits _{t \in S} t \rho $   Nachbereich von $\rho $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA><OMV name="T"/></OMA>
+<OMA><OMV name="RHO"/><OMV name="T"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-domain-of-t" kind="object" scope="global">
+<commonname  xml:lang="de">Nachbereich von $t$ unter $\rho $</commonname>
+<commonname> right domain of t</commonname>
+</symbol>
+
+<definition id="right-domain-of-t.def" for="right-domain-of-t" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of-t"/><OMV name="S"/><OMV name="RHO"/><OMV name="T"/></OMA><OMV name="S"/></OMA>
+<OMA><OMV name="RHO"/><OMV name="T"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-domain-of" kind="object" scope="global">
+<commonname  xml:lang="de">Vorbereich von $\rho $</commonname>
+<commonname> left domain of $\rho $</commonname>
+</symbol>
+
+<definition id="left-domain-of.def" for="left-domain-of" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-domain-of" kind="object" scope="global">
+<commonname  xml:lang="de">Nachbereich von $\rho $</commonname>
+<commonname> right domain of $\rho $</commonname>
+</symbol>
+
+<definition id="right-domain-of.def" for="right-domain-of" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA>
+<OMA><OMS cd="deussen.chap4" name="right-domain-of-t"/><OMV name="S"/><OMV name="RHO"/><OMV name="T"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="reflexive" kind="object" scope="global">
+<commonname  xml:lang="de">reflexiv</commonname>
+<commonname> reflexive</commonname>
+</symbol>
+
+
+<definition id="reflexive.def" for="reflexive" type="simple"><CMP  xml:lang="de"> Eine Relation $\rho $ hei"st  reflexiv, wenn $\imath \subset \rho $;  symmetrisch, wenn $\rho \subset \rho ^c$;  transitiv, wenn $\rho \circ \rho \subset \rho $;  antisymmetrisch, wenn $\rho \cap \rho ^c \subset \imath $ gilt. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="bin-id-rel"/><OMV name="S"/></OMA><OMV name="RHO"/></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="symmetric" kind="object" scope="global">
+<commonname  xml:lang="de">symmetrisch</commonname>
+<commonname> symmetric</commonname>
+</symbol>
+
+<definition id="symmetric.def" for="symmetric" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="converse-rel"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="transitive" kind="object" scope="global">
+<commonname  xml:lang="de">transitiv</commonname>
+<commonname> transitive</commonname>
+</symbol>
+
+<definition id="transitive.def" for="transitive" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="RHO"/></OMA><OMV name="RHO"/></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="antisymmetric" kind="object" scope="global">
+<commonname  xml:lang="de">antisymmetrisch</commonname>
+<commonname> antisymmetric</commonname>
+</symbol>
+
+<definition id="antisymmetric.def" for="antisymmetric" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="converse-rel"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="bin-id-rel"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="equiv-rel" kind="object" scope="global">
+<commonname  xml:lang="de">"Aquivalenzrelation</commonname>
+<commonname> equivalence relation</commonname>
+</symbol>
+
+
+<definition id="equiv-rel.def" for="equiv-rel" type="simple"><CMP  xml:lang="de"> Eine reflexive, transitive und symmetrische Relation hei"st   "Aquivalenzrelation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="reflexive"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="symmetric"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="transitive"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="order-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Ordnungsrelation</commonname>
+<commonname> order relation</commonname>
+</symbol>
+
+
+<definition id="order-rel.def" for="order-rel" type="simple"><CMP  xml:lang="de"> Eine reflexive, transitive und antisymmetrische Relation hei"st  Ordnungsrelation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="reflexive"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="antisymmetric"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="transitive"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="equiv-class" kind="object" scope="global">
+<commonname  xml:lang="de">"Aquivalenzklasse zu $a$</commonname>
+<commonname> equivalence class</commonname>
+</symbol>
+
+
+<definition id="equiv-class.def" for="equiv-class" type="simple"><CMP  xml:lang="de"> Jede "Aquivalenzrelation bestimmt durch ihre Vorbereiche (oder Nachbereiche), die man auch  "Aquivalenzklassen, Klassen oder  Rest\discretionary {-}{}{}klassen nennt, eine Partition oder Zerlegung von $S$ in eben diese Klassen. Die Anzahl dieser Klassen hei"st  Index von $\rho $ ($ind(\rho )$). </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="set-of-all-equiv-classes" kind="object" scope="global">
+<commonname  xml:lang="de">Menge aller "Aquivalenzklassen</commonname>
+<commonname> set of all equivalence classes</commonname>
+</symbol>
+
+<definition id="set-of-all-equiv-classes.def" for="set-of-all-equiv-classes" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="set-of-all-equiv-classes"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-class"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="index-of-equiv-rel" kind="object" scope="global">
+<commonname  xml:lang="de">Index einer "Aquivalenzrelation</commonname>
+<commonname> the index of an equivalence class</commonname>
+</symbol>
+
+<definition id="index-of-equiv-rel.def" for="index-of-equiv-rel" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="set.theory" name="card"/>
+<OMA><OMS cd="deussen.chap4" name="set-of-all-equiv-classes"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="transitive-closure" kind="object" scope="global">
+<commonname  xml:lang="de">transitive H"ulle $\rho ^t$</commonname>
+<commonname> transitive closure</commonname>
+</symbol>
+
+
+<definition id="transitive-closure.def" for="transitive-closure" type="implicit"><CMP  xml:lang="de"> die  transitive H"ulle $\rho ^t := \bigcup \limits _{n \in Nat} \rho ^n$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="transitive-closure"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="S"/><OMV name="T"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA>
+<OMA><OMS cd="deussen.chap4" name="power-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="N"/></OMA><OMV name="S"/><OMV name="T"/></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="generated-equiv-rel" kind="object" scope="global">
+<commonname  xml:lang="de">die von $\rho $ erzeugte "Aquivalenzrelation $\mathaccent "705E\relax {\rho }$</commonname>
+</symbol>
+
+
+<definition id="generated-equiv-rel.def" for="generated-equiv-rel" type="simple"><CMP  xml:lang="de"> Die Relation $\mathaccent "705E\relax {\rho } := (\rho \cup \rho ^c \cup \imath )^t$ hei"st die von $\rho $  erzeugte "Aquivalenzrelation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR>
+<OMA><OMS cd="deussen.chap4" name="transitive-closure"/><OMV name="S"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="RHO"/>
+<OMA><OMS cd="set.theory" name="union"/>
+<OMA><OMS cd="deussen.chap4" name="converse-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="bin-id-rel"/><OMV name="S"/></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="sqcup-rel" kind="object" scope="global">
+<commonname  xml:lang="de">$\rho \sqcup \sigma := (\rho \cup \sigma )^t$</commonname>
+<commonname> $\rho \sqcup \sigma $</commonname>
+</symbol>
+
+<definition id="sqcup-rel.def" for="sqcup-rel" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR>
+<OMA><OMS cd="deussen.chap4" name="transitive-closure"/><OMV name="S"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="induced-equiv-rel" kind="object" scope="global">
+<commonname  xml:lang="de">von $\phi : S \rightarrow U$ induzierte "Aquivalenzrelation $\rho $</commonname>
+<commonname> the induced equivalence relation</commonname>
+</symbol>
+
+
+<definition id="induced-equiv-rel.def" for="induced-equiv-rel" type="implicit"><CMP  xml:lang="de"> Ist $\phi : S^^ca\rightarrow U$ eine Abbildung, so induziert $\phi $ in nat"urlicher Weise eine "Aquivalenzrelation auf $S$ gem"a"s: $s \rho t  :\Leftrightarrow  \phi (s) = \phi (t)$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA><OMV name="S"/><OMV name="T"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="PHI"/><OMV name="S"/></OMA>
+<OMA><OMV name="PHI"/><OMV name="T"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="quotient-set" kind="object" scope="global">
+<commonname  xml:lang="de">Quotientenmenge von $S$ nach $\rho $</commonname>
+</symbol>
+
+
+<definition id="quotient-set.def" for="quotient-set" type="implicit"><CMP  xml:lang="de"> Als die  Quotientenmenge von $S$  nach $\rho $ bezeichnet man die Menge $S/\rho := set(\rho s : s \in S)$ der Klassen von $\rho $ in $S$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="canonical-mapping" kind="object" scope="global">
+<commonname  xml:lang="de">kanonische Abbildung $\natural : S \rightarrow S/\rho $</commonname>
+<commonname> the canonical mapping $\natural $</commonname>
+</symbol>
+
+
+<definition id="canonical-mapping.def" for="canonical-mapping" type="implicit"><CMP  xml:lang="de"> Sei $\varphi : S \rightarrow U$ eine surjektive Abbildung und $\rho $ die von $\varphi $ in $S$ induzierte "Aquivalenzrelation gem"a"s (4.9). Seien die Abbildungen $\natural : S \rightarrow S/\rho $  und  $\Phi : S/\rho \rightarrow U$ definiert durch $\natural (s) := \rho s$  und  $\Phi (\rho s) := \varphi (s)$ so gilt: $\natural $ (die  kanonische Abbildung) ist surjektiv und $\varphi $ ist bijektiv, ferner ist $\Phi \natural = \varphi $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="S"/><OMV name="RHO"/></OMA><OMV name="S"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="induced-mapping-Phi" kind="object" scope="global">
+<commonname  xml:lang="de">induzierte Abbildung $\Phi : S/\rho \rightarrow U$ von $\varphi : S \rightarrow U$</commonname>
+<commonname> the induced-mapping $\Phi : S/\rho \rightarrow U$ defined by $\Phi (\rho s) := \varphi (s)$</commonname>
+</symbol>
+
+<definition id="induced-mapping-Phi.def" for="induced-mapping-Phi" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-mapping"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA><OMV name="S"/></OMA></OMA>
+<OMA><OMV name="PHI"/><OMV name="S"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+</theory>
+<assertion id="schker93.4.3" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> Die Komposition ist eine assoziative Verkn"upfung: $(\rho \circ \sigma )\circ \tau = \rho \circ (\sigma \circ \tau )$. </CMP>
+<CMP>associativity of the composition of relations </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="TAU"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="TAU"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="S"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="comp-rel"/><OMV name="SIGMA"/><OMV name="TAU"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.9" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">the induced equivalence relation is indeed an equivalence relation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+
+<assertion id="schker93.4.6a" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> F"ur die Vorbereiche einer "Aquivalenzrelation $\rho $ gilt also entweder $\rho s \cap \rho t = \emptyset $ oder $\rho s = \rho t$. </CMP>
+<CMP>For the left domains of an equivalence relation $\rho $ there is neither $\rho s \cap \rho t = \emptyset $ nor $\rho s = \rho t$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="S"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA><OMV name="T"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="T"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="S"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="left-domain-of-s"/><OMV name="S"/><OMV name="RHO"/><OMV name="T"/></OMA></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.6c" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> F"ur beliebiges $\rho $ ist $\rho \cup \imath $ reflexiv. </CMP>
+<CMP>For each relation $\rho $ is $\rho \cup \imath $ reflexive. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap4" name="reflexive"/><OMV name="S"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="bin-id-rel"/><OMV name="S"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.6d" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> F"ur beliebiges $\rho $ ist $\rho \cup \rho ^c$ symmetrisch. </CMP>
+<CMP>For each relation $\rho $ is $\rho \cup \rho ^c$ symmetric. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap4" name="symmetric"/><OMV name="S"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="converse-rel"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.7" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\mathaccent "705E\relax {\rho }$ is an equivalence relation </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="generated-equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.8" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> Seien $\rho , \sigma $ zwei "Aquivalenzrelationen, so ist 1. $\rho \cap \sigma $ "Aquivalenzrelation 2. $\rho \sqcup \sigma := (\rho \cup \sigma )^t$ die kleinste "Aquivalenzrelation,die $\rho $ und $\sigma $ enth"alt. </CMP>
+<CMP>$\rho , \sigma $ equivalence relations $\Rightarrow \rho \cap \sigma $ is an equivalence relation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.8b" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\rho \sqcup \sigma $ is an equivalence relation. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.8c" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\rho \subset \rho \sqcup \sigma $ and $\sigma \subset \rho \sqcup \sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="SIGMA"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.8d" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\rho \sqcup \sigma $ is the smallest equivalence relation containing the equivalence relations $\rho \cup \sigma $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="SIGMA"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="MU"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="SIGMA"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="SIGMA"/><OMV name="MU"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="sqcup-rel"/><OMV name="S"/><OMV name="RHO"/><OMV name="SIGMA"/></OMA><OMV name="MU"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+
+<assertion id="schker93.4.10a" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">the canonical mapping $\natural : S \rightarrow S/\rho $ is surjective. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.10b" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\Phi : S/\rho \rightarrow U$ is bijective. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="set.theory" name="bijective"/><OMV name="U"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-mapping"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.10c" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">$\Phi \natural = \varphi $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="PHI"/>
+<OMA><OMS cd="basic.algebra" name="comp"/>
+<OMA><OMS cd="deussen.chap4" name="induced-mapping"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="S"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="U"/><OMV name="PHI"/></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.11" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> Seien $\varphi _1 : S \rightarrow U$, $\varphi _2 : S \rightarrow V$ zwei Abbildungen und $\rho _1$ bzw. $\rho _2$ die induzierten "Aquivalenzrelationen. 1. Gibt es eine Abbildung $\Phi : U \rightarrow V$ mit $\Phi \varphi _1 = \varphi _2$, so ist $\rho _1 \subset \rho _2$. 2. Sei $\rho _1 \subset \rho _2$ und $\varphi _1$ surjektiv, so gibt es eine Abbildung $\Phi : U \rightarrow V$ mit $\Phi \varphi _1 = \varphi _2$, und diese Abbildung ist eindeutig bestimmt. Ist "uberdies $\varphi _2$ surjektiv, so ist auch $\Phi $ surjektiv. </CMP>
+<CMP>If there is a mapping $\Phi : U \mapstochar \rightarrow V$ with $\Phi \varphi _1 = \varphi _2$ then $\rho _1 \subset \rho _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="V"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="V"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI2"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.11b" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">If $\rho _1 \subset \rho _2$ and $\varphi _1$ is surjective, then there exists a mapping $\Phi : U \rightarrow V: \Phi \varphi _1 = \varphi _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="V"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="U"/><OMV name="PHI1"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="V"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.11c" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">The mapping $\Phi $ of 4.11b is unique. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="V"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="U"/><OMV name="PHI1"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="V"/></OMA></OMATP><OMV name="PHI1"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI1"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="V"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI2"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="PHI1"/><OMV name="PHI2"/></OMA></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.11d" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de">Is $\varphi _2$ surjective in addition then $\Phi $ is surjective too. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="truthval" name="bool"/></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="truthval" name="bool"/></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="U"/></OMA></OMATP><OMV name="PHI1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="V"/></OMA></OMATP><OMV name="PHI2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="induced-equiv-rel"/><OMV name="S"/><OMV name="PHI2"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="U"/><OMV name="PHI1"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="S"/><OMV name="V"/><OMV name="PHI2"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="V"/></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/><OMV name="PHI1"/></OMA><OMV name="PHI2"/></OMA></OMBIND>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="U"/><OMV name="V"/><OMV name="PHI"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.4.12" theory="deussen.chap4" type="conjecture">
+<CMP  xml:lang="de"> Sind nun
+ $\rho _1, \rho _2$ irgendwelche "Aquivalenzrelationen und setzt man $U = S/\rho
+ _1, V = S/\rho _2, \varphi _1 = \natural _1, \varphi _2 = \natural _2$, so
+ erh"alt man als Korollar zum letzten Satz:
+ Es gibt eine surjektive Abbildung $\Phi : S/\rho _1 \rightarrow S/\rho _2 $ mit $\Phi \natural _1 = \natural _2$ genau dann, wenn $\rho _1 \subset \rho _2$. </CMP>
+<CMP>Let $\rho _1, \rho _2$ be equivalence relations and $U = S/\rho _1, V = S/\rho _2, \varphi _1 = \natural _1, \varphi _2 = \natural _2$, then: there is a surjective mapping $\Phi : S/\rho _1 \rightarrow S/\rho _2 $ with $\Phi \natural _1 = \natural _2$ iff $\rho _1 \subset \rho _2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMS cd="truthval" name="bool"/></OMA></OMA></OMATP><OMV name="RHO1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="RHO2"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="equiv-rel"/><OMV name="S"/><OMV name="RHO2"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="quotient-set"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="RHO1"/></OMA></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="deussen.chap4" name="quotient-set"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="S"/><OMV name="RHO2"/></OMA></OMA></OMA></OMATP><OMV name="PHI"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="set.theory" name="surjective"/>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="S"/><OMV name="RHO1"/></OMA>
+<OMA><OMS cd="deussen.chap4" name="quotient-set"/><OMV name="S"/><OMV name="RHO2"/></OMA><OMV name="PHI"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="basic.algebra" name="comp"/><OMV name="PHI"/>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="S"/><OMV name="RHO1"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap4" name="canonical-mapping"/><OMV name="S"/><OMV name="RHO2"/></OMA></OMA></OMA></OMBIND>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="RHO1"/><OMV name="RHO2"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+
+</omdoc>

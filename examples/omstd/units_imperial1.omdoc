@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="units_imperial1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary units_imperial1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="aut">The OpenMath Society</Creator>
+  <Date> 2000-08-13 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/units_imperial.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> 
+    This CD defines symbols to represent imperial standard measures.
+  </Description>
+</metadata>
+
+<theory id="units_imperial1">
+  <imports id="units_imperial1-imports-dimensions1" from="dimensions1.omdoc#dimensions1"/>
+
+<symbol id="mile">
+  <CMP>
+    This symbol represents the measure of one mile. This is the standard
+    imperial measure for distance.
+  </CMP>
+  <commonname>mile</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="length"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="mile">
+  <use format="default">m</use>
+</presentation>
+
+<symbol id="acre">
+  <CMP>This symbol represents the measure of one acre. This is the standard
+    imperial measure for area.
+  </CMP>
+  <commonname>acre</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="area"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="acre">
+  <use format="default">acre</use>
+</presentation>
+
+<symbol id="pint">
+  <CMP>
+    This symbol represents the measure of one pint. This is the standard
+    imperial measure for volume.
+  </CMP>
+  <commonname>pint</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="volume"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="pint">
+  <use format="default">pint</use>
+</presentation>
+
+<symbol id="miles_per_hr">
+  <CMP>
+    This symbol represents the measure of one mile per hour. This is the standard
+    imperial measure for speed.
+  </CMP>
+  <commonname>miles per hr</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="velocity"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="miles_per_hour">
+  <use format="default">mph</use>
+</presentation>
+
+<symbol id="miles_per_hr_sqrd">
+  <CMP>
+    This symbol represents the measure of one mile per hour
+    squared. This is the standard imperial measure for acceleration.
+  </CMP>
+  <commonname>miles per hr sqrd</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="acceleration"/>
+    </OMOBJ>
+  </type>
+</symbol>
+
+<symbol id="pound_mass">
+  <CMP>
+    This symbol represents the measure of the mass which weighs one pound
+    under the influence of standard gravity.
+  </CMP>
+  <commonname>pound mass</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="mass"/>
+    </OMOBJ>
+  </type>
+</symbol>
+
+<symbol id="pound_force">
+  <CMP>
+    This symbol represents the measure of force of one pound.
+  </CMP>
+  <commonname>pound force</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="force"/>
+    </OMOBJ>
+  </type>
+</symbol>
+
+<symbol id="degree_Fahrenheit">
+  <CMP>
+    This symbol represents the measure of one degree Fahrenheit. This is
+    the standard imperial measure for temperature.
+  </CMP>
+  <commonname>degree Fahrenheit</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="temperature"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="degree_Fahrenheit">
+  <use format="default">deg F</use>
+  <use format="html|pmml">&#x000B0;F</use>
+  <use format="TeX">^{\circ}F</use>
+</presentation>
+
+<symbol id="bar">
+  <CMP>
+    This symbol represents the measure of one bar. This is the standard
+    imperial measure for pressure.
+  </CMP>
+  <commonname>bar</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="dimensions1" name="pressure"/>
+    </OMOBJ>
+  </type>
+</symbol>
+</theory>
+</omdoc>

@@ -1,0 +1,165 @@
+\begin{omdoc}
+
+\begin{ommetadata} 
+  \dccontributor{Contributor 1}
+  \dccreator[edt]{Creator as the editor}
+  \dctitle{The title of the document}
+ here we define the metadata of the document
+\end{ommetadata}
+
+\begin{omomtext}{intro}
+  \omrsrelation{introduction}{}{}
+  \begin{omCMPverb}{omtext}
+      We will start out with an introductory text
+  \end{omCMPverb}
+\end{omomtext}
+
+\begin{omtheory}{testtheory}
+\omcommonname[deu]{Monoid Theorie}
+
+\begin{omsymbol}{monoid}
+  \begin{omCMPverb}{omtext}
+    The monoids that we all know and love
+  \end{omCMPverb}
+  \begin{omCMPverb}[deu]{omtext}
+    Die Monoide, wie wir sie alle kennen und lieben
+  \end{omCMPverb}
+  \omcommonname[deu]{plus}
+  \omcommonname{plus}
+  \begin{omsignatureverb}{POST}
+    <OMOBJ><OMA><OMS cd="mltt" name="funtype"/><OMV name="alpha"/></OMA></OMOBJ>
+  \end{omsignatureverb}
+  here we define monoids 
+\end{omsymbol}
+
+
+\begin{omomtext}{testremark}
+  \omrsrelation{introduction}{}{}
+  \begin{omCMP}{omtext}
+    \begin{omverb}then we will use an omnote to
+    \end{omverb} 
+    \begin{omomletverb}{appl1}{js}{sdlfkj}{call-mint}
+       explain 
+    \end{omomletverb}
+    \begin{omverb}
+      the symbol
+    \end{omverb}
+  \end{omCMP}
+\end{omomtext}
+
+\begin{omdefinition}{monoiddef}{monoid}
+  \begin{omCMPverb}{omtext}
+    Here comes the definition of  monoids
+  \end{omCMPverb}
+  \begin{omFMP}
+    \((#test:sym:$X:$Y:)\)
+  \end{omFMP}
+  sdfsdfsdf
+\end{omdefinition}
+
+
+\begin{omomtext}{testlinkage}
+  \omrsrelation{linkage}{monoiddef}{recursivemonoid}
+  \begin{omCMPverb}{omtext}
+    then a omlinkage to link the previous definition to the next
+  \end{omCMPverb}
+\end{omomtext}
+
+\begin{omdefinition}{recursivemonoid}{monoid}
+  \begin{omCMPverb}{omtext}
+    Here comes a recursive definition
+  \end{omCMPverb}
+  \begin{omrequation}
+    \<(#arith1:plus:$X:#arith1:zero:)\>
+  \goesto
+    \($X:\)
+  \end{omrequation}
+  sdfsdfsdf
+\end{omdefinition}
+
+\end{omtheory}
+
+\begin{omassertion}{testtheorem}{testtheory}{theorem}
+  \begin{omCMPverb}{omtext}
+    A theorem
+  \end{omCMPverb}
+  \begin{omFMP}
+    \({#quant1:forall:$X:$Y:.(#relation:eq:$X:$Y:)}\)
+  \end{omFMP}
+\end{omassertion}
+
+\begin{omassertion}{testlemma}{testtheory}{lemma}
+  \begin{omCMPverb}{omtext}
+    Transitivity of equality
+  \end{omCMPverb}
+  \begin{omassumption}{A1}
+    \begin{omCMPverb}{omtext}
+    \($X:\) and  \($Y:\) are equal
+    \end{omCMPverb}
+    \begin{omFMP}
+    \((#relation:eq:$X:$Y:)\)
+    \end{omFMP}
+  \end{omassumption}
+  \begin{omassumption}{A2}
+    \begin{omCMPverb}{omtext}
+    \($Y:\) and  \($Z:\) are equal
+    \end{omCMPverb}
+    \begin{omFMP}
+    \((#relation:eq:$Y:$Z:)\)
+    \end{omFMP}
+  \end{omassumption}
+  \begin{omconclusion}{C1}
+    \begin{omCMPverb}{omtext}
+      All objects are equal
+    \end{omCMPverb}
+    \begin{omFMP}
+    \({#quant1:forall:$X:$Y:.(#relation:eq:$X:$Y:)}\)
+    \end{omFMP}
+  \end{omconclusion}
+\end{omassertion}
+
+
+\begin{omproof}{P1}{testlemma}{testtheory}
+  \begin{omCMPverb}{omtext}
+    A proof with two proof steps  for the lemma above
+  \end{omCMPverb}
+  \begin{omderive}{D1}
+    \begin{omCMPverb}{omtext}
+      The first proof step consis
+    \end{omCMPverb}
+    \begin{omassumption}{D1.A}
+      \begin{omCMPverb}
+        This proof step makes a local hypothesis
+      \end{omCMPverb}
+    \end{omassumption}
+    \begin{omconclusion}{D1.C}
+    \begin{omCMPverb}{omtext}
+      The assertion of the first proof step
+    \end{omCMPverb}
+    \begin{omFMP}
+      \(#test:formula:\)
+    \end{omFMP}
+  \end{omconclusion}
+\end{omderive}
+  \begin{omderive}{D2}
+    \begin{omCMPverb}{omtext}
+      The second step
+    \end{omCMPverb}
+    \begin{omconclusion}{D2.c}
+    \begin{omFMP} 
+      \(#test:formula:\)
+    \end{omFMP}
+  \end{omconclusion}
+\end{omderive}
+  \begin{omconclude}{Conc}
+    \begin{omCMPverb}{omtext}
+      The last proof step
+    \end{omCMPverb}
+\end{omconclude}
+\end{omproof}
+\end{omdoc}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "latex2omdoc"
+%%% End: 

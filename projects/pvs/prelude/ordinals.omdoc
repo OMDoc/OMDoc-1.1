@@ -1,0 +1,1789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="ordinals.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:38
+    </Date>
+  </metadata>
+  <theory id="ordinals_test">
+
+
+
+
+
+
+
+
+
+
+
+
+    <symbol id="size" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="size-def" for="size" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="size"/>
+            <OMA>
+              <OMS cd="ordstruct_adt_reduce" name="reduce"/>
+              <OMI>0</OMI>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="posnat"/>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMI>1</OMI>
+                    <OMV name="m"/>
+                  </OMA>
+                  <OMV name="n"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="lessp_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="w"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="i"/>
+                    <OMV name="u"/>
+                    <OMV name="v"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="y"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="j"/>
+                    <OMV name="z"/>
+                    <OMV name="w"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="u"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lessp_TCC1-1" for="lessp_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lessp_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                    <OMS cd="booleans" name="bool"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="v1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="w"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="i"/>
+                    <OMV name="u"/>
+                    <OMV name="v"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="y"/>
+                    <OMA>
+                      <OMS cd="ordstruct_adt" name="add"/>
+                      <OMV name="j"/>
+                      <OMV name="z"/>
+                      <OMV name="w"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="booleans" name="NOT"/>
+                      <OMA>
+                        <OMV name="v1"/>
+                        <OMV name="u"/>
+                        <OMV name="z"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="booleans" name="NOT"/>
+                        <OMA>
+                          <OMS cd="booleans" name="AND"/>
+                          <OMA>
+                            <OMS cd="equalities" name="="/>
+                            <OMV name="u"/>
+                            <OMV name="z"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="reals" name="&lt;"/>
+                            <OMV name="i"/>
+                            <OMV name="j"/>
+                          </OMA>
+                        </OMA>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="booleans" name="AND"/>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMV name="u"/>
+                          <OMV name="z"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMV name="i"/>
+                          <OMV name="j"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="v"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lessp_TCC2-1" for="lessp_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (REPLACE -1) (( (EXPAND size) (( (EXPAND reduce 3 2) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="&lt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&lt;-def" for="&lt;" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="&lt;"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMS cd="ordstruct_adt" name="zero?"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="integers" name="posnat"/>
+                        </OMATP>
+                        <OMV name="i"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ordstruct_adt" name="ordstruct"/>
+                        </OMATP>
+                        <OMV name="u"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ordstruct_adt" name="ordstruct"/>
+                        </OMATP>
+                        <OMV name="v"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="cases"/>
+                      <OMV name="y"/>
+                      <OMA>
+                        <OMS cd="pvs" name="case"/>
+                        <OMS cd="ordstruct_adt" name="zero"/>
+                        <OMS cd="booleans" name="FALSE"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="pvs" name="case"/>
+                        <OMS cd="ordstruct_adt" name="add"/>
+                        <OMBIND>
+                          <OMS cd="pvs" name="case-lambda"/>
+                          <OMBVAR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="integers" name="posnat"/>
+                              </OMATP>
+                              <OMV name="j"/>
+                            </OMATTR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="ordstruct_adt" name="ordstruct"/>
+                              </OMATP>
+                              <OMV name="z"/>
+                            </OMATTR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="ordstruct_adt" name="ordstruct"/>
+                              </OMATP>
+                              <OMV name="w"/>
+                            </OMATTR>
+                          </OMBVAR>
+                          <OMA>
+                            <OMS cd="booleans" name="OR"/>
+                            <OMA>
+                              <OMS cd="ordinals" name="&lt;"/>
+                              <OMV name="u"/>
+                              <OMV name="z"/>
+                            </OMA>
+                            <OMA>
+                              <OMS cd="booleans" name="OR"/>
+                              <OMA>
+                                <OMS cd="booleans" name="AND"/>
+                                <OMA>
+                                  <OMS cd="equalities" name="="/>
+                                  <OMV name="u"/>
+                                  <OMV name="z"/>
+                                </OMA>
+                                <OMA>
+                                  <OMS cd="reals" name="&lt;"/>
+                                  <OMV name="i"/>
+                                  <OMV name="j"/>
+                                </OMA>
+                              </OMA>
+                              <OMA>
+                                <OMS cd="booleans" name="AND"/>
+                                <OMA>
+                                  <OMS cd="equalities" name="="/>
+                                  <OMV name="u"/>
+                                  <OMV name="z"/>
+                                </OMA>
+                                <OMA>
+                                  <OMS cd="booleans" name="AND"/>
+                                  <OMA>
+                                    <OMS cd="equalities" name="="/>
+                                    <OMV name="i"/>
+                                    <OMV name="j"/>
+                                  </OMA>
+                                  <OMA>
+                                    <OMS cd="ordinals" name="&lt;"/>
+                                    <OMV name="v"/>
+                                    <OMV name="w"/>
+                                  </OMA>
+                                </OMA>
+                              </OMA>
+                            </OMA>
+                          </OMA>
+                        </OMBIND>
+                      </OMA>
+
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="ordinals" name="size"/>
+          <OMV name="x"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <symbol id="&gt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&gt;-def" for="&gt;" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="&gt;"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="y"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="&lt;=" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&lt;=-def" for="&lt;=" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="&lt;="/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="&gt;=" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&gt;=-def" for="&gt;=" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="&gt;="/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="y"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="y"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="ordinal?_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMV name="i"/>
+                  <OMV name="u"/>
+                  <OMV name="v"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="u"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal?_TCC1-1" for="ordinal?_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (REPLACE -1) (( (EXPAND size) (( (EXPAND reduce 1 2) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ordinal?_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                    <OMS cd="booleans" name="bool"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="v1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordstruct_adt" name="ordstruct"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="i"/>
+                    <OMV name="u"/>
+                    <OMV name="v"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMV name="v1"/>
+                  <OMV name="u"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="v"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="size"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal?_TCC2-1" for="ordinal?_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (REPLACE -1) (( (EXPAND size) (( (EXPAND reduce 1 2) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="ordinal?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="ordstruct_adt" name="ordstruct"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="ordinal?-def" for="ordinal?" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="ordinals" name="ordinal?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                  <OMS cd="booleans" name="TRUE"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="integers" name="posnat"/>
+                        </OMATP>
+                        <OMV name="i"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ordstruct_adt" name="ordstruct"/>
+                        </OMATP>
+                        <OMV name="u"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ordstruct_adt" name="ordstruct"/>
+                        </OMATP>
+                        <OMV name="v"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="ordinals" name="ordinal?"/>
+                        <OMV name="u"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="booleans" name="AND"/>
+                        <OMA>
+                          <OMS cd="ordinals" name="ordinal?"/>
+                          <OMV name="v"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="pvs" name="cases"/>
+                          <OMV name="v"/>
+                          <OMA>
+                            <OMS cd="pvs" name="case"/>
+                            <OMS cd="ordstruct_adt" name="zero"/>
+                            <OMS cd="booleans" name="TRUE"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="pvs" name="case"/>
+                            <OMS cd="ordstruct_adt" name="add"/>
+                            <OMBIND>
+                              <OMS cd="pvs" name="case-lambda"/>
+                              <OMBVAR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="integers" name="posnat"/>
+                                  </OMATP>
+                                  <OMV name="k"/>
+                                </OMATTR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                                  </OMATP>
+                                  <OMV name="r"/>
+                                </OMATTR>
+                                <OMATTR>
+                                  <OMATP>
+                                    <OMS cd="pvs" name="type"/>
+                                    <OMS cd="ordstruct_adt" name="ordstruct"/>
+                                  </OMATP>
+                                  <OMV name="s"/>
+                                </OMATTR>
+                              </OMBVAR>
+                              <OMA>
+                                <OMS cd="ordinals" name="&lt;"/>
+                                <OMV name="r"/>
+                                <OMV name="u"/>
+                              </OMA>
+                            </OMBIND>
+                          </OMA>
+
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMS cd="ordinals" name="size"/>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="ordinal_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMBIND>
+                      <OMS cd="pvs" name="set"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="ordstruct_adt" name="ordstruct"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="ordinals" name="ordinal?"/>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_TCC1-1" for="ordinal_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST 1 zero) (( (ASSERT) (( (EXPAND ordinal?) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="ordinal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="ordinal-non-empty" >
+      <CMP>The type ordinal is non-empty
+      </CMP>
+    </axiom>
+    <private id="G57033" for="ordinal" pto="pvs" pto-version="3.0" replaces="ordinal-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="ordinal" for="ordinal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="ordinals" name="ordinal?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+    <assertion id="ordinal_irreflexive" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMV name="r"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_irreflexive-1" for="ordinal_irreflexive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT r)
+ ((1 (ASSERT) NIL NIL) (2 (FLATTEN) ((2 (EXPAND <) ((2 (PROPAX) NIL NIL)) NIL)) NIL)
+  (3 (SKOSIMP*)
+   ((3 (ASSERT)
+     ((3 (EXPAND < -4)
+       ((3 (SPLIT -4)
+         ((1 (ASSERT) ((1 (EXPAND ordinal? -3) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+          (2 (EXPAND ordinal? -4) ((2 (FLATTEN) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ordinal_antisym" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMV name="s"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="s"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_antisym-1" for="ordinal_antisym" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT r)
+ ((1 (ASSERT) NIL NIL)
+  (2 (FLATTEN) ((2 (SKOSIMP*) ((2 (EXPAND <) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+  (3 (SKOSIMP)
+   ((3 (EXPAND ordinal? -3)
+     ((3 (FLATTEN)
+       ((3 (ASSERT)
+         ((3 (INDUCT s)
+           ((1 (ASSERT) NIL NIL) (2 (FLATTEN) ((2 (EXPAND < -2) ((2 (PROPAX) NIL NIL)) NIL)) NIL)
+            (3 (SKOSIMP)
+             ((3 (EXPAND ordinal? -3)
+               ((3 (FLATTEN)
+                 ((3 (ASSERT)
+                   ((3 (EXPAND < -6)
+                     ((3 (SPLIT -6)
+                       ((1 (INST -8 add2_var!2)
+                         ((1 (ASSERT) ((1 (EXPAND < -7) ((1 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)
+                        (2 (FLATTEN)
+                         ((2 (EXPAND < -8)
+                           ((2 (ASSERT)
+                             ((2 (REPLACE -1)
+                               ((2 (LEMMA ordinal_irreflexive) ((2 (INST -1 add2_var!2) NIL NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL)
+                        (3 (FLATTEN)
+                         ((3 (EXPAND < -9)
+                           ((3 (REPLACE -1)
+                             ((3 (REPLACE -2)
+                               ((3 (LEMMA ordinal_irreflexive)
+                                 ((3 (INST-CP -1 add2_var!2)
+                                   ((3 (ASSERT)
+                                     ((3 (INST -12 add3_var!2) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ordinal_antisymmetric" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;="/>
+                  <OMV name="r"/>
+                  <OMV name="s"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;="/>
+                  <OMV name="s"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="r"/>
+                <OMV name="s"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_antisymmetric-1" for="ordinal_antisymmetric" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND <=)
+   (( (SPLIT)
+     ((1 (SPLIT)
+       ((1 (LEMMA ordinal_antisym) ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+        (2 (ASSERT) NIL NIL))
+       NIL)
+      (2 (PROPAX) NIL NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ordinal_transitive" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="t"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="r"/>
+                  <OMV name="s"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="s"/>
+                  <OMV name="t"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMV name="t"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_transitive-1" for="ordinal_transitive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT s)
+ ((1 (ASSERT) NIL NIL)
+  (2 (FLATTEN)
+   ((2 (SKOSIMP) ((2 (EXPAND < -2) ((2 (LIFT-IF -2) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL)
+  (3 (SKOSIMP)
+   ((3 (EXPAND ordinal? -3)
+     ((3 (FLATTEN)
+       ((3 (ASSERT)
+         ((3 (HIDE -3 -4)
+           ((3 (SKOSIMP)
+             ((3 (EXPAND < -4)
+               ((3 (LIFT-IF)
+                 ((3 (SPLIT -4)
+                   ((1 (FLATTEN)
+                     ((1 (EXPAND < -5)
+                       ((1 (LIFT-IF)
+                         ((1 (SPLIT)
+                           ((1 (SPLIT)
+                             ((1 (FLATTEN) NIL NIL)
+                              (2 (FLATTEN)
+                               ((2 (ASSERT) ((2 (EXPAND < 3) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                               NIL))
+                             NIL)
+                            (2 (FLATTEN)
+                             ((2 (SPLIT)
+                               ((1 (FLATTEN) NIL NIL)
+                                (2 (FLATTEN) ((2 (EXPAND < 4) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL)
+                    (2 (FLATTEN)
+                     ((2 (LIFT-IF)
+                       ((2 (SPLIT)
+                         ((1 (FLATTEN) NIL NIL)
+                          (2 (FLATTEN)
+                           ((2 (EXPAND < -5)
+                             ((2 (LIFT-IF)
+                               ((2 (SPLIT -5)
+                                 ((1 (FLATTEN) NIL NIL)
+                                  (2 (FLATTEN)
+                                   ((2 (PROP)
+                                     ((1 (EXPAND < 4)
+                                       ((1 (ASSERT)
+                                         ((1 (INST -4 exp(r!1) exp(t!1))
+                                           ((1 (ASSERT) NIL NIL)
+                                            (2 (TYPEPRED t!1)
+                                             ((2 (EXPAND ordinal? -1) ((2 (FLATTEN) NIL NIL)) NIL))
+                                             NIL)
+                                            (3 (TYPEPRED r!1)
+                                             ((3 (EXPAND ordinal? -1) ((3 (FLATTEN) NIL NIL)) NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL)
+                                      (2 (EXPAND < 5)
+                                       ((2 (ASSERT)
+                                         ((2 (FLATTEN)
+                                           ((2 (INST -4 exp(r!1) exp(t!1))
+                                             ((1 (ASSERT) NIL NIL)
+                                              (2 (TYPEPRED t!1)
+                                               ((2 (EXPAND ordinal? -1) ((2 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL)
+                                              (3 (TYPEPRED r!1)
+                                               ((3 (EXPAND ordinal? -1) ((3 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL)
+                                      (3 (EXPAND < 4) ((3 (ASSERT) NIL NIL)) NIL)
+                                      (4 (EXPAND < 5) ((4 (ASSERT) NIL NIL)) NIL)
+                                      (5 (EXPAND < 4) ((5 (ASSERT) NIL NIL)) NIL)
+                                      (6 (EXPAND < 5) ((6 (ASSERT) NIL NIL)) NIL)
+                                      (7 (EXPAND < 4) ((7 (ASSERT) NIL NIL)) NIL)
+                                      (8 (EXPAND < 5) ((8 (ASSERT) NIL NIL)) NIL)
+                                      (9 (EXPAND < 4) ((9 (ASSERT) NIL NIL)) NIL)
+                                      (10 (EXPAND < 5) ((10 (ASSERT) NIL NIL)) NIL)
+                                      (11 (EXPAND < 4) ((11 (ASSERT) NIL NIL)) NIL)
+                                      (12 (EXPAND < 5) ((12 (ASSERT) NIL NIL)) NIL)
+                                      (13 (EXPAND < 4) ((13 (ASSERT) NIL NIL)) NIL)
+                                      (14 (EXPAND < 5) ((14 (ASSERT) NIL NIL)) NIL)
+                                      (15 (EXPAND < 4) ((15 (ASSERT) NIL NIL)) NIL)
+                                      (16 (EXPAND < 5) ((16 (ASSERT) NIL NIL)) NIL)
+                                      (17 (EXPAND < 4)
+                                       ((17 (ASSERT)
+                                         ((17 (FLATTEN)
+                                           ((17 (INST -9 rest(r!1) rest(t!1))
+                                             ((1 (ASSERT) NIL NIL)
+                                              (2 (TYPEPRED t!1)
+                                               ((2 (EXPAND ordinal? -1) ((2 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL)
+                                              (3 (TYPEPRED r!1)
+                                               ((3 (EXPAND ordinal? -1) ((3 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL)
+                                      (18 (EXPAND < 5)
+                                       ((18 (ASSERT)
+                                         ((18 (FLATTEN)
+                                           ((18 (INST -9 rest(r!1) rest(t!1))
+                                             ((1 (ASSERT) NIL NIL)
+                                              (2 (TYPEPRED t!1)
+                                               ((2 (EXPAND ordinal? -1) ((2 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL)
+                                              (3 (TYPEPRED r!1)
+                                               ((3 (EXPAND ordinal? -1) ((3 (FLATTEN) NIL NIL))
+                                                 NIL))
+                                               NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ordinal_trichotomy" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="ordinals" name="ordinal"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="OR"/>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMV name="s"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="r"/>
+                  <OMV name="s"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="ordinals" name="&lt;"/>
+                  <OMV name="s"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ordinal_trichotomy-1" for="ordinal_trichotomy" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT r)
+ ((1 (ASSERT) NIL NIL)
+  (2 (FLATTEN)
+   ((2 (INDUCT s)
+     ((1 (ASSERT) NIL NIL) (2 (FLATTEN) NIL NIL)
+      (3 (SKOSIMP)
+       ((3 (EXPAND ordinal? -3)
+         ((3 (FLATTEN) ((3 (ASSERT) ((3 (EXPAND < 1) ((3 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL)
+  (3 (SKOSIMP)
+   ((3 (EXPAND ordinal? -3)
+     ((3 (FLATTEN)
+       ((3 (ASSERT)
+         ((3 (INDUCT s)
+           ((1 (ASSERT) NIL NIL) (2 (FLATTEN) ((2 (EXPAND < 3) ((2 (PROPAX) NIL NIL)) NIL)) NIL)
+            (3 (SKOSIMP)
+             ((3 (ASSERT)
+               ((3 (EXPAND ordinal? -3)
+                 ((3 (FLATTEN)
+                   ((3 (ASSERT)
+                     ((3 (EXPAND < 1)
+                       ((3 (FLATTEN)
+                         ((3 (EXPAND < 5)
+                           ((3 (FLATTEN)
+                             ((3 (INST -6 add2_var!2)
+                               ((3 (ASSERT)
+                                 ((3 (REPLACE -6)
+                                   ((3 (ASSERT)
+                                     ((3 (HIDE -3 -4 1 5)
+                                       ((3 (HIDE -6 -7)
+                                         ((3 (INST -5 add3_var!2) ((3 (ASSERT) NIL NIL)) NIL))
+                                         NIL))
+                                       NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <axiom id="ordinal_induction" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ordinals" name="ordinal"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="ordinals" name="ordinal"/>
+                        </OMATP>
+                        <OMV name="s"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="ordinals" name="&lt;"/>
+                        <OMV name="s"/>
+                        <OMV name="r"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="p"/>
+                        <OMV name="s"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="r"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="ordinals" name="ordinal"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <assertion id="well_founded_le" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="orders" name="well_founded?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="ordinals" name="ordinal?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="ordinals" name="ordinal?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMV name="s"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="well_founded_le-1" for="well_founded_le" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND well_founded?)
+ (( (LEMMA ordinal_induction)
+   (( (SKOSIMP)
+     (( (SKOSIMP)
+       (( (INST -1 LAMBDA (x:ordinal): NOT p!1(x))
+         (( (SPLIT)
+           ((1 (BETA) ((1 (INST -1 y!1) NIL NIL)) NIL)
+            (2 (SKOSIMP)
+             ((2 (BETA)
+               ((2 (INST 1 r!1) ((2 (SKOSIMP) ((2 (INST -1 x!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

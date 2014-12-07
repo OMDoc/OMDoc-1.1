@@ -1,0 +1,536 @@
+<!--
+   An XML Document Type Definition for the OMDoc format (OpenMath documents)
+   Initial Version: Michael Kohlhase 1999-09-07
+   URL: http://www.mathweb.org/omdoc/omdoc.dtd (current released version)
+   URL: http://www.mathweb.org/omdoc/dtd/omdoc.dtd (current experimental)
+   URL: http://www.mathweb.org/omdoc/dtd/omdoc*.dtd (old)
+   This DTD is still experimental, it is intended as a basis for discussion.
+   Comments are welcome! (send mail to kohlhase@mathweb.org)
+   See the documentation and examples at http://www.mathweb.org/omdoc
+   (c) 1999, 2000 Michael Kohlhase, released under the GNU Public License
+-->
+
+<!-- first we define a couple of useful abbreviations  -->
+
+<!ENTITY % midmatter "mid CDATA #IMPLIED">
+<!-- attribute mid is an URIref, pointing to the MBase identifier of the element -->
+
+
+<!ENTITY % idmatter "id CDATA #REQUIRED %midmatter;">
+<!ENTITY % idimatter "id CDATA #IMPLIED %midmatter;">
+
+<!ENTITY % idrefmatter "%idmatter; for CDATA #REQUIRED">
+<!-- attribute for is an URIref -->
+
+<!ENTITY % timestamp "timestamp NMTOKEN #REQUIRED">
+
+<!--    The current XML-recommendation doesn't yet support the three-letter
+	short names for languages (ISO 693-2). So the following section
+	will be using the two-letter (ISO 693-1) encoding for the languages.
+
+	en : English,		de : German,		fr : French,
+	la : Latin, 		it : Italian, 		nl : Dutch,
+	ru : Russian,		pl : Polish,		es : Spanish,
+	tr : Turkish,		zh : Chinese,		ja : Japanese,
+	ko : Korean                                                      -->
+<!ENTITY % ISO639 "(en|de|fr|la|it|nl|ru|pl|es|tr|zh|ja|ko)">
+
+<!ENTITY % langmatter "xml:lang %ISO639; 'en'">
+
+<!ENTITY % frommatter	 "from NMTOKEN #REQUIRED">
+<!ENTITY % fromtomatter	 "%frommatter; to CDATA #REQUIRED">  
+<!-- attribute to is an URIref -->
+
+<!ENTITY % fromtobymatter "%fromtomatter; by CDATA #REQUIRED"> 
+<!-- attribute by is an URIref -->
+
+<!ENTITY % linkmatter "%midmatter; id CDATA #IMPLIED xref CDATA #IMPLIED">  
+<!-- attribute xref is an URIref -->  
+
+<!ENTITY % rstype "abstract|introduction|conclusion|thesis|antithesis|
+                           elaboration|motivation|evidence|linkage|narrative|
+                           sequence|alternative|general">
+
+<!ENTITY % rsmatter "type NMTOKEN #IMPLIED
+                     for CDATA #IMPLIED   
+                     from CDATA #IMPLIED">
+<!-- attribute for is a URIref, from a URIrefs -->
+<!-- best use one of the %rstype; for type -->
+
+
+<!--  Now comes a NON-STANDARD (experimental) variant of the OpenMath 
+      Object DTD omobj.dtd (see http://www.openmath.org) 
+
+      It is extended with coreferences! (by adding the xlink linkmatter
+      attributes to all open math elements). 
+      In particular, it adds the attributes id and xref to 
+      OMOBJ OMA OMBIND and OMATTR
+
+      These extensions are licensed by the OpenMath Standard that says that any
+      extension, from which valid OpenMath can be directly be generated is
+      allowed.
+
+      Note that this makes it less restrictive for OMA, OMS and OMV 
+      than the original. Maybe this can be changed in a future version 
+      by using XML schema. -->
+
+<!ENTITY % omel "OMS | OMV | OMI | OMB | OMSTR | OMF | OMA | OMBIND | OME | OMATTR">
+
+<!ENTITY % omns "xmlns CDATA #FIXED 'http://www.openmath.org/OpenMath'">
+<!-- things which can be variables -->
+
+<!ENTITY % omvar "OMV | OMATTR" >
+
+<!-- symbol, original OM, links make no sense -->
+<!ELEMENT OMS EMPTY>
+<!ATTLIST OMS name CDATA #IMPLIED 
+              cd CDATA #IMPLIED 
+              %omns;>
+
+<!-- variable original OM, links make no sense -->
+<!ELEMENT OMV EMPTY>
+<!ATTLIST OMV name CDATA #IMPLIED  %omns;>
+
+<!-- integer; links make sense, since integers can be big -->
+<!ELEMENT OMI (#PCDATA)>
+<!ATTLIST OMI %linkmatter;  %omns;>
+
+<!-- byte array; links make sense, since byte arrays can be big -->
+<!ELEMENT OMB (#PCDATA) >
+<!ATTLIST OMB %linkmatter;  %omns;>
+
+<!-- string; links make sense, since strings can be big -->
+<!ELEMENT OMSTR (#PCDATA) >
+<!ATTLIST OMSTR %linkmatter;  %omns;>
+
+<!-- floating point; links make sense, since Integers can be big -->
+<!ELEMENT OMF EMPTY>
+<!ATTLIST OMF dec CDATA #IMPLIED
+              hex CDATA #IMPLIED
+	      %linkmatter; %omns;>
+
+<!-- apply constructor; links make sense, no copied substructure -->
+<!ELEMENT OMA (%omel;)*>
+<!ATTLIST OMA %linkmatter; %omns;>
+
+<!-- binding constructor & variable; links make sense, no copied substructure -->
+<!ELEMENT OMBIND ((%omel;), OMBVAR, (%omel;))? >
+<!ATTLIST OMBIND %linkmatter; %omns;>
+
+<!-- bound variables, original OM, links make no sense -->
+<!ELEMENT OMBVAR (%omvar;)+ >
+<!ATTLIST OMBVAR  %omns;>
+
+<!-- error; original OM, links make no sense -->
+<!ELEMENT OME (OMS, (%omel;)* ) >
+<!ATTLIST OME %omns;>
+
+<!-- attribution constructor & attribute pair constructor -->
+<!ELEMENT OMATTR (OMATP, (%omel;))? >
+<!ATTLIST OMATTR %linkmatter; %omns;>
+
+<!ELEMENT OMATP (OMS, (%omel;))+ >
+<!ATTLIST OMATP %omns;>
+
+<!-- OM object constructor; links make sense to avoid copying substructure -->
+<!ELEMENT OMOBJ (%omel;)? >
+<!ATTLIST OMOBJ %omns; %linkmatter;>
+
+
+<!-- OMDoc Metadata comes in two forms: 
+     1) Bibliographic Metadata corresponding to the model of the
+        Dublin Metadata initiative (http://purl.org/dc) 
+     2) other, mostly guided by the intuitions of the MBase system 
+  -->
+
+<!ENTITY % dcdata "Contributor | Creator | Translator
+                  | Subject | Title  
+                  | Description | Publisher | Date | Type 
+                  | Format | Identifier | Source | Language 
+                  | Relation | Coverage | Rights">
+
+<!ENTITY % dcns "xmlns CDATA #FIXED 'http://purl.org/DC'">
+<!ENTITY % rolematter "role (aut|aqt|aft|aui|ant|clb|edt|ths|trc|trl) 'aut'">
+
+<!ELEMENT metadata ((%dcdata;)*,extradata?)>
+
+<!-- first the Dublin Core Metadata model of the
+     Dublin Metadata initiative (http://purl.org/dc) -->
+
+<!ELEMENT Contributor ANY><!ATTLIST Contributor %dcns; %rolematter;>
+<!ELEMENT Title ANY><!ATTLIST Title %langmatter; %dcns;>
+<!ELEMENT Creator ANY><!ATTLIST Creator %dcns; %rolematter;>
+<!ELEMENT Translator ANY><!ATTLIST Translator %dcns; %langmatter;>
+<!ELEMENT Subject ANY><!ATTLIST Subject %dcns;>
+<!ELEMENT Description ANY><!ATTLIST Description %dcns;>
+<!ELEMENT Publisher ANY><!ATTLIST Publisher %dcns;>
+<!ELEMENT Date ANY><!ATTLIST Date action NMTOKEN #IMPLIED %dcns;>
+<!ELEMENT Type ANY><!ATTLIST Type %dcns;>
+<!ELEMENT Format ANY><!ATTLIST Format %dcns;>
+<!ELEMENT Identifier ANY><!ATTLIST Identifier %dcns; scheme NMTOKEN "ISBN">
+<!ELEMENT Source ANY><!ATTLIST Source %dcns;>
+<!ELEMENT Language ANY><!ATTLIST Language %dcns;>
+<!ELEMENT Relation ANY><!ATTLIST Relation %dcns;>
+<!ELEMENT Coverage ANY><!ATTLIST Coverage %dcns;>
+<!ELEMENT Rights ANY><!ATTLIST Rights %dcns;>
+
+<!-- other metadata that is not bibliographic can be included in the 
+     <extradata> element, declare any needed XML elements in the 
+     internal subset of the DTD declaration --> 
+<!ELEMENT extradata ANY> 
+
+<!-- ========= OMDoc Math elements ============ -->
+
+<!ENTITY % mathitem "assertion|alternative-def|example|
+                     theory-inclusion|axiom-inclusion|
+                     proof|proofobject">
+
+<!ENTITY % cf "symbol*,CMP*,FMP?">
+<!ENTITY % cfm	 "(metadata?,private*,%cf;)">
+
+<!ELEMENT FMP ((assumption*,conclusion)|OMOBJ)> 
+<!ATTLIST FMP logic NMTOKEN #IMPLIED
+              %midmatter;>
+
+<!ELEMENT assertion %cfm;>
+<!ATTLIST assertion theory NMTOKEN #IMPLIED
+                    type (theorem|lemma|corollary|conjecture) "conjecture"
+                    %idmatter;>
+
+<!ELEMENT assumption (CMP*,OMOBJ?)>
+<!ATTLIST assumption %idmatter;>
+
+<!ELEMENT conclusion (CMP*,OMOBJ?)>
+<!ATTLIST conclusion %idmatter;>
+
+<!ELEMENT alternative-def (metadata?,CMP*,(FMP|requation*|OMOBJ))>
+<!ATTLIST alternative-def theory NMTOKEN #REQUIRED
+                          type  (simple|inductive|implicit|obj) "simple"
+                          just-by CDATA #IMPLIED           
+                          entailed-by CDATA #REQUIRED      
+                          entails CDATA #REQUIRED          
+                          entailed-by-thm CDATA #REQUIRED  
+                          entails-thm CDATA #REQUIRED      
+                          %idrefmatter;>
+<!-- the CDATA attributes are URIres
+     just-by, points to the theorem justifying well-definedness
+     entailed-by, entails, point to other (equivalent definitions
+     entailed-by-thm, entails-thm point to the theorems justifying the 
+       entailment relation -->
+
+<!-- proofs consist of sequences of steps. The for attribute specifies the 
+     assertion  it is for. -->
+
+<!ELEMENT proof (metadata?,symbol*,CMP*,(metacomment|derive|hypothesis)*,conclude)>
+<!ATTLIST proof theory NMTOKEN #REQUIRED
+                %idrefmatter;>
+
+<!ELEMENT proofobject (metadata?,CMP*,OMOBJ)>
+<!ATTLIST proofobject theory NMTOKEN #REQUIRED
+                %idrefmatter;>
+
+<!ELEMENT metacomment (CMP*)>
+<!ATTLIST metacomment %idimatter;>
+
+<!ENTITY % justmatter "method?,premise*,(proof|proofobject)?">
+
+<!ELEMENT derive (CMP*,FMP?,%justmatter;)>
+<!ATTLIST derive %idmatter;>
+
+<!ELEMENT conclude (CMP*,%justmatter;)>
+<!ATTLIST conclude %idimatter;>
+
+<!ELEMENT hypothesis (%cf;)>
+<!ATTLIST hypothesis %idmatter;>
+
+<!ELEMENT method ((ref|OMSTR),parameter*)>
+
+<!ELEMENT parameter (OMOBJ)>  
+
+<!ELEMENT premise EMPTY>
+<!ATTLIST premise href CDATA #REQUIRED>
+
+<!ELEMENT example (metadata?,symbol*,CMP*,OMOBJ?)>
+<!ATTLIST example type (for|against) #IMPLIED
+                  assertion CDATA #IMPLIED 
+                  proof CDATA #IMPLIED     
+                  %idrefmatter;>
+<!-- attributes assertion and proof are URIref -->
+
+<!ELEMENT axiom-inclusion (metadata?,morphism?,(path-just|assertion-just))>
+<!ATTLIST axiom-inclusion %timestamp;
+                          %fromtomatter;
+                          %idmatter;>
+
+<!ELEMENT theory-inclusion (metadata?,morphism,decomposition?)>
+<!ATTLIST theory-inclusion %timestamp;
+                           %idmatter;
+                           %fromtobymatter;>
+
+<!ELEMENT path-just EMPTY>
+<!ATTLIST path-just %timestamp;
+                    local CDATA #REQUIRED     
+                    globals CDATA #REQUIRED  
+                    %midmatter;>              
+<!-- attribute local is an URIref, points to axiom-inclusion
+               globals is an URIrefs, points to a list of theory-inclusions -->
+
+<!ELEMENT assertion-just EMPTY>
+<!ATTLIST assertion-just %timestamp;
+                         ids CDATA #REQUIRED  
+                         %midmatter;>
+<!-- attribute ids is an URIrefs, points to  a list of assertions -->
+
+<!ELEMENT decomposition EMPTY>
+<!ATTLIST decomposition %timestamp;
+                        links CDATA #REQUIRED  
+                        %midmatter;>            
+<!-- attribute links is an URIrefs, points to a list of axiom-inlcusions -->
+
+<!-- OMDoc theory elements -->
+
+<!ENTITY % onlyintheoryitem "symbol|axiom|definition|adt|imports|inclusion">
+<!ENTITY % alsointheoryitem "alternative-def|proof|signature|assertion|exercise|presentation|example|omtext|omgroup|private|code|ignore">
+<!ENTITY % intheoryitem "%onlyintheoryitem;|%alsointheoryitem;">
+
+<!ENTITY % insymbolmatter '%idmatter;
+                           kind (type|sort|object) "object"
+          		   scope (global|local) "global"'>
+
+<!ELEMENT theory (metadata?,commonname*,CMP*,(%intheoryitem;)*)>
+<!ATTLIST theory %idmatter;>
+
+<!ELEMENT symbol (metadata?, CMP*,(commonname|type|selector)*)>
+<!ATTLIST symbol %insymbolmatter;>
+
+<!ELEMENT commonname ANY>
+<!ATTLIST commonname %langmatter;
+                     %midmatter;>
+
+<!ELEMENT signature EMPTY>
+<!ATTLIST signature %idrefmatter;
+                    system NMTOKEN #REQUIRED>
+
+<!ELEMENT type (OMOBJ)>
+<!ATTLIST type system NMTOKEN #REQUIRED
+               %midmatter;>
+
+<!ELEMENT axiom %cfm;>
+<!ATTLIST axiom %idmatter;>
+
+<!-- Definitions contain CMPs,  FMPs and concept specifications. The latter define
+     the set of concepts defined in this element. They can be reached under this name
+     in the content dictionary of the name specified in the theory attribute of
+     the definition. -->
+
+<!ELEMENT definition (metadata?,CMP*,(FMP|requation+|OMOBJ)?)>
+<!ATTLIST definition just-by CDATA #IMPLIED
+                     type  (simple|inductive|implicit|obj) "simple"
+		     %idrefmatter;>
+ <!-- attribute just-by is an URIref points to an assertion -->
+
+<!ELEMENT requation (pattern,value)>
+<!ATTLIST requation %idimatter;>
+
+<!ELEMENT pattern (OMA|OMS)>
+
+<!ELEMENT value (%omel;)>
+
+<!-- adts are abstract data types, they are short forms for groups of symbols and -->
+<!-- their definitions, therefore, they have much the same attributes. -->
+
+<!ELEMENT adt (metadata?,CMP*,commonname*,sortdef+)>
+<!ATTLIST adt type (loose|generated|free) "loose"
+              %idmatter;>
+
+<!ELEMENT sortdef (commonname*,(constructor|insort)*)>
+<!ATTLIST sortdef %idimatter;
+                  kind NMTOKEN #FIXED "sort"
+    		  scope (global|local) "global">
+
+<!ELEMENT constructor (commonname*,argument*)>
+<!ATTLIST constructor %insymbolmatter;>
+
+<!ELEMENT argument (selector?)>
+<!ATTLIST argument sort CDATA #REQUIRED>
+<!-- sort is a reference to the sort symbol element -->
+
+<!ELEMENT insort EMPTY>
+<!ATTLIST insort for CDATA #REQUIRED>
+<!-- sort is a reference to the sort symbol element -->
+
+<!ELEMENT selector (commonname)*>
+<!ATTLIST selector %insymbolmatter;
+                   type (total|partial) "partial">
+
+
+<!-- Now comes the support for theory inheritance, i.e. for building complex -->
+<!-- theories. -->
+
+<!ELEMENT imports (CMP*,morphism?)>
+<!ATTLIST imports %idmatter;
+                  %frommatter;
+                  hiding CDATA #IMPLIED
+                  type (local|global) "global">
+<!-- hiding is a list of references to symbol elements -->
+
+<!ELEMENT morphism (requation*)>
+<!ATTLIST morphism %idimatter;
+                   base CDATA #IMPLIED> 
+<!-- base points to some other morphism it extends -->
+
+<!ELEMENT inclusion EMPTY>
+<!ATTLIST inclusion for CDATA #REQUIRED 
+                    %midmatter;>
+ <!-- for points to a theory-inclusion -->
+
+<!-- Auxiliary elements -->
+
+<!ENTITY % auxitem "exercise|solution|omlet|private|code|presentation">
+
+<!ELEMENT exercise (%cfm;,hint?,(solution*|mc*))>
+<!ATTLIST exercise %idmatter;
+                   %rsmatter;>
+
+<!ELEMENT hint %cfm;>
+<!ATTLIST hint %idimatter;>
+
+<!ELEMENT solution (%cfm;|proof)>
+<!ATTLIST solution for CDATA #IMPLIED
+		   %idimatter;>
+
+<!-- support for multiple choice interactions -->
+
+<!ELEMENT mc (symbol*,choice,hint?,answer)>
+<!ATTLIST mc %idimatter;>
+
+<!ELEMENT choice %cfm;>
+<!ATTLIST choice %idimatter;>
+
+<!ELEMENT answer %cfm;>
+<!ATTLIST answer verdict CDATA #REQUIRED
+                 %idimatter;>
+
+<!ELEMENT omlet ANY>
+<!ATTLIST omlet %idimatter;
+	        argstr CDATA #IMPLIED
+		function CDATA #IMPLIED> 
+<!-- attribute function is an URIref, points to a code element
+     attribute argstr is a string of arguments supplied to the function -->
+
+<!ENTITY % privmatter "%idmatter;
+                  for CDATA #IMPLIED
+                  theory CDATA #IMPLIED
+                  pto NMTOKENS #IMPLIED
+                  pto-version NMTOKENS #IMPLIED
+		  format NMTOKEN #IMPLIED
+                  requires CDATA #IMPLIED
+		  type NMTOKEN #IMPLIED
+		  classid CDATA #IMPLIED
+		  codebase CDATA #IMPLIED
+		  width CDATA #IMPLIED
+		  height CDATA #IMPLIED">
+
+<!ELEMENT private (metadata?,CMP*,data)>
+<!ATTLIST private %privmatter;>
+
+<!ELEMENT code (metadata?,CMP*,input?,output?,effect?,data)>
+<!ATTLIST code %privmatter;>
+
+<!ELEMENT input (CMP*)>
+<!ATTLIST input %midmatter;>
+
+<!ELEMENT output (CMP*)>
+<!ATTLIST output %midmatter;>
+
+<!ELEMENT effect (CMP*)>
+<!ATTLIST effect %midmatter;>
+
+<!ELEMENT data ANY>
+<!ATTLIST data %midmatter;
+               href CDATA #IMPLIED>
+
+<!-- this element can be used in lieu of a comment, it is read by the style sheet,
+     (comments are not) and can therefore be transformed by them -->
+<!ELEMENT ignore ANY>
+<!ATTLIST ignore type NMTOKEN #IMPLIED
+                 comment CDATA #IMPLIED>
+
+
+<!ENTITY % crossrefmatter "crossref-symbol (no|yes|brackets|separator|lbrack|rbrack|all) 'yes'">
+
+<!ELEMENT presentation (use*)>
+<!ATTLIST presentation fixity NMTOKEN "prefix"
+                       parent (OMA|OMBIND|OMATTR) #IMPLIED
+                       lbrack CDATA "("
+                       rbrack CDATA ")"
+                       separator CDATA ","
+                       bracket-style (lisp|math) "math"
+		       mode CDATA #IMPLIED
+		       precedence NMTOKEN #IMPLIED
+		       %crossrefmatter;
+                       %idrefmatter;>
+<!-- currently recognized fixities are prefix|infix|postfix|assoc -->
+
+<!ELEMENT use ANY>
+<!ATTLIST use format NMTOKEN #REQUIRED
+              %langmatter;
+              requires CDATA #IMPLIED
+              larg-group CDATA #IMPLIED
+              rarg-group CDATA #IMPLIED
+              lbrack CDATA #IMPLIED
+              rbrack CDATA #IMPLIED
+              separator CDATA #IMPLIED
+              precedence NMTOKEN #IMPLIED
+	      crossref-symbol (no|yes|brackets|separator|lbrack|rbrack|all) "yes">
+
+<!-- the attributes in the <use> element overwrite those in the 
+     <presentation> element, therefore, they do not have defaults -->
+
+<!ENTITY % omdocitem "omtext|%mathitem;|%auxitem;|theory|omgroup|ref|ignore">
+<!ELEMENT omdoc (metadata,catalogue?,(%omdocitem;)*)>
+<!ATTLIST omdoc %idmatter;
+                type NMTOKEN "document"
+		catalogue CDATA #IMPLIED
+		version CDATA #IMPLIED>
+
+<!ELEMENT catalogue (loc)*>
+
+<!ELEMENT loc EMPTY>
+<!ATTLIST loc theory NMTOKEN #REQUIRED
+              omdoc CDATA #IMPLIED
+              cd CDATA #IMPLIED>
+<!-- omdoc attributes omdoc and cd are URIRefs pointing to the omdoc 
+     and/or the OpenMath content dictionary defining this theory -->
+
+
+<!-- Now, we come to the text elements, they are very simple, since they can include
+     arbitrary text and  markup -->
+
+
+<!ELEMENT omtext (metadata?,CMP+,FMP?)>
+<!ATTLIST omtext %idmatter;
+                 %rsmatter;>
+<!-- for/from point to some %omdocitem; -->
+
+<!ELEMENT CMP ANY>
+<!ATTLIST CMP format NMTOKEN "omtext"
+              %langmatter;>
+
+<!-- grouping defines the structure of a document-->
+
+<!ELEMENT omgroup (metadata?,(%omdocitem;)*)>
+<!ATTLIST omgroup type NMTOKEN "sequence"
+                  %idmatter;>
+<!-- best use one of the %rstype; there -->
+
+<!-- co-referencing  allows to use elements with an 
+     'id' attribute multiple times -->
+<!ELEMENT ref ANY>
+<!ATTLIST ref xref CDATA #IMPLIED
+   	      theory NMTOKEN #IMPLIED
+              name NMTOKEN #IMPLIED
+              mid NMTOKEN #IMPLIED
+              kind NMTOKEN #IMPLIED>
+
+<!-- =============== omdoc.dtd ends here  ==================== -->

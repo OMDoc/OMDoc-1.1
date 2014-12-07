@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="physical_consts1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary physical_consts1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2000-08-14 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/physical_consts1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> 
+    This CD defines symbols which represent some elementary physical constants.
+  </Description>
+</metadata>
+
+<theory id="physical_consts1">
+
+<imports id="physical_consts1-imports-setname1" from="setname1.omdoc#setname1"/>
+
+<symbol id="absolute_zero">
+  <CMP>
+    This symbol represents the absolute zero of temperature, synonymous
+    with the object of that temperature having zero latent heat.
+  </CMP>
+  <commonname>absolute zero</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="BaseValue"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="zero_Celsius">
+  <CMP>This symbol represents the zero of the Celsius temperature scale.</CMP>
+  <commonname>zero Celsius</commonname>
+  <type system="sts">
+    <OMOBJ><OMV name="BaseValue"/></OMOBJ>
+  </type>
+</symbol>
+<symbol id="zero_Fahrenheit">
+  <CMP>This symbol represents the zero of the Fahrenheit temperature scale.</CMP>
+  <commonname>zero Fahrenheit</commonname>
+  <type system="sts">
+    <OMOBJ><OMV name="BaseValue"/></OMOBJ>
+  </type>
+</symbol>
+<symbol id="light_year">
+  <CMP>
+    This symbol represents the distant for which a beam of light would
+    take a year to traverse, in a vacuum.
+  </CMP>
+  <commonname>light year</commonname>
+  <type system="sts">
+    <OMOBJ><OMS name="R" cd="setname1"/></OMOBJ>
+  </type>
+</symbol>
+<symbol id="speed_of_light">
+  <CMP>
+    This symbol represents the speed of light in a vacuum. It is
+    approximately 299792458 metres per second.
+  </CMP>
+  <commonname>speed of light</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="Planck_constant">
+  <CMP>
+    This symbol represents the fundamental constant equal to the ratio of
+    the energy of a quantum of energy to its frequency. It is
+    approximately equal to 6.6260755*10^(-34) +/- 4.0*10^(-40) Joule seconds.
+  </CMP>
+  <commonname>Planck constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="mole">
+  <CMP>
+    This symbol represents the number of atoms in one gramme of carbon(12).
+  </CMP>
+  <commonname>mole</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="Z" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="gravitational_constant">
+  <CMP>
+    This symbol represents the constant of proportionality in Newtons law
+    of universal gravitation which states; Two bodies attract each other
+    with equal and opposite forces; the magnitude of this force is
+    proportional to the product of the two masses and is also proportional
+    to the inverse square of the distance between the centers of mass of
+    the two bodies. It is approximately equal to: 6.672*10^(-11) Newton
+    square metres per kilogramme squared.
+  </CMP>
+  <commonname>gravitational constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="Avogadros_constant">
+  <CMP>
+    This symbol represents the number of atoms in 12 grammes of pure
+    carbon(12). It is approximately 6.0221367*10^(23) +/- 3.6*10^(17) per mole.
+  </CMP>
+  <commonname>Avogadros constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="Z" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="Faradays_constant">
+  <CMP>
+    This symbol represents the electric charge carried by one mole of
+    electrons. it is approximately 96485.309 +/- 0.029 Coulombs per mole.
+  </CMP>
+  <commonname>Faradays constant</commonname>
+</symbol>
+<symbol id="gas_constant">
+  <CMP>
+    This symbol represents the constant which is equal to the ratio of the
+    pressure times the volume and the temperature of an ideal gas. It is
+    approximately 8.31451 +/- 7.0*10^(-05) Joules per mole per Kelvin.
+  </CMP>
+  <commonname>gas constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="Loschmidt_constant">
+  <CMP>
+    This symbol represents the number of particles per unit volume of an
+    ideal gas at standard temperature and pressure. It is approximately
+    2.686763 * 10^(25) +/- 2.3 * 10^(20) per metre cubed. 
+  </CMP>
+  <commonname>Loschmidt constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="Z" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="magnetic_constant">
+  <CMP>
+    This symbol represents the ratio of the magnetic flux density in a
+    substance to the external field strength for vacuum. It is equal to 
+    4 pi x 10^(-7) H/m.
+  </CMP>
+  <commonname>magnetic constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="Boltzmann_constant">
+  <CMP>
+    A constant which describes the relationship between temperature and kinetic energy for
+    molecules in an ideal gas. It is approximately 1.380658*10^(-23)
+    +/- 1.2*10^(-28) Joules per Kelvin.
+  </CMP>
+  <commonname>Boltzmann constant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="R" cd="setname1"/>
+    </OMOBJ>
+  </type>
+</symbol>
+</theory>
+</omdoc>

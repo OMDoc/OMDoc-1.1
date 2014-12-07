@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="function_props2.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="function_props2-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56735" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56736" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56737" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T4" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56738" for="NIL" pto="pvs" pto-version="3.0" replaces="T4">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56739" for="function_props2" pto="pvs" pto-version="3.0" replaces="function_props2-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory function_props2
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="function_props2_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56740" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56741" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56742" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T4" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56743" for="NIL" pto="pvs" pto-version="3.0" replaces="T4">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="function_props2-import-parameters" from="function_props2-parameters"/>
+
+
+
+    <assertion id="assoc" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props2" name="T1"/>
+                    <OMS cd="function_props2" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props2" name="T2"/>
+                    <OMS cd="function_props2" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props2" name="T3"/>
+                    <OMS cd="function_props2" name="T4"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f3"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f3"/>
+                  <OMV name="f2"/>
+                </OMA>
+                <OMV name="f1"/>
+              </OMA>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMV name="f3"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f2"/>
+                  <OMV name="f1"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="assoc-1" for="assoc" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM 1 (f!1 g!1 h!1)) (( (EXPAND o) (( (PROPAX) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

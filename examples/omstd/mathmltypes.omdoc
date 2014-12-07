@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="mathmltypes-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary mathmltypes.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/mathmltypes.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds symbols denoting various types of numbers, vectors
+    and similar constructs. Principally these are required for
+    compatibility with MathML.
+  </Description>
+</metadata>
+
+<theory id="mathmltypes">
+
+<imports id="mathmltypes-imports-sts" from="sts.omdoc#sts"/>
+
+<symbol id="type">
+  <CMP>A symbol to be used within an OpenMath attribute to specify the type of
+    the object.</CMP>
+  <commonname>type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="attribution" cd="sts"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="type" xref="cc.omdoc#pr-type"/>
+<example id="type-ex-1" type="for" for="type">
+  <CMP>
+    The variable z is attributed with a type for complex numbers, to be
+    represented in polar notation.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="complex_polar_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="integer_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of an integer.
+  </CMP>
+  <commonname>integer type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="integer_type">
+  <use  format="Tex">{\mathbb Z}</use>
+  <use  format="html|pmml">&#x02124;</use>
+</presentation>
+<example id="integer_type-ex-1" type="for" for="integer_type">
+  <CMP>The variable z is attributed with a type for integers.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="integer_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="real_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of a real number.
+  </CMP>
+  <commonname>real type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="real_type">
+  <use format="TeX">{\bf R}</use>
+  <use format="html|pmml">&#x0211D;</use>
+</presentation>
+<example id="real_type-ex-1" type="for" for="real_type">
+  <CMP>The variable z is attributed with a type for real numbers.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="real_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="rational_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of a rational number.
+  </CMP>
+  <commonname>rational type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="rational_type">
+  <use  format="Tex">{\bf Q}</use>
+  <use  format="html|pmml">&#x0211A;</use>
+</presentation>
+<example id="rational_type-ex-1" type="for" for="rational_type">
+  <CMP>The variable z is attributed with a type for rational numbers.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="rational_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="complex_cartesian_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of a complex number specified in terms of its real and imaginary
+    parts.
+  </CMP>
+  <commonname>complex cartesian type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="complex_cartesian_type">
+  <use  format="Tex">{\bf C}</use>
+  <use  format="html|pmml">&#x02102;</use>
+</presentation>
+<example id="complex_cartesian_type-ex-1" type="for" for="complex_cartesian_type">
+  <CMP>
+    The variable z is attributed with a type for complex numbers represented in 
+    their Cartesian form.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="complex_cartesian_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="complex_polar_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of a complex number specified in terms of its modulus and argument.
+  </CMP>
+  <commonname>complex polar type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="complex_polar_type">
+  <use  format="Tex">{\bf C}</use>
+  <use  format="html|pmml">&#x02102;</use>
+</presentation>
+<example id="complex_polar_type-ex-1" type="for" for="complex_polar_type">
+  <CMP>
+    The variable z is attributed with a type for complex numbers represented in 
+    their polar form.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="complex_polar_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="constant_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey a
+    type for the common constants, pi ~= 3.1415, e ~= 2.718, i = square
+    root of -1, gamma ~= .5772, NaN, infinity (all in the nums cd), true
+    and false (in the logic cd). Also for MathML variables declared to
+    have type constant, as in &lt;ci type="constant"&gt;x&lt;/ci&gt;.
+  </CMP>
+  <commonname>constant type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="constant_type">
+  <use format="default">Const</use>
+</presentation>
+<example id="constant_type-ex-1" type="for" for="constant_type">
+  <CMP>The variable z is attributed with a type for constants.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="constant_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="vector_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type of a (column) vector, an n-tuple of entries.
+  </CMP>
+  <commonname>vector type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="vector_type">
+  <use format="default">Vectors</use>
+</presentation>
+<example id="vector_type-ex-1" type="for" for="vector_type">
+  <CMP>The variable z is attributed with a type for vectors.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="vector_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="list_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type for a list.
+  </CMP>
+  <commonname>list type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="list_type">
+  <use format="default">Lists</use>
+</presentation>
+<example id="list_type-ex-1" type="for" for="list_type">
+  <CMP>The variable z is attributed with a type for lists.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="list_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="set_type">
+  <CMP>A symbol to be used as the argument of the type symbol to convey the
+    type for a set.
+  </CMP>
+  <commonname>set type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="set_type">
+  <use format="default">Sets</use>
+</presentation>
+<example id="set_type-ex-1" type="for" for="set_type">
+  <CMP>The variable z is attributed with a type for sets.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="set_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="matrix_type">
+  <CMP>
+    A symbol to be used as the argument of the type symbol to convey the
+    type for a matrix (n tuple of rows, where each row is an m tuple for
+    some m, it should be noted that each row must be the same length).
+  </CMP>
+  <commonname>matrix type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="matrix_type">
+  <use format="default">Matrices</use>
+</presentation>
+<example id="matrix_type-ex-1" type="for" for="matrix_type">
+  <CMP>The variable z is attributed with a type for matrices.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="matrix_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="fn_type">
+  <CMP> 
+    A symbol to be used as the argument of the type symbol to convey the
+    type for a function name.
+  </CMP>
+  <commonname>fn type</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="fn_type">
+  <use format="default">Fns</use>
+</presentation>
+<example id="fn_type-ex-1" type="for" for="fn_type">
+  <CMP>The variable f is attributed to say it represents a function.</CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="mathmltypes" name="type"/>
+	<OMS cd="mathmltypes" name="fn_type"/>
+      </OMATP>
+      <OMV name="f"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

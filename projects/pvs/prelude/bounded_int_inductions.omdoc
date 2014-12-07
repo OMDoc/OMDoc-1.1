@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bounded_int_inductions.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="bounded_int_inductions-parameters">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56980" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56981" for="bounded_int_inductions" pto="pvs" pto-version="3.0" replaces="bounded_int_inductions-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bounded_int_inductions
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bounded_int_inductions_test">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56982" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bounded_int_inductions-import-parameters" from="bounded_int_inductions-parameters"/>
+
+
+
+    <assertion id="upfrom_induction_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&gt;="/>
+            <OMS cd="bounded_int_inductions" name="m"/>
+            <OMS cd="bounded_int_inductions" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upfrom_induction_TCC1-1" for="upfrom_induction_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="upfrom_induction_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pf"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="pf"/>
+                <OMS cd="bounded_int_inductions" name="m"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="upfrom"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jf"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMV name="pf"/>
+                    <OMV name="jf"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&gt;="/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="jf"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_int_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upfrom_induction_TCC2-1" for="upfrom_induction_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="upfrom_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pf"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="pf"/>
+                  <OMS cd="bounded_int_inductions" name="m"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="integers" name="upfrom"/>
+                          <OMS cd="bounded_int_inductions" name="m"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="jf"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMV name="pf"/>
+                      <OMV name="jf"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pf"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="jf"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="upfrom"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jf"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pf"/>
+                  <OMV name="jf"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upfrom_induction-1" for="upfrom_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA nat_induction)
+ (( (SKOSIMP*)
+   (( (INST -1 lambda (n:nat): (exists (i:int): (m <= i and n = i - m)) IMPLIES pf!1(n+m))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -1 jf!1-m) ((1 (ASSERT) ((1 (INST 1 jf!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+           NIL)
+          (2 (HIDE -1) ((2 (ASSERT) NIL NIL)) NIL)
+          (3 (SKOSIMP*)
+           ((3 (SPLIT)
+             ((1 (INST -5 j!1+m) ((1 (ASSERT) NIL NIL)) NIL)
+              (2 (INST 1 j!1+m) ((2 (ASSERT) NIL NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="UPFROM_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pf"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="upfrom"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jf"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="integers" name="upfrom"/>
+                            <OMS cd="bounded_int_inductions" name="m"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="kf"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="kf"/>
+                        <OMV name="jf"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pf"/>
+                        <OMV name="kf"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="pf"/>
+                    <OMV name="jf"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="upfrom"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jf"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pf"/>
+                  <OMV name="jf"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="UPFROM_induction-1" for="UPFROM_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA NAT_induction)
+   (( (INST -1 lambda (n:nat): (exists (i:int): (m <= i and n = i - m)) IMPLIES pf!1(n+m))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -1 jf!1-m)
+           ((1 (SPLIT) ((1 (ASSERT) NIL NIL) (2 (INST 1 jf!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+           NIL)
+          (2 (SKOSIMP*)
+           ((2 (INST -4 j!1+m)
+             ((2 (ASSERT)
+               ((2 (SKOSIMP*)
+                 ((2 (INST -1 kf!1-m)
+                   ((2 (ASSERT) ((2 (INST 1 kf!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+
+
+    <assertion id="above_induction_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&gt;"/>
+            <OMA>
+              <OMS cd="reals" name="+"/>
+              <OMS cd="bounded_int_inductions" name="m"/>
+              <OMI>1</OMI>
+            </OMA>
+            <OMS cd="bounded_int_inductions" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="above_induction_TCC1-1" for="above_induction_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="above_induction_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pa"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="pa"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMS cd="bounded_int_inductions" name="m"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="above"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="ja"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMV name="pa"/>
+                    <OMV name="ja"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&gt;"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="ja"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_int_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="above_induction_TCC2-1" for="above_induction_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="above_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pa"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="pa"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMS cd="bounded_int_inductions" name="m"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="integers" name="above"/>
+                          <OMS cd="bounded_int_inductions" name="m"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="ja"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMV name="pa"/>
+                      <OMV name="ja"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pa"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="ja"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="above"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="ja"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pa"/>
+                  <OMV name="ja"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="above_induction-1" for="above_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA nat_induction)
+   (( (INST -1 lambda (n:nat): (exists (i:int): (m < i and n = i - m)) IMPLIES pa!1(n+m))
+     ((1 (BETA)
+       ((1 (PROP)
+         ((1 (INST -1 ja!1-m) ((1 (ASSERT) ((1 (INST 1 ja!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+           NIL)
+          (2 (SKOSIMP*) ((2 (ASSERT) NIL NIL)) NIL)
+          (3 (SKOSIMP*)
+           ((3 (SPLIT)
+             ((1 (INST -5 j!1+m) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL)
+              (2 (INST 1 j!1+m) ((2 (ASSERT) NIL NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOSIMP*) ((2 (ASSERT) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ABOVE_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pa"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="above"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="ja"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="integers" name="above"/>
+                            <OMS cd="bounded_int_inductions" name="m"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="ka"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="ka"/>
+                        <OMV name="ja"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pa"/>
+                        <OMV name="ka"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="pa"/>
+                    <OMV name="ja"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="above"/>
+                        <OMS cd="bounded_int_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="ja"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pa"/>
+                  <OMV name="ja"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ABOVE_induction-1" for="ABOVE_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA NAT_induction)
+   (( (INST -1 lambda (n:nat): (exists (i:int): (m < i and n = i - m)) IMPLIES pa!1(n+m))
+     ((1 (BETA)
+       ((1 (PROP)
+         ((1 (INST -1 ja!1-m)
+           ((1 (SPLIT) ((1 (ASSERT) NIL NIL) (2 (INST 1 ja!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+           NIL)
+          (2 (SKOSIMP*)
+           ((2 (INST -4 j!1+m)
+             ((1 (ASSERT)
+               ((1 (SKOSIMP*)
+                 ((1 (INST -1 ka!1-m)
+                   ((1 (ASSERT) ((1 (INST 1 ka!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL))
+               NIL)
+              (2 (ASSERT) NIL NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOSIMP*) ((2 (ASSERT) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

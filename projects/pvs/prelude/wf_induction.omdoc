@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="wf_induction.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:19
+    </Date>
+  </metadata>
+  <theory id="wf_induction-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56681" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="orders" name="well_founded?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56682" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56683" for="wf_induction" pto="pvs" pto-version="3.0" replaces="wf_induction-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory wf_induction
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="wf_induction_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56684" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="orders" name="well_founded?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56685" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="wf_induction-import-parameters" from="wf_induction-parameters"/>
+    <assertion id="wf_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="wf_induction" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="wf_induction" name="T"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="wf_induction" name="&lt;"/>
+                        <OMV name="y"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="p"/>
+                        <OMV name="y"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="wf_induction" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="wf_induction-1" for="wf_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (SKOSIMP)
+   (( (TYPEPRED <)
+     (( (EXPAND well_founded?)
+       (( (INST -1 {z:T|NOT p!1(z)})
+         (( (ASSERT)
+           (( (SPLIT)
+             ((1 (SKOSIMP)
+               ((1 (INST -2 y!1)
+                 ((1 (SPLIT)
+                   ((1 (TYPEPRED y!1) ((1 (PROPAX) NIL NIL)) NIL)
+                    (2 (SKOSIMP) ((2 (INST -2 y!2) NIL NIL)) NIL))
+                   NIL))
+                 NIL))
+               NIL)
+              (2 (INST 1 x!1) NIL NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="stlc.omdoc">
+
+<metadata>
+ <Creator role="aut">Michael Kohlhase</Creator>
+ <Date action="created">20020612</Date>
+ <Title>The simply typed lambda calculus</Title>
+ <Rights>GPL</Rights>
+</metadata>
+
+
+  <omtext id="intro">
+    <CMP>This document contains and defines the simply typed lambda calculus.</CMP>
+  </omtext>
+
+<theory id="stlc">
+
+<imports id="stlc-imports-simple-types" from="simple-types"/>
+<imports id="stld-imports-lambda-calc" from="lambda-calc"/>
+</theory>
+</omdoc>

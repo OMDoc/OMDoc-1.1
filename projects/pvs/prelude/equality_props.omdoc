@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="equality_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:14
+    </Date>
+  </metadata>
+  <theory id="equality_props-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56575" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56576" for="equality_props" pto="pvs" pto-version="3.0" replaces="equality_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory equality_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="equality_props_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56577" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="equality_props-import-parameters" from="equality_props-parameters"/>
+
+
+
+
+    <assertion id="IF_true" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMS cd="booleans" name="TRUE"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="IF_true-1" for="IF_true" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="IF_false" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMS cd="booleans" name="FALSE"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+              <OMV name="y"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="IF_false-1" for="IF_false" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="IF_same" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="b"/>
+                <OMV name="x"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="IF_same-1" for="IF_same" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="reflexivity_of_equals" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMV name="x"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="reflexivity_of_equals-1" for="reflexivity_of_equals" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="transitivity_of_equals" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="y"/>
+                  <OMV name="z"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="x"/>
+                <OMV name="z"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="transitivity_of_equals-1" for="transitivity_of_equals" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (FLATTEN) (( (REPLACE -1) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="symmetry_of_equals" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="equality_props" name="T"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="y"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="symmetry_of_equals-1" for="symmetry_of_equals" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (FLATTEN) (( (REPLACE -1) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

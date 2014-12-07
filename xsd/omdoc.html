@@ -1,0 +1,3211 @@
+<xhtml xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <title> Schema version </title>
+   </head>
+   <body style="font:sans-serif;">
+      <h2> Schema version </h2>
+      <h3>Notation and color conventions of this schema representation:</h3>
+      <div>a choice: [x y z] ; a sequence: (x y z) ; (* x,y) is the same as the dtd-like notation (x,y)*</div>
+      <div>Colours used: <span style="font-weight:bold; color:darkblue">{type declarations}</span>;  <span style="font-weight:normal; color:darkred">element names</span>; <span style="font-weight:normal; color:darkgreen">attribute names</span>; <span style="font-weight:normal; color:blue">restriction/extension facets</span>; <a style="font-weight:bold" href="#">{links to type definitions}</a>; <span style="font-weight:normal; color:black">comments</span>; 
+      </div>
+      <div>an extension of a type is {&lt;&lt;type&gt;&gt;} ; and a restriction to it, is : {&gt;&gt;type&lt;&lt;}
+         
+      </div>
+      <p>
+         An XML Schema for the OMDoc format (OpenMath Documents) version 1.1
+         Initial Version: Michael Kohlhase 2000-09-07
+         URL: http://www.mathweb.org/omdoc/omdoc.xsd (released)
+         URL: http://www.mathweb.org/src/mathweb/omdoc/xsd/omdoc.xsd (experimental)
+         This Schema is still experimental, it is intended as a basis for discussion.
+         Comments are welcome! (send mail to kohlhase@mathweb.org)
+         See the documentation and examples at http://www.mathweb.org/omdoc
+         (c) 2000-2002 Michael Kohlhase, released under the GNU Public License
+             
+      </p>
+      <h3>Imported schemata:</h3>
+      <div><a href="omdobj.xsd">omdobj.xsd</a>
+         							from namespace 
+         							<span style="font-weight:bold;">http://www.openmath.org/OpenMath</span></div>
+      <div><a href="dcomdoc.xsd">dcomdoc.xsd</a>
+         							from namespace 
+         							<span style="font-weight:bold;">http://purl.org/DC</span></div>
+      <h3>Global Elements:</h3>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">omdoc</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	The top-level OMDoc element.</span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">catalogue</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                   <span style="font-weight:normal; color:black">	
+                                       The catalogue is an OMDoc element that provides an association between CD
+                                       names in the symbols used in this document and URIs, where they can be
+                                       found. The (full) catalogue of the current OMDoc is computed as the
+                                       catalogue of the OMDoc at the URI specified by the 'catalogue' attribute,
+                                       and then extending that by the local catalogue, where the latter takes
+                                       precedence over the external one.
+                                      </span>
+                                   </span><ul>
+                           <li>
+                              <div style="font-weight:bold; color:darkblue">(</div>
+                                       
+                              <ul>
+                                 <li>&lt;<span style="font-weight:normal; color:darkred;">loc</span>&gt;
+                                    			+	<span style="font-weight:bold; color:darkblue"></span><ul>
+                                       <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                                             				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+                                       <li><span style="font-weight:normal; color:darkgreen;">omdoc : 
+                                             				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                                      
+                              <div style="font-weight:bold; color:darkblue">)</div>
+                           </li>
+                        </ul>
+                        <ul></ul>
+                     </li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[+	</div>
+                               
+                        <ul>
+                           <li> <a href="#d0e439">{omdocitem}</a></li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e200">{omgrouptype}</a></span></span></li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">catalogue : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          This attribute specifies where an external catalogue can be found. It is
+                          the catalogue specified in 'omdoc/catalogue' at the URI specified here. 
+                         </span>
+                     
+            </li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">version : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          This attribute specifies version of OMDoc the document claims to be. It is
+                          fixed to '1.1' in the schema as a sanity check.
+                         </span>
+                     
+            </li>
+                 
+            <ul>
+               <li> <a href="#d0e41">{omdocns}</a></li>
+            </ul>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">omtext</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      An OMdoc element that contains (multilingual, explanatory) text elements.
+                      The CMP (Commented Mathematical Properties) contain the actual text. They
+                      are indexed by the 'lang' attribute, which has to be unique in the omtext
+                      element. 
+                      The FMP elements can be used to give formal logical representations of the
+                      text where possible. 
+                    </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			+	<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">for : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          Some types need a relation to another OMDoc element, this attribute points
+                          to it.
+                         </span>
+                     
+            </li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"> <a href="#d0e70">{inCMPtype}</a></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      An OMdoc element for Commented Mathematical Properties. It contains text
+                      mixed with mathematical formulae. CMPs usually occur in multilingual
+                      groups inside parent elements and are indexed by the 'lang' attribute,
+                      which has to be unique in the parent element.
+                     </span>
+                 </span></li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">with</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      An OMdoc element that identifies a text passage and allows to attatch style to
+                      it.
+                     </span>
+                 </span><ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[*</div>
+                      
+                  <ul>
+                     <li> <a href="#d0e52">{inCMP}</a></li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e41">{omdocns}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">id : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:ID}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">style : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">omgroup</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      This element is used for specifying hierarchical document structure. Note that
+                      since the 'ref' element is an 'omdocitem', the structure can also be
+                      specified as a hierarchical structure of links over a flat database of
+                      terminal OMDoc elements. In particular, it is possible to specify multiple
+                      document structures over the same database.
+                     </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[*</div>
+                        
+                  <ul>
+                     <li> <a href="#d0e459">{intheoryitem}</a></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e200">{omgrouptype}</a></span></span></li>
+                 
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">ref</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      A general reference to an OMDoc element. This can be referenced by 
+                      - an explict URI, in the 'xref' attribute,
+                      - a pair of a theory and a name (id there) using the 'theory' and 'name'
+                        attributes like OpenMath symbols. 
+                     </span>
+                 </span><ul>
+               <li><span style="font-weight:normal; color:darkgreen;">xref : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">type : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     A symbol declaration in OMDoc
+                    </span>
+                </span>
+               <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                       
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[*</div>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">type</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">selector</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                             
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                      
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                
+            <ul>
+               <li> <a href="#d0e338">{insymbolmatter}</a></li>
+            </ul>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">generated-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+               
+              
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"> <a href="#d0e70">{inCMPtype}</a></span></li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">type</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                      
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[</div>
+                        <ul>
+                           <li> <a href="#d0e27">{mobj}</a></li>
+                        </ul>
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e114">{idimatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">system : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      An FMP is a "Formal Mathematical Property" (name taken from OpenMath
+                      CDs). Concretely, it is either an OpenMath Object or a Natural Deduction
+                      sequent A1,...,An |- C, i.e. a set {A1,...,An} of assumptions and a conclusion
+                      C. The meaning of this is that the sequent A1,...,An |- C asserts that C can
+                      be proven from {A1,...,An}.
+                     </span>
+                 </span><ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[</div>
+                      
+                  <ul>
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">(</div>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">assumption</span>&gt;
+                              			+	<span style="font-weight:bold; color:darkblue"> <a href="#d0e726">{simple-assertion}</a></span></li>
+                        </ul>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">conclusion</span>&gt;
+                              			+	<span style="font-weight:bold; color:darkblue"> <a href="#d0e726">{simple-assertion}</a></span></li>
+                        </ul>
+                            
+                        <div style="font-weight:bold; color:darkblue">)</div>
+                     </li>
+                  </ul>
+                      
+                  <ul>
+                     <li> <a href="#d0e27">{mobj}</a></li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e88">{midmatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">logic : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">axiom</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"> <a href="#d0e773">{cfmg}</a></span></li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">definition</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[?</div>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">requation</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">om:OMOBJ</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">just-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e312">{definitionType}</a></span></span></li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">generated-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">requation</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">pattern</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"></span><ul>
+                           <li>
+                              <div style="font-weight:bold; color:darkblue">(</div>
+                                     
+                              <ul>
+                                 <li>&lt;<span style="font-weight:normal; color:darkred;">om:OMOBJ</span>&gt;
+                                    			<span style="font-weight:bold; color:darkblue"></span></li>
+                              </ul>
+                                    
+                              <div style="font-weight:bold; color:darkblue">)</div>
+                           </li>
+                        </ul>
+                        <ul></ul>
+                     </li>
+                  </ul>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">value</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"></span><ul>
+                           <li>
+                              <div style="font-weight:bold; color:darkblue">(</div>
+                                     
+                              <ul>
+                                 <li>&lt;<span style="font-weight:normal; color:darkred;">om:OMOBJ</span>&gt;
+                                    			<span style="font-weight:bold; color:darkblue"></span></li>
+                              </ul>
+                                    
+                              <div style="font-weight:bold; color:darkblue">)</div>
+                           </li>
+                        </ul>
+                        <ul></ul>
+                     </li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e114">{idimatter}</a></li>
+            </ul>
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">adt</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                      adts are abstract data types, they are short forms for 
+                      groups of symbols and their definitions, therefore, 
+                      they have much the same attributes.
+                    </span>
+                </span>
+               <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                       
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">sortdef</span>&gt;
+                        			+	<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                      
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"></span></span><ul>
+                  <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+                        		xs:string
+                        		}&lt;&lt;</span>
+                            
+                            
+                            
+                           
+                     <ul>
+                        <li style="font-weight:normal; color:blue">free</li>
+                     </ul>
+                     <ul>
+                        <li style="font-weight:normal; color:blue">generated</li>
+                     </ul>
+                     <ul>
+                        <li style="font-weight:normal; color:blue">loose</li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+               
+              
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">sortdef</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                      
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[*</div>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">insort</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><ul>
+                                 <li><span style="font-weight:normal; color:darkgreen;">for : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{IDREF}</a></span></span></li>
+                              </ul>
+                           </li>
+                        </ul>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">constructor</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                           
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                           
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">argument</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span><ul>
+                                             <li>
+                                                <div style="font-weight:bold; color:darkblue">(</div>
+                                                          
+                                                <ul>
+                                                   <li>&lt;<span style="font-weight:normal; color:darkred;">selector</span>&gt;
+                                                      			?<span style="font-weight:bold; color:darkblue"></span><ul>
+                                                         <li>
+                                                            <div style="font-weight:bold; color:darkblue">(</div>
+                                                                         
+                                                            <ul>
+                                                               <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                                                                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                                            </ul>
+                                                                        
+                                                            <div style="font-weight:bold; color:darkblue">)</div>
+                                                         </li>
+                                                      </ul>
+                                                      <ul>
+                                                         <li> <a href="#d0e338">{insymbolmatter}</a></li>
+                                                      </ul>
+                                                      <ul>
+                                                         <li><span style="font-weight:normal; color:darkgreen;">total : 
+                                                               				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e897">{yesnoType}</a></span></span></li>
+                                                      </ul>
+                                                   </li>
+                                                </ul>
+                                                         
+                                                <div style="font-weight:bold; color:darkblue">)</div>
+                                             </li>
+                                          </ul>
+                                          <ul>
+                                             <li> <a href="#d0e338">{insymbolmatter}</a></li>
+                                          </ul>
+                                          <ul>
+                                             <li><span style="font-weight:normal; color:darkgreen;">sort : 
+                                                   				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{anyURI}</a></span></span></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                           
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">recognizer</span>&gt;
+                                          			?<span style="font-weight:bold; color:darkblue"></span><ul>
+                                             <li>
+                                                <div style="font-weight:bold; color:darkblue">(</div>
+                                                          
+                                                <ul>
+                                                   <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                                                      			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                                </ul>
+                                                         
+                                                <div style="font-weight:bold; color:darkblue">)</div>
+                                             </li>
+                                          </ul>
+                                          <ul>
+                                             <li> <a href="#d0e338">{insymbolmatter}</a></li>
+                                          </ul>
+                                          <ul></ul>
+                                       </li>
+                                    </ul>
+                                          
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                              <ul></ul>
+                           </li>
+                        </ul>
+                           
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">scope : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e328">{glolocType}</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">assertion</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      The OMDoc element for all kinds of mathematical assertions irrespective of
+                      what is known about them (this is specified by the 'type' attribute). If an
+                      assertion is a 'theorem' or 'lemma' or a 'conjecture' then there has to be
+                      evidence of a 'proof' for it. Traditionally a 'theorem' is more important than a
+                      'lemma' in some respect), and a 'corollary' has a "simple" proof from another
+                      assertion.
+                     </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e773">cfmg</a>
+               		}&gt;&gt;</span>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e286">{assertiontype}</a></span></span></li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">proofs : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e366">{listOfanyURI}</a></span></span>
+                      <span style="font-weight:normal; color:black">	
+                          This points to a list of proofs or counter-examples (the latter only if
+                          the 'type' is false-conjecture) that support or discount this assertion.
+                         </span>
+                     
+            </li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">alternative</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                       An alternative formulation of a definition or assertion. The attributes 
+                       just-by, points to the theorem justifying well-definedness
+                       entailed-by, entails, point to other (equivalent definitions
+                       entailed-by-thm, entails-thm point to the theorems justifying
+                       the entailment relation.
+                    </span>
+                </span>
+               <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                       
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[</div>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">requation</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                              
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">om:OMOJB</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                             
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                      
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e312">{definitionType}</a></span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">generated-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">just-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">entailed-by : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">entails : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">entailed-by-thm : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">entails-thm : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+               
+              
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">proof</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[*</div>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">metacomment</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                 	 <span style="font-weight:normal; color:black">	
+                                              This element can be used for annotating explanatory text in proofs that
+                                              does not have direct argumentative character.
+                                             </span>
+                                 	</span>
+                              	  <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+                                 		<a href="#d0e114">idimatter</a>
+                                 		}&gt;&gt;</span>
+                              	   
+                              <ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                    	    
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                    	   
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                              	  
+                              	 
+                              <ul></ul>
+                           </li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">hypothesis</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                          <span style="font-weight:normal; color:black">	
+                                              A hypothesis is a local assumption in a proof it has to be discharged
+                                              before the proof is complete. The 'discharged-in' attribute points to
+                                              the proof step (a 'derive' or 'conclude' element) that discharges it.
+                                             </span>
+                                         </span><ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                                          			?<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                             
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                              <ul>
+                                 <li> <a href="#d0e99">{idmatter}</a></li>
+                              </ul>
+                              <ul>
+                                 <li><span style="font-weight:normal; color:darkgreen;">discharged-in : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                                               <span style="font-weight:normal; color:black">	
+                                                   This attribute points to the 'derive' or 'conclude' element
+                                                   that discharges this hypothesis. The intended semantics is that the
+                                                   hypothesis will be local in the subtree rooted at that.
+                                                  </span>
+                                              
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">derive</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span>
+                                        <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+                                 		<a href="#d0e1191">concludeType</a>
+                                 		}&gt;&gt;</span>
+                                         
+                              <ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                                
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                                          			?<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                               
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                                        
+                                       
+                              <ul></ul>
+                           </li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">conclude</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"> <a href="#d0e1191">{concludeType}</a></span></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                 
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">proofobject</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#">cm</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[</div>
+                        <ul>
+                           <li> <a href="#d0e27">{mobj}</a></li>
+                        </ul>
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">example</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[?</div>
+                        <ul>
+                           <li> <a href="#d0e27">{mobj}</a></li>
+                        </ul>
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"></span></span><ul>
+                  <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+                        		xs:string
+                        		}&lt;&lt;</span>
+                             
+                             
+                            
+                     <ul>
+                        <li style="font-weight:normal; color:blue">against</li>
+                     </ul>
+                     <ul>
+                        <li style="font-weight:normal; color:blue">for</li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+                 
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">assertion : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">theory</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	An OMdoc element for mathematical theories.</span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e224">withmeta</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">commonname</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[*</div>
+                               
+                        <ul>
+                           <li> <a href="#d0e459">{intheoryitem}</a></li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e99">{idmatter}</a></li>
+            </ul>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">imports</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      The parent theory this one inherits from. The import can be global or
+                      local. In the first case, only the axioms explicitly declared in the
+                      parent theory are imported, otherwise axioms from all ancestors are
+                      imported. 
+                  
+                      In general theory inheritance (via 'import') can be done modulo a
+                      so-called theory morphism. This is a mapping that maps symbols in the
+                      current theory to expressions in the 'from' theory, implicitly defining
+                      them in terms of the 'from' theory. Note that the symbols in the domain
+                      of the morphism have to be visible in the current theory (either
+                      explicitly declared by a 'symbol' element or imported from another
+                      theory).
+                  
+                      Symbols are imported verbatim (keeping their home theory/CD) from the
+                      parent theory and are available in the new theory unless mentioned in
+                      the 'hiding' attribute, or they are in the domain of the 'morphism'
+                      defined in the import element. 
+                     </span>
+                 </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">morphism</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e142">{frommatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">hiding : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e366">{listOfanyURI}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">type : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e328">{glolocType}</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">morphism</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">requation</span>&gt;
+                        			*<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e114">{idimatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">base : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                       <span style="font-weight:normal; color:black">	
+                           A morphism can be defined by extension. This points to another morphism
+                           this one extends by overwriting in the 'mapsto' elements.
+                          </span>
+                      
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">inclusion</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li> <a href="#d0e88">{midmatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">via : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                       <span style="font-weight:normal; color:black">	
+                           this attribute points to a 'theory-inclusion' element that is necessary to
+                           hold for this to be meaningful.
+                          </span>
+                      
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">theory-inclusion</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e266">cfm</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">morphism</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e155">{fromtomatter}</a></li>
+            </ul>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">decomposition</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">links : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e366">{listOfanyURI}</a></span></span>
+                       <span style="font-weight:normal; color:black">	
+                           This points to a list of 'axiom-inclusions' and 'theory-inclusions' 
+                           whose 'morphisms' compose to the overall morphism.
+                          </span>
+                      
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">axiom-inclusion</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      An axiom-inclusion is a local theory inclusion. The target theory includes the
+                      axioms and definitions of the source theory (possibly translated by the
+                      morphism).
+                     </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e266">cfm</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">morphism</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[</div>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">path-just</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                          <span style="font-weight:normal; color:black">	
+                                              A justification of an axiom inclusion in form of an inclusion path; this
+                                              of local and global theory inclusions whose morphisms compose to this
+                                              morphism.
+                                             </span>
+                                         </span><ul>
+                                 <li> <a href="#d0e88">{midmatter}</a></li>
+                              </ul>
+                              <ul>
+                                 <li><span style="font-weight:normal; color:darkgreen;">local : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                                               <span style="font-weight:normal; color:black">	
+                                                   This points to an 'axiom-inclusion', that serves as the local part
+                                                   of the path.
+                                                  </span>
+                                              
+                                 </li>
+                                 <li><span style="font-weight:normal; color:darkgreen;">globals : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e366">{listOfanyURI}</a></span></span>
+                                               <span style="font-weight:normal; color:black">	
+                                                   This points ot a list of global theory inclusions that form the
+                                                   global part of the path.
+                                                  </span>
+                                              
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">obligation</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                          <span style="font-weight:normal; color:black">	
+                                              A justification of an axiom inclusion in form of an assertions.
+                                             </span>
+                                         </span><ul>
+                                 <li> <a href="#d0e88">{midmatter}</a></li>
+                              </ul>
+                              <ul>
+                                 <li><span style="font-weight:normal; color:darkgreen;">assertion : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                                               <span style="font-weight:normal; color:black">	
+                                                   This points to an assertion that is the proof obligation in duced by
+                                                   the theory assumption specified in the 'induced-by' attribute.
+                                                  </span>
+                                              
+                                 </li>
+                                 <li><span style="font-weight:normal; color:darkgreen;">induced-by : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                                               <span style="font-weight:normal; color:black">	
+                                                   The axiom or definition that generates this proof obligation.
+                                                  </span>
+                                              
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e155">{fromtomatter}</a></li>
+            </ul>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">exercise</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e266">cfm</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">hint</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[</div>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">solution</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                               
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">mc</span>&gt;
+                              			*<span style="font-weight:bold; color:darkblue"></span><ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                                          			*<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">choice</span>&gt;
+                                          			<span style="font-weight:bold; color:darkblue"> <a href="#d0e266">{cfm}</a></span></li>
+                                    </ul>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">hint</span>&gt;
+                                          			?<span style="font-weight:bold; color:darkblue"></span></li>
+                                    </ul>
+                                              
+                                    <ul>
+                                       <li>&lt;<span style="font-weight:normal; color:darkred;">answer</span>&gt;
+                                          			<span style="font-weight:bold; color:darkblue"></span>
+                                                       <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+                                             		<a href="#d0e266">cfm</a>
+                                             		}&gt;&gt;</span>
+                                                        
+                                          <li><span style="font-weight:normal; color:darkgreen;">verdict : 
+                                                				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e907">{truefalseType}</a></span></span></li>
+                                                       
+                                                      
+                                          <ul></ul>
+                                       </li>
+                                    </ul>
+                                             
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                              <ul>
+                                 <li> <a href="#d0e114">{idimatter}</a></li>
+                              </ul>
+                              <ul></ul>
+                           </li>
+                        </ul>
+                              
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#d0e129">{idrefmatter}</a></li>
+            </ul>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">hint</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"> <a href="#d0e266">{cfm}</a></span></li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">solution</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#">cm</a>
+               		}&gt;&gt;</span>
+                 
+            <ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">proof</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+                 
+            <ul>
+               <li> <a href="#">{idirefmatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">for : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">omlet</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	The OMDoc equivalent of an applet.</span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e70">inCMPtype</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li> <a href="#d0e114">{idimatter}</a></li>
+            </ul>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">action : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          Specifies the action to be taken when the 'omlet' is activated
+                         </span>
+                     
+            </li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">type : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span>
+                      <span style="font-weight:normal; color:black">	Specifies the type of omlet.</span>
+                     
+            </li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">data : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          A URIref to data in a private element.
+                         </span>
+                     
+            </li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">argstr : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          A string of arguments supplied to the 'function'
+                         </span>
+                     
+            </li>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">function : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                           An URIref, points to a 'code' element
+                         </span>
+                     
+            </li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">width : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:nonNegativeInteger}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">height : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:nonNegativeInteger}</span></span></li>
+                
+            <ul>
+               <li> <a href="#d0e41">{omdocns}</a></li>
+            </ul>
+               
+              
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">private</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      This element provides space for application-specific (and domain-specific)
+                      data that does not (yet) fit into the OMDoc framework.
+                     </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e1690">privType</a>
+               		}&gt;&gt;</span>
+                 
+            <li><span style="font-weight:normal; color:darkgreen;">replaces : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+                      <span style="font-weight:normal; color:black">	
+                          A URIref to the omdoc elements that are replaced by the system-specific 
+                          information in this element
+                         </span>
+                     
+            </li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">code</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      This element provides space for application-specific (and domain-specific)
+                      program code. The 'input', 'output', 'effect' elements can be used specify the
+                      input/output behaviour and the side-effects of the program.
+                     </span>
+                 </span>
+                <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+               		<a href="#d0e1690">privType</a>
+               		}&gt;&gt;</span>
+                 
+            <ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">input</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"> <a href="#d0e1819">{docType}</a></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">output</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"> <a href="#d0e1819">{docType}</a></span></li>
+                  </ul>
+                        
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">effect</span>&gt;
+                        			?<span style="font-weight:bold; color:darkblue"> <a href="#d0e1819">{docType}</a></span></li>
+                  </ul>
+                       
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">classid : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+                
+            <li><span style="font-weight:normal; color:darkgreen;">codebase : 
+                  				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                
+               
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">ignore</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      <span style="font-weight:bold;">any</span>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">type : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">comment : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">presentation</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                  <span style="font-weight:normal; color:black">	
+                      The element to declare the intended presentation of an OMDoc symbol. The 'for'
+                      attribute specifies for which symbol this is. 
+                     </span>
+                 </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                      
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[+	</div>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">use</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul> 
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">xslt</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                             
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">style</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e1926">{stylematter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">for : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">parent : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1892">{parentType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">fixity : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1872">{fixityType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">lbrack : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">rbrack : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">separator : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">bracket-style : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1910">{bstyleType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">precedence : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:positiveInteger}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">crossref-symbol : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1846">{crossrefType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">theory : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">use</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     The use element gives the presentation information for the presentation
+                     medium specified in the 'format' attribute.
+                    </span>
+                </span><ul>
+               <li> <a href="#d0e1933">{formatmatter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">bracket-style : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1910">{bstyleType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">fixity : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1872">{fixityType}</a></span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">lbrack : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">rbrack : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">larg-group : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">rarg-group : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">separator : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">element : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">crossref-symbol : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e1846">{crossrefType}</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">omstyle</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     This element allows to specify presentation information for OMDoc elements.
+                    </span>
+                </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                     
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[+	</div>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">use</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul> 
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">xslt</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">style</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                           
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                    
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e1926">{stylematter}</a></li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">for : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+               <li><span style="font-weight:normal; color:darkgreen;">element : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">xslt</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     The 'xslt' element allows to specify XSLT templates for the presentation
+                     medium specified in the 'format' attribute.
+                    </span>
+                </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                     <span style="font-weight:bold;">any</span>
+                    
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e1933">{formatmatter}</a></li>
+            </ul>
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">style</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     This element allows to specify presentation information in a simplified declarative fragment of XSLT. 
+                    </span>
+                </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                     
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[+	</div>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">element</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">text</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">recurse</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">value-of</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                           
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                    
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li> <a href="#d0e1933">{formatmatter}</a></li>
+            </ul>
+            <ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">element</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     Simplified declarative version of the xsl:element element for OMDoc presentation. 
+                    </span>
+                </span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                     
+                  <ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[+	</div>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">attribute</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                                       <span style="font-weight:normal; color:black">	
+                                           Simplified declarative version of the xsl:attribute element for OMDoc presentation. 
+                                          </span>
+                                      </span><ul>
+                                 <li>
+                                    <div style="font-weight:bold; color:darkblue">(</div>
+                                           
+                                    <ul style="font-weight:bold; color:darkblue">
+                                       <li>
+                                          <div style="font-weight:bold; color:darkblue">[*</div>
+                                                  
+                                          <ul>
+                                             <li>&lt;<span style="font-weight:normal; color:darkred;">value-of</span>&gt;
+                                                			<span style="font-weight:bold; color:darkblue"></span></li>
+                                          </ul>
+                                                  
+                                          <ul>
+                                             <li>&lt;<span style="font-weight:normal; color:darkred;">text</span>&gt;
+                                                			<span style="font-weight:bold; color:darkblue"></span></li>
+                                          </ul>
+                                                 
+                                          <div style="font-weight:bold; color:darkblue">]</div>
+                                       </li>
+                                    </ul>
+                                          
+                                    <div style="font-weight:bold; color:darkblue">)</div>
+                                 </li>
+                              </ul>
+                              <ul>
+                                 <li><span style="font-weight:normal; color:darkgreen;">name : 
+                                       				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+                              </ul>
+                           </li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">element</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">text</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">recurse</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                            
+                        <ul>
+                           <li>&lt;<span style="font-weight:normal; color:darkred;">value-of</span>&gt;
+                              			<span style="font-weight:bold; color:darkblue"></span></li>
+                        </ul>
+                           
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                    
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul>
+               <li><span style="font-weight:normal; color:darkgreen;">name : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">text</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     Simplified declarative version of the xsl:text element for OMDoc presentation. 
+                    </span>
+                </span><ul></ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">value-of</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     Simplified declarative version of the xsl:value-of element for OMDoc presentation. 
+                    </span>
+                </span><ul>
+               <li><span style="font-weight:normal; color:darkgreen;">select : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{xpathType}</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">recurse</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                 <span style="font-weight:normal; color:black">	
+                     Simplified declarative version of the xsl:apply-templates element for OMDoc presentation. 
+                    </span>
+                </span><ul>
+               <li><span style="font-weight:normal; color:darkgreen;">select : 
+                     				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{xpathType}</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+      <ul>
+         <li>&lt;<span style="font-weight:normal; color:darkred;">math</span>&gt;
+            			<span style="font-weight:bold; color:darkblue"></span><ul>
+               <li>
+                  <div style="font-weight:bold; color:darkblue">(</div>
+                     <span style="font-weight:bold;">any</span>
+                    
+                  <div style="font-weight:bold; color:darkblue">)</div>
+               </li>
+            </ul>
+            <ul></ul>
+         </li>
+      </ul>
+      <h3>Global Types:</h3>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e266">cfm</a> :
+         				
+      </p>
+         <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+         		<a href="#d0e224">withmeta</a>
+         		}&gt;&gt;</span>
+          
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+                 
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+                 
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+                 
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                  			?<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+                
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+          
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+         
+        
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e773">cfmg</a> :
+         				
+      </p>
+         <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+         		<a href="#d0e266">cfm</a>
+         		}&gt;&gt;</span>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">generated-by : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+         
+        
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e1191">concludeType</a> :
+         				
+      </p>
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">method</span>&gt;
+                  			?<span style="font-weight:bold; color:darkblue"></span><ul>
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">(</div>
+                              
+                        <ul style="font-weight:bold; color:darkblue">
+                           <li>
+                              <div style="font-weight:bold; color:darkblue">[*</div>
+                                     
+                              <ul>
+                                 <li> <a href="#d0e27">{mobj}</a></li>
+                              </ul>
+                                    
+                              <div style="font-weight:bold; color:darkblue">]</div>
+                           </li>
+                        </ul>
+                             
+                        <div style="font-weight:bold; color:darkblue">)</div>
+                     </li>
+                  </ul>
+                  <ul>
+                     <li><span style="font-weight:normal; color:darkgreen;">xref : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                  </ul>
+               </li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">premise</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span><ul>
+                     <li><span style="font-weight:normal; color:darkgreen;">xref : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                     <li><span style="font-weight:normal; color:darkgreen;">rank : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:nonNegativeInteger}</span></span>
+                               <span style="font-weight:normal; color:black">	
+                                   The rank of a premise specifies its importance in the inference rule. 
+                                   Rank 0 (the default) is a real premise, whereas positive rank signifies 
+                                   sideconditions of varying degree.
+                                  </span>
+                              
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+               
+            <ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[?</div>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">proof</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                      
+                  <ul>
+                     <li>&lt;<span style="font-weight:normal; color:darkred;">proofobject</span>&gt;
+                        			<span style="font-weight:bold; color:darkblue"></span></li>
+                  </ul>
+                     
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e1819">docType</a> :
+         				
+      </p>
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">FMP</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+      <ul>
+         <li> <a href="#d0e88">{midmatter}</a></li>
+      </ul>
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e70">inCMPtype</a> :
+         				<span> {free text}</span><span style="font-weight:normal; color:black;">
+              <span style="font-weight:normal; color:black">	
+                  The type of n OMdoc element that contains mathematical vernacular, 
+                  i.e. natural language interspersed with mathematical formulae, 
+                  applets and styled fragments.
+                 </span>
+             </span></p>
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[*</div>
+               
+            <ul>
+               <li> <a href="#d0e52">{inCMP}</a></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+      <ul>
+         <li> <a href="#d0e88">{midmatter}</a></li>
+      </ul>
+      <ul>
+         <li><span style="font-weight:normal; color:darkgreen;">xml:lang : 
+               				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{language}</a></span></span></li>
+      </ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e995">mmobj</a> :
+         				
+      </p>
+         <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+         		<a href="#d0e88">midmatter</a>
+         		}&gt;&gt;</span>
+          
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+                 
+            <ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[</div>
+                  <ul>
+                     <li> <a href="#d0e27">{mobj}</a></li>
+                  </ul>
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+                
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+         
+        
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e1690">privType</a> :
+         				<span style="font-weight:normal; color:black;">
+               <span style="font-weight:normal; color:black">	
+                   The attributes of ``private'' elements `private' and `code'. They provide space for
+                   application-specific (and domain-specific) data that does not (yet) fit into
+                   the OMDoc framework in the 'data' element. This allows the OMDoc format to act
+                   as the sole repository format for mathematical services.
+                  </span>
+              </span></p>
+         <span style="font-weight:bold; color:darkblue">&lt;&lt;{
+         		<a href="#d0e224">withmeta</a>
+         		}&gt;&gt;</span>
+          
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+                 
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">data</span>&gt;
+                  			+	<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                            <span style="font-weight:normal; color:black">	
+                                The container for application- and domain-specific data. This can either
+                                be a URI (specified in the 'href' attribute) to an external file (of type
+                                'type') or directly in the element. If the data are XML, then a the usual
+                                namespace ('xmlns' attribute) and shema ('xsi:schemaLocation', 'xsi:type',
+                                etc) can be used to further enable validation.
+                               </span>
+                           </span><ul>
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">(</div>
+                                <span style="font-weight:bold;">any</span>
+                               
+                        <div style="font-weight:bold; color:darkblue">)</div>
+                     </li>
+                  </ul>
+                  <ul>
+                     <li> <a href="#d0e88">{midmatter}</a></li>
+                  </ul>
+                  <ul>
+                     <li><span style="font-weight:normal; color:darkgreen;">format : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+                     <li><span style="font-weight:normal; color:darkgreen;">href : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                     <li><span style="font-weight:normal; color:darkgreen;">size : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{unsignedLong}</a></span></span></li>
+                  </ul>
+               </li>
+            </ul>
+                
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+          
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">for : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+               <span style="font-weight:normal; color:black">	
+                   Allows to attatch the private information to a particular OMDoc element
+                  </span>
+              
+      </li>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">theory : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">pto : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKENS}</span></span></li>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">pto-versions : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKENS}</span></span></li>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">requires : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span>
+               <span style="font-weight:normal; color:black">	
+                   This attribute allows to specify dependency relations among data
+                   chunks. For instance if the data is program code that an application needs
+                   to load, then this code may call other functions that are defined elsewhere
+                   and need to be made accessible to the application in order to function
+                   properly.
+                  </span>
+              
+      </li>
+          
+      <li><span style="font-weight:normal; color:darkgreen;">type : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+         
+        
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e726">simple-assertion</a> :
+         				<span style="font-weight:normal; color:black;">
+               <span style="font-weight:normal; color:black">	
+                   The type for an assumption or a conclusion in a formal sequent. It is
+                   basically a simple assertion, i.e. either a logical formula (given as an OM
+                   Object), or a natural language representation of the assertion, or both. In
+                   the latter case, their meaning is assumed to be identical.
+                  </span>
+              </span></p>
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">CMP</span>&gt;
+                  			*<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul style="font-weight:bold; color:darkblue">
+               <li>
+                  <div style="font-weight:bold; color:darkblue">[?</div>
+                  <ul>
+                     <li> <a href="#d0e27">{mobj}</a></li>
+                  </ul>
+                  <div style="font-weight:bold; color:darkblue">]</div>
+               </li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+      <ul></ul>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e224">withmeta</a> :
+         				<span style="font-weight:normal; color:black;">
+               <span style="font-weight:normal; color:black">	
+                   An abstract type for an OMDoc element that allows metadata and has a 'id' attribute.
+                  </span>
+              </span></p>
+      <ul>
+         <li>
+            <div style="font-weight:bold; color:darkblue">(</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">metadata</span>&gt;
+                  			?<span style="font-weight:bold; color:darkblue"></span><ul style="font-weight:bold; color:darkblue">
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">[*</div>
+                              
+                        <ul>
+                           <li> <a href="#">{dc:dcmditems}</a></li>
+                        </ul>
+                             
+                        <div style="font-weight:bold; color:darkblue">]</div>
+                     </li>
+                  </ul>
+                  <ul></ul>
+               </li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">extradata</span>&gt;
+                  			?<span style="font-weight:bold; color:darkblue"></span><span style="font-weight:normal; color:black;">
+                          <span style="font-weight:normal; color:black">	
+                              Use this element to specify any XML data elements that are relevant
+                              to the parent element. If the data is not XML, then either use a
+                              CDATA section or the 'private' element with a 'for' attribute
+                              pointing to the parent element
+                             </span>
+                         </span><ul>
+                     <li>
+                        <div style="font-weight:bold; color:darkblue">(</div>
+                             <span style="font-weight:bold;">any</span>
+                            
+                        <div style="font-weight:bold; color:darkblue">)</div>
+                     </li>
+                  </ul>
+                  <ul>
+                     <li><span style="font-weight:normal; color:darkgreen;">inherits : 
+                           				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+                  </ul>
+               </li>
+            </ul>
+             
+            <div style="font-weight:bold; color:darkblue">)</div>
+         </li>
+      </ul>
+      <ul></ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e286">assertiontype</a></span> :
+         					
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">assumption</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">conjecture</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">corollary</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">false-conjecture</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">formula</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">lemma</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">obligation</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">postulate</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">proposition</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">theorem</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e1910">bstyleType</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                A specification of the style of brackets for function application,
+                'lisp'-style is (f a b) and 'math'-style is f(a,b).
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">lisp</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">math</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e1846">crossrefType</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                A specification of where the crossreferences (links) should be added to the
+                symbol presentation.
+                'yes': to the symbol itself.
+                'no': no links should be attatched. 
+                'brackets': to the brackets and the separator specified in the 'lbrack',
+                'rbrack', and 'separator' attributes.
+                'lbrack', 'rbrack', 'separator': just to that. 
+                'all': to symbol, brackets, and separator.
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+               
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">all</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">brackets</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">lbrack</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">no</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">rbrack</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">separator</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">yes</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e312">definitionType</a></span> :
+         					
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+              
+              
+              
+              
+              
+             
+            <ul>
+               <li style="font-weight:normal; color:blue">implicit</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">inductive</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">obj</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">recursive</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">simple</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e1872">fixityType</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                The fixity of a function: if * is 
+                'prefix' then it is written as *(a,b)
+                'infix'  then it is written as a*b (only applies to binary f
+                'postfix' then it is written as (a,b)*
+                'assoc' then it is written as a * b * c * d. 
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">assoc</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">infix</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">postfix</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">prefix</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e328">glolocType</a></span> :
+         					
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">global</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">local</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e366">listOfanyURI</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	A list of URIs.</span>
+           
+      </p>
+      <ul>
+         <li></li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e200">omgrouptype</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                A simple enumeration type for types of groupings in mathematical texts.
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">dataset</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">enmeration</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">itemize</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">labeled-dataset</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">sequence</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">theory-collection</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e168">omtexttype</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                A simple enumeration type for types of mathematical texts.
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">abstract</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">annote</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">antithesis</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">conclusion</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">elaboration</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">evidence</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">introduction</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">motivation</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">note</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">thesis</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e1892">parentType</a></span> :
+         					
+            <span style="font-weight:normal; color:black">	
+                The presentation element applies to the situation in which the symbol
+                specified in the 'for' slot appears as a child of this OpenMath Element.
+               </span>
+           
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">OMA</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">OMATTR</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">OMBIND</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e907">truefalseType</a></span> :
+         					
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">false</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">true</li>
+            </ul>
+         </li>
+      </ul>
+      <p><span style="font-weight:bold; color:darkblue;"><a name="d0e897">yesnoType</a></span> :
+         					
+      </p>
+      <ul>
+         <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+               		xs:string
+               		}&lt;&lt;</span>
+               
+               
+              
+            <ul>
+               <li style="font-weight:normal; color:blue">no</li>
+            </ul>
+            <ul>
+               <li style="font-weight:normal; color:blue">yes</li>
+            </ul>
+         </li>
+      </ul>
+      <h3>Useful groups:</h3>
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e401">auxitem</a> :
+         			
+      </p>
+        
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">exercise</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">solution</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">omlet</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">private</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">code</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">presentation</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">omstyle</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e1933">formatmatter</a> :
+         			
+      </p>
+       
+      <li><span style="font-weight:normal; color:darkgreen;">format : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+       
+      <li><span style="font-weight:normal; color:darkgreen;">requires : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+       
+      <li><span style="font-weight:normal; color:darkgreen;">xml:lang : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#">{language}</a></span></span></li>
+      
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e142">frommatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             The attributes for OMDoc theory imports.
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">from : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e155">fromtomatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             The attributes for OMDoc theory inclusions.
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e142">{frommatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">to : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e114">idimatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             The attributes for an OMDoc element with an optional file/theory-local identifier 
+             (and an optional 'mid' attribute). Furthermore, an 'style' attribute, so that
+             style information can be attatched.
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e88">{midmatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">id : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">style : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e99">idmatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             The attributes for an OMDoc element with a required  file/theory-local identifier 
+             (and an optional 'mid' attribute). Furthermore, an 'style' attribute, so that
+             style information can be attatched. 
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e88">{midmatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">id : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">style : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:NMTOKEN}</span></span></li>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e129">idrefmatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             The attributes for OMDoc elements with a required file/theory-local
+             identifier and a required 'for' attribute which is a reference to another
+             OMDoc element.
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">for : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+       
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e52">inCMP</a> :
+         			
+      </p>
+       
+        <span style="font-weight:normal; color:black">	
+            Mathematical Vernacular, i.e. natural language interspersed with 
+            mathematical formulae, applets and styled fragments.
+           </span>
+       
+       
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+              
+            <ul>
+               <li> <a href="#d0e27">{mobj}</a></li>
+            </ul>
+              
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">omlet</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">with</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+      
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e338">insymbolmatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+             Attributes for OpenMath/CMathML symbols, they have attributes 'mid',
+             'id' and 'scope'
+            </span>
+        
+        
+      <ul>
+         <li> <a href="#d0e99">{idmatter}</a></li>
+      </ul>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">kind : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"></span></span><ul>
+            <li><span style="font-weight:bold; color:darkblue">&gt;&gt;{
+                  		xs:string
+                  		}&lt;&lt;</span>
+                    
+                    
+                    
+                   
+               <ul>
+                  <li style="font-weight:normal; color:blue">object</li>
+               </ul>
+               <ul>
+                  <li style="font-weight:normal; color:blue">sort</li>
+               </ul>
+               <ul>
+                  <li style="font-weight:normal; color:blue">type</li>
+               </ul>
+            </li>
+         </ul>
+      </li>
+        
+      <li><span style="font-weight:normal; color:darkgreen;">scope : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue"> <a href="#d0e328">{glolocType}</a></span></span></li>
+       
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e459">intheoryitem</a> :
+         			
+      </p>
+        
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+               
+            <ul>
+               <li> <a href="#d0e439">{omdocitem}</a></li>
+            </ul>
+               
+            <ul>
+               <li> <a href="#d0e421">{onlyintheoryitem}</a></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+       
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e377">mathitem</a> :
+         			
+      </p>
+        
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">type</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">assertion</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">alternative</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">example</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">proof</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">proofobject</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">theory-inclusion</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">decomposition</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">axiom-inclusion</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e88">midmatter</a> :
+         			
+      </p>
+        
+         <span style="font-weight:normal; color:black">	
+              An optional attribute 
+              'mid' (MBase id) that is a global identifier given by the MBase system.
+            </span>
+        
+        
+      <li><span style="font-weight:normal; color:darkgreen;">mid : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+       
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e27">mobj</a> :
+         			
+      </p>
+       
+        <span style="font-weight:normal; color:black">	
+             Mathematical Objects in OMDoc, we allow OpenMath and Content MathML
+           </span>
+       
+       
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[</div>
+              
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">om:OMOBJ</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+             
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+      
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e439">omdocitem</a> :
+         			
+      </p>
+        
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">omtext</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li> <a href="#d0e377">{mathitem}</a></li>
+            </ul>
+               
+            <ul>
+               <li> <a href="#d0e401">{auxitem}</a></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">theory</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">omgroup</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">ignore</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">ref</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e41">omdocns</a> :
+         			
+      </p>
+       
+        <span style="font-weight:normal; color:black">	
+            This attribute fixes the OMDoc namespace, it is needed on the OMDoc root
+            element and all elements that are dominated by ones in another namespace,
+            e.g. those that have type 'inCMPType'.
+           </span>
+       
+       
+      <li><span style="font-weight:normal; color:darkgreen;">xmlns : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:string}</span></span></li>
+      
+      <p style="font-weight:bold; color:darkblue;"><a name="d0e421">onlyintheoryitem</a> :
+         			
+      </p>
+        
+      <ul style="font-weight:bold; color:darkblue">
+         <li>
+            <div style="font-weight:bold; color:darkblue">[+	</div>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">symbol</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">axiom</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">definition</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">adt</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">imports</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+               
+            <ul>
+               <li>&lt;<span style="font-weight:normal; color:darkred;">inclusion</span>&gt;
+                  			<span style="font-weight:bold; color:darkblue"></span></li>
+            </ul>
+              
+            <div style="font-weight:bold; color:darkblue">]</div>
+         </li>
+      </ul>
+       
+      <p style="font-weight:normal; color:darkgreen;"><a name="d0e1926">stylematter</a> :
+         			
+      </p>
+       
+      <ul>
+         <li> <a href="#d0e114">{idimatter}</a></li>
+      </ul>
+       
+      <li><span style="font-weight:normal; color:darkgreen;">xref : 
+            				</span><span style="font-weight:bold; color:darkblue"><span style="font-weight:bold; color:darkblue">{xs:anyURI}</span></span></li>
+      
+   </body>
+</xhtml>

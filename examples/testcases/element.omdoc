@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_element">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_element">
+
+<presentation id="mypre" for="bla">
+<style format="myform" requires="required" xml:lang="de">
+
+<element name="myel">
+<attribute name="myatt">
+some text
+<value-of select="selected"/>
+<text>more text</text>
+</attribute>
+<attribute name="myatt2"/>
+<element name="subel1"/>
+<element name="subel2"/>
+<text>text in element</text>
+<text>more text in element</text>
+<recurse select="a"/>
+<recurse select="b"/>
+<value-of select="c"/>
+<value-of select="d"/>
+</element>
+
+</style>
+</presentation>              
+
+</theory>
+</omdoc>
+

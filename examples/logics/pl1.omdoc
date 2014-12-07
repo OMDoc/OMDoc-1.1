@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="pl1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>First-Order Logic</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+   This theory provides the classical two-valued first-order quantifiers.
+  </Description>
+ </metadata>
+
+ <theory id="pl1">
+  <imports id="pl0-imports" from="pl0"/>
+  <imports id="ind-imports" from="ind"/>
+
+  <symbol id="forall">
+   <CMP> 
+    This symbol is the binding symbol for the universal (for all) quantifier.
+   </CMP>
+   <commonname>forall</commonname>
+  </symbol>
+
+  <presentation id="pr-forall" for="forall">
+   <use  format="TeX">{\forall}</use>
+   <use  format="html|pmml">&#x02200;</use>
+   <use format="pvs">FORALL</use>
+  </presentation>
+
+  <example id="forall-ex-1" type="for" for="forall">
+   <CMP>All objects are equal to themselves</CMP>
+   <OMOBJ>
+    <OMBIND>
+     <OMS cd="pl1" name="forall"/>
+     <OMBVAR><OMV name="x"/></OMBVAR>
+     <OMA>
+      <OMS cd="ind" name="eq"/>
+      <OMV name="x"/>
+      <OMV name="x"/>
+     </OMA>
+    </OMBIND>
+   </OMOBJ>
+  </example>
+
+  <symbol id="exists">
+   <CMP> 
+    This symbol is the binding symbol for the  existential ("there exists") quantifier.
+   </CMP>
+   <commonname>exists</commonname>
+  </symbol>
+  <presentation id="pr-exists" for="exists">
+   <use  format="TeX">\exists</use>
+   <use  format="html|pmml">&#x02203;</use>
+   <use format="pvs">EXISTS</use>
+  </presentation>
+
+  <example id="exists-ex-1" type="for" for="exists">
+   <CMP>If the universe is non-empty, then the following statement is true</CMP>
+   <OMOBJ>
+    <OMBIND>
+     <OMS cd="pl1" name="exists"/>
+     <OMBVAR><OMV name="x"/></OMBVAR>
+     <OMA>
+      <OMS cd="ind" name="eq"/>
+      <OMV name="x"/>
+      <OMV name="x"/>
+     </OMA>
+    </OMBIND>
+   </OMOBJ>
+  </example>
+ </theory>
+</omdoc>

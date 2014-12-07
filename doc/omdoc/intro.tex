@@ -1,0 +1,131 @@
+\chapter{Introduction}\label{sec:intro}
+
+It is plausible to expect that the way we do (i.e. conceive, develop, communicate
+about, and publish) mathematics will change considerably in the next
+nine\footnote{In the release document of {\omdoc}1.0~\cite{Kohlhase:otormd00} we
+  claimed that it would change in the next 10, and that is one year ago.} years.
+The Internet plays an ever-increasing role in our everyday life, and most of the
+mathematical activities will be supported by mathematical software systems (we
+will call them {\emin{mathematical services}}\index{service!mathematical})
+connected by a commonly accepted distribution architecture, which we will call the
+{\emin{mathematical software bus}\index{software bus}\index{bus!software}}. We
+will subsume all proposed architectures and implementations of this
+idea~\cite{FraHes:aoidms99,FraKoh:mabdl99,DenCol:tpt00,ArmZin:timrs00} by the term
+{\mathweb}\index{mathweb@{\mathweb}}. We believe that interoperability based
+on communication protocols will eventually make the constructions of bridges
+between the particular implementations simple, so that the combined systems appear
+to the user as one homogeneous web.
+
+One of the tasks that have to be solved is to define an open markup language for
+the mathematical objects and knowledge exchanged between mathematical services.
+The {\omdoc} format presented in this report attempts to do this by providing an
+infrastructure for the communication and storage of {\emin{mathematical
+    knowledge}}\index{knowledge!mathematical}.
+
+In chapter~\ref{chap:markup} we will describe the status quo of mathematical
+markup schemes before {\omdoc} and show that these markup schemes -- while giving
+a good basis -- are not sufficient for content-based markup of mathematical
+knowledge. They do not provide markup for mathematical forms like
+{\indextoo{definition}s}, {\indextoo{theorem}s}, and {\indextoo{proof}s} that have long
+been considered paradigmatic of mathematical documents like textbooks and papers.
+They also leave implicit the large-scale structure of mathematical knowledge. In
+particular, it has traditionally been structured into mathematical
+theories\index{mathematical theory}\index{theory} that serve as a situating
+{\indextoo{context}} for all forms of mathematical communication.
+
+In chapter~\ref{chap:omdoc}, we define the {\omdoc} markup primitives and motivate
+them from either particular structures in mathematical documents or from
+processing needs of computer-supported mathematics. As all mathematical
+communication is in the form of (or can be transcribed to) {\indextoo{mathematical
+    document}}s\index{document!mathematical} such as {\indextoo{publication}}s,
+{\indextoo{overhead slide}}s, {\indextoo{letter}}s, {\indextoo{e-mail}}s, in/output from
+mathematical software systems, {\omdoc} uses documents as a guiding intuition for
+mathematical knowledge with the goal of providing a framework, where all of these
+forms can be accommodated. In accordance with this motivation {\omdoc} provides a
+rich mix of elements of informal and formal mathematics. To model particular kinds
+of documents in {\omdoc} usually only a subset will be needed, e.g. informal ones
+for traditional mathematical textbooks, or formal ones for communication of
+software systems. However, availability of both kinds of markup primitives in
+{\omdoc} allow to develop novel kinds of mathematical documents, where formal and
+informal elements are intimately intermixed.
+
+We will discuss current and intended applications of the {\omdoc} format in
+chapter~\ref{chap:processing} and discuss which applications will need which parts
+of the {\omdoc} format. 
+
+Finally, the appendix contains useful materials like the {\omdoc} document type
+definition, and a quick reference table. 
+
+\section*{{\omdoc} Version 1.1}
+
+This document describes version 1.1 of the {\omdoc} format. Version 1.0 has been
+released on November 1. 2001, after about 18 Months of development, to give
+developers a stable interface to base their systems on. It has been adopted by
+various projects in automated deduction, algebraic specification and
+computer-supported education. The experience from these projects has uncovered a
+multitude of small deficiencies and extension possibilities of the format, that
+have been discussed in the {\omdoc} community. Version 1.1 is an attempt to roll
+the uncontroversial and non-disruptive part of the extensions and corrections into
+a consistent language format. We have tried to keep the changes to version 1.0
+conservative, adding optional attributes or child elements.
+
+In some cases we had to introduce non-conservative changes, to repair design flaws
+and inconsistencies of version 1.0. One example is the {\element{hpothesis}}
+element that has received a required attribute
+{\attribute{discharged-in}{hypothesis}} that is necessary for specifying the scope
+of local assumptions in proofs, and cannot be inferred from the context. To
+minimize disruption we have tried to keep changes like this one to a minimum for
+the elements that are in frequent use today.  We are working on a new version
+({\omdoc}2.0) that will incorporate re-organizations of central features of
+{\omdoc} like the {\element{definition}} element.
+
+We have however re-organized some parts of the {\omdoc} format that are currently
+less used in the anticipation that this will make them more effective. Examples
+are the representations of complex theories (see sections~\ref{sec:morphisms}
+to~\ref{sec:parametric-theories}) or the organization of non-{\xml} data
+(section~\ref{sec:private}).
+
+Finally, we have added new features that were missing from {\omdoc}1.0 and turned out
+to be important for the enterprise of representing mathematical knowledge.
+Examples of this are a new referencing scheme for {\omdoc} elements in
+section~\ref{sec:catalogue} and a new way of specifying presentation for {\omdoc}
+elements. In both cases, the method that was used in {\omdoc}1.0 for symbols is
+extended and generalized to arbitrary {\omdoc} elements. These extensions have
+found their way into {\omdoc}1.1, even though they are not totally fixed yet,
+since we anticipate to gain implementation experience for {\omdoc}2.0. They are
+non-disruptive, since they are strictly additional.
+
+An element-by-element account of the changes is tabulated in appendix
+{\ref{sec:changelog}}.
+
+\section*{Acknowledgments}
+ 
+Of course the {\omdoc} format has not been developed by one person alone, the
+original proposal was taken up by several research groups, most notably the
+{\OMEGA} group at Saarland University, the {\inka} and {\activemath} projects at
+the German Research Center of Artificial Intelligence (DFKI), the RIACA group at
+the Technical University of Eindhoven, the {\sc In2Math} project at the University
+of Koblenz, and the {\sc CourseCapsules} project at Carnegie Mellon University.
+They have discussed the initial proposals, represented their materials in {\omdoc}
+and in the process refined the format with numerous suggestions and discussions
+(see {\url{http://www.mathweb.org/~mailists/omdoc}} for the archive of the
+{\omdoc} mailing list.)
+
+The author specifically would like to thank Serge Autexier, Olga Caprotti, David
+Carlisle, Claudio Sacerdoti Coen, Arjeh Cohen, Armin Fiedler, Andreas Franke,
+George Goguadze, Dieter Hutter, Erica Melis, Paul Libbrecht, Martijn Oostdijk,
+Alberto Palomo Gonzales, Martin Pollet, Julian Richardson, Manfred Riem, and
+Michel Vollebregt for their input, discussions and feedback from implementations
+and applications.
+
+The work presented in this report was supported by the ``Deutsche
+Forschungsgemeinschaft'' in the special research action ``Resource-adaptive
+cognitive processes'' (SFB 378), and a five-year Heisenberg Stipend to the author.
+Carnegie Mellon University and SRI International have supported the author while
+working on revisions for version 1.1.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 

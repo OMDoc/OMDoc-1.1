@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd" []>
+
+<omdoc id="booking.omdoc">
+
+<metadata>
+ <Title>Booking</Title>
+ <Creator role="edt">Michael Kohlhase</Creator> 
+ <Date action="created">20020122</Date>
+ <Source>book.mch</Source>
+</metadata>
+
+<ignore>do some more here</ignore>
+
+</omdoc>

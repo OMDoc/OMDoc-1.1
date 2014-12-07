@@ -1,0 +1,1845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="floor_ceil.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:29
+    </Date>
+  </metadata>
+  <theory id="floor_ceil_test">
+
+
+
+
+
+    <assertion id="floor_exists" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="integer"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="i"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_exists-1" for="floor_exists" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA lub_int)
+   (( (LEMMA axiom_of_archimedes)
+     (( (INST?)
+       (( (SKOSIMP*)
+         (( (INST - {i|i<=x!1} i!1)
+           ((1 (PROP)
+             ((1 (EXPAND least_upper_bound?)
+               ((1 (SKOLEM-TYPEPRED)
+                 ((1 (INST?)
+                   ((1 (PROP)
+                     ((1 (EXPAND upper_bound?)
+                       ((1 (INST - j!1+1)
+                         ((1 (ASSERT) NIL NIL) (2 (EXPAND extend) ((2 (ASSERT) NIL NIL)) NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL)
+              (2 (EXPAND upper_bound?)
+               ((2 (SKOLEM-TYPEPRED) ((2 (EXPAND extend) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+             NIL)
+            (2 (REWRITE nonempty_exists)
+             ((2 (LEMMA axiom_of_archimedes)
+               ((2 (INST - abs(x!1))
+                 ((2 (SKOSIMP*)
+                   ((2 (INST + -i!2)
+                     ((2 (EXPAND abs) ((2 (LIFT-IF) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_exists" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="integer"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="x"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="x"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_exists-1" for="ceiling_exists" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (CASE integer?(x!1))
+   ((1 (INST?)
+     ((1 (ASSERT) NIL NIL) (2 (ASSERT) ((2 (EXPAND integer?) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+     NIL)
+    (2 (LEMMA floor_exists)
+     ((2 (INST?)
+       ((2 (SKOSIMP*)
+         ((2 (INST + i!1+1) ((2 (ASSERT) ((2 (EXPAND integer?) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="sigmatype"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="reals" name="real"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="integers" name="integer"/>
+                            </OMATP>
+                            <OMV name="i"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="&amp;"/>
+                          <OMA>
+                            <OMS cd="reals" name="&lt;="/>
+                            <OMV name="i"/>
+                            <OMS cd="floor_ceil" name="x"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="reals" name="&lt;"/>
+                            <OMS cd="floor_ceil" name="x"/>
+                            <OMA>
+                              <OMS cd="reals" name="+"/>
+                              <OMI>1</OMI>
+                              <OMV name="i"/>
+                            </OMA>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_TCC1-1" for="floor_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST + lambda x: choose( {i: integer | i <= x & x < 1 + i}))
+ (( (EXPAND nonempty?)
+   (( (EXPAND empty?)
+     (( (EXPAND member)
+       (( (LEMMA floor_exists)
+         (( (SKOSIMP*) (( (INST?) (( (SKOSIMP*) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="floor" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMS cd="reals" name="real"/>
+              </OMATP>
+              <OMV name="x"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="integer"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMS cd="floor_ceil" name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMS cd="floor_ceil" name="x"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMI>1</OMI>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <assertion id="fractional_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="&amp;"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMI>0</OMI>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="fractional_TCC1-1" for="fractional_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="fractional" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMI>0</OMI>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="fractional-def" for="fractional" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="floor_ceil" name="fractional"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="ceiling_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="sigmatype"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="reals" name="real"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="integers" name="integer"/>
+                            </OMATP>
+                            <OMV name="i"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="&amp;"/>
+                          <OMA>
+                            <OMS cd="reals" name="&lt;="/>
+                            <OMS cd="floor_ceil" name="x"/>
+                            <OMV name="i"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="reals" name="&lt;"/>
+                            <OMV name="i"/>
+                            <OMA>
+                              <OMS cd="reals" name="+"/>
+                              <OMI>1</OMI>
+                              <OMS cd="floor_ceil" name="x"/>
+                            </OMA>
+                          </OMA>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_TCC1-1" for="ceiling_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST + lambda x: choose( {i: integer | x <= i & i < x + 1}))
+ (( (EXPAND nonempty?)
+   (( (EXPAND empty?)
+     (( (EXPAND member)
+       (( (LEMMA ceiling_exists)
+         (( (SKOSIMP*)
+           (( (INST - x!1) (( (SKOSIMP*) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="ceiling" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMS cd="reals" name="real"/>
+              </OMATP>
+              <OMV name="x"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="integer"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMS cd="floor_ceil" name="x"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMI>1</OMI>
+                    <OMS cd="floor_ceil" name="x"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <assertion id="floor_def" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="&amp;"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_def-1" for="floor_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_def" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="&amp;"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="x"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_def-1" for="ceiling_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_ceiling_reflect1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_ceiling_reflect1-1" for="floor_ceiling_reflect1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_ceiling_reflect2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_ceiling_reflect2-1" for="floor_ceiling_reflect2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_floor_is_nat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_floor_is_nat-1" for="nonneg_floor_is_nat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56952" for="nonneg_floor_is_nat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_floor_is_nat|: JUDGEMENT |floor|(|x|: |nonneg_real|) HAS_TYPE |nat|]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_ceiling_is_nat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_ceiling_is_nat-1" for="nonneg_ceiling_is_nat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56953" for="nonneg_ceiling_is_nat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_ceiling_is_nat|: JUDGEMENT |ceiling|(|x|: |nonneg_real|) HAS_TYPE
+          |nat|]]>
+      </data>
+    </private>
+
+    <assertion id="floor_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMV name="i"/>
+              </OMA>
+              <OMV name="i"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_int-1" for="floor_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMV name="i"/>
+              </OMA>
+              <OMV name="i"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_int-1" for="ceiling_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_plus_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="x"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_plus_int-1" for="floor_plus_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (NAME j!1 floor(x!1+i!1))
+   (( (NAME k!1 floor(x!1))
+     (( (TYPEPRED floor(i!1 + x!1)) (( (TYPEPRED floor(x!1)) (( (GROUND) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_plus_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="x"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_plus_int-1" for="ceiling_plus_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (LEMMA ceiling_def)
+   (( (INST-CP - x!1+i!1)
+     (( (FLATTEN)
+       (( (NAME j!1 ceiling(x!1))
+         (( (NAME k!1 ceiling(x!1+i!1))
+           (( (REPLACE -1)
+             (( (REPLACE -2) (( (INST - x!1) (( (REPLACE -2) (( (GROUND) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_ceiling_nonint" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="integers" name="integer?"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="ceiling"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_ceiling_nonint-1" for="floor_ceiling_nonint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_ceiling_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_ceiling_int-1" for="floor_ceiling_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_neg" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="integers" name="integer?"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMA>
+                      <OMS cd="reals" name="-"/>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMA>
+                      <OMS cd="floor_ceil" name="floor"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_neg-1" for="floor_neg" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LIFT-IF)
+   (( (PROP)
+     ((1 (REWRITE floor_int)
+       ((1 (REWRITE floor_int)
+         ((1 (ASSERT) NIL NIL)
+          (2 (REWRITE closed_neg)
+           ((1 (ASSERT)
+             ((1 (EXPAND integer?) ((1 (FLATTEN) ((1 (REWRITE closed_neg) NIL NIL)) NIL)) NIL))
+             NIL)
+            (2 (EXPAND integer?) ((2 (PROPAX) NIL NIL)) NIL))
+           NIL))
+         NIL)
+        (2 (EXPAND integer?) ((2 (PROPAX) NIL NIL)) NIL))
+       NIL)
+      (2 (EXPAND integer?) ((2 (ASSERT) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="real_parts" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="floor_ceil" name="fractional"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="real_parts-1" for="real_parts" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND fractional) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_plus" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="floor"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMA>
+                      <OMS cd="floor_ceil" name="fractional"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="floor_ceil" name="fractional"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_plus-1" for="floor_plus" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (EXPAND fractional) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_plus" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="floor_ceil" name="ceiling"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="floor_ceil" name="floor"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMA>
+                      <OMS cd="floor_ceil" name="fractional"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="floor_ceil" name="fractional"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_plus-1" for="ceiling_plus" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (EXPAND fractional) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_split" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMV name="i"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMA>
+                    <OMS cd="reals" name="/"/>
+                    <OMV name="i"/>
+                    <OMI>2</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMA>
+                    <OMS cd="reals" name="/"/>
+                    <OMV name="i"/>
+                    <OMI>2</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_split-1" for="floor_split" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_within_1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMI>1</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_within_1-1" for="floor_within_1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="ceiling_within_1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMI>1</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="ceiling_within_1-1" for="ceiling_within_1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_val" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonzero_integer"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="k"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="k"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMA>
+                    <OMS cd="reals" name="/"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMV name="k"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_val-1" for="floor_val" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (TYPEPRED floor(i!1/j!1))
+   (( (CASE j!1 > 0)
+     ((1 (CASE i!1/j!1 >= k!1 i!1/j!1 < k!1 + 1)
+       ((1 (NAME-REPLACE q i!1/j!1) ((1 (HIDE -3 -6 -7 -8 -9 1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+        (2 (ASSERT)
+         ((2 (HIDE -1 -2 -3 -4 -5 -6 -7 2 3)
+           ((2 (ASSERT) ((2 (USE div_mult_pos_lt1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+         NIL)
+        (3 (HIDE -1 -2 -3 -4 -5 -7 2 3) ((3 (USE div_mult_pos_ge1) ((3 (ASSERT) NIL NIL)) NIL))
+         NIL))
+       NIL)
+      (2 (ASSERT) NIL NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_small" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonzero_integer"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMA>
+                    <OMS cd="reals" name="/"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="reals" name="&gt;="/>
+                    <OMA>
+                      <OMS cd="reals" name="/"/>
+                      <OMV name="i"/>
+                      <OMV name="j"/>
+                    </OMA>
+                    <OMI>0</OMI>
+                  </OMA>
+                  <OMI>0</OMI>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_small-1" for="floor_small" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LIFT-IF)
+   (( (PROP)
+     ((1 (CASE i!1/j!1 < 1)
+       ((1 (ASSERT)
+         ((1 (TYPEPRED floor(i!1/j!1))
+           ((1 (ASSERT) ((1 (NAME-REPLACE q i!1/j!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+         NIL)
+        (2 (HIDE 2)
+         ((2 (CASE (j!1 - i!1)/j!1 > 0)
+           ((1 (ASSERT) NIL NIL)
+            (2 (GRIND)
+             ((1 (USE pos_div_gt) ((1 (ASSERT) NIL NIL)) NIL)
+              (2 (USE pos_div_gt) ((2 (ASSERT) NIL NIL)) NIL)
+              (3 (USE pos_div_gt) ((3 (ASSERT) NIL NIL)) NIL)
+              (4 (USE pos_div_gt) ((4 (ASSERT) NIL NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (TYPEPRED floor(i!1/j!1))
+       ((2 (CASE i!1/j!1 >= -1)
+         ((1 (ASSERT) NIL NIL)
+          (2 (HIDE -1 -2 2 3)
+           ((2 (CASE (i!1 + j!1)/j!1 >= 0)
+             ((1 (ASSERT) NIL NIL)
+              (2 (HIDE 2)
+               ((2 (GRIND IF-MATCH NIL)
+                 ((1 (USE pos_div_ge) ((1 (ASSERT) NIL NIL)) NIL)
+                  (2 (USE pos_div_ge) ((2 (ASSERT) NIL NIL)) NIL)
+                  (3 (USE pos_div_ge) ((3 (ASSERT) NIL NIL)) NIL)
+                  (4 (USE pos_div_ge) ((4 (ASSERT) NIL NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="floor_eq_0" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="floor_ceil" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="x"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="floor_eq_0-1" for="floor_eq_0" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (TYPEPRED floor(x!1)) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

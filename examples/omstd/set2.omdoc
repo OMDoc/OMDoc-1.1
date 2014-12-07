@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="set2-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary set2.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 1999-05-10 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/set2.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD defines more set functions; at present this only includes
+    the size of a set.
+  </Description>
+</metadata>
+
+<theory id="set2">
+
+<imports id="set2-imports-sts" from="sts.omdoc#sts"/>
+<imports id="set2-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="set2-imports-set1" from="set1.omdoc#set1"/>
+<imports id="set2-imports-setname1" from="setname1.omdoc#setname1"/>
+<imports id="set2-imports-nums1" from="nums1.omdoc#nums1"/>
+
+<symbol id="size">
+  <CMP> 
+    This symbol is used to denote the number of elements in a set. It is
+    either a non-negative integer, or an infinite cardinal number. The
+    symbol infinity may be used for an unspecified infinite cardinal.
+  </CMP>
+  <commonname>size</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="CardinalNumber"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-size" for="size" xref="multiset1.omdoc#pr-size"/>
+<example id="size-ex-1" type="for" for="size">
+  <CMP>The size of the set{3,6,9} = 3</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="set2" name="size"/>
+	<OMA>
+	  <OMS cd="set1" name="set"/>
+	  <OMI> 3 </OMI>
+	  <OMI> 6 </OMI>
+	  <OMI> 9 </OMI>
+	</OMA>
+      </OMA>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<example id="size-ex-2" type="for" for="size">
+  <CMP>The size of the set of integers is infinite</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="set2" name="size"/>
+      <OMS cd="setname1" name="Z"/>
+    </OMA>
+    <OMS cd="nums1" name="infinity"/>
+  </OMA>
+</OMOBJ>
+</example>
+</theory>
+</omdoc>

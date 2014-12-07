@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="strings.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:39
+    </Date>
+  </metadata>
+  <theory id="strings_test">
+    <symbol id="char" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="char" for="char" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="character_adt" name="char?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="string" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="string" for="string" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="finite_sequences" name="finite_sequence"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <assertion id="string_rep_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;"/>
+            <OMI>102</OMI>
+            <OMI>256</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="string_rep_TCC1-1" for="string_rep_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="string_rep_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;"/>
+            <OMI>111</OMI>
+            <OMI>256</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="string_rep_TCC2-1" for="string_rep_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="string_rep" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMSTR>foo</OMSTR>
+            <OMA>
+              <OMS cd="list2finseq" name="list2finseq"/>
+              <OMA>
+                <OMS cd="list_adt" name="cons"/>
+                <OMA>
+                  <OMS cd="character_adt" name="char"/>
+                  <OMI>102</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMA>
+                    <OMS cd="character_adt" name="char"/>
+                    <OMI>111</OMI>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="cons"/>
+                    <OMA>
+                      <OMS cd="character_adt" name="char"/>
+                      <OMI>111</OMI>
+                    </OMA>
+                    <OMS cd="list_adt" name="null"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="string_rep-1" for="string_rep" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (PROPAX) NIL NIL)]]>
+      </data>
+    </private>
+
+
+
+
+
+    <assertion id="fseq_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="list2finseq" name="list2finseq"/>
+                  <OMV name="l1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list2finseq" name="list2finseq"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="l1"/>
+                <OMV name="l2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="fseq_lem-1" for="fseq_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l1)
+ ((1 (INDUCT l2) ((1 (GRIND) NIL NIL) (2 (SKOSIMP) ((2 (GRIND) NIL NIL)) NIL)) NIL)
+  (2 (GRIND IF-MATCH NIL)
+   ((1 (DECOMPOSE-EQUALITY)
+     ((1 (APPLY-EXTENSIONALITY HIDE? T)
+       ((1 (INST -1 0) ((1 (EXPAND nth -1) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+        (2 (HIDE -2 -3 -4)
+         ((2 (INST -2 cdr(l2!1))
+           ((1 (ASSERT)
+             ((1 (EXPAND length -2 2)
+               ((1 (LIFT-IF)
+                 ((1 (ASSERT)
+                   ((1 (PROP)
+                     ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)
+                      (3 (APPLY-EXTENSIONALITY HIDE? T)
+                       ((1 (INST -2 x!1+1) ((1 (EXPAND nth -2) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+                        (2 (SKOSIMP) ((2 (PROP) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL)
+            (2 (EXPAND length -2 2) ((2 (ASSERT) NIL NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL)
+    (2 (APPLY-EXTENSIONALITY HIDE? T)
+     ((1 (SKOSIMP)
+       ((1 (INST -4 cdr(l2!1))
+         ((1 (ASSERT)
+           ((1 (IFF)
+             ((1 (PROP)
+               ((1 (ASSERT) NIL NIL) (2 (ASSERT) ((2 (DECOMPOSE-EQUALITY -5) NIL NIL)) NIL)
+                (3 (DECOMPOSE-EQUALITY -5) NIL NIL) (4 (ASSERT) NIL NIL)
+                (5 (DECOMPOSE-EQUALITY -5) NIL NIL) (6 (DECOMPOSE-EQUALITY -5) NIL NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOLEM-TYPEPRED) ((2 (ASSERT) ((2 (DECOMPOSE-EQUALITY -6) NIL NIL)) NIL)) NIL))
+     NIL)
+    (3 (DECOMPOSE-EQUALITY -5) NIL NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="cons_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="strings" name="char"/>
+                </OMATP>
+                <OMV name="c1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="strings" name="char"/>
+                </OMATP>
+                <OMV name="c2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="c1"/>
+                  <OMV name="l1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="c2"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="c1"/>
+                  <OMV name="c2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="l1"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="cons_lem-1" for="cons_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) ((1 (DECOMPOSE-EQUALITY -5) NIL NIL) (2 (DECOMPOSE-EQUALITY -5) NIL NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="char_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="strings" name="char"/>
+                </OMATP>
+                <OMV name="c1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="strings" name="char"/>
+                </OMATP>
+                <OMV name="c2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="c1"/>
+                <OMV name="c2"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="character_adt" name="code"/>
+                  <OMV name="c1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="character_adt" name="code"/>
+                  <OMV name="c2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="char_lem-1" for="char_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (APPLY-EXTENSIONALITY HIDE? T) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

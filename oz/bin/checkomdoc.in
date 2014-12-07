@@ -1,0 +1,14 @@
+#! /bin/tcsh -f
+
+set prefix=@prefix@
+
+source ${prefix}/mathweb/configs/config.tcshrc
+
+set xmlread=x-ozlib://mathweb/xmlread.exe
+set parser=x-ozlib://mathweb/omdoc/omdoc.parser.ozf
+set sem=x-ozlib://mathweb/omdoc/sem/omdoc.sem.ozf
+
+setenv OZ_SEARCH_LOAD "cache=@prefix@/cache:cache=@OZHOME@/cache"
+
+exec @VAR_OZE@ ${xmlread} --root=omdoc --parser=${parser} --sem=${sem} $* 
+

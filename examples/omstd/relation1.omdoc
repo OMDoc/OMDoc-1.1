@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="relation1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary relation1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/relation1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds the common arithmetic relations. It is intended
+    to be `compatible' with the appropriate MathML elements.
+  </Description>
+</metadata>
+
+<theory id="relation1">
+
+<imports id="relation1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="relation1-imports-setname2" from="setname2.omdoc#setname2"/>
+<imports id="relation1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="relation1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="relation1-imports-nums1" from="nums1.omdoc#nums1"/>
+
+<symbol id="eq">
+  <CMP>This symbol represents the binary equality function.</CMP>
+  <commonname>eq</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-eq" for="eq" parent="OMA" fixity="infix" precedence="700">
+  <use  format="default">=</use>
+</presentation>
+<assertion id="eq-prop-1" type="lemma">
+  <CMP><OMOBJ><OMA xref="eq-prop-1-1"/></OMOBJ> and b=c implies a=c</CMP>
+  <CMP xml:lang="fr"><OMOBJ><OMA xref="eq-prop-1-1"/></OMOBJ> et b=c implique a=c</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA id="eq-prop-1-1">
+	    <OMS cd="relation1" name="eq"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="eq"/>
+	    <OMV name="b"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMV name="a"/>
+	  <OMV name="c"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="eq-ex-3" type="for" for="eq">
+  <CMP>An example which represents the statement 1 + 2 = 3.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="lt">
+  <CMP>
+    This symbol represents the binary less than function which returns
+    true if the first argument is less than the second, it returns false
+    otherwise.
+  </CMP>
+  <commonname>lt</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="OrderedSet"/>
+	<OMV name="OrderedSet"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-lt" for="lt" parent="OMA" fixity="infix" precedence="700">
+  <use  format="default"><![CDATA[&lt;]]></use>
+<use  format="TeX">{\lessthan}</use>
+</presentation>
+<assertion id="lt-prop-1" type="lemma">
+  <CMP>a&lt;b and b&lt;c implies a&lt;c</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="relation1" name="lt"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="lt"/>
+	    <OMV name="b"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="lt"/>
+	  <OMV name="a"/>
+	  <OMV name="c"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="lt-ex-3" type="for" for="lt">
+  <CMP>An example which represents the statement 1 + 2 &lt; 4</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="lt"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 4 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="gt">
+  <CMP> 
+    This symbol represents the binary greater than function which returns
+    true if the first argument is greater than the second, it returns false
+    otherwise.
+  </CMP>
+  <commonname>gt</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="OrderedSet"/>
+	<OMV name="OrderedSet"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-gt" for="gt" parent="OMA" fixity="infix" precedence="700">
+  <use  format="default">&gt;</use>
+  <use  format="TeX">{\greaterthan}</use>
+</presentation>
+<assertion id="gt-prop-1" type="lemma">
+  <CMP>
+    a&gt;b and b&gt;c implies a&gt;c
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="relation1" name="gt"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="gt"/>
+	    <OMV name="b"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="gt"/>
+	  <OMV name="a"/>
+	  <OMV name="c"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="gt-ex-3" type="for" for="gt">
+  <CMP>An example which represents the statement 1 + 2 &gt; 2</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="gt"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 2 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="neq">
+  <CMP>This symbol represents the binary inequality function.</CMP>
+  <commonname>neq</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-neq" for="neq" parent="OMA" fixity="infix" lbrack="" rbrack="" precedence="700">
+  <use  format="TeX">{\ne}</use>
+  <use  format="html|pmml">&#x02260;</use>
+</presentation>
+<assertion id="neq-prop-1" type="lemma">
+  <CMP> it is not true that a=/b and b=/c implies a=/c </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="not"/>
+	<OMA>
+	  <OMS cd="logic1" name="implies"/>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMA>
+	      <OMS cd="relation1" name="neq"/>
+	      <OMV name="a"/>
+	      <OMV name="b"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="neq"/>
+	      <OMV name="b"/>
+	      <OMV name="c"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="neq"/>
+	    <OMV name="a"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="neq-ex-3" type="for" for="neq">
+  <CMP>An example which represents the statement 1 + 2 not = 2</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="neq"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 2 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="leq">
+  <CMP> 
+    This symbol represents the binary less than or equal to function which returns
+    true if the first argument is less than or equal to the second, it
+    returns false otherwise.
+  </CMP>
+  <commonname>leq</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="OrderedSet"/>
+	<OMV name="OrderedSet"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-leq" for="leq" parent="OMA" fixity="infix" precedence="700">
+  <use  format="TeX">{\leq}</use>
+  <use  format="html|pmml">&#x02264;</use>
+</presentation>
+<assertion id="leq-prop-1" type="lemma">
+  <CMP>
+    a&lt;=b and b&lt;=c implies a&lt;=c
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="relation1" name="leq"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="leq"/>
+	    <OMV name="b"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="leq"/>
+	  <OMV name="a"/>
+	  <OMV name="c"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="leq-ex-3" type="for" for="leq">
+  <CMP>An example which represents the statement 1 + 2 &lt;= 4</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="leq"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 4 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="geq">
+  <CMP> 
+    This symbol represents the binary greater than or equal to function
+    which returns true if the first argument is greater than or equal to
+    the second, it returns false otherwise.
+  </CMP>
+  <commonname>geq</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="OrderedSet"/>
+	<OMV name="OrderedSet"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-geq" for="geq" parent="OMA" fixity="infix" precedence="700">
+  <use  format="TeX">{\geq}</use>
+  <use  format="html|pmml">&#x02265;</use>
+</presentation>
+<assertion id="geq-prop-1" type="lemma">
+  <CMP>
+    a&gt;=b and b&gt;=c implies a&gt;=c
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="relation1" name="geq"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="geq"/>
+	    <OMV name="b"/>
+	    <OMV name="c"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="geq"/>
+	  <OMV name="a"/>
+	  <OMV name="c"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="geq-ex-3" type="for" for="geq">
+  <CMP>An example which represents the statement 1 + 2 &gt;= 3</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="geq"/>
+      <OMA>
+	<OMS cd="arith1" name="plus"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="approx">
+  <CMP> 
+    This symbol is used to denote the approximate equality of its two arguments.
+  </CMP>
+  <commonname>approx</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-approx" for="approx" parent="OMA" fixity="infix" lbrack="" rbrack="" precedence="700">
+  <use  format="TeX">{\sim}</use>
+  <use  format="html|pmml">&#x0223C;</use>
+</presentation>
+<example id="approx-ex-1" type="for" for="approx">
+  <CMP>\pi is approximately 355/113</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="approx"/>
+      <OMS cd="nums1" name="pi"/>
+      <OMA>
+	<OMS cd="nums1" name="rational"/>
+	<OMI> 355 </OMI>
+	<OMI> 113 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

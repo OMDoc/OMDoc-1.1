@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bv_cnv.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:42
+    </Date>
+  </metadata>
+  <theory id="bv_cnv_test">
+
+    <private id="G57079" for="fill" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |fill|[1]
+        ]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

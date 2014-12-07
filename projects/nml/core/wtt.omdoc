@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd" []>
+
+<omdoc id="wtt-omdoc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+
+ <metadata>
+  <Title>An encoding of Weak Type Theory in OMDoc</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Creator role="aut">Fairouz Kamareddine</Creator>
+  <Date>20020416</Date>
+  <Description>
+    An encoding of Weak Type Theory in OMDoc
+  </Description>
+ </metadata>
+
+ <theory id="wtt">
+
+<symbol id="term" kind="type">
+ <CMP>The type of terms in Weak Type Theory</CMP>
+</symbol>
+<presentation for="term">
+ <use format="TeX">t</use>
+ <use format="html|pmml">&#x003C4;</use>
+ <use format="default">term</use>
+</presentation>
+
+<symbol id="set" kind="type">
+ <CMP>The type of sets in Weak Type Theory</CMP>
+</symbol>
+<presentation for="set">
+ <use format="TeX">{\sigma}</use>
+ <use format="html|pmml">&#x003C3;</use>
+ <use format="default">set</use>
+</presentation>
+
+<symbol id="noun" kind="type">
+ <CMP>The type of nouns in Weak Type Theory</CMP>
+</symbol>
+<presentation for="noun">
+ <use format="TeX">{\nu}</use>
+ <use format="html|pmml">&#x003BD;</use>
+ <use format="default">noun</use>
+</presentation>
+
+<symbol id="adjective" kind="type">
+ <CMP>The type of adjective in Weak Type Theory</CMP>
+</symbol>
+<presentation for="adjective">
+ <use format="TeX">{\alpha}</use>
+ <use format="html|pmml">&#x003B1;</use>
+ <use format="default">adj</use>
+</presentation>
+
+<symbol id="statement" kind="type">
+ <CMP>The type of statements in Weak Type Theory</CMP>
+</symbol>
+<presentation for="statement">
+ <use format="TeX">{\cal S}</use>
+ <use format="html|pmml">S</use>
+ <use format="default">stat</use>
+</presentation>
+
+<symbol id="type">
+  <CMP>The type feature in Weak Type Theory. It relates an object to its type in
+  an attribuition.</CMP> 
+  <commonname>type</commonname>
+</symbol>
+
+<presentation for="type" parent="OMATTR" lbrack="" rbrack="" fixity="postfix"> 
+  <use format="html" element="sub"/>
+  <use format="TeX" larg-group="{" rarg-group="}">_</use>
+</presentation>
+
+
+</theory>
+</omdoc>

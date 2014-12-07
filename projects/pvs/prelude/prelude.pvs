@@ -1,0 +1,1609 @@
+booleans_test: THEORY
+ BEGIN
+
+  boolean: NONEMPTY_TYPE;
+  bool: NONEMPTY_TYPE = boolean;
+  FALSE: bool;
+  TRUE: bool;
+  NOT: [bool -> bool];
+  AND: [bool,bool -> bool];
+  &: [bool,bool -> bool];
+  OR: [bool,bool -> bool];
+  IMPLIES: [bool,bool -> bool];
+  =>: [bool,bool -> bool];
+  WHEN: [bool,bool -> bool];
+  IFF: [bool,bool -> bool];
+  <=>: [bool,bool -> bool];
+
+
+ END booleans_test
+
+equalities_test [T: TYPE]: THEORY
+ BEGIN
+
+  =: [T,T -> boolean];
+
+
+ END equalities_test
+
+notequal_test [T: TYPE]: THEORY
+ BEGIN
+
+  /=: [T,T -> boolean] = (lambda(x: T, y: T): NOT((x=y)));
+
+
+ END notequal_test
+
+if_def_test [T: TYPE]: THEORY
+ BEGIN
+
+  IF: [boolean,T,T -> T];
+
+
+ END if_def_test
+
+boolean_props_test: THEORY
+ BEGIN
+
+bool_exclusive: POSTULATE NOT((FALSE=TRUE));
+bool_inclusive: POSTULATE (forall(A: bool): ((A=FALSE) OR (A=TRUE)));
+not_def: POSTULATE (forall(A: bool): (NOT(A)= IF A THEN FALSE ELSE TRUE ENDIF ));
+and_def: POSTULATE (forall(A: bool, B: bool): ((A AND B)= IF A THEN B ELSE FALSE ENDIF ));
+syand_def: POSTULATE (&=AND);
+or_def: POSTULATE (forall(A: bool, B: bool): ((A OR B)= IF A THEN TRUE ELSE B ENDIF ));
+implies_def: POSTULATE (forall(A: bool, B: bool): (IMPLIES(A,B)= IF A THEN B ELSE TRUE ENDIF ));
+syimplies_def: POSTULATE (=>=IMPLIES);
+when_def: POSTULATE (forall(A: bool, B: bool): (IMPLIES(B,A)=IMPLIES(B,A)));
+iff_def: POSTULATE (forall(A: bool, B: bool): (IFF(A,B)=((A AND B) OR (NOT(A) AND NOT(B)))));
+syiff_def: POSTULATE (<=>=IFF);
+excluded_middle: LEMMA (forall(A: bool): (A OR NOT(A)));
+
+
+ END boolean_props_test
+
+xor_def_test: THEORY
+ BEGIN
+
+  XOR: [bool,bool -> bool] = (lambda(A: bool, B: bool): /=(A,B));
+xor_def: LEMMA (forall(A: bool, B: bool): (XOR(A,B)= IF A THEN NOT(B) ELSE B ENDIF ));
+
+
+ END xor_def_test
+
+quantifier_props_test [t: TYPE]: THEORY
+ BEGIN
+
+not_exists: LEMMA (forall(p: [t -> bool]): ((exists(x: t): p(x))=NOT((forall(x: t): NOT(p(x))))));
+exists_not: LEMMA (forall(p: [t -> bool]): ((exists(x: t): NOT(p(x)))=NOT((forall(x: t): p(x)))));
+exists_or: LEMMA (forall(p: [t -> bool], q: [t -> bool]): ((exists(x: t): (p(x) OR q(x)))=((exists(x: t): p(x)) OR (exists(x: t): q(x)))));
+exists_implies: LEMMA (forall(p: [t -> bool], q: [t -> bool]): ((exists(x: t): IMPLIES(p(x),q(x)))=((exists(x: t): NOT(p(x))) OR (exists(x: t): q(x)))));
+exists_and: LEMMA (forall(p: [t -> bool], q: [t -> bool]): IMPLIES((exists(x: t): (p(x) AND q(x))),((exists(x: t): p(x)) AND (exists(x: t): q(x)))));
+not_forall: LEMMA (forall(p: [t -> bool]): ((forall(x: t): p(x))=NOT((exists(x: t): NOT(p(x))))));
+forall_not: LEMMA (forall(p: [t -> bool]): ((forall(x: t): NOT(p(x)))=NOT((exists(x: t): p(x)))));
+forall_and: LEMMA (forall(p: [t -> bool], q: [t -> bool]): ((forall(x: t): (p(x) AND q(x)))=((forall(x: t): p(x)) AND (forall(x: t): q(x)))));
+forall_or: LEMMA (forall(p: [t -> bool], q: [t -> bool]): IMPLIES(((forall(x: t): p(x)) OR (forall(x: t): q(x))),(forall(x: t): (p(x) OR q(x)))));
+
+
+ END quantifier_props_test
+
+defined_types_test [t: TYPE]: THEORY
+ BEGIN
+
+  pred: TYPE = [t -> bool];
+  PRED: TYPE = [t -> bool];
+  predicate: TYPE = [t -> bool];
+  PREDICATE: TYPE = [t -> bool];
+  setof: TYPE = [t -> bool];
+  SETOF: TYPE = [t -> bool];
+
+
+ END defined_types_test
+
+exists1_test [T: TYPE]: THEORY
+ BEGIN
+
+  unique?: [pred -> bool] = (lambda(p: pred): (forall(x: T, y: T): IMPLIES((p(x) AND p(y)),(x=y))));
+  exists1: [pred -> bool] = (lambda(p: pred): ((exists(x: T): p(x)) AND unique?(p)));
+unique_lem: LEMMA (forall(p: pred, q: pred): IMPLIES((forall(x: T): IMPLIES(p(x),q(x))),IMPLIES(unique?(q),unique?(p))));
+exists1_lem: LEMMA (forall(p: pred): IMPLIES(exists1((lambda(x: T): p(x))),(exists(x: T): p(x))));
+
+
+ END exists1_test
+
+equality_props_test [T: TYPE]: THEORY
+ BEGIN
+
+IF_true: POSTULATE (forall(x: T, y: T): ( IF TRUE THEN x ELSE y ENDIF =x));
+IF_false: POSTULATE (forall(x: T, y: T): ( IF FALSE THEN x ELSE y ENDIF =y));
+IF_same: LEMMA (forall(b: bool, x: T): ( IF b THEN x ELSE x ENDIF =x));
+reflexivity_of_equals: POSTULATE (forall(x: T): (x=x));
+transitivity_of_equals: POSTULATE (forall(x: T, y: T, z: T): IMPLIES(((x=y) AND (y=z)),(x=z)));
+symmetry_of_equals: POSTULATE (forall(x: T, y: T): IMPLIES((x=y),(y=x)));
+
+
+ END equality_props_test
+
+if_props_test [s: TYPE,t: TYPE]: THEORY
+ BEGIN
+
+lift_if1: LEMMA (forall(a: bool, f: [s -> t], x: s, y: s): (f( IF a THEN x ELSE y ENDIF )= IF a THEN f(x) ELSE f(y) ENDIF ));
+lift_if2: LEMMA (forall(a: bool, b: bool, c: bool, x: s, y: s): ( IF  IF a THEN b ELSE c ENDIF  THEN x ELSE y ENDIF = IF a THEN  IF b THEN x ELSE y ENDIF  ELSE  IF c THEN x ELSE y ENDIF  ENDIF ));
+
+
+ END if_props_test
+
+functions_test [D: TYPE,R: TYPE]: THEORY
+ BEGIN
+
+extensionality_postulate: POSTULATE (forall(f: [D -> R], g: [D -> R]): IFF((forall(x: D): (f(x)=g(x))),(f=g)));
+extensionality: LEMMA (forall(f: [D -> R], g: [D -> R]): IMPLIES((forall(x: D): (f(x)=g(x))),(f=g)));
+congruence: POSTULATE (forall(f: [D -> R], g: [D -> R], x1: D, x2: D): IMPLIES(((f=g) AND (x1=x2)),(f(x1)=g(x2))));
+eta: LEMMA (forall(f: [D -> R]): ((lambda(x: D): f(x))=f));
+  injective?: [[D -> R] -> bool] = (lambda(f: [D -> R]): (forall(x1: D, x2: D): =>((f(x1)=f(x2)),(x1=x2))));
+  surjective?: [[D -> R] -> bool] = (lambda(f: [D -> R]): (forall(y: R): (exists(x: D): (f(x)=y))));
+  bijective?: [[D -> R] -> bool] = (lambda(f: [D -> R]): (injective?(f) & surjective?(f)));
+  domain: TYPE = D;
+  range: TYPE = R;
+  graph: [[D -> R] -> [D,R -> bool]] = (lambda(f: [D -> R]): (lambda(x: D, y: R): (f(x)=y)));
+  preserves: [[D -> R],PRED,PRED -> bool] = (lambda(f: [D -> R], Drel: PRED, Rrel: PRED): (forall(x1: D, x2: D): IMPLIES(Drel(x1,x2),Rrel(f(x1),f(x2)))));
+  preserves: [PRED,PRED -> [[D -> R] -> bool]] = (lambda(Drel: PRED, Rrel: PRED): (lambda(f: [D -> R]): preserves(f,Drel,Rrel)));
+  inverts: [[D -> R],PRED,PRED -> bool] = (lambda(f: [D -> R], Drel: PRED, Rrel: PRED): (forall(x1: D, x2: D): IMPLIES(Drel(x1,x2),Rrel(f(x2),f(x1)))));
+  inverts: [PRED,PRED -> [[D -> R] -> bool]] = (lambda(Drel: PRED, Rrel: PRED): (lambda(f: [D -> R]): inverts(f,Drel,Rrel)));
+
+
+ END functions_test
+
+functions_alt_test [D: TYPE,R: TYPE,Drel: PRED,Rrel: PRED]: THEORY
+ BEGIN
+
+  preserves: [[D -> R] -> bool] = preserves(Drel,Rrel);
+  inverts: [[D -> R] -> bool] = inverts(Drel,Rrel);
+
+
+ END functions_alt_test
+
+restrict_test [T: TYPE,S: TYPE,R: TYPE]: THEORY
+ BEGIN
+
+  restrict: [[T -> R] -> [S -> R]] = (lambda(f: [T -> R]): (lambda(s: S): f(s)));
+injective_restrict: LEMMA (forall(f: [T -> R]): IMPLIES(injective?(f),injective?(restrict(f))));
+
+
+ END restrict_test
+
+extend_test [T: TYPE,S: TYPE,R: TYPE,d: R]: THEORY
+ BEGIN
+
+  extend: [[S -> R] -> [T -> R]] = (lambda(f: [S -> R]): (lambda(t: T):  IF S_pred(t) THEN f(t) ELSE d ENDIF ));
+restrict_extend: LEMMA (forall(f: [S -> R]): (restrict(extend(f))=f));
+
+
+ END extend_test
+
+extend_bool_test [T: TYPE,S: TYPE]: THEORY
+ BEGIN
+
+
+
+ END extend_bool_test
+
+K_conversion_test [T1: TYPE,T2: TYPE]: THEORY
+ BEGIN
+
+  K_conversion: [T1 -> [T2 -> T1]] = (lambda(x: T1): (lambda(y: T2): x));
+
+
+ END K_conversion_test
+
+K_props_test [T1: TYPE,T2: TYPE,S: TYPE]: THEORY
+ BEGIN
+
+
+
+ END K_props_test
+
+identity_test [T: TYPE]: THEORY
+ BEGIN
+
+  I: (bijective?) = (lambda(x: T): x);
+  id: (bijective?) = (lambda(x: T): x);
+  identity: (bijective?) = (lambda(x: T): x);
+
+
+ END identity_test
+
+identity_props_test [T: TYPE,S: TYPE]: THEORY
+ BEGIN
+
+
+
+ END identity_props_test
+
+relations_test [T: TYPE]: THEORY
+ BEGIN
+
+  eq: pred = (lambda(x: T, y: T): (x=y));
+  reflexive?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T): R(x,x)));
+  irreflexive?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T): NOT(R(x,x))));
+  symmetric?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T, y: T): IMPLIES(R(x,y),R(y,x))));
+  antisymmetric?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T, y: T): =>((R(x,y) & R(y,x)),(x=y))));
+  connected?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T, y: T): IMPLIES(/=(x,y),(R(x,y) OR R(y,x)))));
+  transitive?: [PRED -> bool] = (lambda(R: PRED): (forall(x: T, y: T, z: T): =>((R(x,y) & R(y,z)),R(x,z))));
+  equivalence?: [PRED -> bool] = (lambda(R: PRED): (reflexive?(R) AND (symmetric?(R) AND transitive?(R))));
+
+
+ END relations_test
+
+orders_test [T: TYPE]: THEORY
+ BEGIN
+
+  preorder?: [pred -> bool] = (lambda(<=: pred): (reflexive?(<=) & transitive?(<=)));
+  partial_order?: [pred -> bool] = (lambda(<=: pred): (preorder?(<=) & antisymmetric?(<=)));
+  strict_order?: [pred -> bool] = (lambda(<: pred): (irreflexive?(<) & transitive?(<)));
+  dichotomous?: [pred -> bool] = (lambda(<=: pred): (forall(x: T, y: T): (<=(x,y) OR <=(y,x))));
+  total_order?: [pred -> bool] = (lambda(<=: pred): (partial_order?(<=) & dichotomous?(<=)));
+  linear_order?: [pred -> bool] = (lambda(<=: pred): total_order?(<=));
+  trichotomous?: [pred -> bool] = (lambda(<: pred): (forall(x: T, y: T): (<(x,y) OR (<(y,x) OR (x=y)))));
+  strict_total_order?: [pred -> bool] = (lambda(<: pred): (strict_order?(<) & trichotomous?(<)));
+  well_founded?: [pred -> bool] = (lambda(<: pred): (forall(p: pred): IMPLIES((exists(y: T): p(y)),(exists(y: (p)): (forall(x: (p)): NOT(<(x,y)))))));
+  well_ordered?: [pred -> bool] = (lambda(<: pred): (strict_total_order?(<) & well_founded?(<)));
+  nonempty_pred: TYPE = ({p: pred | (exists(x: T): p(x))});
+  upper_bound?: [pred -> [T,nonempty_pred -> bool]] = (lambda(<: pred): (lambda(x: T, pe: nonempty_pred): (forall(y: (pe)): <(y,x))));
+  upper_bound?: [pred -> [nonempty_pred -> [T -> bool]]] = (lambda(<: pred): (lambda(pe: nonempty_pred): (lambda(x: T): upper_bound?(<)(x,pe))));
+  lower_bound?: [pred -> [T,nonempty_pred -> bool]] = (lambda(<: pred): (lambda(x: T, pe: nonempty_pred): (forall(y: (pe)): <(x,y))));
+  lower_bound?: [pred -> [nonempty_pred -> [T -> bool]]] = (lambda(<: pred): (lambda(pe: nonempty_pred): (lambda(x: T): lower_bound?(<)(x,pe))));
+  least_upper_bound?: [pred -> [T,nonempty_pred -> bool]] = (lambda(<: pred): (lambda(x: T, pe: nonempty_pred): (upper_bound?(<)(x,pe) AND (forall(y: T): IMPLIES(upper_bound?(<)(y,pe),(<(x,y) OR (x=y)))))));
+  least_upper_bound?: [pred -> [nonempty_pred -> [T -> bool]]] = (lambda(<: pred): (lambda(pe: nonempty_pred): (lambda(x: T): least_upper_bound?(<)(x,pe))));
+  greatest_lower_bound?: [pred -> [T,nonempty_pred -> bool]] = (lambda(<: pred): (lambda(x: T, pe: nonempty_pred): (lower_bound?(<)(x,pe) AND (forall(y: T): IMPLIES(lower_bound?(<)(y,pe),(<(y,x) OR (x=y)))))));
+  greatest_lower_bound?: [pred -> [nonempty_pred -> [T -> bool]]] = (lambda(<: pred): (lambda(pe: nonempty_pred): (lambda(x: T): greatest_lower_bound?(<)(x,pe))));
+
+
+ END orders_test
+
+orders_alt_test [T: TYPE,<: pred,pe: nonempty_pred]: THEORY
+ BEGIN
+
+  upper_bound?: [T -> bool] = upper_bound?(<)(pe);
+  least_upper_bound?: [T -> bool] = least_upper_bound?(<)(pe);
+  lower_bound?: [T -> bool] = lower_bound?(<)(pe);
+  greatest_lower_bound?: [T -> bool] = greatest_lower_bound?(<)(pe);
+
+
+ END orders_alt_test
+
+wf_induction_test [T: TYPE,<: (well_founded?)]: THEORY
+ BEGIN
+
+wf_induction: LEMMA (forall(p: pred): IMPLIES((forall(x: T): IMPLIES((forall(y: T): IMPLIES(<(y,x),p(y))),p(x))),(forall(x: T): p(x))));
+
+
+ END wf_induction_test
+
+measure_induction_test [T: TYPE,M: TYPE,m: [T -> M],<: (well_founded?)]: THEORY
+ BEGIN
+
+measure_induction: LEMMA (forall(p: pred): IMPLIES((forall(x: T): IMPLIES((forall(y: T): IMPLIES(<(m(y),m(x)),p(y))),p(x))),(forall(x: T): p(x))));
+
+
+ END measure_induction_test
+
+epsilons_test [T: NONEMPTY_TYPE]: THEORY
+ BEGIN
+
+  epsilon: [pred -> T];
+epsilon_ax: AXIOM (forall(p: pred): =>((exists(x: T): p(x)),p(epsilon(p))));
+
+
+ END epsilons_test
+
+sets_test [T: TYPE]: THEORY
+ BEGIN
+
+  set: TYPE = setof;
+  member: [T,set -> bool] = (lambda(x: T, a: set): a(x));
+  empty?: [set -> bool] = (lambda(a: set): (forall(x: T): NOT(member(x,a))));
+  emptyset: set = {x: T | FALSE};
+  nonempty?: [set -> bool] = (lambda(a: set): NOT(empty?(a)));
+  full?: [set -> bool] = (lambda(a: set): (forall(x: T): member(x,a)));
+  fullset: set = {x: T | TRUE};
+  subset?: [set,set -> bool] = (lambda(a: set, b: set): (forall(x: T): =>(member(x,a),member(x,b))));
+  strict_subset?: [set,set -> bool] = (lambda(a: set, b: set): (subset?(a,b) & /=(a,b)));
+  union: [set,set -> set] = (lambda(a: set, b: set): {x: T | (member(x,a) OR member(x,b))});
+  intersection: [set,set -> set] = (lambda(a: set, b: set): {x: T | (member(x,a) AND member(x,b))});
+  disjoint?: [set,set -> bool] = (lambda(a: set, b: set): empty?(intersection(a,b)));
+  complement: [set -> set] = (lambda(a: set): {x: T | NOT(member(x,a))});
+  difference: [set,set -> set] = (lambda(a: set, b: set): {x: T | (member(x,a) AND NOT(member(x,b)))});
+  symmetric_difference: [set,set -> set] = (lambda(a: set, b: set): union(difference(a,b),difference(b,a)));
+  every: [PRED -> [set -> bool]] = (lambda(p: PRED): (lambda(a: set): (forall(x: (a)): p(x))));
+  every: [PRED,set -> bool] = (lambda(p: PRED, a: set): (forall(x: (a)): p(x)));
+  some: [PRED -> [set -> bool]] = (lambda(p: PRED): (lambda(a: set): (exists(x: (a)): p(x))));
+  some: [PRED,set -> bool] = (lambda(p: PRED, a: set): (exists(x: (a)): p(x)));
+  singleton?: [set -> bool] = (lambda(a: set): (exists(x: (a)): (forall(y: (a)): (x=y))));
+  singleton: [T -> (singleton?)] = (lambda(x: T): {y: T | (y=x)});
+  add: [T,set -> (nonempty?)] = (lambda(x: T, a: set): {y: T | ((x=y) OR member(y,a))});
+  remove: [T,set -> set] = (lambda(x: T, a: set): {y: T | (/=(x,y) AND member(y,a))});
+  choose: [p: (nonempty?) -> (p)] = (lambda(p: (nonempty?)): epsilon(p));
+  the: [p: (singleton?) -> (p)] = (lambda(p: (singleton?)): epsilon(p));
+  rest: [set -> set] = (lambda(a: set):  IF empty?(a) THEN a ELSE remove(choose(a),a) ENDIF );
+
+
+ END sets_test
+
+sets_lemmas_test [T: TYPE]: THEORY
+ BEGIN
+
+extensionality: LEMMA (forall(a: set, b: set): IMPLIES((forall(x: T): IFF(member(x,a),member(x,b))),(a=b)));
+emptyset_is_empty?: LEMMA (forall(a: set): IFF(empty?(a),(a=emptyset)));
+empty_no_members: LEMMA (forall(x: T): NOT(member(x,emptyset)));
+emptyset_min: LEMMA (forall(a: set): IMPLIES(subset?(a,emptyset),(a=emptyset)));
+nonempty_member: LEMMA (forall(a: set): IFF(nonempty?(a),(exists(x: T): member(x,a))));
+fullset_member: LEMMA (forall(x: T): member(x,fullset));
+fullset_max: LEMMA (forall(a: set): IMPLIES(subset?(fullset,a),(a=fullset)));
+nonempty_exists: LEMMA (forall(a: set): IFF(nonempty?(a),(exists(x: (a)): TRUE)));
+subset_reflexive: LEMMA (forall(a: set): subset?(a,a));
+subset_antisymmetric: LEMMA (forall(a: set, b: set): IMPLIES((subset?(a,b) AND subset?(b,a)),(a=b)));
+subset_transitive: LEMMA (forall(a: set, b: set, c: set): IMPLIES((subset?(a,b) AND subset?(b,c)),subset?(a,c)));
+subset_partial_order: LEMMA partial_order?(subset?);
+subset_emptyset: LEMMA (forall(a: set): subset?(emptyset,a));
+subset_fullset: LEMMA (forall(a: set): subset?(a,fullset));
+union_idempotent: LEMMA (forall(a: set): (union(a,a)=a));
+union_commutative: LEMMA (forall(a: set, b: set): (union(a,b)=union(b,a)));
+union_associative: LEMMA (forall(a: set, b: set, c: set): (union(union(a,b),c)=union(a,union(b,c))));
+union_empty: LEMMA (forall(a: set): (union(a,emptyset)=a));
+union_full: LEMMA (forall(a: set): (union(a,fullset)=fullset));
+union_subset1: LEMMA (forall(a: set, b: set): subset?(a,union(a,b)));
+union_subset2: LEMMA (forall(a: set, b: set): IMPLIES(subset?(a,b),(union(a,b)=b)));
+union_upper_bound: LEMMA (forall(a: set, b: set, c: set): IMPLIES((subset?(a,c) AND subset?(b,c)),subset?(union(a,b),c)));
+union_difference: LEMMA (forall(a: set, b: set): (union(a,b)=union(a,difference(b,a))));
+union_diff_subset: LEMMA (forall(a: set, b: set): IMPLIES(subset?(a,b),(union(a,difference(b,a))=b)));
+intersection_idempotent: LEMMA (forall(a: set): (intersection(a,a)=a));
+intersection_commutative: LEMMA (forall(a: set, b: set): (intersection(a,b)=intersection(b,a)));
+intersection_associative: LEMMA (forall(a: set, b: set, c: set): (intersection(intersection(a,b),c)=intersection(a,intersection(b,c))));
+intersection_empty: LEMMA (forall(a: set): (intersection(a,emptyset)=emptyset));
+intersection_full: LEMMA (forall(a: set): (intersection(a,fullset)=a));
+intersection_subset1: LEMMA (forall(a: set, b: set): subset?(intersection(a,b),a));
+intersection_subset2: LEMMA (forall(a: set, b: set): IMPLIES(subset?(a,b),(intersection(a,b)=a)));
+intersection_lower_bound: LEMMA (forall(a: set, b: set, c: set): IMPLIES((subset?(c,a) AND subset?(c,b)),subset?(c,intersection(a,b))));
+distribute_intersection_union: LEMMA (forall(a: set, b: set, c: set): (intersection(a,union(b,c))=union(intersection(a,b),intersection(a,c))));
+distribute_union_intersection: LEMMA (forall(a: set, b: set, c: set): (union(a,intersection(b,c))=intersection(union(a,b),union(a,c))));
+complement_emptyset: LEMMA (complement(emptyset)=fullset);
+complement_fullset: LEMMA (complement(fullset)=emptyset);
+complement_complement: LEMMA (forall(a: set): (complement(complement(a))=a));
+subset_complement: LEMMA (forall(a: set, b: set): IFF(subset?(complement(a),complement(b)),subset?(b,a)));
+demorgan1: LEMMA (forall(a: set, b: set): (complement(union(a,b))=intersection(complement(a),complement(b))));
+demorgan2: LEMMA (forall(a: set, b: set): (complement(intersection(a,b))=union(complement(a),complement(b))));
+difference_emptyset1: LEMMA (forall(a: set): (difference(a,emptyset)=a));
+difference_emptyset2: LEMMA (forall(a: set): (difference(emptyset,a)=emptyset));
+difference_fullset1: LEMMA (forall(a: set): (difference(a,fullset)=emptyset));
+difference_fullset2: LEMMA (forall(a: set): (difference(fullset,a)=complement(a)));
+difference_intersection: LEMMA (forall(a: set, b: set): (difference(a,b)=intersection(a,complement(b))));
+difference_difference1: LEMMA (forall(a: set, b: set, c: set): (difference(difference(a,b),c)=difference(a,union(b,c))));
+difference_difference2: LEMMA (forall(a: set, b: set, c: set): (difference(a,difference(b,c))=union(difference(a,b),intersection(a,c))));
+difference_subset: LEMMA (forall(a: set, b: set): subset?(difference(a,b),a));
+difference_disjoint: LEMMA (forall(a: set, b: set): disjoint?(a,difference(b,a)));
+diff_union_inter: LEMMA (forall(a: set, b: set): (difference(union(a,b),a)=difference(b,intersection(a,b))));
+nonempty_add: LEMMA (forall(a: set, x: T): NOT(empty?(add(x,a))));
+member_add: LEMMA (forall(a: set, x: T): IMPLIES(member(x,a),(add(x,a)=a)));
+member_remove: LEMMA (forall(a: set, x: T): IMPLIES(NOT(member(x,a)),(remove(x,a)=a)));
+add_remove_member: LEMMA (forall(a: set, x: T): IMPLIES(member(x,a),(add(x,remove(x,a))=a)));
+remove_add_member: LEMMA (forall(a: set, x: T): IMPLIES(NOT(member(x,a)),(remove(x,add(x,a))=a)));
+subset_add: LEMMA (forall(a: set, x: T): subset?(a,add(x,a)));
+add_as_union: LEMMA (forall(a: set, x: T): (add(x,a)=union(a,singleton(x))));
+singleton_as_add: LEMMA (forall(x: T): (singleton(x)=add(x,emptyset)));
+subset_remove: LEMMA (forall(a: set, x: T): subset?(remove(x,a),a));
+remove_as_difference: LEMMA (forall(a: set, x: T): (remove(x,a)=difference(a,singleton(x))));
+remove_member_singleton: LEMMA (forall(x: T): (remove(x,singleton(x))=emptyset));
+choose_rest: LEMMA (forall(a: set): IMPLIES(NOT(empty?(a)),(add(choose(a),rest(a))=a)));
+choose_member: LEMMA (forall(a: set): IMPLIES(NOT(empty?(a)),member(choose(a),a)));
+choose_not_member: LEMMA (forall(a: set): IMPLIES(NOT(empty?(a)),NOT(member(choose(a),rest(a)))));
+rest_not_equal: LEMMA (forall(a: set): IMPLIES(NOT(empty?(a)),/=(rest(a),a)));
+rest_member: LEMMA (forall(a: set, x: T): IMPLIES(member(x,rest(a)),member(x,a)));
+rest_subset: LEMMA (forall(a: set): subset?(rest(a),a));
+choose_add: LEMMA (forall(a: set, x: T): ((choose(add(x,a))=x) OR member(choose(add(x,a)),a)));
+choose_rest_or: LEMMA (forall(a: set, x: T): IMPLIES(member(x,a),(member(x,rest(a)) OR (x=choose(a)))));
+choose_singleton: LEMMA (forall(x: T): (choose(singleton(x))=x));
+rest_singleton: LEMMA (forall(x: T): (rest(singleton(x))=emptyset));
+singleton_subset: LEMMA (forall(a: set, x: T): IFF(member(x,a),subset?(singleton(x),a)));
+rest_empty_lem: LEMMA (forall(a: set): IMPLIES((NOT(empty?(a)) AND empty?(rest(a))),(a=extend(singleton(choose(a))))));
+singleton_disjoint: LEMMA (forall(a: set, x: T): IMPLIES(NOT(member(x,a)),disjoint?(singleton(x),a)));
+disjoint_remove_left: LEMMA (forall(a: set, b: set, x: T): IMPLIES(disjoint?(a,b),disjoint?(remove(x,a),b)));
+disjoint_remove_right: LEMMA (forall(a: set, b: set, x: T): IMPLIES(disjoint?(a,b),disjoint?(a,remove(x,b))));
+union_disj_remove_left: LEMMA (forall(a: set, b: set, x: T): IMPLIES((disjoint?(a,b) AND a(x)),(union(remove(x,a),b)=remove(x,union(a,b)))));
+union_disj_remove_right: LEMMA (forall(a: set, b: set, x: T): IMPLIES((disjoint?(a,b) AND b(x)),(union(a,remove(x,b))=remove(x,union(a,b)))));
+
+
+ END sets_lemmas_test
+
+function_inverse_test [D: NONEMPTY_TYPE,R: TYPE]: THEORY
+ BEGIN
+
+  inverse: [[D -> R] -> [R -> D]] = (lambda(f: [D -> R]): (lambda(y: R): epsilon((lambda(x: D): (f(x)=y)))));
+surjective_inverse: LEMMA (forall(x: D, y: R, f: (surjective?)): IMPLIES((inverse(f)(y)=x),(y=f(x))));
+injective_inverse: LEMMA (forall(x: D, y: R, f: (injective?)): IMPLIES((y=f(x)),(inverse(f)(y)=x)));
+bijective_inverse: LEMMA (forall(x: D, y: R, f: (bijective?)): IFF((inverse(f)(y)=x),(y=f(x))));
+bij_inv_is_bij: LEMMA (forall(f: [D -> R]): IMPLIES(bijective?(f),bijective?(inverse(f))));
+  left_inverse?: [[R -> D],[D -> R] -> bool] = (lambda(g: [R -> D], f: [D -> R]): (forall(x: D): (g(f(x))=x)));
+  right_inverse?: [[R -> D],[D -> R] -> bool] = (lambda(g: [R -> D], f: [D -> R]): (forall(y: R): (f(g(y))=y)));
+surj_right: LEMMA (forall(f: [D -> R]): IFF(surjective?(f),right_inverse?(inverse(f),f)));
+inj_left: LEMMA (forall(f: [D -> R]): IFF(injective?(f),left_inverse?(inverse(f),f)));
+inj_inv: LEMMA (forall(f: [D -> R]): IMPLIES(surjective?(f),injective?(inverse(f))));
+surj_inv: LEMMA (forall(f: [D -> R]): IMPLIES(injective?(f),surjective?(inverse(f))));
+comp_inverse_right_surj: LEMMA (forall(y: R, f: (surjective?)): (f(inverse(f)(y))=y));
+comp_inverse_left_inj: LEMMA (forall(x: D, f: (injective?)): (inverse(f)(f(x))=x));
+comp_inverse_right: LEMMA (forall(y: R, f: (bijective?)): (f(inverse(f)(y))=y));
+comp_inverse_left: LEMMA (forall(x: D, f: (bijective?)): (inverse(f)(f(x))=x));
+
+
+ END function_inverse_test
+
+function_image_test [D: TYPE,R: TYPE]: THEORY
+ BEGIN
+
+fun_exists: LEMMA IMPLIES(((exists(y: R): TRUE) OR NOT((exists(x: D): TRUE))),(exists(f: [D -> R]): TRUE));
+  image: [[D -> R],set -> set] = (lambda(f: [D -> R], X: set): {y: R | (exists(x: (X)): (y=f(x)))});
+  image: [[D -> R] -> [set -> set]] = (lambda(f: [D -> R]): (lambda(X: set): image(f,X)));
+  inverse_image: [[D -> R],set -> set] = (lambda(f: [D -> R], Y: set): {x: D | member(f(x),Y)});
+  inverse_image: [[D -> R] -> [set -> set]] = (lambda(f: [D -> R]): (lambda(Y: set): inverse_image(f,Y)));
+image_inverse_image: LEMMA (forall(Y: set, f: [D -> R]): subset?(image(f,inverse_image(f,Y)),Y));
+inverse_image_image: LEMMA (forall(X: set, f: [D -> R]): subset?(X,inverse_image(f,image(f,X))));
+image_subset: LEMMA (forall(X1: set, X2: set, f: [D -> R]): IMPLIES(subset?(X1,X2),subset?(image(f,X1),image(f,X2))));
+inverse_image_subset: LEMMA (forall(Y1: set, Y2: set, f: [D -> R]): IMPLIES(subset?(Y1,Y2),subset?(inverse_image(f,Y1),inverse_image(f,Y2))));
+image_union: LEMMA (forall(X1: set, X2: set, f: [D -> R]): (image(f,union(X1,X2))=union(image(f,X1),image(f,X2))));
+image_intersection: LEMMA (forall(X1: set, X2: set, f: [D -> R]): subset?(image(f,intersection(X1,X2)),intersection(image(f,X1),image(f,X2))));
+inverse_image_union: LEMMA (forall(Y1: set, Y2: set, f: [D -> R]): (inverse_image(f,union(Y1,Y2))=union(inverse_image(f,Y1),inverse_image(f,Y2))));
+inverse_image_intersection: LEMMA (forall(Y1: set, Y2: set, f: [D -> R]): (inverse_image(f,intersection(Y1,Y2))=intersection(inverse_image(f,Y1),inverse_image(f,Y2))));
+inverse_image_complement: LEMMA (forall(Y: set, f: [D -> R]): (inverse_image(f,complement(Y))=complement(inverse_image(f,Y))));
+
+
+ END function_image_test
+
+function_props_test [T1: TYPE,T2: TYPE,T3: TYPE]: THEORY
+ BEGIN
+
+  O: [[T2 -> T3],[T1 -> T2] -> [T1 -> T3]] = (lambda(f2: [T2 -> T3], f1: [T1 -> T2]): (lambda(x: T1): f2(f1(x))));
+image_composition: LEMMA (forall(X: set, f1: [T1 -> T2], f2: [T2 -> T3]): (image(f2,image(f1,X))=image(O(f2,f1),X)));
+preserves_composition: LEMMA (forall(R1: PRED, R2: PRED, R3: PRED, f1: [T1 -> T2], f2: [T2 -> T3]): IMPLIES((preserves(f1,R1,R2) AND preserves(f2,R2,R3)),preserves(O(f2,f1),R1,R3)));
+inverts_composition1: LEMMA (forall(R1: PRED, R2: PRED, R3: PRED, f1: [T1 -> T2], f2: [T2 -> T3]): IMPLIES((preserves(f1,R1,R2) AND inverts(f2,R2,R3)),inverts(O(f2,f1),R1,R3)));
+inverts_composition2: LEMMA (forall(R1: PRED, R2: PRED, R3: PRED, f1: [T1 -> T2], f2: [T2 -> T3]): IMPLIES((inverts(f1,R1,R2) AND preserves(f2,R2,R3)),inverts(O(f2,f1),R1,R3)));
+
+
+ END function_props_test
+
+function_props2_test [T1: TYPE,T2: TYPE,T3: TYPE,T4: TYPE]: THEORY
+ BEGIN
+
+assoc: LEMMA (forall(f1: [T1 -> T2], f2: [T2 -> T3], f3: [T3 -> T4]): (O(O(f3,f2),f1)=O(f3,O(f2,f1))));
+
+
+ END function_props2_test
+
+relation_defs_test [T1: TYPE,T2: TYPE]: THEORY
+ BEGIN
+
+  domain: TYPE = ({x: T1 | (exists(y: T2): R(x,y))});
+  range: TYPE = ({y: T2 | (exists(x: T1): R(x,y))});
+  image: [pred,set -> set] = (lambda(R: pred, X: set): {y: T2 | (exists(x: (X)): R(x,y))});
+  image: [pred -> [set -> set]] = (lambda(R: pred): (lambda(X: set): image(R,X)));
+  preimage: [pred,set -> set] = (lambda(R: pred, Y: set): {x: T1 | (exists(y: (Y)): R(x,y))});
+  preimage: [pred -> [set -> set]] = (lambda(R: pred): (lambda(Y: set): preimage(R,Y)));
+  postcondition: [pred,set -> set] = (lambda(R: pred, X: set): {y: T2 | (forall(x: (X)): R(x,y))});
+  postcondition: [pred -> [set -> set]] = (lambda(R: pred): (lambda(X: set): postcondition(R,X)));
+  precondition: [pred,set -> set] = (lambda(R: pred, Y: set): {x: T1 | (forall(y: (Y)): R(x,y))});
+  precondition: [pred -> [set -> set]] = (lambda(R: pred): (lambda(Y: set): precondition(R,Y)));
+  converse: [pred -> pred] = (lambda(R: pred): (lambda(y: T2, x: T1): R(x,y)));
+  isomorphism?: [pred -> bool] = (lambda(R: pred): (exists(f: (bijective?)): (R=graph(f))));
+  total?: [pred -> bool] = (lambda(R: pred): (forall(x: T1): (exists(y: T2): R(x,y))));
+  onto?: [pred -> bool] = (lambda(R: pred): (forall(y: T2): (exists(x: T1): R(x,y))));
+
+
+ END relation_defs_test
+
+relation_props_test [T1: TYPE,T2: TYPE,T3: TYPE]: THEORY
+ BEGIN
+
+  O: [pred,pred -> [T1,T3 -> bool]] = (lambda(R1: pred, R2: pred): (lambda(x: T1, z: T3): (exists(y: T2): (R1(x,y) AND R2(y,z)))));
+total_composition: LEMMA (forall(R1: pred, R2: pred): =>((total?(R1) & total?(R2)),total?(O(R1,R2))));
+onto_composition: LEMMA (forall(R1: pred, R2: pred): =>((onto?(R1) & onto?(R2)),onto?(O(R1,R2))));
+
+
+ END relation_props_test
+
+relation_props2_test [T1: TYPE,T2: TYPE,T3: TYPE,T4: TYPE]: THEORY
+ BEGIN
+
+assoc: LEMMA (forall(R1: pred, R2: pred, R3: pred): (O(O(R1,R2),R3)=O(R1,O(R2,R3))));
+
+
+ END relation_props2_test
+
+operator_defs_test [T: TYPE]: THEORY
+ BEGIN
+
+  commutative?: [[T,T -> T] -> bool] = (lambda(O: [T,T -> T]): (forall(x: T, y: T): (O(x,y)=O(y,x))));
+  associative?: [[T,T -> T] -> bool] = (lambda(O: [T,T -> T]): (forall(x: T, y: T, z: T): (O(O(x,y),z)=O(x,O(y,z)))));
+  left_identity?: [[T,T -> T] -> [T -> bool]] = (lambda(O: [T,T -> T]): (lambda(y: T): (forall(x: T): (O(y,x)=x))));
+  right_identity?: [[T,T -> T] -> [T -> bool]] = (lambda(O: [T,T -> T]): (lambda(y: T): (forall(x: T): (O(x,y)=x))));
+  identity?: [[T,T -> T] -> [T -> bool]] = (lambda(O: [T,T -> T]): (lambda(y: T): (forall(x: T): ((O(x,y)=x) AND (O(y,x)=x)))));
+  has_identity?: [[T,T -> T] -> bool] = (lambda(O: [T,T -> T]): (exists(y: T): identity?(O)(y)));
+  zero?: [[T,T -> T] -> [T -> bool]] = (lambda(O: [T,T -> T]): (lambda(y: T): (forall(x: T): ((O(x,y)=y) AND (O(y,x)=y)))));
+  has_zero?: [[T,T -> T] -> bool] = (lambda(O: [T,T -> T]): (exists(y: T): zero?(O)(y)));
+  inverses?: [[T,T -> T] -> [[T -> T] -> [T -> bool]]] = (lambda(O: [T,T -> T]): (lambda(-: [T -> T]): (lambda(y: T): (forall(x: T): ((O(x,-(x))=y) AND (O(-(x),x)=y))))));
+  has_inverses?: [[T,T -> T] -> bool] = (lambda(O: [T,T -> T]): (exists(-: [T -> T], y: T): inverses?(O)(-)(y)));
+  distributive?: [[T,T -> T],[T,T -> T] -> bool] = (lambda(*: [T,T -> T], O: [T,T -> T]): (forall(x: T, y: T, z: T): (*(x,O(y,z))=O(*(x,y),*(x,z)))));
+
+
+ END operator_defs_test
+
+numbers_test: THEORY
+ BEGIN
+
+  number: NONEMPTY_TYPE;
+number_nonempty: AXIOM (exists(x: number): TRUE);
+
+
+ END numbers_test
+
+reals_test: THEORY
+ BEGIN
+
+  real: NONEMPTY_TYPE = number;
+  real_pred: [number -> boolean];
+real_nonempty: AXIOM (exists(x: real): TRUE);
+  real?: [number -> bool] = (lambda(n: number): real_pred(n));
+  nonzero_real: NONEMPTY_TYPE = ({r: real | /=(r,0)});
+  nzreal: NONEMPTY_TYPE = nonzero_real;
+  +: [real,real -> real];
+  -: [real,real -> real];
+  *: [real,real -> real];
+  /: [real,nzreal -> real];
+  -: [real -> real];
+  <: [real,real -> bool];
+  <=: [real,real -> bool] = (lambda(x: real, y: real): (<(x,y) OR (x=y)));
+  >: [real,real -> bool] = (lambda(x: real, y: real): <(y,x));
+  >=: [real,real -> bool] = (lambda(x: real, y: real): <=(y,x));
+reals_totally_ordered: POSTULATE strict_total_order?(<);
+
+
+ END reals_test
+
+real_axioms_test: THEORY
+ BEGIN
+
+commutative_add: POSTULATE (forall(x: real, y: real): (+(x,y)=+(y,x)));
+associative_add: POSTULATE (forall(x: real, y: real, z: real): (+(x,+(y,z))=+(+(x,y),z)));
+identity_add: POSTULATE (forall(x: real): (+(x,0)=x));
+inverse_add: POSTULATE (forall(x: real): (+(x,-(x))=0));
+minus_add: POSTULATE (forall(x: real, y: real): (-(x,y)=+(x,-(y))));
+commutative_mult: POSTULATE (forall(x: real, y: real): (*(x,y)=*(y,x)));
+associative_mult: POSTULATE (forall(x: real, y: real, z: real): (*(x,*(y,z))=*(*(x,y),z)));
+identity_mult: POSTULATE (forall(x: real): (*(1,x)=x));
+inverse_mult: POSTULATE (forall(n0x: nzreal): (*(n0x,/(1,n0x))=1));
+div_def: POSTULATE (forall(n0x: nzreal, y: real): (/(y,n0x)=*(y,/(1,n0x))));
+distributive: POSTULATE (forall(x: real, y: real, z: real): (*(x,+(y,z))=+(*(x,y),*(x,z))));
+posreal_add_closed: POSTULATE (forall(x: real, y: real): IMPLIES((>(x,0) AND >(y,0)),>(+(x,y),0)));
+posreal_mult_closed: AXIOM (forall(x: real, y: real): IMPLIES((>(x,0) AND >(y,0)),>(*(x,y),0)));
+posreal_neg: POSTULATE (forall(x: real): IMPLIES(>(x,0),NOT(>(-(x),0))));
+trichotomy: POSTULATE (forall(x: real): (>(x,0) OR ((x=0) OR >(0,x))));
+
+
+ END real_axioms_test
+
+bounded_real_defs_test: THEORY
+ BEGIN
+
+  upper_bound?: [real,(nonempty?) -> bool] = (lambda(x: real, S: (nonempty?)): (forall(s: (S)): <=(s,x)));
+  upper_bound?: [(nonempty?) -> [real -> bool]] = (lambda(S: (nonempty?)): (lambda(x: real): upper_bound?(x,S)));
+  lower_bound?: [real,(nonempty?) -> bool] = (lambda(x: real, S: (nonempty?)): (forall(s: (S)): <=(x,s)));
+  lower_bound?: [(nonempty?) -> [real -> bool]] = (lambda(S: (nonempty?)): (lambda(x: real): lower_bound?(x,S)));
+  least_upper_bound?: [real,(nonempty?) -> bool] = (lambda(x: real, S: (nonempty?)): (upper_bound?(x,S) AND (forall(y: real): IMPLIES(upper_bound?(y,S),<=(x,y)))));
+  least_upper_bound?: [(nonempty?) -> [real -> bool]] = (lambda(S: (nonempty?)): (lambda(x: real): least_upper_bound?(x,S)));
+  greatest_lower_bound?: [real,(nonempty?) -> bool] = (lambda(x: real, S: (nonempty?)): (lower_bound?(x,S) AND (forall(y: real): IMPLIES(lower_bound?(y,S),<=(y,x)))));
+  greatest_lower_bound?: [(nonempty?) -> [real -> bool]] = (lambda(S: (nonempty?)): (lambda(x: real): greatest_lower_bound?(x,S)));
+real_complete: AXIOM (forall(S: (nonempty?)): IMPLIES((exists(y: real): upper_bound?(y,S)),(exists(y: real): least_upper_bound?(y,S))));
+real_lower_complete: LEMMA (forall(S: (nonempty?)): IMPLIES((exists(y: real): lower_bound?(y,S)),(exists(x: real): greatest_lower_bound?(x,S))));
+  bounded_above?: [(nonempty?) -> bool] = (lambda(S: (nonempty?)): (exists(x: real): upper_bound?(x,S)));
+  bounded_below?: [(nonempty?) -> bool] = (lambda(S: (nonempty?)): (exists(x: real): lower_bound?(x,S)));
+  bounded?: [(nonempty?) -> bool] = (lambda(S: (nonempty?)): (bounded_above?(S) AND bounded_below?(S)));
+  bounded_set: TYPE = (bounded?);
+lub_exists: LEMMA (forall(SA: (bounded_above?)): (exists(x: real): least_upper_bound?(x,SA)));
+  lub: [SA: (bounded_above?) -> ({x: real | least_upper_bound?(x,SA)})];
+lub_lem: LEMMA (forall(SA: (bounded_above?), x: real): IFF((lub(SA)=x),least_upper_bound?(x,SA)));
+glb_exists: LEMMA (forall(SB: (bounded_below?)): (exists(x: real): greatest_lower_bound?(x,SB)));
+  glb: [SB: (bounded_below?) -> ({x: real | greatest_lower_bound?(x,SB)})];
+glb_lem: LEMMA (forall(SB: (bounded_below?), x: real): IFF((glb(SB)=x),greatest_lower_bound?(x,SB)));
+
+
+ END bounded_real_defs_test
+
+bounded_real_defs_alt_test [S: (nonempty?)]: THEORY
+ BEGIN
+
+  upper_bound?: [real -> bool] = upper_bound?(S);
+  lower_bound?: [real -> bool] = lower_bound?(S);
+  least_upper_bound?: [real -> bool] = least_upper_bound?(S);
+  greatest_lower_bound?: [real -> bool] = greatest_lower_bound?(S);
+
+
+ END bounded_real_defs_alt_test
+
+real_types_test: THEORY
+ BEGIN
+
+  nonneg_real: NONEMPTY_TYPE = ({x: real | >=(x,0)});
+  nonpos_real: NONEMPTY_TYPE = ({x: real | <=(x,0)});
+  posreal: NONEMPTY_TYPE = ({x: nonneg_real | >(x,0)});
+  negreal: NONEMPTY_TYPE = ({x: nonpos_real | <(x,0)});
+  nnreal: TYPE = nonneg_real;
+  npreal: TYPE = nonpos_real;
+nonneg_real_add_closed: LEMMA (forall(nnx: nonneg_real, nny: nonneg_real): >=(+(nnx,nny),0));
+nonpos_real_add_closed: LEMMA (forall(npx: nonpos_real, npy: nonpos_real): <=(+(npx,npy),0));
+negreal_add_closed: LEMMA (forall(nx: negreal, ny: negreal): <(+(nx,ny),0));
+nonneg_real_mult_closed: LEMMA (forall(nnx: nonneg_real, nny: nonneg_real): >=(*(nnx,nny),0));
+
+
+ END real_types_test
+
+rationals_test: THEORY
+ BEGIN
+
+  rational: NONEMPTY_TYPE = real;
+  rational_pred: [real -> boolean];
+rational_nonempty: AXIOM (exists(x: rational): TRUE);
+  rat: NONEMPTY_TYPE = rational;
+  rational?: [number -> bool] = (lambda(n: number): (real_pred(n) AND rational_pred(n)));
+  nonzero_rational: NONEMPTY_TYPE = ({r: rational | /=(r,0)});
+  nzrat: NONEMPTY_TYPE = nonzero_rational;
+closed_plus: AXIOM (forall(x: rat, y: rat): rational_pred(+(x,y)));
+closed_minus: AXIOM (forall(x: rat, y: rat): rational_pred(-(x,y)));
+closed_times: AXIOM (forall(x: rat, y: rat): rational_pred(*(x,y)));
+closed_divides: AXIOM (forall(n0z: nzrat, x: rat): rational_pred(/(x,n0z)));
+closed_neg: AXIOM (forall(x: rat): rational_pred(-(x)));
+  nonneg_rat: NONEMPTY_TYPE = ({r: rational | >=(r,0)});
+  nonpos_rat: NONEMPTY_TYPE = ({r: rational | <=(r,0)});
+  posrat: NONEMPTY_TYPE = ({r: nonneg_rat | >(r,0)});
+  negrat: NONEMPTY_TYPE = ({r: nonpos_rat | <(r,0)});
+  nnrat: NONEMPTY_TYPE = nonneg_rat;
+  nprat: NONEMPTY_TYPE = nonpos_rat;
+
+
+ END rationals_test
+
+integers_test: THEORY
+ BEGIN
+
+  integer: NONEMPTY_TYPE = rational;
+  integer_pred: [rational -> boolean];
+integer_nonempty: AXIOM (exists(x: integer): TRUE);
+  int: NONEMPTY_TYPE = integer;
+  integer?: [number -> bool] = (lambda(n: number): (real_pred(n) AND (rational_pred(n) AND integer_pred(n))));
+  nonzero_integer: NONEMPTY_TYPE = ({i: int | /=(i,0)});
+  nzint: NONEMPTY_TYPE = nonzero_integer;
+closed_plus: AXIOM (forall(i: int, j: int): integer_pred(+(i,j)));
+closed_minus: AXIOM (forall(i: int, j: int): integer_pred(-(i,j)));
+closed_times: AXIOM (forall(i: int, j: int): integer_pred(*(i,j)));
+closed_neg: AXIOM (forall(i: int): integer_pred(-(i)));
+  upfrom: NONEMPTY_TYPE = ({s: int | >=(s,i)});
+  above: NONEMPTY_TYPE = ({s: int | >(s,i)});
+  nonneg_int: NONEMPTY_TYPE = ({i: int | >=(i,0)});
+  nonpos_int: NONEMPTY_TYPE = ({i: int | <=(i,0)});
+  posint: NONEMPTY_TYPE = ({i: nonneg_int | >(i,0)});
+  negint: NONEMPTY_TYPE = ({i: nonpos_int | <(i,0)});
+  posnat: NONEMPTY_TYPE = posint;
+  subrange: TYPE = ({k: int | (<=(i,k) AND <=(k,j))});
+  even?: [int -> bool] = (lambda(i: int): (exists(j: int): (i=*(j,2))));
+  odd?: [int -> bool] = (lambda(i: int): (exists(j: int): (i=+(*(j,2),1))));
+  even_int: NONEMPTY_TYPE = (even?);
+  odd_int: NONEMPTY_TYPE = (odd?);
+
+
+ END integers_test
+
+naturalnumbers_test: THEORY
+ BEGIN
+
+  naturalnumber: TYPE = nonneg_int;
+  nat: NONEMPTY_TYPE = naturalnumber;
+  upto: NONEMPTY_TYPE = ({s: nat | <=(s,i)});
+  below: TYPE = ({s: nat | <(s,i)});
+  succ: [nat -> nat] = (lambda(i: nat): +(i,1));
+  pred: [nat -> nat] = (lambda(i: nat):  IF >(i,0) THEN -(i,1) ELSE 0 ENDIF );
+  ~: [nat,nat -> nat] = (lambda(i: nat, j: nat):  IF >(i,j) THEN -(i,j) ELSE 0 ENDIF );
+wf_nat: AXIOM well_founded?((lambda(i: nat, j: nat): <(i,j)));
+nat_induction: LEMMA (forall(p: pred): IMPLIES((p(0) AND (forall(j: nat): IMPLIES(p(j),p(+(j,1))))),(forall(i: nat): p(i))));
+NAT_induction: LEMMA (forall(p: pred): IMPLIES((forall(j: nat): IMPLIES((forall(k: nat): IMPLIES(<(k,j),p(k))),p(j))),(forall(i: nat): p(i))));
+
+
+ END naturalnumbers_test
+
+min_nat_test [T: TYPE]: THEORY
+ BEGIN
+
+  min: [S: (nonempty?) -> ({a: T | (S(a) AND (forall(x: T): IMPLIES(S(x),<=(a,x))))})];
+  minimum?: [T,(nonempty?) -> bool] = (lambda(a: T, S: (nonempty?)): (S(a) AND (forall(x: T): IMPLIES(S(x),<=(a,x)))));
+min_def: LEMMA (forall(a: T, S: (nonempty?)): IFF((min(S)=a),minimum?(a,S)));
+
+
+ END min_nat_test
+
+real_defs_test: THEORY
+ BEGIN
+
+  sgn: [real -> int] = (lambda(m: real):  IF >=(m,0) THEN 1 ELSE -(1) ENDIF );
+  abs: [m: real -> ({n: nonneg_real | >=(n,m)})] = (lambda(m: real):  IF <(m,0) THEN -(m) ELSE m ENDIF );
+  max: [d: [real,real] -> ({p: real | (>=(p,1`d) AND >=(p,2`d))})] = (lambda(m: real, n: real):  IF <(m,n) THEN n ELSE m ENDIF );
+  min: [d: [real,real] -> ({p: real | (<=(p,1`d) AND <=(p,2`d))})] = (lambda(m: real, n: real):  IF >(m,n) THEN n ELSE m ENDIF );
+
+
+ END real_defs_test
+
+real_props_test: THEORY
+ BEGIN
+
+inv_ne_0: LEMMA (forall(n0x: nonzero_real): /=(/(1,n0x),0));
+both_sides_plus1: LEMMA (forall(x: real, y: real, z: real): IFF((+(x,z)=+(y,z)),(x=y)));
+both_sides_plus2: LEMMA (forall(x: real, y: real, z: real): IFF((+(z,x)=+(z,y)),(x=y)));
+both_sides_minus1: LEMMA (forall(x: real, y: real, z: real): IFF((-(x,z)=-(y,z)),(x=y)));
+both_sides_minus2: LEMMA (forall(x: real, y: real, z: real): IFF((-(z,x)=-(z,y)),(x=y)));
+both_sides_times1: LEMMA (forall(n0z: nonzero_real, x: real, y: real): IFF((*(x,n0z)=*(y,n0z)),(x=y)));
+both_sides_times2: LEMMA (forall(n0z: nonzero_real, x: real, y: real): IFF((*(n0z,x)=*(n0z,y)),(x=y)));
+both_sides_div1: LEMMA (forall(n0z: nonzero_real, x: real, y: real): IFF((/(x,n0z)=/(y,n0z)),(x=y)));
+both_sides_div2: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real, n0z: nonzero_real): IFF((/(n0z,n0x)=/(n0z,n0y)),(n0x=n0y)));
+times_plus: LEMMA (forall(w: real, x: real, y: real, z: real): (*(+(x,y),+(z,w))=+(+(+(*(x,z),*(x,w)),*(y,z)),*(y,w))));
+times_div1: LEMMA (forall(n0z: nonzero_real, x: real, y: real): (*(x,/(y,n0z))=/(*(x,y),n0z)));
+times_div2: LEMMA (forall(n0z: nonzero_real, x: real, y: real): (*(/(x,n0z),y)=/(*(x,y),n0z)));
+div_times: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real, x: real, y: real): (*(/(x,n0x),/(y,n0y))=/(*(x,y),*(n0x,n0y))));
+div_eq_zero: LEMMA (forall(n0z: nonzero_real, x: real): IFF((/(x,n0z)=0),(x=0)));
+div_simp: LEMMA (forall(n0x: nonzero_real): (/(n0x,n0x)=1));
+div_cancel1: LEMMA (forall(n0z: nonzero_real, x: real): (*(n0z,/(x,n0z))=x));
+div_cancel2: LEMMA (forall(n0z: nonzero_real, x: real): (*(/(x,n0z),n0z)=x));
+div_cancel3: LEMMA (forall(n0z: nonzero_real, x: real, y: real): IFF((/(x,n0z)=y),(x=*(y,n0z))));
+cross_mult: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real, x: real, y: real): IFF((/(x,n0x)=/(y,n0y)),(*(x,n0y)=*(y,n0x))));
+add_div: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real, x: real, y: real): (+(/(x,n0x),/(y,n0y))=/(+(*(x,n0y),*(y,n0x)),*(n0x,n0y))));
+minus_div1: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real, x: real, y: real): (-(/(x,n0x),/(y,n0y))=/(-(*(x,n0y),*(y,n0x)),*(n0x,n0y))));
+minus_div2: LEMMA (forall(n0x: nonzero_real, x: real, y: real): (-(/(x,n0x),/(y,n0x))=/(-(x,y),n0x)));
+div_distributes: LEMMA (forall(n0z: nonzero_real, x: real, y: real): (+(/(x,n0z),/(y,n0z))=/(+(x,y),n0z)));
+div_distributes_minus: LEMMA (forall(n0z: nonzero_real, x: real, y: real): (-(/(x,n0z),/(y,n0z))=/(-(x,y),n0z)));
+div_div1: LEMMA (forall(n0y: nonzero_real, n0z: nonzero_real, x: real): (/(x,/(n0y,n0z))=/(*(x,n0z),n0y)));
+div_div2: LEMMA (forall(n0y: nonzero_real, n0z: nonzero_real, x: real): (/(/(x,n0y),n0z)=/(x,*(n0y,n0z))));
+idem_add_is_zero: LEMMA (forall(x: real): IMPLIES((+(x,x)=x),(x=0)));
+zero_times1: LEMMA (forall(x: real): (*(0,x)=0));
+zero_times2: LEMMA (forall(x: real): (*(x,0)=0));
+zero_times3: LEMMA (forall(x: real, y: real): IFF((*(x,y)=0),((x=0) OR (y=0))));
+neg_times_neg: LEMMA (forall(x: real, y: real): (*(-(x),-(y))=*(x,y)));
+zero_is_neg_zero: LEMMA (-(0)=0);
+strict_lt: LEMMA strict_total_order?(<);
+trich_lt: LEMMA (forall(x: real, y: real): (<(x,y) OR ((x=y) OR <(y,x))));
+tri_unique_lt1: LEMMA (forall(x: real, y: real): IMPLIES(<(x,y),(/=(x,y) AND NOT(<(y,x)))));
+tri_unique_lt2: LEMMA (forall(x: real, y: real): IMPLIES((x=y),(NOT(<(x,y)) AND NOT(<(y,x)))));
+zero_not_lt_zero: LEMMA NOT(<(0,0));
+neg_lt: LEMMA (forall(x: real): IFF(<(0,-(x)),<(x,0)));
+pos_times_lt: LEMMA (forall(x: real, y: real): IFF(<(0,*(x,y)),((<(0,x) AND <(0,y)) OR (<(x,0) AND <(y,0)))));
+neg_times_lt: LEMMA (forall(x: real, y: real): IFF(<(*(x,y),0),((<(0,x) AND <(y,0)) OR (<(x,0) AND <(0,y)))));
+quotient_pos_lt: FORMULA (forall(n0x: nonzero_real): IFF(<(0,/(1,n0x)),<(0,n0x)));
+quotient_neg_lt: FORMULA (forall(n0x: nonzero_real): IFF(<(/(1,n0x),0),<(n0x,0)));
+pos_div_lt: LEMMA (forall(n0y: nonzero_real, x: real): IFF(<(0,/(x,n0y)),((<(0,x) AND <(0,n0y)) OR (<(x,0) AND <(n0y,0)))));
+neg_div_lt: LEMMA (forall(n0y: nonzero_real, x: real): IFF(<(/(x,n0y),0),((<(0,x) AND <(n0y,0)) OR (<(x,0) AND <(0,n0y)))));
+div_mult_pos_lt1: LEMMA (forall(py: posreal, x: real, z: real): IFF(<(/(z,py),x),<(z,*(x,py))));
+div_mult_pos_lt2: LEMMA (forall(py: posreal, x: real, z: real): IFF(<(x,/(z,py)),<(*(x,py),z)));
+div_mult_neg_lt1: LEMMA (forall(ny: negreal, x: real, z: real): IFF(<(/(z,ny),x),<(*(x,ny),z)));
+div_mult_neg_lt2: LEMMA (forall(ny: negreal, x: real, z: real): IFF(<(x,/(z,ny)),<(z,*(x,ny))));
+both_sides_plus_lt1: LEMMA (forall(x: real, y: real, z: real): IFF(<(+(x,z),+(y,z)),<(x,y)));
+both_sides_plus_lt2: LEMMA (forall(x: real, y: real, z: real): IFF(<(+(z,x),+(z,y)),<(x,y)));
+both_sides_minus_lt1: LEMMA (forall(x: real, y: real, z: real): IFF(<(-(x,z),-(y,z)),<(x,y)));
+both_sides_minus_lt2: LEMMA (forall(x: real, y: real, z: real): IFF(<(-(z,x),-(z,y)),<(y,x)));
+both_sides_times_pos_lt1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<(*(x,pz),*(y,pz)),<(x,y)));
+both_sides_times_pos_lt2: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<(*(pz,x),*(pz,y)),<(x,y)));
+both_sides_times_neg_lt1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<(*(x,nz),*(y,nz)),<(y,x)));
+both_sides_times_neg_lt2: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<(*(nz,x),*(nz,y)),<(y,x)));
+both_sides_div_pos_lt1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<(/(x,pz),/(y,pz)),<(x,y)));
+both_sides_div_pos_lt2: LEMMA (forall(px: posreal, py: posreal, pz: posreal): IFF(<(/(pz,px),/(pz,py)),<(py,px)));
+both_sides_div_pos_lt3: LEMMA (forall(nz: negreal, px: posreal, py: posreal): IFF(<(/(nz,px),/(nz,py)),<(px,py)));
+both_sides_div_neg_lt1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<(/(x,nz),/(y,nz)),<(y,x)));
+both_sides_div_neg_lt2: LEMMA (forall(nx: negreal, ny: negreal, pz: posreal): IFF(<(/(pz,nx),/(pz,ny)),<(ny,nx)));
+both_sides_div_neg_lt3: LEMMA (forall(nx: negreal, ny: negreal, nz: negreal): IFF(<(/(nz,nx),/(nz,ny)),<(nx,ny)));
+lt_plus_lt1: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<=(x,y) AND <(z,w)),<(+(x,z),+(y,w))));
+lt_plus_lt2: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<(x,y) AND <=(z,w)),<(+(x,z),+(y,w))));
+lt_minus_lt1: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<=(x,y) AND <(w,z)),<(-(x,z),-(y,w))));
+lt_minus_lt2: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<(x,y) AND <=(w,z)),<(-(x,z),-(y,w))));
+lt_times_lt_pos1: LEMMA (forall(nnz: nonneg_real, px: posreal, w: real, y: real): IMPLIES((<=(px,y) AND <(nnz,w)),<(*(px,nnz),*(y,w))));
+lt_times_lt_pos2: LEMMA (forall(nnx: nonneg_real, pz: posreal, w: real, y: real): IMPLIES((<(nnx,y) AND <=(pz,w)),<(*(nnx,pz),*(y,w))));
+lt_div_lt_pos1: LEMMA (forall(px: posreal, pz: posreal, w: real, y: real): IMPLIES((<=(px,y) AND <(pz,w)),<(/(px,w),/(y,pz))));
+lt_div_lt_pos2: LEMMA (forall(nnx: nonneg_real, pz: posreal, w: real, y: real): IMPLIES((<(nnx,y) AND <=(pz,w)),<(/(nnx,w),/(y,pz))));
+lt_times_lt_neg1: LEMMA (forall(npw: nonpos_real, ny: negreal, x: real, z: real): IMPLIES((<=(x,ny) AND <(z,npw)),<(*(ny,npw),*(x,z))));
+lt_times_lt_neg2: LEMMA (forall(npy: nonpos_real, nw: negreal, x: real, z: real): IMPLIES((<(x,npy) AND <=(z,nw)),<(*(npy,nw),*(x,z))));
+lt_div_lt_neg1: LEMMA (forall(nw: negreal, ny: negreal, x: real, z: real): IMPLIES((<=(x,ny) AND <(z,nw)),<(/(ny,z),/(x,nw))));
+lt_div_lt_neg2: LEMMA (forall(npy: nonpos_real, nw: negreal, x: real, z: real): IMPLIES((<(x,npy) AND <=(z,nw)),<(/(npy,z),/(x,nw))));
+total_le: LEMMA total_order?(<=);
+dich_le: LEMMA (forall(x: real, y: real): (<=(x,y) OR <=(y,x)));
+zero_le_zero: LEMMA <=(0,0);
+neg_le: LEMMA (forall(x: real): IFF(<=(0,-(x)),<=(x,0)));
+pos_times_le: LEMMA (forall(x: real, y: real): IFF(<=(0,*(x,y)),((<=(0,x) AND <=(0,y)) OR (<=(x,0) AND <=(y,0)))));
+neg_times_le: LEMMA (forall(x: real, y: real): IFF(<=(*(x,y),0),((<=(0,x) AND <=(y,0)) OR (<=(x,0) AND <=(0,y)))));
+quotient_pos_le: FORMULA (forall(n0x: nonzero_real): IFF(<=(0,/(1,n0x)),<=(0,n0x)));
+quotient_neg_le: FORMULA (forall(n0x: nonzero_real): IFF(<=(/(1,n0x),0),<=(n0x,0)));
+pos_div_le: LEMMA (forall(n0y: nonzero_real, x: real): IFF(<=(0,/(x,n0y)),((<=(0,x) AND <=(0,n0y)) OR (<=(x,0) AND <=(n0y,0)))));
+neg_div_le: LEMMA (forall(n0y: nonzero_real, x: real): IFF(<=(/(x,n0y),0),((<=(0,x) AND <=(n0y,0)) OR (<=(x,0) AND <=(0,n0y)))));
+div_mult_pos_le1: LEMMA (forall(py: posreal, x: real, z: real): IFF(<=(/(z,py),x),<=(z,*(x,py))));
+div_mult_pos_le2: LEMMA (forall(py: posreal, x: real, z: real): IFF(<=(x,/(z,py)),<=(*(x,py),z)));
+div_mult_neg_le1: LEMMA (forall(ny: negreal, x: real, z: real): IFF(<=(/(z,ny),x),<=(*(x,ny),z)));
+div_mult_neg_le2: LEMMA (forall(ny: negreal, x: real, z: real): IFF(<=(x,/(z,ny)),<=(z,*(x,ny))));
+both_sides_plus_le1: LEMMA (forall(x: real, y: real, z: real): IFF(<=(+(x,z),+(y,z)),<=(x,y)));
+both_sides_plus_le2: LEMMA (forall(x: real, y: real, z: real): IFF(<=(+(z,x),+(z,y)),<=(x,y)));
+both_sides_minus_le1: LEMMA (forall(x: real, y: real, z: real): IFF(<=(-(x,z),-(y,z)),<=(x,y)));
+both_sides_minus_le2: LEMMA (forall(x: real, y: real, z: real): IFF(<=(-(z,x),-(z,y)),<=(y,x)));
+both_sides_times_pos_le1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<=(*(x,pz),*(y,pz)),<=(x,y)));
+both_sides_times_pos_le2: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<=(*(pz,x),*(pz,y)),<=(x,y)));
+both_sides_times_neg_le1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<=(*(x,nz),*(y,nz)),<=(y,x)));
+both_sides_times_neg_le2: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<=(*(nz,x),*(nz,y)),<=(y,x)));
+both_sides_div_pos_le1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(<=(/(x,pz),/(y,pz)),<=(x,y)));
+both_sides_div_pos_le2: LEMMA (forall(px: posreal, py: posreal, pz: posreal): IFF(<=(/(pz,px),/(pz,py)),<=(py,px)));
+both_sides_div_pos_le3: LEMMA (forall(nz: negreal, px: posreal, py: posreal): IFF(<=(/(nz,px),/(nz,py)),<=(px,py)));
+both_sides_div_neg_le1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(<=(/(x,nz),/(y,nz)),<=(y,x)));
+both_sides_div_neg_le2: LEMMA (forall(nx: negreal, ny: negreal, pz: posreal): IFF(<=(/(pz,nx),/(pz,ny)),<=(ny,nx)));
+both_sides_div_neg_le3: LEMMA (forall(nx: negreal, ny: negreal, nz: negreal): IFF(<=(/(nz,nx),/(nz,ny)),<=(nx,ny)));
+le_plus_le: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<=(x,y) AND <=(z,w)),<=(+(x,z),+(y,w))));
+le_minus_le: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((<=(x,y) AND <=(w,z)),<=(-(x,z),-(y,w))));
+le_times_le_pos: LEMMA (forall(nnx: nonneg_real, nnz: nonneg_real, w: real, y: real): IMPLIES((<=(nnx,y) AND <=(nnz,w)),<=(*(nnx,nnz),*(y,w))));
+le_div_le_pos: LEMMA (forall(nnx: nonneg_real, pz: posreal, w: real, y: real): IMPLIES((<=(nnx,y) AND <=(pz,w)),<=(/(nnx,w),/(y,pz))));
+le_times_le_neg: LEMMA (forall(npw: nonpos_real, npy: nonpos_real, x: real, z: real): IMPLIES((<=(x,npy) AND <=(z,npw)),<=(*(npy,npw),*(x,z))));
+le_div_le_neg: LEMMA (forall(npy: nonpos_real, nw: negreal, x: real, z: real): IMPLIES((<=(x,npy) AND <=(z,nw)),<=(/(npy,z),/(x,nw))));
+strict_gt: LEMMA strict_total_order?(>);
+trich_gt: LEMMA (forall(x: real, y: real): (>(x,y) OR ((x=y) OR >(y,x))));
+tri_unique_gt1: LEMMA (forall(x: real, y: real): IMPLIES(>(x,y),(/=(x,y) AND NOT(>(y,x)))));
+tri_unique_gt2: LEMMA (forall(x: real, y: real): IMPLIES((x=y),(NOT(>(x,y)) AND NOT(>(y,x)))));
+zero_not_gt_zero: LEMMA NOT(>(0,0));
+neg_gt: LEMMA (forall(x: real): IFF(>(0,-(x)),>(x,0)));
+pos_times_gt: LEMMA (forall(x: real, y: real): IFF(>(*(x,y),0),((>(0,x) AND >(0,y)) OR (>(x,0) AND >(y,0)))));
+neg_times_gt: LEMMA (forall(x: real, y: real): IFF(>(0,*(x,y)),((>(0,x) AND >(y,0)) OR (>(x,0) AND >(0,y)))));
+quotient_pos_gt: FORMULA (forall(n0x: nonzero_real): IFF(>(/(1,n0x),0),>(n0x,0)));
+quotient_neg_gt: FORMULA (forall(n0x: nonzero_real): IFF(>(0,/(1,n0x)),>(0,n0x)));
+pos_div_gt: LEMMA (forall(n0y: nonzero_real, x: real): IFF(>(/(x,n0y),0),((>(0,x) AND >(0,n0y)) OR (>(x,0) AND >(n0y,0)))));
+neg_div_gt: LEMMA (forall(n0y: nonzero_real, x: real): IFF(>(0,/(x,n0y)),((>(0,x) AND >(n0y,0)) OR (>(x,0) AND >(0,n0y)))));
+div_mult_pos_gt1: LEMMA (forall(py: posreal, x: real, z: real): IFF(>(x,/(z,py)),>(*(x,py),z)));
+div_mult_pos_gt2: LEMMA (forall(py: posreal, x: real, z: real): IFF(>(/(z,py),x),>(z,*(x,py))));
+div_mult_neg_gt1: LEMMA (forall(ny: negreal, x: real, z: real): IFF(>(x,/(z,ny)),>(z,*(x,ny))));
+div_mult_neg_gt2: LEMMA (forall(ny: negreal, x: real, z: real): IFF(>(/(z,ny),x),>(*(x,ny),z)));
+both_sides_plus_gt1: LEMMA (forall(x: real, y: real, z: real): IFF(>(+(x,z),+(y,z)),>(x,y)));
+both_sides_plus_gt2: LEMMA (forall(x: real, y: real, z: real): IFF(>(+(z,x),+(z,y)),>(x,y)));
+both_sides_minus_gt1: LEMMA (forall(x: real, y: real, z: real): IFF(>(-(x,z),-(y,z)),>(x,y)));
+both_sides_minus_gt2: LEMMA (forall(x: real, y: real, z: real): IFF(>(-(z,x),-(z,y)),>(y,x)));
+both_sides_times_pos_gt1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>(*(x,pz),*(y,pz)),>(x,y)));
+both_sides_times_pos_gt2: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>(*(pz,x),*(pz,y)),>(x,y)));
+both_sides_times_neg_gt1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>(*(x,nz),*(y,nz)),>(y,x)));
+both_sides_times_neg_gt2: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>(*(nz,x),*(nz,y)),>(y,x)));
+both_sides_div_pos_gt1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>(/(x,pz),/(y,pz)),>(x,y)));
+both_sides_div_pos_gt2: LEMMA (forall(px: posreal, py: posreal, pz: posreal): IFF(>(/(pz,px),/(pz,py)),>(py,px)));
+both_sides_div_pos_gt3: LEMMA (forall(nz: negreal, px: posreal, py: posreal): IFF(>(/(nz,px),/(nz,py)),>(px,py)));
+both_sides_div_neg_gt1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>(/(x,nz),/(y,nz)),>(y,x)));
+both_sides_div_neg_gt2: LEMMA (forall(nx: negreal, ny: negreal, pz: posreal): IFF(>(/(pz,nx),/(pz,ny)),>(ny,nx)));
+both_sides_div_neg_gt3: LEMMA (forall(nx: negreal, ny: negreal, nz: negreal): IFF(>(/(nz,nx),/(nz,ny)),>(nx,ny)));
+gt_plus_gt1: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>=(x,y) AND >(z,w)),>(+(x,z),+(y,w))));
+gt_plus_gt2: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>(x,y) AND >=(z,w)),>(+(x,z),+(y,w))));
+gt_minus_gt1: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>=(x,y) AND >(w,z)),>(-(x,z),-(y,w))));
+gt_minus_gt2: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>(x,y) AND >=(w,z)),>(-(x,z),-(y,w))));
+gt_times_gt_pos1: LEMMA (forall(nnw: nonneg_real, py: posreal, x: real, z: real): IMPLIES((>=(x,py) AND >(z,nnw)),>(*(x,z),*(py,nnw))));
+gt_times_gt_pos2: LEMMA (forall(nny: nonneg_real, pw: posreal, x: real, z: real): IMPLIES((>(x,nny) AND >=(z,pw)),>(*(x,z),*(nny,pw))));
+gt_div_gt_pos1: LEMMA (forall(pw: posreal, py: posreal, x: real, z: real): IMPLIES((>=(x,py) AND >(z,pw)),>(/(x,pw),/(py,z))));
+gt_div_gt_pos2: LEMMA (forall(nny: nonneg_real, pw: posreal, x: real, z: real): IMPLIES((>(x,nny) AND >=(z,pw)),>(/(x,pw),/(nny,z))));
+gt_times_gt_neg1: LEMMA (forall(npz: nonpos_real, nx: negreal, w: real, y: real): IMPLIES((>=(nx,y) AND >(npz,w)),>(*(y,w),*(nx,npz))));
+gt_times_gt_neg2: LEMMA (forall(npx: nonpos_real, nz: negreal, w: real, y: real): IMPLIES((>(npx,y) AND >=(nz,w)),>(*(y,w),*(npx,nz))));
+gt_div_gt_neg1: LEMMA (forall(nx: negreal, nz: negreal, w: real, y: real): IMPLIES((>=(nx,y) AND >(nz,w)),>(/(y,nz),/(nx,w))));
+gt_div_gt_neg2: LEMMA (forall(npx: nonpos_real, nz: negreal, w: real, y: real): IMPLIES((>(npx,y) AND >=(nz,w)),>(/(y,nz),/(npx,w))));
+strict_ge: LEMMA total_order?(>=);
+dich_ge: LEMMA (forall(x: real, y: real): (>=(x,y) OR >=(y,x)));
+zero_ge_zero: LEMMA >=(0,0);
+neg_ge: LEMMA (forall(x: real): IFF(>=(0,-(x)),>=(x,0)));
+pos_times_ge: LEMMA (forall(x: real, y: real): IFF(>=(*(x,y),0),((>=(0,x) AND >=(0,y)) OR (>=(x,0) AND >=(y,0)))));
+neg_times_ge: LEMMA (forall(x: real, y: real): IFF(>=(0,*(x,y)),((>=(0,x) AND >=(y,0)) OR (>=(x,0) AND >=(0,y)))));
+quotient_pos_ge: FORMULA (forall(n0x: nonzero_real): IFF(>=(/(1,n0x),0),>=(n0x,0)));
+quotient_neg_ge: FORMULA (forall(n0x: nonzero_real): IFF(>=(0,/(1,n0x)),>=(0,n0x)));
+pos_div_ge: LEMMA (forall(n0y: nonzero_real, x: real): IFF(>=(/(x,n0y),0),((>=(0,x) AND >=(0,n0y)) OR (>=(x,0) AND >=(n0y,0)))));
+neg_div_ge: LEMMA (forall(n0y: nonzero_real, x: real): IFF(>=(0,/(x,n0y)),((>=(0,x) AND >=(n0y,0)) OR (>=(x,0) AND >=(0,n0y)))));
+div_mult_pos_ge1: LEMMA (forall(py: posreal, x: real, z: real): IFF(>=(/(z,py),x),>=(z,*(x,py))));
+div_mult_pos_ge2: LEMMA (forall(py: posreal, x: real, z: real): IFF(>=(x,/(z,py)),>=(*(x,py),z)));
+div_mult_neg_ge1: LEMMA (forall(ny: negreal, x: real, z: real): IFF(>=(/(z,ny),x),>=(*(x,ny),z)));
+div_mult_neg_ge2: LEMMA (forall(ny: negreal, x: real, z: real): IFF(>=(x,/(z,ny)),>=(z,*(x,ny))));
+both_sides_plus_ge1: LEMMA (forall(x: real, y: real, z: real): IFF(>=(+(x,z),+(y,z)),>=(x,y)));
+both_sides_plus_ge2: LEMMA (forall(x: real, y: real, z: real): IFF(>=(+(z,x),+(z,y)),>=(x,y)));
+both_sides_minus_ge1: LEMMA (forall(x: real, y: real, z: real): IFF(>=(-(x,z),-(y,z)),>=(x,y)));
+both_sides_minus_ge2: LEMMA (forall(x: real, y: real, z: real): IFF(>=(-(z,x),-(z,y)),>=(y,x)));
+both_sides_times_pos_ge1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>=(*(x,pz),*(y,pz)),>=(x,y)));
+both_sides_times_pos_ge2: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>=(*(pz,x),*(pz,y)),>=(x,y)));
+both_sides_times_neg_ge1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>=(*(x,nz),*(y,nz)),>=(y,x)));
+both_sides_times_neg_ge2: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>=(*(nz,x),*(nz,y)),>=(y,x)));
+both_sides_div_pos_ge1: LEMMA (forall(pz: posreal, x: real, y: real): IFF(>=(/(x,pz),/(y,pz)),>=(x,y)));
+both_sides_div_pos_ge2: LEMMA (forall(px: posreal, py: posreal, pz: posreal): IFF(>=(/(pz,px),/(pz,py)),>=(py,px)));
+both_sides_div_pos_ge3: LEMMA (forall(nz: negreal, px: posreal, py: posreal): IFF(>=(/(nz,px),/(nz,py)),>=(px,py)));
+both_sides_div_neg_ge1: LEMMA (forall(nz: negreal, x: real, y: real): IFF(>=(/(x,nz),/(y,nz)),>=(y,x)));
+both_sides_div_neg_ge2: LEMMA (forall(nx: negreal, ny: negreal, pz: posreal): IFF(>=(/(pz,nx),/(pz,ny)),>=(ny,nx)));
+both_sides_div_neg_ge3: LEMMA (forall(nx: negreal, ny: negreal, nz: negreal): IFF(>=(/(nz,nx),/(nz,ny)),>=(nx,ny)));
+ge_plus_ge: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>=(x,y) AND >=(z,w)),>=(+(x,z),+(y,w))));
+ge_minus_ge: LEMMA (forall(w: real, x: real, y: real, z: real): IMPLIES((>=(x,y) AND >=(w,z)),>=(-(x,z),-(y,w))));
+ge_times_ge_pos: LEMMA (forall(nnw: nonneg_real, nny: nonneg_real, x: real, z: real): IMPLIES((>=(x,nny) AND >=(z,nnw)),>=(*(x,z),*(nny,nnw))));
+ge_div_ge_pos: LEMMA (forall(nny: nonneg_real, pw: posreal, x: real, z: real): IMPLIES((>=(x,nny) AND >=(z,pw)),>=(/(x,pw),/(nny,z))));
+ge_times_ge_neg: LEMMA (forall(npx: nonpos_real, npz: nonpos_real, w: real, y: real): IMPLIES((>=(npx,y) AND >=(npz,w)),>=(*(y,w),*(npx,npz))));
+ge_div_ge_neg: LEMMA (forall(npx: nonpos_real, nz: negreal, w: real, y: real): IMPLIES((>=(npx,y) AND >=(nz,w)),>=(/(y,nz),/(npx,w))));
+nonzero_times1: LEMMA (forall(n0x: nonzero_real, y: real): IFF((*(n0x,y)=0),(y=0)));
+nonzero_times2: LEMMA (forall(n0y: nonzero_real, x: real): IFF((*(x,n0y)=0),(x=0)));
+nonzero_times3: LEMMA (forall(n0x: nonzero_real, n0y: nonzero_real): IFF((*(n0x,n0y)=0),FALSE));
+eq1_gt: FORMULA (forall(x: real, y: real): IMPLIES((>(x,1) AND (*(x,y)=1)),<(y,1)));
+eq1_ge: FORMULA (forall(x: real, y: real): IMPLIES((>=(x,1) AND (*(x,y)=1)),<=(y,1)));
+eqm1_gt: FORMULA (forall(x: real, y: real): IMPLIES((>(x,1) AND (*(x,y)=-(1))),>(y,-(1))));
+eqm1_ge: FORMULA (forall(x: real, y: real): IMPLIES((>=(x,1) AND (*(x,y)=-(1))),>=(y,-(1))));
+eqm1_lt: FORMULA (forall(x: real, y: real): IMPLIES((<(x,-(1)) AND (*(x,y)=-(1))),<(y,1)));
+eqm1_le: FORMULA (forall(x: real, y: real): IMPLIES((<=(x,-(1)) AND (*(x,y)=-(1))),<=(y,1)));
+sqrt_1: LEMMA (forall(x: real): IFF((*(x,x)=1),((x=1) OR (x=-(1)))));
+sqrt_1_lt: LEMMA (forall(x: real): IMPLIES(<(*(x,x),1),<(abs(x),1)));
+sqrt_1_le: LEMMA (forall(x: real): IMPLIES(<=(*(x,x),1),<=(abs(x),1)));
+idem_mult: LEMMA (forall(x: real): IFF((*(x,x)=x),((x=0) OR (x=1))));
+product_1: LEMMA (forall(i: int, j: int): IMPLIES((>=(i,0) AND (>=(j,0) AND (*(i,j)=1))),((i=1) AND (j=1))));
+product_m1: LEMMA (forall(i: int, j: int): IMPLIES((>=(i,0) AND (<=(j,0) AND (*(i,j)=-(1)))),((i=1) AND (j=-(1)))));
+triangle: LEMMA (forall(x: real, y: real): <=(abs(+(x,y)),+(abs(x),abs(y))));
+abs_mult: LEMMA (forall(x: real, y: real): (abs(*(x,y))=*(abs(x),abs(y))));
+abs_div: LEMMA (forall(n0y: nonzero_real, x: real): (abs(/(x,n0y))=/(abs(x),abs(n0y))));
+abs_abs: LEMMA (forall(x: real): (abs(abs(x))=abs(x)));
+abs_square: LEMMA (forall(x: real): (abs(*(x,x))=*(x,x)));
+abs_limits: LEMMA (forall(x: real, y: real): (<=(-(+(abs(x),abs(y))),+(x,y)) AND <=(+(x,y),+(abs(x),abs(y)))));
+axiom_of_archimedes: LEMMA (forall(x: real): (exists(i: int): <(x,i)));
+archimedean: LEMMA (forall(px: posreal): (exists(n: posnat): <(/(1,n),px)));
+
+
+ END real_props_test
+
+rational_props_test: THEORY
+ BEGIN
+
+rational_pred_ax: AXIOM (forall(r: rat): (exists(i: int, n0j: nzint): (r=/(i,n0j))));
+density_positive: LEMMA (forall(x: real, y: real): IMPLIES((<=(0,x) AND <(x,y)),(exists(r: rat): (<(x,r) AND <(r,y)))));
+density: LEMMA (forall(x: real, y: real): IMPLIES(<(x,y),(exists(r: rat): (<(x,r) AND <(r,y)))));
+
+
+ END rational_props_test
+
+integer_props_test: THEORY
+ BEGIN
+
+integer_pred_ax: LEMMA (forall(i: int): (exists(n: nat): ((i=n) OR (i=-(n)))));
+div_simple: LEMMA (forall(i: int, n0j: nzint): ((exists(k: int): (i=*(k,n0j)))=integer_pred(/(i,n0j))));
+lub_nat: LEMMA (forall(N: (nonempty?), m: nat): =>(upper_bound?(m,extend(N)),(exists(n: (N)): least_upper_bound?(n,extend(N)))));
+lub_int: LEMMA (forall(I: (nonempty?), i: int): =>(upper_bound?(i,extend(I)),(exists(j: (I)): least_upper_bound?(j,extend(I)))));
+glb_nat: LEMMA (forall(N: (nonempty?)): (exists(n: (N)): greatest_lower_bound?(n,extend(N))));
+glb_int: LEMMA (forall(I: (nonempty?), i: int): =>(lower_bound?(i,extend(I)),(exists(j: (I)): greatest_lower_bound?(j,extend(I)))));
+
+
+ END integer_props_test
+
+floor_ceil_test: THEORY
+ BEGIN
+
+floor_exists: LEMMA (forall(x: real): (exists(i: integer): (<=(i,x) & <(x,+(i,1)))));
+ceiling_exists: LEMMA (forall(x: real): (exists(i: integer): (<=(x,i) & <(i,+(x,1)))));
+  floor: [x: real -> ({i: integer | (<=(i,x) & <(x,+(1,i)))})];
+  fractional: [real -> ({x: real | (<=(0,x) & <(x,1))})] = (lambda(x: real): -(x,floor(x)));
+  ceiling: [x: real -> ({i: integer | (<=(x,i) & <(i,+(1,x)))})];
+floor_def: LEMMA (forall(x: real): (<=(floor(x),x) & <(x,+(floor(x),1))));
+ceiling_def: LEMMA (forall(x: real): (<=(x,ceiling(x)) & <(ceiling(x),+(x,1))));
+floor_ceiling_reflect1: LEMMA (forall(x: real): (floor(-(x))=-(ceiling(x))));
+floor_ceiling_reflect2: LEMMA (forall(x: real): (ceiling(-(x))=-(floor(x))));
+floor_int: LEMMA (forall(i: integer): (floor(i)=i));
+ceiling_int: LEMMA (forall(i: integer): (ceiling(i)=i));
+floor_plus_int: LEMMA (forall(i: integer, x: real): (floor(+(x,i))=+(floor(x),i)));
+ceiling_plus_int: LEMMA (forall(i: integer, x: real): (ceiling(+(x,i))=+(ceiling(x),i)));
+floor_ceiling_nonint: LEMMA (forall(x: real): =>(NOT(integer?(x)),(-(ceiling(x),floor(x))=1)));
+floor_ceiling_int: LEMMA (forall(i: integer): (floor(i)=ceiling(i)));
+floor_neg: LEMMA (forall(x: real): (floor(x)= IF integer?(x) THEN -(floor(-(x))) ELSE -(-(floor(-(x))),1) ENDIF ));
+real_parts: LEMMA (forall(x: real): (x=+(floor(x),fractional(x))));
+floor_plus: LEMMA (forall(x: real, y: real): (floor(+(x,y))=+(+(floor(x),floor(y)),floor(+(fractional(x),fractional(y))))));
+ceiling_plus: LEMMA (forall(x: real, y: real): (ceiling(+(x,y))=+(+(floor(x),floor(y)),ceiling(+(fractional(x),fractional(y))))));
+floor_split: LEMMA (forall(i: integer): (i=+(floor(/(i,2)),ceiling(/(i,2)))));
+floor_within_1: LEMMA (forall(x: real): <(-(x,floor(x)),1));
+ceiling_within_1: LEMMA (forall(x: real): <(-(ceiling(x),x),1));
+floor_val: LEMMA (forall(i: integer, j: nonzero_integer, k: integer): IMPLIES((>=(i,*(k,j)) AND <(i,*(+(k,1),j))),(floor(/(i,j))=k)));
+floor_small: LEMMA (forall(i: integer, j: nonzero_integer): IMPLIES(<(abs(i),abs(j)),(floor(/(i,j))= IF >=(/(i,j),0) THEN 0 ELSE -(1) ENDIF )));
+floor_eq_0: LEMMA (forall(x: real): IMPLIES((floor(x)=0),(>=(x,0) AND <(x,1))));
+
+
+ END floor_ceil_test
+
+exponentiation_test: THEORY
+ BEGIN
+
+  expt: RECURSIVE [real,nat -> real] = (lambda(r: real, n: nat):  IF (n=0) THEN 1 ELSE *(r,expt(r,-(n,1))) ENDIF ) MEASURE n;
+expt_pos_aux: LEMMA (forall(n: nat, px: posreal): >(expt(px,n),0));
+expt_nonzero_aux: LEMMA (forall(n: nat, n0x: nzreal): /=(expt(n0x,n),0));
+  ^: [r: real,({i: int | (/=(r,0) OR >=(i,0))}) -> real] = (lambda(r: real, i: ({i: int | (/=(r,0) OR >=(i,0))})):  IF >=(i,0) THEN expt(r,i) ELSE /(1,expt(r,-(i))) ENDIF );
+expt_pos: LEMMA (forall(i: int, px: posreal): >(^(px,i),0));
+expt_nonzero: LEMMA (forall(i: int, n0x: nzreal): /=(^(n0x,i),0));
+expt_x0_aux: LEMMA (forall(x: real): (expt(x,0)=1));
+expt_x1_aux: LEMMA (forall(x: real): (expt(x,1)=x));
+expt_1n_aux: LEMMA (forall(n: nat): (expt(1,n)=1));
+increasing_expt_aux: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat): >(expt(gt1x,+(m,2)),gt1x));
+decreasing_expt_aux: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), m: nat): <(expt(lt1x,+(m,2)),lt1x));
+expt_1_aux: LEMMA (forall(n: nat, px: posreal): IFF((expt(px,+(n,1))=1),(px=1)));
+expt_plus_aux: LEMMA (forall(m: nat, n: nat, n0x: nzreal): (expt(n0x,+(m,n))=*(expt(n0x,m),expt(n0x,n))));
+expt_minus_aux: LEMMA (forall(m: nat, n: nat, n0x: nzreal): IMPLIES(>=(m,n),(expt(n0x,-(m,n))=/(expt(n0x,m),expt(n0x,n)))));
+expt_times_aux: LEMMA (forall(m: nat, n: nat, n0x: nzreal): (expt(n0x,*(m,n))=expt(expt(n0x,m),n)));
+expt_divide_aux: LEMMA (forall(m: nat, n: nat, n0x: nzreal): (/(1,expt(n0x,*(m,n)))=expt(/(1,expt(n0x,m)),n)));
+both_sides_expt1_aux: LEMMA (forall(m: nat, n: nat, px: posreal): IFF((expt(px,+(m,1))=expt(px,+(n,1))),((m=n) OR (px=1))));
+both_sides_expt2_aux: LEMMA (forall(pm: posnat, px: posreal, py: posreal): IFF((expt(px,pm)=expt(py,pm)),(px=py)));
+both_sides_expt_pos_lt_aux: LEMMA (forall(m: nat, px: posreal, py: posreal): IFF(<(expt(px,+(m,1)),expt(py,+(m,1))),<(px,py)));
+both_sides_expt_gt1_lt_aux: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat, n: nat): IFF(<(expt(gt1x,+(m,1)),expt(gt1x,+(n,1))),<(m,n)));
+both_sides_expt_lt1_lt_aux: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), m: nat, n: nat): IFF(<(expt(lt1x,+(m,1)),expt(lt1x,+(n,1))),<(n,m)));
+both_sides_expt_pos_le_aux: LEMMA (forall(m: nat, px: posreal, py: posreal): IFF(<=(expt(px,+(m,1)),expt(py,+(m,1))),<=(px,py)));
+both_sides_expt_gt1_le_aux: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat, n: nat): IFF(<=(expt(gt1x,+(m,1)),expt(gt1x,+(n,1))),<=(m,n)));
+both_sides_expt_lt1_le_aux: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), m: nat, n: nat): IFF(<=(expt(lt1x,+(m,1)),expt(lt1x,+(n,1))),<=(n,m)));
+both_sides_expt_pos_gt_aux: LEMMA (forall(m: nat, px: posreal, py: posreal): IFF(>(expt(px,+(m,1)),expt(py,+(m,1))),>(px,py)));
+both_sides_expt_gt1_gt_aux: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat, n: nat): IFF(>(expt(gt1x,+(m,1)),expt(gt1x,+(n,1))),>(m,n)));
+both_sides_expt_lt1_gt_aux: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), m: nat, n: nat): IFF(>(expt(lt1x,+(m,1)),expt(lt1x,+(n,1))),>(n,m)));
+both_sides_expt_pos_ge_aux: LEMMA (forall(m: nat, px: posreal, py: posreal): IFF(>=(expt(px,+(m,1)),expt(py,+(m,1))),>=(px,py)));
+both_sides_expt_gt1_ge_aux: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat, n: nat): IFF(>=(expt(gt1x,+(m,1)),expt(gt1x,+(n,1))),>=(m,n)));
+both_sides_expt_lt1_ge_aux: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), m: nat, n: nat): IFF(>=(expt(lt1x,+(m,1)),expt(lt1x,+(n,1))),>=(n,m)));
+expt_of_mult: LEMMA (forall(n: nat, x: real, y: real): (expt(*(x,y),n)=*(expt(x,n),expt(y,n))));
+expt_of_div: LEMMA (forall(n: nat, n0y: nzreal, x: real): (expt(/(x,n0y),n)=/(expt(x,n),expt(n0y,n))));
+expt_of_inv: LEMMA (forall(n: nat, n0x: nzreal): (expt(/(1,n0x),n)=/(1,expt(n0x,n))));
+expt_of_abs: LEMMA (forall(n: nat, x: real): (expt(abs(x),n)=abs(expt(x,n))));
+abs_of_expt_inv: LEMMA (forall(n: nat, n0x: nzreal): (abs(/(1,expt(n0x,n)))=/(1,expt(abs(n0x),n))));
+expt_x0: LEMMA (forall(x: real): (^(x,0)=1));
+expt_x1: LEMMA (forall(x: real): (^(x,1)=x));
+expt_1i: LEMMA (forall(i: int): (^(1,i)=1));
+expt_plus: LEMMA (forall(i: int, j: int, n0x: nzreal): (^(n0x,+(i,j))=*(^(n0x,i),^(n0x,j))));
+expt_times: LEMMA (forall(i: int, j: int, n0x: nzreal): (^(n0x,*(i,j))=^(^(n0x,i),j)));
+expt_inverse: LEMMA (forall(i: int, n0x: nzreal): (^(n0x,-(i))=/(1,^(n0x,i))));
+expt_div: LEMMA (forall(i: int, j: int, n0x: nzreal): (/(^(n0x,i),^(n0x,j))=^(n0x,-(i,j))));
+both_sides_expt1: LEMMA (forall(n0i: nzint, n0j: nzint, px: posreal): IFF((^(px,n0i)=^(px,n0j)),((n0i=n0j) OR (px=1))));
+both_sides_expt2: LEMMA (forall(n0i: nzint, px: posreal, py: posreal): IFF((^(px,n0i)=^(py,n0i)),(px=py)));
+pos_expt_gt: LEMMA (forall(b: above(1), n: nat): <(n,^(b,n)));
+expt_ge1: LEMMA (forall(b: above(1), n: nat): >=(^(b,n),1));
+both_sides_expt_pos_lt: LEMMA (forall(pm: posnat, px: posreal, py: posreal): IFF(<(^(px,pm),^(py,pm)),<(px,py)));
+both_sides_expt_gt1_lt: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), i: int, j: int): IFF(<(^(gt1x,i),^(gt1x,j)),<(i,j)));
+both_sides_expt_lt1_lt: LEMMA (forall(i: int, j: int, lt1x: ({r: posreal | <(r,1)})): IFF(<(^(lt1x,i),^(lt1x,j)),<(j,i)));
+both_sides_expt_pos_le: LEMMA (forall(pm: posnat, px: posreal, py: posreal): IFF(<=(^(px,pm),^(py,pm)),<=(px,py)));
+both_sides_expt_gt1_le: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), i: int, j: int): IFF(<=(^(gt1x,i),^(gt1x,j)),<=(i,j)));
+both_sides_expt_lt1_le: LEMMA (forall(i: int, j: int, lt1x: ({r: posreal | <(r,1)})): IFF(<=(^(lt1x,i),^(lt1x,j)),<=(j,i)));
+both_sides_expt_pos_gt: LEMMA (forall(pm: posnat, px: posreal, py: posreal): IFF(>(^(px,pm),^(py,pm)),>(px,py)));
+both_sides_expt_gt1_gt: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), i: int, j: int): IFF(>(^(gt1x,i),^(gt1x,j)),>(i,j)));
+both_sides_expt_lt1_gt: LEMMA (forall(i: int, j: int, lt1x: ({r: posreal | <(r,1)})): IFF(>(^(lt1x,i),^(lt1x,j)),>(j,i)));
+both_sides_expt_pos_ge: LEMMA (forall(pm: posnat, px: posreal, py: posreal): IFF(>=(^(px,pm),^(py,pm)),>=(px,py)));
+both_sides_expt_gt1_ge: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), i: int, j: int): IFF(>=(^(gt1x,i),^(gt1x,j)),>=(i,j)));
+both_sides_expt_lt1_ge: LEMMA (forall(i: int, j: int, lt1x: ({r: posreal | <(r,1)})): IFF(>=(^(lt1x,i),^(lt1x,j)),>=(j,i)));
+expt_gt1_pos: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), pm: posnat): >=(^(gt1x,pm),gt1x));
+expt_gt1_neg: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), pm: posnat): <(^(gt1x,-(pm)),1));
+expt_gt1_nonpos: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), m: nat): <=(^(gt1x,-(m)),1));
+mult_expt: LEMMA (forall(i: int, n0x: nzreal, n0y: nzreal): (^(*(n0x,n0y),i)=*(^(n0x,i),^(n0y,i))));
+div_expt: LEMMA (forall(i: int, n0x: nzreal, n0y: nzreal): (^(/(n0x,n0y),i)=/(^(n0x,i),^(n0y,i))));
+inv_expt: LEMMA (forall(i: int, n0x: nzreal): (^(/(1,n0x),i)=/(1,^(n0x,i))));
+abs_expt: LEMMA (forall(i: int, n0x: nzreal): (^(abs(n0x),i)=abs(^(n0x,i))));
+expt_lt1_bound1: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), n: nat): <=(expt(lt1x,n),1));
+expt_lt1_bound2: LEMMA (forall(lt1x: ({r: posreal | <(r,1)}), pn: posnat): <(expt(lt1x,pn),1));
+expt_gt1_bound1: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), n: nat): <=(1,expt(gt1x,n)));
+expt_gt1_bound2: LEMMA (forall(gt1x: ({r: posreal | >(r,1)}), pn: posnat): <(1,expt(gt1x,pn)));
+large_expt: LEMMA (forall(px: posreal): IMPLIES(<(1,px),(forall(py: posreal): (exists(n: nat): <(py,expt(px,n))))));
+small_expt: LEMMA (forall(px: posreal): IMPLIES(<(px,1),(forall(py: posreal): (exists(n: nat): <(expt(px,n),py)))));
+exponent_adjust: LEMMA (forall(b: above(1), i: int, pm: posnat): <(+(^(b,i),^(b,-(i,pm))),^(b,+(i,1))));
+exp_of_exists: LEMMA (forall(b: above(1), py: posreal): (exists(i: int): (<=(^(b,i),py) & <(py,^(b,+(i,1))))));
+
+
+ END exponentiation_test
+
+euclidean_division_test: THEORY
+ BEGIN
+
+  mod: NONEMPTY_TYPE = ({i: nat | <(i,b)});
+euclid_nat: LEMMA (forall(a: nat, b: posnat): (exists(q: nat, r: mod(b)): (a=+(*(b,q),r))));
+euclid_int: PROPOSITION (forall(b: posnat, n: int): (exists(q: int, r: mod(b)): (n=+(*(b,q),r))));
+unique_quotient: PROPOSITION (forall(b: posnat, q1: int, q2: int, r1: mod(b), r2: mod(b)): IMPLIES((+(*(b,q1),r1)=+(*(b,q2),r2)),(q1=q2)));
+unique_remainder: COROLLARY (forall(b: posnat, q1: int, q2: int, r1: mod(b), r2: mod(b)): IMPLIES((+(*(b,q1),r1)=+(*(b,q2),r2)),(r1=r2)));
+unique_division: COROLLARY (forall(b: posnat, q1: int, q2: int, r1: mod(b), r2: mod(b)): IMPLIES((+(*(b,q1),r1)=+(*(b,q2),r2)),((q1=q2) AND (r1=r2))));
+
+
+ END euclidean_division_test
+
+divides_test: THEORY
+ BEGIN
+
+  divides: [int,int -> bool] = (lambda(n: int, m: int): (exists(x: int): (m=*(n,x))));
+  divides: [int -> [int -> bool]] = (lambda(n: int): (lambda(m: int): divides(n,m)));
+divides_sum: LEMMA (forall(m: int, n: int, x: int): IMPLIES((divides(x,n) AND divides(x,m)),divides(x,+(n,m))));
+divides_diff: LEMMA (forall(m: int, n: int, x: int): IMPLIES((divides(x,n) AND divides(x,m)),divides(x,-(n,m))));
+divides_opposite: LEMMA (forall(n: int, x: int): IFF(divides(x,-(n)),divides(x,n)));
+opposite_divides: LEMMA (forall(n: int, x: int): IFF(divides(-(x),n),divides(x,n)));
+divides_prod1: LEMMA (forall(m: int, n: int, x: int): IMPLIES(divides(x,n),divides(x,*(n,m))));
+divides_prod2: LEMMA (forall(m: int, n: int, x: int): IMPLIES(divides(x,n),divides(x,*(m,n))));
+divides_prod_elim1: LEMMA (forall(m: int, n: int, nz: nzint): IFF(divides(*(nz,n),*(nz,m)),divides(n,m)));
+divides_prod_elim2: LEMMA (forall(m: int, n: int, nz: nzint): IFF(divides(*(n,nz),*(m,nz)),divides(n,m)));
+divides_reflexive: LEMMA (forall(n: int): divides(n,n));
+divides_transitive: LEMMA (forall(l: int, m: int, n: int): IMPLIES((divides(n,m) AND divides(m,l)),divides(n,l)));
+product_one: LEMMA (forall(x: int, y: int): IFF((*(x,y)=1),(((x=1) AND (y=1)) OR ((x=-(1)) AND (y=-(1))))));
+mutual_divisors: LEMMA (forall(m: int, n: int): IMPLIES((divides(n,m) AND divides(m,n)),((n=m) OR (n=-(m)))));
+mutual_divisors_nat: LEMMA (forall(p: nat, q: nat): IMPLIES((divides(p,q) AND divides(q,p)),(p=q)));
+one_divides: LEMMA (forall(n: int): divides(1,n));
+divides_zero: LEMMA (forall(n: int): divides(n,0));
+zero_div_zero: LEMMA (forall(n: int): IFF(divides(0,n),(n=0)));
+divisors_of_one: LEMMA (forall(n: int): IFF(divides(n,1),((n=1) OR (n=-(1)))));
+one_div_one: LEMMA (forall(p: nat): IFF(divides(p,1),(p=1)));
+divisor_smaller: LEMMA (forall(p: nat, q: nat): IMPLIES(divides(p,q),((q=0) OR <=(p,q))));
+
+
+ END divides_test
+
+modulo_arithmetic_test: THEORY
+ BEGIN
+
+  rem: [b: posnat -> [x: int -> ({r: mod(b) | (exists(q: int): (x=+(r,*(b,q))))})]];
+rem_def: LEMMA (forall(b: posnat, x: int, r: mod(b)): IFF((rem(b)(x)=r),(exists(q: int): (x=+(*(b,q),r)))));
+rem_def2: LEMMA (forall(b: posnat, x: int, r: mod(b)): IFF((rem(b)(x)=r),divides(b,-(x,r))));
+rem_def3: LEMMA (forall(b: posnat, x: int, r: mod(b)): IFF((rem(b)(x)=r),divides(b,-(r,x))));
+rem_mod: LEMMA (forall(b: posnat, r: mod(b)): (rem(b)(r)=r));
+rem_mod2: LEMMA (forall(b: posnat, x: int): IMPLIES((<=(0,x) AND <(x,b)),(rem(b)(x)=x)));
+rem_zero: LEMMA (forall(b: posnat): (rem(b)(0)=0));
+rem_self: LEMMA (forall(b: posnat): (rem(b)(b)=0));
+rem_multiple1: LEMMA (forall(b: posnat, x: int): (rem(b)(*(b,x))=0));
+rem_multiple2: LEMMA (forall(b: posnat, x: int): (rem(b)(*(x,b))=0));
+rem_one: LEMMA (forall(b: posnat): IMPLIES(/=(b,1),(rem(b)(1)=1)));
+rem_minus_one: LEMMA (forall(b: posnat): (rem(b)(-(1))=-(b,1)));
+same_remainder: LEMMA (forall(b: posnat, x: int, y: int): IFF((rem(b)(x)=rem(b)(y)),divides(b,-(x,y))));
+rem_rem: LEMMA (forall(b: posnat, x: int): (rem(b)(rem(b)(x))=rem(b)(x)));
+rem_sum: LEMMA (forall(b: posnat, t: int, x: int, y: int, z: int): IMPLIES(((rem(b)(x)=rem(b)(y)) AND (rem(b)(z)=rem(b)(t))),(rem(b)(+(x,z))=rem(b)(+(y,t)))));
+rem_sum1: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(+(rem(b)(x),y))=rem(b)(+(x,y))));
+rem_sum2: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(+(x,rem(b)(y)))=rem(b)(+(x,y))));
+rem_diff: LEMMA (forall(b: posnat, t: int, x: int, y: int, z: int): IMPLIES(((rem(b)(x)=rem(b)(y)) AND (rem(b)(z)=rem(b)(t))),(rem(b)(-(x,z))=rem(b)(-(y,t)))));
+rem_diff1: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(-(rem(b)(x),y))=rem(b)(-(x,y))));
+rem_diff2: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(-(x,rem(b)(y)))=rem(b)(-(x,y))));
+rem_prod1: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(*(rem(b)(x),y))=rem(b)(*(x,y))));
+rem_prod2: LEMMA (forall(b: posnat, x: int, y: int): (rem(b)(*(x,rem(b)(y)))=rem(b)(*(x,y))));
+rem_prod: LEMMA (forall(b: posnat, t: int, x: int, y: int, z: int): IMPLIES(((rem(b)(x)=rem(b)(y)) AND (rem(b)(z)=rem(b)(t))),(rem(b)(*(x,z))=rem(b)(*(y,t)))));
+rem_expt: LEMMA (forall(b: posnat, n: nat, x: int, y: int): IMPLIES((rem(b)(x)=rem(b)(y)),(rem(b)(expt(x,n))=rem(b)(expt(y,n)))));
+rem_expt1: LEMMA (forall(b: posnat, n: nat, x: int): (rem(b)(expt(rem(b)(x),n))=rem(b)(expt(x,n))));
+rem_sum_elim1: LEMMA (forall(b: posnat, x: int, y: int, z: int): IFF((rem(b)(+(x,y))=rem(b)(+(x,z))),(rem(b)(y)=rem(b)(z))));
+rem_sum_elim2: LEMMA (forall(b: posnat, x: int, y: int, z: int): IFF((rem(b)(+(y,x))=rem(b)(+(z,x))),(rem(b)(y)=rem(b)(z))));
+rem_diff_elim1: LEMMA (forall(b: posnat, x: int, y: int, z: int): IFF((rem(b)(-(x,y))=rem(b)(-(x,z))),(rem(b)(y)=rem(b)(z))));
+rem_diff_elim2: LEMMA (forall(b: posnat, x: int, y: int, z: int): IFF((rem(b)(-(y,x))=rem(b)(-(z,x))),(rem(b)(y)=rem(b)(z))));
+rem_opposite_elim: LEMMA (forall(b: posnat, x: int, y: int): IFF((rem(b)(-(x))=rem(b)(-(y))),(rem(b)(x)=rem(b)(y))));
+  ndiv: [d: [nat,posnat] -> ({q: int | (1`d=+(rem(2`d)(1`d),*(2`d,q)))})];
+
+
+ END modulo_arithmetic_test
+
+subrange_inductions_test [i: int,j: upfrom(i)]: THEORY
+ BEGIN
+
+subrange_induction: LEMMA (forall(p: pred): IMPLIES((p(i) AND (forall(k: subrange(i,j)): IMPLIES((<(k,j) AND p(k)),p(+(k,1))))),(forall(k: subrange(i,j)): p(k))));
+SUBRANGE_induction: LEMMA (forall(p: pred): IMPLIES((forall(k: subrange(i,j)): IMPLIES((forall(m: subrange(i,j)): IMPLIES(<(m,k),p(m))),p(k))),(forall(k: subrange(i,j)): p(k))));
+
+
+ END subrange_inductions_test
+
+bounded_int_inductions_test [m: int]: THEORY
+ BEGIN
+
+upfrom_induction: LEMMA (forall(pf: pred): IMPLIES((pf(m) AND (forall(jf: upfrom(m)): IMPLIES(pf(jf),pf(+(jf,1))))),(forall(jf: upfrom(m)): pf(jf))));
+UPFROM_induction: LEMMA (forall(pf: pred): IMPLIES((forall(jf: upfrom(m)): IMPLIES((forall(kf: upfrom(m)): IMPLIES(<(kf,jf),pf(kf))),pf(jf))),(forall(jf: upfrom(m)): pf(jf))));
+above_induction: LEMMA (forall(pa: pred): IMPLIES((pa(+(m,1)) AND (forall(ja: above(m)): IMPLIES(pa(ja),pa(+(ja,1))))),(forall(ja: above(m)): pa(ja))));
+ABOVE_induction: LEMMA (forall(pa: pred): IMPLIES((forall(ja: above(m)): IMPLIES((forall(ka: above(m)): IMPLIES(<(ka,ja),pa(ka))),pa(ja))),(forall(ja: above(m)): pa(ja))));
+
+
+ END bounded_int_inductions_test
+
+bounded_nat_inductions_test [m: nat]: THEORY
+ BEGIN
+
+upto_induction: LEMMA (forall(pt: pred): IMPLIES((pt(0) AND (forall(jt: upto(m)): IMPLIES((<(jt,m) AND pt(jt)),pt(+(jt,1))))),(forall(jt: upto(m)): pt(jt))));
+UPTO_induction: LEMMA (forall(pt: pred): IMPLIES((forall(jt: upto(m)): IMPLIES((forall(kt: upto(m)): IMPLIES(<(kt,jt),pt(kt))),pt(jt))),(forall(jt: upto(m)): pt(jt))));
+below_induction: LEMMA (forall(pb: pred): IMPLIES((IMPLIES(>(m,0),pb(0)) AND (forall(jb: below(m)): IMPLIES((<(jb,-(m,1)) AND pb(jb)),pb(+(jb,1))))),(forall(jb: below(m)): pb(jb))));
+BELOW_induction: LEMMA (forall(pb: pred): IMPLIES((forall(jb: below(m)): IMPLIES((forall(kb: below(m)): IMPLIES(<(kb,jb),pb(kb))),pb(jb))),(forall(jb: below(m)): pb(jb))));
+
+
+ END bounded_nat_inductions_test
+
+subrange_type_test [m: int,n: int]: THEORY
+ BEGIN
+
+  subrange: TYPE = subrange(m,n);
+
+
+ END subrange_type_test
+
+int_types_test [m: int]: THEORY
+ BEGIN
+
+  upfrom: NONEMPTY_TYPE = upfrom(m);
+  above: NONEMPTY_TYPE = above(m);
+
+
+ END int_types_test
+
+nat_types_test [m: nat]: THEORY
+ BEGIN
+
+  upto: NONEMPTY_TYPE = upto(m);
+  below: TYPE = below(m);
+
+
+ END nat_types_test
+
+finite_sets_def_test [T: TYPE]: THEORY
+ BEGIN
+
+  is_finite: [set -> bool] = (lambda(S: set): (exists(N: nat, f: [(S) -> below]): injective?(f)));
+  finite_set: TYPE = (is_finite);
+  non_empty_finite_set: TYPE = ({s: finite_set | NOT(empty?(s))});
+is_finite_surj: LEMMA (forall(S: set): IMPLIES((exists(N: posnat, f: [below -> (S)]): surjective?(f)),is_finite(S)));
+finite_subset: LEMMA (forall(A: finite_set, S: set): IMPLIES(subset?(S,A),is_finite(S)));
+finite_intersection: LEMMA (forall(A: finite_set, B: finite_set): is_finite(intersection(A,B)));
+finite_add: LEMMA (forall(A: finite_set, x: T): is_finite(add(x,A)));
+  is_finite_type: bool = (exists(N: nat, g: [T -> below]): injective?(g));
+finite_full: LEMMA IFF(is_finite_type,is_finite(fullset));
+finite_type_set: LEMMA (forall(S: set): IMPLIES(is_finite_type,is_finite(S)));
+finite_complement: LEMMA (forall(S: set): IMPLIES(is_finite_type,is_finite(complement(S))));
+
+
+ END finite_sets_def_test
+
+function_iterate_test [T: TYPE]: THEORY
+ BEGIN
+
+  iterate: RECURSIVE [[T -> T],nat -> [T -> T]] = (lambda(f: [T -> T], n: nat): (lambda(x: T):  IF (n=0) THEN x ELSE f(iterate(f,-(n,1))(x)) ENDIF )) MEASURE n;
+iterate_add: LEMMA (forall(f: [T -> T], m: nat, n: nat): (O(iterate(f,m),iterate(f,n))=iterate(f,+(m,n))));
+iterate_add_applied: LEMMA (forall(f: [T -> T], m: nat, n: nat, x: T): (iterate(f,m)(iterate(f,n)(x))=iterate(f,+(m,n))(x)));
+iterate_add_one: LEMMA (forall(f: [T -> T], n: nat, x: T): (iterate(f,n)(f(x))=iterate(f,+(n,1))(x)));
+iterate_mult: LEMMA (forall(f: [T -> T], m: nat, n: nat): (iterate(iterate(f,m),n)=iterate(f,*(m,n))));
+iterate_invariant: LEMMA (forall(f: [T -> T], n: nat, x: T): (f(iterate(f,n)(x))=iterate(f,n)(f(x))));
+
+
+ END function_iterate_test
+
+sequences_test [T: TYPE]: THEORY
+ BEGIN
+
+  sequence: TYPE = [nat -> T];
+  nth: [sequence,nat -> T] = (lambda(seq: sequence, n: nat): seq(n));
+  suffix: [sequence,nat -> sequence] = (lambda(seq: sequence, n: nat): (lambda(i: nat): seq(+(i,n))));
+  first: [sequence -> T] = (lambda(seq: sequence): nth(seq,0));
+  rest: [sequence -> sequence] = (lambda(seq: sequence): suffix(seq,1));
+  delete: [nat,sequence -> sequence] = (lambda(n: nat, seq: sequence): (lambda(i: nat):  IF <(i,n) THEN seq(i) ELSE seq(+(i,1)) ENDIF ));
+  insert: [T,nat,sequence -> sequence] = (lambda(x: T, n: nat, seq: sequence): (lambda(i: nat):  IF <(i,n) THEN seq(i) ELSE  IF (i=n) THEN x ELSE seq(-(i,1)) ENDIF  ENDIF ));
+  add: [T,sequence -> sequence] = (lambda(x: T, seq: sequence): insert(x,0,seq));
+insert_delete: LEMMA (forall(n: nat, seq: sequence): (insert(nth(seq,n),n,delete(n,seq))=seq));
+add_first_rest: LEMMA (forall(seq: sequence): (add(first(seq),rest(seq))=seq));
+  every: [pred -> [sequence -> bool]] = (lambda(p: pred): (lambda(seq: sequence): (forall(n: nat): p(nth(seq,n)))));
+  every: [pred,sequence -> bool] = (lambda(p: pred, seq: sequence): (forall(n: nat): p(nth(seq,n))));
+  some: [pred -> [sequence -> bool]] = (lambda(p: pred): (lambda(seq: sequence): (exists(n: nat): p(nth(seq,n)))));
+  some: [pred,sequence -> bool] = (lambda(p: pred, seq: sequence): (exists(n: nat): p(nth(seq,n))));
+sequence_induction: LEMMA (forall(p: pred, seq: sequence): IMPLIES((p(nth(seq,0)) AND (forall(n: nat): IMPLIES(p(nth(seq,n)),p(nth(seq,+(n,1)))))),every(p)(seq)));
+  ascends?: [sequence,PRED -> bool] = (lambda(seq: sequence, Trel: PRED): preserves(seq,(lambda(i: nat, n: nat): <=(i,n)),Trel));
+  descends?: [sequence,PRED -> bool] = (lambda(seq: sequence, Trel: PRED): inverts(seq,(lambda(i: nat, n: nat): <=(i,n)),Trel));
+
+
+ END sequences_test
+
+seq_functions_test [D: TYPE,R: TYPE]: THEORY
+ BEGIN
+
+  map: [[D -> R] -> [sequence -> sequence]] = (lambda(f: [D -> R]): (lambda(s: sequence): (lambda(n: nat): f(nth(s,n)))));
+  map: [[D -> R],sequence -> sequence] = (lambda(f: [D -> R], s: sequence): (lambda(n: nat): f(nth(s,n))));
+
+
+ END seq_functions_test
+
+finite_sequences_test [T: TYPE]: THEORY
+ BEGIN
+
+  finite_sequence: TYPE = [# length: nat,seq: [below -> T] #];
+  finseq: TYPE = finite_sequence;
+  empty_seq: finseq = (# length:= 0, seq:= (lambda(x: below): epsilon((lambda(t: T): TRUE))) #);
+  finseq_appl: [fs: finseq -> [below -> T]] = (lambda(fs: finseq): select-record-field(seq,fs));
+  O: [finseq,finseq -> finseq] = (lambda(fs1: finseq, fs2: finseq): (lambda(l1: nat): (lambda(lsum: nonneg_int): (# length:= lsum, seq:= (lambda(n: below):  IF <(n,l1) THEN select-record-field(seq,fs1)(n) ELSE select-record-field(seq,fs2)(-(n,l1)) ENDIF ) #))(+(l1,select-record-field(length,fs2))))(select-record-field(length,fs1)));
+  ^: [finseq,[nat,nat] -> finseq] = (lambda(fs: finseq, p: [nat,nat]): (lambda(m: nat, n: nat):  IF (>(m,n) OR >=(m,select-record-field(length,fs))) THEN empty_seq ELSE (lambda(len: ({k: int | (<=(k,-(+(1,n),m)) AND <=(k,-(select-record-field(length,fs),m)))})): (# length:= len, seq:= (lambda(x: below): select-record-field(seq,fs)(+(x,m))) #))(min(+(-(n,m),1),-(select-record-field(length,fs),m))) ENDIF )(p));
+  extract1: [({fs: finseq | (select-record-field(length,fs)=1)}) -> T] = (lambda(fs: ({fs: finseq | (select-record-field(length,fs)=1)})): select-record-field(seq,fs)(0));
+o_assoc: LEMMA (forall(fs1: finseq, fs2: finseq, fs3: finseq): (O(fs1,O(fs2,fs3))=O(O(fs1,fs2),fs3)));
+
+
+ END finite_sequences_test
+
+ordinals_test: THEORY
+ BEGIN
+
+  size: [ordstruct -> nat] = reduce(0,(lambda(i: posnat, m: nat, n: nat): +(+(1,m),n)));
+  <: RECURSIVE [ordstruct,ordstruct -> bool] = (lambda(x: ordstruct, y: ordstruct):  CASES x OF zero: NOT(zero?(y)), add(i, u, v): CASES y OF zero: FALSE, add(j, z, w):(<(u,z) OR (((u=z) AND <(i,j)) OR ((u=z) AND ((i=j) AND <(v,w))))) ENDCASES  ENDCASES ) MEASURE size(x);
+  >: [ordstruct,ordstruct -> bool] = (lambda(x: ordstruct, y: ordstruct): <(y,x));
+  <=: [ordstruct,ordstruct -> bool] = (lambda(x: ordstruct, y: ordstruct): (<(x,y) OR (x=y)));
+  >=: [ordstruct,ordstruct -> bool] = (lambda(x: ordstruct, y: ordstruct): (<(y,x) OR (y=x)));
+  ordinal?: RECURSIVE [ordstruct -> bool] = (lambda(x: ordstruct):  CASES x OF zero: TRUE, add(i, u, v):(ordinal?(u) AND (ordinal?(v) AND  CASES v OF zero: TRUE, add(k, r, s):<(r,u) ENDCASES )) ENDCASES ) MEASURE size;
+  ordinal: NONEMPTY_TYPE = (ordinal?);
+ordinal_irreflexive: LEMMA (forall(r: ordinal): NOT(<(r,r)));
+ordinal_antisym: LEMMA (forall(r: ordinal, s: ordinal): IMPLIES(<(r,s),NOT(<(s,r))));
+ordinal_antisymmetric: LEMMA (forall(r: ordinal, s: ordinal): IMPLIES((<=(r,s) AND <=(s,r)),(r=s)));
+ordinal_transitive: LEMMA (forall(r: ordinal, s: ordinal, t: ordinal): IMPLIES((<(r,s) AND <(s,t)),<(r,t)));
+ordinal_trichotomy: LEMMA (forall(r: ordinal, s: ordinal): (<(r,s) OR ((r=s) OR <(s,r))));
+ordinal_induction: AXIOM (forall(p: pred): IMPLIES((forall(r: ordinal): IMPLIES((forall(s: ordinal): IMPLIES(<(s,r),p(s))),p(r))),(forall(r: ordinal): p(r))));
+well_founded_le: LEMMA well_founded?((lambda(r: (ordinal?), s: (ordinal?)): <(r,s)));
+
+
+ END ordinals_test
+
+lex2_test: THEORY
+ BEGIN
+
+  lex2: [nat,nat -> ordinal] = (lambda(m: nat, n: nat):  IF (m=0) THEN  IF (n=0) THEN zero ELSE add(n,zero,zero) ENDIF  ELSE  IF (n=0) THEN add(m,add(1,zero,zero),zero) ELSE add(m,add(1,zero,zero),add(n,zero,zero)) ENDIF  ENDIF );
+lex2_lt: LEMMA (forall(i: nat, j: nat, m: nat, n: nat): (<(lex2(i,j),lex2(m,n))=(<(i,m) OR ((i=m) AND <(j,n)))));
+
+
+ END lex2_test
+
+list_props_test [T: TYPE]: THEORY
+ BEGIN
+
+  length: RECURSIVE [list -> nat] = (lambda(l: list):  CASES l OF null: 0, cons(x, y):+(length(y),1) ENDCASES ) MEASURE reduce_nat(0,(lambda(x: T, n: nat): +(n,1)));
+  member: RECURSIVE [T,list -> bool] = (lambda(x: T, l: list):  CASES l OF null: FALSE, cons(hd, tl):((x=hd) OR member(x,tl)) ENDCASES ) MEASURE length(l);
+member_null: LEMMA (forall(l: list, x: T): IMPLIES(member(x,l),NOT(null?(l))));
+  nth: RECURSIVE [l: list,below -> T] = (lambda(l: list, n: below):  IF (n=0) THEN car(l) ELSE nth(cdr(l),-(n,1)) ENDIF ) MEASURE length(l);
+  append: RECURSIVE [list,list -> list] = (lambda(l1: list, l2: list):  CASES l1 OF null: l2, cons(x, y):cons(x,append(y,l2)) ENDCASES ) MEASURE length(l1);
+  reverse: RECURSIVE [list -> list] = (lambda(l: list):  CASES l OF null: l, cons(x, y):append(reverse(y),cons(x,null)) ENDCASES ) MEASURE length;
+append_null: LEMMA (forall(l: list): (append(l,null)=l));
+append_assoc: LEMMA (forall(l1: list, l2: list, l3: list): (append(append(l1,l2),l3)=append(l1,append(l2,l3))));
+reverse_append: LEMMA (forall(l1: list, l2: list): (reverse(append(l1,l2))=append(reverse(l2),reverse(l1))));
+reverse_reverse: LEMMA (forall(l: list): (reverse(reverse(l))=l));
+length_append: LEMMA (forall(l1: list, l2: list): (length(append(l1,l2))=+(length(l1),length(l2))));
+length_reverse: LEMMA (forall(l: list): (length(reverse(l))=length(l)));
+list_rep: LEMMA (forall(a: T, b: T, c: T): (list(a,b,c)=cons(a,cons(b,cons(c,null)))));
+every_append: LEMMA (forall(P: PRED, l1: list, l2: list): IFF(every(P)(append(l1,l2)),(every(P)(l1) AND every(P)(l2))));
+every_disjunct1: LEMMA (forall(P: PRED, Q: PRED, l: list): IMPLIES(every(P)(l),every((lambda(x: T): (P(x) OR Q(x))))(l)));
+every_disjunct2: LEMMA (forall(P: PRED, Q: PRED, l: list): IMPLIES(every(Q)(l),every((lambda(x: T): (P(x) OR Q(x))))(l)));
+every_conjunct: LEMMA (forall(P: PRED, Q: PRED, l: list): =>(every((lambda(x: T): (P(x) AND Q(x))))(l),(every(P)(l) AND every(Q)(l))));
+every_member: LEMMA (forall(l: list): every({c: T | member(c,l)})(l));
+
+
+ END list_props_test
+
+map_props_test [T1: TYPE,T2: TYPE,T3: TYPE]: THEORY
+ BEGIN
+
+map_list_composition: LEMMA (forall(f1: [T1 -> T2], f2: [T2 -> T3], l: list): (map(f2)(map(f1)(l))=map(O(f2,f1))(l)));
+map_seq_composition: LEMMA (forall(f1: [T1 -> T2], f2: [T2 -> T3], s: sequence): (map(f2)(map(f1)(s))=map(O(f2,f1))(s)));
+
+
+ END map_props_test
+
+filters_test [T: TYPE]: THEORY
+ BEGIN
+
+  filter: [set,pred -> set] = (lambda(s: set, p: pred): {x: T | (s(x) & p(x))});
+  filter: [pred -> [set -> set]] = (lambda(p: pred): (lambda(s: set): {x: T | (s(x) & p(x))}));
+  filter: RECURSIVE [list,pred -> list] = (lambda(l: list, p: pred):  CASES l OF null: null, cons(x, y): IF p(x) THEN cons(x,filter(y,p)) ELSE filter(y,p) ENDIF  ENDCASES ) MEASURE length(l);
+  filter: RECURSIVE [pred -> [list -> list]] = (lambda(p: pred): (lambda(l: list):  CASES l OF null: null, cons(x, y): IF p(x) THEN cons(x,filter(p)(y)) ELSE filter(p)(y) ENDIF  ENDCASES )) MEASURE length(l);
+
+
+ END filters_test
+
+list2finseq_test [T: TYPE]: THEORY
+ BEGIN
+
+  list2finseq: [list -> finseq] = (lambda(l: list): (# length:= length(l), seq:= (lambda(x: below): nth(l,x)) #));
+  finseq2list_rec: RECURSIVE [fs: finseq,((lambda(n: nat): <=(n,select-record-field(length,fs)))) -> list] = (lambda(fs: finseq, n: ((lambda(n: nat): <=(n,select-record-field(length,fs))))):  IF (n=0) THEN null ELSE cons(select-record-field(seq,fs)(-(select-record-field(length,fs),n)),finseq2list_rec(fs,-(n,1))) ENDIF ) MEASURE n;
+  finseq2list: [finseq -> list] = (lambda(fs: finseq): finseq2list_rec(fs,select-record-field(length,fs)));
+
+
+ END list2finseq_test
+
+list2set_test [T: TYPE]: THEORY
+ BEGIN
+
+  list2set: RECURSIVE [list -> set] = (lambda(l: list):  CASES l OF null: emptyset, cons(x, y):add(x,list2set(y)) ENDCASES ) MEASURE length;
+
+
+ END list2set_test
+
+disjointness_test: THEORY
+ BEGIN
+
+  pairwise_disjoint?: RECURSIVE [list -> boolean] = (lambda(l: list):  CASES l OF null: TRUE, cons(x, y):(every((lambda(z: bool): NOT((x AND z))))(y) AND pairwise_disjoint?(y)) ENDCASES ) MEASURE length(l);
+
+
+ END disjointness_test
+
+strings_test: THEORY
+ BEGIN
+
+  char: TYPE = (char?);
+  string: TYPE = finite_sequence;
+string_rep: LEMMA ("foo"=list2finseq(cons(char(102),cons(char(111),cons(char(111),null)))));
+fseq_lem: LEMMA (forall(l1: list, l2: list): ((list2finseq(l1)=list2finseq(l2))=(l1=l2)));
+cons_lem: LEMMA (forall(c1: char, c2: char, l1: list, l2: list): ((cons(c1,l1)=cons(c2,l2))=((c1=c2) & (l1=l2))));
+char_lem: LEMMA (forall(c1: char, c2: char): ((c1=c2)=(code(c1)=code(c2))));
+
+
+ END strings_test
+
+mucalculus_test [T: TYPE]: THEORY
+ BEGIN
+
+  predicate_transformer: TYPE = [pred -> pred];
+  <=: [pred,pred -> bool] = (lambda(p1: pred, p2: pred): (forall(s: T): IMPLIES(p1(s),p2(s))));
+  monotonic?: [predicate_transformer -> bool] = (lambda(pp: predicate_transformer): (forall(p1: pred, p2: pred): IMPLIES(<=(p1,p2),<=(pp(p1),pp(p2)))));
+  fixpoint?: [predicate_transformer,pred -> bool] = (lambda(pp: predicate_transformer, p: pred): (pp(p)=p));
+  fixpoint?: [predicate_transformer -> [pred -> bool]] = (lambda(pp: predicate_transformer): (lambda(p: pred): fixpoint?(pp,p)));
+  glb: [pred -> pred] = (lambda(setofpred: pred): (lambda(s: T): (forall(p: pred): IMPLIES(member(p,setofpred),p(s)))));
+  lfp: [predicate_transformer -> pred] = (lambda(pp: predicate_transformer): glb({p: pred | <=(pp(p),p)}));
+  mu: [predicate_transformer -> pred] = (lambda(pp: predicate_transformer): lfp(pp));
+  lfp?: [predicate_transformer,pred -> bool] = (lambda(pp: predicate_transformer, p1: pred): (fixpoint?(pp,p1) AND (forall(p2: pred): IMPLIES(fixpoint?(pp,p2),<=(p1,p2)))));
+  lfp?: [predicate_transformer -> [pred -> bool]] = (lambda(pp: predicate_transformer): (lambda(p1: pred): lfp?(pp,p1)));
+  lub: [pred -> pred] = (lambda(setofpred: pred): (lambda(s: T): (exists(p: pred): (member(p,setofpred) AND p(s)))));
+  gfp: [predicate_transformer -> pred] = (lambda(pp: predicate_transformer): lub({p: pred | <=(p,pp(p))}));
+  nu: [predicate_transformer -> pred] = (lambda(pp: predicate_transformer): gfp(pp));
+  gfp?: [predicate_transformer,pred -> bool] = (lambda(pp: predicate_transformer, p1: pred): (fixpoint?(pp,p1) AND (forall(p2: pred): IMPLIES(fixpoint?(pp,p2),<=(p2,p1)))));
+  gfp?: [predicate_transformer -> [pred -> bool]] = (lambda(pp: predicate_transformer): (lambda(p1: pred): gfp?(pp,p1)));
+
+
+ END mucalculus_test
+
+ctlops_test [state: TYPE]: THEORY
+ BEGIN
+
+  EX: [[state,state -> bool],pred -> [state -> bool]] = (lambda(N: [state,state -> bool], f: pred): (lambda(u: state): (exists(v: state): (f(v) AND N(u,v)))));
+  EG: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], f: pred): nu((lambda(Q: pred): (lambda(x: state): (f(x) AND EX(N,Q)(x))))));
+  EU: [[state,state -> bool],pred,pred -> pred] = (lambda(N: [state,state -> bool], f: pred, g: pred): mu((lambda(Q: pred): (lambda(x1: state): (g(x1) OR (lambda(x: state): (f(x) AND EX(N,Q)(x)))(x1))))));
+  EF: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], f: pred): EU(N,K_conversion(TRUE),f));
+  AX: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], f: pred): (lambda(x1: state): NOT(EX(N,(lambda(x: state): NOT(f(x))))(x1))));
+  AF: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], f: pred): (lambda(x1: state): NOT(EG(N,(lambda(x: state): NOT(f(x))))(x1))));
+  AG: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], f: pred): (lambda(x1: state): NOT(EF(N,(lambda(x: state): NOT(f(x))))(x1))));
+  AU: [[state,state -> bool],pred,pred -> pred] = (lambda(N: [state,state -> bool], f: pred, g: pred): (lambda(x3: state): ((lambda(x2: state): NOT(EU(N,(lambda(x: state): NOT(g(x))),(lambda(x1: state): ((lambda(x: state): NOT(f(x)))(x1) AND (lambda(x: state): NOT(g(x)))(x1))))(x2)))(x3) AND AF(N,g)(x3))));
+
+
+ END ctlops_test
+
+fairctlops_test [state: TYPE]: THEORY
+ BEGIN
+
+  fairEG: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): nu((lambda(P: pred): EU(N,f,(lambda(x1: state): (f(x1) AND (lambda(x: state): (Ff(x) AND EX(N,P)(x)))(x1))))))));
+  fairAF: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): (lambda(x1: state): NOT(fairEG(N,(lambda(x: state): NOT(f(x))))(Ff)(x1)))));
+  fair?: [[state,state -> bool],pred -> pred] = (lambda(N: [state,state -> bool], Ff: pred): fairEG(N,(lambda(u: state): TRUE))(Ff));
+  fairEX: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): EX(N,(lambda(x: state): (f(x) AND fair?(N,Ff)(x))))));
+  fairEU: [[state,state -> bool],pred,pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred, g: pred): (lambda(Ff: pred): EU(N,f,(lambda(x: state): (g(x) AND fair?(N,Ff)(x))))));
+  fairEF: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): EF(N,(lambda(x: state): (f(x) AND fair?(N,Ff)(x))))));
+  fairAX: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): (lambda(x1: state): NOT(fairEX(N,(lambda(x: state): NOT(f(x))))(Ff)(x1)))));
+  fairAG: [[state,state -> bool],pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Ff: pred): (lambda(x1: state): NOT(fairEF(N,(lambda(x: state): NOT(f(x))))(Ff)(x1)))));
+  fairAU: [[state,state -> bool],pred,pred -> [pred -> pred]] = (lambda(N: [state,state -> bool], f: pred, g: pred): (lambda(Ff: pred): (lambda(x3: state): ((lambda(x2: state): NOT(fairEU(N,(lambda(x: state): NOT(g(x))),(lambda(x1: state): ((lambda(x: state): NOT(f(x)))(x1) AND (lambda(x: state): NOT(g(x)))(x1))))(Ff)(x2)))(x3) AND fairAF(N,g)(Ff)(x3)))));
+
+
+ END fairctlops_test
+
+Fairctlops_test [state: TYPE]: THEORY
+ BEGIN
+
+  CheckFair: RECURSIVE [pred,[state,state -> bool],pred,list -> pred] = (lambda(Q: pred, N: [state,state -> bool], f: pred, Fflist: list):  CASES Fflist OF cons(Ff, Gflist):EU(N,f,(lambda(x1: state): (f(x1) AND (lambda(x: state): (Ff(x) AND EX(N,CheckFair(Q,N,f,Gflist))(x)))(x1)))), null: Q ENDCASES ) MEASURE length(Fflist);
+  FairEG: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): nu((lambda(P: pred): CheckFair(P,N,f,Fflist)))));
+  FairAF: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): (lambda(x1: state): NOT(FairEG(N,(lambda(x: state): NOT(f(x))))(Fflist)(x1)))));
+  Fair?: [[state,state -> bool],list -> pred] = (lambda(N: [state,state -> bool], Fflist: list): FairEG(N,(lambda(u: state): TRUE))(Fflist));
+  FairEX: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): EX(N,(lambda(x: state): (f(x) AND Fair?(N,Fflist)(x))))));
+  FairEU: [[state,state -> bool],pred,pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred, g: pred): (lambda(Fflist: list): EU(N,f,(lambda(x: state): (g(x) AND Fair?(N,Fflist)(x))))));
+  FairEF: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): EF(N,(lambda(x: state): (f(x) AND Fair?(N,Fflist)(x))))));
+  FairAX: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): (lambda(x1: state): NOT(FairEX(N,(lambda(x: state): NOT(f(x))))(Fflist)(x1)))));
+  FairAG: [[state,state -> bool],pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred): (lambda(Fflist: list): (lambda(x1: state): NOT(FairEF(N,(lambda(x: state): NOT(f(x))))(Fflist)(x1)))));
+  FairAU: [[state,state -> bool],pred,pred -> [list -> pred]] = (lambda(N: [state,state -> bool], f: pred, g: pred): (lambda(Fflist: list): (lambda(x3: state): ((lambda(x2: state): NOT(FairEU(N,(lambda(x: state): NOT(g(x))),(lambda(x1: state): ((lambda(x: state): NOT(f(x)))(x1) AND (lambda(x: state): NOT(g(x)))(x1))))(Fflist)(x2)))(x3) AND FairAF(N,g)(Fflist)(x3)))));
+
+
+ END Fairctlops_test
+
+bit_test: THEORY
+ BEGIN
+
+  bit: TYPE = bool;
+  nbit: TYPE = below(2);
+bit_cases: LEMMA (forall(b: bit): ((b=FALSE) OR (b=TRUE)));
+  b0: [below(1) -> bit] = (lambda(i: below(1)): FALSE);
+  b1: [below(1) -> bit] = (lambda(i: below(1)): TRUE);
+  b2n: [bool -> nbit] = (lambda(b: bool):  IF b THEN 1 ELSE 0 ENDIF );
+  n2b: [nbit -> bool] = (lambda(nb: nbit): (nb=1));
+
+
+ END bit_test
+
+bv_test [N: nat]: THEORY
+ BEGIN
+
+  bvec: TYPE = [below(N) -> bit];
+  bvec0: [below -> bit] = (lambda(i: below): FALSE);
+  bvec1: [below -> bit] = (lambda(i: below): TRUE);
+  fill: [bit -> [below -> bit]] = (lambda(b: bit): (lambda(i: below): b));
+  ^: [bvec,below -> bit] = (lambda(bv: bvec, i: below): bv(i));
+
+
+ END bv_test
+
+exp2_test: THEORY
+ BEGIN
+
+  exp2: RECURSIVE [nat -> posnat] = (lambda(n: nat):  IF (n=0) THEN 1 ELSE *(2,exp2(-(n,1))) ENDIF ) MEASURE n;
+exp2_def: LEMMA (forall(n: nat): (exp2(n)=^(2,n)));
+exp2_pos: LEMMA (forall(n: nat): >(exp2(n),0));
+exp2_n: LEMMA (forall(n: nat): (exp2(+(n,1))=*(2,exp2(n))));
+exp2_sum: LEMMA (forall(m: nat, n: nat): (exp2(+(n,m))=*(exp2(n),exp2(m))));
+exp2_minus: LEMMA (forall(n: nat, k: upto(n)): (exp2(-(n,k))=/(exp2(n),exp2(k))));
+exp2_strictpos: LEMMA (forall(n: nat): IMPLIES(>(n,0),>(exp2(n),1)));
+exp2_lt: LEMMA (forall(m: nat, n: nat): IMPLIES(<(n,m),<(exp2(n),exp2(m))));
+exp_prop: LEMMA (forall(m: nat, n: nat, x1: nat, x2: nat): IMPLIES((<(x1,exp2(n)) AND <(x2,exp2(m))),<(+(*(x1,exp2(m)),x2),exp2(+(n,m)))));
+
+
+ END exp2_test
+
+bv_cnv_test: THEORY
+ BEGIN
+
+
+
+ END bv_cnv_test
+
+bv_concat_def_test [n: nat,m: nat]: THEORY
+ BEGIN
+
+  O: [bvec,bvec -> bvec] = (lambda(bvn: bvec, bvm: bvec): (lambda(nm: below(+(n,m))):  IF <(nm,m) THEN bvm(nm) ELSE bvn(-(nm,m)) ENDIF ));
+
+
+ END bv_concat_def_test
+
+bv_bitwise_test [N: nat]: THEORY
+ BEGIN
+
+  OR: [bvec,bvec -> bvec] = (lambda(bv1: bvec, bv2: bvec): (lambda(i: below(N)): (bv1(i) OR bv2(i))));
+  AND: [bvec,bvec -> bvec] = (lambda(bv1: bvec, bv2: bvec): (lambda(i: below(N)): (bv1(i) AND bv2(i))));
+  IFF: [bvec,bvec -> bvec] = (lambda(bv1: bvec, bv2: bvec): (lambda(i: below(N)): IFF(bv1(i),bv2(i))));
+  NOT: [bvec -> bvec] = (lambda(bv: bvec): (lambda(i: below(N)): NOT(bv(i))));
+  XOR: [bvec,bvec -> bvec] = (lambda(bv1: bvec, bv2: bvec): (lambda(i: below(N)): XOR(bv1(i),bv2(i))));
+bv_OR: LEMMA (forall(bv1: bvec, bv2: bvec, i: below(N)): (^(OR(bv1,bv2),i)=(^(bv1,i) OR ^(bv2,i))));
+bv_AND: LEMMA (forall(bv1: bvec, bv2: bvec, i: below(N)): (^(AND(bv1,bv2),i)=(^(bv1,i) AND ^(bv2,i))));
+bv_IFF: LEMMA (forall(bv1: bvec, bv2: bvec, i: below(N)): (^(IFF(bv1,bv2),i)=IFF(^(bv1,i),^(bv2,i))));
+bv_XOR: LEMMA (forall(bv1: bvec, bv2: bvec, i: below(N)): (^(XOR(bv1,bv2),i)=XOR(^(bv1,i),^(bv2,i))));
+bv_NOT: LEMMA (forall(bv: bvec, i: below(N)): (^(NOT(bv),i)=NOT(^(bv,i))));
+
+
+ END bv_bitwise_test
+
+bv_nat_test [N: nat]: THEORY
+ BEGIN
+
+  bv2nat_rec: RECURSIVE [upto(N),bvec -> nat] = (lambda(n: upto(N), bv: bvec):  IF (n=0) THEN 0 ELSE +(*(exp2(-(n,1)),b2n(^(bv,-(n,1)))),bv2nat_rec(-(n,1),bv)) ENDIF ) MEASURE n;
+bv_lem: LEMMA (forall(n: below(N), bv: bvec): ((bv(n)=FALSE) OR (bv(n)=TRUE)));
+bv2nat_rec_bound: LEMMA (forall(n: upto(N), bv: bvec): <(bv2nat_rec(n,bv),exp2(n)));
+  bv2nat: [bvec -> below(exp2(N))] = (lambda(bv: bvec): bv2nat_rec(N,bv));
+bv2nat_inj_rec: LEMMA (forall(bv1: bvec, bv2: bvec, n: upto(N)): ((bv2nat_rec(n,bv1)=bv2nat_rec(n,bv2)) <=> (forall(m: below(N)): IMPLIES(<(m,n),(bv1(m)=bv2(m))))));
+bv2nat_surj_rec: LEMMA (forall(n: upto(N), y: below(exp2(n))): (exists(bv: bvec): (bv2nat_rec(n,bv)=y)));
+bv2nat_inj: THEOREM (forall(x: bvec, y: bvec): IMPLIES((bv2nat(x)=bv2nat(y)),(x=y)));
+bv2nat_surj: THEOREM (forall(y: below(exp2(N))): (exists(x: bvec): (bv2nat(x)=y)));
+bv2nat_bij: THEOREM bijective?(bv2nat);
+bv2nat_rec_fill_F: LEMMA (forall(n: upto(N)): (bv2nat_rec(n,fill(FALSE))=0));
+bv2nat_rec_fill_T: LEMMA (forall(n: upto(N)): (bv2nat_rec(n,fill(TRUE))=-(exp2(n),1)));
+bv2nat_fill_F: LEMMA (bv2nat(fill(FALSE))=0);
+bv2nat_fill_T: LEMMA (bv2nat(fill(TRUE))=-(exp2(N),1));
+bv2nat_eq0: LEMMA (forall(bv: bvec): IMPLIES((bv2nat(bv)=0),(bv=fill(FALSE))));
+bv2nat_eq_max: LEMMA (forall(bv: bvec): IMPLIES((bv2nat(bv)=-(exp2(N),1)),(bv=fill(TRUE))));
+bv2nat_top_bit: THEOREM (forall(bv: bvec): IMPLIES(>(N,0), IF <(bv2nat(bv),exp2(-(N,1))) THEN (^(bv,-(N,1))=FALSE) ELSE (^(bv,-(N,1))=TRUE) ENDIF ));
+bv2nat_topbit: THEOREM (forall(bv: bvec): IMPLIES(>(N,0),(^(bv,-(N,1))=>=(bv2nat(bv),exp2(-(N,1))))));
+  nat2bv: [val: below(exp2(N)) -> ({bv: bvec | (bv2nat(bv)=val)})];
+nat2bv_def: LEMMA (nat2bv=inverse(bv2nat));
+nat2bv_bij: THEOREM bijective?(nat2bv);
+nat2bv_inv: THEOREM (forall(bv: bvec): (nat2bv(bv2nat(bv))=bv));
+nat2bv_rew: LEMMA (forall(bv: bvec, val: below(exp2(N))): IFF((nat2bv(val)=bv),(bv2nat(bv)=val)));
+bv2nat_inv: THEOREM (forall(val: below(exp2(N))): (bv2nat(nat2bv(val))=val));
+
+
+ END bv_nat_test
+
+empty_bv_test: THEORY
+ BEGIN
+
+  empty_bv: [below -> bool] = (lambda(x: below): TRUE);
+
+
+ END empty_bv_test
+
+bv_caret_test [N: nat]: THEORY
+ BEGIN
+
+  ^: [d: [bvec,[i1: below(N),upto(i1)]] -> bvec] = (lambda(bv: bvec, sp: [i1: below(N),upto(i1)]): (lambda(ii: below(+(-(1`sp,2`sp),1))): bv(+(ii,2`sp))));
+bv_caret_all: LEMMA (forall(bv: bvec): IMPLIES(>(N,0),(^(bv,( -(N,1),0 ))=bv)));
+bv_caret_ii_0: LEMMA (forall(bv: bvec, i: below(N)): (^(^(bv,( i,i )),0)=^(bv,i)));
+bv_caret_elim: LEMMA (forall(bv: bvec, i: below(N), j: upto(i), k: below(-(+(1,i),j))): (^(^(bv,( i,j )),k)=^(bv,+(j,k))));
+
+
+ END bv_caret_test
+

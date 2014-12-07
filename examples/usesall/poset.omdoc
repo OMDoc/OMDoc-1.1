@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+<!--  A subsidiary OMDoc to usesall.omdoc, specfies the  needed theories
+
+      Initial Version: Michael Kohlhase 2000-09-22
+      URL: http://www.mathweb.org/src/mathweb/omdoc/examples/ualgebra.omdoc
+      Comments are welcome! (send mail to kohlhase@mathweb.org)
+      See the documentation and examples at http://www.mathweb.org/omdoc
+      (c) 2000 Michael Kohlhase, released under the GNU Public License -->
+
+<omdoc id="poset" catalogue="../omstd/catalogue.omdoc">
+ <metadata>
+  <Title>Partially ordered sets</Title>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Description>
+    A subsidiary OMDoc to usesall.omdoc, specfies the  needed theories
+  </Description>
+  <Rights>
+   Copyright (c) 2000 by Michael Kohlhase, 
+   This Document is released under the Gnu Public Licencse.
+  </Rights>
+ </metadata>
+
+ <theory id="posets">
+  <symbol id="partial-order"/>
+  <presentation id="partial-order-pres" for="partial-order" parent="OMA">
+    <use format="html">PO</use>
+    <use format="TeX">{\bf PO}</use>
+  </presentation>
+
+  <symbol id="symmetric"/>
+  <definition id="symmetric-def" for="symmetric" type="simple">
+    <CMP> A Relation <OMOBJ><OMV name="R"/></OMOBJ> is called symmetric, iff 
+      <OMOBJ><OMA xref="symm-left"/></OMOBJ> implies
+      <OMOBJ><OMA xref="symm-right"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>  and 
+      <OMOBJ><OMV name="Y"/></OMOBJ>.
+    </CMP>
+    <FMP>
+    <OMOBJ>
+      <OMBIND>
+        <OMS cd="fns1" name="lambda"/>
+        <OMBVAR>
+          <OMV name="R"/>
+        </OMBVAR>
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+            <OMV name="X"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA id="symm-left"><OMV name="R"/><OMV name="X"/><OMV name="Y"/></OMA>
+            <OMA id="symm-right"><OMV name="R"/><OMV name="Y"/><OMV name="X"/></OMA>
+          </OMA>
+        </OMBIND>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</definition>
+
+<symbol id="reflexive"/>
+<symbol id="transitive"/>
+
+<presentation id="symmetric-pres" for="symmetric" parent="OMA">
+  <use format="html">symm</use>
+  <use format="TeX">{\bf symm}</use>
+</presentation>
+
+<symbol id="conv">
+  <commonname>converse relation</commonname>
+</symbol>
+<definition id="conv-def" for="conv">
+  <CMP>The converse relation 
+     <OMOBJ><OMA><OMS cd="posets" name="conv"/><OMV name="R"/></OMA></OMOBJ>
+      of a  relation <OMOBJ><OMV name="R"/></OMOBJ> is the set of pairs (X,Y),
+     whenever R(Y,X)
+  </CMP>
+</definition>
+
+<presentation id="conv-pres" for="conv" parent="OMA"  
+    fixity="postfix" lbrack="" rbrack="">
+  <use format="html">&lt;sup&gt;-1&lt;/sup&gt;</use>
+  <use format="TeX">^{-1}</use>
+</presentation>
+</theory>
+
+ <assertion id="po-sym" theory="poset">
+  <CMP>Every partial order is symmetric</CMP>
+  <FMP>
+   <assumption id="po-sym-po">
+    <CMP xml:lang="en">(X,R) is a partial order</CMP>
+    <OMOBJ>
+     <OMA><OMS cd="posets" name="partial-order"/><OMV name="X"/><OMV name="R"/></OMA>
+    </OMOBJ>
+   </assumption>
+   <conclusion id="po-sym-sym">
+    <CMP xml:lang="en">R is a symmetric on X</CMP>
+    <OMOBJ>
+     <OMA><OMS cd="posets" name="symmetric"/><OMV name="X"/><OMV name="R"/></OMA>
+    </OMOBJ>
+   </conclusion>
+  </FMP>
+ </assertion>
+
+ <proof theory="poset" id="po-sym-proof" for="po-sym">
+  <CMP xml:lang="en">By definition</CMP>
+  <derive id="po-sym-proof-d">
+   <CMP xml:lang="en">We apply the definition of 
+    <OMOBJ><OMS cd="posets" name="partial-order"/></OMOBJ>
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMA>
+      <OMS cd="logic1" name="and"/>
+       <OMA><OMS cd="posets" name="symmetric"/><OMV name="X"/><OMV name="R"/></OMA>
+       <OMA><OMS cd="posets" name="reflexive"/><OMV name="X"/><OMV name="R"/></OMA>
+       <OMA><OMS cd="posets" name="transitive"/><OMV name="X"/><OMV name="R"/></OMA>
+     </OMA>
+    </OMOBJ>
+   </FMP>
+   <method xref="defne">
+    <OMOBJ><OMS  cd="posets" name="partial-order"/></OMOBJ>
+   </method>
+   <premise xref="po-sym-po"/>
+  </derive>
+  <metacomment id="po-sym-proof-mc">
+   <CMP xml:lang="en">This is a dummy metacomment</CMP>
+  </metacomment>
+  <hypothesis id="po-sym-proof-hyp" discharged-in="dummy">
+   <CMP xml:lang="en">This is a dummy hypothesis, it will never be used.</CMP>
+  </hypothesis>
+  <conclude id="po-sym-proof-c">
+   <method xref="ande"><OMOBJ><OMI>1</OMI></OMOBJ></method>
+   <premise xref="po-sym-proof-d"/>
+  </conclude>
+ </proof>
+
+ <proofobject theory="poset" id="po-sym-proof2" for="po-sym">
+  <CMP  xml:lang="en">By definition</CMP>
+  <OMOBJ><OMSTR>This is a dummy object</OMSTR></OMOBJ>
+ </proofobject>
+
+</omdoc>

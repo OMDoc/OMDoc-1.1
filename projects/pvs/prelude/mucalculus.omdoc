@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="mucalculus.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:40
+    </Date>
+  </metadata>
+  <theory id="mucalculus-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57056" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57057" for="mucalculus" pto="pvs" pto-version="3.0" replaces="mucalculus-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory mucalculus
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="mucalculus_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57058" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="mucalculus-import-parameters" from="mucalculus-parameters"/>
+
+
+
+
+    <symbol id="predicate_transformer" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="predicate_transformer" for="predicate_transformer" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="pred"/>
+            <OMS cd="defined_types" name="pred"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <symbol id="&lt;=" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&lt;=-def" for="&lt;=" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="&lt;="/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="mucalculus" name="T"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMV name="p1"/>
+                    <OMV name="s"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="p2"/>
+                    <OMV name="s"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="monotonic?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="monotonic?-def" for="monotonic?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="monotonic?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p2"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="mucalculus" name="&lt;="/>
+                    <OMV name="p1"/>
+                    <OMV name="p2"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="mucalculus" name="&lt;="/>
+                    <OMA>
+                      <OMV name="pp"/>
+                      <OMV name="p1"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pp"/>
+                      <OMV name="p2"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="fixpoint?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="fixpoint?-def" for="fixpoint?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="fixpoint?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMV name="pp"/>
+                  <OMV name="p"/>
+                </OMA>
+                <OMV name="p"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="fixpoint?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="fixpoint?-def" for="fixpoint?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="fixpoint?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="mucalculus" name="fixpoint?"/>
+                  <OMV name="pp"/>
+                  <OMV name="p"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="glb" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="glb-def" for="glb" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="glb"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="setofpred"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="mucalculus" name="T"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="sets" name="member"/>
+                      <OMV name="p"/>
+                      <OMV name="setofpred"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="s"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lfp" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lfp-def" for="lfp" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="lfp"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="glb"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="set"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="mucalculus" name="&lt;="/>
+                    <OMA>
+                      <OMV name="pp"/>
+                      <OMV name="p"/>
+                    </OMA>
+                    <OMV name="p"/>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="mu" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="mu-def" for="mu" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="mu"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="lfp"/>
+                <OMV name="pp"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lfp?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lfp?-def" for="lfp?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="lfp?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p1"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="mucalculus" name="fixpoint?"/>
+                  <OMV name="pp"/>
+                  <OMV name="p1"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p2"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="mucalculus" name="fixpoint?"/>
+                      <OMV name="pp"/>
+                      <OMV name="p2"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="mucalculus" name="&lt;="/>
+                      <OMV name="p1"/>
+                      <OMV name="p2"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lfp?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lfp?-def" for="lfp?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="lfp?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="mucalculus" name="lfp?"/>
+                  <OMV name="pp"/>
+                  <OMV name="p1"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lub" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lub-def" for="lub" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="lub"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="setofpred"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="mucalculus" name="T"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="sets" name="member"/>
+                      <OMV name="p"/>
+                      <OMV name="setofpred"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="s"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="gfp" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="gfp-def" for="gfp" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="gfp"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="lub"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="set"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="mucalculus" name="&lt;="/>
+                    <OMV name="p"/>
+                    <OMA>
+                      <OMV name="pp"/>
+                      <OMV name="p"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="nu" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="nu-def" for="nu" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="nu"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="mucalculus" name="gfp"/>
+                <OMV name="pp"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="gfp?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="gfp?-def" for="gfp?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="gfp?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p1"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="mucalculus" name="fixpoint?"/>
+                  <OMV name="pp"/>
+                  <OMV name="p1"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="defined_types" name="pred"/>
+                      </OMATP>
+                      <OMV name="p2"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="mucalculus" name="fixpoint?"/>
+                      <OMV name="pp"/>
+                      <OMV name="p2"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="mucalculus" name="&lt;="/>
+                      <OMV name="p2"/>
+                      <OMV name="p1"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="gfp?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="mucalculus" name="predicate_transformer"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="gfp?-def" for="gfp?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="mucalculus" name="gfp?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="mucalculus" name="predicate_transformer"/>
+                  </OMATP>
+                  <OMV name="pp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p1"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="mucalculus" name="gfp?"/>
+                  <OMV name="pp"/>
+                  <OMV name="p1"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

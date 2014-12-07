@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_presentation">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_presentation">
+
+<presentation id="mypre" style="foo" xref="bar" for="bla" parent="OMATTR"
+              fixity="infix" lbrack="[" rbrack="]" separator=";"
+              bracket-style="lisp" precedence="2" crossref-symbol="all"
+              theory="th">
+<use format="bla" requires="foo" xml:lang="de" bracket-style="lisp"
+            fixity="postfix" lbrack="{" rbrack="}" larg-group="a"
+            rarg-group="b" separator="/" element="el" attributes="att"
+            crossref-symbol="separator">
+string for use
+</use>
+<use format="foobar"/>
+
+<xslt format="myform" requires="something" xml:lang="en">
+string for xslt
+</xslt>
+<xslt format="another"/>
+
+<style format="myform2" requires="required" xml:lang="de">
+<element name="el1"/>
+<element name="el2"/>
+<text>testing text</text>
+<text>more testing text</text>
+<recurse select="abc"/>
+<recurse select="def"/>
+<value-of select="ghi"/>
+<value-of select="jkl"/>
+</style>
+<style format="none"/>
+</presentation>              
+
+</theory>
+</omdoc>
+

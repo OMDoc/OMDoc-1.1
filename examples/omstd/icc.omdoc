@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="icc-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary icc.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date>19990601</Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/icc.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights> 
+  <Description> ICC Typing Attributes for OM </Description>
+</metadata>
+
+<theory id="icc">
+
+<imports id="icc-imports-setname1" from="setname1.omdoc#setname1"/>
+<imports id="icc-imports-lc" from="lc.omdoc#lc"/>
+<imports id="icc-imports-indnat" from="indnat.omdoc#indnat"/>
+
+<symbol id="type">
+  <CMP> Attribution tag to denote type-judgement</CMP>
+  <commonname>type</commonname>
+</symbol>
+<presentation for="type" xref="cc.omdoc#pr-type"/>
+<symbol id="typecoerce">
+  <CMP> Attribution tag to denote type-judgement with coercion
+  </CMP>
+  <commonname>typecoerce</commonname>
+</symbol>
+<symbol id="IndType">
+  <CMP> Constructor for Inductive Types. 
+    Takes arguments the constructor functions for the
+    inhabitants of the type and their signatures.  
+  </CMP>
+  <commonname>IndType</commonname>
+</symbol>
+<example id="IndType-ex-1" type="for" for="IndType">
+  <CMP>This is the defining mathematical property for the 
+    symbolic type nat of the inductively defined 
+    natural numbers with 0 and succ as constructor
+    functions.            
+  </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS name="IndType" cd="icc"/>
+      <OMATTR>
+	<OMATP>
+	  <OMS name="type" cd="icc"/>
+	  <OMS cd="setname1" name="N"/>
+	</OMATP>
+	<OMI> 0 </OMI>
+      </OMATTR>
+      <OMATTR>
+	<OMATP>
+	  <OMS name="type" cd="icc"/>
+	  <OMA>
+	    <OMS name="mapsto" cd="lc"/>
+	    <OMS name="N" cd="setname1"/>
+	    <OMS name="N" cd="setname1"/>
+	  </OMA>
+	</OMATP>
+	<OMS name="succ" cd="indnat"/>
+      </OMATTR>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

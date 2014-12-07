@@ -1,0 +1,793 @@
+\chapter{Mathematical Markup Schemes}\label{chap:markup}
+
+Mathematical texts are usually very carefully designed to give them a structure
+that supports understanding of the complex nature of the objects discussed and the
+argumentations about them.  Of course this holds not only for texts in pure
+mathematics, but for any argumentative text that contains mathematical notation,
+in particular for texts from the sciences and engineering disciplines. In such
+texts the document is often structured according to the argument made and
+specialized notation (mathematical formulae) is used for the particular objects
+discussed.  In contrast to this, the structure of texts like novels or poems
+normally obey different (often esthetic) constraints. Therefore, we will use the
+adjective ``mathematical'' in an inclusive way to make this distinction on text
+form, not strictly on the scientific labeling.
+
+The observation, that the task of recovering the semantic structure from the given
+representation as a written text or a recording is central to understanding, holds
+for any discourse. For mathematical discourses the structure is so essential that
+the field has developed a lot of conventions about document form, numbering,
+typography, formula structure, choice of glyphs for concepts, etc.  These
+conventions have evolved over a long scientific history and carry a lot of the
+information needed to understand a particular text. However, these conventions
+were developed for the consumption by humans (mathematicians) and mainly with
+``{\indextoo{ink-on-paper}}'' representations (books, journals, letters) in mind.
+
+In the age of Internet publication and mathematical software systems the
+``ink-on-paper'' target turns out to be too limited in many forms. The universal
+accessibility of the documents on the Internet breaks the assumption implicit in
+the design of traditional mathematical documents, that the reader will come from
+the same (scientific) background as the author and will directly understand the
+notations and structural conventions used by the author.  We can also rely less
+and less on the assumption that mathematical documents are primarily for human
+consumption as mathematical software systems are more and more embedded into the
+process of doing mathematics. This, together with the fact that mathematical
+documents are primarily produced and stored on computers, has led to the
+development of specialized {\indextoo{markup}} schemes for mathematics.
+
+In the next sections we will discuss some of the paradigmatic markup schemes
+setting the stage with general document markup schemes for web-deployed documents.
+In section~\ref{sec:math-objects} we will discuss representation formalisms for
+mathematical objects. We will use section~\ref{sec:meta-math} to show that
+extending general document markup approaches with mathematical formulae is not
+sufficient for a content-based markup of mathematical documents, as it leaves many
+central aspects of mathematical knowledge and structure implicit.
+
+\section{Document Markup for the Web}\label{sec:markup-web}
+
+In this section we will discuss some of the paradigmatic markup schemes to get a
+feeling for the issues involved. Of course, we will over-stress the issues for
+didactic reasons; due to economic pressures, none of the markup schemes survives
+in a pure form anymore.
+
+Text processors and desktop publishing systems (think for example of
+{\indextoo{Microsoft}} Word\index{Word!Microsoft}) are software systems aiming to
+produce ``{\emin{ink-on-paper}}'' or ``{\emin{pixel-on-screen}}'' representations
+of documents.  They are very well-suited to execute the typographic conventions
+mentioned above. Their internal markup scheme mainly defines presentation traits
+like character position, font choice, and characteristics, or page breaks. This is
+perfectly sufficient for producing high-quality presentations of the documents on
+paper or on screen, but does not support for instance document reuse (in other
+contexts or across the development cycle of a text). The problem is that these
+approaches concentrate on the {\emin{form}} and not the {\emin{function}} of text
+elements.  Think e.g. of the notorious section renumbering problems in early
+({\indextoo{WYSIWYG}}) text processors. Here, the text form of a numbered section
+heading was used to express the function of identifying the position of the
+respective section in a sequence of sections (and maybe in a larger structure like
+a chapter).
+
+This perceived weakness has lead to markup schemes that concentrate more on
+function than on form. We will take the
+{\index{latex@\protect{\LaTeX}}\index{tex@\protect{\TeX}}}
+{\TeX}/{\LaTeX}~\cite{Knuth:ttb84,Lamport:ladps94} approach as a paradigmatic
+example here. A typical section heading would be specified by something like this:
+\begin{verbatim}
+\section[{\TeX}]{The Joy of {\indextoo{\TeX}}}\label{sec:TeX}
+\end{verbatim}
+This specifies the function of the text element: The title of the section should
+be ``The Joy of {\TeX}'', which (if needed e.g. in the table of contents) can be
+abbreviated as ``{\TeX}'', the word ``{\TeX}'' is put into the index, and the
+section number can be referred to using the label {\tt{sec:TeX}}. To determine
+from this functional specification the actual form (e.g. the section number, the
+character placement and font information), we need a document formatting engine,
+such as Donald {\indextoo{Knuth}}'s {\TeX} program~\cite{Knuth:ttb84}, and various
+{\defin{style}} declarations, e.g. in the form of {\LaTeX} style
+files~\cite{Lamport:ladps94}\index{style!file}\index{file!style}. This program
+will transform the functional specification using the style information into a
+markup scheme that specifies the form, like
+{DVI\index{dvi@DVI}}~\cite{Knuth:ttb84}, or
+{\postscript\index{postscript@\postscript}}~\cite{Reid:plpd87} that can directly
+be presented on paper or on screen. Note that e.g.  {\indextoo{renumbering}} is not
+a problem in this approach, since the actual numbers are only inferred by the
+formatter at runtime. This, together with the ability to simply change style file
+for a different context, yields much more manageable and reusable documents, and
+has led to a wide adoption of the function-based approach. So that even
+word-processors like MS Word now include functional elements. Purely form-oriented
+approaches like {DVI\index{dvi@DVI}} or
+{\postscript\index{postscript@\postscript}} are normally only used for document
+delivery.
+
+To contrast the two markup approaches we will speak of {\defin{presentation
+    markup}}\index{markup!presentation} for markup schemes that concentrate on
+form and of {\defin{content markup}}\index{markup!content} for those that specify
+the function and infer the form from that. As we have emphasized before, few
+markup schemes are pure in the sense of this distinction, for instance {\LaTeX}
+allows to specify traits such as font size information, or using
+\begin{center}
+  {\verb+{\bf proof}:+}\ldots{\verb+\hfill\Box+}
+\end{center}
+to indicate the extent of a proof (the formatter only needs to ``copy'' them to
+the target format). The general experience in such mixed markup schemes is that
+presentation markup is more easily specified, but that content markup will enhance
+maintainability, and reusability. This has led to a culture of style file
+development (specifying typographical and structural conventions), which now gives
+us a wealth of style options to choose from in {\LaTeX}.
+
+Another member of the content markup family that additionally takes the problem of
+document {\defin{metadata}} into account, i.e.  the description of the document
+itself and the relations to other documents (cf. section~\ref{sec:metadata}), is
+the ``{\indextoo{Simple Generalized Markup Language}}''
+{\sgml}~\cite{Goldfarb:sgml90}.  It tries to give the markup scheme a more
+declarative semantics (as opposed to the purely procedural -- and rather baroque
+-- semantics of {\TeX}), to make it simpler to reason about (and thus reuse)
+documents. It comes with its own style sheet language
+{\dsssl\index{dsssl@\dsssl}}~\cite{DuCharme:fddsj97} and formatter Jade.
+
+The Internet, where screen presentation, hyperlinking, computational limitations,
+and bandwidth considerations are much more important than in the ``ink-on-paper''
+world of publishing, has brought about a whole new set of markup schemes. The
+problems that need to be addressed are that 
+\begin{enumerate}
+\item[$i)$] the size, resolution, and color depth of a given screen are not known
+  at the time the document is marked up,
+\item[$ii)$] the structure of a text is no longer limited to a linear text with
+  (e.g. numbered) cross-references as in a book or article as Internet documents
+  are in general hypertexts,
+\item [$iii)$] the computational resources of the computer driving the screen are
+  not known beforehand. Therefore the distribution of work (e.g. formatting steps)
+  between the client and the server has to be determined at runtime. Finally, the
+  related problem that
+\item[$iv)$] the bandwidth of the Internet is ever-growing but limited.
+\end{enumerate}
+
+The ``{\indextoo{Hypertext Markup Language}}''
+({\html}\index{html@\html}~\cite{RagHor:html98}) is a presentation markup scheme
+that shares the basic syntax with {\sgml} and addresses the problem of variable
+screen size and hyperlinking by exporting the decision of character placement and
+page order to a {\indextoo{browser}} running on the client.  This ensures the high
+degree of reusability of documents on the Internet, while conserving bandwidth, so
+that {\html} carries most of the markup on the Internet today. Of course {\html}
+has been augmented with its own (limited) style sheet language
+{CSS\index{css@CSS}}~\cite{BosHak:css98} that is executed by the browser. The need
+for content markup schemes for maintaining documents on the server, as well as for
+specialized presentation of certain text parts (e.g. for mathematical or chemical
+formulae), has led to a profusion of markup schemes for the Internet, most of
+which share the basic {\sgml} syntax with {\html}. However, due to its origin in
+the publishing world, full {\sgml} is much too complex for the Internet, and in
+particular the {\dsssl\index{dsssl@\dsssl}} formatter is too unwieldy and
+resource-hungry for integration into web browsers.
+
+\section{{\ifpdf{XML}\else{\xml}\fi}, the eXtensible Markup Language}\label{sec:xml}
+
+This diversity problem has led to the development of the unifying
+{\xml}{\index{xml@{\xml}}} (eXtensible Markup Language)
+framework~\cite{bray:XML97} for Internet markup languages, which we will introduce
+in more detail in this section. As {\omdoc} and all mathematical markup schemes
+discussed here are {\xml} applications (instances of the {\xml}
+framework)\index{xml@{\xml} application}\index{application!{\xml}}, we will go
+more into the technical details to supply the technical prerequisites for
+understanding the specification. We will briefly mention {\xml} validation and
+transformation tools. Readers with prior knowledge of {\xml} can safely skip this
+section, if the material reviewed in this section is not enough, we refer the
+reader to~\cite{Harold:xb01}.
+
+Conceptually speaking, {\xml} views a document as a tree\index{document
+  tree}\index{tree!document} of so-called {\defin{elements}}.  For communication
+this tree is represented as a well-formed bracketing structure (see
+{\myfigref{om-commutativity}} for an example), where the brackets of an element
+{\tt{el}} are represented as {\tt{<el>}} (opening) and {\tt{</el>}} (closing); the
+leaves of this tree are represented as {\defins{empty
+    element}}\index{element!empty} {\tt<el></el>}, which can be abbreviated as
+{\tt<el/>}\index{el@{\tt<el>},{\tt</el>},{\tt<el/>}}. The element nodes of this
+tree can be annotated by further information in so-called {\defins{attribute}} in
+opening brackets: {\tt<el visible="no">} might add the information for a
+formatting engine to hide this element. As a document is a tree, the {\xml}
+specification mandates that there must be a unique {\defin{document root}}, which
+in {\omdoc} is the {\element{omdoc}} element.  Note that all {\xml} parsers will
+reject a document that is not well-formed {\xml}, e.g. if it contains non-matching
+element brackets (e.g. a single {\tt{<br>}}) or multiple document roots.
+
+{\xml} offers two main mechanisms for specifying a subset of trees (or
+well-bracketed {\xml} documents) as admissible.  A {\defin{document type
+    definition}} {\defin{DTD}} is a {\indextoo{context-free
+    grammar}}\index{grammar!context-free} for trees\footnote{Actually, a recent
+  extension of the {\xml} standard ({\xlink}) also allows to express graph
+  structures, but the admissibility of graphs is not covered by the DTD. See also
+  section~\ref{sec:catalogue} on cross-referencing in {\omdoc}.}, that can be used
+by {\defins{validating {\xml} parser}} to reject {\xml} documents that do not
+conform to the {\omdoc} DTD (cf.  appendix~\ref{sec:dtd}).  Note that DTDs cannot
+enforce all constraints that a particular {\xml} application may want to impose on
+documents. Therefore DTD validation is only a necessary condition for
+{\defin{validity}} with respect to that application.  Recently {\xml} has added
+another grammar formalism: the {\xml} schema\index{xml@{\xml}
+  schema}\index{schema!{\xml}} language, which can express a slightly stronger set
+of constraints. Since an {\xml} schema allows stronger document validation, it
+usually takes {\indextoo{normative precedence}}\index{precedence!normative} over the
+DTD in specifications.
+
+\begin{myfig}{xml-dtd}{The Structure of an {\xml} document with DTD.}\footnotesize
+\begin{boxedverbatim}
+<?xml version="1.0"?> 
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN" 
+                       "http://www.mathweb.org/omdoc/omdoc.dtd" []> 
+<omdoc>
+ ...  
+</omdoc>
+\end{boxedverbatim}
+\end{myfig}
+Concretely, an {\omdoc} document has the general form shown in
+{\myfigref{xml-dtd}}. The first line identifies the document as an {\xml} document
+(version 1.0 of the {\xml} specification). The second line specifies the DTD and
+the document root {\omdoc} this it is intended for. In this case the
+{\element{omdoc}} element starting in line three is the root element and will be
+validated against the DTD found at the URL specified in line two. The last line
+contains the end tag of the {\element{omdoc}} element and ends the file. Every
+{\xml} element following this line would be considered as another document root.
+
+\begin{myfig}{internal}{A Document Type Declaration with Internal Subset}
+\small
+\begin{boxedverbatim}
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN" 
+                       "http://www.mathweb.org/omdoc/omdoc.dtd" 
+  [<!ENTITY % mathmldtd SYSTEM 
+              "http://www.w3.org/Math/DTD/mathml1/mathml.dtd">
+   %mathmldtd;
+   <!ELEMENT el (math)><!ATTLIST el att CDATA #REQUIRED>]> 
+\end{boxedverbatim}
+\end{myfig}
+A DTD specified in the {\tt{<!DOCTYPE}} declaration can be enhanced or modified by
+adding declarations in the {\indextoo{internal subset}}\index{DTD!internal subset}
+of the {\ttin{DOCTYPE}} declaration (the empty {\tt{[]}} in
+{\myfigref{xml-dtd}}).\label{page:internal-dtd} In {\myfigref{internal}}, we have
+modified the DTD by declaring that the {\tt{el}} element has a required attribute
+{\tt{att}} and must contain a single {\element{math}} child. The declarations for
+that are contained in the {\mathml} DTD, which we have included by first declaring
+the {\indextoo{parameter entity}} {\tt{\%mathmldtd;}} and then referencing it. The
+internal subset allows to change the DTD grammar for selected elements and to
+extend the admissible content of elements that were given the {\indextoo{content
+    type {\tt{ANY}}}}\index{ANY!content type} in the original DTD.
+
+The {\xml} schema applicable to an {\xml} document is given by a different
+mechanism. {\xml} assumes that all elements in a document belong to a given
+{\indextoo{namespace}}\index{xml@{\xml} namespace}. Technically, an {\xml} namespace
+is simply a string that uniquely identifies the intended semantics of the
+elements.  It is a {\indextoo{URI}} ({\indextoo{uniform resource identifier}}; a
+special string that identifies resources on the Internet, see~\cite{Harold:xb01}).
+Note that it need not be a valid {\indextoo{URL}} ({\indextoo{uniform resource
+    locator}}; i.e.  a pointer to a document provided by a web server.).
+Namespaces are used to differentiate {\xml} vocabularies or languages, so they can
+be safely mixed in documents. In principle, every {\indextoo{element}} and
+{\indextoo{attribute}} name is prefixed by a namespace, i.e. it is a pair
+{\tt{ns:n}}, where {\tt{ns}} is a namespace and {\tt{n}} is a simple name (that
+does not contain a colon). We call such a namespace/name pair a {\indextoo{qualified
+    name}}\index{name!qualified}. In most cases, namespaces can be elided or
+abbreviated when writing {\xml}.  Namespaces can be declared on any {\xml} element
+via the {\attribute{xmlns}{*}} attribute: the element and all its descendents are
+in this namespace, unless they have a namespace attribute of their own or there is
+a namespace declaration in a closer ancestor that overwrites it.  Similarly, a
+{\indextoo{namespace abbreviation}}\index{abbreviation!namespace} can be declared on
+any element, it is declared by an attribute declaration of the form
+{\tt{xmlns:nsa="nsURI"}}, where {\tt{nsa}} is a name space abbreviation, i.e. a
+simple name and {\tt{nsURI}} is the URI of the namespace.  In the scope of this
+declaration (in all descendants, where it is not overwritten) a qualified name
+{\tt{nsa:n}} denotes the qualified name {\tt{nsURI:n}}.
+
+\begin{myfig}{xml-schema}{An {\xml} document with {\xml} Schema.}\footnotesize
+\begin{boxedverbatim}
+<?xml version="1.0"?>
+<omdoc xmlns="http://www.mathweb.org/omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="omdoc.xsd http://www.mathweb.org/omdoc">
+ ...
+</omdoc>
+\end{boxedverbatim}
+\end{myfig}
+Let us now consider {\myfigref{xml-schema}}, which shows the attributes,
+namespaces, and namespace abbreviations necessary to associate an {\xml} document
+with an {\xml} schema. The {\attribute{xmlns}{omdoc}} attribute in the
+{\element{omdoc}} element declares that the URI
+{\url{http://www.mathweb.org/omdoc}} is the default namespace for the document,
+i.e. all element and attribute names without a colon are in this namespace. The
+attribute {\tt{xmlns:xsi}} declares the namespace abbreviation {\ttin{xsi}} for
+the namespace of {\xml} {\indextoo{schema instance}s}\index{instance!{\xml} schema}.
+Finally, the attribute {\attribute{xsi:schemaLocation}{omdoc}} identifies the {\xml}
+schema that is relevant for this element (and thus for the document). Note that
+with this mechanism schemata can be associated with elements (in contrast to DTDs
+that can only be associated with whole documents), which makes mixing {\xml}
+vocabularies much simpler.
+
+Since {\xml} elements only encode trees, the distribution of {\indextoo{whitespace}}
+(including {\index{line-feed}s}) in non-text elements has no meaning in {\xml}, and
+can therefore be added and deleted without effecting the semantics.
+
+{\xml} considers as comments\index{comment!{\xml}}\index{xml@{\xml}!comment}
+anything between {\verb+<!--+} and {\verb+-->+} in a document. They should be used
+with care, since they are not even read by the {\xml}
+parser\index{xml@{\xml}!parser}\index{parser!{\xml}}, and therefore do not survive
+processing by {\xml} applications. Material that is relevant to the document, but
+not valid {\xml}, e.g. binary data or data that contains angle brackets or
+elements that are unbalanced or not defined in the DTD can be embedded into
+{\ttin{CDATA}} sections. A {\ttin{CDATA}} section begins with {\verb+<[CDATA[+}
+and suspends the {\xml} parser until the string {\verb+]]>+} is found. Another way
+to include such material is to escape\index{escaping@{\xml}
+  escaping}\index{xml@{\xml}!escaping} the {\xml}-specific symbols ``{\verb+<+}'',
+``{\verb+>+}'', and ``{\verb+&+}'' to {\ttin{\&lt;}}, {\ttin{\&gt;}} and
+{\ttin{\&amp;}}. According to the {\xml} specification a {\ttin{CDATA}} section is
+equivalent to directly including the {\xml}-escaped contents. For instance
+{\verb+<[CDATA[a<b<sup>3</sup>]]>+} and {\verb+a&lt;b&lt;sup&gt;3&lt;/sup&gt;+}
+are equivalent, as a consequence an {\xml} application is free to choose the form
+of its output and the particular form should not relied upon.
+
+
+{\xml} comes with the {\indextoo{{\xslt}}} {\indextoo{style}} language
+transformations~\cite{Deach:exls99}, that is lightweight enough to allow
+integration of {\xslt}-transformers into browsers (they are present in version 6
+of {\indextoo{Microsoft}}'s {\indextoo{Internet Explorer}} and in version 6 of the
+{\indextoo{Netscape}} {\indextoo{Navigator}}).  {\xslt} programs or
+{\indextoo{style sheet}s} consist of a set of so-called {\indextoo{templates}}
+(rules that match certain nodes in the {\xml} tree) that are recursively applied
+to the input tree to produce the desired output. 
+
+\section{Mathematical Objects and Formulae}\label{sec:math-objects}
+
+The two best-known open markup formats for representing mathematics for the Web
+are {\mathml} and {\openmath}. There are various other formats that are
+proprietary or based on specific mathematical software packages like
+{\indextoo{Wolfram Research}}'s {\mathematica\index{Mathematica@\mathematica}}. We
+will not concern ourselves with them, since we are only interested in open
+formats.
+
+{\defemph{\mathml}}~\cite{CarIon:MathML01}\index{mathml@{\mathml}} is
+an {\xml}-based markup scheme for mathematical formulae. It has
+developed out of the effort to include presentation primitives for
+mathematical notation (in {\TeX}{\index{tex@{\TeX}}} quality) into
+{\html}, and was the first {\xml} application.  Since the aim is to do
+most of the formatting inside the browser, where resource
+considerations play a large role, it restricts itself to a fixed set
+of mathematical concepts -- the so-called {\indextoo{K-12}} fragment
+of mathematics (Kindergarten to $12^{th}$ grade). K-12 is a large set
+of commonly used glyphs for mathematical symbols and very general and
+powerful presentation primitives, as they make up the lower level of
+{\TeX}.  However it does not offer the programming language features
+of {\TeX}\footnote{{\TeX} contains a full,
+{\indextoo{Turing}}-complete -- if somewhat awkward -- programming
+language that is mainly used to write {\indextoo{style file}}s.  This
+is separated out by {\mathml} to the {\xslt} language it inherits from
+{\xml}.} for the obvious computing resource considerations.  {\mathml}
+is supported by the current versions of the primary commercial
+browsers {\msie}\index{internet@{\msie}} and
+{\netscape}\index{netscape@{\netscape}} by special plug-ins, and
+natively by {\mathml}-enabled versions of the open source browsers
+{\mozilla}\index{mozilla@{\mozilla}} and {\sc
+Amaya}\index{amaya@{\sc Amaya}}.
+
+\begin{myfig}{pcmml}{Mixing Presentation and Content {\mathml}}\footnotesize
+\begin{boxedverbatim}
+<semantics>
+ <mrow>
+  <mrow><mo>(</mo><mi>a</mi> <mo>+</mo> <mi>b</mi><mo>)</mo></mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow><mo>(</mo><mi>c</mi> <mo>+</mo> <mi>d</mi><mo>)</mo></mrow>
+ </mrow>
+ <annotation-xml encoding="MathML-Content">
+  <apply><times/>
+   <apply><plus/><ci>a</ci> <ci>b</ci></apply>
+   <apply><plus/><ci>c</ci> <ci>d</ci></apply>
+  </apply>
+ </annotation-xml>
+</semantics>
+\end{boxedverbatim}
+\end{myfig}
+
+{\mathml} also offers content markup for mathematical formulae, a sub-language
+called {\indextoo{content {\mathml}}} to contrast it from the
+{\indextoo{presentation {\mathml}}} described above. Furthermore, it offers a
+specialized {\element{semantics}} element that allows to annotate {\mathml}
+formulae with content markup, e.g.  so that they can be passed on to other
+mathematical software systems like computer algebra systems. {\Myfigref{pcmml}}
+shows an example of this for the arithmetical expression $(a+b)(c+d)$. The
+outermost {\element{semantics}} element is a {\mathml} primitive for annotating
+{\mathml} elements with other representations. Here it is used for mixing
+presentation and content markup. The first child of the {\element{semantics}}
+element is the presentation (this is used by the {\mathml}-aware browser) which is
+annotated by {\element{annotation-xml}} element, which contains the content
+markup. Let us first look at the presentation markup. The {\element{mrow}}
+elements are a general grouping device the layout engine uses for purposes of
+alignment and line-breaking. The {\element{mo}} elements marks its content as a
+{\indextoo{mathematical operator}}\index{operator!mathematical} and the
+{\element{mi}} element marks its content as a {\indextoo{mathematical
+    identifier}}\index{identifier!mathematical}. The {\indextoo{entity
+    reference}}\index{reference!entity} {\tt{{\&}InvisibleTimes;}} is a
+character that is not displayed, but stands for the multiplication operator.
+
+
+For content markup, the logical structure of the formula is in the center.
+{\mathml} uses the {\element{apply}} element for function application. In this case the
+multiplication function {\element{times}}, which is applied to the
+results of the addition
+function {\element{plus}}, applied to some identifiers. Both the
+elements {\element{times}} and {\element{plus}} are modeled as empty elements. Note that brackets
+are not explicitly represented, since they are purely presentational devices and
+the information is implicit in the structure of the formula and can be deduced
+from notational conventions.  The {\element{mi}} element has content counterpart
+{\element{ci}} for {\indextoo{content identifier}}\index{identifier!content},
+which conceptually corresponds to a {\indextoo{logical
+    variable}}\index{variable!logical}. The concept of a {\indextoo{domain
+    constant}s}\index{constant!domain} is either modeled by a special element (if
+it is in the K-12 range as {\element{plus}} and {\element{times}}, there are about
+80 others) or by the {\element{csymbol}} element.
+
+In contrast to this very rich language that defines the meaning of extended
+presentation primitives, the {\openmath} standard~\cite{CapCoh:doms98} builds on
+an extremely simple kernel (mathematical objects represented by content formulae),
+and adds an extension mechanism, the so-called {\defemph{content
+    dictionaries}}\index{content!dictionary}\index{dictionary!content}. These are
+{\indextoo{machine-readable}} specifications of the meaning of the mathematical
+concepts expressed by the {\openmath} symbols.  Just like the library mechanism of
+the {\ttin{C}} programming language, they allow to externalize the definition of
+extended language concepts. As a consequence, K-12 need not be part of the
+{\openmath} language, but can be defined in a set of content dictionaries (see
+{\url{http://www.openmath.org/cdfiles/html/core}}). Moreover, {\openmath} is
+purely based on content markup.
+
+The central construct of {\openmath} is that of an {\indextoo{{\openmath}
+    object}}\index{object!{\openmath}} ({\eldef{OMOBJ}}), which has a tree-like
+representation made up of {\indextoo{application}s} ({\eldef{OMA}}),
+{\indextoo{binding structure}s} ({\eldef{OMBIND}} using {\eldef{OMBVAR}} to tag the
+{\indextoo{bound variable}s}\index{variable!bound}), {\indextoo{variable}s}
+({\eldef{OMV}}) and {\indextoo{symbol}s} ({\eldef{OMS}}). The {\element{OMS}}
+element carries attributes {\attribute{cd}{OMS}} and {\attribute{name}{OMS}}
+attributes.  The {\attribute{name}{OMS}} attribute gives the name of the symbol.
+The {\attribute{cd}{OMS}} attribute specifies {\indextoo{content dictionary}}, a
+document that defines the meaning of a collection of symbols including the one
+referenced by the {\element{OMS}} itself. As variables do not carry a meaning
+independent of their local content, {\element{OMV}} only carries a
+{\attribute{name}{OMV}} attribute. See {\myfigref{om-commutativity}} for an
+example that uses most of the elements.
+
+For convenience, {\openmath} also provides other basic data types useful in
+mathematics: {\eldef{OMI}} for {\indextoo{integer}s}, {\eldef{OMB}} for
+{\indextoo{byte array}s}, {\eldef{OMSTR}} for {\indextoo{string}s}, and {\eldef{OMF}}
+for floating point numbers, and finally {\eldef{OME}} for {\indextoo{error}s}.  Just
+like {\mathml}, {\openmath} offers an element for annotating (parts of) formulae
+with external information (e.g. {\mathml} or {\LaTeX} presentation): the
+{\eldef{OMATTR}}\footnote{Note that the meaning of this element is somewhat
+  underdefined, it is stated in the standard, that any {\openmath} compliant
+  application is free to disregard attribuitions (so they do not have a meaning),
+  but in practice, they are often used for specifying e.g.  type information.}
+element, which pairs an {\openmath} object with an attribute-value list. To
+attribute an {\openmath} object, it is embedded as the second child in an
+{\element{OMATTR}} element. The attribute-value list is specified by children of
+the {\element{OMATP}} element, which is the first child, and has an even number of
+children: children at even position must be {\element{OMS}} (specifying the
+attribute), and children at odd positions are the values of the attributes given
+by their immediately preceding siblings.
+
+The content dictionaries that make up the extension mechanism provided in
+{\openmath} are tied into the object representation by the {\attribute{cd}{OMS}}
+attribute of the {\element{OMS}} element that specifies the defining content
+dictionary.
+
+{\openmath} and {\mathml} are well-integrated:
+\begin{itemize}
+\item the core content dictionaries of {\openmath} mirror the {\mathml} constructs
+  (see {\url{http://www.openmath.org/cdfiles/html/core}}); there are converters
+  between the two formats.
+\item {\mathml} supports the {\element{semantics}} element, that can be used to
+  annotate {\mathml} presentations of mathematical objects with their {\openmath}
+  encoding. Analogously, {\openmath} supports the {\ttin{presentation}} symbol in
+  the {\element{OMATTR}} element, that can be used for annotating with {\mathml}
+  presentation.
+\item {\openmath} is the designated extension mechanism for {\mathml} beyond K-12
+  mathematics: content {\mathml} supports the {\element{csymbol}} element, which
+  has an attribute {\attribute{definitionURL}{csymbol}} that points to a document (an
+  {\openmath} CD) that defines the meaning of the symbol. The content of the
+  {\element{csymbol}} element is {\mathml} presentation markup for the symbol.
+\end{itemize}
+
+\setbox0=\hbox{\scriptsize\begin{boxedverbatim}
+<OMOBJ>                            
+ <OMBIND>                          
+  <OMS cd="quant1" name="forall"/> 
+  <OMBVAR>                         
+   <OMATTR>                        
+    <OMATP>                        
+     <OMS cd="sts" name="type"/>   
+     <OMS cd="setname1" name="R"/>  
+    </OMATP>                       
+    <OMV name="a"/>                
+   </OMATTR>                        
+   <OMATTR>                        
+    <OMATP>                        
+     <OMS cd="sts" name="type"/>   
+     <OMS cd="setname1" name="R"/>  
+    </OMATP>                       
+    <OMV name="b"/>                
+   </OMATTR>                        
+  </OMBVAR>                        
+   <OMA>                           
+    <OMS cd="relation" name="eq"/> 
+    <OMA>                          
+     <OMS cd="arith1" name="plus"/>
+     <OMV name="a"/>               
+     <OMV name="b"/>               
+    </OMA>                         
+    <OMA>                          
+     <OMS cd="arith1" name="plus"/>
+     <OMV name="b"/>               
+     <OMV name="a"/>               
+    </OMA>                         
+  </OMA>                           
+ </OMBIND>                         
+</OMOBJ>                           
+\end{boxedverbatim}
+}
+\setbox1=\hbox{\scriptsize\begin{boxedverbatim}
+<math>
+ <apply>  
+  <forall/>
+  <bvar> 
+
+
+
+
+
+   <ci type="real">a</ci>
+
+
+
+
+
+
+   <ci type="real">b</ci>
+
+  </bvar>
+  <apply>
+   <eq/>
+   <apply>
+    <plus/>
+    <ci type="real">a</ci>
+    <ci type="real">b</ci>
+   </apply>
+   <apply>
+    <plus/>
+    <ci type="real">b</ci>
+    <ci type="real">a</ci>
+   </apply>
+  </apply>
+ </apply>
+</math>
+\end{boxedverbatim}
+}
+
+\begin{myfig}{om-commutativity}{$\forall a,b:{\bf R}.a+b=b+a$. in {\openmath}
+    and {\mathml} format}
+\begin{tabular}{cc}
+ {\large{\openmath}}  &  {\large\mathml}\\
+ \box0 & \box1
+\end{tabular}
+\end{myfig}
+{\Myfigref{om-commutativity}} shows {\openmath} and content {\mathml}
+representations of the law of commutativity for addition on the reals (the logical
+formula $\forall a,b:R.a+b=b+a$). The mathematical meaning of symbols (that of
+applications and bindings is known from the folklore) is specified in a set of
+content dictionaries\index{content dictionary}, which contain formal
+({\element{FMP}} ``{\indextoo{formal mathematical property}}'') or informal
+({\element{CMP}} ``{\indextoo{commented mathematical property}}'') specifications
+of the mathematical properties of the symbols. For instance, the specification in
+{\myfigref{arith1}} is part of the standard {\openmath} content dictionary
+{\ttin{arith1.ocd}} for the elementary arithmetic operations. The content of the
+{\element{FMP}} element is actually the {\openmath} object in the representation
+on the left of {\myfigref{om-commutativity}}, we have abbreviated it here in the
+usual mathematical notation, and we will keep doing this in the remaining
+document: wherever an {\xml} element in a figure contains mathematical notation,
+it stands for the corresponding {\openmath} element.
+\setbox0=\hbox{\begin{minipage}{10.2cm}\footnotesize
+\begin{alltt}
+<CDDefinition>
+ <Name>plus</Name> 
+ <Description> 
+  The symbol representing an n-ary commutative function plus.
+ </Description> 
+ <CMP> for all a,b | a + b = b + a </CMP>
+ <FMP>\(\forall a,b.a+b=b+a\)</FMP> 
+</CDDefinition>
+\end{alltt}
+\end{minipage}}
+\begin{myfig}{arith1}{Part of the {\openmath} CD {\ttin{arith1}}.}
+\fbox{\box0}
+\end{myfig}
+
+\section{Meta-Mathematical Objects}\label{sec:meta-math}
+
+The mathematical markup languages {\openmath} and {\mathml} we have discussed in
+the last section have dealt with mathematical objects and formulae.  This level of
+support is sufficient for representing very established areas of mathematics like
+K-12 high school math, where the meaning of concepts and symbols is totally clear,
+or for the communication needs of symbolic computation services like computer
+algebra systems, which manipulate and compute objects like equations or groups.
+The formats either specify the semantics of the mathematical object involved in
+the standards document itself ({\mathml}) or in a fixed set of generally
+agreed-upon documents ({\openmath} content dictionaries\index{content
+  dictionary}). In both cases, the mathematical knowledge involved is relatively
+fixed. Eeven in the case of {\openmath}, which has an extensible library
+mechanism, it is not in itself an object of communication (content dictionaries
+are mainly background reference for the implementation of {\openmath} interfaces).
+
+There are many areas of mathematics, where this level of support is insufficient,
+because the mathematical knowledge expressed in definitions, theorems (stating
+properties of defined objects), their proofs, and even whole mathematical theories
+becomes the primary ``object'' of mathematical communication. We will call these
+``objects'' {\defins{meta-mathematical object}}\index{objects{meta-mathematical}},
+since they contain knowledge {\em{about\/}} mathematical objects. As a consequence
+it is not the structure of the mathematical objects themselves, but the structure
+of elements of mathematical knowledge and their interdependencies that is
+communicated, between mathematicians.
+
+Traditional mathematics has developed a rich set of conventions to mark up the
+structure of mathematical
+knowledge\index{knowledge!mathematical}\index{mathematical!knowledge} in
+documents\index{document!mathematical}\index{mathematical!document}. For instance,
+mathematical
+statements\index{statement!mathematical}\index{mathematical!statement} like
+theorems, definitions, and proofs like the ones in {\myfigref{fragment}} are
+delimited by keywords (e.g. {\bf Lemma} and {\boexchen}) or by changes in text
+font (claims are traditionally written in italics). We will collectively refer to
+meta-mathematical objects like {\indextoo{axiom}s}, {\indextoo{definition}s},
+{\indextoo{theorem}s}, and {\indextoo{proof}s} as {\defins{mathematical
+    statement}}\index{statement!mathematical}, since they state properties of
+mathematical objects.
+
+\begin{myfig}{fragment}{A fragment of a traditional mathematical Document}
+  \fbox{\begin{minipage}{10cm}
+      {\bf Definition 3.2.5} (Monoid)\\
+    A monoid is a semigroup $S=(G,\circ)$ with an element $e\in G$, 
+    such that $e\circ x=x$ for all $x\in G$. $e$ is called a left 
+    unit of a $S$.\\[1ex]
+    
+    {\bf Lemma 3.2.5}\\
+    {\em A monoid has at most one left unit.}\\
+    {\bf Proof}: We assume that there is another left unit $f$\ldots This
+    contradicts our assumption, so we have proven the claim.\hfill\kasten
+  \end{minipage}}
+\end{myfig}
+
+The large-scale structure of mathematical knowledge is mapped to informal groups
+of mathematical statements called theories\index{theory}, and often mapped into
+monographies\index{monography} (titled e.g. ``Introduction to Group Theory'') or
+{\indextoo{chapter}s} and {\indextoo{section}s} in {\indextoo{textbook}s}. The
+rich set of relations among such theories is described in the text, sometimes
+supported by mathematical statements called {\indextoo{representation
+    theorem}s}\index{theorem!representattion}. In fact, we can observe that
+mathematical texts can only be understood with respect to a particular
+mathematical context given by a theory which the reader can usually infer from the
+document. The context can be given explicitly, e.g. by the title of a book such as
+``Introduction to the Theory of Finite Groups'' or implicitly (e.g. by the
+fact that the e-mail comes from a person that we know works on finite groups, and
+we can see that she is talking about math).
+  
+Mathematical theories {\index{mathematical theory}}\index{theory!mathematical}
+have been studied by meta-mathe\-ma\-ti\-cians and logicians in the search of a rigorous
+foundation of mathematical practice. They have been formalized as collections of
+symbol declarations\index{symbol!declaration} giving names to the mathematical
+objects that are particular to the theory and logical formulae, which state the
+laws governing the properties of the theory. A key research question was to
+determine conditions for the consistency of mathematical theories. In inconsistent
+theories (such that do not have models) all statements are vacuously
+valid\footnote{A statement is valid in a theory, iff it is true for all models of
+  the theory. If there are none, it is vacuously valid.}, and therefore,
+only consistent theories make interesting statements about mathematical objects.
+It is one of the key observations of meta-mathematics that more formulae can be
+added without endangering consistency, if they can be proven from the formulae
+already in the theory. As a consequence, consistency of a theory can be determined
+by classifying the formulae into {\indextoo{theorem}s}, i.e. those that have a
+proof, and {\indextoo{axiom}s} -- those that do not -- and examining consistency
+of the axioms only.  Thus the role of proofs is twofold, they allow to push back
+the assumptions about the world to simpler and simpler assumptions, and they allow
+to test the model by deriving consequences of these basic assumptions that can be
+tested against the data.
+  
+A second important observation is that new symbols together with axioms defining
+their properties can be added to a theory without endangering consistency, if they
+are of a certain restricted syntactical form. These so-called
+{\indextoo{definitional form}s} mirror the various types of mathematical
+{\indextoo{definition}s} (e.g. equational, recursive, implicit definitions).  This
+leads to the so-called {\indextoo{principle of conservative
+    extension}}\index{conservative extension}, which states that conservative
+extensions to theories (by {\indextoo{theorem}s} and {\indextoo{definition}s}) are
+safe for mathematical theories, and that possible sources for
+inconsistencies\index{inconsistency} can be narrowed down to small sets of axioms.
+
+Even though all of this has theoretically been known to (meta)-mathema\-ticians for
+almost a century, it has only been an explicit object of formal study and
+exploited by mathematical software systems in the last decades. Much of the
+meta-mathematics has been formally studied in the context of proof development
+systems like \index{{\sc Automath}} {\sc Automath}~\cite{Bruijn80}
+Nuprl~\cite{Constable86}, HOL~\cite{GoMe93}, {\sc Mizar}~\cite{Rudnicki:aomp92}
+and {\OMEGA}~\cite{BenzmuellerEtAl:otama97} which utilize strong logical systems
+that allow to express both mathematical statements and proofs as mathematical
+objects.  Some systems like Isabelle~\cite{Paulson90} and Elf~\cite{Pfenning91}
+even allow the specification of the logic language itself, in which the reasoning
+takes place. Such semi-automated theorem proving systems have been used to
+formalize substantial parts of mathematics and mechanically verify many theorems
+in the respective areas. These systems usually come with a library system that
+manages and structures the body of mathematical knowledge formalized in the system
+so far.
+
+In software engineering, mathematical theories have been studied under the label
+of (algebraic) {\indextoo{specification}}\index{algebraic specification}. Theories
+are used to specify the behavior of programs and software components. Under the
+pressure of industrial applications, the concept of a theory (specification) has
+been elaborated from a practical point of view to support the structured
+development of specifications, theory {\indextoo{reuse}}\index{theory!reuse}, and
+modularization. Without this additional structure, real world specifications
+become unwieldy and unmanageable in practice. Just as in the case of the theorem
+proving systems, there is a whole zoo of specification languages, most of them
+tied to particular software systems.  They differ in language primitives,
+theoretical expressivity, and the level of tool support.
+
+Even though there have been standardization efforts, the most recent one being the
+{\casl} standard (Common Algebraic Specification Language; see~\cite{CoFI98})
+there have been no efforts of developing this into a general markup language for
+mathematics with attention to web communication and standards. The {\omdoc} format
+attempts to provide a content-oriented markup scheme that supports all the aspects
+and structure of mathematical knowledge we have discussed in this section. Before
+we define the language in the next chapter, we will briefly go over the
+consequences of adopting a markup language like {\omdoc} as a standard for
+web-based mathematics.
+
+\section{An Active Web of Mathematical Knowledge}\label{sec:mathweb}
+
+It is a crucial -- if relatively obvious -- insight that true cooperation of
+mathematical services is only feasible if they have access to a joint corpus of
+mathematical knowledge. Moreover, having such a corpus would allow to develop
+added-value services like
+\begin{enumerate}
+\item\label{service:cut-paste} cut and paste on the level of computation (take the
+  output from a web search engine and paste it into a computer algebra system),
+\item\label{service:proof-check} automatically proof checking published proofs,
+\item\label{service:explain} math explanation (e.g. specializing a proof to an
+  example that simplifies the proof in this special case),
+\item\label{service:search} semantical search for mathematical concepts (rather
+  than keywords),
+\item\label{service:mine} data mining for representation theorems (are there
+  unnoticed groups out there),
+\item\label{service:classify} classification: given a concrete mathematical
+  structure, is there a general theory for it?
+\end{enumerate}
+As the online mathematical knowledge is presently only machine-readable, but not
+machine-understandable, all of these services can currently only be performed by
+humans, limiting the accessibility and thus the potential value of the
+information. Services like this will transform the now passive and human-centered
+fragement of the Internet that deals with mathematical content, into an active (by
+the services) web of mathematical knowledge (we will speak of {\indextoo{mathweb}}
+for this vision).
+
+Of course, this promise of activating a web of knowledge is in no way limited to
+mathematics, and the task of transforming the current presentation-oriented
+world-wide web into a ``semantic web''~\cite{BernersLee:tsw98} has been identified
+as one of the main challenges by the world wide web consortium (W3C, the
+fundamental standardizing body for the WWW, see {\url{http://www.w3c.org}}).
+
+The direct applications of {\mathweb} (apart from the general effect towards a
+semantic web) are by no means limited to mathematics proper. Until now, the {\mathml}
+working group in the W3C has led the way in many web technologies (presenting
+mathematics on the web taxes the current web technology to its limits); the
+endorsement of the {\mathml} standard by the W3 Committee is an explicit testimony to
+this. We expect that the effort of creating an infrastructure for digital
+mathematical libraries will play a similar role, since mathematical knowledge is
+the most rigorous and condensed form of knowledge, and will therefore pinpoint the
+problems and possibilities  of the semantic web.
+
+All modern sciences have a strongly mathematicised core, and will benefit. The
+real market and application area for the techniques developed in this project lies
+with high-tech and engineering corporations like Airbus Industries, Daimler
+Chrysler, Phillips, ... that rely on huge formula databases.  Currently, both the
+content markup as well as the added-value services alluded to above are very
+underdeveloped, limiting the usefulness of the vital knowledge. The content-markup
+aspect needed for mining this information treasure and obtaining a competitive
+edge in development is exactly what we are attempting to develop in {\omdoc}.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 

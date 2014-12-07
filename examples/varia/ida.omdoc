@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+<!--  An example of a page from an interactive mathematical textbook. 
+           "Interactive Document on Algebra" 
+	   by Arjeh M. Cohen, Hans Cuypers, Hans Sterk, Springer Verlag 1999.
+  -->
+
+<omdoc id="ida_c6s1p4" catalogue="../omstd/catalogue.omdoc">
+
+
+<metadata>
+<Title>Monoids</Title>
+<Creator role="edt">Michael Kohlhase</Creator> 
+<Contributor role="aut">Arjeh Cohen</Contributor>
+<Contributor role="aut">Hans Cuypers</Contributor>
+<Contributor role="aut">Hans Sterk</Contributor>
+<Date action="created">1999-08-10</Date>
+</metadata>
+
+<assertion id="ida-c6s1p4-l1" 
+	   type="lemma"
+	   theory="monoid">
+  <metadata>
+    <Title>Monoid</Title>
+  </metadata>
+  <CMP>A semi-group has at most one unit.</CMP>
+</assertion>
+
+<omtext id="ida-c6s1p4-r1" for="ida-c6s1p4-l1" type="elaboration">
+  <CMP> The lemma says that there are no units in a semi-group or there is exactly
+      one. Both cases occur: <ref type="cite" xref="ida-c6s1p4-r1-2"/> and <ref
+      type="cite" xref="ida-c6s1p4-r1-2"/>
+  </CMP>
+</omtext>
+
+<example id="ida-c6s1p4-r1-2" for="ida-c6s1p4-l1" type="for">
+  <CMP> The semi-group <OMOBJ><OMS cd="concrete-semigroups" name="EvenNat-times"/></OMOBJ> 
+     of all even natural numbers with multiplication does not have a unit.
+  </CMP>
+</example>
+
+<example id="ida-c6s1p4-r1-1" for="ida-c6s1p4-l1" type="for">
+  <CMP>
+    The semi-group <OMOBJ><OMS cd="concrete-semigroups" name="Nat-times"/></OMOBJ> 
+    of all natural numbers with multiplication has unit 
+    <OMOBJ><OMS cd="natural" name="one"/></OMOBJ>.
+  </CMP>
+</example>
+
+
+<omtext id="ida-c6s1p4-r3" for="ida-c6s1p4-l1" type="elaboration">
+  <CMP>Since a monoid has only one unit element as is stated in the above lemma,
+   we call this unit element the unit of the monoid.
+  </CMP>
+</omtext>
+
+ <proof for="ida-c6s1p4-l1"
+	id="ida-c6s1p4-p1"
+	theory="monoid">
+  <conclude id="ida-c6s1p4-p1-c">
+   <CMP>Suppose that <OMOBJ><OMV name="e"/></OMOBJ> and 
+       <OMOBJ><OMV name="f"/></OMOBJ> 
+       are units of the semi-group 
+   <OMOBJ>
+     <OMA>
+      <OMS cd="cartesian-products" name="pair"/>
+      <OMV name="S"/>
+      <OMV name="*"/>
+     </OMA>
+    </OMOBJ>
+   Then we have 
+   <OMOBJ>
+     <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMV name="e"/>
+      <OMA><OMV name="*"/><OMV name="e"/><OMV name="f"/></OMA>
+      <OMV name="f"/>
+     </OMA>
+    </OMOBJ>
+   </CMP>
+  </conclude>
+ </proof>
+
+<code theory="monoid" id="c6s1p4lm1loui1">
+  <data href="c6s1p4lm1loui1.oza"/>
+</code>
+
+<code theory="monoid" id="c6s1p4lm1loui2">
+  <data href="c6s1p4lm1loui2.oza"/>
+</code>
+
+<code theory="monoid" id="c6s1p4lm1loui3">
+  <data href="c6s1p4lm1loui3.oza"/>
+</code>
+
+<code theory="monoid" id="c6s1p4lm1loui4">
+  <data href="c6s1p4lm1loui4.oza"/>
+</code>
+
+<code theory="monoid" id="c6s1p4lm1loui5">
+  <data href="c6s1p4lm1loui5.oza"/>
+</code>
+
+<code theory="monoid" id="c6s1p4lm1loui6">
+  <data href="c6s1p4lm1loui6.oza"/>
+</code>
+
+<proof for="ida-c6s1p4-l1"
+       id="ida-c6s1p4-p2"
+       theory="monoid">
+  <derive id="ida-c6s1p4-p2-intro">
+    <CMP>
+      <omlet id="c6s1p4lm1loui1.ol" function="c6s1p4lm1loui1">
+        Let's prove this assertion interactively!
+      </omlet> 
+    </CMP>
+  </derive>
+  <derive id="ida-c6s1p4-p2-1">
+    <CMP>
+      <omlet id="c6s1p4lm1loui2.ol" function="c6s1p4lm1loui2">
+        We take an arbitrary semi-group 
+	<OMOBJ>
+          <OMA>
+            <OMS cd="cartesian-products" name="pair"/>
+	    <OMV name="S1"/>
+            <OMV name="op1"/>
+          </OMA>
+         </OMOBJ> and expand the
+         definition of <OMOBJ><OMS cd="quant2" name="at-most-one"/></OMOBJ>
+      </omlet> 
+    </CMP>
+    </derive>
+    <derive id="ida-c6s1p4-p2-2">
+      <CMP>
+      <omlet id="c6s1p4lm1loui3.ol" function="c6s1p4lm1loui3">
+         Now suppose that we have two units 
+         <OMOBJ><OMV name="e1"/></OMOBJ> and 
+         <OMOBJ><OMV name="e2"/></OMOBJ>.
+      </omlet> 
+    </CMP>
+  </derive>
+  <derive id="ida-c6s1p4-p2-3">
+    <CMP>
+      <omlet id="c6s1p4lm1loui4.ol" function="c6s1p4lm1loui4">
+         Since <OMOBJ><OMV name="e2"/></OMOBJ> has the unit-property for every
+       element of <OMOBJ><OMV name="S1"/></OMOBJ>,
+         it follows that 
+	 <OMOBJ>
+           <OMA>
+             <OMS cd="relation1" name="eq"/>
+             <OMA>
+               <OMS cd="arith1" name="times"/>
+               <OMV name="e1"/>
+               <OMV name="e2"/>
+             </OMA>
+             <OMA>
+               <OMS cd="arith1" name="times"/>
+               <OMV name="e2"/>
+               <OMV name="e1"/>
+             </OMA>
+             <OMV name="e1"/>
+           </OMA>
+         </OMOBJ>.
+      </omlet> 
+    </CMP>
+  </derive>
+  <derive id="ida-c6s1p4-p2-4">
+    <CMP>
+      <omlet id="c6s1p4lm1loui5.ol" function="c6s1p4lm1loui5">
+         Analogously for <OMOBJ><OMV name="e1"/></OMOBJ>, it follows that 
+	 <OMOBJ>
+           <OMA>
+             <OMS cd="relation1" name="eq"/>
+             <OMA>
+               <OMS cd="arith1" name="times"/>
+               <OMV name="e1"/>
+               <OMV name="e2"/>
+             </OMA>
+             <OMA>
+               <OMS cd="arith1" name="times"/>
+               <OMV name="e2"/>
+               <OMV name="e1"/>
+             </OMA>
+             <OMV name="e2"/>
+           </OMA>
+         </OMOBJ>.
+      </omlet> 
+    </CMP>
+   <method xref="analogy"/>
+   <premise xref="ida-c6s1p4-p2-3"/>
+  </derive>
+  <conclude id="ida-c6s1p4-p2-c">
+   <CMP>
+      <omlet id="c6s1p4lm1loui6.ol" function="c6s1p4lm1loui6">
+         Therefore 
+         <OMOBJ>
+           <OMA>
+             <OMS cd="relation1" name="eq"/>
+             <OMV name="e1"/>
+       <OMV name="e2"/></OMA></OMOBJ>.
+      </omlet> 
+    </CMP>
+  </conclude>
+</proof>
+
+
+<exercise for="ida-c6s1p4-l1"
+        id="ida-c6s1p4-mc1">
+  <CMP>What is the unit element of the semi-group <OMOBJ><OMV name="Q"/></OMOBJ> with operation 
+         a*b = 3ab.
+      </CMP> 
+      <mc id="mc11"><choice id="mcc11">
+	<FMP><OMOBJ><OMI>1</OMI></OMOBJ></FMP>
+	  </choice>
+          <answer id="mca11" verdict="false"><CMP>No, 1*1=3 and not 1</CMP></answer>
+      </mc>
+      <mc id="mc12"><choice id="mcc12"><CMP>1/3</CMP></choice>
+          <answer id="mca12" verdict="true"><CMP>That is correct</CMP></answer>
+      </mc>
+      <mc id="mc13"><choice id="mcc13"><CMP>It has no unit.</CMP></choice>
+          <answer id="mca13" verdict="false"><CMP>No, try another answer</CMP></answer>
+      </mc>
+</exercise>
+
+
+<exercise for="ida-c6s1p4-l1"
+          id="ida-c6s1p4-mc2">
+   <CMP>
+     Consider 
+     <OMOBJ>
+       <OMA>
+         <OMS cd="relation1" name="eq-in"/>
+         <OMV name="f"/> 
+         <OMA>
+           <OMS cd="arith1" name="plus"/>
+           <OMA>
+             <OMS cd="arith1" name="exp"/>
+	     <OMV name="X"/>
+  	     <OMV name="n"/>
+           </OMA>
+	   <OMI>1</OMI>
+         </OMA>
+         <OMA><OMS cd="polynomial" name="Adjoint"/><OMV name="X"/></OMA>
+       </OMA>
+     </OMOBJ>.
+     For which positive integers <OMOBJ><OMV name="n"/></OMOBJ> is Q[X]/(f) a monoid?
+   </CMP> 
+      <mc id="mc21"><choice id="mcc21"><CMP>None</CMP></choice>
+         <answer id="mca21" verdict="false"><CMP>Wrong</CMP></answer>
+      </mc>
+      <mc id="mc22"><choice id="mcc22"><CMP>All</CMP></choice>
+          <answer id="mca22" verdict="true"><CMP>Right</CMP></answer>
+      </mc>
+      <mc id="mc23"><choice id="mcc23">
+            <FMP>
+              <OMOBJ>
+                <OMA>
+                  <OMS cd="relation1" name="greater"/>
+    	          <OMV name="n"/>
+	          <OMI>1</OMI>
+                </OMA>
+              </OMOBJ>
+            </FMP>
+         </choice>
+        <answer id="mca23" verdict="false">
+          <CMP>
+	    No, the unit also exists for residue class rings if
+            <OMOBJ><OMA>
+              <OMS cd="relation1" name="greater"/>
+	      <OMV name="n"/>
+	      <OMI>1</OMI>
+            </OMA></OMOBJ>.
+          </CMP>
+        </answer>
+      </mc>
+</exercise>
+
+
+<omtext id="ida-c6s1p4-ue1" for="ida-c6s1p4-d1">
+  <CMP>Semi-groups with a unit element are special and 
+     therefore have been given a special name:
+  </CMP>
+</omtext>
+
+<theory id="ida.monoid">
+  <commonname xml:lang="en">monoid theory</commonname>
+  <commonname xml:lang="de">Monoid</commonname>
+<symbol id="monoid">
+  <commonname xml:lang="en">monoid</commonname>
+  <commonname xml:lang="de">Monoid</commonname>
+  <commonname xml:lang="nl">Monoid</commonname>
+</symbol>
+
+
+<definition id="ida-c6s1p4-d1"
+       for="monoid">
+  <CMP>  A structure  in which     <OMOBJ><OMA>
+     <OMS cd="cartesian-products" name="pair"/>
+     <OMV name="M"/>
+     <OMV name="*"/>
+</OMA></OMOBJ>
+   is a semi-group with unit <OMOBJ><OMV name="e"/></OMOBJ>, is called a
+   monoid.
+  </CMP>
+</definition>
+</theory>
+
+<omgroup id="ida-c6s1p4-e1">
+<example id="ida-c6s1p4-e1-1"
+         for="ida-c6s1p4-d1" type="for">
+  <CMP>
+    The usual monoids on 
+     <OMOBJ><OMS cd="concrete-sets" name="Nat"/></OMOBJ>,
+     <OMOBJ><OMS cd="concrete-sets" name="Int"/></OMOBJ>,
+     <OMOBJ><OMS cd="concrete-sets" name="Rat"/></OMOBJ>,
+     <OMOBJ><OMS cd="concrete-sets" name="Real"/></OMOBJ>,
+     <OMOBJ><OMS cd="concrete-sets" name="Complex"/></OMOBJ>,
+     <OMOBJ><OMA><OMS cd="concrete-sets" name="Int-Mod"/><OMV name="n"/></OMA></OMOBJ>,
+     <OMOBJ><OMA><OMS cd="polynomial" name="Adjoint"/>
+       <OMS cd="concrete-sets" name="Real"/>
+       <OMV name="X"/>
+           </OMA>
+     </OMOBJ>,...
+  </CMP>
+</example>
+
+<omtext id="ida-c6s1p4-e1-r1" for="ida-c6s1p4-e1-1" type="elaboration">
+     <CMP>With respect to both addition and multiplication, these sets are semi-groups 
+     having a unit, so they are monoids. We call them the additive and
+     multiplicative monoids on 
+      <OMOBJ><OMS cd="concrete-sets" name="Nat"/></OMOBJ>,
+      <OMOBJ><OMS cd="concrete-sets" name="Int"/></OMOBJ>,
+      <OMOBJ><OMS cd="concrete-sets" name="Rat"/></OMOBJ>,
+      <OMOBJ><OMS cd="concrete-sets" name="Real"/></OMOBJ>,
+      <OMOBJ><OMS cd="concrete-sets" name="Complex"/></OMOBJ>,
+      <OMOBJ><OMA><OMS cd="concrete-sets" name="Int-Mod"/><OMV name="n"/></OMA></OMOBJ>,
+      <OMOBJ>
+        <OMA><OMS cd="polynomial" name="Adjoint"/>
+          <OMS cd="concrete-sets" name="Real"/>
+	  <OMV name="X"/>
+        </OMA>
+      </OMOBJ>, ..., respectively. 
+   </CMP>
+ </omtext>
+</omgroup>
+
+<omgroup id="ida-c6s1p4-e1-2">
+  <metadata>
+    <Title>Matrices</Title>
+  </metadata>
+
+<omtext id="ida-c6s1p4-e1-2-r1" for="ida-c6s1p4-e1-2" type="elaboration">
+  <CMP>
+    There are two natural ways to make the set Mn(R) of all real n x n-matrices a
+    monoid: <ref xref="ida-c6s1p4-e1-2-r1-1" type="cite"/> 
+  </CMP>
+</omtext>
+
+<example id="ida-c6s1p4-e1-2-r1-1" for="monoid" type="for"> 
+  <CMP> The monoid multiplication is matrix multiplication, 
+    the unit element is the identity matrix. 
+  </CMP>
+</example>
+
+<example id="ida-c6s1p4-e1-2-r1-2" for="monoid" type="for">
+  <CMP>The monoid multiplication is matrix addition. 
+    The unit element is the zero matrix (all entries of the matrix
+    are equal to 0). 
+  </CMP>
+</example>
+</omgroup>
+
+<example id="ida-c6s1p4-e1-3-r1" for="monoid" type="for">
+  <CMP>The symmetric group 
+    <OMOBJ><OMA><OMS cd="concrete-groups" name="symmetric-group"/>
+      <OMV name="N"/>
+    </OMA></OMOBJ>
+      with composition as binary operation and the identity as unit, is a
+      monoid. 
+  </CMP>
+</example>
+
+<omtext id="ida-c6s1p4-e1-4-r1" for="ida-c6s1p4-e1" type="elaboration">
+  <metadata>
+    <Title>Words</Title>
+  </metadata>
+  <CMP>In computer science, one often writes 
+     <OMOBJ><OMA>
+       <OMS cd="words" name="set-of-words"/>
+       <OMV name="A"/>
+     </OMA></OMOBJ> 
+        for the set of all words over the alphabet <OMOBJ><OMV name="A"/></OMOBJ>. 
+	This is the monoid with respect to concatenation, whose unit is the 
+	"empty word", the word consisting of 0 letters. 
+ 
+        The subset of all nonempty words is often written 
+        <OMOBJ><OMA>
+          <OMS cd="words" name="nonempty-words"/>
+	  <OMV name="A"/>
+     </OMA></OMOBJ>. This is a semi-group but no monoid.    
+     </CMP>
+</omtext>
+
+
+<example id="ida-c6s1p4-e2"
+         for="ida-c6s1p4-d1"
+         type="for">
+ <metadata>
+   <Title>Small Monoids</Title>
+ </metadata>
+    <CMP>
+       We deal with all monoids having 2 elements. Let 
+       <OMOBJ><OMA>
+         <OMS cd="relation1" name="eq"/>
+	 <OMV name="M"/>
+	 <OMA>
+           <OMS cd="cartesian-products" name="triple"/>
+           <OMV name="M"/>
+           <OMV name="*"/>
+          <OMV name="e"/>
+         </OMA>
+ </OMA></OMOBJ> be a monoid with two elements.
+
+    Suppose that <OMOBJ><OMV name="a"/></OMOBJ> is the unique element of 
+    <OMOBJ><OMV name="M"/></OMOBJ> different from <OMOBJ><OMV name="e"/></OMOBJ>. Then for a * a we have only two
+    possibilities. Either a * a = e or a * a = a. 
+    This determines the multiplication * completely and we
+    find two multiplication tables for M. 
+<!--
+<html:pre>
+
+          * e a                * e a
+     M1 = e e a      M2 = e e a
+          a a e               a a a
+
+          * e a           * e a  
+     M1 = e e a      M2 = e e a
+          a a e           a a a
+</html:pre>
+      
+-->
+
+    They give rise to two distinct monoids, M1 and M2. 
+
+
+    Both monoids can be realized on the set Z/2Z.     
+    Indeed, addition  (with e = 0) leads to M1, while 
+    multiplication (with e = 1) leads to M2. 
+  </CMP>
+</example>
+
+
+</omdoc>
+
+

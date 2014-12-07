@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bit.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:41
+    </Date>
+  </metadata>
+  <theory id="bit_test">
+    <symbol id="bit" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="bit" for="bit" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="booleans" name="bool"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="nbit" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="nbit" for="nbit" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="naturalnumbers" name="below"/>
+            <OMI>2</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="bit_cases" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bit" name="bit"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="OR"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="b"/>
+                <OMS cd="booleans" name="FALSE"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="b"/>
+                <OMS cd="booleans" name="TRUE"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="b0" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="naturalnumbers" name="below"/>
+            <OMI>1</OMI>
+          </OMA>
+          <OMS cd="bit" name="bit"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="b0-def" for="b0" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bit" name="b0"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="below"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="booleans" name="FALSE"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="b1" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="naturalnumbers" name="below"/>
+            <OMI>1</OMI>
+          </OMA>
+          <OMS cd="bit" name="bit"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="b1-def" for="b1" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bit" name="b1"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="below"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="booleans" name="TRUE"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="b2n_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMV name="b"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMI>1</OMI>
+                <OMI>2</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="b2n_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMI>0</OMI>
+                <OMI>2</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="b2n" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="bit" name="nbit"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="b2n-def" for="b2n" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bit" name="b2n"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="booleans" name="bool"/>
+                  </OMATP>
+                  <OMV name="b"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="b"/>
+                <OMI>1</OMI>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="n2b" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bit" name="nbit"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="n2b-def" for="n2b" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bit" name="n2b"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bit" name="nbit"/>
+                  </OMATP>
+                  <OMV name="nb"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="nb"/>
+                <OMI>1</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G57074" for="b2n" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |b2n|
+        ]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

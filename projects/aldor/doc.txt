@@ -1,0 +1,195 @@
+Aldordoc User Guide 
+
+
+This document describes the tool and its usage. I usually don't like reading 
+manuals, so I'll try to keep this one relatively short! :) 
+
+What is aldordoc anyway? 
+
+'aldordoc' is a javadoc-like tool for Aldor. It takes an Aldor source file (or a .ao 
+or a .al) and generates a corresponding HTML documentation. 
+If you don't know about Aldor, you don't need this tool! 
+
+The current version of this tool is v0.6.
+
+What are the tools? 
+
+There are three tools you can use: 
+
+           aldordoc 
+           aldordoc-combine 
+           aldordoc-index 
+
+Setup 
+
+Very important!!! If you read one thing in this doc, read this. 
+1. You need to create an environment variable called 'ALDORDOCROOT'
+   containing the directory where the tools are installed.
+2. Your PATH needs to point to 'axiomxl' and 'java'
+3. (with java 1.1 only) Your CLASSPATH must at least point to the standard
+   Java classes.
+
+Example: 
+
+        Let's assume the tools are installed in /usr/local/aldordoc, 
+        your ALDORDOCROOT variable should contain '/usr/local/aldordoc' 
+        (without the quotes). 
+        Also add this directory to your PATH to be able to access the tools 
+        from anywhere. Add the directory containing the aldor compiler executable
+	and the 'java' executable to your PATH.
+
+You can also create an 'ALDORDOCAR' variable which will contain the 
+name of the 'ar' tool you wish to use in case you give a .al (archive) file as an input. 
+By default, ar is used. 
+
+'aldordoc' tool 
+
+It is a shell script which takes two arguments: an input Aldor file and a text file. 
+Example: 
+
+               $ aldordoc input.as dirfile
+
+The text file contains a list of directories for the hyperlinks (see aldordoc-combine). 
+The input file can be a .as file, a .ao file or even a .al file. 
+With a .ao or a .al file, the tool will generate the documentation in the current directory. 
+With a .al file, it will be in a subdirectory 'Doc_NameOfFileWithoutExtension' of the current 
+directory. 
+An extra file is generated for each source file. This file (with a .doctoc extension) will 
+list the entities described in the generated documentation. See next paragraph to 
+understand why this file is useful. 
+
+'aldordoc-combine' tool 
+
+This tool will take all the .doctoc files of the current directory and combine them 
+together to create a 'combine-doctoc.ref' file. This file will contain references 
+(HTML filename and ID of the anchor in this file) to access the documentation of 
+a particular entity (usually type or function). 
+This file is useful when we call the 'aldordoc' tool, which is then able to create 
+hyperlinks for the types involved in its documentation. 
+
+A problem with this (please send an email to chicha@csd.uwo.ca if you see how 
+to solve it) is that when we start from scratch, we need to generate twice the 
+documentation. Here are the steps for a single source file (for a .al file, just skip 
+the 'aldordoc-combine' step which is done automatically): 
+
+           call 'aldordoc' to generate .html and .doctoc (HTML files are not hyperlinked
+           together because no information is available). 
+           call 'aldordoc-combine' to combine doctoc files. 
+           call 'aldordoc' a second time to generate hyperlinked HTML files as now
+           information is available to do so. 
+
+
+'aldordoc-index' tool 
+
+This tool simply creates an 'index.html' file which will be the table of contents 
+for all HTML files of the current directory. 
+
+
+
+Step by step examples 
+
+If you feel comfortable enough to try out the tool, go ahead and please don't forget 
+to send bug reports to chicha@csd.uwo.ca. 
+This section shows a step-by-step generation of an HTML documentation for 
+Aldor sources. 
+First of all read the 'setup' section to create the proper environment variables. 
+
+Example 1: just one file 
+
+Step 1: Choose the file for which you want a documentation. Let's call it mysource.as 
+(this would also work with mysource.ao). 
+
+Step 2: Create a 'dirfile' containing a list of directories to use for hyperlinking types 
+used in mysource.as. In this example, there is none so just create the file dirfile (any 
+name would do) with a dot (.) as its single entry. 
+
+Step 3: Call aldordoc 
+
+        $ aldordoc mysource.as dirfile 
+
+        Now we have a mysource.html file
+
+Step 4: That's it you are done! Hyperlinks exist for types defined within mysource.as. 
+
+Example 2: all the files of a directory 
+
+Once you have created a whole bunch of source files, you would like to have the 
+documentation for all of them (note: you should also seriously consider creating 
+a library (.al and .a) for these files). Here is how to proceed: 
+
+Step 1: Create a directory where you want to put your documentation 
+
+        $ mkdir ~/mydoc
+
+Step 2: Go to this directory 
+
+        $ cd ~/mydoc
+
+Step 3: Create a 'dirfile' containing the current directory as an entry 
+
+        $ echo '/users/chicha/mydoc' > dirfile
+
+Step 4: Use a loop calling 'aldordoc' to generate the documentation for all your source 
+files (we will assume these files are in ~/mysrc). Here is an example of a loop with bash. 
+
+        $ for i in ~/mysrc/* 
+        > do 
+        > aldordoc $i dirfile 
+        > done 
+
+        Non hyperlinked HTML files and doctoc files are created. You can stop here if you
+        don't care about hyperlinks between your files. Go to step 7 
+        if you want an index in this directory.
+
+Step5: We need to hyperlink your files now. We use 'aldordoc-combine': 
+
+        $ aldordoc-combine 
+
+        The file 'combine-doctoc.ref' is created.
+
+Step 6: We just need to repeat the step 4 to recreate HTML files now that we have 
+the proper information. 
+
+Step 7: We now create an index file 
+
+        $ aldordoc-index
+
+Step 8: You are done! 
+
+Example 3: an archive file 
+
+Here we show how to generate HTML documentation from a .al file. 
+Let's assume this file is called mysources.al and is in the directory ~/mylibs 
+We want to generate the documentation in the directory ~/mydocs 
+
+Step 1: Creation of the documentation directory 
+
+        $ mkdir ~/mydocs
+
+Step 2: Change the current directory 
+
+        $ cd ~/mydocs
+
+Step 3: Create 'dirfile'. The documentation will be created in a Doc_mysources 
+subdirectory so the 'dirfile' file will contain ~/mydocs/Doc_mysources: 
+
+        $ echo '/users/chicha/mydocs/Doc_mysources' > dirfile
+
+Step 4: Generate the documentation 
+
+        $ aldordoc mysources.al dirfile 
+
+        Now the entire documentation for all the files included in mysources.al 
+        has been generated. A 'combine-doctoc.ref' has been automatically generated. An
+        index file has also been created for you.
+
+Step 5: Hyperlink your files. To do that just run the generation a second time. 
+
+        $ aldordoc mysources.al dirfile
+
+Step 6: You are done! Enjoy! 
+
+
+
+(C) Yannis Chicha - 2000/03/24 
+Please send any request or question to chicha@csd.uwo.ca 

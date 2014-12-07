@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="permut1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary permut1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 1999-05-19 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/permut1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> A CD of functions for permutations </Description>
+</metadata>
+
+<theory id="permut1">
+
+<imports id="permut1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="permut1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="permut1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="permut1-imports-fns2" from="fns2.omdoc#fns2"/>
+<imports id="permut1-imports-set1" from="set1.omdoc#set1"/>
+<imports id="permut1-imports-interval1" from="interval1.omdoc#interval1"/>
+<imports id="permut1-imports-alg1" from="alg1.omdoc#alg1"/>
+<imports id="permut1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="permut1-imports-linalg1" from="linalg1.omdoc#linalg1"/>
+<imports id="permut1-imports-linalg2" from="linalg2.omdoc#linalg2"/>
+<imports id="permut1-imports-linalg4" from="linalg4.omdoc#linalg4"/>
+
+<omtext id="CDComment-10" type="introduction">
+  <CMP>
+    Written by A. Solomon on 1998-11-19
+    Modified by David Carlisle 1999-04-28
+    Renamed from comb to permut1 1999-05-19
+    Modified by A. Solomon to remove ambiguity from definition 
+    of Permutation as reported by JHD 2000-02-05.
+  </CMP>
+</omtext>
+<symbol id="permutation">
+  <CMP>
+    The n-ary constructor permutation. The arguments are the integers 
+    1 .. n in some order.  permutation(p1, ..., pn) is the function 
+    which takes 1 to p1, 2 to p2 and so on.
+  </CMP>
+  <commonname>permutation</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMV name="PositiveInteger"/>
+	</OMA>
+	<OMV name="Permutation"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<assertion id="permutation-prop-1" type="lemma">
+  <CMP>permutation(2,3,...,n, 1)^n = permutation()</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="and"/>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="fns2" name="apply_to_list"/>
+	    <OMS cd="permut1" name="permutation"/>
+	    <OMV name="l"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="permut1" name="permutation"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="implies"/>
+	  <OMA>
+	    <OMS cd="set1" name="in"/>
+	    <OMV name="i"/>
+	    <OMA>
+	      <OMS cd="interval1" name="integer_interval"/>
+	      <OMS cd="alg1" name="one"/>
+	      <OMA>
+		<OMS cd="arith1" name="minus"/>
+		<OMV name="n"/>
+		<OMS cd="alg1" name="one"/>
+	      </OMA>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="eq"/>
+	    <OMA>
+	      <OMS cd="linalg1" name="vector_selector"/>
+	      <OMA>
+		<OMS cd="fns2" name="apply_to_list"/>
+		<OMS cd="linalg2" name="vector"/>
+		<OMV name="l"/>
+	      </OMA>
+	      <OMV name="i"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="arith1" name="plus"/>
+	      <OMV name="i"/>
+	      <OMS cd="alg1" name="one"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="linalg1" name="vector_selector"/>
+	    <OMA>
+	      <OMS cd="fns2" name="apply_to_list"/>
+	      <OMS cd="linalg2" name="vector"/>
+	      <OMV name="l"/>
+	    </OMA>
+	    <OMV name="n"/>
+	  </OMA>
+	  <OMS cd="alg1" name="one"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMV name="n"/>
+	  <OMA>
+	    <OMS cd="linalg4" name="size"/>
+	    <OMA>
+	      <OMS cd="fns2" name="apply_to_list"/>
+	      <OMS cd="linalg2" name="vector"/>
+	      <OMV name="l"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="permutation-ex-3" type="for" for="permutation">
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="arith1" name="power"/>
+	<OMA>
+	  <OMS cd="permut1" name="permutation"/>
+	  <OMI> 2 </OMI>
+	  <OMI> 3 </OMI>
+	  <OMI> 1 </OMI>
+	</OMA>
+	<OMI> 3 </OMI>
+      </OMA>
+      <OMA>
+	<OMS cd="permut1" name="permutation"/><!-- The identity permutation -->
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

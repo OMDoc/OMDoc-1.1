@@ -1,0 +1,237 @@
+\begin{figure}[htbp]
+  \begin{center}
+\begin{tabular}{|p{2cm}|l|l|l|}\hline
+ category & 
+  {\xml} representation & 
+  full {\LaTeX} & 
+  abbreviation \\\hline\hline
+ symbol   &  
+  {\small{\verb+<OMS cd="CD" name="N"/>+}} & 
+  {\verb+\oms{CD}{N}+} &
+  {\verb+#CD:N:+}\\\hline
+ variable & 
+  {\small{\verb+<OMV name="N"/>+}} & 
+  {\verb+\omv{N}+} & 
+  {\verb+$N:+} \\\hline
+ application & 
+ \begin{minipage}{3.5cm}
+\begin{verbatim}
+<OMA>
+  <OM*>...<OM*>
+</OMA>
+\end{verbatim}
+ \end{minipage} &
+ \begin{minipage}{3.5cm}
+\begin{verbatim}
+\begin{oma}
+  <OM*>...<OM*>
+\end{oma}
+\end{verbatim}
+ \end{minipage} &
+ \begin{minipage}{2cm}
+\begin{verbatim}
+(<OM*>
+ ...<OM*>)
+\end{verbatim}
+ \end{minipage} \\\hline
+ binding structure &
+  \begin{minipage}{3.5cm}\small
+\begin{verbatim}
+<OMBIND>
+  <OMS.../>
+  <OMBVAR>
+    <OMV*>...<OMV*>
+  </OMBVAR>
+  <OM*>
+</OMBIND>
+\end{verbatim}
+  \end{minipage} & 
+  \begin{minipage}{3.5cm}\small
+\begin{verbatim}
+\begin{ombind}
+   \oms{a}{b}
+   \begin{ombvar}
+     \omv{x}...\omv{z}
+   \end{ombvar}
+   <OM*>
+\end{ombind}
+\end{verbatim}
+  \end{minipage} &
+  \begin{minipage}{2cm}
+\begin{verbatim}
+{#a:b:
+ $x:$z:
+.<OM*>}
+\end{verbatim}
+  \end{minipage}\\\hline
+ attribution &
+  \begin{minipage}{3.5cm}\small
+\begin{verbatim}
+<OMATTR>
+   <OMATP>
+     <OMS*><OM*>...
+     <OMS*><OM*>
+   </OMATP>
+   <OM*>
+</OMATTR>
+\end{verbatim}
+  \end{minipage} &
+  \begin{minipage}{3.5cm}\small
+\begin{verbatim}
+\begin{omattr}
+  \begin{omatp}
+    \oms{a}{b}<OM*>
+    \oms{c}{d}<OM*>
+   \end{omatp}
+   <OM*>
+\end{omattr}
+\end{verbatim}
+  \end{minipage} &
+  \begin{minipage}{2cm}\small
+\begin{verbatim}
+[#a:b:<OM*>,
+ #c:d:<OM*>
+|<OM*>]
+\end{verbatim}
+  \end{minipage}\\\hline\hline
+\multicolumn{4}{|p{12cm}|}{{\tt <OM*>} stands for an arbitrary {\openmath} 
+  object and {\tt <OMV*>} stands for a variable or an attribuited variable.}\\\hline
+\end{tabular}
+    \caption{{\LaTeX} representations of {\openmath} objects}
+    \label{fig:openmath}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+    \begin{tabular}{|l|l|}\hline
+\begin{minipage}{3.5cm}\small
+\begin{verbatim}
+\begin{omobj}
+  \begin{ombind}
+    \omsref{lambda}
+    \begin{ombvar}
+      \omv{X}
+      \omv{Y}
+    \end{ombvar}
+    \begin{oma}
+      \omsref{exp}
+      \omv{X}
+      \begin{oma}
+        \omsref{inv}
+        \omv{Y}
+      \end{oma}
+    \end{oma}
+  \end{ombind}
+\end{omobj}
+\end{verbatim}
+\end{minipage}&
+\begin{minipage}{8cm}\small
+\begin{verbatim}
+<OMOBJ>
+  <OMBIND>
+    <OMS cd="ecc" name="lambda"/>
+    <OMBVAR>
+      <OMV name="X"/>
+      <OMV name="Y"/>
+    </OMBVAR>
+    <OMA>
+      <OMS cd="arith1" name="exp"/>
+      <OMV name="X"/>
+      <OMA>
+        <OMS cd="arith1" name="unary-minus"/>
+        <OMV name="Y"/>
+      </OMA>
+    </OMA>
+  </OMBIND>
+</OMOBJ>
+\end{verbatim}
+\end{minipage}\\\hline
+ $\lambda X Y.X^{-Y}$ & 
+\begin{minipage}{9cm}
+\begin{verbatim}
+\({#ecc:lambda:$X:(#arith1:unary-minus:$Y:)}\)
+\end{verbatim}
+\end{minipage}\\\hline
+  \end{tabular}
+    \caption{The representations of the functions $\lambda X Y.X^{-Y}$}
+    \label{fig:omabstr}
+  \end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{center}
+    \begin{tabular}{|l|l|}\hline
+\begin{minipage}{5.5cm}
+\begin{verbatim}
+\begin{omattr}
+  \begin{omatp}
+    \oms{ecc}{type}
+    \begin{oma}
+      \oms{mltt}{funtype}
+      \oms{typeind}
+      \oms{typebool}
+    \end{oma}
+    \oms{colors}{colorattr}
+    \oms{colors}{green}
+  \end{omatp}
+\end{omattr}
+\end{verbatim}
+\end{minipage} &
+\begin{minipage}{8cm}\small
+\begin{verbatim}
+<OMATTR>
+  <OMATP>
+    <OMS cd="ecc" name="type"/>
+    <OMA>
+      <OMS cd="mltt" name="funtype"/>
+      <OMS cd="types" name="individuals"/>
+      <OMS cd="types" name="booleans"/>
+    </OMA>  
+    <OMS cd="colors" name="colorattr"/>
+    <OMS cd="colors" name="green"/>
+  </OMATP>
+  <OMV name="X"/>
+</OMATTR>
+\end{verbatim}
+\end{minipage}\\\hline
+$X_{\iota\rightarrow o}^{green}$&
+\begin{minipage}{8cm}
+\begin{verbatim}
+\<[#ecc:type:,
+    (#mltt:funtype:#types:ind:#types:bool:);
+   #colors:colorattr:,#colors:green:
+  |$X:]\>
+\end{verbatim}
+\end{minipage}\\\hline
+\end{tabular}
+\caption{An {\openmath} attribuition}
+    \label{fig:omattr}
+  \end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{center}
+{\footnotesize\begin{verbatim}
+<OMA>                                  <OMA>
+  <OMV name="f"/>                        <OMV name="f"/>
+  <OMA id="a">                           <OMA>
+    <OMV name="g"/>                        <OMV name="g"/>
+    <OMV name="x" id="aa"/>                 <OMV name="x"/>
+    <OMV xref="2"/>                        <OMV name="x"/>
+  </OMA>                                 </OMA>
+  <OMA xref="first"/>                    <OMA>
+</OMA>                                     <OMV name="g"/>
+                                           <OMV name="x"/>
+                                           <OMV name="x"/>
+\(($f:~a($g:~<aa>$x:^<aa>$:^a())\)       </OMA>
+                                       </OMA>
+\end{verbatim}
+}
+    \caption{Reusing {\openmath} objects by reference}
+    \label{fig:reference}
+  \end{center}
+\end{figure}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "latex2omdoc"
+%%% End: 

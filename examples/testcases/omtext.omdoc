@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_omtext">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+
+<omtext id="myomtext" style="mystyle" type="note" for="something">
+<metadata/>
+<CMP xml:lang="en">testing</CMP>
+<CMP xml:lang="de">testen</CMP>
+<FMP/>
+</omtext>
+
+<theory id="test_omtext">
+<ignore>content not necessary</ignore>
+</theory>
+
+</omdoc>
+

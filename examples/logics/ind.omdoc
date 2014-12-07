@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="ind-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Individuals</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+   This theory provides the set of individuals as needed in first-order logic.
+  </Description>
+ </metadata>
+
+ <theory id="ind">
+  
+   <symbol id="ind" kind="object" scope="global">
+    <CMP> The type of Individuals </CMP>
+    <commonname>ind</commonname>
+   </symbol>
+   <presentation for="ind">
+    <use format="default">i</use>
+    <use format="html|pmml">&#x003B9;</use>
+    <use format="TeX">\iota</use>
+    </presentation>
+
+ <symbol id="eq">
+   <CMP>Equality on individuals.</CMP>
+  </symbol>
+
+<presentation id="pr-eq" for="eq" parent="OMA" fixity="infix" precedence="700">
+ <use  format="default">=</use>
+ <use  format="pmml">=</use>
+</presentation>
+
+ <symbol id="neq">
+   <CMP>Inequality on truth values</CMP>
+  </symbol>
+
+  <presentation id="pr-neq" for="neq" parent="OMA" fixity="infix" lbrack="" rbrack="" precedence="700">
+   <use  format="default">!=</use>
+   <use  format="TeX">{\ne}</use>
+   <use  format="html|pmml">{&#x02260;}</use>
+  </presentation>
+
+ </theory>
+</omdoc>

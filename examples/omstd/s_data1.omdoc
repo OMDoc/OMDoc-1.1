@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="s_data1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary s_data1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/s_data1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds the definitions of the basic statistical functions
+    used on sample data. It is intended to be `compatible' with the
+    MathML elements representing statistical functions, though it does
+    not cover the concept of random variable which is mentioned in
+    MathML.
+  </Description>
+</metadata>
+
+<theory id="s_data1">
+
+<imports id="s_data1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="s_data1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="s_data1-imports-fns2" from="fns2.omdoc#fns2"/>
+<imports id="s_data1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="s_data1-imports-set1" from="set1.omdoc#set1"/>
+<imports id="s_data1-imports-list1" from="list1.omdoc#list1"/>
+<imports id="s_data1-imports-fns1" from="fns1.omdoc#fns1"/>
+<imports id="s_data1-imports-alg1" from="alg1.omdoc#alg1"/>
+
+<symbol id="mean">
+  <CMP> 
+    This symbol represents an n-ary function denoting the mean of its
+    arguments. That is, their sum divided by their number.
+  </CMP>
+  <commonname>mean</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-mean" for="mean" parent="OMA">
+  <use format="pmml" element="mover" fixity="postfix" bracket-style="lisp">&#x000AF;</use> 
+  <use format="TeX">\overline</use>
+</presentation>
+<assertion id="mean-prop-1" type="lemma">
+  <CMP>The mean of n arguments is their sum divided by their number</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="fns2" name="apply_to_list"/>
+	  <OMS cd="s_data1" name="mean"/>
+	  <OMV name="L"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="divide"/>
+	  <OMA>
+	    <OMS cd="fns2" name="apply_to_list"/>
+	    <OMS cd="arith1" name="plus"/>
+	    <OMV name="L"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="size"/>
+	    <OMV name="L"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="mean-ex-3" type="for" for="mean">
+  <CMP> The mean of {1,2,3} is 3</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="s_data1" name="mean"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+	<OMI> 3 </OMI>
+      </OMA>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="sdev">
+  <CMP> 
+    This symbol represents a function requiring two or more arguments,
+    denoting the sample standard deviation of its arguments. That is,
+    the square root of (the sum of the squares of the deviations from the
+    mean of the arguments, divided by the number of arguments).
+    See CRC Standard Mathematical Tables and Formulae,
+    editor: Dan Zwillinger, CRC Press Inc., 1996, (7.7.11) section 7.7.1.
+  </CMP>
+  <commonname>sdev</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-sdev" for="sdev">
+  <use format="html|pmml">&#x003C3;</use> 
+  <use format="TeX">\sigma</use>
+</presentation>
+<assertion id="sdev-prop-1" type="lemma">
+  <CMP>
+    The square of the standard deviation of n arguments is the sum of
+    the squares of the differences from their mean divided by the number of
+    arguments.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="arith1" name="power"/>
+	  <OMA>
+	    <OMS cd="fns2" name="apply_to_list"/>
+	    <OMA>
+	      <OMS cd="s_data1" name="sdev"/>
+	      <OMV name="L"/>
+	    </OMA>
+	  </OMA>
+	  <OMI> 2 </OMI>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="divide"/>
+	  <OMA>
+	    <OMS cd="fns2" name="apply_to_list"/>
+	    <OMS cd="arith1" name="plus"/>
+	    <OMA>
+	      <OMS cd="list1" name="map"/>
+	      <OMBIND>
+		<OMS cd="fns1" name="lambda"/>
+		<OMBVAR>
+		  <OMV name="x"/>
+		</OMBVAR>
+		<OMA>
+		  <OMS cd="arith1" name="power"/>
+		  <OMA>
+		    <OMS cd="arith1" name="minus"/>
+		    <OMV name="x"/>
+		    <OMA>
+		      <OMS cd="s_data1" name="mean"/>
+		      <OMV name="L"/>
+		    </OMA>
+		  </OMA>
+		  <OMI> 2 </OMI>
+		</OMA>
+	      </OMBIND>
+	      <OMV name="L"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="size"/>
+	    <OMA>
+	      <OMS cd="fns2" name="apply_to_list"/>
+	      <OMS cd="set1" name="set"/>
+	      <OMV name="L"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="sdev-ex-3" type="for" for="sdev">
+  <CMP>This is an example to denote the standard deviation of a set of data</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="s_data1" name="sdev"/>
+      <OMF dec="3.1"/>
+      <OMF dec="2.2"/>
+      <OMF dec="1.8"/>
+      <OMF dec="1.1"/>
+      <OMF dec="3.3"/>
+      <OMF dec="2.4"/>
+      <OMF dec="5.5"/>
+      <OMF dec="2.3"/>
+      <OMF dec="1.7"/>
+      <OMF dec="1.8"/>
+      <OMF dec="3.4"/>
+      <OMF dec="4.0"/>
+      <OMF dec="3.3"/>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="variance">
+  <CMP>
+    This symbol represents a function requiring two or more arguments,
+    denoting the variance of its arguments. That is, the square of the
+    standard deviation.
+  </CMP>
+  <commonname>variance</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-variance" for="variance" parent="OMA">
+  <style format="html">
+    <text>&#x003C3;(</text>
+    <recurse select="*[2]"/>
+    <text>)</text>
+    <element name="sup"><text>2</text></element>
+  </style> 
+  <style format="pmml">
+    <element name="mrow">
+      <element name="msup">
+	<element name="mrow">
+	  <element name="mo"><text>&#x003C3;</text></element>
+	  <element name="mo"><attribute name="fence"><text>true</text></attribute><text>(</text></element>
+	  <recurse select="*[2]"/>
+	  <element name="mo"><attribute name="fence"><text>true</text></attribute><text>)</text></element>
+	</element>
+	<element name="mn"><text>2</text></element>
+      </element>
+    </element>
+  </style> 
+  <style format="TeX">
+    <text>\sigma(</text>
+    <recurse select="*[2]"/>
+    <text>)^2</text>
+  </style>
+</presentation>
+<assertion id="variance-prop-1" type="lemma">
+  <CMP>
+    The variance of n arguments is the square of the standard deviation of
+    those arguments.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="fns2" name="apply_to_list"/>
+	  <OMA>
+	    <OMS cd="s_data1" name="variance"/>
+	    <OMV name="L"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="power"/>
+	  <OMA>
+	    <OMS cd="fns2" name="apply_to_list"/>
+	    <OMA>
+	      <OMS cd="s_data1" name="sdev"/>
+	      <OMV name="L"/>
+	    </OMA>
+	  </OMA>
+	  <OMI> 2 </OMI>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="variance-ex-3" type="for" for="variance">
+  <CMP>This is an example to denote the variance of a set of data</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="s_data1" name="variance"/>
+      <OMF dec="3.1"/>
+      <OMF dec="2.2"/>
+      <OMF dec="1.8"/>
+      <OMF dec="1.1"/>
+      <OMF dec="3.3"/>
+      <OMF dec="2.4"/>
+      <OMF dec="5.5"/>
+      <OMF dec="2.3"/>
+      <OMF dec="1.7"/>
+      <OMF dec="1.8"/>
+      <OMF dec="3.4"/>
+      <OMF dec="4.0"/>
+      <OMF dec="3.3"/>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="mode">
+  <CMP> 
+    This symbol represents an n-ary function denoting the mode of its
+    arguments. That is the value which occurs with the greatest frequency.
+  </CMP>
+  <commonname>mode</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<assertion id="mode-prop-1" type="lemma">
+  <CMP>The mode of n arguments is that value which occurs with the greatest frequency.</CMP>
+</assertion>
+<example id="mode-ex-2" type="for" for="mode">
+  <CMP> The mode of {1,1,2} is 1</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="s_data1" name="mode"/>
+	<OMI> 1 </OMI>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+      </OMA>
+      <OMI> 1 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="median">
+  <CMP> 
+    This symbol represents an n-ary function denoting the median of its
+    arguments. That is, if the data were placed in ascending order then it
+    denotes the middle one (in the case of an odd amount of data) or the
+    average of the middle two (in the case of an even amount of data).
+  </CMP>
+  <commonname>median</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="median-ex-1" type="for" for="median">
+  <CMP> The median of {1,2,3} is 2 </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="s_data1" name="median"/>
+	<OMI> 1 </OMI>
+	<OMI> 2 </OMI>
+	<OMI> 3 </OMI>
+      </OMA>
+      <OMI> 2 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="moment">
+  <CMP> 
+    This symbol is used to denote the i'th moment of a set of data. The
+    first argument should be the degree of the moment (that is, for the
+    i'th moment the first argument should be i), the second argument
+    should be the point about which the moment is being taken and the rest of the
+    arguments are treated as the data. For n data values x_1, x_2, ...,
+    x_n the i'th moment about c is (1/n) ((x_1-c)^i + (x_2-c)^i + ... + (x_n-c)^i).
+    See CRC Standard Mathematical Tables and Formulae,
+    editor: Dan Zwillinger, CRC Press Inc., 1996, section 7.7.1.
+  </CMP>
+  <commonname>moment</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="moment-ex-1" type="for" for="moment">
+  <CMP>
+    This is an example to denote the 2'nd moment of a set of data about
+    the origin.
+  </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="s_data1" name="moment"/>
+      <OMI> 2 </OMI>
+      <OMS cd="alg1" name="zero"/>
+      <OMF dec="3.1"/>
+      <OMF dec="2.2"/>
+      <OMF dec="1.8"/>
+      <OMF dec="1.1"/>
+      <OMF dec="3.3"/>
+      <OMF dec="2.4"/>
+      <OMF dec="5.5"/>
+      <OMF dec="2.3"/>
+      <OMF dec="1.7"/>
+      <OMF dec="1.8"/>
+      <OMF dec="3.4"/>
+      <OMF dec="4.0"/>
+      <OMF dec="3.3"/>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

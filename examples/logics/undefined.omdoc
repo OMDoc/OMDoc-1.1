@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="undefined-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Undefined Elements</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+This theory provides an undefined element for partial-function partial-function
+first-order logics.
+  </Description>
+ </metadata>
+
+ <theory id="undefined">
+
+  <symbol id="ind*" kind="type">
+   <CMP>The type of individuals with an undefined element.</CMP>
+   <commonname>three-valued booleans</commonname>
+  </symbol>
+  <presentation for="ind*">
+   <use format="default">i*</use>
+  </presentation>
+
+  <symbol id="undefined">
+   <CMP>This symbol represents the undefined element.</CMP>
+   <commonname>undefined</commonname>
+   <type system="simpletypes">
+    <OMOBJ><OMS cd="undefined" name="ind*"/></OMOBJ>
+   </type>
+  </symbol>
+
+  <presentation for="undefined">
+   <use  format="TeX">\bot</use>
+  </presentation>
+
+
+ </theory>
+</omdoc>

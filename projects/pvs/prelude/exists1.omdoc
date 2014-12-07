@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="exists1.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:14
+    </Date>
+  </metadata>
+  <theory id="exists1-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56572" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56573" for="exists1" pto="pvs" pto-version="3.0" replaces="exists1-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory exists1
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="exists1_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56574" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="exists1-import-parameters" from="exists1-parameters"/>
+
+
+
+
+    <symbol id="unique?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="unique?-def" for="unique?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="exists1" name="unique?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="exists1" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="exists1" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="exists1" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="exists1-def" for="exists1" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="exists1" name="exists1"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="exists1" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMBIND>
+                <OMA>
+                  <OMS cd="exists1" name="unique?"/>
+                  <OMV name="p"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="unique_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="exists1" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="q"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMA>
+                  <OMS cd="exists1" name="unique?"/>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="exists1" name="unique?"/>
+                  <OMV name="p"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="unique_lem-1" for="unique_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (FLATTEN)
+   (( (EXPAND unique?)
+     (( (SKOLEM!)
+       (( (FLATTEN)
+         (( (INST-CP -1 x!1) (( (INST -1 y!1) (( (INST - x!1 y!1) (( (PROP) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="exists1_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="exists1" name="exists1"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="exists1" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="exists1" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="exists1_lem-1" for="exists1_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (FLATTEN) (( (EXPAND exists1) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

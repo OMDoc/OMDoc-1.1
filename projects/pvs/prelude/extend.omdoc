@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="extend.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="extend-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56608" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="extend" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56609" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56610" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="d" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="extend" name="R"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56611" for="NIL" pto="pvs" pto-version="3.0" replaces="d">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56612" for="extend" pto="pvs" pto-version="3.0" replaces="extend-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory extend
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="extend_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56613" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="extend" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56614" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56615" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="d" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="extend" name="R"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56616" for="NIL" pto="pvs" pto-version="3.0" replaces="d">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="extend-import-parameters" from="extend-parameters"/>
+
+
+    <symbol id="extend" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="extend" name="S"/>
+            <OMS cd="extend" name="R"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="extend" name="T"/>
+            <OMS cd="extend" name="R"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="extend-def" for="extend" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="extend" name="extend"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="extend" name="S"/>
+                      <OMS cd="extend" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="extend" name="T"/>
+                    </OMATP>
+                    <OMV name="t"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="extend" name="S_pred"/>
+                    <OMV name="t"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="t"/>
+                  </OMA>
+                  <OMS cd="extend" name="d"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="restrict_extend" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="extend" name="S"/>
+                    <OMS cd="extend" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="restrict" name="restrict"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMA>
+              <OMV name="f"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="restrict_extend-1" for="restrict_extend" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

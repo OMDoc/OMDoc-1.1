@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd"[]>
+
+<omdoc id="catalogue-style">
+<metadata/>
+
+<ref xref="file://catalogue.omdoc"/>
+
+<omstyle element="with" style="linebreak">
+ <style format="html|pmml"><element name="br"/></style>
+ <style format="TeX"><text>\par\noindent</text><recurse/></style>
+</omstyle>
+
+<omstyle element="with" style="url">
+ <style format="html|pmml"><element name="tt"><recurse/></element></style>
+ <style format="TeX"><text>{\tt{</text><recurse/><text>}}</text></style>
+</omstyle>
+
+</omdoc>
+

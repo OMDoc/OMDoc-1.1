@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="relation_defs.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="relation_defs-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56744" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56745" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56746" for="relation_defs" pto="pvs" pto-version="3.0" replaces="relation_defs-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory relation_defs
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="relation_defs_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56747" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56748" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="relation_defs-import-parameters" from="relation_defs-parameters"/>
+
+
+
+    <symbol id="domain" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="domain" for="domain" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="relation_defs" name="T1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="R"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="range" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="range" for="range" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="relation_defs" name="T2"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="R"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="image" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sets" name="set"/>
+          <OMS cd="sets" name="set"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="image-def" for="image" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="image"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sets" name="set"/>
+                  </OMATP>
+                  <OMV name="X"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="set"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="X"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="image" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sets" name="set"/>
+            <OMS cd="sets" name="set"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="image-def" for="image" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="image"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets" name="set"/>
+                    </OMATP>
+                    <OMV name="X"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="relation_defs" name="image"/>
+                  <OMV name="R"/>
+                  <OMV name="X"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="preimage" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sets" name="set"/>
+          <OMS cd="sets" name="set"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="preimage-def" for="preimage" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="preimage"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sets" name="set"/>
+                  </OMATP>
+                  <OMV name="Y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="set"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="Y"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="preimage" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sets" name="set"/>
+            <OMS cd="sets" name="set"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="preimage-def" for="preimage" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="preimage"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets" name="set"/>
+                    </OMATP>
+                    <OMV name="Y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="relation_defs" name="preimage"/>
+                  <OMV name="R"/>
+                  <OMV name="Y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="postcondition" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sets" name="set"/>
+          <OMS cd="sets" name="set"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="postcondition-def" for="postcondition" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="postcondition"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sets" name="set"/>
+                  </OMATP>
+                  <OMV name="X"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="set"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="X"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="postcondition" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sets" name="set"/>
+            <OMS cd="sets" name="set"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="postcondition-def" for="postcondition" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="postcondition"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets" name="set"/>
+                    </OMATP>
+                    <OMV name="X"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="relation_defs" name="postcondition"/>
+                  <OMV name="R"/>
+                  <OMV name="X"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="precondition" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sets" name="set"/>
+          <OMS cd="sets" name="set"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="precondition-def" for="precondition" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="precondition"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sets" name="set"/>
+                  </OMATP>
+                  <OMV name="Y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="set"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="Y"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="precondition" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sets" name="set"/>
+            <OMS cd="sets" name="set"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="precondition-def" for="precondition" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="precondition"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets" name="set"/>
+                    </OMATP>
+                    <OMV name="Y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="relation_defs" name="precondition"/>
+                  <OMV name="R"/>
+                  <OMV name="Y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="converse" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="converse-def" for="converse" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="converse"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="R"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="isomorphism?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="isomorphism?-def" for="isomorphism?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="isomorphism?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMS cd="functions" name="bijective?"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="f"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="R"/>
+                  <OMA>
+                    <OMS cd="functions" name="graph"/>
+                    <OMV name="f"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="total?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="total?-def" for="total?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="total?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="relation_defs" name="T2"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="onto?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="onto?-def" for="onto?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_defs" name="onto?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_defs" name="T2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="relation_defs" name="T1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="R"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

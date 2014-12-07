@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="euclidean_division.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:33
+    </Date>
+  </metadata>
+  <theory id="euclidean_division_test">
+
+
+
+
+    <assertion id="mod_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="naturalnumbers" name="nat"/>
+                            </OMATP>
+                            <OMV name="i"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="reals" name="&lt;"/>
+                          <OMV name="i"/>
+                          <OMV name="b"/>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="booleans" name="TRUE"/>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="mod_TCC1-1" for="mod_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED) (( (INST 1 0) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="mod" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="mod-non-empty" >
+      <CMP>The type mod is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56972" for="mod" pto="pvs" pto-version="3.0" replaces="mod-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="mod" for="mod" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="i"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <assertion id="euclid_nat" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="q"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="euclidean_division" name="mod"/>
+                      <OMV name="b"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="euclid_nat-1" for="euclid_nat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM 1 (_ b!1))
+ (( (INDUCT a)
+   ((1 (INST + 0 0) ((1 (ASSERT) NIL NIL)) NIL)
+    (2 (SKOSIMP*)
+     ((2 (CASE r!1 = b!1-1)
+       ((1 (INST + q!1+1 0) ((1 (ASSERT) NIL NIL)) NIL)
+        (2 (ASSERT) ((2 (INST + q!1 r!1+1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="euclid_int" type="proposition">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="q"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="euclidean_division" name="mod"/>
+                      <OMV name="b"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="n"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="euclid_int-1" for="euclid_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (CASE n!1 >= 0)
+   ((1 (USE euclid_nat (a n!1)) ((1 (SKOLEM!) ((1 (INST?) NIL NIL)) NIL)) NIL)
+    (2 (ASSERT)
+     ((2 (USE euclid_nat (a - n!1))
+       ((2 (SKOLEM!)
+         ((2 (CASE r!1 = 0)
+           ((1 (INST + -q!1 0) ((1 (ASSERT) NIL NIL)) NIL)
+            (2 (INST + - q!1 - 1 b!1 - r!1) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="unique_quotient" type="proposition">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q1"/>
+                  </OMA>
+                  <OMV name="r1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q2"/>
+                  </OMA>
+                  <OMV name="r2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="q1"/>
+                <OMV name="q2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="unique_quotient-1" for="unique_quotient" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (ASSERT)
+   (( (CASE q1!1 > q2!1)
+     ((1 (CASE b!1 * (q1!1 - q2!1) = r2!1 - r1!1)
+       ((1 (CASE b!1 * (q1!1 - q2!1) >= b!1)
+         ((1 (ASSERT) NIL NIL)
+          (2 (LEMMA both_sides_times_pos_ge2)
+           ((2 (INST -1 b!1 q1!1 - q2!1 1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL)
+        (2 (ASSERT) NIL NIL))
+       NIL)
+      (2 (CASE b!1 * (q2!1 - q1!1) = r1!1 - r2!1)
+       ((1 (CASE b!1 * (q2!1 - q1!1) >= b!1)
+         ((1 (ASSERT) NIL NIL)
+          (2 (LEMMA both_sides_times_pos_ge2)
+           ((2 (INST -1 b!1 q2!1 - q1!1 1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL)
+        (2 (ASSERT) NIL NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="unique_remainder" type="corollary">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q1"/>
+                  </OMA>
+                  <OMV name="r1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q2"/>
+                  </OMA>
+                  <OMV name="r2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="r1"/>
+                <OMV name="r2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="unique_remainder-1" for="unique_remainder" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA unique_quotient) (( (SKOSIMP) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="unique_division" type="corollary">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posnat"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="q2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="euclidean_division" name="mod"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="r2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q1"/>
+                  </OMA>
+                  <OMV name="r1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="b"/>
+                    <OMV name="q2"/>
+                  </OMA>
+                  <OMV name="r2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="q1"/>
+                  <OMV name="q2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="r1"/>
+                  <OMV name="r2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="unique_division-1" for="unique_division" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA unique_quotient)
+ (( (LEMMA unique_remainder)
+   (( (SKOSIMP)
+     (( (INST?) (( (ASSERT) (( (INST -2 b!1 q1!1 q2!1 r1!1 r2!1) (( (ASSERT) NIL NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

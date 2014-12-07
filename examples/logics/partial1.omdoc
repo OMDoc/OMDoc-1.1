@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="partial1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>First-Order, Two-Valued Partial-Function Logic</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+   This theory provides the classical two-valued first-order quantifiers.
+  </Description>
+ </metadata>
+
+ <theory id="pl1">
+  <imports id="pl1-imports" from="pl0"/>
+  <imports id="undefined-imports" from="ind"/>
+
+ <axiom id="undef-atom-false">
+   <CMP>All atomic formulae that contain an occurrence of the undefined constant
+   are false</CMP>
+ </axiom>
+ </theory>
+</omdoc>

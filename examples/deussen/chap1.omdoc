@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="deussen.chap1.omdoc" catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title xml:lang="en">Chapter 1: Semigroups</Title>
+  <Title xml:lang="de">Kapitel 1: Halbgruppen</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Source>Deussen: Halbgruppen und Automaten, Springer Verlag, Heidleberger Taschenbuecher, Sammlung Informatik Nr. 99, 1971.</Source>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+<theory id="deussen.chap1">
+
+
+<symbol id="semi-group" kind="object" scope="global">
+<commonname  xml:lang="de">Halbgruppe $G$</commonname>
+<commonname> semigroup</commonname>
+</symbol>
+
+
+<definition id="semi-group.def" for="semi-group" type="simple">
+<CMP  xml:lang="de"> Eine  Halbgruppe ist eine Menge $F$ zusammen mit einer zwei-stelligen Verkn"upfung $\Phi :F \times F \to F$, die "ublicherweise als ``Pro-dukt'' geschrieben wird $fg := \Phi (f,g)$ und f"ur das gilt $(fg)h = f(gh)$ $(f,g,h \in G)$. </CMP>
+ <FMP>
+  <OMOBJ>
+    <OMBIND>
+      <OMS cd="fns1" name="lambda"/>
+      <OMBVAR>
+       <OMATTR>
+         <OMATP>
+           <OMS cd="simpletypes" name="type"/>
+           <OMA>
+             <OMS cd="simpletypes" name="funtype"/>
+             <OMV name="A"/>
+             <OMS cd="truthval" name="bool"/>
+           </OMA>
+         </OMATP>
+         <OMV name="G"/>
+         </OMATTR>
+         <OMATTR>
+           <OMATP>
+             <OMS cd="simpletypes" name="type"/>
+             <OMA>
+               <OMS cd="simpletypes" name="funtype"/>
+               <OMV name="G"/>
+               <OMA>
+                 <OMS cd="simpletypes" name="funtype"/>
+                 <OMV name="G"/>
+                 <OMV name="G"/>
+               </OMA>
+            </OMA>
+          </OMATP>
+          <OMV name="F"/>
+        </OMATTR>
+      </OMBVAR>
+      <OMA>
+        <OMS cd="basic.algebra" name="associative"/>
+        <OMV name="G"/>
+        <OMV name="F"/>
+      </OMA>
+    </OMBIND>
+  </OMOBJ>
+</FMP>
+</definition>
+
+<symbol id="abelian" kind="object" scope="global">
+<commonname  xml:lang="de">abelian</commonname>
+<commonname>Abelsch</commonname>
+</symbol>
+
+
+<definition id="abelian.def" for="abelian" type="simple">
+<CMP  xml:lang="de"> Eine Halbgruppe $F$ hei"st  kommutativ oder  abelsch, wenn gilt $fg = gf$ f"ur alle $f,g \in F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="basic.algebra" name="commutative"/><OMV name="G"/><OMV name="F"/></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="complex-product" kind="object" scope="global">
+<commonname  xml:lang="de">Komplexprodukt</commonname>
+<commonname>complex product</commonname>
+</symbol>
+
+
+<definition id="complex-product.def" for="complex-product" type="implicit">
+<CMP  xml:lang="de"> Sind $U,V \subset F$ Teilmengen, so bezeichnet man als  Komlexprodukt die Menge $UV := set(uv : u \in U, v \in V)$ und schreibt insbesondere $uV := set(u)V$ bzw. $Uv := Uset(v)$, wenn eine der Mengen einelementig ist. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR>
+      <OMATP>
+        <OMS cd="simpletypes" name="type"/>
+        <OMA>
+          <OMS cd="simpletypes" name="funtype"/>
+          <OMV name="G"/>
+          <OMA>
+            <OMS cd="simpletypes" name="funtype"/>
+            <OMV name="G"/>
+            <OMV name="G"/>
+          </OMA>
+        </OMA>
+      </OMATP>
+      <OMV name="F"/>
+    </OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA>
+  <OMS cd="logic1" name="and"/>
+  <OMA>
+    <OMS cd="basic.algebra" name="subset"/>
+    <OMV name="U"/><OMV name="G"/>
+  </OMA>
+  <OMA>
+    <OMS cd="basic.algebra" name="subset"/>
+    <OMV name="V"/>
+    <OMV name="G"/>
+  </OMA>
+</OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMA>
+<OMBIND>
+  <OMS cd="quant1" name="exists"/>
+  <OMBVAR>
+    <OMATTR>
+      <OMATP>
+        <OMS cd="simpletypes" name="type"/>
+        <OMV name="U"/>
+      </OMATP>
+      <OMV name="Y"/>
+    </OMATTR>
+    <OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="V"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="F"/><OMV name="Y"/><OMV name="Z"/></OMA></OMA></OMBIND></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-complex-product" kind="object" scope="global">
+<CMP> uV is called left complex product.</CMP>
+</symbol>
+
+<definition id="left-complex-product.def" for="left-complex-product" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="V"/><OMV name="G"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="V"/></OMATP><OMV name="V"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="F"/><OMV name="U"/><OMV name="V"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-complex-product" kind="object" scope="global">
+<CMP> Uv is called right complex product. </CMP>
+</symbol>
+
+<definition id="right-complex-product.def" for="right-complex-product" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="U"/><OMV name="G"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="F"/><OMV name="U"/><OMV name="V"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="sub-semi-group" kind="object" scope="global">
+<commonname  xml:lang="de">Unterhalbgruppe $U$ von $G$</commonname>
+</symbol>
+
+
+<definition id="sub-semi-group.def" for="sub-semi-group" type="simple">
+<CMP  xml:lang="de"> Eine nichtleere Teilmenge $U\subset F$ hei"st  Unterhalbgruppe, wenn gilt $UU \subset U$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="U"/><OMV name="G"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="non-empty"/><OMV name="U"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMV name="U"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-left-zero" kind="object" scope="global">
+<commonname  xml:lang="de">Linksnull von $G$</commonname>
+<commonname> existence of the left zero</commonname>
+</symbol>
+
+
+<definition id="ex-left-zero.def" for="ex-left-zero" type="simple">
+<CMP  xml:lang="de"> Ein Element $n_l$ $[n_r]$ von $F$ hei"st  Linksnull [ Rechtsnull\/], wenn f"ur jedes $f \in F$ gilt: $n_lf = n_l$ [$fn_r = n_r$]. Ein Element $e_l$ [$e_r$] von $F$ hei"st  Linkseins [ Rechtseins], wenn f"ur jedes $f \in F$ gilt: $e_lf = f$ [$fe_r = f$]. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="Z"/><OMV name="X"/></OMA><OMV name="Z"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-right-zero" kind="object" scope="global">
+<commonname  xml:lang="de">Rechtsnull von $G$</commonname>
+<commonname> existence of the right zero</commonname>
+</symbol>
+
+<definition id="ex-right-zero.def" for="ex-right-zero" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Z"/></OMA><OMV name="Z"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-left-neutral-element" kind="object" scope="global">
+<commonname  xml:lang="de">linksneutrales Element von $G$</commonname>
+<commonname> existence of the left neutral element</commonname>
+</symbol>
+
+<definition id="ex-left-neutral-element.def" for="ex-left-neutral-element" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="N"/><OMV name="X"/></OMA><OMV name="X"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-right-neutral-element" kind="object" scope="global">
+<commonname  xml:lang="de">rechtsneutrales Element von $G$</commonname>
+<commonname> existence of the right neutral element</commonname>
+</symbol>
+
+<definition id="ex-right-neutral-element.def" for="ex-right-neutral-element" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="N"/></OMA><OMV name="X"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="zero" kind="object" scope="global">
+<commonname  xml:lang="de">Null von $G$</commonname>
+<commonname>zero</commonname>
+</symbol>
+
+
+<definition id="zero.def" for="zero" type="simple">
+<CMP  xml:lang="de"> Ein Element $0 \in F$ hei"st  Nullelement oder  Null, wenn f"ur jedes $f \in F$ gilt $0f = f0 = 0$. Ein Element $1 \in F$ hei"st  Einselement oder  Eins, wenn f"ur jedes $f \in F$ gilt $1f = f1 = f$. </CMP>
+ <FMP><OMOBJ>  
+  <OMBIND>
+    <OMS cd="fns1" name="lambda"/>
+      <OMBVAR>
+        <OMATTR>
+          <OMATP>
+            <OMS cd="simpletypes" name="type"/>
+            <OMA>
+              <OMS cd="simpletypes" name="funtype"/>
+              <OMV name="A"/>
+              <OMS cd="truthval" name="bool"/>
+            </OMA>
+          </OMATP>
+          <OMV name="G"/>
+        </OMATTR>
+        <OMATTR>
+          <OMATP>
+            <OMS cd="simpletypes" name="type"/>
+            <OMA>
+              <OMS cd="simpletypes" name="funtype"/>
+              <OMV name="G"/>
+              <OMA>
+                <OMS cd="simpletypes" name="funtype"/>
+                <OMV name="G"/>
+                <OMV name="G"/>
+              </OMA>
+            </OMA>
+          </OMATP>
+          <OMV name="F"/>
+        </OMATTR>
+      <OMATTR>
+        <OMATP>
+          <OMS cd="simpletypes" name="type"/>
+          <OMV name="G"/>
+        </OMATP>
+        <OMV name="Z"/>
+      </OMATTR>
+    </OMBVAR>
+    <OMV name="T"/>
+  </OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-neutral-element" kind="object" scope="global">
+<commonname  xml:lang="de">neutrales Element von $G$</commonname>
+<commonname> existence of the neutral element</commonname>
+</symbol>
+
+<definition id="ex-neutral-element.def" for="ex-neutral-element" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMV name="T"/></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="one" kind="object" scope="global">
+<commonname  xml:lang="de">Eins von $G$</commonname>
+<commonname>one</commonname>
+</symbol>
+
+<definition id="one.def" for="one" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA><OMV name="N"/></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="monoid" kind="object" scope="global">
+<commonname  xml:lang="de">Monoid</commonname>
+<commonname> monoid</commonname>
+</symbol>
+
+
+<definition id="monoid.def" for="monoid" type="simple">
+<CMP  xml:lang="de"> Eine Halbgruppe mit Einselement wird auch  Monoid genannt. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-neutral-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-left-inverse-element" kind="object" scope="global">
+<commonname  xml:lang="de">linksinverses Element von $G$</commonname>
+<commonname> existence of a left inverse element</commonname>
+</symbol>
+
+
+<definition id="ex-left-inverse-element.def" for="ex-left-inverse-element" type="simple">
+<CMP  xml:lang="de"> Eine  Gruppe $F$ ist eine Halbgruppe mit Eins, in der es zu jedem $f \in F$ ein Element $f^{-1} \in F$ gibt, so da"s $f^{-1}f = 1$ ist (Existenz der  Linksinversen). </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/>
+<OMA><OMV name="INV"/><OMV name="X"/></OMA><OMV name="X"/></OMA><OMV name="N"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-right-inverse-element" kind="object" scope="global">
+<commonname  xml:lang="de">rechtsinverses Element von $G$</commonname>
+<commonname> existence of a right inverse element</commonname>
+</symbol>
+
+<definition id="ex-right-inverse-element.def" for="ex-right-inverse-element" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/>
+<OMA><OMV name="INV"/><OMV name="X"/></OMA></OMA><OMV name="N"/></OMA></OMBIND></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="ex-inverse-element" kind="object" scope="global">
+<commonname  xml:lang="de">inverses Element von $G$</commonname>
+<commonname> existence of an inverse element</commonname>
+</symbol>
+
+<definition id="ex-inverse-element.def" for="ex-inverse-element" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="ex-left-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="ex-right-inverse-element"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="group" kind="object" scope="global">
+<commonname  xml:lang="de">Gruppe $G$</commonname>
+<commonname> group</commonname>
+</symbol>
+
+<definition id="group.def" for="group" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR><OMV name="T"/></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="sub-group" kind="object" scope="global">
+<commonname  xml:lang="de">Untergruppe $U$ von $G$</commonname>
+<commonname> subgroup</commonname>
+</symbol>
+
+
+<definition id="sub-group.def" for="sub-group" type="simple">
+<CMP  xml:lang="de"> Eine Teilmenge $U^^ca\subset F$ einer Halbgruppe $F$ hei"st  Untergruppe, wenn sie bez"uglich der Halbgruppenverkn"upfung in $F$ eine Gruppe ist. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="U"/><OMV name="U"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="U"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="U"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="idempotent1" kind="object" scope="global">
+<commonname  xml:lang="de"> idempotent</commonname>
+<commonname>idempotent</commonname>
+</symbol>
+
+
+<definition id="idempotent1.def" for="idempotent1" type="simple">
+<CMP  xml:lang="de"> Ein Element $e$ einer Halbgruppe $F$ hei"st  idempotent, wenn $ee = e$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="E"/></OMATTR></OMBVAR>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="E"/><OMV name="E"/></OMA><OMV name="E"/></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="sqcup-sub-semi-group" kind="object" scope="global">
+<commonname  xml:lang="de">$U \sqcup V := \bigcap \limits _{W \supseteq U \cup V} W$</commonname>
+</symbol>
+
+
+<definition id="sqcup-sub-semi-group.def" for="sqcup-sub-semi-group" type="implicit">
+<CMP  xml:lang="de"> $U \sqcup V := \bigcap \limits _{W \supset U \cup V} W$. $U \sqcup V$ ist also die kleinste aller Unterhalbgruppen von $F$, die $U \cup V$ enth"alt. </CMP>
+<CMP>intersection of all sub-semigroups $W$ of a group $G$ containing the union of the sub-semigroups $U$ and $V$ of $G$ $U \sqcup V := \bigcap \limits _{W \supseteq U \cup V} W$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="V"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="sqcup-sub-semi-group"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="W"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="W"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="U"/><OMV name="V"/></OMA><OMV name="W"/></OMA></OMA>
+<OMA><OMV name="W"/><OMV name="X"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-product" kind="object" scope="global">
+<commonname  xml:lang="de">$E^n$</commonname>
+</symbol>
+
+
+<definition id="n-product.def" for="n-product" type="implicit">
+<CMP  xml:lang="de"> Sei $E \subset F$ eine Teilmenge und $E^n$ induktiv definiert durch $E^1 := E$, $E^{n+1} := EE^n$, so hei"st $E^{\ast } := \bigcup \limits _{n \in Nat} E^n$ die  von $E$ erzeugte Unterhalbgruppe. </CMP>
+ <FMP><OMOBJ>
+ 
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="E"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="n-product"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMI>1</OMI></OMA><OMV name="E"/></OMA></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="E"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="n-product"/><OMV name="G"/><OMV name="F"/><OMV name="E"/>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="E"/>
+<OMA><OMS cd="deussen.chap1" name="n-product"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="N"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND></OMA>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="generated-sub-semi-group" kind="object" scope="global">
+<commonname  xml:lang="de">die von $E$ erzeugte Unterhalbgruppe</commonname>
+<commonname> generated sub-semigroup from $E$ in $G$</commonname>
+</symbol>
+
+<definition id="generated-sub-semi-group.def" for="generated-sub-semi-group" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="E"/><OMV name="G"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap1" name="generated-sub-semi-group"/><OMV name="G"/><OMV name="F"/><OMV name="E"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA>
+<OMA><OMS cd="deussen.chap1" name="n-product"/><OMV name="G"/><OMV name="F"/><OMV name="E"/><OMV name="N"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="generating-system" kind="object" scope="global">
+<commonname  xml:lang="de">$E$ ist Erzeugendensystem von $G$</commonname>
+<commonname> generating system</commonname>
+</symbol>
+
+
+<definition id="generating-system.def" for="generating-system" type="simple">
+<CMP  xml:lang="de"> Sei $E \subset F$ eine Teilmenge der Halbgruppe $F$, so hei"st $E$ ein  Erzeugendensystem von $F$, wenn $E^{\ast } = F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="E"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="E"/><OMV name="G"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="generated-sub-semi-group"/><OMV name="G"/><OMV name="E"/><OMV name="F"/></OMA><OMV name="G"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-cancellable" kind="object" scope="global">
+<commonname  xml:lang="de">linksk"urzbar</commonname>
+<commonname> left cancellable</commonname>
+</symbol>
+
+
+<definition id="left-cancellable.def" for="left-cancellable" type="simple">
+<CMP  xml:lang="de"> Eine Halbgruppe $F$ hei"st  linksk"urzbar [ rechtsk"urzbar\/], wenn f"ur alle $f,g,h \in F$ aus $fg = fh$ [$gf = hf$] stets $g = h$ folgt. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/>
+<OMA><OMV name="X"/><OMV name="Y"/></OMA></OMA>
+<OMA><OMV name="F"/>
+<OMA><OMV name="X"/><OMV name="Z"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="Y"/><OMV name="Z"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-cancellable" kind="object" scope="global">
+<commonname  xml:lang="de">rechtsk"urzbar</commonname>
+<commonname> right cancellable</commonname>
+</symbol>
+
+<definition id="right-cancellable.def" for="right-cancellable" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/>
+<OMA><OMV name="Y"/><OMV name="X"/></OMA></OMA>
+<OMA><OMV name="F"/>
+<OMA><OMV name="Z"/><OMV name="X"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="Y"/><OMV name="Z"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="left-divisor" kind="object" scope="global">
+<commonname  xml:lang="de">Linksteiler von </commonname>
+<commonname> left divisor of</commonname>
+</symbol>
+
+
+<definition id="left-divisor.def" for="left-divisor" type="simple">
+<CMP  xml:lang="de"> $f$ ist  Linksteiler [ Rechtsteiler] von $g$ genau dann, wenn $f = g$ ist oder wenn es ein $h \in F$ gibt, so da"s $fh = g$ [$hf = g$]. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="Z"/></OMA><OMV name="Y"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-divisor" kind="object" scope="global">
+<commonname  xml:lang="de">Rechtsteiler</commonname>
+<commonname>right divisor</commonname>
+</symbol>
+
+<definition id="right-divisor.def" for="right-divisor" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Z"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="Z"/><OMV name="X"/></OMA><OMV name="Y"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+</theory>
+
+<assertion id="schker93.1.9" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de"> Ist $F$ eine Gruppe, $U \subset F$ eine Untergruppe und sei $1_U \in U$ das Einselement von $U$, so ist $1 = 1_U$. </CMP>
+<CMP> Let $G$ be a group, $U \subset G$ a subgroup, $1_U \in U$ the one of $U$, then: $1 = 1_U$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="NU"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/><OMV name="NU"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="N"/><OMV name="NU"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.10" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de"> Ist $F$ eine Gruppe und $U \subset F$ eine Teilmenge, so ist $U$ Untergruppe genau dann, wenn $v^{-1}u \in U$ f"ur alle $u,v \in U$. Ist ferner $U$ eine endliche Menge, so ist $U$ Untergruppe genau dann, wenn $UU \subset U$, d.h. wenn $U$ Unterhalbgruppe in $F$ ist. </CMP>
+<CMP> If $G$ is a group, $U \subset G$, then: $U$ is a subgroup of $G \Leftrightarrow \forall u,v \in U: v^{-1}u \in U $ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="U"/><OMV name="G"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="U"/></OMATP><OMV name="V"/></OMATTR></OMBVAR><OMA><OMV name="U"/>
+<OMA><OMV name="F"/>
+<OMA><OMV name="INV"/><OMV name="V"/></OMA><OMV name="U"/></OMA></OMA></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.10b" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de">If $G$ is a group, $U$ a finite subset of $G$, then $U$ is subgroup of $G \Leftrightarrow U$ is a sub-semigroup of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMATP><OMV name="INV"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="U"/><OMV name="G"/></OMA></OMA>
+<OMA><OMS cd="set.theory" name="finite"/><OMV name="U"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/><OMV name="N"/><OMV name="INV"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.11" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de"> Ist $set(U_i : i \in I)$ eine Familie von Unterhalbgruppen einer Halb-gruppe $F$, so ist auch der Durchschnitt $\bigcap \limits _{i \in I} U_i$ eine Unterhalbgruppe von $F$, sofern der Durchschnitt nicht leer ist. </CMP>
+<CMP>If $set(U_i : i \in I)$ is a family of sub-semigroups of a semigroup $G$, then $\bigcap \limits _{i \in I} U_i$ is also a subsemigroup of $G$ iff this intersection isn't empty. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMV name="U"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="U"/></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="U"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.12" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de"> Ist $set(U_i : i \in I)$ eine Familie von Untergruppen einer Gruppe $F$, so ist auch der Durchschnitt $\bigcap \limits _{i \in I} U_i$ eine Untergruppe von $F$. </CMP>
+<CMP>If $set(U_i : i \in I)$ is a family of subgroups of a group $G$, then also $\bigcap \limits _{i \in I} U_i$ is a subgroup of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap1" name="sub-group"/>
+<OMA><OMV name="U"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-group"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="U"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.13a" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de">$U \sqcup V$ is a sub-semigroup of $G$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="V"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMS cd="deussen.chap1" name="sqcup-sub-semi-group"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.13b" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de">$U \sqcup V$ is the smallest sub-semigroup of $G$ containing $U \cup V$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="W"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="V"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="W"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="U"/><OMV name="V"/></OMA><OMV name="W"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="sqcup-sub-semi-group"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA><OMV name="W"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.1.15" theory="deussen.chap1" type="conjecture">
+<CMP  xml:lang="de"> $U \sqcup V = (U \cup V)^{\ast }$. </CMP>
+<CMP>$U \sqcup V = (U \cup V)^{\ast }$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="V"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="U"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="V"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="sqcup-sub-semi-group"/><OMV name="G"/><OMV name="U"/><OMV name="V"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="generated-sub-semi-group"/><OMV name="G"/>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="U"/><OMV name="V"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+
+</omdoc>

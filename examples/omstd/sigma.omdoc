@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="sigma-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+   <metadata>
+      <Title>The OpenMath Content Dictionary sigma.ocd  in OMDoc form</Title>
+      <Creator role="trl">Michael Kohlhase</Creator>
+      <Creator role="ant">Olga Caprotti</Creator>
+      <Contributor role="aut">Hugo Elbers</Contributor>
+      <Date/>
+      <Description> 
+    Sigma Types for OM
+
+    Declaration of symbols for types and objects
+    An OpenMath object which uses any of the symbols here defined,
+    has to use them in accordance with the definitions in ESPRIT 
+    deliverable 1.3.2b .
+    </Description>
+   </metadata>
+
+   <theory id="sigma">
+      <symbol id="SigmaType">
+         <CMP> The type constructor of cartesian products.
+               It takes a list of type-attributed variables and 
+               an OpenMath object.
+         </CMP>
+         <commonname>SigmaType</commonname>
+      </symbol>
+      <symbol id="Pair">
+         <CMP> The pairing constructor. It takes two 
+               OpenMath objects as first element and second 
+               element of the pair, and a third optional 
+               OpenMath object that represents the type of 
+               this pair.  
+        </CMP>
+         <commonname>Pair</commonname>
+      </symbol>
+      <symbol id="PairProj1">
+         <CMP> The first projection function. It 
+               satisfies sigma-reduction.
+        </CMP>
+         <commonname>PairProj1</commonname>
+      </symbol>
+      <symbol id="PairProj2">
+         <CMP> The second projection function. It
+               satisfies sigma-reduction.
+        </CMP>
+         <commonname>PairProj2</commonname>
+      </symbol>
+   </theory>
+</omdoc>

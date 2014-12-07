@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_symbol">
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2002-02-03</Date>
+</metadata>                                                                     
+<theory id="test_symbol">
+
+<symbol id="bar" style="foo" generated-by="hf" kind="type" scope="global">
+<metadata>
+<Title>bla</Title>
+</metadata>
+
+<CMP xml:lang="de">testen</CMP>
+<CMP xml:lang="en">testing</CMP>
+
+<commonname xml:lang="en">test omdoc for symbol</commonname>
+
+<type system="simply-typed"><OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ></type>
+
+<selector total="yes" id="pred">
+  <commonname>The predecessor function</commonname>
+</selector>
+</symbol>
+
+</theory>
+</omdoc>
+

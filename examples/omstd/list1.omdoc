@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="list1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary list1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/list1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD is intended to be `compatible' with MathML list
+    constructs.
+  </Description>
+</metadata>
+
+<theory id="list1">
+
+<imports id="list1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="list1-imports-fns1" from="fns1.omdoc#fns1"/>
+<imports id="list1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="list1-imports-interval1" from="interval1.omdoc#interval1"/>
+<imports id="list1-imports-setname2" from="setname2.omdoc#setname2"/>
+<imports id="list1-imports-setname1" from="setname1.omdoc#setname1"/>
+<imports id="list1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="list1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="list1-imports-alg1" from="alg1.omdoc#alg1"/>
+<imports id="list1-imports-set1" from="set1.omdoc#set1"/>
+
+<symbol id="map">
+  <CMP>
+    This symbol represents a mapping function which may be used to
+    construct lists, it takes as arguments a function from X to Y and a
+    list over X in that order. The value that is returned is a list of
+    values in Y. The argument list may be a set or an integer_interval.
+  </CMP>
+  <commonname>map</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS cd="sts" name="mapsto"/>
+	<OMA>
+	  <OMS cd="sts" name="mapsto"/>
+	  <OMS cd="sts" name="Object"/>
+	  <OMS cd="sts" name="Object"/>
+	</OMA>
+	<OMV name="List"/>
+	<OMV name="List"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="map-ex-1" type="for" for="map">
+  <CMP>
+    The list of even values between 0 and 20 in ascending order, that is
+    the values 2x in ascending order, where x ranges over the integral
+    interval [0,10]. </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="list1" name="map"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="arith1" name="times"/>
+	  <OMI> 2 </OMI>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+      <OMA>
+	<OMS cd="interval1" name="integer_interval"/>
+	<OMI> 0 </OMI>
+	<OMI> 10 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="suchthat">
+  <CMP>
+    This symbol represents the suchthat function which may be used to
+    construct lists, it takes two arguments. The first argument should be the
+    set which contains the elements of the list, the second argument should
+    be a predicate, that is a function from the set to the booleans which
+    describes if an element is to be in the list returned.
+  </CMP>
+  <commonname>suchthat</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS cd="sts" name="mapsto"/>
+	<OMA>
+	  <OMS name="structure" cd="sts"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMS name="Boolean" cd="setname2"/>
+	</OMA>
+	<OMV name="List"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="suchthat" parent="OMA" fixity="infix">
+  <use  format="html" lbrack="[x&#x02208;" rbrack="(x)]">|</use>
+  <use  format="TeX" lbrack="[x\in " rbrack="(x)]">|</use>
+  <style  format="pmml">
+    <element name="mrow">
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>[</text>
+      </element>
+      <element name="mi">
+	<recurse select="om:OMBIND[position()=2]/om:OMBVAR/*[1]"/>  
+      </element>
+      <text>&#x02208;</text>
+      <recurse select="*[2]"/>
+      <element name="mo"><text>|</text></element>
+      <recurse select="om:OMBIND[position()=2]/*[3]"/>  
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>]</text>
+      </element>
+    </element>
+  </style>
+</presentation>
+<example id="suchthat-ex-1" type="for" for="suchthat">
+  <CMP>
+    This example shows how to construct the list of even positive integers less
+    than 100, using the suchthat constructor.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="list1" name="suchthat"/>
+      <OMS cd="setname1" name="Z"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="relation1" name="geq"/>
+	    <OMV name="x"/>
+	    <OMS cd="alg1" name="zero"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="lt"/>
+	    <OMV name="x"/>
+	    <OMI> 100 </OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="in"/>
+	    <OMA>
+	      <OMS cd="arith1" name="divide"/>
+	      <OMV name="x"/>
+	      <OMI> 2 </OMI>
+	    </OMA>
+	    <OMS cd="setname1" name="Z"/>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="list">
+  <CMP> 
+    This symbol denotes the list construct which is an n-ary function. The
+    list entries must be given explicitly.
+  </CMP>
+  <commonname>list</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="Object" cd="sts"/>
+	</OMA>
+	<OMS name="Object" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-list" for="list" parent="OMA" lbrack="[" rbrack="]"
+	      crossref-symbol="all" fixity="assoc">
+  <use format="default">,</use>
+</presentation>
+<example id="list-ex-1" type="for" for="list">
+  <CMP>The list 3, 6, 9.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="list1" name="list"/>
+      <OMI> 3 </OMI>
+      <OMI> 6 </OMI>
+      <OMI> 9 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

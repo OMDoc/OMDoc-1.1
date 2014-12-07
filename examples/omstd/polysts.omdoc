@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="polysts-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary polysts.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">James Davenport</Creator>
+  <Date> 1999-12-10 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/polysts.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> 
+    This CD holds the polynomial symbols used by the OpenMath Small Type System.
+    PolynomialRing is the equivalent of an Axiom category, whereas 
+    PolynomialRingD and PolynomialRingR are functors returning elements of that
+    category, polynomial rings with a specific representation (at the abstract
+    OMtree level)
+  </Description>
+</metadata>
+
+<theory id="polysts">
+  <symbol id="polynomial_ring">
+    <CMP>The type of all polynomial rings, e.g. from polyr or polyd OCDs</CMP>
+    <commonname>polynomial ring</commonname>
+    <type system="sts">
+      <OMOBJ>
+	<OMV name="Ring"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+</theory>
+</omdoc>

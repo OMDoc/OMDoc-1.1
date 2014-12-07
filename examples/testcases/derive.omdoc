@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_derive">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_derive">
+
+<proof id="myproof" for="something">
+<derive id="myderive1" style="mystyle">
+<CMP>first CMP</CMP>
+<CMP xml:lang="de">erste CMP</CMP>
+<FMP/>
+<proof id="subproof" for="foobar">
+<conclude/>
+</proof>
+</derive>
+
+<derive id="myderive2">
+<method xref="bla"/>
+<premise xref="abc"/>
+<premise xref="def"/>
+<proofobject for="bar" id="pobj1">
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</proofobject>
+</derive>
+
+<conclude>
+<proofobject id="pobj2" style="bla" for="foo" theory="bar">
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</proofobject>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

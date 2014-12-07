@@ -1,0 +1,402 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A LaTeX style for creating OMDoc files from LaTeX syntax
+%% Copyright (c) Michael Kohlhase, 2000-01-12
+%% This style file is released under the Gnu Public License
+%% see examples/latex2omdoc.tex for an example
+%% send bug-reports, patches, suggestions to kohlhase@mathweb.org
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{moreverb}
+%% A couple of new counters
+\newcounter{ident}
+\newcounter{omlog@counter}
+
+
+
+% Adapted from moreverb.sty:
+%   deleted the opening and closing of files, given arguments for the tagstuff
+\def\omwrite#1#2{\immediate\write\@omdocfile{<#1 #2>}%
+  \gdef\om@writetag{#1}
+  \@bsphack
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\@omdocfile{\the\verbatim@line}}%
+  \verbatim@start}
+\def\endomwrite{\immediate\write\@omdocfile{</\om@writetag>}\@esphack}
+
+\def\omverb{\@bsphack
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\@omdocfile{\the\verbatim@line}}%
+  \verbatim@start}
+\def\endomverb{\@esphack}
+
+
+\def\dtdurl#1{\gdef\dtd@url{#1}}
+\dtdurl{http://www.mathweb.org/omdoc/dtd/omdoc.dtd}      % basepath should be configurable!
+\def\@omw{\immediate\write\@omdocfile}
+
+%% A top-level environment  for the omdoc, may only be used once per LaTeX file
+%% to produce valid XML
+
+\def\omprefix#1#2{\gdef\om@prefix{#1#2}}
+\omprefix{}{}%\omprefix{\jobname}{\om@sep}
+
+\def\omsep#1{\gdef\om@sep{#1}}
+\omsep{-}
+
+\newenvironment{omoutput}[1][\jobname.omdoc]%
+% First we open a file for outputting the xml version
+{\newwrite\@omdocfile\immediate\openout\@omdocfile=#1}
+{\closeomgroups\immediate\closeout\@omdocfile}
+
+% then we write the header
+\def\write@xmlheader{\@omw{<?xml version="1.0"?>}
+\immediate\write\@omdocfile{<!DOCTYPE omdoc SYSTEM "\dtd@url" []>}
+\@omw{}\@omw{}
+\@omw{<!-- generated from \jobname.tex, do not edit -->}
+\@omw{}\@omw{}}
+
+\newenvironment{OMoutput}[1][\jobname.omdoc]%
+{\begin{omoutput}[#1]\write@xmlheader}
+{\end{omoutput}}
+
+\newenvironment{omdocout}[1][\jobname.omdoc]%
+{\begin{OMoutput}[#1]\@omw{<omdoc id="\om@prefix top">}\@omw{}}
+{\@omw{</omdoc>}\end{OMoutput}}
+
+%% An environment for logging the XML actions in the DVI file
+\newenvironment{omdoc@log}[1]%what
+{\par\noindent\stepcounter{omlog@counter}{\bf OMDoc(\theomlog@counter): {#1}.} \bgroup\sf}
+{\egroup}
+
+%% the following two macros can be used to create OMdoc environments, 
+%% 1. the first one (\begin/end{om#1}) writes the tags <#1> and </#> 
+%%    to the omdoc file and evaluates the content
+%% 2. the second one (\begin/end{om#1verb}) writes the tag <#1> 
+%%    then a verbatim copy of the content to the omdoc file, and then </#>.
+%% the second macro is a variant that turns on logging to the DVI file.
+
+\def\om@env#1{% envname
+\newenvironment{om#1}{\@omw{<#1>}}{\@omw{</#1>}\@omw{}}
+\newenvironment{om#1verb}{\omwrite{#1}{}}{\endomwrite}}
+
+\def\om@env@log#1{% envname
+\newenvironment{om#1}%
+{\begin{omdoc@log}{##1}\@omw{<#1>}}%
+{\@omw{</#1>}\@omw{}\end{omdoc@log}}%
+\newenvironment{om#1verb}%
+{\begin{omdoc@log}{##1}\omwrite{#1}{}}
+{\endomwrite}}
+
+%% now, we use them to create some OMdoc environments
+\om@env{FMP}
+\om@env{choice}
+\om@env{parameter}
+\om@env{metadata}
+
+%% now, we define a variant of the macros above for environments that take 
+%% an argument, which is interpreted as the first attribute (+ a prefix)
+%% it creates environments that take an argument and insert it into start tag
+%% under the attribute specified in the outer macro
+%% again there are verbatim and logging variants.
+
+\def\om@env@argi#1#2{% envname, firstattribute+prefix
+\newenvironment{om#1}[1]%firstvalue
+{\@omw{<#1 #2##1">}}%
+{\@omw{</#1>}\@omw{}}%
+\newenvironment{om#1verb}[1]% firstvalue
+{\omwrite{#1}{#2##1"}}%
+{\endomwrite}}
+
+\def\om@env@argi@log#1#2{% envname, firstattribute
+\newenvironment{om#1}[1]%firstvalue
+{\begin{omdoc@log}{##1}\@omw{<#1 #2##1">}}%
+{\@omw{</#1>}\@omw{}\end{omdoc@log}}%
+\newenvironment{om#1verb}[1]% firstvalue
+{\begin{omdoc@log}{##1}\omwrite{#1}{#2##1"}}%
+{\endomwrite\end{omdoc@log}}}
+
+\om@env@argi@log{omtext}{id="\om@prefix}
+\om@env@argi@log{theory}{id="\om@prefix}
+\om@env@argi@log{symbol}{id="\om@prefix}
+\om@env@argi{hypothesis}{id="\om@prefix}
+\om@env@argi{derive}{id="\om@prefix}
+\om@env@argi{conclude}{id="\om@prefix}
+\om@env@argi@log{axiom}{id="\om@prefix}
+\om@env@argi{assumption}{id="\om@prefix}
+\om@env@argi{conclusion}{id="\om@prefix}
+\om@env@argi{hint}{id="\om@prefix}
+\om@env@argi{mc}{id="\om@prefix}
+\om@env@argi{type}{system="}
+\om@env@argi{answer}{verdict="}
+
+%% now, we specify variants of the above for two arguments
+
+\def\om@env@argii#1#2#3{% envname, first, second attributes
+\newenvironment{om#1}[2]%first, second values
+{\@omw{<#1 #2##1" #3##2">}}%
+{\@omw{</#1>}\@omw{}}%
+\newenvironment{om#1verb}[2]% first, second values
+{\omwrite{#1}{#2##1" #3##2"}}%
+{\endomwrite}}
+
+\def\om@env@argii@log#1#2#3{% envname, first, second attributes
+\newenvironment{om#1}[2]%first, second values
+{\begin{omdoc@log}{##1}\@omw{<#1 #2##1" #3##2">}}%
+{\@omw{</#1>}\@omw{}\end{omdoc@log}}%
+\newenvironment{om#1verb}[2]% first, second values
+{\begin{omdoc@log}{##1}\omwrite{#1}{#2##1" #3##2"}}%
+{\endomwrite\end{omdoc@log}}}
+
+\om@env@argii@log{definition}{id="\om@prefix}{for="\om@prefix}
+\om@env@argii@log{omgroup}{id="\om@prefix}{type="}
+\om@env@argii@log{example}{id="\om@prefix}{for="\om@prefix}
+\om@env@argii@log{exercise}{id="\om@prefix}{for="\om@prefix}
+\om@env@argii@log{solution}{id="\om@prefix}{for="\om@prefix}
+
+%% and now for three arguments
+
+\def\om@env@argiii#1#2#3#4{% envname, first, second, third attributes
+\newenvironment{om#1}[3]%first, second, third values
+{\@omw{<#1 #2##1" #3##2" #4##3">}}%
+{\@omw{</#1>}\@omw{}}%
+\newenvironment{om#1verb}[3]% first, second values
+{\omwrite{#1}{#2##1" #3##2" #4##3"}}%
+{\endomwrite}}
+
+\def\om@env@argiii@log#1#2#3#4{% envname, first, second, third attributes
+\newenvironment{om#1}[3]%first, second, third values
+{\begin{omdoc@log}{##1}\@omw{<#1 #2##1" #3##2" #4##3">}}%
+{\@omw{</#1>}\@omw{}\end{omdoc@log}}%
+\newenvironment{om#1verb}[3]% first, second, third values
+{\begin{omdoc@log}{##1}\omwrite{#1}{#2##1" #3##2" #4##3"}}%
+{\endomwrite\end{omdoc@log}}}
+
+
+\om@env@argiii@log{assertion}%
+{id="\om@prefix}%
+{theory="\om@prefix}%
+{type="}
+
+\om@env@argiii@log{proof}%
+{id="\om@prefix}%
+{for="\om@prefix}%
+{theory="\om@prefix}
+
+\def\om@env@argiv#1#2#3#4#5{% envname, first, to fourth attributes
+\newenvironment{om#1}[4]%first, to fourth values
+{\@omw{<#1 #2##1" #3##2" #4##3" #5##4">}}%
+{\@omw{</#1>}\@omw{}}%
+\newenvironment{om#1verb}[4]% first, to fourth values
+{\omwrite{#1}{#2##1" #3##2" #4##3" #5##4"}}%
+{\endomwrite}}
+
+\def\om@env@argiv@log#1#2#3#4#5{% envname, first, second, third, and fourth attributes
+\newenvironment{om#1}[4]%first, second, third, and fourth values
+{\begin{omdoc@log}{##1}\@omw{<#1 #2##1" #3##2" #4##3" #5##4">}}%
+{\@omw{</#1>}\@omw{}\end{omdoc@log}}%
+\newenvironment{om#1verb}[4]% first, second, third, and fourth values
+{\begin{omdoc@log}{##1}\omwrite{#1}{#2##1" #3##2" #4##3" #5##4"}}%
+{\endomwrite\end{omdoc@log}}}
+
+\om@env@argiv{omlet}%
+{id="\om@prefix}%
+{type="}%
+{argstr="}%
+{function="}
+
+%% now come a couple of things that defy the definition mechanism above
+%% and which we define by hand instead.
+
+\def\omref#1{\@omw{<ref xlink:href="#1"/>}}
+
+\newenvironment{ommethod}[2]% theory, name
+{\@omw{<method><OMS cd="#1" name="#2"/>}}
+{\@omw{</method>}}
+
+\def\ompremise#1{\@omw{<premise xlink:href="\om@prefix #1"/>}}
+
+\def\omrsrelation#1#2#3% type, for, from
+{\def\empty{}\def\test{#2}\def\tast{#3}%
+\@omw{<rsrelation type="#1" %
+\ifx\test\empty\else for="\om@prefix #2" \fi 
+\ifx\tast\empty\else from="\om@prefix #3"\fi/>}}
+
+\newenvironment{omCMPverb}[2][en]%[language], format, label
+{\omwrite{CMP}{xml:lang="#1" format="#2"}}
+{\endomwrite}
+\newenvironment{omCMP}[2][en]%[language], format, label
+{\@omw{<CMP xml:lang="#1" format="#2">}}{\@omw{</CMP>}}
+
+\newcommand{\omcommonname}[2][en]% language, content
+{\@omw{<commonname xml:lang="#1">#2</commonname>}}
+
+\newenvironment{omrequation}%
+{\def\goesto{\@omw{</pattern><value>}}%
+ \@omw{<requation>}\@omw{<pattern>}}
+{\@omw{</value></requation>}}
+
+
+%% Meta data
+\def\@btag#1#2#3{\@omw{  <dc:#1 #2="#3">}}
+\def\@etag#1{\@omw{  </dc:#1>}}
+
+\newcommand{\dccontributor}[2][aut]{\@btag{Contributor}{role}{#1}\@omw{    #2}\@etag{Contributor}}
+\newcommand{\dccreator}[2][aut]{\@btag{Creator}{role}{#1}\@omw{    #2}\@etag{Creator}}
+\newcommand{\dctitle}[2][en]{\@btag{Title}{xml:lang}{#1}\@omw{    #2}\@etag{Title}}
+\newcommand{\dcdate}[1]{\@omw{<dc:Date>#1</dc:Date>}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OpenMath Objects
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{omobj}{\@omw{<OMOBJ>}}{\@omw{</OMOBJ>}}
+\newenvironment{oma}{\@omw{<OMA>}}{\@omw{</OMA>}}
+\newenvironment{ombind}{\@omw{<OMBIND>}}{\@omw{</OMBIND>}}
+\newenvironment{ombvar}{\@omw{<OMBVAR>}}{\@omw{</OMBVAR>}}
+\newenvironment{omattr}{\@omw{<OMATTR>}}{\@omw{</OMATTR>}}
+\newenvironment{omatp}{\@omw{<OMATP>}}{\@omw{</OMATP>}}
+
+\def\oms#1#2{\@omw{<OMS cd="#1" name="#2"/>}}
+\def\omv#1{\@omw{<OMS name="#1"/>}}
+
+% first define a macro that sets the catcodes of the 
+% symbols with the special meanings
+\def\om@setup@catcodes{%
+\def\om@pbl{<}\def\om@pbr{>}% save the greater and smaller signs for later
+\catcode`\<=1% another opening group so, we can redefine {
+\catcode`\>=2% another closing group so, we can redefine }
+\catcode`\!=6% another macro parameter, so  we can redefine #
+\catcode`\~=\active% omobj ids
+\catcode`\^=\active% omobj refs
+\catcode`\#=\active% symbols
+\catcode`\$=\active% variables
+\catcode`\{=\active% begin{ombind},begin{ombvar}
+\catcode`\}=\active% end{ombind}
+\catcode`\.=13% end{ombvar}
+\catcode`\(=\active% begin{oma}
+\catcode`\)=\active% end{oma}
+\catcode`\[=\active% begin{omattr},begin{omatp}
+\catcode`\]=\active% end{omattr}
+\catcode`\|=\active% end{omatp}
+\catcode`\,\active% disregard
+\catcode`\;=\active% disregard
+}
+% then we define the meanings for for the new active characters
+% we do this inside a group (this is opened by { and closed by >, 
+% since we have changed the catcodes in \om@setup@catcodes)
+{\om@setup@catcodes\gdef\om@setup@meanings<
+\def\om@reset<\def\om@xref<>\def\om@id<>>
+\def\om@blank< >
+\def\om@pid<\ifx\om@id\empty\else\om@blank id="\om@id"\fi>
+\def\om@pxref<\ifx\om@xref\empty\else\om@blank xref="\om@xref"\fi>
+\def\om@pidxrefbr<\om@pid\om@pxref\om@pbr>
+\def\om@pidxrefbrempty<\om@pid\om@pxref/\om@pbr>
+\def.<\immediate\write\@omdocfile<\om@pbl/OMBVAR\om@pbr>>
+\def{#!!1:!!2:<\immediate\write\@omdocfile<\om@pbl OMBIND\om@pidxrefbr>\om@reset
+\immediate\write\@omdocfile<\om@pbl OMS cd="!!1" name="!!2"/\om@pbr>
+ \immediate\write\@omdocfile<\om@pbl OMBVAR\om@pbr>>
+\def~!!1<\def\om@id<!!1>>
+\def^!!1<\def\om@xref<!!1>>
+\def}<\immediate\write\@omdocfile<\om@pbl/OMBIND\om@pbr>>
+\def(<\immediate\write\@omdocfile<\om@pbl OMA\om@pidxrefbr>\om@reset>
+\def)<\immediate\write\@omdocfile<\om@pbl /OMA\om@pbr>>
+\def[<\immediate\write\@omdocfile<\om@pbl OMATTR\om@pbr>
+ \immediate\write\@omdocfile<\om@pbl OMATP\om@pbr>>
+\def|<\immediate\write\@omdocfile<\om@pbl /OMATP\om@pbr>>
+\def]<\immediate\write\@omdocfile<\om@pbl /OMATTR\om@pbr>>
+\def$!!1:<\immediate\write\@omdocfile<\om@pbl OMV name="!!1"\om@pidxrefbrempty>\om@reset>
+\def#!!1:!!2:<\immediate\write\@omdocfile<\om@pbl OMS cd="!!1" name="!!2"\om@pidxrefbrempty>\om@reset>
+\def,<>\def;<>
+>>
+
+\def\omid#1{\def\om@id{#1}}
+\def\omxref#1{\def\om@xref{#1}}
+\omid{}\omxref{}
+% finally, we define the begin and end tags for the OpenMath environment
+\def\({\begingroup\om@setup@catcodes\om@setup@meanings%
+ \immediate\write\@omdocfile{<OMOBJ\om@pid\om@pxref>}\om@reset}
+\def\){\immediate\write\@omdocfile{</OMOBJ>}\endgroup}
+
+\def\<{\begingroup\om@setup@catcodes\om@setup@meanings}
+\def\>{\endgroup}
+
+%% the following are macros for the most common kinds of macros used in
+%% mathematical papers, using them here to migrate from existing LaTeX 
+%% documents.
+
+\newcounter{migrationcount}
+\def\ommiglanguage#1{\gdef\om@lang{#1}}\ommiglanguage{en}
+\def\ommigtheory#1{\gdef\om@theory{#1}}
+\ommigtheory{dummytheory(set it with ommigtheory)}
+
+\def\om@ass#1{% envname
+\newenvironment{#1}[1][]%the title
+{\stepcounter{migrationcount}\def\empty{}\def\test{##1}%
+\begin{omassertion}{\themigrationcount\om@sep#1}{\om@theory}{#1}%
+\ifx\test\empty\else\begin{ommetadata}\begin{dctitle}[\om@lang]{##1}\end{dctitle}\end{ommetadata}\fi%
+\begin{omCMP}[\om@lang]{omtext}{\themigrationcount\om@sep{#1}\om@sep{cmp}}}
+{\end{omCMP}\end{omassertion}}}
+
+\om@ass{theorem}
+\om@ass{lemma}
+\om@ass{corollary}
+\om@ass{conjecture}
+
+\newenvironment{definition}[1][]%the common name
+{\stepcounter{migrationcount}\def\empty{}\def\test{#1}%
+\begin{omsymbol}{#1.sym}\omcommonname[\om@lang]{#1}\end{omsymbol}%
+\begin{omdefinition}{\themigrationcount\om@sep{#1}}{#1\om@sep{sym}}%
+\ifx\test\empty\else\begin{ommetadata}\begin{dctitle}[\om@lang]{#1}\end{dctitle}\end{ommetadata}\fi%
+\begin{omCMP}[\om@lang]{omtext}{\themigrationcount\om@sep{#1}\om@sep{cmp}}}
+{\end{omCMP}\end{omdefinition}}
+
+\newenvironment{remark}[2][]%the title, for what it is
+{\stepcounter{migrationcount}\def\empty{}\def\test{#1}%
+\begin{omomtext}{\themigrationcount\om@sep{#1}}
+\ifx\test\empty\else\begin{ommetadata}\begin{dctitle}[\om@lang]{#1}\end{dctitle}\end{ommetadata}\fi%
+\omrsrelation{elaboration}{#2}{}%
+\begin{omCMP}[\om@lang]{omtext}{\themigrationcount\om@sep{#1}\om@sep{cmp}}}
+{\end{omCMP}\end{omomtext}}
+
+
+\newcommand{\mathematicaout}[1]%
+{\@omw{<OMOBJ><ominput format="mathematica">}%
+\@omw{#1}%
+\@omw{</ominput></OMOBJ>}}
+
+\newcommand{\ida}[1]%
+{\@omw{<OMOBJ><ominput format="ida">}%
+\@omw{#1}%
+\@omw{</ominput></OMOBJ>}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% structuring devices mapping to omgroup
+%% migration macros for chapter, section, subsection,....
+%% that do not have closing brackets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\mig@group#1#2{\iffirstchapter\else\@omw{</omgroup>}\@omw{}\fi%
+\@omw{<omgroup id="\om@prefix\themigrationcount{\om@sep{#1}}" type="#1">}%
+\begin{ommetadata}\begin{dctitle}[\om@lang]{#2}\end{dctitle}\end{ommetadata}}
+
+
+%% to adapt to new situations (XXX):
+%% define new \firstXXX\firstXXXfalse, 
+%% define \def\XXX#1{\mig@group{#1}{chapter}}
+%% add clause \iffirstXXX\else\@omw{</omgroup>} to \closegroups
+
+
+\newif\iffirstchapter\firstchapterfalse
+\newif\iffirstsection\firstsectionfalse
+
+\def\omchapter#1{\mig@group{#1}{chapter}}
+\def\omsection#1{\mig@group{#1}{section}}
+
+\def\closeomgroups{%
+%\iffirstchapter\else\@omw{</omgroup>}
+%\iffirstsection\else\@omw{</omgroup>}}
+}

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="logic1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary logic1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/logic1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds the basic logic functions.
+  </Description>
+</metadata>
+
+<theory id="logic1">
+
+<imports id="logic1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="logic1-imports-setname2" from="setname2.omdoc#setname2"/>
+<imports id="logic1-imports-quant1" from="quant1.omdoc#quant1"/>
+<imports id="logic1-imports-relation1" from="relation1.omdoc#relation1"/>
+
+<symbol id="equivalent">
+  <CMP> 
+    This symbol is used to show that two boolean expressions are logically 
+    equivalent, that is have the same boolean value for any inputs.
+  </CMP>
+  <commonname>equivalent</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+	<OMS cd="setname2" name="Boolean"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-equivalent" for="equivalent" parent="OMA" fixity="assoc" precedence="700">
+  <use  format="TeX">{\Leftrightarrow}</use>
+  <use  format="pmml|html">&#x02261;</use>
+</presentation>
+<presentation for="equivalent"><use format="cmml" element="equivalent"/></presentation>
+<assertion id="equivalent-prop-1" type="lemma">
+  <CMP> The condition (A is equivalent to B) is equivalent to the
+    condition that (A implies B and B implies A).
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="equivalent"/>
+	<OMA>
+	  <OMS cd="logic1" name="equivalent"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMV name="B"/>
+	    <OMV name="A"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="not">
+  <CMP> 
+    This symbol represents the logical not function which takes one boolean
+    argument, and returns the opposite boolean value.
+  </CMP>
+  <commonname>not</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-not" for="not" precedence="200" parent="OMA">
+  <use  format="TeX">\neg</use>
+  <use  format="html|pmml">&#x000AC;</use>
+  <use format="pvs" lbrack="" rbrack=""> NOT </use>
+</presentation>
+<presentation for="not"><use format="cmml" element="not"/></presentation>
+<assertion id="not-prop-1" type="lemma">
+  <CMP><OMOBJ><OMA xref="not-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR><OMV name="x"/></OMBVAR>
+	<OMA id="not-prop-1.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="not"/>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="and">
+  <CMP> 
+    This symbol represents the logical and function which is an n-ary
+    function taking boolean arguments and returning a boolean value. It
+    is true if all arguments are true or false otherwise.
+  </CMP>
+  <commonname>and</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nassoc" cd="sts"/>
+	  <OMS cd="setname2" name="Boolean"/>
+	</OMA>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-and" for="and" parent="OMA" fixity="assoc" precedence="500">
+  <use  format="TeX">{\wedge}</use>
+  <use  format="html|pmml">&#x02227;</use>
+  <use format="pvs"> AND </use>
+</presentation>
+<presentation for="and"><use format="cmml" element="and"/></presentation>
+<assertion id="and-prop-1" type="lemma">
+  <CMP>
+    <OMOBJ><OMA xref="and-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA id="and-prop-1.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMV name="x"/>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	  <OMS cd="logic1" name="false"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="xor">
+  <CMP> 
+    This symbol represents the logical xor function which is an n-ary
+    function taking boolean arguments and returning a boolean
+    value. It is true if there are an odd number of true arguments or
+    false otherwise.
+  </CMP>
+  <commonname>xor</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/> 
+	<OMA>
+	  <OMS name="nassoc" cd="sts"/>
+	  <OMS cd="setname2" name="Boolean"/>
+	</OMA>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-xor" for="xor" parent="OMA" fixity="assoc" precedence="500">
+  <use  format="default">!</use>
+</presentation>
+<presentation for="xor"><use format="cmml" element="xor"/></presentation>
+<assertion id="xor-prop-1" type="lemma">
+  <CMP>
+    <OMOBJ><OMA xref="xor-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA id="xor-prop-1.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="xor"/>
+	    <OMV name="x"/>
+	    <OMV name="x"/>
+	  </OMA>
+	  <OMS cd="logic1" name="false"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="xor-prop-3" type="lemma">
+  <CMP><OMOBJ><OMA xref="xor-prop-3.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR><OMV name="x"/></OMBVAR>
+	<OMA id="xor-prop-3.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="xor"/>
+	    <OMV name="x"/>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	  <OMS cd="logic1" name="true"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="or">
+  <CMP> 
+    This symbol represents the logical or function which is an n-ary
+    function taking boolean arguments and returning a boolean value. It
+    is true if any of the arguments are true or false otherwise.
+  </CMP>
+  <commonname>or</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nassoc" cd="sts"/>
+	  <OMS cd="setname2" name="Boolean"/>
+	</OMA>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-or" for="or" parent="OMA" fixity="assoc" precedence="500">
+  <use  format="TeX">{\vee}</use>
+  <use  format="html|pmml">&#x02228;</use>
+  <use format="pvs"> OR </use>
+</presentation>
+<presentation for="or"><use format="cmml" element="or"/></presentation>
+<assertion id="or-prop-1" type="lemma">
+  <CMP><OMOBJ><OMA xref="or-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR><OMV name="x"/></OMBVAR>
+	<OMA id="or-prop-1.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="or"/>
+	    <OMV name="x"/>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	  <OMS cd="logic1" name="true"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="or-prop-3" type="lemma">
+  <CMP>
+    <OMOBJ><OMA xref="or-prop-3.1"/></OMOBJ> for all 
+    <OMOBJ><OMV name="a"/></OMOBJ> and <OMOBJ><OMV name="b"/></OMOBJ>.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="a"/>
+	  <OMV name="b"/>
+	</OMBVAR>
+	<OMA id="or-prop-3.1">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="logic1" name="not"/>
+	    <OMA>
+	      <OMS cd="logic1" name="and"/>
+	      <OMV name="a"/>
+	      <OMV name="b"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="logic1" name="or"/>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="a"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="logic1" name="not"/>
+	      <OMV name="b"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="implies">
+  <CMP> 
+    This symbol represents the logical implies function which takes two
+    boolean expressions as arguments. It evaluates to false if the first
+    argument is true and the second argument is false, otherwise it
+    evaluates to true.
+  </CMP>
+  <commonname>implies</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS cd="setname2" name="Boolean"/>
+	<OMS cd="setname2" name="Boolean"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-implies" for="implies" parent="OMA" fixity="infix">
+  <use  format="TeX">{\Rightarrow}</use>
+  <use  format="html|pmml">&#x021D2;</use>
+</presentation>
+<presentation for="implies"><use format="cmml" element="implies"/></presentation>
+<assertion id="implies-prop-1" type="lemma">
+  <CMP><OMOBJ><OMA xref="implies-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR><OMV name="x"/></OMBVAR>
+	<OMA id="implies-prop-1.1">
+	  <OMS cd="logic1" name="implies"/>
+	  <OMS cd="logic1" name="false"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="true">
+  <CMP>This symbol represents the boolean value true.</CMP>
+  <commonname>true</commonname>
+  <type system="sts">
+    <OMOBJ><OMS cd="setname2" name="Boolean"/></OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-true" for="true">
+  <use  format="default">T</use>
+  <use format="cmml" element="true"/>
+</presentation>
+<assertion id="true-prop-1" type="lemma">
+  <CMP><OMOBJ xref="true-prop-1.1"/></CMP>
+  <FMP>
+    <OMOBJ id="true-prop-1.1">
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="logic1" name="not"/>
+	  <OMS cd="logic1" name="true"/>
+	</OMA>
+	<OMS cd="logic1" name="false"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="false">
+  <CMP>This symbol represents the boolean value false.</CMP>
+  <commonname>false</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS cd="setname2" name="Boolean"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-false" for="false">
+  <use  format="default">F</use>
+  <use format="cmml" element="false"/>
+</presentation>
+<assertion id="false-prop-1" type="lemma">
+  <CMP><OMOBJ xref="false-prop-1.1"/></CMP>
+  <FMP>
+    <OMOBJ id="false-prop-1.1">
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="logic1" name="not"/>
+	  <OMS cd="logic1" name="false"/>
+	</OMA>
+	<OMS cd="logic1" name="true"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+</theory>
+</omdoc>

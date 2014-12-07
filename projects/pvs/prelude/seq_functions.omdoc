@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="seq_functions.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:36
+    </Date>
+  </metadata>
+  <theory id="seq_functions-parameters">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57023" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57024" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57025" for="seq_functions" pto="pvs" pto-version="3.0" replaces="seq_functions-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory seq_functions
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="seq_functions_test">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57026" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57027" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="seq_functions-import-parameters" from="seq_functions-parameters"/>
+
+
+
+    <symbol id="map" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="seq_functions" name="D"/>
+            <OMS cd="seq_functions" name="R"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sequences" name="sequence"/>
+            <OMS cd="sequences" name="sequence"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="map-def" for="map" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="seq_functions" name="map"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="seq_functions" name="D"/>
+                      <OMS cd="seq_functions" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sequences" name="sequence"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMA>
+                      <OMS cd="sequences" name="nth"/>
+                      <OMV name="s"/>
+                      <OMV name="n"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="map" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="seq_functions" name="D"/>
+            <OMS cd="seq_functions" name="R"/>
+          </OMA>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="map-def" for="map" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="seq_functions" name="map"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="seq_functions" name="D"/>
+                      <OMS cd="seq_functions" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMA>
+                    <OMS cd="sequences" name="nth"/>
+                    <OMV name="s"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

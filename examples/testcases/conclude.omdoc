@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_conclude">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_conclude">
+
+<proof id="myproof" theory="foo" for="bar" style="la">
+<conclude id="concl" style="foo">
+<CMP>some text</CMP>
+<CMP>more text</CMP>
+<method xref="reference">
+  <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ> 
+  <OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</method>
+<premise xref="blabla" rank="42"/>
+<premise xref="lala"/>
+<proof id="subproof" theory="theo" for="something">
+  <conclude id="xyz"/>
+</proof>
+</conclude>
+</proof>
+
+<proof id="nextproof" for="something">
+<conclude>
+<proofobject id="pobj" style="bla" for="foo" theory="bar">
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</proofobject>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

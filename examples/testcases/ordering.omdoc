@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_ordering">
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2002-02-03</Date>
+</metadata>                                                                     
+<theory id="test_ordering">
+
+<definition id="def" for="bla">
+<measure>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>    
+</measure>
+<ordering>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>    
+</ordering>
+</definition>
+
+</theory>
+</omdoc>
+

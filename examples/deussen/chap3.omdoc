@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="deussen.chap3.omdoc" catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title xml:lang="en">Chapter 3: Ideals in  Semigroups</Title> 
+  <Title xml:lang="de">Chapter 3: Ideale in Halbgruppen</Title> 
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Source>Deussen: Halbgruppen und Automaten, Springer Verlag, 
+    Heidleberger Taschenbuecher, Sammlung Informatik Nr. 99, 1971.
+  </Source>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+<theory id="deussen.chap3">
+<symbol id="left-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">Linksideal $T$ von $G$</commonname>
+<commonname> left ideal</commonname>
+</symbol>
+
+
+<definition id="left-ideal.def" for="left-ideal" type="simple">
+  <CMP  xml:lang="de"> 
+    Eine nichtleere Teilmenge $T \subset F$ einer Halbgruppe $F$ hei"st  
+    Linksideal [ Rechtsideal\/], wenn $FT \subset T$ [$TF \subset T$\/] gilt. 
+    Ist $T$ gleichzeitig Links- und Rechtsideal, so hei"st $T$ ein  zweiseitiges Ideal. 
+  </CMP>
+   <FMP>
+     <OMOBJ>  
+       <OMBIND>
+         <OMS cd="fns1" name="lambda"/>
+         <OMBVAR>
+           <OMATTR>
+             <OMATP>
+               <OMS cd="simpletypes" name="type"/>
+               <OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA>
+             </OMATP><OMV name="T"/>
+           </OMATTR>
+           <OMATTR>
+             <OMATP>
+               <OMS cd="simpletypes" name="type"/>
+               <OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA>
+             </OMATP>
+             <OMV name="G"/>
+           </OMATTR>
+           <OMATTR>
+             <OMATP>
+               <OMS cd="simpletypes" name="type"/> 
+               <OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/>
+                  <OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA>
+               </OMA>
+             </OMATP>
+             <OMV name="F"/>
+            </OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="T"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/><OMV name="T"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="G"/><OMV name="T"/><OMV name="F"/></OMA><OMV name="T"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="right-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">Rechtsideal $T$ von $G$</commonname>
+<commonname> right ideal</commonname>
+</symbol>
+
+<definition id="right-ideal.def" for="right-ideal" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="T"/><OMV name="G"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="T"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="two-sided-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">zweiseitiges Ideal $T$ von $G$</commonname>
+<commonname> two-sided ideal</commonname>
+</symbol>
+
+<definition id="two-sided-ideal.def" for="two-sided-ideal" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="min-left-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">minimales Linksideal $T$ von $G$</commonname>
+<commonname> minimal left ideal</commonname>
+</symbol>
+
+
+<definition id="min-left-ideal.def" for="min-left-ideal" type="simple">
+<CMP  xml:lang="de"> Ein Linksideal [Rechtsideal, zweiseitiges Ideal] $T \subset F$ hei"st  minimal, wenn f"ur jedes Linksideal [Rechtsideal, zweiseitiges Ideal] <OMOBJ><OMV name="M"/></OMOBJ> gilt: aus $M \subset T$ folgt $M = T$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="M"/><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="min-right-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">minimales Rechtsideal $T$ von $G$</commonname>
+<commonname> minimal right ideal</commonname>
+</symbol>
+
+<definition id="min-right-ideal.def" for="min-right-ideal" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="M"/><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="min-twosided-ideal" kind="object" scope="global">
+<commonname  xml:lang="de">minimales zweiseitiges Ideal $T$ von $G$</commonname>
+<commonname> minimal two-sided ideal</commonname>
+</symbol>
+
+<definition id="min-twosided-ideal.def" for="min-twosided-ideal" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="M"/><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="class-of-min-left-ideals" kind="object" scope="global">
+<commonname  xml:lang="de">$G$ erf"ullt die Minimalbedingung f"ur Linksideale</commonname>
+<commonname> class of the minimal left ideals</commonname>
+</symbol>
+
+
+<definition id="class-of-min-left-ideals.def" for="class-of-min-left-ideals" type="implicit">
+<CMP  xml:lang="de"> $F$ erf"ullt die  Minimalbedingung f"ur Links- [ Rechts-, zweisei\discretionary {-}{}{}tige\/]  Ideale, wenn jede nichtleere Teilmenge <OMOBJ><OMV name="M"/></OMOBJ> von Links- [Rechts-, zweiseitigen] Idealen ein minimales Element enth"alt, d.h. ein Links- (Rechts-, zweiseitiges) Ideal, das kein Element von <OMOBJ><OMV name="M"/></OMOBJ> echt umfa"st. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/><OMV name="X"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="fulfil-min-cond-for-left-ideals" kind="object" scope="global">
+<CMP> fulfilment of the minimal condition for left ideals </CMP>
+</symbol>
+
+<definition id="fulfil-min-cond-for-left-ideals.def" for="fulfil-min-cond-for-left-ideals" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/><OMV name="M"/>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="class-of-min-right-ideals" kind="object" scope="global">
+<commonname  xml:lang="de">Menge aller Rechtsideale von $G$</commonname>
+<commonname> class of the minimal right ideals</commonname>
+</symbol>
+
+
+<definition id="class-of-min-right-ideals.def" for="class-of-min-right-ideals" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/><OMV name="X"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="fulfil-min-cond-for-right-ideals" kind="object" scope="global">
+<commonname  xml:lang="de">$G$ erf"ulle die Minimalbedingung f"ur Rechtsideale</commonname>
+<commonname> fulfilment of the minimal condition for right ideals</commonname>
+</symbol>
+
+
+<definition id="fulfil-min-cond-for-right-ideals.def" for="fulfil-min-cond-for-right-ideals" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/><OMV name="M"/>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="class-of-min-two-sided-ideals" kind="object" scope="global">
+<commonname  xml:lang="de">Menge aller zweiseitigen Ideale von $G$</commonname>
+<commonname> class of the minimal two-sided ideals</commonname>
+</symbol>
+
+
+<definition id="class-of-min-two-sided-ideals.def" for="class-of-min-two-sided-ideals" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-two-sided-ideals"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-two-sided-ideal"/><OMV name="X"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="fulfil-min-cond-for-two-sided-ideals" kind="object" scope="global">
+<commonname  xml:lang="de">$G$ erf"ulle die Minimalbedingung f"ur zweiseitige Ideale</commonname>
+<commonname> fulfilment of the minimal condition for two-sided ideals</commonname>
+</symbol>
+
+<definition id="fulfil-min-cond-for-two-sided-ideals.def" for="fulfil-min-cond-for-two-sided-ideals" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="subset"/><OMV name="M"/>
+<OMA><OMS cd="deussen.chap3" name="class-of-min-two-sided-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="G-ki" kind="object" scope="global">
+<commonname  xml:lang="de">$G_{ki} (= R_k L_i = R_k \cap L_i)$</commonname>
+<commonname>$G_{ki} (= R_k L_i = R_k \cap L_i)$</commonname>
+</symbol>
+
+
+<definition id="G-ki.def" for="G-ki" type="simple"><CMP  xml:lang="de">$\lambda \mapstochar \rightarrow i,  \rho \mapstochar \rightarrow k,\Lambda \mapstochar \rightarrow J, P \mapstochar \rightarrow K G_{\rho \lambda } \mapstochar \rightarrow $ {G-ki G f J K L R k i} definition: $G_{ki} = R_kL_i$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</definition>
+
+<symbol id="phi-kl" kind="object" scope="global">
+<commonname  xml:lang="de">$\varphi _{kl} : G_{ki} \rightarrow G_{li} , g \rightarrow g e_{li}$ f"ur $g \in G_{ki}$</commonname>
+<commonname> $\varphi _{kl}$ is a mapping: $G_{ki} \mapstochar \rightarrow G_{li}$ defined by $x \rightarrow x e_{li} (x \in G_{ki})$</commonname>
+</symbol>
+
+<definition id="phi-kl.def" for="phi-kl" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="L"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="R"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="L"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="g-ki"/></OMA></OMA></OMA></OMA></OMA></OMA></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="phi-kl"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA><OMV name="X"/></OMA>
+<OMA><OMV name="F"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="phi-im" kind="object" scope="global">
+<commonname  xml:lang="de">$\varphi _{im} : G_{ki} \rightarrow G_{km} , g \rightarrow e_{km} g$ f"ur $g \in G_{ki}$</commonname>
+<commonname> $\varphi _{im}$ is a mapping: $G_{ki} \rightarrow G_{km}$ defined by $x \mapstochar \rightarrow e_{km} x (x \in G_{ki})$</commonname>
+</symbol>
+
+<definition id="phi-im.def" for="phi-im" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="M"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="M"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="R"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="L"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="g-ki"/></OMA></OMA></OMA></OMA></OMA></OMA></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="phi-im"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMS cd="ind" name="ind"/><OMV name="M"/><OMV name="K"/></OMA><OMV name="X"/></OMA>
+<OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMV name="M"/></OMA><OMV name="F"/></OMA><OMV name="X"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="k-set-e-ki" kind="object" scope="global">
+<commonname  xml:lang="de">$set(e_{ki} : k \in K)$</commonname>
+</symbol>
+
+
+<definition id="k-set-e-ki.def" for="k-set-e-ki" type="implicit"><CMP  xml:lang="de"> Zeichnet man ferner willk"urlich je ein Element der Indexmengen $\Lambda $ und $P$ aus, etwa $\lambda _0$ und $\rho _0$, und k"urzt ab $G := G_{\rho _0\lambda _0}$, so kann man u.a. aufgrund der vierten Behauptung des letzten Satzes schreiben: $G_{\rho \lambda } = e_{\rho \lambda }Ge_{\rho _0\lambda } = e_{\rho \lambda _0}Ge_{\rho \lambda }$ womit $L_{\lambda } = set(e_{\rho \lambda } : \rho \in P)\cdot G \cdot e_{\rho _0 \lambda }$ $R_{\rho } = e_{\rho \lambda _0} \cdot G \cdot set(e_{\rho \lambda } : \lambda \in \Lambda )$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="ind" name="ind"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="k-set-e-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMS cd="ind" name="ind"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND> </OMOBJ></FMP>
+</definition>
+
+<symbol id="i-set-e-ki" kind="object" scope="global">
+<commonname  xml:lang="de">$set(e_{ki} : i \in J)$</commonname>
+<commonname> $set(e_{ki} : i \in J)$</commonname>
+</symbol>
+
+<definition id="i-set-e-ki.def" for="i-set-e-ki" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="ind" name="ind"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="i-set-e-ki"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="L-ix" kind="object" scope="global">
+<commonname  xml:lang="de">$L_{ix} : L_i \rightarrow L_m , l \mapstochar \rightarrow l x (l \in L_i , x \in G)$</commonname>
+<commonname> $L$-$ix: L_i \mapstochar \rightarrow L_m$ with $l \mapstochar \rightarrow l \cdot x (l \in L_i, x \in G)$</commonname>
+</symbol>
+
+<definition id="L-ix.def" for="L-ix" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="l-ix"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="L"/><OMS cd="ind" name="ind"/><OMV name="X"/></OMA><OMV name="L"/></OMA>
+<OMA><OMV name="F"/><OMV name="L"/><OMV name="X"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="R-kx" kind="object" scope="global">
+<commonname  xml:lang="de">$R_{kx} : R_k \rightarrow R_l , r \mapstochar \rightarrow x r (r \in R_k , x \in G)$</commonname>
+<commonname> $R$-$kx: R_k \rightarrow R_l$ with $r \mapstochar \rightarrow x \cdot r (r \in R_k, x \in G)$</commonname>
+</symbol>
+
+<definition id="R-kx.def" for="R-kx" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMV name="R"/></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA>
+<OMA><OMS cd="deussen.chap3" name="r-kx"/><OMV name="G"/><OMV name="F"/><OMV name="K"/><OMV name="R"/><OMV name="K"/><OMV name="X"/></OMA><OMV name="R"/></OMA>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="R"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+
+</theory>
+
+<assertion id="schker93.3.2" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Ist $T$ ein Links- oder Rechtsideal oder ein zweiseitiges Ideal, so ist $T$ Unterhalbgruppe. </CMP>
+<CMP>If $T$ is a left ideal of the semigroup $G$ then $T$ is a sub-semigroup of G. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.2b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $T$ is a right ideal of the semigroup $G$ then $T$ is a sub-semigroup of G. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.2c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $T$ is a two-sided ideal of the semigroup $G$ then $T$ is a sub-semigroup of G. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="sub-semi-group"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3" theory="deussen.chap3" type="conjecture">
+<CMP xml:lang="de"> Sei $set(T_i : i \in I)$ eine Familie von
+Links- (Rechts-, zweiseitigen) Idealen der Halbgruppe $F$, so ist auch $\bigcup
+\limits _{i \in I} T_i$ ein Links- ({Rechts-,}
+zweiseitiges) Ideal, und ebenso $\bigcap \limits _{i \in I} T_i$, sofern dieser
+Durchschnitt nicht leer ist. </CMP> <CMP xml:lang="en">If $set(T_i
+: i \in I)$ is a family of left ideals, then $\bigcup \limits _{i \in I} T_i$ is a
+left ideal too. </CMP>
+<FMP><OMOBJ> <OMBIND><OMS cd="quant1"
+name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS
+										   cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes"
+name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV
+name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV
+name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV
+name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="pl0"
+name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes"
+name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV
+name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="pl0"
+name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV
+name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1"
+name="implies"/> <OMA><OMS cd="logic1" name="and"/> <OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV
+name="F"/></OMA> <OMBIND><OMS cd="quant1"
+name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV
+name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS
+cd="deussen.chap3" name="left-ideal"/> <OMA><OMV name="T"/><OMS
+cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/> <OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV
+name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND> </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $set(T_i : i \in I)$ is a family of right ideals, then $\bigcup \limits _{i \in I} T_i$ is a right ideal too. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="right-ideal"/>
+<OMA><OMV name="T"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $set(T_i : i \in I)$ is a family of twosided ideals, then $\bigcup \limits _{i \in I} T_i$ is a two-sided ideal too. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMV name="T"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3d" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $set(T_i : i \in I)$ is a family of left ideals, then $\bigcap \limits _{i \in I} T_i$ is a left ideal too if this intersection isn't empty. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="left-ideal"/>
+<OMA><OMV name="T"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3e" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $set(T_i : i \in I)$ is a family of right ideals, then $\bigcap \limits _{i \in I} T_i$ is a left ideal too if this intersection isn't empty. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="right-ideal"/>
+<OMA><OMV name="T"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.3f" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If $set(T_i : i \in I)$ is a family of twosided ideals, then $\bigcap \limits _{i \in I} T_i$ is a two-sided ideal too if this intersection isn't empty. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMV name="T"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="basic.algebra" name="notequal"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="T"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.4" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> $R \cap L \subset RL$. </CMP>
+<CMP>$R \cap L \subset RL$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="L"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="R"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="R"/><OMV name="L"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/><OMV name="R"/><OMV name="L"/><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.6" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> F"ur das Links- [Rechts-] Ideal $T \subset F$ sind die folgenden Aussagen "aquivalent: a) $T$ ist minimal b) f"ur jedes $t \in T$ gilt $Ft = T$ [$tF = T$] c) zu je zwei $t_1, t_2 \in T$ gibt es ein $f \in F$ mit $ft_1 = t_2$ [$t_1f = t_2$]. </CMP>
+<CMP>For a left ideal $T \subset G$ are the following statements equivalent: $T$ is minimal $ \Leftrightarrow  \forall t \in T: Gt = T$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/><OMV name="G"/><OMV name="T"/><OMV name="F"/></OMA><OMV name="T"/></OMA></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.6b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">For a left ideal $T \subset G$ are the following statements equivalent: $T$ is minimal $ \Leftrightarrow  \forall t_1 \in T \forall t_2 \in T \exists x \in G: xt_1 = t_2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T2"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="T1"/></OMA><OMV name="T2"/></OMA></OMBIND></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.6c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">For a right ideal $T \subset G$ are the following statements equivalent: $T$ is minimal $ \Leftrightarrow  \forall t \in T: tG = T$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA><OMV name="T"/></OMA></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.6d" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">For a right ideal $T \subset G$ are the following statements equivalent: $T$ is minimal $ \Leftrightarrow  \forall t_1 \in T \forall t_2 \in T \exists x \in G: t_1x = t_2$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="T"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/><OMV name="T"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="T"/></OMATP><OMV name="T2"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="T1"/><OMV name="X"/></OMA><OMV name="T2"/></OMA></OMBIND></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.8" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Sind $L_i$ und $L_j$ zwei minimale Linksideale, so ist $L_il = L_j$ ($l \in L_j$). </CMP>
+<CMP>If $L_i$ and $L_j$ are two minimal left ideals then $\forall l \in L_j$ holds $L_il = L_j $. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="LI"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="LJ"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/><OMV name="LI"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/><OMV name="LJ"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="LJ"/></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="LJ"/>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/><OMV name="LI"/><OMV name="L"/><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.9" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Die Halbgruppe $F$ erf"ulle die Minimalbedingung f"ur Links- [Rechts-] Ideale. Dann ist $K = \bigcup \limits _{\lambda \in \Lambda } L_{\lambda }$ [ $ = \bigcup \limits _{\rho \in P} R_{\rho }$] das kleinste zweiseitige Ideal von $F$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="logic1" name="implies"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="M"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="M"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV name="L"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.9b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">If the semigroup $G$ fulfils the minimal condition for rightideals, then $M = \bigcup \limits _{k \in K} R_k$ is the minimal two-sided ideal of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="K"/><OMV name="R"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="logic1" name="implies"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="two-sided-ideal"/><OMV name="M"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="basic.algebra" name="subset"/><OMV name="M"/>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="K"/><OMV name="R"/></OMA></OMA></OMA></OMBIND></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Die Halbgruppe $F$ erf"ulle die Minimalbedingung f"ur Rechts-
+und Linksideale. Dann gilt: 
+
+I) $K = \bigcup \limits _{\lambda \in \Lambda } L_{\lambda } = \bigcup \limits
+_{\rho \in P} R_{\rho }$ ist das kleinste zweiseitige Ideal in $F$. 
+
+II) $R_{\rho } \cap L_{\lambda } = R_{\rho }L_{\lambda }$ 
+
+III) $G_{\rho \lambda } := R_{\rho } L_{\lambda }$ sind Unterhalbgruppen {(in the
+original erroneously: Untergruppen)} 
+
+IV) Die Gruppen $G_{\rho \lambda }$ sind paarweise isomorph. Die Isomorphismen erh"alt man wie folgt: Sind $e_{\rho \lambda } \in G_{\rho \lambda }$ die Einselemente der Gruppen $G_{\rho \lambda }$, so gilt: $G_{\rho \lambda }e_{\rho \mu } = G_{\rho \mu }$  $e_{\sigma \lambda }G_{\rho \lambda } = G_{\sigma \lambda }$ und die Zuordnungen $g \rightarrow ge_{\rho \mu }$  $g \rightarrow e_{\sigma \lambda } g$ ($g \in G_{\rho \lambda }$) sind Isomorphismen. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA></OMA></OMBIND></OMBIND></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$R_k \cap L_i = R_kL_i$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">The sets $R_kL_i$ are sub-semigroups of $G$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap1" name="semi-group"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap1" name="sub-semi-group"/>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10d1" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$G_{ki} e_{km} = G_{km}$. attention! $\lambda \mapstochar \rightarrow i, \rho \mapstochar \rightarrow k, \mu \mapstochar \rightarrow m, \Lambda \mapstochar \rightarrow J, P \mapstochar \rightarrow K$ $G_{\rho \lambda } \mapstochar \rightarrow $ {G-ki G f J K L R k i} $G_{\rho \mu } \mapstochar \rightarrow $ {G-ki G f J K L R k m} </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMV name="M"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMV name="M"/></OMA><OMV name="F"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND>  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10d2" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$e_{li} G_{ki} = G_{li}$ attention! $\lambda \mapstochar \rightarrow i, \mu \mapstochar \rightarrow m, \sigma \mapstochar \rightarrow l, \Lambda \mapstochar \rightarrow J, P \mapstochar \rightarrow K$ $G_{\sigma \lambda } \mapstochar \rightarrow $ {G-ki G f J K L R l i} </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="L"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10d3" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$\varphi _{kl}: G_{ki} \rightarrow G_{li}$ is a group-isomorphism. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap2" name="group-isomorphism"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap3" name="phi-kl"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.10d4" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$\varphi _{im}: G_{ki} \rightarrow G_{km}$ is a group-isomorphism. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="M"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap2" name="group-isomorphism"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="M"/><OMV name="K"/></OMA><OMV name="F"/>
+<OMA><OMS cd="deussen.chap3" name="phi-im"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMS cd="ind" name="ind"/><OMV name="M"/><OMV name="K"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.13" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Aus der ersten Behauptung des letzten Satzes folgt nun $L_\lambda = \bigcup \limits _{\rho \in P} (R_{\rho } \cap L_{\lambda }) = \bigcup \limits _{\rho \in P} G_{\rho \lambda }$ $R_{\rho } = \bigcup \limits _{\lambda \in \Lambda } (R_{\rho } \cap L_{\lambda }) = \bigcup \limits _{\lambda \in \Lambda } G_{\rho \lambda }$ Da au"serdem f"ur verschiedene $\lambda $ und $\mu $ bzw. $\rho $ und $\sigma $ $L_{\lambda } \cap L_{\mu } = \emptyset $ bzw.  $R_{\rho } \cap R_{\sigma } = \emptyset $ ist, gilt $G_{\rho \lambda } \cap G_{\mu \sigma } = \emptyset $. </CMP>
+<CMP>$L_i = \bigcup \limits _{k \in K} (R_k \cap L_i)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-right-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="K"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.13b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$R_k = \bigcup \limits _{i \in J} (R_k \cap L_i)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="F"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMS cd="deussen.chap3" name="class-of-min-left-ideals"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="K"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.13c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$i_1 \not =i_2 \Rightarrow L_{i_1} \cap L_{i_2} = \emptyset $ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I2"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="notequal"/><OMV name="I1"/><OMV name="I2"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="I1"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="I2"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.13d" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$k_1 \not =k_2 \Rightarrow R_{k_1} \cap R_{k_2} = \emptyset $ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K2"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="notequal"/><OMV name="K1"/><OMV name="K2"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K1"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K2"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.13e" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$i_1 \not =i_2 \wedge k_1 \not =k_2 \Rightarrow G_{k_1i_1} \cap G_{k_2i_2} = \emptyset $ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I2"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="notequal"/><OMV name="I1"/><OMV name="I2"/></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K2"/></OMATTR></OMBVAR><OMA><OMS cd="basic.algebra" name="notequal"/><OMV name="K1"/><OMV name="K2"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMBIND></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMS cd="basic.algebra" name="empty-set"/>
+<OMA><OMS cd="set.theory" name="intersection"/>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMV name="R"/><OMV name="K1"/></OMA>
+<OMA><OMV name="L"/><OMV name="I1"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMV name="R"/><OMV name="K2"/></OMA>
+<OMA><OMV name="L"/><OMV name="I2"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.14a" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$L_i = set(e_{ki} : k \in K) \cdot G_{k_0i_0} \cdot e_{k_0i}$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I0"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K0"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="I0"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K0"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap3" name="k-set-e-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K0"/><OMV name="I0"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K0"/><OMS cd="ind" name="ind"/></OMA><OMV name="F"/></OMA><OMV name="F"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.14b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$R_k = e_{ki_0} \cdot G_{k_0i_0} \cdot set(e_{ki} : i \in J)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="C"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I0"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K0"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="I0"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K0"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal "/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/>
+<OMA><OMS cd="deussen.chap1" name="one"/>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/><OMV name="I0"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="g-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K0"/><OMV name="I0"/></OMA><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="i-set-e-ki"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="K"/><OMV name="L"/><OMV name="R"/><OMV name="K"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de"> Erf"ulle $F$ die Minimalbedingung f"ur Links- und Rechtsideale, so gilt: F"ur beliebiges $f \in F$ und $\lambda \in \Lambda $ [$\rho \in P$] ist $L_{\lambda }f = L_{\mu }$ [$fR_{\rho } = R_{\sigma }$] f"ur ein $\mu \in ^^ca\Lambda $ [$\sigma \in P$], und die Zuordnung $l \mapstochar \rightarrow lf (l \in L_{\lambda })$ [$r \mapstochar \rightarrow fr (r \in R_{\rho })$] ist eine bijektive Abbildung von $L_{\lambda }$ [$R_{\rho }$] auf $L_{\mu }$ [$R_{\sigma }$]. Es gilt daher f"ur jedes $f \in F$ die K"urzungsregel: $l_1f = l_2f \rightarrow l_1 = l_2 (l_1, l_2 \in L_{\lambda })$ [$fr_1 = fr_2 \rightarrow r_1 = r_2 (r_1, r_2 \in R_{\rho })$] </CMP>
+<CMP>Let the semigroup G fulfil the minimal condition for left and right ideals. Then $\forall x \in G \forall i \in J \exists m \in J: L_i \cdot x = L_m$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="right-complex-product"/><OMV name="G"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="X"/><OMV name="F"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15b" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">Let the semi-group G fulfil the minimal condition for left and right ideals. Then $\forall x \in G \forall k \in K \exists l \in K: x \cdot R_k = R_l$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA>
+<OMA><OMS cd="deussen.chap1" name="left-complex-product"/><OMV name="G"/><OMV name="X"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="F"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15c" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">The mapping $L$-$ix$ is a bijective mapping into a minimal left ideal $L_m$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="M"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMV name="M"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA>
+<OMA><OMV name="L"/><OMV name="M"/></OMA>
+<OMA><OMV name="F"/><OMV name="L"/><OMV name="X"/></OMA></OMA></OMA>
+<OMA><OMS cd="set.theory" name="bijective"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMV name="L"/><OMV name="M"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="l-ix"/><OMV name="G"/><OMV name="F"/><OMV name="J"/><OMV name="L"/><OMS cd="ind" name="ind"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15d" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">The mapping $R$-$kx$ is a bijective mapping into a minimal right ideal $R_l$. </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMV name="R"/></OMA></OMATP><OMV name="R"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="L"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="L"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA>
+<OMA><OMV name="R"/><OMV name="L"/></OMA>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="R"/></OMA></OMA></OMA>
+<OMA><OMS cd="set.theory" name="bijective"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA>
+<OMA><OMV name="R"/><OMV name="L"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="r-kx"/><OMV name="G"/><OMV name="F"/><OMV name="K"/><OMV name="R"/><OMV name="K"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15e" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$l_1 \cdot x = l_2 \cdot x \Rightarrow l_1 = l_2 (l_1, l_2 \in L_i, x \in G)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="L"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA></OMATP><OMV name="L1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="ind" name="ind"/><OMV name="L"/></OMA></OMATP><OMV name="L2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-left-ideal"/>
+<OMA><OMV name="L"/><OMS cd="ind" name="ind"/></OMA><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-left-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="L1"/><OMV name="X"/></OMA>
+<OMA><OMV name="F"/><OMV name="L2"/><OMV name="X"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="L1"/><OMV name="L2"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+<assertion id="schker93.3.15f" theory="deussen.chap3" type="conjecture">
+<CMP  xml:lang="de">$x \cdot r_1 = x \cdot r_2 \Rightarrow r_1 = r_2 (r_1, r_2 \in R_k, x \in G)$ </CMP>
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="G"/></OMA></OMA></OMATP><OMV name="F"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="B"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="R"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="K"/></OMATP><OMV name="K"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMV name="R"/></OMA></OMATP><OMV name="R1"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="K"/><OMV name="R"/></OMA></OMATP><OMV name="R2"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="deussen.chap3" name="min-right-ideal"/>
+<OMA><OMV name="R"/><OMV name="K"/></OMA><OMV name="G"/><OMV name="F"/></OMA>
+<OMA><OMS cd="deussen.chap3" name="fulfil-min-cond-for-right-ideals"/><OMV name="G"/><OMV name="F"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="R1"/></OMA>
+<OMA><OMV name="F"/><OMV name="X"/><OMV name="R2"/></OMA></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="R1"/><OMV name="R2"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</assertion>
+
+
+</omdoc>

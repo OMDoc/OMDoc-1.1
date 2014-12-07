@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="dimensions1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary dimensions1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2000-08-13 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/dimensions1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> This CD defines symbols which represent basic physical dimensions.</Description>
+</metadata>
+
+<theory id="dimensions1">
+
+<symbol id="length">
+  <CMP>This symbol represents the length physical dimension.</CMP>
+  <commonname>length</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="area">
+  <CMP>
+    This symbol represents the area physical dimension.
+  </CMP>
+  <commonname>area</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="volume">
+  <CMP>
+    This symbol represents the volume physical dimension.
+  </CMP>
+  <commonname>volume</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="speed">
+  <CMP>
+    This symbol represents the speed physical dimension. It is the size of the
+    derivative of distance with respect to time.
+  </CMP>
+  <commonname>speed</commonname>
+</symbol>
+<symbol id="velocity">
+  <CMP>
+    This symbol represents the velocity physical dimension. It is the
+    derivative of distance with respect to time.
+  </CMP>
+  <commonname>velocity</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="acceleration">
+  <CMP>
+    This symbol represents the acceleration physical dimension. It is the
+    second derivative distance with respect to time.
+  </CMP>
+  <commonname>acceleration</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="time">
+  <CMP>
+    This symbol represents the time physical dimension.
+  </CMP>
+  <commonname>time</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="mass">
+  <CMP>
+    This symbol represents the mass physical dimension.
+  </CMP>
+  <commonname>mass</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="force">
+  <CMP>
+    This symbol represents the force physical dimension. 
+  </CMP>
+  <commonname>force</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="temperature">
+  <CMP>
+    This symbol represents the temperature physical dimension.
+  </CMP>
+  <commonname>temperature</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="pressure">
+  <CMP>
+    This symbol represents the pressure physical dimension.
+  </CMP>
+  <commonname>pressure</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="charge">
+  <CMP>
+    This symbol represents the charge physical dimension.
+  </CMP>
+  <commonname>charge</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="current">
+  <CMP>
+    This symbol represents the current physical dimension.
+  </CMP>
+  <commonname>current</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="voltage">
+  <CMP>
+    This symbol represents the voltage physical dimension.
+  </CMP>
+  <commonname>voltage</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="PhysicalDimension"/>
+    </OMOBJ>
+  </type>
+</symbol>
+</theory>
+</omdoc>

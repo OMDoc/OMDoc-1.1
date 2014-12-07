@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="map_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:39
+    </Date>
+  </metadata>
+  <theory id="map_props-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57037" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57038" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57039" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57040" for="map_props" pto="pvs" pto-version="3.0" replaces="map_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory map_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="map_props_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57041" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57042" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57043" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="map_props-import-parameters" from="map_props-parameters"/>
+
+
+
+
+    <assertion id="map_list_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="map_props" name="T1"/>
+                    <OMS cd="map_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="map_props" name="T2"/>
+                    <OMS cd="map_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt_map" name="map"/>
+                  <OMV name="f2"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt_map" name="map"/>
+                    <OMV name="f1"/>
+                  </OMA>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt_map" name="map"/>
+                  <OMA>
+                    <OMS cd="function_props" name="O"/>
+                    <OMV name="f2"/>
+                    <OMV name="f1"/>
+                  </OMA>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="map_list_composition-1" for="map_list_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l)
+ ((1 (SKOSIMP) ((1 (EXPAND map) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+  (2 (SKOSIMP)
+   ((2 (SKOSIMP)
+     ((2 (INST?)
+       ((2 (EXPAND map +) ((2 (REPLACE -1) ((2 (EXPAND o 1 2) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="map_seq_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="map_props" name="T1"/>
+                    <OMS cd="map_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="map_props" name="T2"/>
+                    <OMS cd="map_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="sequence"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="seq_functions" name="map"/>
+                  <OMV name="f2"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="seq_functions" name="map"/>
+                    <OMV name="f1"/>
+                  </OMA>
+                  <OMV name="s"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="seq_functions" name="map"/>
+                  <OMA>
+                    <OMS cd="function_props" name="O"/>
+                    <OMV name="f2"/>
+                    <OMV name="f1"/>
+                  </OMA>
+                </OMA>
+                <OMV name="s"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="map_seq_composition-1" for="map_seq_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND map)
+   (( (APPLY-EXTENSIONALITY)
+     (( (HIDE 2)
+       (( (EXPAND o)
+         (( (CASE nth((LAMBDA (n: nat): f1!1(nth(s!1, n))), x!1) = f1!1(nth(s!1, x!1)))
+           ((1 (REPLACE -1) ((1 (PROPAX) NIL NIL)) NIL)
+            (2 (HIDE 2) ((2 (EXPAND nth 1 1) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

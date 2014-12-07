@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_proof">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_proof">
+
+<proof id="myproof" theory="foo" for="bar" style="la">
+<metadata>
+<Title>metadata for proof</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-02-23</Date>
+</metadata>                                                                     
+<symbol id="sym1"/>
+<symbol id="sym2"/>
+<CMP>first</CMP>
+<CMP>second</CMP>
+<conclude id="concl" style="foo">
+<CMP>some text</CMP>
+<CMP>more text</CMP>
+<method xref="reference">
+  <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ> 
+  <OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</method>
+<premise xref="blabla" rank="42"/>
+<premise xref="lala"/>
+<proof id="subproof" theory="theo" for="something">
+  <conclude id="xyz"/>
+</proof>
+</conclude>
+</proof>
+
+<proof id="nextproof" for="something">
+<metacomment id="mymetacom" style="toll">
+  <CMP>hi</CMP>
+  <CMP>ho</CMP>
+</metacomment>
+<derive id="getsitsowntestomdoc"/>
+<hypothesis id="myhypo" style="some" discharged-in="whatever"/>
+<metacomment id="blub"/>
+<derive id="soitdoesntgetcrowdedhere"/>
+<hypothesis id="anotherhypo" discharged-in="bla">
+<symbol id="asymbol"/>
+<symbol id="anothersym"/>
+<CMP xml:lang="de">zweiundvierzig</CMP>
+<CMP xml:lang="zh">si shi er</CMP>
+<FMP/>
+</hypothesis>
+<conclude>
+<proofobject id="pobj" style="bla" for="foo" theory="bar">
+<metadata>
+<Title>metadata for proofobject</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-02-23</Date>
+</metadata>
+<CMP>texttexttext</CMP>
+<CMP>anothercmp</CMP>
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</proofobject>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

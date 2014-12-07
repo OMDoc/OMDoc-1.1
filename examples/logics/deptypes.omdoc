@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+<omdoc id="pvs.omdoc">
+
+<metadata>
+ <Creator role="aut">Michael Kohlhase</Creator>
+ <Date action="created">2001-5-19</Date>
+ <Title>Dependent Types</Title>
+ <Rights>GPL</Rights>
+</metadata>
+
+<omtext id="intro">
+ <CMP>This document defines the dependent types discipline.</CMP>
+</omtext>
+
+<theory id="deptypes">
+	 
+<symbol id="sigmatype">
+ <CMP>The dependent function type constructor</CMP>
+</symbol>
+<presentation id="pr-sigmatype" for="sigmatype" parent="OMBIND">
+ <style format="pvs">
+   <text>[</text>
+    <recurse select="*[2]/*"/><text> -&gt; </text><recurse select="*[3]"/>
+   <text>]</text>
+ </style>
+</presentation>
+
+<symbol id="dependent-recordtype">
+  <CMP>The dependent record type constructor. It takes an even number of
+  arguments. The even ones  are field names (currently they are OMS symbols in the
+  pseudo-theory 'record-field' and the odd ones their values.</CMP>
+</symbol>
+<presentation id="pr-dependent-recordtype" for="dependent-recordtype" parent="OMA">
+  <use format="pvs" lbrack="[# " rbrack=" #]"/>
+</presentation>
+
+<symbol id="dependent-tupletype">
+  <CMP>The dependent tuple type constructor.</CMP>
+</symbol>
+<presentation id="pr-dependent-tupletype" for="dependent-tupletype" parent="OMA">
+  <use format="pvs" lbrack="[" rbrack="]"/>
+</presentation>
+
+<symbol id="dependent-cotupletype">
+  <CMP>The dependent-co-tuple type constructor (useful for formalizing
+  co-algebras).</CMP>
+</symbol>
+<presentation id="pr-dependent-cotupletype" for="dependent-cotupletype" parent="OMA">
+  <use format="pvs" lbrack="[ " rbrack=" ]" separator="+"/>
+</presentation>
+
+<omtext id="no-type-constructors">
+ <CMP>We do not need any term constructors for dependent types, we can take the
+   ones defined in theory simpletypes 
+ </CMP>
+</omtext>
+</theory>
+
+
+</omdoc>

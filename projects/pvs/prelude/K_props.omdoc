@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="K_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="K_props-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56628" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56629" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="K_props" name="T1"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56630" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56631" for="K_props" pto="pvs" pto-version="3.0" replaces="K_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory K_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="K_props_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56632" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56633" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="K_props" name="T1"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56634" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="K_props-import-parameters" from="K_props-parameters"/>
+    <assertion id="K_preserves" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="K_props" name="S"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="K_props" name="T2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="K_props" name="S_pred"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="K_conversion" name="K_conversion"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="K_preserves-1" for="K_preserves" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56635" for="K_preserves" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|K_preserves|: JUDGEMENT |K_conversion|[T1, T2](|x|: S)(|y|: T2) HAS_TYPE S]]>
+      </data>
+    </private>
+
+    <assertion id="K_preserves1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="K_props" name="S"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="K_props" name="T2"/>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="K_props" name="S_pred"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="K_conversion" name="K_conversion"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="G56636" for="K_preserves1" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|K_preserves1|: JUDGEMENT |K_conversion|[T1, T2](|x|: S) HAS_TYPE
+          [T2 "->" S]]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

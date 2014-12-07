@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="skl0-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Strong Kleene Logic (Three-valued Propositional Logic)</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+This theory provides three -valued propositional connectives with Kleene's strong
+interpretation, it shares the symbol names with the OpenMath content dictionary 
+logic1 for consistency.
+  </Description>
+ </metadata>
+
+ <theory id="skl0">
+  <imports id="truthval-imports" from="truthval"/>
+
+  <symbol id="3bool" kind="type">
+   <CMP>The type of truth values.</CMP>
+   <commonname>three-valued booleans</commonname>
+  </symbol>
+  <presentation for="3bool">
+   <use format="default">o</use>
+  </presentation>
+
+  <symbol id="undefined">
+   <CMP>This symbol represents the undefined truth value.</CMP>
+   <commonname>undefined</commonname>
+   <type system="simpletypes">
+    <OMOBJ><OMS cd="skl0" name="3bool"/></OMOBJ>
+   </type>
+  </symbol>
+
+  <presentation for="undefined">
+   <use  format="default">U</use>
+  </presentation>
+
+ <symbol id="eq">
+   <CMP>Equality on truth values</CMP>
+  </symbol>
+
+<presentation id="pr-eq" for="eq" parent="OMA" fixity="infix" precedence="700">
+ <use  format="default">=</use>
+ <use  format="pmml">=</use>
+</presentation>
+
+ <symbol id="neq">
+   <CMP>Inequality on truth values</CMP>
+  </symbol>
+
+  <presentation id="pr-neq" for="neq" parent="OMA" fixity="infix" lbrack="" rbrack="" precedence="700">
+   <use  format="default">!=</use>
+   <use  format="TeX">{\ne}</use>
+   <use  format="html|pmml">&#x02260;</use>
+  </presentation>
+
+  <presentation for="neq"> 
+   <use  format="default">!=</use>
+   <use  format="TeX">{\ne}</use>
+   <use  format="html|pmml">&#x02260;</use>
+  </presentation>
+
+  <axiom id="tfu-distinct">
+   <CMP>The truth values 
+    <OMOBJ><OMS cd="truthval" name="true"/></OMOBJ>,
+    <OMOBJ><OMS cd="skl0" name="undefined"/></OMOBJ> and 
+    <OMOBJ><OMS cd="truthval" name="false"/></OMOBJ> are distinct.
+   </CMP>
+   <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="pl0" name="and"/>
+	<OMA>
+	  <OMS cd="truthval" name="neq"/>
+	  <OMS cd="truthval" name="true"/>
+	  <OMS cd="truthval" name="false"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="truthval" name="neq"/>
+	  <OMS cd="truthval" name="true"/>
+	  <OMS cd="skl0" name="undefined"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="truthval" name="neq"/>
+	  <OMS cd="truthval" name="false"/>
+	  <OMS cd="skl0" name="undefined"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+   </FMP>
+  </axiom>
+
+  <symbol id="not">
+   <CMP> 
+    This symbol represents the logical not function which takes one boolean
+    argument, and returns the opposite boolean value. It has the truth table 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="not"/>
+      <OMA><OMS cd="truth-tables" name="ttargs"/></OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+   </CMP>
+   <commonname>not</commonname>
+  </symbol>
+
+  <presentation id="pr-not" for="not" parent="OMA" precedence="200">
+   <use format="TeX">{\neg}</use>
+   <use format="html|pmml">&#x000AC;</use>
+   <use format="pvs" lbrack="" rbrack=""> NOT </use>
+  </presentation>
+
+  <presentation for="not">
+   <use format="TeX">{\neg}</use>
+   <use format="html|pmml">&#x000AC;</use>
+   <use format="pvs"> NOT </use>
+  </presentation>
+
+  <definition id="false-def" for="false">
+   <CMP><OMOBJ><OMS cd="truthval" name="false"/></OMOBJ> is <OMOBJ xref="true-prop-1.1"/></CMP>
+   <FMP>
+    <OMOBJ id="true-prop-1.1">
+     <OMA>
+      <OMS cd="skl0" name="not"/>
+      <OMS cd="truthval" name="true"/>
+     </OMA>
+    </OMOBJ>
+   </FMP>
+  </definition>
+
+  <assertion id="false-prop-1" type="lemma">
+   <CMP><OMOBJ xref="false-prop-1.1"/></CMP>
+   <FMP>
+    <OMOBJ id="false-prop-1.1">
+     <OMA>
+      <OMS cd="skl0" name="eq"/>
+      <OMA>
+       <OMS cd="skl0" name="not"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>
+      <OMS cd="truthval" name="true"/>
+     </OMA>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+
+  <assertion id="not-prop-1" type="lemma">
+   <CMP><OMOBJ><OMA xref="not-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="not-prop-1.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="not"/>
+	<OMA>
+	 <OMS cd="skl0" name="not"/>
+	 <OMV name="x"/>
+	</OMA>
+       </OMA>
+       <OMV name="x"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+
+  <symbol id="and">
+   <CMP> 
+    This symbol represents the logical and function which is an n-ary
+    function taking boolean arguments and returning a boolean value. It
+    is true if all arguments are true or false otherwise. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="and"/>
+      <OMA>
+       <OMS cd="truth-tables" name="ttargs"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+   </CMP>
+   <commonname>and</commonname>
+   <type system="simpletypes">
+    <OMOBJ>
+     <OMA>
+      <OMS name="funtype" cd="simpletypes"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+     </OMA>
+    </OMOBJ>
+   </type>
+  </symbol>
+  
+  <presentation id="pr-and" for="and" parent="OMA" fixity="assoc" precedence="500">
+   <use  format="TeX">{\wedge}</use>
+   <use  format="html|pmml">&#x02227;</use>
+   <use format="pvs"> AND </use>
+  </presentation>
+  <presentation for="and">
+   <use format="TeX">{\wedge}</use>
+   <use format="html|pmml">&#x02227;</use>
+   <use format="pvs"> AND </use>
+  </presentation>
+  <assertion id="and-prop-1" type="lemma">
+   <CMP>
+    <OMOBJ><OMA xref="and-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR>
+       <OMV name="x"/>
+      </OMBVAR>
+      <OMA id="and-prop-1.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="and"/>
+	<OMV name="x"/>
+	<OMA>
+	 <OMS cd="skl0" name="not"/>
+	 <OMV name="x"/>
+	</OMA>
+       </OMA>
+       <OMS cd="truthval" name="false"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+  
+  <symbol id="xor">
+   <CMP> 
+    This symbol represents the logical xor function which is an n-ary
+    function taking boolean arguments and returning a boolean
+    value. It is true if there are an odd number of true arguments or
+    false otherwise. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="xor"/>
+      <OMA>
+       <OMS cd="truth-tables" name="ttargs"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+   </CMP>
+   <commonname>xor</commonname>
+   <type system="simpletypes">
+    <OMOBJ>
+     <OMA>
+      <OMS name="funtype" cd="simpletypes"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+     </OMA>
+    </OMOBJ>
+   </type>
+  </symbol>
+  
+  <presentation id="pr-xor" for="xor" parent="OMA" fixity="assoc" precedence="500">
+   <use  format="default">!</use>
+  </presentation>
+  <presentation for="xor">
+   <use  format="default">!</use>
+  </presentation>
+  <assertion id="xor-prop-1" type="lemma">
+   <CMP>
+    <OMOBJ><OMA xref="xor-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR>
+       <OMV name="x"/>
+      </OMBVAR>
+      <OMA id="xor-prop-1.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="xor"/>
+	<OMV name="x"/>
+	<OMV name="x"/>
+       </OMA>
+       <OMS cd="truthval" name="false"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+  
+  <assertion id="xor-prop-3" type="lemma">
+   <CMP><OMOBJ><OMA xref="xor-prop-3.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="xor-prop-3.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="xor"/>
+	<OMV name="x"/>
+	<OMA><OMS cd="skl0" name="not"/><OMV name="x"/></OMA>
+       </OMA>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+  
+  <symbol id="or">
+   <CMP> 
+    This symbol represents the logical or function which is an n-ary
+    function taking boolean arguments and returning a boolean value. It
+    is true if any of the arguments are true or false otherwise. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="or"/>
+      <OMA>
+       <OMS cd="truth-tables" name="ttargs"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+   </CMP>
+   <commonname>or</commonname>
+   <type system="simpletypes">
+    <OMOBJ>
+     <OMA>
+      <OMS name="funtype" cd="simpletypes"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+     </OMA>
+    </OMOBJ>
+   </type>
+  </symbol>
+  <presentation id="pr-or" for="or" parent="OMA" fixity="assoc" precedence="500">
+   <use  format="TeX">{\vee}</use>
+   <use  format="html|pmml">&#x02228;</use>
+   <use format="pvs"> OR </use>
+  </presentation>
+  <presentation for="or">
+   <use  format="TeX">{\vee}</use>
+   <use  format="html|pmml">&#x02228;</use>
+   <use format="pvs"> OR </use>
+  </presentation>
+
+<ignore comment="rework">  <axiom id="qnd">
+   <CMP>The axiom of the excluded fourth: <OMOBJ><OMA xref="tnd.1"/></OMOBJ> 
+     for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="tnd.1">
+       <OMS cd="skl0" name="or"/>
+       <OMV name="x"/>
+       <OMA><OMS cd="skl0" name="not"/><OMV name="x"/></OMA>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </axiom></ignore>
+
+  <assertion id="or-prop-1" type="lemma">
+   <CMP><OMOBJ><OMA xref="or-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="or-prop-1.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="or"/>
+	<OMV name="x"/>
+	<OMA><OMS cd="skl0" name="not"/><OMV name="x"/></OMA>
+       </OMA>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+
+  <assertion id="or-prop-3" type="lemma">
+   <CMP>
+    <OMOBJ><OMA xref="or-prop-3.1"/></OMOBJ> for all 
+    <OMOBJ><OMV name="a"/></OMOBJ> and <OMOBJ><OMV name="b"/></OMOBJ>.
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR>
+       <OMV name="a"/>
+       <OMV name="b"/>
+      </OMBVAR>
+      <OMA id="or-prop-3.1">
+       <OMS cd="skl0" name="eq"/>
+       <OMA>
+	<OMS cd="skl0" name="not"/>
+	<OMA>
+	 <OMS cd="skl0" name="and"/>
+	 <OMV name="a"/>
+	 <OMV name="b"/>
+	</OMA>
+       </OMA>
+       <OMA>
+	<OMS cd="skl0" name="or"/>
+	<OMA>
+	 <OMS cd="skl0" name="not"/>
+	 <OMV name="a"/>
+	</OMA>
+	<OMA>
+	 <OMS cd="skl0" name="not"/>
+	 <OMV name="b"/>
+	</OMA>
+       </OMA>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+
+  <symbol id="implies">
+   <CMP> 
+    This symbol represents the logical implies function which takes two
+    boolean expressions as arguments. It evaluates to false if the first
+    argument is true and the second argument is false, otherwise it
+    evaluates to true. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="implies"/>
+      <OMA>
+       <OMS cd="truth-tables" name="ttargs"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+    </CMP>
+   <commonname>implies</commonname>
+   <type system="simpletypes">
+    <OMOBJ>
+     <OMA>
+      <OMS name="funtype" cd="simpletypes"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+     </OMA>
+    </OMOBJ>
+   </type>
+  </symbol>
+
+  <presentation id="pr-implies" for="implies" parent="OMA" fixity="infix">
+   <use format="default">=&gt;</use>
+   <use  format="TeX">{\Rightarrow}</use>
+   <use  format="html|pmml">&#x021D2;</use>
+  </presentation>
+  <presentation for="implies">
+   <use format="default">=&gt;</use>
+   <use  format="TeX">{\Rightarrow}</use>
+   <use  format="html|pmml">&#x021D2;</use>
+  </presentation>
+
+  <assertion id="implies-prop-1" type="lemma">
+   <CMP><OMOBJ><OMA xref="implies-prop-1.1"/></OMOBJ> for all <OMOBJ><OMV name="X"/></OMOBJ>.</CMP>
+   <FMP>
+    <OMOBJ>
+     <OMBIND>
+      <OMS cd="skl0" name="forall"/>
+      <OMBVAR><OMV name="x"/></OMBVAR>
+      <OMA id="implies-prop-1.1">
+       <OMS cd="skl0" name="implies"/>
+       <OMS cd="truthval" name="false"/>
+       <OMV name="x"/>
+      </OMA>
+     </OMBIND>
+    </OMOBJ>
+   </FMP>
+  </assertion>
+  
+  <symbol id="equivalent">
+   <CMP> 
+    This symbol is used to show that two boolean expressions are logically 
+    equivalent, that is have the same boolean value for any inputs. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="equivalent"/>
+      <OMA>
+       <OMS cd="truth-tables" name="ttargs"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+   </CMP>
+   <commonname>equivalent</commonname>
+  </symbol>
+
+  <presentation id="pr-equivalent" for="equivalent" parent="OMA" fixity="assoc"
+		precedence="700">
+<!--   <use format="default">&lt;=&gt;</use> -->
+   <use  format="TeX">{\Leftrightarrow}</use>
+   <use  format="html|pmml">&#x02261;</use>
+  </presentation>
+  <presentation for="equivalent">
+<!--   <use format="default">&lt;=&gt;</use> -->
+   <use  format="TeX">{\Leftrightarrow}</use>
+   <use  format="html|pmml">&#x02261;</use>
+  </presentation>
+
+  <definition id="equivalent-def" for="equivalent">
+   <CMP> The condition <OMOBJ><OMA xref="equivalent-def.1"/></OMOBJ> is equivalent to the
+          condition that <OMOBJ><OMA xref="equivalent-def.2"/></OMOBJ>. 
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMA>
+      <OMS cd="skl0" name="equivalent"/>
+      <OMA id="equivalent-def.1">
+       <OMS cd="skl0" name="equivalent"/>
+       <OMV name="A"/>
+       <OMV name="B"/>
+      </OMA>
+      <OMA id="equivalent-def.2">
+       <OMS cd="skl0" name="and"/>
+       <OMA>
+	<OMS cd="skl0" name="implies"/>
+	<OMV name="A"/>
+	<OMV name="B"/>
+       </OMA>
+       <OMA>
+	<OMS cd="skl0" name="implies"/>
+	<OMV name="B"/>
+	<OMV name="A"/>
+       </OMA>
+      </OMA>
+     </OMA>
+    </OMOBJ>
+   </FMP>
+  </definition>
+
+  <symbol id="tf">
+    <CMP>The definedness connective; it is true, if it's argument is true or
+     false, it is false on undefined. Its truth table is 
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truth-tables" name="tt"/>
+      <OMS cd="skl0" name="tf"/>
+      <OMA><OMS cd="truth-tables" name="ttargs"/></OMA>
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="false"/>
+       <OMS cd="truthval" name="true"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="skl0" name="undefined"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>   
+      <OMA>
+       <OMS cd="truth-tables" name="ttrow"/>
+       <OMS cd="truthval" name="true"/>
+       <OMS cd="truthval" name="false"/>
+      </OMA>   
+     </OMA>
+    </OMOBJ>
+
+    </CMP>
+    <type system="simpletypes">
+    <OMOBJ>
+     <OMA>
+      <OMS name="funtype" cd="simpletypes"/>
+      <OMS cd="skl0" name="3bool"/>
+      <OMS cd="skl0" name="3bool"/>
+     </OMA>
+    </OMOBJ>
+   </type>
+  </symbol>
+
+    <symbol id="forall">
+     <CMP> 
+      This symbol is the binder symbol for the three-valued universal quantifier (for all) on
+      boolean values. 
+     </CMP>
+      <commonname>forall</commonname>
+    </symbol>
+    <presentation id="pr-forall" for="forall">
+      <use  format="TeX">{\forall}</use>
+      <use  format="html|pmml">&#x02200;</use>
+      <use format="pvs">FORALL</use>
+    </presentation>
+    
+    <symbol id="exists">
+     <CMP> 
+      This symbol is the binder symbol for the three-valued existential quantifier (there exists) on
+      boolean values. 
+     </CMP>
+     <commonname>exists</commonname>
+    </symbol>
+    <presentation id="pr-exists" for="exists">
+      <use  format="TeX">{\exists}</use>
+      <use  format="html|pmml">&#x02203;</use>
+      <use format="pvs">EXISTS</use>
+    </presentation>
+    
+ </theory>
+</omdoc>

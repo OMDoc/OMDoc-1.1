@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="onguide.omdoc">
+ <metadata>
+  <Title>The Style Guide as an OMDoc Example</Title>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Date action="created">2002-02-11T0703</Date>
+  <Description>
+   A discussion of the style guide for OMDoc as an example of an OMDoc text about
+   formats. We use it to discuss the basic structure of OMDoc documents.
+  </Description>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+
+<omgroup id="introduction">
+ <metadata>
+  <Title>Introduction</Title>
+ </metadata>
+ <omtext id="intro.1">
+  <CMP>
+   We will use the style guide itself for a discussion of the basic structure of
+ <with style="acronym">OMDoc</with> documents. 
+  </CMP>
+ </omtext>
+</omgroup>
+
+<ignore type="ednote">need to make the right crossreferences</ignore>
+<omgroup id="explanation" type="enumeration">
+ <omtext id="ex.1">
+  <CMP>The <with style="acronym">xml</with> declaration.</CMP>
+ </omtext>
+
+ <omtext id="top-level.ex.2">
+  <CMP>The document type declaration.</CMP>
+ </omtext>
+ 
+ <omtext id="top-level.ex.3">
+  <CMP>
+   The root element of the document, it must be <with
+    style="omdoc-element">omdoc</with> and it must have an <with
+    style="omdoc-attribute">id</with> attribute. Its value can be any string, but
+    should not contain ``:'' (this is reserved for namespaces in <with
+    style="acronym">xml</with>.<ignore type="ednote">continue</ignore>
+  </CMP>
+ </omtext>
+
+ <omtext id="top-level.ex.4">
+  <CMP>
+    
+  </CMP>
+ </omtext>
+</omgroup>
+
+</omdoc>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<!DOCTYPE omdoc SYSTEM "../../../../dtd/omdoc.dtd">
+
+<omdoc id="nml-catalogue">
+ <metadata>
+  <Title>A Catalogue for Halbgruppen und Automaten</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>2000-09-29</Date>
+  <Description> 
+    This OMDoc file  is a catalogue for Halbgruppen und Auomtaten
+  </Description>
+</metadata>
+
+<catalogue>
+  <loc theory="wtt" omdoc="../../core/wtt.omdoc"/>
+  <loc theory="simpletypes" omdoc="../../../../examples/logics/simpletypes.omdoc"/>
+  <loc theory="arith1" omdoc="../../../../examples/omstd/arith1.omdoc"/>
+  <loc theory="relation1" omdoc="../../../../examples/omstd/relation1.omdoc"/>
+  <loc theory="set1" omdoc="../../../../examples/omstd/set1.omdoc"/>
+  <loc theory="setname1" omdoc="../../../../examples/omstd/setname1.omdoc"/>
+  <loc theory="limit1" omdoc="../../../../examples/omstd/limit1.omdoc"/>
+  <loc theory="fns1" omdoc="../../../../examples/omstd/fns1.omdoc"/>
+  <loc theory="ind" omdoc="../../../../examples/logics/ind.omdoc"/>
+</catalogue>
+</omdoc>

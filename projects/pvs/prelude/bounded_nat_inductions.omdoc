@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bounded_nat_inductions.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="bounded_nat_inductions-parameters">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56983" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56984" for="bounded_nat_inductions" pto="pvs" pto-version="3.0" replaces="bounded_nat_inductions-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bounded_nat_inductions
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bounded_nat_inductions_test">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56985" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bounded_nat_inductions-import-parameters" from="bounded_nat_inductions-parameters"/>
+
+
+
+    <assertion id="upto_induction_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;="/>
+            <OMI>0</OMI>
+            <OMS cd="bounded_nat_inductions" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upto_induction_TCC1-1" for="upto_induction_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="upto_induction_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pt"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="pt"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jt"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="jt"/>
+                      <OMS cd="bounded_nat_inductions" name="m"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pt"/>
+                      <OMV name="jt"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;="/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="jt"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_nat_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upto_induction_TCC2-1" for="upto_induction_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="upto_induction_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pt"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="pt"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jt"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="pt"/>
+                      <OMV name="jt"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="jt"/>
+                      <OMS cd="bounded_nat_inductions" name="m"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;="/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="jt"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_nat_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upto_induction_TCC3-1" for="upto_induction_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="upto_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pt"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="pt"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="upto"/>
+                          <OMS cd="bounded_nat_inductions" name="m"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="jt"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="jt"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pt"/>
+                        <OMV name="jt"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pt"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="jt"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jt"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pt"/>
+                  <OMV name="jt"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upto_induction-1" for="upto_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA nat_induction)
+   (( (INST -1 lambda (n:nat): n <= m IMPLIES pt!1(n))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -1 jt!1) ((1 (ASSERT) NIL NIL)) NIL)
+          (2 (SKOSIMP*) ((2 (INST -4 j!1) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="UPTO_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pt"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jt"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="naturalnumbers" name="upto"/>
+                            <OMS cd="bounded_nat_inductions" name="m"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="kt"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="kt"/>
+                        <OMV name="jt"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pt"/>
+                        <OMV name="kt"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="pt"/>
+                    <OMV name="jt"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jt"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pt"/>
+                  <OMV name="jt"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="UPTO_induction-1" for="UPTO_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA NAT_induction)
+   (( (INST -1 lambda (n:nat): n <= m IMPLIES pt!1(n))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -1 jt!1) ((1 (ASSERT) NIL NIL)) NIL)
+          (2 (SKOSIMP*)
+           ((2 (INST -3 j!1)
+             ((2 (ASSERT) ((2 (SKOSIMP*) ((2 (INST -1 kt!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+
+
+    <assertion id="below_induction_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="IMPLIES"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMS cd="bounded_nat_inductions" name="m"/>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMI>0</OMI>
+              <OMS cd="bounded_nat_inductions" name="m"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="below_induction_TCC1-1" for="below_induction_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="below_induction_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pb"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;"/>
+                  <OMS cd="bounded_nat_inductions" name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMV name="pb"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jb"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="jb"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pb"/>
+                      <OMV name="jb"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="jb"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_nat_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="below_induction_TCC2-1" for="below_induction_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="below_induction_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pb"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;"/>
+                  <OMS cd="bounded_nat_inductions" name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMV name="pb"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jb"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="pb"/>
+                      <OMV name="jb"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="jb"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="jb"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMS cd="bounded_nat_inductions" name="m"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="below_induction_TCC3-1" for="below_induction_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="below_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pb"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="reals" name="&gt;"/>
+                    <OMS cd="bounded_nat_inductions" name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                  <OMA>
+                    <OMV name="pb"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="below"/>
+                          <OMS cd="bounded_nat_inductions" name="m"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="jb"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="jb"/>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMS cd="bounded_nat_inductions" name="m"/>
+                          <OMI>1</OMI>
+                        </OMA>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pb"/>
+                        <OMV name="jb"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMV name="pb"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="jb"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jb"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pb"/>
+                  <OMV name="jb"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="below_induction-1" for="below_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA nat_induction)
+   (( (INST -1 lambda (n:nat): n < m IMPLIES pb!1(n))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -2 jb!1) ((1 (ASSERT) NIL NIL)) NIL) (2 (ASSERT) NIL NIL) (3 (ASSERT) NIL NIL)
+          (4 (SKOSIMP*) ((4 (INST -4 j!1) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL)) NIL)
+          (5 (ASSERT) NIL NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="BELOW_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="pb"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jb"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="naturalnumbers" name="below"/>
+                            <OMS cd="bounded_nat_inductions" name="m"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="kb"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="kb"/>
+                        <OMV name="jb"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="pb"/>
+                        <OMV name="kb"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="pb"/>
+                    <OMV name="jb"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bounded_nat_inductions" name="m"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="jb"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="pb"/>
+                  <OMV name="jb"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="BELOW_induction-1" for="BELOW_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (LEMMA NAT_induction)
+   (( (INST -1 lambda (n:nat): n < m IMPLIES pb!1(n))
+     (( (BETA)
+       (( (PROP)
+         ((1 (INST -1 jb!1) ((1 (ASSERT) NIL NIL)) NIL)
+          (2 (SKOSIMP*)
+           ((2 (INST -3 j!1)
+             ((2 (ASSERT) ((2 (SKOSIMP*) ((2 (INST -1 kb!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

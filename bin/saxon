@@ -1,0 +1,18 @@
+#!/bin/tcsh -f
+
+# find the path of here
+set command=`which $0`
+if ( $command == "" ) then
+	set command="$0"
+endif
+set pathToBin="`dirname $command`"
+# echo $pathToBin
+# set absPathToBin=`$pathToBin/getActiveMathHome`
+# echo absPathToBin=$absPathToBin
+
+
+setenv CLASSPATH $pathToBin/../thirdParty/saxon/saxon.jar
+# echo $CLASSPATH
+# echo invoking java com.icl.saxon.StyleSheet $argv[*]
+
+java com.icl.saxon.StyleSheet $argv[*]

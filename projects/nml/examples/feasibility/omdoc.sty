@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{omdoc}[2000/10/26]
+\usepackage{theorem,url,hyperref}
+
+\def\amp{&}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorems and related stuff, such that in Definitions and related stuff there is no italic font
+% These macros can handle the optional arguments of definitions and remarks.
+% March 1995
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newwrite\@hintfile\newwrite\@solutionfile
+% \immediate\openout\@hintfile=\jobname-hints.tex
+% \immediate\openout\@solutionfile=\jobname-solutions.tex
+% \newenvironment{hint}[1]{}{}%
+% %{[Hint(\ref{hint:#1}; p.~\pageref{hint:#1})]\writeout\bgroup\begin{Hint}}%
+% %{\writeout{\end{Hint}\egroup}}
+% \newenvironment{Hint}[1]%
+% {\begin{Hintthm}\label{hint:#1}}%
+% {\end{Hintthm}}
+% \newenvironment{solution}[1]{}{}%
+% %{[Solution(\ref{sol:#1}; p.~\pageref{sol:#1})]\writeout\bgroup{\begin{Hint}}%
+% %{\end{Hint}\egroup}}
+% \newenvironment{Solution}[1]%
+% {\begin{Hintthm}\label{sol:#1}}%
+% {\end{Hintthm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The symbols and their positioning rules for the end of proofs in the proof environment
+
+\def\kasten{\hfil\null\nobreak\hfill
+            \hbox{\vrule\vbox{\hrule width 6 pt\vskip 6pt\hrule}\vrule}
+            \par\smallskip}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% environment for the rsmatter attributes
+\newenvironment{Introduction}{\paragraph{Introduction}}{\par}
+\newenvironment{introduction}{\paragraph{Introduction}}{\par}
+\newenvironment{linkage}{}{}
+\newenvironment{elaboration}{\begin{Remark}}{\end{Remark}}
+
+\def\om@definition{definition}
+\def\om@assertion{assertion}
+\def\om@symbol{symbol}
+\def\om@example{example}
+\def\om@proof{proof}
+\def\om@axiom{axiom}
+\newenvironment{omdocenv}[2]%
+{\gdef\om@arg{#1}%
+\ifx\om@arg\om@definition\begin{rmenv}{{#2}}\fi%
+\ifx\om@arg\om@assertion\begin{emenv}{{#2}}\fi%
+\ifx\om@arg\om@symbol\begin{rmenv}{{#2}}\fi%
+\ifx\om@arg\om@example\begin{rmenv}{{#2}}\fi%
+\ifx\om@arg\om@proof\begin{rmenv}{{#2}}\fi%
+\ifx\om@arg\om@axiom\begin{rmenv}{{#2}}\fi}%
+{\ifx\om@arg\om@definition\end{rmenv}\fi%
+\ifx\om@arg\om@assertion\end{emenv}\fi%
+\ifx\om@arg\om@symbol\end{rmenv}\fi%
+\ifx\om@arg\om@example\end{rmenv}\fi%
+\ifx\om@arg\om@proof\end{rmenv}\fi%
+\ifx\om@arg\om@axiom\end{rmenv}\fi}
+\newcounter{env}
+\newenvironment{rmenv}[1]%
+{\par\noindent{#1}\stepcounter{env} \arabic{env} }{\par}
+\newenvironment{emenv}[1]%
+{\par\noindent{#1}\stepcounter{env} \arabic{env} \bgroup\em}{\egroup\par}
+\newenvironment{proof}[1]{\par\noindent{#1}}{\kasten}
+
+\def\lessthan{<}
+\def\greaterthan{>}
+
+

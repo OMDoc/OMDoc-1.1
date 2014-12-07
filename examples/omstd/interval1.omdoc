@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="interval1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary interval1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/interval1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds symbols which describe both discrete and continuous
+    1-dimensional intervals (with open/closed end points).
+  </Description>
+</metadata>
+
+<theory id="interval1">
+  <imports id="interval1-imports-sts" from="sts.omdoc#sts"/>
+  <imports id="interval1-imports-setname1" from="setname1.omdoc#setname1"/>
+
+<symbol id="integer_interval">
+  <CMP> 
+    A symbol to denote a discrete 1 dimensional interval from the first
+    argument to the second (inclusive), where the discretisation occurs at unit 
+    intervals. The arguments are the start and the end points of the interval
+    in that order.
+  </CMP>
+  <commonname>integer interval</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMV name="IntegerInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-integer_interval" for="integer_interval" parent="OMA" fixity="infix">
+  <use  format="html" lbrack="{" rbrack="}" crossref-symbol="all">,...,</use>
+  <use  format="TeX" lbrack="\{" rbrack="\}" crossref-symbol="all">,\ldots,</use>
+  <use  format="pmml" lbrack="{" rbrack="}" crossref-symbol="all">,...,</use>
+</presentation>
+<example id="integer_interval-ex-1" type="for" for="integer_interval">
+  <CMP>The integer interval 1, 2, ..., 10.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="integer_interval"/>
+      <OMI> 1 </OMI>
+      <OMI> 10 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="interval">
+  <CMP> 
+    A symbol to denote a continuous 1-dimensional interval without any
+    information about the character of the end points (used in definite 
+    integration). The arguments are the start and the end points of the interval
+    in that order.
+  </CMP>
+  <commonname>interval</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="R" cd="setname1"/>
+	<OMS name="R" cd="setname1"/>
+	<OMV name="RealInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-interval" for="interval" parent="OMA" lbrack="[" rbrack="]">
+  <use  format="html" crossref-symbol="all">,</use>
+  <use  format="TeX" crossref-symbol="all">,</use>
+  <use  format="pmml" crossref-symbol="all">,</use>
+</presentation>
+<example id="interval-ex-1" type="for" for="interval">
+  <CMP>The interval 1.0, ..., 10.0.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="interval"/>
+      <OMF dec="1.0"/>
+      <OMF dec="10.0"/>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="interval_oo">
+  <CMP> 
+    A symbol to denote a continuous 1-dimensional interval with both end
+    points excluded from the interval. The arguments are the start and the end 
+    points of the interval in that order.
+  </CMP>
+  <commonname>interval oo</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="R" cd="setname1"/>
+	<OMS name="R" cd="setname1"/>
+	<OMV name="RealInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-interval_oo" for="interval_oo" parent="OMA" lbrack="]" rbrack="[">
+  <use  format="html" crossref-symbol="all">,</use>
+  <use  format="TeX" crossref-symbol="all">,</use>
+  <use  format="pmml" crossref-symbol="all">,</use>
+</presentation>
+<example id="interval_oo-ex-1" type="for" for="interval_oo">
+  <CMP>The continuous open interval (1,10).</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="interval_oo"/>
+      <OMI> 1 </OMI>
+      <OMI> 10 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="interval_cc">
+  <CMP> 
+    A symbol to denote a continuous 1-dimensional interval with both end
+    points included in the interval. The arguments are the start and the
+    end points of the interval in that order.
+  </CMP>
+  <commonname>interval cc</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="R" cd="setname1"/>
+	<OMS name="R" cd="setname1"/>
+	<OMV name="RealInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-interval_cc" for="interval_cc" parent="OMA" lbrack="[" rbrack="]">
+  <use  format="html" crossref-symbol="all">,</use>
+  <use  format="TeX" crossref-symbol="all">,</use>
+  <use  format="pmml" crossref-symbol="all">,</use>
+</presentation>
+<example id="interval_cc-ex-1" type="for" for="interval_cc">
+  <CMP>The continuous closed interval [1,10].</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="interval_cc"/>
+      <OMI> 1 </OMI>
+      <OMI> 10 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="interval_oc">
+  <CMP> 
+    A symbol to denote a continuous 1-dimensional interval with the first
+    point excluded from the interval, but the last included. The arguments
+    are the start and the end points of the interval in that order.
+  </CMP>
+  <commonname>interval oc</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="R" cd="setname1"/>
+	<OMS name="R" cd="setname1"/>
+	<OMV name="RealInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-interval_oc" for="interval_oc" parent="OMA" lbrack="]" rbrack="]">
+  <use  format="html" crossref-symbol="all">,</use>
+  <use  format="TeX" crossref-symbol="all">,</use>
+  <use  format="pmml" crossref-symbol="all">,</use>
+</presentation>
+<example id="interval_oc-ex-1" type="for" for="interval_oc">
+  <CMP>
+    The continuous interval open at the lower bound and closed at the higher 
+    bound (1,10].</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="interval_oc"/>
+      <OMI> 1 </OMI>
+      <OMI> 10 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="interval_co">
+  <CMP> 
+    A symbol to denote a continuous 1-dimensional interval with the first
+    point included in the interval, but the last excluded. The arguments
+    are the start and the end points of the interval in that order.
+  </CMP>
+  <commonname>interval co</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="R" cd="setname1"/>
+	<OMS name="R" cd="setname1"/>
+	<OMV name="RealInterval"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-interval_co" for="interval_co" parent="OMA" lbrack="[" rbrack="[">
+  <use  format="html" crossref-symbol="all">,</use>
+  <use  format="TeX" crossref-symbol="all">,</use>
+  <use  format="pmml" crossref-symbol="all">,</use>
+</presentation>
+<example id="interval_co-ex-1" type="for" for="interval_co">
+  <CMP>The continuous interval closed at the lower bound and open at the higher 
+    bound [1,10).</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="interval1" name="interval_co"/>
+      <OMI> 1 </OMI>
+      <OMI> 10 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

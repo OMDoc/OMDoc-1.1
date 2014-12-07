@@ -1,0 +1,128 @@
+\begin{theindex}
+
+  \item {\tt  {-//OMDoc//DTD OMDoc V1.1//EN}}, \hyperpage{5}
+  \item {\tt  {\%cfm;}}, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {alernative}} (element), \hyperpage{6}
+  \item {\tt  {assertion}} (element), \hyperpage{6}
+  \item {\tt  {axiom-inclusion}} (element), \hyperpage{3}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item cascading style sheet, \hyperpage{4}
+  \item {\tt  {class}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{4}
+  \item {\tt  {CMP}} (element), \hyperpage{2}, \hyperpage{6}
+  \item {\tt  {comment}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{6}
+  \item {\tt  {constructor}} (element), \hyperpage{2}, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {decomposition}} (element), \hyperpage{3}, \hyperpage{5}
+  \item {\tt  {definition}} (element), \hyperpage{2}, \hyperpage{6}
+
+  \indexspace
+
+  \item {\tt  {en}}, \hyperpage{3}, \hyperpage{5}
+  \item {\tt  {exercise}} (element), \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {FMP}} (element), \hyperpage{2}, \hyperpage{5}
+  \item FMP group
+    \subitem multi-logic, \hyperpage{2}
+  \item {\tt  {for}} attribute in
+    \subitem {\tt  {exercise}}, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {id}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{4}
+    \subitem {\tt  {om:*}}, \hyperpage{1}
+  \item {\tt  {imports}} (element), \hyperpage{3}
+
+  \indexspace
+
+  \item {\tt  {kind}} attribute in
+    \subitem {\tt  {symbol}}, \hyperpage{2}
+
+  \indexspace
+
+  \item {\tt  {logic}} attribute in
+    \subitem {\tt  {FMP}}, \hyperpage{2}
+
+  \indexspace
+
+  \item multi-logic {\tt  {FMP}} group, \hyperpage{2}
+
+  \indexspace
+
+  \item {\tt  {narrative}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{3}
+
+  \indexspace
+
+  \item {\tt  {obj}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{2}, \hyperpage{6}
+  \item {\tt  {omdoc}} (element), \hyperpage{6}
+  \item {\tt  {OMOBJ}} (element), \hyperpage{2}
+  \item {\tt  {OMS}} (element), \hyperpage{4}
+
+  \indexspace
+
+  \item {\tt  {precedence}} attribute in
+    \subitem {\tt  {presentation}}, \hyperpage{5}
+  \item {\tt  {presentation}} (element), \hyperpage{5}
+  \item {\tt  {proof}} (element), \hyperpage{3}, \hyperpage{5, 6}
+  \item {\tt  {proofobject}} (element), \hyperpage{3}, \hyperpage{6}
+  \item {\tt  {proofobjects}} (element), \hyperpage{5}
+  \item public identifier, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {recognizer}} (element), \hyperpage{2}, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {simple}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{2}
+  \item {\tt  {solution}} (element), \hyperpage{3}, \hyperpage{5}
+  \item {\tt  {sort}} value for attribue 
+    \subitem {\tt  {kind}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{2}
+  \item {\tt  {sortdef}} (element), \hyperpage{2}, \hyperpage{5}
+  \item {\tt  {style}} (element), \hyperpage{3}, \hyperpage{5}
+  \item {\tt  {style}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{4}
+  \item {\tt  {symbol}} (element), \hyperpage{2}
+  \item {\tt  {system}} attribute in
+    \subitem {\tt  {use}}, \hyperpage{4}
+
+  \indexspace
+
+  \item {\tt  {theory}} (element), \hyperpage{3}, \hyperpage{5}
+  \item {\tt  {theory-inclusion}} (element), \hyperpage{3}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {use}} (element), \hyperpage{3}, \hyperpage{5}
+
+  \indexspace
+
+  \item {\tt  {xml:lang}} attribute in
+    \subitem {\tt  {use, xslt, style}}, \hyperpage{5}
+    \subitem {\tt  {use,xslt,style}}, \hyperpage{3}
+  \item {\tt  {xref}} attribute in
+    \subitem {\tt  {om:*}}, \hyperpage{1}
+  \item {\tt  {xslt}} (element), \hyperpage{3--5}
+
+\end{theindex}

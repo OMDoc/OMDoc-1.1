@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="error-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary error.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2000-03-21 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/moreerrors.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description/>
+</metadata>
+
+<theory id="error">
+  <symbol id="encodingError">
+    <CMP>
+      This symbol represents the error which is returned when an application
+      detects a lexical or syntactic error. It should have one argument
+      which is a string, which should explain the error that occurred.
+    </CMP>
+    <commonname>encodingError</commonname>
+  </symbol>
+  <symbol id="algorithm">
+    <CMP>
+      This symbol represents the error which is returned when an application
+      raises an error due to algorithmic restrictions of the
+      implementations. This includes operations not implemented or partially
+      implemented, divisions by zero and other domain errors. It will have
+      at least one argument, which is a string describing the problem. It
+      may have a second argument which is relevant to the error.
+    </CMP>
+    <commonname>algorithm</commonname>
+  </symbol>
+  <symbol id="limitation">
+    <CMP>
+      This symbol represents the error which is returned when an application
+      reads an error caused by the limitations of an implementation when
+      dealing with OpenMath objects such as limits on the size of objects or
+      on the kind of objects manipulated. This can include limits on the
+      size of a bytearray or integer, a limit on the number of arguments of
+      an application or the inability to deal with Unicode characters
+      outside ISO latin 1. It will have at least one argument, which is a
+      string describing the problem. It may have a second argument which is
+      relevant to the error.
+    </CMP>
+    <commonname>limitation</commonname>
+  </symbol>
+  <symbol id="unexpected">
+    <CMP>
+      This symbol represents the error which is returned when an application
+      reads an error caused by an unexpected problem. It will have
+      at least one argument, which is a string describing the problem. It
+      may have a second argument which is relevant to the error.
+    </CMP>
+    <commonname>unexpected</commonname>
+  </symbol>
+  <symbol id="asynchronousError">
+    <CMP>
+      This symbol represents the error which is returned when an application
+      encounters some asynchronous error, for example if a limit in memory
+      has been reached, or an error has occurred in some system call (I/O
+      error, disk full, machine down). It should have one argument, which is
+      a string describing the problem.
+    </CMP>
+    <commonname>asynchronousError</commonname>
+  </symbol>
+</theory>
+</omdoc>

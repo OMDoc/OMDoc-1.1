@@ -1,0 +1,165 @@
+body {margin:5mm 10mm 5mm 10mm;background-image:url(../pics/backmath.gif);
+      background-color:#c6ddf8; /*#afb49f;*/ /*ddd9ad; */
+      color:black;font-family:helvetica;
+      font-size:normal;
+     }
+
+a.special:visited {color:black;text-decoration:none;}
+a.special:link {color:black;text-decoration:none;}
+a.special:active {color:black;text-decoration:none;}
+a.special:hover {color:black;text-decoration:none;}
+
+a:hover {color:#151b7e;}
+a:visited {color:black;}
+a:link {color:#151b7e;}
+
+td {font-size:normal;font-family:helvetica;}
+
+h2 {color:blue;}
+div{font-size:normal;}
+
+div.assertion{font-family:helvetica;
+       background-color:#e5e5e4; /*#6f7a63; e9c24f;*/
+       font-size:normal;
+       border-width:2pt;
+       border-style:outset;
+       list-style-type:disc;
+       border-color:black;
+       padding:10pt;
+       width:95%;
+}
+div.false-conjecture{font-family:helvetica;
+       background-color:#CC3300; /*#6f7a63; e9c24f;*/
+       font-size:normal;
+       border-width:2pt;
+       border-style:outset;
+       list-style-type:disc;
+       border-color:black;
+       padding:10pt;
+       width:95%;
+}
+
+div.definition{font-family:helvetica;
+       background-color:#e5e5e1;; /*#6f7a63;*/ /*#e9b44f;*/
+       font-size:normal;
+       border-width:2pt;
+       border-style:outset;
+       border-color:#222222;
+       padding:10pt;
+       width:100%;
+       align:center;
+       color:black;
+}
+
+div.normaltext{font-family:helvetica;
+       background-color:#93a8f8; /*#6f7a63;*/ /*#e9b44f;*/
+       font-size:normal;
+       border-width:2pt;
+       border-style:outset;
+       border-color:#222222;
+       padding:10pt;
+       width:95%;
+       align:center;
+       color:black;
+/*
+       border-width:0pt;
+       padding:10pt;
+       width:95%;
+       align:center;
+       color:black; */
+}
+
+div.axiom{font-family:helvetica;
+       background-color:#93a8f8;
+       border-width:2pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:95%;
+       align:center;
+       color:black;
+}
+
+div.symbol{font-family:helvetica;
+       background-color:#93a8f8;
+       border-width:2pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:92%;
+       align:center;
+       color:black;
+}
+
+
+div.example{font-family:helvetica;
+       background-color:#7289f0; /*f9de50;*/
+       border-width:2pt;
+       margin-left:30pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:88%;
+       align:center;
+       color:black;
+}
+
+div.counterexample{font-family:helvetica;
+       background-color:#CC3300; /*f9de50;*/
+       border-width:2pt;
+       margin-left:30pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:88%;
+       align:center;
+       color:black;
+}
+
+div.text{font-family:helvetica;
+       background-color:#93a8f8;
+       margin-left:30pt;
+       border-width:2pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:95%;
+       align:center;
+       color:black;
+}
+
+div.proof{font-family:helvetica;
+       background-color:#90b3fc;
+       border-width:2pt;
+       margin-left:30pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:88%;
+       align:center;
+       color:black;
+}
+
+
+div.exercise{font-family:helvetica;
+       background-color:#5a7ffc; /*#ffa964;*/
+       border-width:2pt;
+       margin-left:30pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:95%;
+       align:center;
+       color:black;
+}
+
+div.code{font-family:courier;
+       background-color:#ffa964;
+       border-width:2pt;
+       border-style:inset;
+       border-color:#222222;
+       padding:20pt;
+       width:60%;
+       align:center;
+       color:black;
+}

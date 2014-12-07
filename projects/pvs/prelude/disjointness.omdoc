@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="disjointness.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:39
+    </Date>
+  </metadata>
+  <theory id="disjointness_test">
+
+    <assertion id="pairwise_disjoint?_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="boolean"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="l"/>
+                  <OMA>
+                    <OMS cd="list_adt" name="cons"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="every"/>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="booleans" name="bool"/>
+                          </OMATP>
+                          <OMV name="z"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="booleans" name="NOT"/>
+                        <OMA>
+                          <OMS cd="booleans" name="AND"/>
+                          <OMV name="x"/>
+                          <OMV name="z"/>
+                        </OMA>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="pairwise_disjoint?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="booleans" name="boolean"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="pairwise_disjoint?-def" for="pairwise_disjoint?" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="disjointness" name="pairwise_disjoint?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="l"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMS cd="booleans" name="TRUE"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="booleans" name="boolean"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="list_adt" name="every"/>
+                          <OMBIND>
+                            <OMS cd="pvs" name="lambda"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="booleans" name="bool"/>
+                                </OMATP>
+                                <OMV name="z"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMS cd="booleans" name="NOT"/>
+                              <OMA>
+                                <OMS cd="booleans" name="AND"/>
+                                <OMV name="x"/>
+                                <OMV name="z"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="disjointness" name="pairwise_disjoint?"/>
+                        <OMV name="y"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_props" name="length"/>
+          <OMV name="l"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+  </theory>
+</omdoc>

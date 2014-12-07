@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+<omdoc id="simpletypes-omdoc" catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Simple Types</Title>
+   <Creator role="aut">Michael Kohlhase</Creator>
+   <Date>20020202</Date>
+   <Description>Simple ML-polymorphic types.</Description>
+  </metadata>
+  <catalogue/>
+
+  <omtext id="" type="introduction">
+   <CMP>We define the simple type discipline. This includes the classical 
+     base types for individuals and truth values, function types, and also record-
+     and tuple types. Furthermore, it includes simple type schemata, also known as
+     ML-polymorphism. 
+    </CMP>
+  </omtext>
+
+ <theory id="simpletypes">
+
+    <omtext id="CDComment12" type="introduction">
+     <CMP>Definition of type constructors</CMP>
+    </omtext>
+
+    <symbol id="funtype" kind="object" scope="global">
+    <CMP>The function type constructor.</CMP>
+   <commonname>funtype</commonname>
+   </symbol>
+      <presentation  for="funtype" parent="OMA">
+         <xslt format="html|pmml"><![CDATA[
+            <xsl:for-each select="*[position()!=last() and position() &gt; 1]">
+               <xsl:apply-templates select="."/>
+               <xsl:if test="position()!= last()"><xsl:text>,</xsl:text></xsl:if>
+            </xsl:for-each>
+            <xsl:text>&#x021A6;</xsl:text>
+            <xsl:apply-templates select="*[last()]"/>]]>
+         </xslt>
+         <xslt format="TeX"><![CDATA[
+            <xsl:for-each select="*[position()!=last() and position() &gt; 1]">
+               <xsl:apply-templates select="."/>
+               <xsl:if test="position()!= last()"><xsl:text>,</xsl:text></xsl:if>
+            </xsl:for-each>
+            <xsl:text>\rightarrow</xsl:text>
+            <xsl:text>{</xsl:text>
+            <xsl:apply-templates select="*[last()]"/>
+            <xsl:text>}</xsl:text>]]>
+         </xslt>
+      </presentation>
+
+      <example for="funtype" id="funtype-prop-1">
+         <CMP>
+          <OMOBJ>
+            <OMA>
+              <OMS cd="simpletypes" name="funtype"/>
+              <OMS cd="ind" name="ind"/>
+              <OMS cd="truthval" name="bool"/>
+             </OMA>
+            </OMOBJ> 
+           is a type. It encodes the type of unary predicates.
+         </CMP>
+      </example>
+
+      <symbol id="all-types" kind="object" scope="global">
+         <CMP> The universal type quantification operator. It is a binding
+           object that universally binds a list of type variables in a type. 
+         </CMP>
+         <commonname>all-types</commonname>
+      </symbol>
+ 
+    <presentation for="all-types" xref="pl1.omdoc#pr-forall"/>
+
+     <example for="all-types" id="all-types-prop-1">
+       <CMP>
+        <OMOBJ>
+          <OMBIND>
+	    <OMS cd="simpletypes" name="all-types"/>
+	    <OMBVAR><OMV name="a"/></OMBVAR>
+	    <OMA>
+	      <OMS cd="simpletypes" name="funtype"/>
+	      <OMV name="a"/>
+	      <OMV name="a"/>
+	      <OMS cd="truthval" name="bool"/>
+	    </OMA>
+	  </OMBIND>
+	</OMOBJ> is a well-formed type. It encodes the type of e.g. of the
+	equality relation.
+     </CMP>
+    </example>
+
+   <symbol id="type" kind="object" scope="global">
+     <CMP>The type attribute. It relates an object to its type in an attribuition.</CMP>
+     <commonname>type</commonname>
+   </symbol>
+
+   <presentation for="type" parent="OMATTR" lbrack="" rbrack="" fixity="postfix"> 
+     <use format="html" element="sub"/>
+     <use format="TeX" larg-group="{" rarg-group="}">_</use>
+   </presentation>
+
+<example for="all-types" id="all-types-prop-1">
+  <CMP>Here is a typed variable
+    <OMOBJ>
+     <OMATTR>
+      <OMATP>
+       <OMS cd="simpletypes" name="type"/>
+        <OMA>
+         <OMS cd="simpletypes" name="funtype"/>
+          <OMS cd="ind" name="ind"/>
+          <OMS cd="ind" name="ind"/>
+          <OMS cd="truthval" name="bool"/>
+        </OMA>
+       </OMATP>
+       <OMV name="X"/>
+      </OMATTR>
+     </OMOBJ>
+   </CMP>
+</example>
+
+<symbol id="recordtype">
+  <CMP>The record type constructor. It takes an even number of arguments. 
+    The even ones  are field names (currently they are OMS symbols in the
+  pseudo-theory 'record-field' and the odd ones their values.</CMP>
+</symbol>
+<presentation id="pr-recordtype" for="recordtype" parent="OMA">
+  <use format="pvs" lbrack="[# " rbrack=" #]"/>
+</presentation>
+
+
+<symbol id="tupletype">
+ <CMP>The tuple type constructor</CMP>
+</symbol>
+<presentation id="pr-tupletype" for="tupletype" parent="OMA">
+  <use format="pvs" lbrack="[" rbrack="]"/>
+</presentation>
+
+<symbol id="cotupletype">
+  <CMP>The co-tuple type constructor (useful for formalizing co-algebras).</CMP>
+</symbol>
+<presentation id="pr-cotupletype" for="cotupletype" parent="OMA">
+  <use format="pvs" lbrack="[ " rbrack=" ]" separator="+"/>
+</presentation>
+
+</theory>
+
+
+</omdoc>

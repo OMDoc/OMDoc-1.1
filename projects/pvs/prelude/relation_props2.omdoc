@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="relation_props2.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="relation_props2-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56758" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56759" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56760" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T4" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56761" for="NIL" pto="pvs" pto-version="3.0" replaces="T4">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56762" for="relation_props2" pto="pvs" pto-version="3.0" replaces="relation_props2-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory relation_props2
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="relation_props2_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56763" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56764" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56765" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T4" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56766" for="NIL" pto="pvs" pto-version="3.0" replaces="T4">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="relation_props2-import-parameters" from="relation_props2-parameters"/>
+
+
+
+    <assertion id="assoc" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R3"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="relation_props" name="O"/>
+                <OMA>
+                  <OMS cd="relation_props" name="O"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+                <OMV name="R3"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation_props" name="O"/>
+                <OMV name="R1"/>
+                <OMA>
+                  <OMS cd="relation_props" name="O"/>
+                  <OMV name="R2"/>
+                  <OMV name="R3"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="assoc-1" for="assoc" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (APPLY-EXTENSIONALITY)
+   (( (HIDE 2)
+     (( (EXPAND o)
+       (( (IFF)
+         (( (PROP)
+           ((1 (SKOSIMP)
+             ((1 (SKOSIMP)
+               ((1 (INST?) ((1 (ASSERT) ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+             NIL)
+            (2 (SKOSIMP*)
+             ((2 (INST?) ((2 (ASSERT) ((2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

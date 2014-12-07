@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="theory-collection-logics" catalogue="catalogue.omdoc">
+ <metadata>
+  <Title>The Logics Theory Collection</Title>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Date action="created">2002-02-20T0703</Date>
+  <Description>
+   A collection of OMDoc documents that define the most commonly used logics
+  </Description>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+
+<omgroup id="introduction">
+ <metadata><Title>Introduction</Title></metadata>
+ <omtext id="intro.1">
+  <CMP>
+   This theory collection makes available an interdependent collection of theories
+   that define logics. These logics are a foundation for the interoperability and
+   communication between reasoning services on <with
+   style="acronym">MathWeb</with>.
+  </CMP>
+ </omtext>
+</omgroup>
+
+<omgroup id="prop-log">
+ <metadata><Title>Propositional Logics</Title></metadata>
+ <omtext id="prop-log-intro">
+  <CMP>
+   Propositional logics are logics that abstract from the inner structure of
+   statements, and only study their interrelation in complex formulae built up
+   from propositional connectives.
+  </CMP>
+ </omtext>
+ <ref xref="truthval.omdoc#"/>
+ <ref xref="pl0.omdoc#"/>
+ <ref xref="skl0.omdoc#"/>
+</omgroup>
+
+<omgroup id="fol">
+ <metadata><Title>First-Order Logics</Title></metadata>
+ <omtext id="fol-intro">
+  <CMP>
+   First-order logics are logics that allow quantification over individuals. They
+   are usually untyped.
+  </CMP>
+ </omtext>
+
+ <ref xref="ind.omdoc#"/>
+ <ref xref="pl1.omdoc#"/>
+ <ref xref="undefined.omdoc#"/>
+ <ref xref="partial1.omdoc#"/>
+ <ref xref="skl1.omdoc#"/>
+</omgroup>
+
+<omgroup id="untyped">
+ <metadata><Title>Untyped Calculi</Title></metadata>
+ <omtext id="untyped-intro">
+  <CMP>
+   Untyped lambda calculus and other calculi with built-in notions of equality
+  </CMP>
+ </omtext>
+
+ <ref xref="substitution.omdoc#"/>
+ <ref xref="lambda-calc.omdoc#"/>
+ <ref xref="record-calc.omdoc#"/>
+</omgroup>
+
+<omgroup id="types">
+ <metadata><Title>Type Systems</Title></metadata>
+ <omtext id="pl0-intro">
+  <CMP>Type systems are basic building blocks of many logics.</CMP>
+ </omtext>
+
+ <ref xref="simpletypes.omdoc#"/>
+ <ref xref="deptypes.omdoc#"/>
+</omgroup>
+
+
+<omgroup id="typed-logics">
+ <metadata><Title>Typed Logics and Type Theories</Title></metadata>
+ <omtext id="typed-logics-intro">
+  <CMP>In this section we will introduce logics that use type systems to
+  categorize the basic building blocks.</CMP>
+ </omtext>
+
+ <ref xref="stlc.omdoc#"/>
+ <ref xref="sthol.omdoc#"/>
+ <ref xref="pf2hol.omdoc#"/>
+</omgroup>
+
+
+<omgroup id="systems">
+ <metadata><Title>Interface Logics of particular Systems</Title></metadata>
+ <omtext id="systems-intro">
+  <CMP>The following theories model the interface logics of particular
+  mathematical software systems. They provide this functionality mainly by
+  importing from the theories above, and only specify the ideosyncrasies of the
+  particular logics that defy the generalization in the hierarchy above.</CMP>
+ </omtext>
+
+<omtext id="disclaimer">
+  <CMP>The formalizations of systems are not ready yet</CMP>
+</omtext>
+<!-- <ref xref="pvs.omdoc#"/> -->
+</omgroup>
+
+</omdoc>

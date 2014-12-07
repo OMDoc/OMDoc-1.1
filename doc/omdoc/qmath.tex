@@ -1,0 +1,136 @@
+\ifpdf\section{QMath: An Authoring Tool for OMDoc}
+\else\section{{\qmath}: An Authoring Tool for {\omdoc}}\fi\label{sec:qmath}
+\begin{center}\large\sf Alberto Gonz\'alez Palomo\\
+\url{http://www.matracas.org}
+\end{center}
+
+{\qmath} is a batch processor that produces an {\omdoc} file from a plain Unicode
+text document. The purpose of {\qmath} is to allow fast writing of mathematical
+documents, using plain text and a straightforward syntax (like in computer algebra
+systems) for mathematical expressions .
+
+The ``Q'' was intended to mean ``quick'', since {\qmath} began in 1998 as an
+abbreviated notation for {\mathml}. The first version (0.1) just expanded the
+abbreviations to full {\mathml} element names, and added the extra markup such as
+{\tt{<mrow>}} and the like.  There have been many changes (and two complete
+rewrites) since then. You can find a more detailed history at
+{\url{http://www.matracas.org/qmath/history.html}}
+
+{\qmath} is very simple in its design: it just parses a text (UTF-8) file
+according to a user-definable table of symbols, and builds an XML document from
+that. The symbol definitions are grouped in files called ``contexts''. The idea is
+that when you declare a context, its file is loaded and from then on these symbol
+definitions take precedence over any previous one, thus setting the context for
+parsing of subsequent expressions.
+
+The text is split into ``paragraphs'', which are pieces of text separated by at
+least one empty line. Each paragraph can have a metadata section at the beginning.
+There are a variety of classes of paragraphs, which are identified by a name
+followed by a colon (``:''), optionally followed by an identifier which becomes
+the {\attribute{id}{*}} attribute of the generated {\omdoc} element. The text is
+put in a {\tt{<CMP>}} inside a container element which depends on the paragraph
+type. This can be anything allowed by {\omdoc}, such as {\tt{<assertion>}} ,
+{\tt{<axiom>}}, or the default {\tt{<omtext>}} if the paragraph doesn't have a
+{\qmath} paragraph type label. Inside the text, a mathematical expression is
+enclosed in dollar (``{\tt{\$}}'') signs.  Each such a section becomes an
+{\element{OMOBJ}} element in the output document.
+
+\begin{myfig}{qmathex}{A minimal {\qmath} document and its {\omdoc} result}\scriptsize
+\begin{boxedverbatim}
+QMATH 0.3.6
+:"Diary"
+:Winston Smith
+:1984-04-04
+:en
+
+Context: "Mathematics/Arithmetic"
+Context: "Mathematics/OMDoc"
+
+Theory:[<-thoughtcrime]
+
+:"Down with Big Brother"
+Freedom is the freedom to say $2+2=4$. 
+If that is granted, all else follows.
+\end{boxedverbatim}
+\quad
+\begin{tabular}[b]{|p{5.2cm}|}\hline
+From {\url{contexts/en/Mathematics/OpenMath/arith1.qmath}}:\\
+{\tt{Symbol: plus OP\_PLUS "arith1:plus"}}\\
+{\tt{Symbol: + OP\_PLUS "arith1:plus"}}\\
+{\tt{Symbol: sum APPLICATION "arith1:sum"}}\\
+{\tt{Symbol: \( \Sigma \) APPLICATION "arith1:sum"}}\\
+ $\cdots$\\\hline
+
+From {\url{contexts/en/Mathematics/OpenMath/relation1.qmath}}:\\
+{\tt{Symbol: = OP\_EQ "relation1:eq"}}\\
+{\tt{Symbol: neq OP\_EQ "relation1:neq"}}\\
+{\tt{Symbol: \ensuremath{¬}= OP\_EQ "relation1:neq"}}\\
+{\tt{Symbol: \( \neq \) OP\_EQ "relation1:neq"}}\\
+ $\cdots$\\\hline
+\end{tabular}
+\\\footnotesize
+\begin{boxedverbatim}
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN" 
+                       "http://www.mathweb.org/omdoc/omdoc.dtd" []>
+<omdoc lang='en'>
+ <metadata lang='en'>
+  <Title xmlns='http://purl.org/DC'>Diary</Title>
+  <Contributor xmlns='http://purl.org/DC' role='aut'>
+   Winston Smith
+  </Contributor>
+  <Date xmlns='http://purl.org/DC'>1984-04-04</Date>
+ </metadata>
+ <theory id='thoughtcrime'>
+  <omtext>
+   <metadata>
+    <Title xmlns='http://purl.org/DC'>Down with Big Brother</Title>
+   </metadata>
+   <CMP>
+    Freedom is the freedom to say 
+    <OMOBJ xmlns='http://www.openmath.org/OpenMath'>
+     <OMA>
+      <OMS cd='relation1' name='eq'/>
+      <OMA><OMS cd='arith1' name='plus'/><OMI>2</OMI><OMI>2</OMI></OMA> 
+      <OMI>4</OMI>
+     </OMA>
+    </OMOBJ>.
+    If that is granted, all else follows. 
+   </CMP>
+  </omtext>
+ </theory>
+</omdoc>
+\end{boxedverbatim}
+\end{myfig}
+
+{\Myfigref{qmathex}} shows a minimal {\qmath} document, and the {\omdoc} document
+generated from it.  The first line ("{\tt{QMATH 0.3.6}}") in the {\qmath} document
+is required for the parser to recognize the file. The lines beginning with
+``{\tt{:}}'' are metadata items: first the document title, then the author name
+(one line for each author), and finally the primary language for the document.
+This last item is required, as it sets the basic symbol set accordingly. For
+example, the ``{\tt{Context}}'' item of an English document is written
+``{\tt{Contexto}}'' if the document is in Spanish.  (Similarly, the arithmetic
+context would be "{\tt{Matem\'aticas/Aritm\'etica}}") The document is split into
+paragraphs, which are separated by empty lines.  Then, mathematical expressions
+are written enclosed by ``{\tt{\$}}'' (dollar) signs.
+
+The {\tt{QMath}} command works as a pure filter: reads the document from standard
+input, and writes the resulting {\omdoc} in standard output. So, the typical usage
+is
+\begin{verbatim}
+QMath <document.qmath > document.omdoc
+\end{verbatim}
+It needs the {\tt{QMATH\_HOME}} environment variable to contain the path for the
+root {\qmath} directory, where it can find the "contexts" directory. For example,
+if you have the {\tt{contexts}} directory at {\url{/tmp/qmath_3/contexts}}, you
+should set {\tt{QMATH\_HOME}} to {\url{/tmp/qmath_3}}
+
+{\qmath} is distributed under the GNU General Public License (GPL):
+{\url{http://www.gnu.org/licenses/licenses.html#GPL}}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 
+

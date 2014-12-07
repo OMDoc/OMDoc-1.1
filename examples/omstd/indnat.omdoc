@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="indnat-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+   <metadata>
+      <Title>The OpenMath Content Dictionary indnat.ocd  in OMDoc form</Title>
+      <Creator role="trl">Michael Kohlhase</Creator>
+      <Creator role="ant">Olga Caprotti</Creator>
+      <Date/>
+      <Description> Inductive definition of natural numbers </Description>
+   </metadata>
+
+   <theory id="indnat">
+
+<imports id="indnat-imports-relation1" from="relation1.omdoc#relation1"/>
+
+<symbol id="indNat">
+         <CMP> Attribution tag to denote the
+    type of inductively defined natural numbers. It is also denoted as
+    setname1:N.
+    </CMP>
+         <commonname>indNat</commonname>
+      </symbol>
+      <symbol id="zero">
+         <CMP> The natural number 0, also constant base function
+          for the inductive definition of the type of natural numbers
+        </CMP>
+         <commonname>zero</commonname>
+      </symbol>
+      <presentation id="pres-zero" for="zero">
+         <use  format="default">0</use>
+      </presentation>
+      <symbol id="succ">
+         <CMP> Successor function on the natural number. 
+           Constructor for the inductively defined natural numbers. 
+           Takes argument a a natural number and returns a natural
+           number.
+        </CMP>
+         <commonname>succ</commonname>
+      </symbol>
+      <presentation id="pres-succ" for="succ">
+         <use  format="default">s</use>
+      </presentation>
+      <symbol id="plus">
+         <CMP> Addition of natural numbers defined recursively
+           by using the successor.
+        </CMP>
+         <commonname>plus</commonname>
+      </symbol>
+      <presentation id="pres-plus" for="plus" parent="OMA" fixity="infix">
+         <use  format="default">+</use>
+      </presentation>
+      <example id="plus-ex-1" type="for" for="plus">
+            <OMOBJ>
+               <OMA>
+                  <OMS name="eq" cd="relation1"/>
+                  <OMA>
+                     <OMS cd="indnat" name="plus"/>
+                     <OMV name="n"/>
+                     <OMA>
+                        <OMS name="succ" cd="indnat"/>
+                        <OMV name="m"/>
+                     </OMA>
+                  </OMA>
+                  <OMA>
+                     <OMS name="succ" cd="indnat"/>
+                     <OMA>
+                        <OMS cd="indnat" name="plus"/>
+                        <OMV name="n"/>
+                        <OMV name="m"/>
+                     </OMA>
+                  </OMA>
+               </OMA>
+            </OMOBJ>
+      </example>
+      <symbol id="times">
+         <CMP> Multiplication of natural numbers defined recursively
+           by using the successor and plus.
+        </CMP>
+         <commonname>times</commonname>
+      </symbol>
+      <presentation id="pres-times" for="times" parent="OMA" fixity="infix">
+         <use  format="default"/>
+         <use  format="html|pmml">&#x02062;</use>
+      </presentation>
+      <example id="times-ex-1" type="for" for="times">
+            <OMOBJ>
+               <OMA>
+                  <OMS name="eq" cd="relation1"/>
+                  <OMA>
+                     <OMS cd="indnat" name="times"/>
+                     <OMV name="n"/>
+                     <OMA>
+                        <OMS name="succ" cd="indnat"/>
+                        <OMV name="m"/>
+                     </OMA>
+                  </OMA>
+                  <OMA>
+                     <OMS cd="indnat" name="plus"/>
+                     <OMA>
+                        <OMS cd="indnat" name="times"/>
+                        <OMV name="n"/>
+                        <OMV name="m"/>
+                     </OMA>
+                     <OMV name="n"/>
+                  </OMA>
+               </OMA>
+            </OMOBJ>
+      </example>
+   </theory>
+</omdoc>

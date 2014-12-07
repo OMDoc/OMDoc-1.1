@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="fns1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary fns1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/fns1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD is intended to be `compatible' with the corresponding
+    elements in Content MathML.
+
+In this CD we give a set of functions concerning functions
+themselves. Functions can be constructed from expressions via a
+lambda expression. Also there are basic function functions like
+compose, etc.
+</Description>
+</metadata>
+
+<theory id="fns1">
+
+<imports id="fns1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="fns1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="fns1-imports-set1" from="set1.omdoc#set1"/>
+<imports id="fns1-imports-quant1" from="quant1.omdoc#quant1"/>
+<imports id="fns1-imports-relation1" from="relation1.omdoc#relation1"/>
+
+<symbol id="domainofapplication">
+  <CMP> 
+    The domainofapplication element denotes the domain over which a given 
+    function is being applied. It is intended in MathML to be a more general 
+    alternative to specification of this domain using
+    such quantifier elements as bvar, lowlimit or condition. 
+  </CMP>
+  <commonname>domainofapplication</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="domain">
+  <CMP> This symbol denotes the domain of a given function, which is the set of
+    values it is defined over.
+  </CMP>
+  <commonname>domain</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-domain" for="domain">
+  <use  format="default">Dom</use>
+  <use format="cmml" element="domain"/>
+</presentation>
+<assertion id="domain-prop-1" type="lemma">
+  <CMP>
+    x is in the domain of f if and only if 
+    there exists a y in the range of f and f(x) = y
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="equivalent"/>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMV name="x"/>
+	  <OMA>
+	    <OMS cd="fns1" name="domain"/>
+	    <OMV name="f"/>
+	  </OMA>
+	</OMA>
+	<OMBIND>
+	  <OMS cd="quant1" name="exists"/>
+	  <OMBVAR>
+	    <OMV name="y"/>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMA>
+	      <OMS cd="set1" name="in"/>
+	      <OMV name="y"/>
+	      <OMA>
+		<OMS cd="fns1" name="range"/>
+		<OMV name="f"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMA>
+		<OMV name="f"/>
+		<OMV name="x"/>
+	      </OMA>
+	      <OMV name="y"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="range">
+  <CMP>
+    This symbol denotes the range of a function, that is a set that the
+    function will map to. The single argument should be the function whos
+    range is being queried. It should be noted that this is not necessarily
+    equal to the image, it is merely required to contain the image.
+  </CMP>
+  <commonname>range</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-range" for="range">
+  <use  format="default">Ran</use>
+  <use  format="cmml" element="range"/>
+</presentation>
+<assertion id="range-prop-1" type="lemma">
+  <CMP>the range of f is a subset of the image of f</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="set1" name="subset"/>
+	<OMA>
+	  <OMS cd="fns1" name="range"/>
+	  <OMV name="f"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="fns1" name="image"/>
+	  <OMV name="f"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="image">
+  <CMP> 
+    This symbol denotes the image of a given function, which is the set of
+    values the domain of the given function maps to.
+  </CMP>
+  <commonname>image</commonname>
+</symbol>
+<presentation id="pres-image" for="image">
+  <use  format="default">Im</use>
+  <use  format="cmml" element="image"/>
+</presentation>
+<assertion id="image-prop-1" type="lemma">
+  <CMP> x in the domain of f implies f(x) is in the image f </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMV name="x"/>
+	  <OMA>
+	    <OMS cd="fns1" name="domain"/>
+	    <OMV name="f"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMA>
+	    <OMV name="f"/>
+	    <OMV name="x"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="fns1" name="image"/>
+	    <OMV name="f"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="identity">
+  <CMP> The identity function, it takes one argument and returns the same value.</CMP>
+  <commonname>identity</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-identity" for="identity">
+  <use  format="default">Id</use>
+  <use  format="cmml" element="ident"/>
+</presentation>
+<assertion id="identity-prop-1" type="lemma">
+  <CMP> for all x | identity(x)=x </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="fns1" name="identity"/>
+	    <OMV name="x"/>
+	  </OMA>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="left_inverse">
+  <CMP> 
+    This symbol is used to describe the left inverse of its argument (a
+    function). This inverse may only be partially defined because the
+    function may not have been surjective. If the function is not
+    surjective the left inverse function is
+    ill-defined without further stipulations. No other assumptions are made on
+    the semantics of this left inverse.
+  </CMP>
+  <commonname>left inverse</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="left_inverse" xref="#pres-inverse"/>
+<symbol id="right_inverse">
+  <CMP> 
+    This symbol is used to describe the right inverse of its argument (a
+    function). This inverse may only be partially defined because the
+    function may not have been surjective. If the function is not
+    surjective the right inverse function is
+    ill-defined without further stipulations. No other assumptions are made on
+    the semantics of this right inverse.
+  </CMP>
+  <commonname>right inverse</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="right_inverse" xref="#pres-inverse"/>
+<symbol id="inverse">
+  <CMP> 
+    This symbol is used to describe the inverse of its argument (a
+    function). This inverse may only be partially defined because the
+    function may not have been surjective. If the function is not
+    surjective the inverse function is
+    ill-defined without further stipulations. No assumptions are made on
+    the semantics of this inverse.
+  </CMP>
+  <commonname>inverse</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-inverse" for="inverse" parent="OMA" fixity="postfix" precedence="900">
+  <use  format="default" fixity="prefix">inv</use>
+  <use  format="html">&lt;sup&gt;-1&lt;/sup&gt;</use>
+  <use  format="TeX">^{-1}</use>
+  <use  format="pmml" element="msup" bracket-style="lisp">-1</use>
+</presentation>
+<presentation for="inverse"><use format="cmml" element="inverse"/></presentation>
+<assertion id="inverse-prop-1" type="lemma">
+  <CMP> 
+    (inverse(f))(f(x)) = x if f is injective,
+    that is
+    (for all x,y | f(x) = f(y) implies x=y) implies (inverse(f))(f(z)) = z
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMBIND>
+	  <OMS cd="quant1" name="forall"/>
+	  <OMBVAR>
+	    <OMV name="x"/>
+	    <OMV name="y"/>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMA>
+		<OMV name="f"/>
+		<OMV name="x"/>
+	      </OMA>
+	      <OMA>
+		<OMV name="f"/>
+		<OMV name="y"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMV name="x"/>
+	      <OMV name="y"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMA>
+	      <OMS cd="fns1" name="inverse"/>
+	      <OMV name="f"/>
+	    </OMA>
+	    <OMA>
+	      <OMV name="f"/>
+	      <OMV name="z"/>
+	    </OMA>
+	  </OMA>
+	  <OMV name="z"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="inverse-prop-3" type="lemma">
+  <CMP>
+    f(inverse(f(y))=y if f is defined at inverse(f)(y)
+    that is, 
+    if there exists an x s.t. inverse(f)(y) = x then this implies
+    f(inverse(f)(y)) = y
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR><OMV name="y"/></OMBVAR>
+	<OMA>
+	  <OMS cd="logic1" name="implies"/>
+	  <OMBIND>
+	    <OMS cd="quant1" name="exists"/>
+	    <OMBVAR><OMV name="x"/></OMBVAR>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMA>
+		<OMA>
+		  <OMS cd="fns1" name="inverse"/>
+		  <OMV name="f"/>
+		</OMA>
+		<OMV name="y"/>
+	      </OMA>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMBIND>
+	  <OMA>
+	    <OMS cd="relation1" name="eq"/>
+	    <OMA>
+	      <OMV name="f"/>
+	      <OMA>
+		<OMA>
+		  <OMS cd="fns1" name="inverse"/>
+		  <OMV name="f"/>
+		</OMA>
+		<OMV name="y"/>
+	      </OMA>
+	    </OMA>
+	    <OMV name="y"/>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="left_compose">
+  <CMP> 
+    This symbol represents the function which forms the left-composition
+    of its two (function) arguments.
+  </CMP>
+  <commonname>left compose</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMV name="Set"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-left_compose" for="left_compose" parent="OMA" fixity="infix">
+  <use  format="TeX">{\circ}</use>
+  <use  format="html|pmml">&#x02218;</use>
+</presentation>
+<presentation for="left_compose"><use format="cmml" element="compose"/></presentation>
+<assertion id="left_compose-prop-1" type="lemma">
+  <CMP> for all f,g,x | left_compose(f,g)(x) = f(g(x)) </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="f"/>
+	  <OMV name="g"/>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMA>
+	      <OMS cd="fns1" name="left_compose"/>
+	      <OMV name="f"/>
+	      <OMV name="g"/>
+	    </OMA>
+	    <OMV name="x"/>
+	  </OMA>
+	  <OMA>
+	    <OMV name="f"/>
+	    <OMA>
+	      <OMV name="g"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="lambda">
+  <CMP>
+    This symbol is used to represent anonymous functions as lambda expansions. 
+    It is used in a binder that takes two further arguments, the first of which
+    is a list of variables, and the second of which is an expression, and it
+    forms the function which is the lambda extraction of the expression
+  </CMP>
+  <commonname>lambda</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMS name="binder" cd="sts"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-lambda" for="lambda">
+  <use  format="TeX">{\lambda}</use>
+  <use  format="pmml|html">&#x003BB;</use>
+  <use format="cmml" element="lambda"/>
+</presentation>
+<example id="lambda-ex-1" type="for" for="lambda">
+  <CMP>
+    An example to show the connection between curried and uncurried
+    applications of a binary function f 
+    (lambda(x,y).(f))(a,b)= (lambda(x).((lambda(y).(f))(b)))(a)
+  </CMP>
+  <OMOBJ>
+    <OMBIND>
+      <OMS cd="quant1" name="forall"/>
+      <OMBVAR>
+	<OMV name="a"/>
+	<OMV name="b"/>
+      </OMBVAR>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMBIND>
+	    <OMS cd="fns1" name="lambda"/>
+	    <OMBVAR>
+	      <OMV name="x"/>
+	      <OMV name="y"/>
+	    </OMBVAR>
+	    <OMV name="f"/>
+	  </OMBIND>
+	  <OMV name="a"/>
+	  <OMV name="b"/>
+	</OMA>
+	<OMA>
+	  <OMBIND>
+	    <OMS cd="fns1" name="lambda"/>
+	    <OMBVAR>
+	      <OMV name="x"/>
+	    </OMBVAR>
+	    <OMA>
+	      <OMBIND>
+		<OMS cd="fns1" name="lambda"/>
+		<OMBVAR>
+		  <OMV name="y"/>
+		</OMBVAR>
+		<OMV name="f"/>
+	      </OMBIND>
+	      <OMV name="b"/>
+	    </OMA>
+	  </OMBIND>
+	  <OMV name="a"/>
+	</OMA>
+      </OMA>
+    </OMBIND>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

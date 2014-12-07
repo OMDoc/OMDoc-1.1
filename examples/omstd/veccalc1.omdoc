@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="veccalc1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary veccalc1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="aut">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/veccalc1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>This CD contains symbols to represent functions which are
+    concerned with vector calculus.
+  </Description>
+</metadata>
+
+<theory id="veccalc1">
+  <imports id="veccalc1-imports-sts" from="sts.omdoc#sts"/>
+  <imports id="veccalc1-imports-relation1" from="relation1.omdoc#relation1"/>
+  <imports id="veccalc1-imports-arith1" from="arith1.omdoc#arith1"/>
+  <imports id="veccalc1-imports-linalg1" from="linalg1.omdoc#linalg1"/>
+  <imports id="veccalc1-imports-linalg2" from="linalg2.omdoc#linalg2"/>
+  <imports id="veccalc1-imports-calculus1" from="calculus1.omdoc#calculus1"/>
+  <imports id="veccalc1-imports-list1" from="list1.omdoc#list1"/>
+
+<symbol id="divergence">
+  <CMP>
+    This symbol is used to represent the divergence function. It takes one
+    argument which should be a vector of scalar valued functions,
+    intended to represent a vector valued function and returns a
+    scalar value. It should satisfy the defining relation:
+    divergence(F) = \partial(F_(x_1))/\partial(x_1) + ...
+    + \partial(F_(x_n))/\partial(x_n)
+  </CMP>
+  <commonname>divergence</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Vector"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Scalar"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="divergence"><use format="cmml" element="divergence"/></presentation>
+<assertion id="divergence-prop-1" type="lemma">
+  <CMP>
+    divergence(F) = \partial(F_(x_1))/\partial(x_1) + ...
+    + \partial(F_(x_n))/\partial(x_n)
+  </CMP>
+</assertion>
+<symbol id="grad">
+  <CMP>
+    This symbol is used to represent the grad function. It takes one
+    argument which should be a scalar valued function and returns a
+    vector of functions. It should satisfy the defining relation:
+    grad(F) = (\partial(F)/\partial(x_1), ... ,\partial(F)/partial(x_n))
+  </CMP>
+  <commonname>grad</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Scalar"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Vector"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="grad"><use format="cmml" element="grad"/></presentation>
+<assertion id="grad-prop-1" type="lemma">
+  <CMP> 
+    grad(F) = (\partial(F)/\partial(x_1), ... ,\partial(F)/partial(x_n))
+  </CMP>
+</assertion>
+<symbol id="curl">
+  <CMP>
+    This symbol is used to represent the curl function. It takes one
+    argument which should be a vector of scalar valued functions, intended
+    to represent a vector valued function and returns a vector of
+    functions. It should satisfy the defining relation:
+    curl(F) = i X \partial(F)/\partial(x) + j X \partial(F)/\partial(y) +
+    j X \partial(F)/\partial(Z) where i,j,k are the unit vectors
+    corresponding to the x,y,z axes respectively and the multiplication X
+    is cross multiplication.
+  </CMP>
+  <commonname>curl</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMV name="3Vector"/>
+	  <OMV name="3Vector"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="3Vector"/>
+	  <OMV name="3Vector"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="curl"><use format="cmml" element="curl"/></presentation>
+<assertion id="curl-prop-1" type="lemma">
+  <CMP>
+    curl(F) = i X \partial(F)/\partial(x) + j X \partial(F)/\partial(y) +
+    j X \partial(F)/\partial(Z)
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="veccalc1" name="curl"/>
+	  <OMV name="F"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="plus"/>
+	  <OMA>
+	    <OMS cd="linalg1" name="vectorproduct"/>
+	    <OMA>
+	      <OMS cd="linalg2" name="vector"/>
+	      <OMI> 1 </OMI>
+	      <OMI> 0 </OMI>
+	      <OMI> 0 </OMI>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="calculus1" name="partialdiff"/>
+	      <OMA>
+		<OMS cd="list1" name="list"/>
+		<OMI> 1 </OMI>
+	      </OMA>
+	      <OMV name="F"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="linalg1" name="vectorproduct"/>
+	    <OMA>
+	      <OMS cd="linalg2" name="vector"/>
+	      <OMI> 0 </OMI>
+	      <OMI> 1 </OMI>
+	      <OMI> 0 </OMI>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="calculus1" name="partialdiff"/>
+	      <OMA>
+		<OMS cd="list1" name="list"/>
+		<OMI> 2 </OMI>
+	      </OMA>
+	      <OMV name="F"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="linalg1" name="vectorproduct"/>
+	    <OMA>
+	      <OMS cd="linalg2" name="vector"/>
+	      <OMI> 0 </OMI>
+	      <OMI> 0 </OMI>
+	      <OMI> 1 </OMI>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="calculus1" name="partialdiff"/>
+	      <OMA>
+		<OMS cd="list1" name="list"/>
+		<OMI> 3 </OMI>
+	      </OMA>
+	      <OMV name="F"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="Laplacian">
+  <CMP>
+    This symbol is used to represent the laplacian function. It takes one
+    argument which should be a vector of scalar valued functions, intended
+    to represent a vector valued function and returns a vector of
+    functions. It should satisfy the defining relation:
+    laplacian(F) = \partial^2(F)/\partial(x_1)^2 + ... +
+    \partial^2(F)/\partial(x_n)^2
+  </CMP>
+  <commonname>Laplacian</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Scalar"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Vector"/>
+	  <OMV name="Scalar"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="Laplacian"><use format="cmml" element="laplacian"/></presentation>
+<assertion id="Laplacian-prop-1" type="lemma">
+  <CMP>
+    laplacian(F) = \partial^2(F)/\partial(x_1)^2 + ... +
+    \partial^2(F)/\partial(x_n)^2
+  </CMP>
+</assertion>
+</theory>
+</omdoc>

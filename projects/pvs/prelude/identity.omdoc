@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="identity.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="identity-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56637" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56638" for="identity" pto="pvs" pto-version="3.0" replaces="identity-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory identity
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="identity_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56639" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="identity-import-parameters" from="identity-parameters"/>
+
+    <assertion id="I_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="functions" name="bijective?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="identity" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMV name="x"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="I_TCC1-1" for="I_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="I" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="functions" name="bijective?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="I-def" for="I" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="identity" name="I"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="identity" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMV name="x"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="id" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="functions" name="bijective?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="id-def" for="id" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="identity" name="id"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="identity" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMV name="x"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="identity" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="functions" name="bijective?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="identity-def" for="identity" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="identity" name="identity"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="identity" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMV name="x"/>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

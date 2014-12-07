@@ -1,0 +1,2040 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="rationals.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:23
+    </Date>
+  </metadata>
+  <theory id="rationals_test">
+    <symbol id="rational" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="rational-non-empty" >
+      <CMP>The type rational is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56808" for="rational" pto="pvs" pto-version="3.0" replaces="rational-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="rational" for="rational" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="reals" name="real"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="rational_pred" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="boolean"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <axiom id="rational_nonempty" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rational"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <symbol id="rat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="rat-non-empty" >
+      <CMP>The type rat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56809" for="rat" pto="pvs" pto-version="3.0" replaces="rat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="rat" for="rat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="rationals" name="rational"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="rational?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="numbers" name="number"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="rational?-def" for="rational?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="rationals" name="rational?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="numbers" name="number"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="real_pred"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="rationals" name="rational_pred"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="nonzero_rational_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="notequal" name="/="/>
+            <OMI>1</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonzero_rational_TCC1-1" for="nonzero_rational_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonzero_rational" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonzero_rational-non-empty" >
+      <CMP>The type nonzero_rational is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56810" for="nonzero_rational" pto="pvs" pto-version="3.0" replaces="nonzero_rational-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonzero_rational" for="nonzero_rational" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="rationals" name="rational"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56811" for="nonzero_rational" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonzero_rational-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="nonzero_rational-contains" >
+      <CMP>Type nonzero_rational contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="nzrat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nzrat-non-empty" >
+      <CMP>The type nzrat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56812" for="nzrat" pto="pvs" pto-version="3.0" replaces="nzrat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nzrat" for="nzrat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="rationals" name="nonzero_rational"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <private id="G56813" for="nzrat_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_is_nzreal|: JUDGEMENT |nonzero_rational| SUBTYPE_OF |nonzero_real|]]>
+      </data>
+    </private>
+
+
+
+
+    <axiom id="closed_plus" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_minus" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_times" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_divides" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0z"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="x"/>
+                <OMV name="n0z"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_neg" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <assertion id="rat_plus_rat_is_rat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_plus_rat_is_rat-1" for="rat_plus_rat_is_rat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_plus) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56814" for="rat_plus_rat_is_rat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_plus_rat_is_rat|: JUDGEMENT +(|x|, |y|) HAS_TYPE |rat|]]>
+      </data>
+    </private>
+
+    <assertion id="rat_minus_rat_is_rat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_minus_rat_is_rat-1" for="rat_minus_rat_is_rat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_minus) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56815" for="rat_minus_rat_is_rat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_minus_rat_is_rat|: JUDGEMENT -(|x|, |y|) HAS_TYPE |rat|]]>
+      </data>
+    </private>
+
+    <assertion id="rat_times_rat_is_rat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_times_rat_is_rat-1" for="rat_times_rat_is_rat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_times) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56816" for="rat_times_rat_is_rat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_times_rat_is_rat|: JUDGEMENT *(|x|, |y|) HAS_TYPE |rat|]]>
+      </data>
+    </private>
+
+    <assertion id="rat_div_nzrat_is_rat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0z"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="x"/>
+                <OMV name="n0z"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_div_nzrat_is_rat-1" for="rat_div_nzrat_is_rat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_divides) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56817" for="rat_div_nzrat_is_rat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_div_nzrat_is_rat|: JUDGEMENT /(|x|, |n0z|) HAS_TYPE |rat|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_rat_is_rat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="rationals" name="rational_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_rat_is_rat-1" for="minus_rat_is_rat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_neg) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56818" for="minus_rat_is_rat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_rat_is_rat|: JUDGEMENT -(|x|) HAS_TYPE |rat|]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_rat_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&gt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_rat_TCC1-1" for="nonneg_rat_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonneg_rat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonneg_rat-non-empty" >
+      <CMP>The type nonneg_rat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56819" for="nonneg_rat" pto="pvs" pto-version="3.0" replaces="nonneg_rat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonneg_rat" for="nonneg_rat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="rationals" name="rational"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56820" for="nonneg_rat" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonneg_rat-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonneg_rat-contains" >
+      <CMP>Type nonneg_rat contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="nonpos_rat_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonpos_rat_TCC1-1" for="nonpos_rat_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonpos_rat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonpos_rat-non-empty" >
+      <CMP>The type nonpos_rat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56821" for="nonpos_rat" pto="pvs" pto-version="3.0" replaces="nonpos_rat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonpos_rat" for="nonpos_rat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="rationals" name="rational"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56822" for="nonpos_rat" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonpos_rat-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonpos_rat-contains" >
+      <CMP>Type nonpos_rat contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="posrat_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_TCC1-1" for="posrat_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="posrat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="posrat-non-empty" >
+      <CMP>The type posrat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56823" for="posrat" pto="pvs" pto-version="3.0" replaces="posrat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="posrat" for="posrat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="rationals" name="nonneg_rat"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56824" for="posrat" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="posrat-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="posrat-contains" >
+      <CMP>Type posrat contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="negrat_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negrat_TCC1-1" for="negrat_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="negrat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="negrat-non-empty" >
+      <CMP>The type negrat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56825" for="negrat" pto="pvs" pto-version="3.0" replaces="negrat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="negrat" for="negrat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="rationals" name="nonpos_rat"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56826" for="negrat" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="negrat-contains">
+      <data><![CDATA[-1]]>
+      </data>
+    </private>
+    <axiom id="negrat-contains" >
+      <CMP>Type negrat contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="nnrat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nnrat-non-empty" >
+      <CMP>The type nnrat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56827" for="nnrat" pto="pvs" pto-version="3.0" replaces="nnrat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nnrat" for="nnrat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="rationals" name="nonneg_rat"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="nprat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nprat-non-empty" >
+      <CMP>The type nprat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56828" for="nprat" pto="pvs" pto-version="3.0" replaces="nprat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nprat" for="nprat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="rationals" name="nonpos_rat"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+
+
+
+
+
+
+
+
+    <private id="G56829" for="nnrat_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrat_is_nnreal|: JUDGEMENT |nonneg_rat| SUBTYPE_OF |nonneg_real|]]>
+      </data>
+    </private>
+
+
+    <private id="G56830" for="nprat_is_npreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nprat_is_npreal|: JUDGEMENT |nonpos_rat| SUBTYPE_OF |nonpos_real|]]>
+      </data>
+    </private>
+
+
+    <private id="G56831" for="posrat_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_is_posreal|: JUDGEMENT |posrat| SUBTYPE_OF |posreal|]]>
+      </data>
+    </private>
+
+
+    <private id="G56832" for="negrat_is_negreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negrat_is_negreal|: JUDGEMENT |negrat| SUBTYPE_OF |negreal|]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_is_nzrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_is_nzrat-1" for="posrat_is_nzrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56833" for="posrat_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_is_nzrat|: JUDGEMENT |posrat| SUBTYPE_OF |nzrat|]]>
+      </data>
+    </private>
+
+    <assertion id="negrat_is_nzrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negrat_is_nzrat-1" for="negrat_is_nzrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56834" for="negrat_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negrat_is_nzrat|: JUDGEMENT |negrat| SUBTYPE_OF |nzrat|]]>
+      </data>
+    </private>
+
+    <assertion id="nzrat_times_nzrat_is_nzrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="n0x"/>
+                <OMV name="n0y"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzrat_times_nzrat_is_nzrat-1" for="nzrat_times_nzrat_is_nzrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56835" for="nzrat_times_nzrat_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_times_nzrat_is_nzrat|: JUDGEMENT *(|n0x|, |n0y|) HAS_TYPE |nzrat|]]>
+      </data>
+    </private>
+
+    <assertion id="nzrat_div_nzrat_is_nzrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="n0x"/>
+                <OMV name="n0y"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzrat_div_nzrat_is_nzrat-1" for="nzrat_div_nzrat_is_nzrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56836" for="nzrat_div_nzrat_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_div_nzrat_is_nzrat|: JUDGEMENT /(|n0x|, |n0y|) HAS_TYPE |nzrat|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_nzrat_is_nzrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="n0x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="n0x"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_nzrat_is_nzrat-1" for="minus_nzrat_is_nzrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56837" for="minus_nzrat_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_nzrat_is_nzrat|: JUDGEMENT -(|n0x|) HAS_TYPE |nzrat|]]>
+      </data>
+    </private>
+
+    <assertion id="nnrat_plus_nnrat_is_nnrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnrat_plus_nnrat_is_nnrat-1" for="nnrat_plus_nnrat_is_nnrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56838" for="nnrat_plus_nnrat_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrat_plus_nnrat_is_nnrat|: JUDGEMENT +(|nnx|, |nny|) HAS_TYPE |nonneg_rat|]]>
+      </data>
+    </private>
+
+    <assertion id="nnrat_times_nnrat_is_nnrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnrat_times_nnrat_is_nnrat-1" for="nnrat_times_nnrat_is_nnrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56839" for="nnrat_times_nnrat_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrat_times_nnrat_is_nnrat|: JUDGEMENT *(|nnx|, |nny|) HAS_TYPE
+          |nonneg_rat|]]>
+      </data>
+    </private>
+
+    <assertion id="nnrat_div_posrat_is_nnrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nnx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnrat_div_posrat_is_nnrat-1" for="nnrat_div_posrat_is_nnrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56840" for="nnrat_div_posrat_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrat_div_posrat_is_nnrat|: JUDGEMENT /(|nnx|, |py|) HAS_TYPE |nonneg_rat|]]>
+      </data>
+    </private>
+
+    <assertion id="nnrrat_div_negrat_is_nprat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nnx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnrrat_div_negrat_is_nprat-1" for="nnrrat_div_negrat_is_nprat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56841" for="nnrrat_div_negrat_is_nprat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrrat_div_negrat_is_nprat|: JUDGEMENT /(|nnx|, |ny|) HAS_TYPE |nprat|]]>
+      </data>
+    </private>
+
+    <assertion id="nprat_plus_nprat_is_nprat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="npx"/>
+                <OMV name="npy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nprat_plus_nprat_is_nprat-1" for="nprat_plus_nprat_is_nprat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56842" for="nprat_plus_nprat_is_nprat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nprat_plus_nprat_is_nprat|: JUDGEMENT +(|npx|, |npy|) HAS_TYPE |nprat|]]>
+      </data>
+    </private>
+
+    <assertion id="nprat_times_nprat_is_nnrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="npx"/>
+                <OMV name="npy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nprat_times_nprat_is_nnrat-1" for="nprat_times_nprat_is_nnrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56843" for="nprat_times_nprat_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nprat_times_nprat_is_nnrat|: JUDGEMENT *(|npx|, |npy|) HAS_TYPE |nnrat|]]>
+      </data>
+    </private>
+
+    <assertion id="nprat_div_posrat_is_nprat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="npx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nprat_div_posrat_is_nprat-1" for="nprat_div_posrat_is_nprat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56844" for="nprat_div_posrat_is_nprat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nprat_div_posrat_is_nprat|: JUDGEMENT /(|npx|, |py|) HAS_TYPE |nprat|]]>
+      </data>
+    </private>
+
+    <assertion id="nprat_div_negrat_is_nnrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonpos_rat"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="npx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nprat_div_negrat_is_nnrat-1" for="nprat_div_negrat_is_nnrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56845" for="nprat_div_negrat_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nprat_div_negrat_is_nnrat|: JUDGEMENT /(|npx|, |ny|) HAS_TYPE |nnrat|]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_plus_nnrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="px"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_plus_nnrat_is_posrat-1" for="posrat_plus_nnrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56846" for="posrat_plus_nnrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_plus_nnrat_is_posrat|: JUDGEMENT +(|px|, |nny|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+    <assertion id="nnrat_plus_posrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nnx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnrat_plus_posrat_is_posrat-1" for="nnrat_plus_posrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56847" for="nnrat_plus_posrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnrat_plus_posrat_is_posrat|: JUDGEMENT +(|nnx|, |py|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_times_posrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="px"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_times_posrat_is_posrat-1" for="posrat_times_posrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56848" for="posrat_times_posrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_times_posrat_is_posrat|: JUDGEMENT *(|px|, |py|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_div_posrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="px"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_div_posrat_is_posrat-1" for="posrat_div_posrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56849" for="posrat_div_posrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_div_posrat_is_posrat|: JUDGEMENT /(|px|, |py|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+    <assertion id="negrat_plus_negrat_is_negrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negrat_plus_negrat_is_negrat-1" for="negrat_plus_negrat_is_negrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56850" for="negrat_plus_negrat_is_negrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negrat_plus_negrat_is_negrat|: JUDGEMENT +(|nx|, |ny|) HAS_TYPE |negrat|]]>
+      </data>
+    </private>
+
+    <assertion id="negrat_times_negrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negrat_times_negrat_is_posrat-1" for="negrat_times_negrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56851" for="negrat_times_negrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negrat_times_negrat_is_posrat|: JUDGEMENT *(|nx|, |ny|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+    <assertion id="negrat_div_negrat_is_posrat" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="negrat"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negrat_div_negrat_is_posrat-1" for="negrat_div_negrat_is_posrat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56852" for="negrat_div_negrat_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negrat_div_negrat_is_posrat|: JUDGEMENT /(|nx|, |ny|) HAS_TYPE |posrat|]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_ignore">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_ignore">
+
+<ignore type="foo" comment="bar">
+<ignore>nested ignore</ignore>
+fjdgdjfh
+</ignore>
+
+</theory>
+</omdoc>
+

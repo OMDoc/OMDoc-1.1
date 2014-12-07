@@ -1,0 +1,41 @@
+DVI	= $(patsubst %.tex, %.dvi, $(TARGET))
+PS	= $(patsubst %.tex, %.ps, $(TARGET))
+PDF	= $(patsubst %.tex, %.pdf, $(TARGET))
+IDX	= $(patsubst %.tex, %.idx, $(TARGET))
+IND	= $(patsubst %.tex, %.ind, $(TARGET))
+BBL	= $(patsubst %.tex, %.bbl, $(TARGET))
+
+SRCTEX 	= $(shell ls *.tex)
+SRCAUX 	= $(patsubst %.tex, %.aux, $(SRCTEX))
+STY 	= $(shell ls *.sty)
+IMG	= $(shell ls *.eps)
+BIB	= $(shell ls *.bib)
+
+
+
+all: 	$(PS) $(PDF)
+
+$(DVI): 	%.dvi: $(TEXSRC) $(STY) $(IMG) $(BBL) $(IND)
+		latex '\nonstopmode\input{$(patsubst %.dvi, %.tex, $@)}'
+
+$(SRCAUX): %.aux: %.tex
+	latex '\nonstopmode\input{$(firstword $<)}'
+
+$(IDX).idx: %.idx: %.tex
+	latex $(firstword $<)
+
+$(IND): %.ind: %.idx
+	makeindex $(firstword $<)
+ 
+$(PS): %.ps: %.dvi 
+	dvips -o $@ $(firstword $<)
+
+
+$(BBL): %.bbl: $(BIB) %.aux
+	bibtex $(subst .bbl,,$@)
+
+$(PDF):	%.pdf: $(TEXSRC) $(STY) $(IMG) $(REQ)
+	pdflatex '\nonstopmode\input{$(patsubst %.pdf, %.tex, $@)}'
+
+clean:
+	rm -f *.aux *.log *.bbl *.ilg *.blg *.dvi *.ps *.ptc* *.mtc* *.toc *~ *.bmt

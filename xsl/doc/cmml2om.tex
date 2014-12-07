@@ -1,0 +1,902 @@
+\documentclass[twoside,11pt]{article}
+\usepackage{longtable,array}
+\newcommand{\T}{\textstyle}
+
+\setlength{\extrarowheight}{11pt}
+
+\begin{document}
+\title{Conversion between MathML and  OpenMath}
+\author{D. Carlisle,J. Davenport,M.Dewar,N.Hur,W. Naylor\thanks{Now at the University of Western Ontario.}}
+\begin{abstract}
+OpenMath and MathML (Content) are both semantic representations of
+mathematics. This document shows how all of MathML (Content) can be
+translated into OpenMath.
+\end{abstract}
+\maketitle
+\newenvironment{mybox}[1]{
+\begin{tabular}{|c|}
+\hline
+\begin{minipage}[t]{#1}}{
+\end{minipage}\\
+\hline
+\end{tabular}}
+\newenvironment{myboxbopen}[1]{
+\begin{tabular}{|c|}
+\hline
+\begin{minipage}[t]{#1}}{
+\end{minipage}
+\end{tabular}}
+\newenvironment{myboxtopen}[1]{
+\begin{tabular}{|c|}
+\begin{minipage}[t]{#1}}{
+\end{minipage}\\
+\hline
+\end{tabular}}
+\section*{Introduction}
+This document begins with a table detailing the transformation
+required to convert between MathML and OpenMath, using the
+MathML CD Group. We then give various illustrations of the more
+complex conversions.
+
+The first column gives the MathML element and attribute combination,
+the second column gives the equivalent OpenMath construct.
+Additional notes and comments are provided where appropriate.
+\clearpage
+
+\section*{MathML -- OpenMath}
+
+\begin{longtable}{
+        >{\raggedright\let\\=\tabularnewline}p{2in}
+        >{\raggedright\let\\=\tabularnewline}p{3in}}
+\verb+cn+ or \verb+cn type="real"+&If followed by an explicit floating
+point number, then this would normally be represented by an \verb+OMF+
+(if expressible in terms of IEEE floats), or possibly via the
+\verb+bigfloat1+ CD.\par\noindent
+The use of symbolic constants under \verb+cn+ such as \verb+&pi+ is
+now deprecated and not supported by OpenMath.\\
+\verb+cn type="e-notation"+ (added 18.4.2000 to MathML: syntax is
+mantissa, as in real, \verb+<sep/>+, decimal exponent)&As above\\
+\verb+cd type="integer"+&Is supported by \verb+OMI+ in base 10 or 16.
+Integers expressed in other bases may be converted to a
+\verb+<OMS name="based_integer"+ \verb+cd="nums1"/>+ symbol
+applied to the digits in an \verb+<OMSTR>+. If they are converted into 
+\verb+OMI+s, then the base information is lost.\\
+\verb+cn type="rational"+&This is represented by 
+\verb+<OMS name="rational"+ \verb+cd="nums1"/>+. Note that MathML allows 1/0 and OpenMath
+does not (through this constructor). It appears that MathML allows
+decimal points inside \verb+cn type="rational"+, but this is a
+curiosity unsupported by OpenMath in this form.\\
+\verb+cn type="complex-cartesian"+&This equates to 
+\verb+<OMS name="complex_cartesian"+ \verb+cd="complex1"/>+\\
+\verb+cn type="complex-polar"+\footnote{This seems to be missing from
+appendix C of the Proposed Recommendation, but is clearly present in
+Chapter 4.4.}&This equates to 
+\verb+<OMS name="complex_polar"+ \verb+cd="complex1"/>+\\
+\verb+ci+&This normally corresponds to an \verb+OMV+. However,
+\verb+ci type="XXX"+ corresponds to an attribution from
+the \verb+mathmltypes+ CD on the \verb+OMV+.\\
+\verb+csymbol+&If the URL points to an OpenMath CD, then this refers
+to the symbol of that name in the CD.\\
+\verb+apply+&Corresponds to \verb+OMA+.\\
+\verb+reln+ (now deprecated in MathML)&Corresponds to \verb+OMA+.\\
+\verb+fn+ (now deprecated in MathML)&Is ignored in OpenMath.\\
+\verb+interval+&According to the type attribute (which defaults to
+\verb+closed+) corresponds to a symbol in the \verb+interval1+ CD.\\
+\verb+inverse+&Corresponds, with all its (lack of) semantics, to
+\verb+<OMS name="inverse"+ \verb+cd="fns1"/>+.\\
+\verb+sep+&Handled by its parent constructor.\\
+\verb+condition+ inside \verb+int+&This becomes the first argument to
+\verb+<OMS name="defint" cd="calculus1"/>+.\\
+\verb+int+ with a general range&This may be performed by using
+\verb+<OMS name="defint" cd="calculus1"/>+ where the range argument is
+an \verb+OMV+. See illustration \ref{general range}.\\
+\verb+condition+ inside \verb+sum+ and \verb+product+&This becomes the
+first argument to \verb+<OMS name="sum" cd="arith1"/>+.\\
+\verb+condition+ inside \verb+limit+&This should be a \verb+tendsto+
+construct which gives the arguments of the OpenMath construction. See
+illustration \ref{limit}.\\
+\verb+condition+ inside \verb+min+ and \verb+max+&Becomes a
+\verb+<OMS name="suchthat" cd="set1"/>+.\\
+\verb+condition+ inside \verb+forall+ and \verb+exists+&The condition
+is moved inside the body (normally as \verb+implies+ for \verb+forall+, 
+but \verb+and+ for \verb+exists+): see illustration \ref{forall}.\\
+\verb+condition+ inside \verb+set+&Becomes a
+\verb+<OMS name="suchthat"+ \verb+cd="set1"/>+.\\ 
+\verb+condition+ inside \verb+list+&Becomes a
+\verb+<OMS name="suchthat"+ \verb+cd="list1"/>+.\\
+\verb+declare type="XXX"+&This can be supported by replacing all
+occurrences of the name by the name attributed by the type from the
+\verb+mathmltypes+ CD. Other instances of \verb+declare+ are not
+supported in OpenMath.\\
+\verb+lambda+&Corresponds to \verb+OMBIND+ with a first child of
+\verb+<OMS name="lambda"+ \verb+cd="fns1"/>+. The \verb+bvar+ elements under
+the MathML \verb+lambda+ become children of the OpenMath
+\verb+OMBIND+.\\
+\verb+compose+&Corresponds to \verb+<OMS name="left_compose"+ 
+\verb+cd="fns1"/>+.\\
+\verb+ident+&Corresponds to \verb+<OMS name="identity"+ \verb+cd="fns1"/>+.\\
+\verb+domain+&Corresponds to \verb+<OMS name="domain"+ \verb+cd="fns1"/>+.\\
+\verb+domainofapplication+&Corresponds to 
+\verb+<OMS name="domainofapplication"+ \verb+cd="fns1"/>+. However,
+when used inside \verb+int+ to give a general range of integration, it
+becomes an argument of \verb+defint+, without any \verb+domainofapplication+
+%(see example \ref{DOA})%
+.\\
+\verb+codomain+&Corresponds to \verb+<OMS name="image"+ \verb+cd="fns1"/>+.\\
+\verb+image+&Corresponds to \verb+<OMS name="range"+ \verb+cd="fns1"/>+.\\
+\verb+quotient+&Corresponds to \verb+<OMS name="quotient"+ 
+\verb+cd="integer1"/>+. The \verb+type+ qualifier, if not \verb+integer+, is 
+not supported in OpenMath.\\
+\verb+factorial+&Corresponds to \verb+<OMS name="factorial"+
+\verb+cd="integer1"/>+. The \verb+type+ qualifier, if not \verb+integer+, 
+is not supported in OpenMath.\\
+\verb+divide+&Corresponds to \verb+<OMS name="divide"+
+\verb+cd="arith1"/>+. The \verb+type+ qualifier is ignored.\\
+\verb+max+ and \verb+min+&If these MathML constructors are applied to
+something other than a \verb+condition+, this
+becomes an OpenMath application of \verb+<OMS name="max"+ \verb+cd="minmax1"/>+
+to a set built with \verb+<OMS name="set"+ \verb+cd="set1"/>+. 
+If applied to a \verb+condition+, this becomes an
+application of \verb+<OMS name="max"+ \verb+cd="minmax1"/>+ 
+to a set built with \verb+<OMS name="suchthat"+ \verb+cd="set1"/>+.\\
+\verb+minus+&Corresponds to \verb+<OMS name="minus"+ \verb+cd="arith1"/>+ or
+\verb+<OMS name="unary_minus"+ \verb+cd="arith1"/>+, depending on the
+arity. However, applications to objects of type \verb+set+ or
+\verb+multiset+, as envisaged in section C.2.3.6 of the MathML2
+standard, should be translated into \verb+<OMS name="setdiff"+
+\verb+cd="set1"/>+ (or \verb+cd="multiset1"/>+).\\
+\verb+plus+&Corresponds to \verb+<OMS name="plus"+ \verb+cd="arith1"/>+. 
+However, \verb+<apply><plus/></apply>+ corresponds to
+\verb+<OMS name="zero"+ \verb+cd="alg1"/>+. Furthermore, applications to 
+objects of type \verb+set+ or \verb+multiset+, as envisaged in section C.2.3.7
+of the MathML2 standard, should be translated into \verb+<OMS name="union"+
+\verb+cd="set1"/>+ (or \verb+cd="multiset1"/>+).\\
+\verb+power+&This corresponds to \verb+<OMS name="power"+ \verb+cd="arith1"/>+.\\
+\verb+real+ and \verb+imaginary+&These correspond to
+\verb+<OMS name="real"+ \verb+cd="complex1"/>+ (and \verb+imaginary+).\\
+\verb+rem+&Corresponds to \verb+<OMS name="remainder"+ 
+\verb+cd="integer1"/>+. The \verb+type+ qualifier, if not \verb+integer+, is 
+not supported in OpenMath.\\
+\verb+times+&This corresponds to \verb+<OMS name="times"+ \verb+cd="arith1"/>+.\\
+\verb+root+&This corresponds to \verb+<OMS name="root"+
+\verb+cd="arith1"/>+. However, note that the OpenMath semantics are
+those of \verb+type="principal_branch"+ (misspelled as
+\verb+type="principle_branch"+ in Appendix C of the Proposed
+Recommendation for MathML2), and the default type of \verb+real+ is
+not directly supported in OpenMath.\\
+\verb+gcd+&This corresponds to
+\verb+<OMS name="gcd"+ \verb+cd="arith1"/>+. However,
+\verb+<apply><gcd/></apply>+ corresponds to 
+\verb+<OMS name="one"+ \verb+cd="alg1"/>+ (logically, it should be
+$0$, but this is the MathML statement, in C.2.3.16).\\
+\verb+and+&This corresponds to \verb+<OMS name="and"+ \verb+cd="logic1"/>+.\\
+\verb+or+&This corresponds to \verb+<OMS name="or"+ \verb+cd="logic1"/>+.\\
+\verb+xor+&This corresponds to
+\verb+<OMS name="xor"+ \verb+cd="logic1"/>+. MathML has now adopted the
+OpenMath semantics for the non-binary case.\\
+\verb+not+&This corresponds to \verb+<OMS name="not"+ \verb+cd="logic1"/>+.\\
+\verb+implies+&This corresponds to \verb+<OMS name="implies"+ \verb+cd="logic1"/>+.\\
+\verb+forall+&Corresponds to \verb+OMBIND+ with a first child of
+\verb+<OMS name="forall"+ \verb+cd="quant1"/>+. The \verb+bvar+ elements under
+the MathML \verb+forall+ become children of the OpenMath
+\verb+OMBIND+. Any \verb+condition+ has to be moved inside the
+body, as in illustration \ref{forall}.\\
+\verb+exists+&Corresponds to \verb+OMBIND+ with a first child of
+\verb+<OMS name="exists"+ \verb+cd="quant1"/>+. The \verb+bvar+ elements under
+the MathML \verb+exists+ become children of the OpenMath
+\verb+OMBIND+. Any \verb+condition+ has to be moved inside the
+body, as in illustration \ref{forall}.\\
+\verb+abs+&This corresponds to \verb+<OMS name="abs"+ \verb+cd="arith1"/>+.\\
+\verb+conjugate+&This corresponds to
+\verb+<OMS name="conjugate"+ \verb+cd="complex1"/>+.\\
+\verb+arg+&This corresponds to \verb+<OMS name="argument"+
+\verb+cd="complex1"/>+.\\
+\verb+lcm+&This corresponds to
+\verb+<OMS name="lcm"+ \verb+cd="arith1"/>+. However,
+\verb+<apply><lcm/></apply>+ corresponds to 
+\verb+<OMS name="zero"+ \verb+cd="alg1"/>+ (logically, it should be
+$1$, but this is the MathML statement, in C.2.3.25).\\
+\verb+floor+&This corresponds to \verb+<OMS name="floor"+ 
+\verb+cd="rounding1"/>+.\\
+\verb+ceiling+&This corresponds to \verb+<OMS name="ceiling"+ 
+\verb+cd="rounding1"/>+.\\
+\verb+eq+&This corresponds to 
+\verb+<OMS name="eq"+ \verb+cd="relations1"/>+. However, the MathML construct 
+is $n$-ary, but the OpenMath construct is binary. See illustration
+\ref{eq-unfold}.\\
+\verb+neq+&This corresponds to
+\verb+<OMS name="neq"+ \verb+cd="relations1"/>.+\\
+\verb+gt+, \verb+lt+, \verb+geq+ and \verb+leq+.&These correspond to
+\verb+<OMS name="gt"+ \verb+cd="relations1"/>+ etc. However, the MathML construct 
+is $n$-ary, but the OpenMath construct is binary. See illustration
+\ref{gt-unfold}.\\
+\verb+equivalent+\footnote{Chapter 4 and Appendix C of the Proposed
+Recommendation differ here: we follow Chapter 4.}&This corresponds to
+\verb+<OMS name="equivalent"+ \verb+cd="logic1"/>+.\\
+\verb+approx+&This corresponds to
+\verb+<OMS name="approx"+ \verb+cd="relation1"/>+. However, the MathML 
+construct is $n$-ary, but the OpenMath construct is binary. See illustration
+\ref{eq-unfold}.\\
+\verb+factorof+&This corresponds to \verb+<OMS name="factorof"+ 
+\verb+cd="integer1"/>+.\\
+\verb+int+&This corresponds either to 
+\verb+<OMS name="int"+ \verb+cd="calculus1"/>+ or
+\verb+<OMS name="defint"+ \verb+cd="calculus1"/>+. See illustration
+\ref{int}.\\
+\verb+diff+&This corresponds to \verb+<OMS name="diff"+ \verb+cd="calculus1"/>+.
+See illustration \ref{diff}.\\
+\verb+partialdiff+&This corresponds to 
+\verb+<OMS name="partialdiff"+ \verb+cd="calculus1"/>+.
+See illustration \ref{partialdiff}.\\
+\verb+lowlimit+, \verb+uplimit+, \verb+bvar+ and \verb+degree+ are all
+handled by their parents.\\
+\verb+divergence+&This corresponds to 
+\verb+<OMS name="divergence"+ \verb+cd="veccalc1"/>+.\\
+\verb+gradient+&This corresponds to 
+\verb+<OMS name="grad"+ \verb+cd="veccalc1"/>+.\\
+\verb+curl+&This corresponds to 
+\verb+<OMS name="curl"+ \verb+cd="veccalc1"/>+. There is not a direct
+OpenMath correspondence for the MathML form that takes three variables: a
+$\lambda$-expression has to be built.\\
+\verb+laplacian+&This corresponds to 
+\verb+<OMS name="Laplacian"+ \verb+cd="veccalc1"/>+.\\
+\verb+set+&The construct with $n$ explicit arguments corresponds to
+\verb+<OMS name="set"+ \verb+cd="set1"/>+, or
+\verb+<OMS name="multiset"+ \verb+cd="multiset1"/>+ if \verb+type=multiset+
+is specified. The form with a \verb+condition+
+translates to a use of \verb+<OMS name="suchthat"+ \verb+cd="set1"/>+. See
+illustration \ref{set-suchthat}. There is no OpenMath equivalent if
+\verb+type=multiset+ is specified with a \verb+condition+.\\
+\verb+list+&The construct with $n$ explicit arguments corresponds to
+\verb+<OMS name="list"+ \verb+cd="list1"/>+. The form with a \verb+condition+
+translates to a use of \verb+<OMS name="make_list"+ \verb+cd="list1"/>+. See
+illustration \ref{list-condition}.\\
+\verb+union+&This corresponds to \verb+<OMS name="union"+ \verb+cd="set1"/>+, or
+\verb+<OMS name="union"+ \verb+cd="multiset1"/>+. In the absence of a
+\verb+definitionURL+, it defaults to \verb+set1+.\\
+\verb+intersect+&This corresponds to
+\verb+<OMS name="intersect"+ \verb+cd="set1"/>+, or
+\verb+<OMS name="intersect"+ \verb+cd="multiset1"/>+. In the absence of a
+\verb+definitionURL+, it defaults to \verb+set1+.\\
+\verb+notin+, \verb+in+, \verb+subset+, \verb+prsubset+,
+\verb+notsubset+ and \verb+notprsubset+&These correspond to
+\verb+<OMS name="notin"+ \verb+cd="set1"/>+, or 
+\verb+<OMS name="notin"+ \verb+cd="multiset1"/>+ etc. In the absence of a
+\verb+definitionURL+, these default to \verb+set1+.\\
+\verb+setdiff+&This corresponds to \verb+<OMS name="setdiff"+ 
+\verb+cd="set1"/>+, or \verb+<OMS name="setdiff"+ \verb+cd="multiset1"/>+. In 
+the absence of a \verb+definitionURL+, it defaults to \verb+set1+.\\
+\verb+card+&This corresponds to \verb+<OMS name="size"+ \verb+cd="set1"/>+, or
+\verb+<OMS name="size"+ \verb+cd="multiset1"/>+. In 
+the absence of a \verb+definitionURL+, it defaults to \verb+set1+.\\
+\verb+cartesianproduct+&This corresponds to
+\verb+<OMS name="cartesian_product"+ \verb+cd="set1"/>+, or
+\verb+<OMS name="cartesian_product"+ \verb+cd="multiset1"/>+. In 
+the absence of a \verb+definitionURL+, it defaults to \verb+set1+.\\
+\verb+sum+ and \verb+product+&These correspond to
+\verb+<OMS name="sum"+ \verb+cd="arith1"/>+ etc. The \verb+uplimit+
+etc. correspond to the first argument of the OpenMath construction.\\ 
+\verb+limit+&This corresponds to
+\verb+<OMS name="limit"+ \verb+cd="limit1"/>+. The MathML \verb+bvar+
+corresponds to the variable in the $\lambda$-expression that is the
+third argument of the OpenMath construction. The \verb+lowlimit+
+corresponds to the first argument of the OpenMath limit (which is otherwise
+extracted from the \verb+condition+), and the second argument defaults
+to \verb+<OMS name="both_sides"+ \verb+cd="limit1"/>+, if not specified by
+the \verb+type+ attribute of the MathML \verb+tendsto+. See
+illustration \ref{limit}.\\
+\verb+tendsto+&This is handled by the parent \verb+limit+.\\
+\verb+exp+, \verb+ln+&These correspond to
+\verb+<OMS name="exp"+ \verb+cd="transc1"/>+ etc.\\
+\verb+log+&The two-argument form corresponds to
+\verb+<OMS name="log"+ \verb+cd="transc1"/>+. The one-argument form has to have an
+explicit base of 10 supplied (the first argument of the OpenMath form).\\
+\verb+logbase+&Subsumed within \verb+log+.\\
+\verb+cos+ etc. (24 of them)&These correspond to the functions in the
+\verb+transc1+ CD.\\
+\verb+sdev+, \verb+variance+, \verb+median+, \verb+mode+ and
+\verb+mean+&These correspond to either
+\verb+<OMS name="sdev"+ \verb+cd="s-data1"/>+ etc. or
+\verb+<OMS name="sdev"+ \verb+cd="s-dist1"/>+ etc., depending on whether the
+arguments are explicit data or a distribution. The unary case in
+MathML is that of a distribution.\\
+\verb+moment+&The definition of \verb+moment+ in MathML is undergoing
+debate. The (now deprecated) \verb+degree+ qualifier in MathML becomes the 
+first argument of the OpenMath constructor
+\verb+<OMS name="moment"+ \verb+cd="s-dist1"/>+ (and possibly 
+\verb+<OMS name="moment"+ \verb+cd="s-data1"/>+), the second argument
+specifies the point about which the moment is to be taken.\\
+\verb+momentabout+&Subsumed in \verb+moment+.\\
+\verb+vector+&This corresponds to
+\verb+<OMS name="vector"+ \verb+cd="linalg3"/>+ if the type is
+\verb+column+ (the default), otherwise to \verb+<OMS name="vector"+ 
+\verb+cd="linalg2"/>+.\\
+\verb+matrix+ and \verb+matrixrow+&These correspond to 
+\verb+<OMS name="matrix"+ \verb+cd="linalg2"/>+ etc.\\
+\verb+determinant+ and \verb+transpose+&Correspond to 
+\verb+<OMS name="determinant"+ \verb+cd="linalg1"/>+ etc.\\
+\verb+selector+&Corresponds to 
+\verb+<OMS name="vector_selector"+ \verb+cd="linalg1"/>+ or
+\verb+<OMS name="matrix_selector"+ \verb+cd="linalg1"/>+, depending on the
+MathML arity.\\
+\verb+vectorproduct+, \verb+scalarproduct+ and
+\verb+outerproduct+&These correspond to
+\verb+<OMS name="vectorproduct"+ \verb+cd="linalg1"/>+ etc.\\
+\verb+integers+&This corresponds to
+\verb+<OMS name="Z"+ \verb+cd="setname1"/>+.\\
+\verb+reals+&This corresponds to
+\verb+<OMS name="R"+ \verb+cd="setname1"/>+.\\
+\verb+rationals+&This corresponds to
+\verb+<OMS name="Q"+ \verb+cd="setname1"/>+.\\
+\verb+naturalnumbers+&This corresponds to
+\verb+<OMS name="N"+ \verb+cd="setname1"/>+.\\
+\verb+complexes+&This corresponds to
+\verb+<OMS name="C"+ \verb+cd="setname1"/>+.\\
+\verb+primes+&This corresponds to
+\verb+<OMS name="P"+ \verb+cd="setname1"/>+.\\
+\verb+exponentiale+&This corresponds to
+\verb+<OMS name="e"+ \verb+cd="nums1"/>+.\\
+\verb+imaginaryi+&This corresponds to
+\verb+<OMS name="i"+ \verb+cd="nums1"/>+.\\
+\verb+notanumber+&This corresponds to
+\verb+<OMS name="NaN"+ \verb+cd="nums1"/>+.\\
+\verb+true+&This corresponds to
+\verb+<OMS name="true"+ \verb+cd="logic1"/>+.\\
+\verb+false+&This corresponds to
+\verb+<OMS name="false"+ \verb+cd="logic1"/>+.\\
+\verb+emptyset+&This corresponds to
+\verb+<OMS name="emptyset"+ \verb+cd="set1"/>+, or possibly 
+\verb+<OMS name="emptyset"+ \verb+cd="multiset1"/>+ for the multiset form.\\
+\verb+pi+&This corresponds to
+\verb+<OMS name="pi"+ \verb+cd="nums1"/>+.\\
+\verb+eulergamma+&This corresponds to
+\verb+<OMS name="gamma"+ \verb+cd="nums1"/>+.\\
+\verb+infinity+&This corresponds to
+\verb+<OMS name="infinity"+ \verb+cd="nums1"/>+. The attribute
+\verb+type=complex+ is handled by attributing from the
+\verb+mathmltypes+ CD.\\
+\end{longtable}
+
+Note that OpenMath does not support MathML's \verb+definitionURL+
+unless the URL points to an OpenMath CD.\\
+\begin{center}
+\begin{mybox}{4.5in}
+The MathML version:
+\begin{verbatim}<apply>
+  <eq/>
+  <apply>
+    <limit/>
+    <bvar> <ci> x </ci> </bvar>
+    <condition>
+      <apply>
+        <tendsto type="above"/>
+        <ci> x </ci> <cn> 0 </cn>
+      </apply>
+    </condition>
+    <apply>
+      <divide/> <cn> 1 </cn> <ci> x </ci>
+    </apply>
+  </apply>
+  <infinity/>
+</apply>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="above"/>
+      <OMBIND>
+        <OMS cd="funs1" name="lambda"/>
+        <OMBVAR> <OMV name="x"/> </OMBVAR>
+        <OMA>
+          <OMS cd="arith1" name="divide"/>
+          <OMI> 1 </OMI>
+          <OMV name="x"/>
+        </OMA>
+      </OMBIND>
+    </OMA>
+    <OMS cd="nums1" name="infinity"/>
+  </OMA>
+</OMOBJ>
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{equation}\label{limit}
+\hbox{An example of a limit construct to illustrate the condition
+{\em tends to from above}.}
+\end{equation}
+
+\begin{center}
+\begin{myboxbopen}{4.5in}
+The MathML version:
+\begin{verbatim}
+<apply>
+  <int/>
+  <bvar>
+     <ci> x </ci>
+  </bvar>
+  <lowlimit>
+     <bvar>
+       <ci> a </ci>
+     </bvar>
+  </lowlimit>
+  <uplimit>
+     <bvar>
+       <ci> b </ci>
+     </bvar>
+  </uplimit>
+  <apply>
+     <ci> f </ci>
+     <ci> x </ci>
+  </apply>
+</apply>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMA>
+  <OMS cd="calculus1" name="defint"/>
+  <OMA>
+    <OMS cd="interval1" name="interval"/>
+    <OMV name="a"/>
+    <OMV name="b"/>
+  </OMA>
+  <OMBIND>
+    <OMS cd="fns1" name="lambda"/>
+    <OMBVAR>
+      <OMV name="x"/>
+    </OMBVAR>
+    <OMA>
+      <OMV name="f"/>
+      <OMV name="x"/>
+    </OMA>
+  </OMBIND>
+</OMA>
+\end{verbatim}
+\end{myboxbopen}\end{center}
+\begin{center}
+\begin{myboxtopen}{4.5in}
+However we could specify effectively the same integral without
+labelling the upper and lower bounds of the range of integration in the
+following manner:
+\begin{verbatim}
+<OMA>
+  <OMS cd="calculus1" name="defint"/>
+  <OMV name="R"/>
+  <OMBIND>
+    <OMS cd="fns1" name="lambda"/>
+    <OMBVAR>
+      <OMV name="x"/>
+    </OMBVAR>
+    <OMA>
+      <OMV name="f"/>
+      <OMV name="x"/>
+    </OMA>
+  </OMBIND>
+</OMA>
+\end{verbatim}
+\end{myboxtopen}
+\end{center}
+\begin{equation}\label{general range}
+\hbox{An example to show the specification of a general range of integration.}
+\end{equation}
+
+\begin{center}
+\begin{myboxbopen}{4.5in}
+The MathML version:
+\begin{verbatim}
+<apply>
+  <forall/>
+  <bvar> <ci> x </ci> </bvar>
+  <condition>
+    <apply>
+      <in/> <ci> x </ci>
+      <naturalnumbers/>
+    </apply>
+  </condition>
+  <apply>
+    <in/>
+    <apply>
+      <plus/>
+      <ci> x </ci> <cn> 1 </cn>
+    </apply>
+    <naturalnumbers/>
+  </apply>
+</apply>
+\end{verbatim}
+\end{myboxbopen}\end{center}
+\begin{center}
+\begin{myboxtopen}{4.5in}
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMBIND>
+    <OMS cd="quant1" name="forall"/>
+    <OMBVAR>
+      <OMV name="x"/>
+    </OMBVAR>
+    <OMA>
+      <OMS cd="logic1" name="implies"/>
+      <OMA>
+        <OMS cd="set1" name="in"/> <OMV name="x"/>
+        <OMS cd="setname1" name="N"/>
+      </OMA>
+      <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMA>
+          <OMS cd="arith1" name="plus"/>
+          <OMV name="x"/> <OMI> 1 </OMI>
+        </OMA>
+        <OMS cd="setname1" name="N"/>
+      </OMA>
+    </OMA>
+  </OMBIND>
+</OMOBJ>
+\end{verbatim}
+\end{myboxtopen}
+\end{center}
+\begin{equation}
+\hbox{An example: for all x in the natural numbers, x+1 is a natural number.}
+\label{forall}
+\end{equation}
+
+\begin{center}
+\begin{mybox}{4.5in}
+
+The OpenMath equivalent to the MathML for a=b=c, which is:
+\begin{verbatim}
+<apply>
+  <eq/>
+  <ci> a </ci>
+  <ci> b </ci>
+  <ci> c </ci>
+</apply>
+\end{verbatim}
+is
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="logic1" name="and"/>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMV name="a"/>
+      <OMV name="b"/>
+    </OMA>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMV name="b"/>
+      <OMV name="c"/>
+    </OMA>
+  </OMA>
+</OMOBJ>
+
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{center}
+Illustration of the {\em unfolding} of the MathML nary equality operator
+to enable the use of the binary OpenMath {\bf eq} noperator by using the
+OpenMath {\bf and} operator.
+\end{center}
+\begin{equation}\label{eq-unfold}
+\end{equation}
+
+\begin{center}
+\begin{mybox}{4.5in}
+  
+The OpenMath equivalent to the MathML for a$>$b$>$c, which is:
+\begin{verbatim}
+<apply>
+  <gt/>
+  <ci> a </ci>
+  <ci> b </ci>
+  <ci> c </ci>
+</apply>
+\end{verbatim}
+is
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="logic1" name="and"/>
+    <OMA>
+      <OMS cd="relation1" name="gt"/>
+      <OMV name="a"/>
+      <OMV name="b"/>
+    </OMA>
+    <OMA>
+      <OMS cd="relation1" name="gt"/>
+      <OMV name="b"/>
+      <OMV name="c"/>
+    </OMA>
+  </OMA>
+</OMOBJ>
+
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{center}
+Illustration of the {\em unfolding} of the MathML nary greater than operator
+to enable the use of the binary OpenMath {\bf gt} operator by using the
+OpenMath {\bf and} operator.
+\end{center}
+\begin{equation}\label{gt-unfold}
+\end{equation}
+
+\begin{center}
+\begin{mybox}{4.5in}
+The MathML version:
+\begin{verbatim}
+<apply>
+  <int/>
+  <bvar>
+    <ci> x </ci>
+  </bvar>
+  <apply>
+    <sin/>
+    <ci> x </ci>
+  </apply>
+</apply>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="calculus1" name="int"/>
+    <OMBIND>
+      <OMS cd="fns1" name="lambda"/>
+      <OMBVAR>
+        <OMV name="x"/>
+      </OMBVAR>
+      <OMA>
+        <OMS cd="transc1" name="sin"/>
+        <OMV name="x"/>
+      </OMA>
+    </OMBIND>
+  </OMA>
+</OMOBJ>
+
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{equation}\label{int}
+\hbox{Representation of the integral of the function $\sin(x)$ with respect to $x$.}
+\end{equation}
+
+\begin{center}
+\begin{mybox}{4.5in}
+The MathML version:
+\begin{verbatim}
+<apply>
+  <diff/>
+  <bvar>
+    <ci> x </ci>
+  </bvar>
+  <apply>
+    <sin/>
+    <ci> x </ci>
+  </apply>
+</apply>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="calculus1" name="diff"/>
+    <OMBIND>
+      <OMS cd="fns1" name="lambda"/>
+      <OMBVAR>
+        <OMV name="x"/>
+      </OMBVAR>
+      <OMA>
+        <OMS cd="transc1" name="sin"/>
+        <OMV name="x"/>
+      </OMA>
+    </OMBIND>
+  </OMA>
+</OMOBJ>
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{center}
+Representation of the differential of the function $\sin(x)$ with
+respect to $x$.
+\end{center}
+\begin{equation}\label{diff}
+\end{equation}
+
+\begin{center}
+\begin{mybox}{4.5in}
+The MathML version:
+\begin{verbatim}
+<apply>
+  <partialdiff/>
+  <bvar> x </bvar>
+  <bvar> z </bvar>
+  <cn> 3 </cn>
+  <apply>
+    <times/>
+    <ci> x </ci><ci> y </ci><ci> z </ci>
+  </apply>
+</apply>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="calculus1" name="partialdiff"/>
+    <OMA>
+      <OMS cd="list1" name="list"/>
+      <OMI> 1 </OMI>
+      <OMI> 0 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+    <OMBIND>
+      <OMS cd="fns1" name="lambda"/>
+      <OMBVAR>
+        <OMV name="x"/>
+        <OMV name="y"/>
+        <OMV name="z"/>
+      </OMBVAR>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMV name="x"/>
+        <OMV name="y"/>
+        <OMV name="z"/>
+      </OMA>
+    </OMBIND>
+  </OMA>
+</OMOBJ>
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{equation}\label{partialdiff}
+\hbox{Representation of the partial-differential expression
+$\frac{\T \partial^4}{\T \partial x\partial z^3}(xyz)$.}
+\end{equation}
+
+
+\begin{center}
+\begin{mybox}{4.5in}
+The MathML version:
+\begin{verbatim}
+<set>
+  <bvar> x </bvar>
+  <condition>
+    <apply>
+      <in/>
+      <apply>
+        <divide/>
+        <ci> x </ci>
+        <cn> 2 </cn>
+      </apply>
+      <integers/>
+    </apply>
+  </condition>
+</set>
+\end{verbatim}
+
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="set1" name="suchthat"/>
+    <OMS cd="setname1" name="Z"/>
+    <OMBIND>
+      <OMS cd="funs1" name="lambda"/>
+      <OMBVAR> <OMV name="x"/> </OMBVAR>
+      <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMA>
+          <OMS cd="arith1" name="divide"/>
+          <OMV name="x"/>
+          <OMI> 2 </OMI>
+        </OMA>
+        <OMS cd="setname1" name="Z"/>
+      </OMA>
+    </OMBIND>
+  </OMA>
+</OMOBJ>
+\end{verbatim}
+\end{mybox}
+\end{center}
+\begin{center}
+Construct the set of even integers, using the suchthat
+constructor. Note that making the integers ({\bf Z}) the second
+argument of suchthat is a deep semantic transformation, as implied in
+the MathML version.
+\end{center}
+\begin{equation}\label{set-suchthat}
+\end{equation}
+
+\begin{center}
+\begin{myboxbopen}{4.5in}
+The MathML version:
+\begin{verbatim}
+<list>
+  <bvar> x </bvar>
+<condition>
+  <apply>
+    <and/>
+    <apply>
+      <geq/>
+      <ci> x </ci> <cn> 0 </cn>
+    </apply>
+    <apply>
+      <lt/>
+      <ci> x </ci> <cn> 100 </cn>
+    </apply>
+    <apply>
+      <in/>
+      <apply>
+        <divide/>
+        <ci> x </ci> <cn> 2 </cn>
+      </apply>
+      <integers/>
+    </apply>
+  </apply>
+</condition>
+</list>
+\end{verbatim}
+
+\end{myboxbopen}
+\end{center}
+\begin{center}
+\begin{myboxtopen}{4.5in}
+The OpenMath version:
+\begin{verbatim}
+<OMOBJ>
+  <OMA>
+    <OMS cd="list1" name="suchthat"/>
+    <OMS cd="nums1" name="Z"/>
+    <OMBIND>
+      <OMS cd="funs1" name="lambda"/>
+      <OMBVAR>
+        <OMV name="x"/>
+      </OMBVAR>
+      <OMA>
+        <OMS cd="logic1" name="and"/>
+        <OMA>
+          <OMS cd="relation1" name="geq"/>
+          <OMV name="x"/>
+          <OMS cd="alg1" name="zero"/>
+        </OMA>
+        <OMA>
+          <OMS cd="relation1" name="lt"/>
+          <OMV name="x"/>
+          <OMI> 100 </OMI>
+        </OMA>
+        <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMA>
+            <OMS cd="arith1" name="divide"/>
+            <OMV name="x"/> <OMI> 2 </OMI>
+          </OMA>
+          <OMS cd="funs1" name="Z"/>
+        </OMA>
+      </OMA>
+    </OMBIND>
+  </OMA>
+</OMOBJ>
+\end{verbatim}
+\end{myboxtopen}
+\end{center}
+\begin{center}
+This example shows how to construct the list of even positive integers less
+than 100, using the suchthat constructor.
+\end{center}
+\begin{equation}\label{list-condition}
+\end{equation}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

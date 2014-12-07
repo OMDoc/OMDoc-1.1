@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_imports">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_imports">
+
+<imports id="myimports" style="foo" from="bar" hiding="something" type="local">
+<CMP>first</CMP>
+<CMP xml:lang="zh">shouxian</CMP>
+<morphism id="mymorphism" style="foobar" base="bla">
+<requation id="req1">
+<pattern>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+</pattern>
+<value>
+<OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+</value>
+</requation>
+
+<requation id="req2">
+<pattern>
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ>
+</pattern>
+<value>
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ>
+</value>
+</requation>                                                                    
+</morphism>
+</imports>
+
+</theory>
+</omdoc>
+

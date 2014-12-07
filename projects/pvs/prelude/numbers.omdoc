@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="numbers.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:22
+    </Date>
+  </metadata>
+  <theory id="numbers_test">
+    <symbol id="number" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="number-non-empty" >
+      <CMP>The type number is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56770" for="number" pto="pvs" pto-version="3.0" replaces="number-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <axiom id="number_nonempty" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="numbers" name="number"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+  </theory>
+</omdoc>

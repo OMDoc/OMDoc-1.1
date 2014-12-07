@@ -1,0 +1,54 @@
+<html>
+<body>
+<h1>An OMDoc interface to PVS</h1>
+
+In this project we develop interface code for the <a href="http://pvs.csl.sri.com"
+TARGET="_top">PVS</a> theorem prover. The project code is available by anonymous
+<a href="http://www.mathweb.org/cvs.html">CVS</a> (path
+<tt>omdoc/projects/pvs</tt>), and can viewed <a
+href="http://www.mathweb.org/src/mathweb/omdoc/projects/pvs">here</a>.
+
+<h2>Authors and Contact</h2>
+
+<a href="http://www.cs.cmu.edu/~kohlhase" TARGET="_top">Michael Kohlhase</a>
+(Carnegie Mellon University; primary author and contact) and <a
+href="http://www.csl.sri.com/users/owre">Sam Owre</a> (SRI International; PVS
+consulting)
+
+<h2>Components</h2>
+<ul>
+ <li> <a href="http://www.mathweb.org/src/mathweb/omdoc/projects/pvs/pp-omdoc.lisp">
+       <tt>pp-omdoc.lisp</tt></a>: some pvs lisp code (based on the new release of 
+      PVS) that exports formulae in OMDoc. It works on the internal (parsed and
+       disambiguated  by PVS) version of the PVS data structures. 
+<li> <a href="http://www.mathweb.org/src/mathweb/omdoc/projects/pvs/pvs.omdoc">
+       <tt>pvs.omdoc</tt></a>
+     defines the OpenMath symbols of the PVS language constructs.  
+<li> <a href="http://www.mathweb.org/src/mathweb/omdoc/xsl/omdoc2pvs.xsl">
+       <tt>omdoc2pvs.xsl</tt></a> a style sheet for transforming OMDoc into PVS
+       syntax. 
+<li> you can find the results of exporting the PVS prelude 
+     <a href="http://www.mathweb.org/src/mathweb/omdoc/projects/pvs/prelude">here</a>
+      This is correct OMDoc (wrt. to the local version of omdoc.dtd, maybe needs 
+      update), and can partially be transformed back by the 
+      <a href="http://www.mathweb.org/src/mathweb/omdoc/xsl/omdoc2pvs.xsl">
+       <tt>omdoc2pvs.xsl</tt></a> a style sheet. For the
+       first 3n+k theories n,k>4, this can be parsed back by PVS (I have not
+       checked that the theories are equivalent).
+</ul>
+<h2>What is still lacking?</h2>
+
+ (there is a better list at the end of 
+  <a href="http://www.mathweb.org/src/mathweb/omdoc/projects/pvs/pp-omdoc.lisp">
+   <tt>pp-omdoc.lisp</tt></a>)
+
+<ul> 
+<li> support for PVS proofs (as opposed to proof scripts in private
+  elements). The idea is to output as much of the proof
+  structures in PVS, as some kind of proof plan.
+<li> support for theory instances (here I am waiting for Sam to provide me
+  with a function; and for me to find some time to take up the work).
+</ul>
+</body>
+</html>
+

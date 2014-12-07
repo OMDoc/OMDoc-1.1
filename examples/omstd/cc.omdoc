@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="cc-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary cc.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">Olga Caprotti</Creator>
+  <Date> 1999-08-20 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/cc.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>CC Type Attribution for OM</Description>
+</metadata>
+
+<theory id="cc">
+
+<symbol id="type">
+  <CMP> Attribution tag to denote type-judgement
+  </CMP>
+  <commonname>type</commonname>
+</symbol>
+<presentation id="pr-type" for="type" parent="OMATTR" lbrack="" rbrack="">
+  <use  format="default">:</use>
+  <use  format="html" element="sub" crossref-symbol="no"/>
+  <use  format="TeX" lbrack="_{" rbrack="}" crossref-symbol="no"/>
+  <use  format="pmml" element="msub"/>
+</presentation>
+<symbol id="typecoerce">
+  <CMP> Attribution tag to denote type-judgement with coercion
+  </CMP>
+  <commonname>typecoerce</commonname>
+</symbol>
+</theory>
+</omdoc>

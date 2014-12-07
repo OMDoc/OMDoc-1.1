@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="min_nat.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:24
+    </Date>
+  </metadata>
+  <theory id="min_nat-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="T" for="T" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="naturalnumbers" name="nat"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56922" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56923" for="min_nat" pto="pvs" pto-version="3.0" replaces="min_nat-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory min_nat
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="min_nat_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="T" for="T" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="naturalnumbers" name="nat"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56924" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="min_nat-import-parameters" from="min_nat-parameters"/>
+
+
+
+    <assertion id="min_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="sigmatype"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="pvs" name="subtype"/>
+                            <OMS cd="sets" name="nonempty?"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="S"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="min_nat" name="T"/>
+                            </OMATP>
+                            <OMV name="a"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="booleans" name="AND"/>
+                          <OMA>
+                            <OMS cd="min_nat" name="S"/>
+                            <OMV name="a"/>
+                          </OMA>
+                          <OMBIND>
+                            <OMS cd="pvs" name="forall"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="min_nat" name="T"/>
+                                </OMATP>
+                                <OMV name="x"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMS cd="booleans" name="IMPLIES"/>
+                              <OMA>
+                                <OMS cd="min_nat" name="S"/>
+                                <OMV name="x"/>
+                              </OMA>
+                              <OMA>
+                                <OMS cd="reals" name="&lt;="/>
+                                <OMV name="a"/>
+                                <OMV name="x"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="min_TCC1-1" for="min_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[(
+ (INST + lambda S: epsilon(lambda (n: nat): T_pred(n) AND S(n) AND
+                                    FORALL x: S(x) IMPLIES n <= x))
+ (( (SKOLEM!)
+   (( (USE epsilon_ax[nat])
+     (( (SPLIT -)
+       ((1 (ASSERT) NIL NIL)
+        (2 (DELETE 2)
+         ((2 (ASSERT)
+           ((2 (LEMMA wf_nat)
+             ((2 (EXPAND well_founded?)
+               ((2 (INST - lambda (x: nat): T_pred(x) AND S!1(x))
+                 ((2 (GROUND)
+                   ((1 (SKOLEM!)
+                     ((1 (INST? +)
+                       ((1 (ASSERT) ((1 (SKOSIMP) ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+                         NIL))
+                       NIL))
+                     NIL)
+                    (2 (DELETE 2) ((2 (TYPEPRED S!1) ((2 (GRIND) NIL NIL)) NIL)) NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="min" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="subtype"/>
+                  <OMS cd="sets" name="nonempty?"/>
+                </OMA>
+              </OMATP>
+              <OMV name="S"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="min_nat" name="T"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="min_nat" name="S"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="min_nat" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="min_nat" name="S"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMV name="a"/>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="minimum?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="min_nat" name="T"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="minimum?-def" for="minimum?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="min_nat" name="minimum?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="min_nat" name="T"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="S"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="min_nat" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMV name="S"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMV name="a"/>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="min_def" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="min_nat" name="T"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="min_nat" name="min"/>
+                  <OMV name="S"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="min_nat" name="minimum?"/>
+                <OMV name="a"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="min_def-1" for="min_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (TYPEPRED min(S!1))
+   (( (EXPAND minimum?)
+     (( (GROUND)
+       ((1 (REPLACE*) NIL NIL)
+        (2 (INST? -2 WHERE -4) ((2 (INST? - WHERE -1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Editorials
+% 
+% the font shape of ednotes is governed by the parameter \ednoteshape
+% the default is sans serif, specialize it to say italic by 
+% \def\ednoteshape{\it}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{verbatim}
+\def\ednoteshape{\sf}
+\newif\ifshowednotes\showednotesfalse
+\def\edshownotes{\showednotestrue}
+\DeclareOption{show}{\showednotestrue}
+\DeclareOption{hide}{\showednotesfalse}
+\ProcessOptions
+
+\newcounter{ednote}
+\def\ed@foot#1#2#3% text, type, label
+{\def\test{#3}\def\empty{}\footnotetext[\value{ednote}]%
+{{\sc{#2}\if\test\empty\else\label{ed:#3}[{#3}]\fi:} \ednoteshape #1}}
+\def\ed@note#1#2#3% text, type, label
+{\addtocounter{ednote}{1}\message{#2!}%
+\ifshowednotes%
+\footnotemark[\arabic{ednote}]\ed@foot{#1}{#2}{#3}%
+\marginpar{#2(\arabic{ednote})}%
+\fi}
+\newcommand{\ednote}[2][]{\ed@note{#2}{EdNote}{#1}}
+\newcommand{\issue}[2][]{\ed@note{#2}{Issue}{#1}}
+\newenvironment{newpart}[1]% text
+{\addtocounter{ednote}{1}\edef\new@number{\theednote}\message{New Part!\new@number}
+\ifshowednotes\ed@foot{#1}{New Part}{}\marginpar{BegNP(\new@number)}\fi}
+{\ifshowednotes\marginpar{EndNP(\new@number)}\fi}
+
+\def\ednotemessage{\ifnum\value{ednote}>0\typeout{}%
+\typeout{There are still \arabic{ednote} EdNotes and Issues to resolve!}%
+\typeout{}\fi}
+
+\ifshowednotes
+\def\todolist#1{\message{todolist!}%
+{{\sf To Do: #1}}\bgroup\sf\marginpar{{\sf ToDo}}\begin{itemize}}
+\def\endtodolist{\end{itemize}\egroup}
+\else\def\todolist#1{\comment}\def\endtodolist{\endcomment}\fi
+
+\newenvironment{neu}{\begin{newpart}{no explanation given}}{\end{newpart}}
+
+\def\tweak#1{\ifshowednotes\marginpar{{\sf tweak}(#1)}\fi}
+
+\makeindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Index: there are two indizes one for the symbols and one for the names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\df#1{\bf{#1}}
+\def\dfi#1{\bf{\index*{#1}}}
+\def\defemph{\textbf}
+\def\defin#1{\defemph{\index*{#1}}}
+\def\defins#1{\defemph{#1s}\index{#1}}
+\def\emin#1{\em{\index*{#1}}\/}
+\def\emins#1{{\em{#1s}\/}\index{#1}}
+\def\edin#1{\index*{#1}}
+\def\edins#1{\index*{#1}s}
+\def\ttin#1{{\tt{#1}}\index{#1@{\tt{#1}}}}
+\def\ttins#1{{\tt{#1}}s\index{#1@{\tt{#1}}}}
+
+\newenvironment{myfig}[2]%
+{\begin{figure}[!htb]\def\myfiglabel{#1}\def\myfigcaption{{#2}}\begin{center}}
+{\caption{\myfigcaption}\label{fig:\myfiglabel}\end{center}\end{figure}}
+\def\myfigref#1{Figure~\ref{fig:#1}}
+\def\myfigsref#1#2{Figures~\ref{fig:#1} and~\ref{fig:#2}}
+\def\myfiglref#1#2{Figures~\ref{fig:#1} to~\ref{fig:#2}}
+\def\Myfigref#1{Figure~\ref{fig:#1}}  % this one is capitalized for sentence beginnings

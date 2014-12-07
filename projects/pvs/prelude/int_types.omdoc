@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="int_types.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="int_types-parameters">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56991" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56992" for="int_types" pto="pvs" pto-version="3.0" replaces="int_types-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory int_types
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="int_types_test">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56993" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="int_types-import-parameters" from="int_types-parameters"/>
+    <symbol id="upfrom" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="upfrom-non-empty" >
+      <CMP>The type upfrom is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56994" for="upfrom" pto="pvs" pto-version="3.0" replaces="upfrom-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="upfrom" for="upfrom" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="integers" name="upfrom"/>
+            <OMS cd="int_types" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="above" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="above-non-empty" >
+      <CMP>The type above is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56995" for="above" pto="pvs" pto-version="3.0" replaces="above-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="above" for="above" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="integers" name="above"/>
+            <OMS cd="int_types" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+  </theory>
+</omdoc>

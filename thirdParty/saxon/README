@@ -1,0 +1,16 @@
+
+About the saxon thirdParty directory
+====================================
+
+The Saxon XSLT processor of Michael Kay is distributed under the Mozzilla
+public License. Using this software implies you are bound by this license.
+
+The complete distribution of Saxon has not been included, please find it
+at the Saxon's home page:
+     http://users.iclway.co.uk/mhkay/saxon/
+
+Any trouble with the runnable capabilities of this installation should be
+addressed to paul@mathweb.org and not to Michael Kay.
+
+Paul Libbrecht, July 3, 2001
+paul@mathweb.org

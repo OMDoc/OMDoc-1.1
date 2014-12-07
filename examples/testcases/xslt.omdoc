@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_xslt">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_xslt">
+
+<presentation id="mypre" style="foo" xref="bar" for="bla" parent="OMATTR"
+              fixity="infix" lbrack="[" rbrack="]" separator=";"
+              bracket-style="lisp" precedence="2" crossref-symbol="all"
+              theory="th">
+<xslt format="myform" requires="something" xml:lang="en">
+string for xslt
+</xslt>
+</presentation>              
+
+</theory>
+</omdoc>
+

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Constants used in the PVS to OMDoc translation.-->
+
+<!DOCTYPE omdoc SYSTEM "../../dtd/omdoc.dtd" []>
+
+<omdoc id="pvs.omdoc">
+
+<metadata>
+ <Creator role="aut">Michael Kohlhase</Creator>
+ <Date action="created">2001-5-19</Date>
+ <Title>The PVS logic language</Title>
+ <Rights>GPL</Rights>
+</metadata>
+
+
+  <omtext id="intro">
+    <CMP>This document contains and defines the constants used in the PVS
+    to OMDoc translation. Some of these may later have to be moved into
+    another theory.</CMP>
+  </omtext>
+
+<theory id="pvs">
+
+<omgroup id="types">
+  <metadata><Title>Types</Title></metadata>
+  <omtext id="intro-types">
+    <CMP>Types in PVS are complex creatures, they basically are simple types (of
+    the simply typed lambda-calculus) extended by tuples, records subtyping and
+    selection.</CMP>
+  </omtext>
+
+  <omtext id="kinds">
+    <CMP>The types are ordered into a simple kind structure, which classifies
+    whether they are empty or not.</CMP>
+  </omtext>
+  
+  
+   <symbol id="type">
+    <CMP>The kind of types in PVS</CMP>
+   </symbol>
+   <presentation id="pr-type" for="type">
+    <use format="pvs">TYPE</use>
+   </presentation>
+   
+   
+   <symbol id="nonempty-type">
+    <CMP>The kind of non-emty types in PVS.</CMP>
+   </symbol>
+   <presentation id="pr-nonempty-type" for="nonempty-type">
+    <use format="pvs">NONEMPTY_TYPE</use>
+   </presentation>
+   
+   
+   <omtext id="constructors">
+    <CMP>
+     Now we turn to the type constructors (type constants are part of their
+     respective theories). PVS uses the function type constructor from theory mltt.
+    </CMP>
+   </omtext>
+
+<symbol id="subtype">
+  <CMP>The subtype constructor in PVS. It takes a predicate as an argument and
+  gives a type (the type of all objects that satisfy this predicate)</CMP>
+</symbol>
+<presentation id="pr-subtype" for="subtype" parent="OMA">
+  <xslt format="pvs"><![CDATA[
+    <xsl:choose>
+      <xsl:when test="*[2]/om:OMBIND/om:OMS[position()=1 and @cd='pvs' and @name='lambda'] and 
+                     count(*[2]/om:OMBIND/om:OMBVAR/*)=1">
+        <xsl:text>{</xsl:text>
+        <xsl:apply-templates select="*[2]/om:OMBIND/om:OMBVAR"/>
+        <xsl:text> | </xsl:text>
+        <xsl:apply-templates select="*[2]/om:OMBIND/*[3]"/>
+        <xsl:text>}</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>(</xsl:text>
+        <xsl:apply-templates select="*[2]"/>
+        <xsl:text>)</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>]]>
+  </xslt>
+</presentation>
+</omgroup>
+
+<omgroup id="expr">
+ <metadata>
+  <Title>Term Constructors in PVS</Title>
+ </metadata>
+
+  <omtext id="expr-intro">
+    <CMP>Expresssions in PVS are built up from constants and variables by
+    application and abstraction. </CMP>
+  </omtext>
+
+<symbol id="emptylist">
+  <CMP>The empty list in PVS.</CMP>
+</symbol>
+<presentation id="pr-emptylist" for="emptylist">
+  <use format="pvs">(: :)</use>
+</presentation>
+
+  <symbol id="set" kind="object" scope="global">
+   <CMP>The set constructor it is a binding
+      constructor that returns the set of all elements that make the body
+      true.</CMP>
+  </symbol>
+  <presentation id="pr-set" for="set" parent="OMBIND" fixity="infix">
+   <use format="pvs" lbrack="{" rbrack="}"> | </use>
+  </presentation>
+  
+
+  <symbol id="update" kind="object" scope="global">
+   <CMP>The function update operator takes an odd
+   number of arguments F, P_1,V_1,... P_n,V_n. The arguments at even positions are
+   interpreted as members A_i of the domain of F. F is updated by the updated at
+   A_i by the value V_i. In contrast to <OMOBJ><OMS cd="pvs"
+   name="assignment"/></OMOBJ>, which extends the domain, the update expression is
+   undefined, if A_i are not member of the domain of F.</CMP>
+  </symbol>
+  <presentation id="pr-update" for="update" parent="OMA">
+   <xslt format="pvs"><![CDATA[
+    <xsl:apply-templates select="*[1]"/>
+    <xsl:for-each select="*[position() mod 2 = 1]">
+      <xsl:apply-templates select="."/>
+      <xsl:text> := </xsl:text>
+      <xsl:apply-templates select="following-sibling"/>
+      <xsl:if test="position()!=last() -1">
+       <xsl:text>,</xsl:text>
+      </xsl:if> 
+    </xsl:for-each>]]>
+   </xslt>
+</presentation>
+
+
+  <symbol id="assign" kind="object" scope="global">
+   <CMP>The function assignment operator takes an
+   odd number of arguments F, P_1,V_1,... P_n,V_n. The arguments at even positions
+   are interpreted as members A_i of the domain of F. F is updated by the updated
+   at A_i by the value V_i. In contrast to <OMOBJ><OMS cd="pvs"
+   name="update"/></OMOBJ>, which is undefined, if A_i are not member of the
+   domain of F, the assignment operator extends the domain of F as necessary</CMP>
+  </symbol>
+  <presentation id="pr-assign" for="assign" parent="OMA">
+   <xslt format="pvs"><![CDATA[
+    <xsl:apply-templates select="*[1]"/>
+    <xsl:for-each select="*[position mod 2 = 1]">
+      <xsl:apply-templates select="."/>
+      <xsl:text> := </xsl:text>
+      <xsl:apply-templates select="following-sibling"/>
+      <xsl:if test="position()!=last() -1">
+       <xsl:text>,</xsl:text>
+      </xsl:if> 
+    </xsl:for-each>]]>
+   </xslt>
+</presentation>
+
+
+  <symbol id="cases" kind="object" scope="global">
+   <CMP>The cases operator takes arguments
+   E,C_1,... C_n,[E']. The first argument E is an expression on which the case
+   analysis is performed. The remaining arguments are either <OMOBJ><OMS cd="pvs"
+   name="case"/></OMOBJ> expressions C_i or (optionally, if they are the last
+   argument) and expression for the else case. The value of the case expression is
+   the unique value of the matching case or (if none matches and one is given) the
+   value of the else-expression, orelse undefined.</CMP>
+  </symbol>
+  <presentation id="pr-cases" for="cases" parent="OMA">
+   <xslt format="pvs"><![CDATA[
+   <xsl:text> CASES </xsl:text>
+   <xsl:apply-templates select="*[2]"/>
+   <xsl:text> OF </xsl:text>
+   <xsl:for-each select="*[om:OMS[@cd='pvs' and @name='case']]">
+     <xsl:apply-templates select="."/>
+     <xsl:if test="position()!=last()"><xsl:text>, </xsl:text></xsl:if>
+   </xsl:for-each>
+   <xsl:for-each select="*[position()=last() and not(om:OMS[@cd='pvs' and @name='case'])]">
+    <xsl:text> ELSE </xsl:text>
+    <xsl:apply-templates select="."/>
+   </xsl:for-each>
+   <xsl:text> ENDCASES </xsl:text>]]>
+  </xslt>
+ </presentation>
+
+  <symbol id="case" kind="object" scope="global">
+   <CMP>The case operator takes two arguments
+   C (a constructor) and F (a form) that perform a case analysis in a 
+   <OMOBJ><OMS cd="pvs" name="cases"/></OMOBJ> expression. 
+   If F is a binding expression with symbol <OMOBJ><OMS cd="pvs"
+   name="case-lambda"/></OMOBJ>, then the bound varibles A1,...,An of F are called
+   the arguments of C. The case expression succeeds, iff the expression in the
+   superordinate <OMOBJ><OMS cd="pvs" name="cases"/></OMOBJ> expression matches
+   the term C(A_1,...,A_n) with substitution sigma. In this case the value of the
+   case expression is sigma applied to the body of F.</CMP>
+  </symbol>
+  <presentation id="pr-case" for="case" parent="OMA">
+   <xslt format="pvs"><![CDATA[
+     <xsl:apply-templates select="*[2]"/>
+     <xsl:choose>
+       <xsl:when test="*[3]/om:OMS[@cd='pvs' and @name='case-lambda']">
+         <xsl:text>(</xsl:text>
+         <xsl:for-each select="*[3]/om:OMBVAR/*/*[2]">
+           <xsl:apply-templates select="."/>
+  	   <xsl:if test="position()!=last()"><xsl:text>, </xsl:text></xsl:if>
+         </xsl:for-each>
+         <xsl:text>):</xsl:text>
+         <xsl:apply-templates select="*[3]/*[3]"/>
+       </xsl:when>
+       <xsl:otherwise>
+         <xsl:text>: </xsl:text>
+         <xsl:apply-templates select="*[3]"/>
+       </xsl:otherwise>
+     </xsl:choose>]]>
+   </xslt>
+  </presentation>
+</omgroup>
+
+<symbol id="case-lambda" kind="object" scope="global">
+   <CMP>The symbol for binding objects in case statements, see <OMOBJ><OMS
+   cd="pvs" name="case"/></OMOBJ>.</CMP>
+</symbol>
+
+</theory>
+
+<presentation id="pr-&amp;" for="&amp;" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &amp; </use>
+ </presentation>
+
+ <presentation id="pr-IF" for="IF" theory="if_def" parent="OMA">
+  <style format="pvs">
+    <text> IF </text><recurse select="*[2]"/>
+    <text> THEN </text><recurse select="*[3]"/>
+    <text> ELSE </text><recurse select="*[4]"/>
+    <text> ENDIF </text>
+  </style>
+ </presentation>
+
+ <presentation id="pr-&lt;" for="&lt;" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &lt; </use>
+ </presentation>
+
+ <presentation id="pr-&gt;" for="&gt;" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &gt; </use>
+ </presentation>
+
+ <presentation id="pr-&gt;=" for="&gt;=" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &gt;= </use>
+ </presentation>
+
+ <presentation id="pr-&lt;=" for="&lt;=" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &lt;= </use>
+ </presentation>
+
+ <presentation id="pr-&lt;=&gt;" for="&lt;=&gt;" parent="OMA" fixity="infix" theory="booleans">
+  <use format="pvs"> &lt;=&gt; </use>
+ </presentation>
+
+ <presentation id="pr-/=" for="/=" parent="OMA" fixity="infix" theory="booleans">
+   <use format="pvs"> /= </use>
+ </presentation>
+
+ 
+
+</omdoc>

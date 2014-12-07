@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="epsilons.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:19
+    </Date>
+  </metadata>
+  <theory id="epsilons-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="T-non-empty" >
+      <CMP>The type T is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56695" for="T" pto="pvs" pto-version="3.0" replaces="T-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <private id="G56696" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <assertion id="T_TCC1" type="assumption">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="epsilons" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+
+  <private id="G56697" for="epsilons" pto="pvs" pto-version="3.0" replaces="epsilons-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory epsilons
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="epsilons_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="T-non-empty" >
+      <CMP>The type T is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56698" for="T" pto="pvs" pto-version="3.0" replaces="T-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <private id="G56699" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="epsilons-import-parameters" from="epsilons-parameters"/>
+
+
+    <symbol id="epsilon" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="epsilons" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <axiom id="epsilon_ax" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="epsilons" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+              <OMA>
+                <OMV name="p"/>
+                <OMA>
+                  <OMS cd="epsilons" name="epsilon"/>
+                  <OMV name="p"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="opnode-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+   <metadata>
+      <Title>The OpenMath Content Dictionary opnode.ocd  in OMDoc form</Title>
+      <Creator role="trl">Michael Kohlhase</Creator>
+      <Creator role="ant">The OpenMath Society</Creator>
+      <Date/>
+      <Description>
+    This CD contains constructors for the operators used to describe
+    the operations corresponding to operation nodes which occur in
+    straight line programs.
+  </Description>
+   </metadata>
+
+   <theory id="opnode">
+
+<imports id="opnode-imports-sts" from="sts.omdoc#sts"/>      <symbol id="plus">
+
+<CMP>
+      A constant value, constructs the plus for addition nodes.
+    </CMP>
+         <commonname>plus</commonname>
+         <type system="sts">
+            <OMOBJ>
+               <OMS cd="sts" name="Object"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol id="minus">
+         <CMP>
+      A constant value, constructs the minus for subtraction nodes.
+    </CMP>
+         <commonname>minus</commonname>
+         <type system="sts">
+            <OMOBJ>
+               <OMS cd="sts" name="Object"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol id="times">
+         <CMP>
+      A constant value, constructs the times for multiplication nodes.
+    </CMP>
+         <commonname>times</commonname>
+         <type system="sts">
+            <OMOBJ>
+               <OMS cd="sts" name="Object"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol id="divide">
+         <CMP>
+      A constant value, constructs the divide for division nodes.
+    </CMP>
+         <commonname>divide</commonname>
+         <type system="sts">
+            <OMOBJ>
+               <OMS cd="sts" name="Object"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol id="return">
+         <CMP>
+      A unary function, takes a node of an slp, returns the value of
+      the polynomial which corresponds to this node of the slp.
+    </CMP>
+         <commonname>return</commonname>
+         <type system="sts">
+            <OMOBJ>
+               <OMA>
+                  <OMS cd="sts" name="mapsto"/>
+                  <OMV name="SLPInstruction"/>
+                  <OMV name="SLPPolynomial"/>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+</omdoc>

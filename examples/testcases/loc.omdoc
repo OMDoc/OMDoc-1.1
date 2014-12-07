@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_loc">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+
+<catalogue>
+<loc theory="sometheory" omdoc="test.omdoc" cd="somecd"/>
+<loc theory="foo"/>
+</catalogue>
+
+<theory id="test_loc">
+<ignore>content not necessary</ignore>
+</theory>
+
+</omdoc>
+

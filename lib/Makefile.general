@@ -1,0 +1,89 @@
+prep:		4 i .htaccess
+		dirs="$(NEEDSFROMDIRS)"; \
+		 for i in $$dirs; do \
+		 if (cd $$i && $(MAKE) -$(MAKEFLAGS) all); \
+		 then true; else exit 1; fi; \
+		 done
+
+html: 		$(patsubst %.omdoc, %.html ,$(DEPFILES))
+ocd: 		$(patsubst %.omdoc, %.ocd ,$(DEPFILES))
+ps: 		$(patsubst %.omdoc, %.ps ,$(DEPFILES))
+mml:            $(patsubst %.omdoc, %.xml ,$(DEPFILES))
+i: 		$(patsubst %.omdoc, %-incl.xsl,$(DEPFILES))
+4: 		$(patsubst %.omdoc, %-tmpl.xsl,$(DEPFILES))
+slides:		$(SLIDEFILES)
+
+ci:		html
+		cvs commit -m"re-generated" *.html *.omdoc
+test:		$(OMDOCS_DTD_TESTED) $(OMDOCS_UNDEF_TESTED) 
+.%.dtd-tested:	%.omdoc $(DTD)
+		$(XMLPARSE) $< > $@ && touch $@
+
+ .%.undef-tested: %.omdoc $(XSLDIR)/undefined-OMS.xsl
+		$(XSLT) -o $@ $(firstword $<) $(XSLDIR)/undefined-OMS.xsl $(TERMINATE)
+
+test-clean:	
+		rm -f .*.*-tested .*.tested 
+
+test-all:	test-clean test
+
+clean:
+		rm -f *.log *.blg *.ilg *~ ! .#*
+
+distclean:      clean test-clean
+		rm -f *.tex *.ps *.dvi *.html *.xml *.xsl *.aux *.bbl
+
+$(IXSLFILES):	%-incl.xsl: %.omdoc $(XSLDIR)/exincl.xsl 
+		$(XSLT) -o $@ $(firstword $<) $(XSLDIR)/exincl.xsl self='$(patsubst %-incl.xsl,%-tmpl.xsl,$@)'
+
+$(4XSLFILES): %-tmpl.xsl: %.omdoc $(XSLDIR)/expres.xsl 
+		$(SAXON) -o $@ $(firstword $<) $(XSLDIR)/expres.xsl 
+
+$(2HXSLFILES):	$(BINDIR)/make2files
+		$(BINDIR)/make2files '$(XSLDIR)/omdoc2html.xsl' '$(patsubst %2html.xsl,%-incl.xsl,$@)' > $@
+$(2SXSLFILES):	$(BINDIR)/make2files
+		$(BINDIR)/make2files '$(XSLDIR)/omdoc2slides.xsl' '$(patsubst %2html-slides.xsl,%-incl.xsl,$@)' > $@
+$(2TXSLFILES):	$(BINDIR)/make2files
+		$(BINDIR)/make2files '$(XSLDIR)/omdoc2tex.xsl' '$(patsubst %2TeX.xsl,%-incl.xsl,$@)' > $@
+$(2PXSLFILES):	$(BINDIR)/make2files
+		$(BINDIR)/make2files '$(XSLDIR)/omdoc2pmml.xsl' '$(patsubst %2pmml.xsl,%-incl.xsl,$@)' > $@
+
+$(HTMLFILES): %.html: %.omdoc %-incl.xsl %2html.xsl %-tmpl.xsl $(XSLDIR)/omdoc2html.xsl $(XSLDIR)/omdoc2share.xsl 
+		$(XSLT) -o $@ $(firstword $<) $(basename $(firstword $<))2html.xsl $(CSS)
+
+$(OCDFILES): %.ocd: %.omdoc  $(XSLDIR)/omdoc2cd.xsl 
+		$(XSLT) -o $@ $(firstword $<) $(XSLDIR)/omdoc2cd.xsl
+
+$(SLIDEFILES): %-slides.html: %.omdoc %-incl.xsl %2html-slides.xsl %-tmpl.xsl $(XSLDIR)/omdoc2slides.xsl $(XSLDIR)/omdoc2html.xsl $(XSLDIR)/omdoc2share.xsl 
+		$(XSLT) -o $@ $(firstword $<) $(basename $(firstword $<))2html-slides.xsl $(CSS)
+$(TEXFILES): %.tex: %.omdoc %-incl.xsl %2TeX.xsl %-tmpl.xsl $(XSLDIR)/omdoc2tex.xsl $(XSLDIR)/omdoc2share.xsl
+		$(XSLT) -o $@ $(firstword $<) $(basename $(firstword $<))2TeX.xsl 
+$(PMMLFILES): %.xml: %.omdoc %-incl.xsl %2pmml.xsl %-tmpl.xsl $(XSLDIR)/omdoc2pmml.xsl $(XSLDIR)/omdoc2share.xsl $(XSLDIR)/omdoc2html.xsl $(MMLXSL)
+		$(XSLT) -o $@ $(firstword $<) $(basename $(firstword $<))2pmml.xsl $(CSS) $(MOZONLY)
+
+
+$(DVIFILES): %.dvi: %.tex omdoc.sty
+		$(LATEX) "\nonstopmode\input $(firstword $<)"
+		$(LATEX) "\nonstopmode\input $(firstword $<)"
+
+$(PSFILES): %.ps: %.dvi
+		$(DVIPS) -o $@ $<
+
+makeindex.xsl:	index.omdoc Makefile
+		$(BINDIR)/make2files '$(XSLDIR)/cat2index.xsl' 'index-tmpl.xsl' > $@
+
+index.html: $(XSLDIR)/cat2index.xsl makeindex.xsl index-tmpl.xsl
+		$(XSLT) -o index.html index.omdoc makeindex.xsl
+
+missing.html: $(XSLDIR)/nopres.xsl $(OMDOCFILES)
+		$(XSLT) -o missing.html catalogue.omdoc $(XSLDIR)/nopres.xsl 
+
+omdoc.sty:    
+		ln -s $(LIBDIR)/omdoc.sty .	
+
+.htaccess:	$(LIBDIR)/.htaccess
+		ln -s $(LIBDIR)/.htaccess .
+
+$(MMLXSL): %.xsl:   
+		ln -s $(LIBDIR)/$@ .
+

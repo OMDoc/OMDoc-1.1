@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="nat_types.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="nat_types-parameters">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56996" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56997" for="nat_types" pto="pvs" pto-version="3.0" replaces="nat_types-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory nat_types
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="nat_types_test">
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56998" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="nat_types-import-parameters" from="nat_types-parameters"/>
+    <symbol id="upto" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="upto-non-empty" >
+      <CMP>The type upto is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56999" for="upto" pto="pvs" pto-version="3.0" replaces="upto-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="upto" for="upto" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="naturalnumbers" name="upto"/>
+            <OMS cd="nat_types" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="below" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="below" for="below" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="naturalnumbers" name="below"/>
+            <OMS cd="nat_types" name="m"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+  </theory>
+</omdoc>

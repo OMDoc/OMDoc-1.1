@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="deussen.omdoc" 
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>Semigroups and Automata</Title>
+  <Title xml:lang="de">Halbgruppen und Automaten</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Source>Deussen: Halbgruppen und Automaten, Teil I, Springer Verlag, 
+          Heidleberger Taschenbuecher, Sammlung Informatik Nr. 99, 1971.
+  </Source>
+</metadata>
+
+<omgroup type="sequence"> 
+ <ref xref="basic.algebra.omdoc"/>
+ <ref xref="nat.numbers.omdoc"/>
+ <ref xref="chap1.omdoc"/>
+ <ref xref="chap2.omdoc"/>
+ <ref xref="chap3.omdoc"/>
+ <ref xref="chap4.omdoc"/>
+ <ref xref="chap5.omdoc"/>
+</omgroup>
+</omdoc>

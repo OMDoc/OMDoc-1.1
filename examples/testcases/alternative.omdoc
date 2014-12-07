@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_alternative">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_alternative">
+
+  <alternative id="nat-plus-def-2" style="foo" for="plus"
+                   type="inductive" theory="nats" generated-by="someone"
+                   just-by="blabla"
+                   entailed-by="plus-def" entails="plus-def"
+                   entailed-by-thm="dummy1" entails-thm="dummy2">
+  <CMP>The recursive definition of plus on the second argument</CMP>
+  <requation id="nat-plus-2-base">
+   <pattern>
+   <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+   </pattern>
+   <value><OMOBJ><OMV name="X"/></OMOBJ></value>
+  </requation>
+  <requation id="nat-plus-2-step">
+   <pattern>
+   <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+   </pattern>
+   <value>
+   <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+   </value>
+  </requation>
+ </alternative> 
+
+ <alternative id="another" theory="theo" entailed-by="bla" entails="something"
+              entailed-by-thm="lala" entails-thm="la" for="text">
+ <FMP>
+   <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+ </FMP>                                                                       
+ </alternative>
+
+ <alternative id="yetanother" theory="theo" entailed-by="bla" for="text"
+              entails="something" entailed-by-thm="lala" entails-thm="la">
+ <metadata>
+ <Title>metadata for alternative</Title>
+ <Creator role="aut">hf</Creator>
+ <Date>2001-12-22</Date>
+ </metadata>
+ <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ>
+ </alternative>
+
+</theory>
+</omdoc>
+

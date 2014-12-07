@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="truthval-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Classical Truth Values</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+This theory provides all classical two-valued propositional connectives, it shares
+the symbol names with the OpenMath content dictionary logic1 for consistency. We have a
+separate theory here, since we want to make the semantics more restrictive than
+the inclusive treatment in logic1. In particular, we insist that the
+connectives are two-valued.
+  </Description>
+ </metadata>
+
+ <theory id="truthval">
+  
+  <symbol id="bool" kind="type">
+   <CMP>The type of truth values.</CMP>
+   <commonname>bool</commonname>
+  </symbol>
+  <presentation for="bool">
+   <use format="default">o</use>
+  </presentation>
+
+  <symbol id="true">
+   <CMP>This symbol represents the boolean value true.</CMP>
+   <commonname>true</commonname>
+   <type system="simpletypes">
+    <OMOBJ><OMS cd="truthval" name="bool"/></OMOBJ>
+   </type>
+  </symbol>
+
+  <presentation id="pr-true" for="true">
+   <use  format="default">T</use>
+  </presentation>
+
+  <symbol id="false">
+   <CMP>This symbol represents the boolean value false.</CMP>
+   <commonname>false</commonname>
+   <type system="simpletypes">
+    <OMOBJ><OMS cd="truthval" name="bool"/></OMOBJ>
+   </type>
+  </symbol>
+
+  <presentation id="pr-false" for="false">
+   <use  format="default">F</use>
+  </presentation>
+
+ <symbol id="eq">
+   <CMP>Equality on truth values</CMP>
+  </symbol>
+
+<presentation id="pr-eq" for="eq" parent="OMA" fixity="infix" precedence="700">
+ <use  format="default">=</use>
+ <use  format="pmml">=</use>
+</presentation>
+
+ <symbol id="neq">
+   <CMP>Inequality on truth values</CMP>
+  </symbol>
+
+  <presentation id="pr-neq" for="neq" parent="OMA" fixity="infix" lbrack="" rbrack="" precedence="700">
+   <use  format="default">!=</use>
+   <use  format="TeX">\ne</use>
+   <use  format="html|pmml">&#x02260;</use>
+  </presentation>
+
+  <axiom id="tf-distinct">
+   <CMP>
+    <OMOBJ><OMS cd="truthval" name="true"/></OMOBJ> and 
+    <OMOBJ><OMS cd="truthval" name="false"/></OMOBJ> are distinct.
+   </CMP>
+   <FMP>
+    <OMOBJ>
+     <OMA>
+      <OMS cd="truthval" name="neq"/>
+      <OMS cd="truthval" name="true"/>
+      <OMS cd="truthval" name="false"/>
+     </OMA>
+    </OMOBJ>
+   </FMP>
+  </axiom>
+
+</theory>
+
+<theory id="truthval-nd">
+<symbol id="false-elim"/>
+
+<definition id="false-elim-def" for="false-elim">
+ <CMP>The inference rule known as 'ex falso quotlibet' or
+ 'falsity-elimination':
+  <OMOBJ style="display">
+    <OMBIND>
+      <OMS cd="inference-rules" name="schema"/>
+      <OMBVAR><OMV name="A"/></OMBVAR>
+      <OMA>
+	<OMS cd="inference-rules" name="rule"/>
+	<OMS cd="truthval" name="false"/>
+	<OMV name="A"/>
+      </OMA>
+    </OMBIND>
+  </OMOBJ>
+  It allows to derive an arbitrary formula from 
+  <OMOBJ><OMS cd="truthval" name="false"/></OMOBJ>. 
+</CMP>
+</definition>
+
+<symbol id="true-intro"/>
+
+<definition id="true-info-def" for="true-info">
+ <CMP>This is the inference rule for 'truth-introduction'
+  <OMOBJ style="display">
+    <OMA>
+      <OMS cd="inference-rules" name="rule"/>
+      <OMS cd="truthval" name="truth"/>
+    </OMA>
+  </OMOBJ>. It allows to introduce 
+  <OMOBJ><OMS cd="truthval" name="true"/></OMOBJ> anywhere.
+ </CMP>
+</definition>
+ </theory>
+</omdoc>

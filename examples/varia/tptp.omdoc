@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+
+<omdoc id="fortptp" catalogue="../omstd/catalogue.omdoc">
+
+<metadata>
+<Date>2001-6-23</Date>
+</metadata>
+<theory id="test">
+
+<symbol id="q"/>
+<symbol id="p"/>
+<symbol id="f"/>
+
+<assertion id="test" type="conjecture">
+  <FMP>
+   <OMOBJ>
+    <OMBIND>
+      <OMS cd="quant1" name="forall"/>
+      <OMBVAR>
+        <OMATTR>
+          <OMATP>
+            <OMS name="type" cd="tptp"/>
+            <OMS name="int" cd="tptp"/>
+          </OMATP>
+          <OMV name="X"/>
+        </OMATTR>
+        <OMV name="Y"/>
+      </OMBVAR>
+      <OMBIND>
+        <OMS cd="quant1" name="forall"/>
+        <OMBVAR>
+          <OMV name="Z"/>
+          <OMV name="W"/>
+        </OMBVAR>
+        <OMA>
+          <OMS cd="logic1" name="implies"/>
+          <OMA>
+            <OMS cd="test" name="p"/>
+            <OMV name="X"/>
+            <OMA>
+              <OMS cd="test" name="f"/>
+              <OMV name="Y"/>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="test" name="q"/>
+            <OMV name="Z"/>
+            <OMV name="W"/>
+          </OMA>
+        </OMA>
+      </OMBIND>
+    </OMBIND>
+  </OMOBJ>
+</FMP>
+</assertion>
+
+</theory>
+</omdoc>

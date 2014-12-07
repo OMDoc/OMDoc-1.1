@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+<omdoc id="substitution-omdoc" catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Substitution</Title>
+   <Creator role="aut">Michael Kohlhase</Creator>
+   <Date>20020416</Date>
+   <Description>The Theory of Substitutions.</Description>
+  </metadata>
+  <catalogue/>
+
+ <theory id="substitution">
+
+<symbol id="substitute" kind="object" scope="global">
+  <CMP>The elementary substitution constructor, it takes two or three arguments: 
+       the replacement term, the variable and the scope.</CMP>
+  <commonname>substitution</commonname>
+</symbol>
+
+<example id="substitute-ex" for="substitute">
+ <CMP>
+  The expression
+   <OMOBJ>
+    <OMA>
+     <OMS cd="substitution" name="substitute"/>
+     <OMV name="B"/>
+     <OMV name="X"/>
+    </OMA>
+   </OMOBJ>
+   is the substitution operator that substitutes the term 
+   <OMOBJ><OMV name="B"/></OMOBJ> for the variable
+   <OMOBJ><OMV name="X"/></OMOBJ>. When applied to a third 
+   <OMOBJ>
+    <OMA>
+     <OMS cd="substitution" name="substitute"/>
+     <OMV name="B"/>
+     <OMV name="X"/>
+     <OMV name="A"/>
+    </OMA>
+   </OMOBJ>
+  this denotes the term that is obtained by replacing all free occurrences of the
+  variable    <OMOBJ><OMV name="X"/></OMOBJ> with <OMOBJ><OMV name="B"/></OMOBJ> 
+  in <OMOBJ><OMV name="A"/></OMOBJ>.
+</CMP>
+</example>
+
+ <presentation  for="substitute" parent="OMA">
+  <style format="default">
+   <text>[</text><recurse select="*[2]"/>
+   <text>/</text><recurse select="*[3]"/>
+   <text>]</text><recurse select="*[4]"/>
+  </style>
+  <style format="pmml">
+   <element name="mo">
+    <attribute name="fence">open</attribute>
+    <text>[</text>
+   </element>
+   <recurse select="*[2]"/>
+   <element name="mo"><text>/</text></element><recurse select="*[3]"/>
+   <element name="mo">
+    <attribute name="fence">close</attribute>
+    <text>]</text>
+   </element>
+   <recurse select="*[4]"/>
+  </style>
+ </presentation>
+
+<ignore comment="todo">we need to define free, composition and and so on</ignore>
+
+</theory>
+</omdoc>

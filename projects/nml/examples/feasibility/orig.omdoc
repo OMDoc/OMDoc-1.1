@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../../dtd/omdoc.dtd" []>
+
+<omdoc id="test-omdoc" catalogue="catalogue.omdoc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+
+ <metadata>
+  <Title>A Feasibility Study for CML to NML translation in OMDoc</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Creator role="aut">Fairouz Kamareddine</Creator>
+  <Date>20020415</Date>
+  <Description>
+    A Feasibility Study for CML to NML translation in OMDoc
+  </Description>
+ </metadata>
+
+ <theory id="test">
+
+<symbol id="difference-quotient"/>
+
+<definition id="diffq-def" for="difference-quotient">
+ <CMP>Let 
+   <OMOBJ>
+    <OMA><OMS cd="ind" name="neq"/><OMV name="h"/><OMI>0</OMI></OMA>
+   </OMOBJ>, let 
+   <OMOBJ><OMV name="f"/></OMOBJ> be a function from 
+   <OMOBJ><OMV name="A"/></OMOBJ> to 
+   <OMOBJ><OMS cd="setname1" name="R"/></OMOBJ>,
+   <OMOBJ>
+    <OMA><OMS cd="set1" name="in"/><OMV name="a"/><OMV name="A"/></OMA>
+   </OMOBJ> and
+   <OMOBJ>
+    <OMA>
+     <OMS cd="set1" name="in"/>
+     <OMA><OMS cd="arith1" name="plus"/><OMV name="a"/><OMV name="h"/></OMA>
+     <OMV name="A"/>
+    </OMA>
+   </OMOBJ>.  Then 
+   <OMOBJ>
+    <OMA>
+     <OMS cd="arith1" name="divide"/>
+     <OMA>
+      <OMS cd="arith1" name="minus"/>
+      <OMA>
+       <OMV name="f"/>
+       <OMA><OMS cd="arith1" name="plus"/><OMV name="a"/><OMV name="h"/></OMA>
+      </OMA>
+      <OMA><OMV name="f"/><OMV name="a"/></OMA>
+     </OMA>
+     <OMV name="h"/>
+    </OMA>
+   </OMOBJ> is the <with style="definiendum">difference quotient</with>
+    of <OMOBJ><OMV name="f"/></OMOBJ> in <OMOBJ><OMV name="a"/></OMOBJ> with
+    difference <OMOBJ><OMV name="h"/></OMOBJ>. 
+  </CMP>
+</definition>
+
+<symbol id="differentiable"/>
+
+<definition id="diff-def" for="differentiable">
+ <CMP>We call <OMOBJ><OMV name="f"/></OMOBJ> 
+  <with style="definiendum">differentiable</with> at 
+  <OMOBJ><OMA><OMS cd="ind" name="eq"/><OMV name="x"/><OMV name="a"/></OMA></OMOBJ>
+  if 
+  <OMOBJ>
+   <OMA>
+    <OMS cd="limit1" name="limit"/>
+    <OMI> 0 </OMI>
+    <OMS cd="limit1" name="both_sides"/>
+    <OMBIND>
+     <OMS cd="fns1" name="lambda"/>
+     <OMBVAR><OMV name="h"/></OMBVAR>
+     <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA>
+       <OMS cd="arith1" name="minus"/>
+       <OMA>
+        <OMV name="f"/>
+        <OMA><OMS cd="arith1" name="plus"/><OMV name="a"/><OMV name="h"/></OMA>
+       </OMA>
+       <OMA><OMV name="f"/><OMV name="a"/></OMA>
+      </OMA>
+      <OMV name="h"/>
+     </OMA>
+    </OMBIND>
+   </OMA>
+  </OMOBJ> exists.
+ </CMP>
+</definition>
+
+<example for="diff-def" id="sqrt-abs-ndiff" type="against">
+ <CMP>The function 
+  <OMOBJ>
+   <OMBIND>
+    <OMS cd="fns1" name="lambda"/>
+    <OMBVAR><OMV name="x"/></OMBVAR>
+    <OMA>
+     <OMS cd="arith1" name="root"/>
+     <OMA><OMS cd="arith1" name="abs"/><OMV name="x"/></OMA>
+     <OMI>2</OMI>
+    </OMA>
+   </OMBIND>
+  </OMOBJ> is not differentiable at <OMOBJ><OMI>0</OMI></OMOBJ>
+ </CMP>
+</example>
+
+<symbol id="fermat-sum"/>
+
+<definition id="f-sum" for="fermat-sum">
+ <CMP> A Fermat-sum is a natural number which is the sum of two squares of natural numbers.
+</CMP>
+</definition>
+
+
+<assertion type="lemma">
+ <CMP>The product of a square and a fermat-sum is again a fermat-sum.
+</CMP>
+</assertion>
+<assertion type="lemma">
+ <CMP>
+<OMOBJ><OMI>8</OMI></OMOBJ> is the square root of the third power of a natural number </CMP>
+</assertion>
+
+<symbol id="Abst-noun">
+ <CMP>The binding symbol for noun abstractors</CMP>
+ <type system="wtt">
+  <OMOBJ>
+   <OMA>
+    <OMS cd="simpletypes" name="funtype"/>
+    <OMS cd="wtt" name="term"/>
+    <OMS cd="wtt" name="noun"/> 
+   </OMA>
+  </OMOBJ>
+ </type>
+</symbol>
+
+<!--<presentation for="Abst-noun">
+ <use format="TeX" lbrack="_{" rbrack="}"/>
+</presentation>
+-->
+
+<!-- we now add the wtt types for the relevant constants -->
+<type system="wtt" for="power@arith1">
+ <OMOBJ>
+  <OMA>
+   <OMS cd="simpletypes" name="funtype"/>
+   <OMS cd="wtt" name="term"/>
+   <OMS cd="wtt" name="term"/> 
+   <OMS cd="wtt" name="term"/> 
+  </OMA>
+ </OMOBJ>
+</type>
+
+<type system="wtt" for="root@arith1">
+ <OMOBJ>
+  <OMA>
+   <OMS cd="simpletypes" name="funtype"/>
+   <OMS cd="wtt" name="term"/>
+   <OMS cd="wtt" name="term"/> 
+   <OMS cd="wtt" name="term"/> 
+  </OMA>
+ </OMOBJ>
+</type>
+
+<type system="wtt" for="N@setname1">
+ <OMOBJ><OMS cd="wtt" name="set"/></OMOBJ>
+</type>
+
+<assertion type="conjecture">
+ <CMP><OMOBJ><OMI>8</OMI></OMOBJ> is the square root of the third power
+  of a natural number.
+ </CMP>
+ <FMP>
+  <OMOBJ>
+  <OMA>
+   <OMS cd="relation1" name="eq"/>
+   <OMI>8</OMI>
+   <OMBIND>
+    <OMS cd="test" name="Abst-noun"/>
+    <OMBVAR>
+     <OMATTR>
+      <OMATP>
+       <OMS cd="wtt" name="type"/>
+       <OMS cd="setname1" name="N"/>
+      </OMATP>
+      <OMV name="N"/>
+     </OMATTR>
+    </OMBVAR>
+    <OMA>
+     <OMS cd="arith1" name="root"/>
+      <OMA>
+      <OMS cd="arith1" name="power"/>
+       <OMV name="N"/>
+       <OMI>3</OMI>
+      </OMA>
+      <OMI>2</OMI>
+     </OMA>
+     </OMBIND>
+    </OMA>
+   </OMOBJ>
+  </FMP>
+ </assertion>
+
+</theory>
+</omdoc>
+

@@ -1,0 +1,3 @@
+omdoc.out.ozf: omdoc.out.oz omdocaux.out.oz omdocmath.out.oz \
+		omdoctext.out.oz omdoctheory.out.oz
+	$(OZC) $(OZCFLAGS) -c $< -o $@

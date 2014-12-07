@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="extend_bool.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="extend_bool-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56617" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="extend_bool" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56618" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56619" for="extend_bool" pto="pvs" pto-version="3.0" replaces="extend_bool-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory extend_bool
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="extend_bool_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56620" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="extend_bool" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56621" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="extend_bool-import-parameters" from="extend_bool-parameters"/>
+
+    <private id="G56622" for="extend" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |extend|[T, S, |bool|, FALSE]
+        ]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

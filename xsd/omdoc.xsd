@@ -1,0 +1,1657 @@
+<?xml version="1.0"?>
+<!DOCTYPE xs:schema PUBLIC "-//W3C//DTD XMLSCHEMA 200102//EN" "XMLSchema.dtd" [
+ <!ENTITY % schemaAttrs "xmlns:dc CDATA #IMPLIED 
+                         xmlns:om CDATA #IMPLIED 
+                         xmlns:m CDATA #IMPLIED">]>
+
+
+<xs:schema targetNamespace="http://www.mathweb.org/omdoc" 
+        xmlns="http://www.mathweb.org/omdoc" 
+        xmlns:dc="http://purl.org/DC" 
+        xmlns:om="http://www.openmath.org/OpenMath" 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:m="http://www.w3.org/???/MathML2"
+  elementFormDefault="qualified">
+
+ <xs:annotation>
+  <xs:documentation>
+      An XML Schema for the OMDoc format (OpenMath Documents) version 1.1
+      Initial Version: Michael Kohlhase 2000-09-07
+      URL: http://www.mathweb.org/omdoc/omdoc.xsd (released)
+      URL: http://www.mathweb.org/src/mathweb/omdoc/xsd/omdoc.xsd (experimental)
+      This Schema is still experimental, it is intended as a basis for discussion.
+      Comments are welcome! (send mail to kohlhase@mathweb.org)
+      See the documentation and examples at http://www.mathweb.org/omdoc
+      (c) 2000-2002 Michael Kohlhase, released under the GNU Public License
+    </xs:documentation>
+ </xs:annotation>
+
+ <xs:import namespace="http://www.openmath.org/OpenMath" schemaLocation="omdobj.xsd">
+  <xs:annotation>
+   <xs:documentation>
+    Importing the OpenMath namespace, we import an augmented variant that allows
+    structure sharing. 
+   </xs:documentation>
+  </xs:annotation>
+ </xs:import>
+
+ <xs:import namespace="http://purl.org/DC" schemaLocation="dcomdoc.xsd">
+  <xs:annotation>
+   <xs:documentation>Importing the Dublin Core Namespace</xs:documentation>
+  </xs:annotation>
+ </xs:import>
+
+<xs:group name="mobj">
+ <xs:annotation>
+  <xs:documentation>
+    Mathematical Objects in OMDoc, we allow OpenMath and Content MathML
+  </xs:documentation>
+ </xs:annotation>
+ <xs:choice>
+  <xs:element ref="om:OMOBJ"/>
+ </xs:choice>
+</xs:group>
+
+<xs:attributeGroup name="omdocns">
+ <xs:annotation>
+  <xs:documentation>
+   This attribute fixes the OMDoc namespace, it is needed on the OMDoc root
+   element and all elements that are dominated by ones in another namespace,
+   e.g. those that have type 'inCMPType'.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:attribute name="xmlns" type="xs:string" fixed="http://www.mathweb.org/omdoc"/>
+</xs:attributeGroup>
+
+<xs:group name="inCMP">
+ <xs:annotation>
+  <xs:documentation>
+   Mathematical Vernacular, i.e. natural language interspersed with 
+   mathematical formulae, applets and styled fragments.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:choice minOccurs="1" maxOccurs="unbounded">
+  <xs:group ref="mobj"/>
+  <xs:element ref="omlet"/>
+  <xs:element ref="with"/>
+  </xs:choice>
+</xs:group>
+
+<xs:complexType name="inCMPtype" mixed="true">
+ <xs:annotation>
+  <xs:documentation>
+   The type of n OMDoc element that contains mathematical vernacular, 
+   i.e. natural language interspersed with mathematical formulae, 
+   applets and styled fragments.
+  </xs:documentation>
+ </xs:annotation>
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+   <xs:group ref="inCMP"/>
+  </xs:choice>
+  <xs:attributeGroup ref="midmatter"/>
+  <xs:attribute name="xml:lang" type="language" use="optional" default="en"/>
+ </xs:complexType>
+
+ <xs:attributeGroup name="midmatter">
+  <xs:annotation>
+   <xs:documentation>
+     An optional attribute 
+     'mid' (MBase id) that is a global identifier given by the MBase system.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attribute name="mid" type="xs:anyURI" use="optional"/>
+ </xs:attributeGroup>
+
+ <xs:attributeGroup name="idmatter">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes for an OMDoc element with a required  file/theory-local identifier 
+    (and an optional 'mid' attribute). Furthermore, an 'style' attribute, so that
+    style information can be attached. 
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="midmatter"/>
+  <xs:attribute name="id" type="xs:anyURI" use="required"/>
+  <xs:attribute name="style" type="xs:NMTOKEN" use="optional"/>
+ </xs:attributeGroup>
+
+ <xs:attributeGroup name="idimatter">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes for an OMDoc element with an optional file/theory-local identifier 
+    (and an optional 'mid' attribute). Furthermore, an 'style' attribute, so that
+    style information can be attached.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="midmatter"/>
+  <xs:attribute name="id" type="xs:anyURI" use="optional"/>
+  <xs:attribute name="style" type="xs:NMTOKEN" use="optional"/>
+ </xs:attributeGroup>
+
+ <xs:attributeGroup name="idrefmatter">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes for OMDoc elements with a required file/theory-local
+    identifier and a required 'for' attribute which is a reference to another
+    OMDoc element.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="idmatter"/>
+  <xs:attribute name="for" type="xs:anyURI" use="required"/>
+ </xs:attributeGroup>
+
+ <xs:attributeGroup name="frommatter">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes for OMDoc theory imports.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="idmatter"/>
+  <xs:attribute name="from" type="xs:anyURI" use="required"/>
+ </xs:attributeGroup>
+
+ <xs:attributeGroup name="fromtomatter">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes for OMDoc theory inclusions.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="frommatter"/>
+  <xs:attribute name="to" type="xs:anyURI" use="required"/>
+ </xs:attributeGroup>
+
+ <xs:simpleType name="omtexttype">
+  <xs:annotation>
+   <xs:documentation>
+    A simple enumeration type for types of mathematical texts.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="abstract"/>
+   <xs:enumeration value="introduction"/>
+   <xs:enumeration value="conclusion"/>
+   <xs:enumeration value="thesis"/>
+   <xs:enumeration value="antithesis"/>
+   <xs:enumeration value="elaboration"/>
+   <xs:enumeration value="motivation"/>
+   <xs:enumeration value="evidence"/>
+   <xs:enumeration value="note"/>
+   <xs:enumeration value="annote"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+
+ <xs:simpleType name="omgrouptype">
+  <xs:annotation>
+   <xs:documentation>
+    A simple enumeration type for types of groupings in mathematical texts.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="enmeration"/>
+   <xs:enumeration value="sequence"/>
+   <xs:enumeration value="itemize"/>
+   <xs:enumeration value="dataset"/>
+   <xs:enumeration value="labeled-dataset"/>
+   <xs:enumeration value="theory-collection"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:complexType name="withmeta">
+  <xs:annotation>
+   <xs:documentation>
+    An abstract type for an OMDoc element that allows metadata and has a 'id' attribute.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+   <xs:element name="metadata" minOccurs="0">
+    <xs:complexType>
+     <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="dc:dcmditems"/>
+     </xs:choice>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name="extradata" minOccurs="0" maxOccurs="1">
+    <xs:annotation>
+     <xs:documentation>
+      Use this element to specify any XML data elements that are relevant
+      to the parent element. If the data is not XML, then either use a
+      CDATA section or the 'private' element with a 'for' attribute
+      pointing to the parent element
+     </xs:documentation>
+    </xs:annotation>
+   <xs:complexType>
+    <xs:sequence>
+     <xs:any maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="inherits" type="xs:anyURI" use="optional"/>
+   </xs:complexType>
+  </xs:element>
+ </xs:sequence>
+</xs:complexType>
+
+ <xs:complexType name="cfm">
+  <xs:complexContent>
+   <xs:extension base="withmeta">
+    <xs:sequence>
+     <xs:element ref="symbol" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:element ref="FMP" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="idmatter"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+
+ <xs:simpleType name="assertiontype">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="theorem"/>
+   <xs:enumeration value="lemma"/>
+   <xs:enumeration value="corollary"/>
+   <xs:enumeration value="conjecture"/>
+   <xs:enumeration value="false-conjecture"/>
+   <xs:enumeration value="obligation"/>
+   <xs:enumeration value="postulate"/>
+   <xs:enumeration value="formula"/>
+   <xs:enumeration value="assumption"/>
+   <xs:enumeration value="proposition"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+<xs:simpleType name="definitionType">
+ <xs:restriction base="xs:string">
+  <xs:enumeration value="simple"/>
+  <xs:enumeration value="inductive"/>
+  <xs:enumeration value="implicit"/>
+  <xs:enumeration value="recursive"/>
+  <xs:enumeration value="obj"/>
+ </xs:restriction>
+</xs:simpleType>
+
+ <xs:simpleType name="glolocType">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="global"/>
+   <xs:enumeration value="local"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:attributeGroup name="insymbolmatter">
+  <xs:annotation>
+   <xs:documentation>
+    Attributes for OpenMath/CMathML symbols, they have attributes 'mid',
+    'id' and 'scope'
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup ref="idmatter"/>
+  <xs:attribute name="kind" use="optional" default="global">
+   <xs:simpleType>
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="type"/>
+     <xs:enumeration value="sort"/>
+     <xs:enumeration value="object"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="scope" use="optional" default="global" type="glolocType"/>
+ </xs:attributeGroup>
+
+ <xs:simpleType name="listOfanyURI">
+  <xs:annotation>
+   <xs:documentation>A list of URIs.</xs:documentation>
+  </xs:annotation>
+  <xs:list itemType="xs:anyURI"/>
+ </xs:simpleType>
+
+
+ <xs:group name="mathitem">
+  <xs:choice minOccurs="1" maxOccurs="unbounded">
+   <xs:element ref="type"/>
+   <xs:element ref="assertion"/>
+   <xs:element ref="alternative"/>
+   <xs:element ref="example"/>
+   <xs:element ref="proof"/>
+   <xs:element ref="proofobject"/>
+   <xs:element ref="theory-inclusion"/>
+   <xs:element ref="decomposition"/>
+   <xs:element ref="axiom-inclusion"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:group name="auxitem">
+  <xs:choice minOccurs="1" maxOccurs="unbounded">
+   <xs:element ref="exercise"/>
+   <xs:element ref="solution"/>
+   <xs:element ref="omlet"/>
+   <xs:element ref="private"/>
+   <xs:element ref="code"/>
+   <xs:element ref="presentation"/>
+   <xs:element ref="omstyle"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:group name="onlyintheoryitem">
+  <xs:choice minOccurs="1" maxOccurs="unbounded">
+   <xs:element ref="symbol"/>
+   <xs:element ref="axiom"/>
+   <xs:element ref="definition"/>
+   <xs:element ref="adt"/>
+   <xs:element ref="imports"/>
+   <xs:element ref="inclusion"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:group name="omdocitem">
+  <xs:choice minOccurs="1" maxOccurs="unbounded">
+   <xs:element ref="omtext"/>
+   <xs:group ref="mathitem"/>
+   <xs:group ref="auxitem"/>
+   <xs:element ref="theory"/>
+   <xs:element ref="omgroup"/>
+   <xs:element ref="ignore"/>
+   <xs:element ref="ref"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:group name="intheoryitem">
+  <xs:choice minOccurs="1" maxOccurs="unbounded">
+   <xs:group ref="omdocitem"/>
+   <xs:group ref="onlyintheoryitem"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:element name="omdoc">
+  <xs:annotation>
+   <xs:documentation>The top-level OMDoc element.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="catalogue">
+       <xs:annotation>
+        <xs:documentation>
+         The catalogue is an OMDoc element that provides an association between CD
+         names in the symbols used in this document and URIs, where they can be
+         found. The (full) catalogue of the current OMDoc is computed as the
+         catalogue of the OMDoc at the URI specified by the 'catalogue' attribute,
+         and then extending that by the local catalogue, where the latter takes
+         precedence over the external one.
+        </xs:documentation>
+        </xs:annotation>
+       <xs:complexType>
+        <xs:sequence>
+         <xs:element name="loc" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+           <xs:attribute name="theory" type="xs:string" use="required"/>
+           <xs:attribute name="omdoc" type="xs:anyURI" use="required"/>
+          </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+       </xs:complexType>
+      </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+       <xs:group ref="omdocitem"/>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="idmatter"/>
+     <xs:attribute name="type" type="omgrouptype" use="optional"/>
+     <xs:attribute name="catalogue" type="xs:anyURI">
+      <xs:annotation>
+       <xs:documentation>
+        This attribute specifies where an external catalogue can be found. It is
+        the catalogue specified in 'omdoc/catalogue' at the URI specified here. 
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attribute name="version" type="xs:string" fixed="1.1">
+      <xs:annotation>
+       <xs:documentation>
+        This attribute specifies version of OMDoc the document claims to be. It is
+        fixed to '1.1' in the schema as a sanity check.
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attributeGroup ref="omdocns"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="omtext">
+  <xs:annotation>
+   <xs:documentation>
+    An OMDoc element that contains (multilingual, explanatory) text elements.
+    The CMP (Commented Mathematical Properties) contain the actual text. They
+    are indexed by the 'lang' attribute, which has to be unique in the omtext
+    element. 
+    The FMP elements can be used to give formal logical representations of the
+    text where possible. 
+  </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element ref="CMP" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element ref="FMP" minOccurs="0" maxOccurs="unbounded"/>
+     </xs:sequence>
+     <xs:attributeGroup ref="idmatter"/>
+     <xs:attribute name="for" type="xs:anyURI" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+        Some types need a relation to another OMDoc element, this attribute points
+        to it.
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="CMP" type="inCMPtype">
+  <xs:annotation>
+   <xs:documentation>
+    An OMDoc element for Commented Mathematical Properties. It contains text
+    mixed with mathematical formulae. CMPs usually occur in multilingual
+    groups inside parent elements and are indexed by the 'lang' attribute,
+    which has to be unique in the parent element.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:unique name="uniquelang">
+   <xs:selector xpath="../CMP"/>
+   <xs:field xpath="@xml:lang"/>
+  </xs:unique>
+ </xs:element>
+
+ <xs:element name="with">
+  <xs:annotation>
+   <xs:documentation>
+    An OMDoc element that identifies a text passage and allows to attach style to
+    it.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType mixed="true">
+   <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:group ref="inCMP"/>
+   </xs:choice>
+   <xs:attribute name="id" type="xs:ID" use="optional"/>
+   <xs:attribute name="style" type="xs:NMTOKEN" use="optional"/>
+   <xs:attributeGroup ref="omdocns"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="omgroup">
+  <xs:annotation>
+   <xs:documentation>
+    This element is used for specifying hierarchical document structure. Note that
+    since the 'ref' element is an 'omdocitem', the structure can also be
+    specified as a hierarchical structure of links over a flat database of
+    terminal OMDoc elements. In particular, it is possible to specify multiple
+    document structures over the same database.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="intheoryitem"/>
+     </xs:choice>
+     <xs:attributeGroup ref="idmatter"/>
+     <xs:attribute name="type" type="omgrouptype" use="optional"/>
+     </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="ref">
+  <xs:annotation>
+   <xs:documentation>
+    A general reference to an OMDoc element. This can be referenced by 
+    - an explicit URI, in the 'xref' attribute,
+    - a pair of a theory and a name (id there) using the 'theory' and 'name'
+      attributes like OpenMath symbols. 
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:attribute name="xref" type="xs:anyURI" use="required"/>
+   <xs:attribute name="type" type="xs:NMTOKEN" use="optional"/>
+  </xs:complexType>
+ </xs:element>
+
+<xs:element name="symbol">
+ <xs:annotation>
+  <xs:documentation>
+   A symbol declaration in OMDoc
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:complexContent>
+   <xs:extension base="withmeta">
+    <xs:sequence>
+     <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="commonname"/>
+      <xs:element ref="type"/>
+      <xs:element ref="selector"/>
+     </xs:choice>
+    </xs:sequence>
+    <xs:attributeGroup ref="insymbolmatter"/>
+    <xs:attribute name="generated-by" type="xs:anyURI" use="optional"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ </xs:element>
+
+ <xs:element name="commonname" type="inCMPtype">
+  <xs:unique name="unique-commonname">
+   <xs:selector xpath="../commonname"/>
+   <xs:field xpath="@xml:lang"/>
+  </xs:unique>
+ </xs:element>
+
+ <xs:element name="type">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:choice><xs:group ref="mobj"/></xs:choice>
+   </xs:sequence>
+   <xs:attributeGroup ref="idimatter"/>
+   <xs:attribute name="system" type="xs:NMTOKEN" use="required"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:complexType name="simple-assertion">
+  <xs:annotation>
+   <xs:documentation>
+    The type for an assumption or a conclusion in a formal sequent. It is
+    basically a simple assertion, i.e. either a logical formula (given as an OM
+    Object), or a natural language representation of the assertion, or both. In
+    the latter case, their meaning is assumed to be identical.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+   <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+   <xs:choice minOccurs="0" maxOccurs="1"><xs:group ref="mobj"/></xs:choice>
+  </xs:sequence>
+  <xs:attributeGroup ref="idmatter"/>
+ </xs:complexType>
+
+ <xs:element name="FMP">
+  <xs:annotation>
+   <xs:documentation>
+    An FMP is a "Formal Mathematical Property" (name taken from OpenMath
+    CDs). Concretely, it is either an OpenMath Object or a Natural Deduction
+    sequent A1,...,An |- C, i.e. a set {A1,...,An} of assumptions and a conclusion
+    C. The meaning of this is that the sequent A1,...,An |- C asserts that C can
+    be proven from {A1,...,An}.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice>
+    <xs:sequence>
+     <xs:element name="assumption" type="simple-assertion" 
+         minOccurs="1" maxOccurs="unbounded"/>
+     <xs:element name="conclusion" type="simple-assertion"
+         minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:group ref="mobj"/>
+   </xs:choice>
+   <xs:attributeGroup ref="midmatter"/>
+   <xs:attribute name="logic" type="xs:NMTOKEN" use="optional"/>
+  </xs:complexType>
+ </xs:element>
+ 
+ <xs:complexType name="cfmg">
+  <xs:complexContent>
+   <xs:extension base="cfm">
+    <xs:attribute name="generated-by" type="xs:anyURI" use="optional"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+
+ <xs:element name="axiom" type="cfmg"/>
+
+ <xs:element name="definition">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0">
+       <xs:element ref="FMP"/>
+       <xs:element ref="requation" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element ref="om:OMOBJ"/>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="idrefmatter"/>
+     <xs:attribute name="just-by" type="xs:anyURI" use="optional"/>
+     <xs:attribute name="type" type="definitionType" use="optional" default="simple"/>
+     <xs:attribute name="generated-by" type="xs:anyURI" use="optional"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="requation">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="pattern">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element ref="om:OMOBJ"/>
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="value">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element ref="om:OMOBJ"/>
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+   <xs:attributeGroup ref="idimatter"/>
+  </xs:complexType>
+ </xs:element>
+
+<xs:element name="adt">
+ <xs:annotation>
+  <xs:documentation>
+    adts are abstract data types, they are short forms for 
+    groups of symbols and their definitions, therefore, 
+    they have much the same attributes.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:complexContent>
+   <xs:extension base="withmeta">
+    <xs:sequence>
+     <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:element ref="sortdef" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="idmatter"/>
+    <xs:attribute name="type" use="optional" default="loose">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:enumeration value="loose"/>
+       <xs:enumeration value="generated"/>
+       <xs:enumeration value="free"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:attribute>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+</xs:element>
+
+
+ <xs:simpleType name="yesnoType">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="yes"/>
+   <xs:enumeration value="no"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:simpleType name="truefalseType">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="true"/>
+   <xs:enumeration value="false"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:element name="sortdef">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+     <xs:element name="insort">
+      <xs:complexType>
+       <xs:attribute name="for" type="IDREF" use="required"/>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="constructor">
+      <xs:complexType>
+       <xs:sequence>
+       <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element name="argument" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="selector" minOccurs="0" maxOccurs="1">
+           <xs:complexType>
+            <xs:sequence>
+             <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="insymbolmatter"/>
+            <xs:attribute name="total" use="optional" default="no" type="yesnoType"/>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attributeGroup ref="insymbolmatter"/>
+         <xs:attribute name="sort" type="anyURI" use="required"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="recognizer" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="insymbolmatter"/>
+        </xs:complexType>
+       </xs:element>
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+   </xs:choice>
+   </xs:sequence>
+   <xs:attributeGroup ref="idmatter"/>
+  <xs:attribute name="scope" use="optional" default="global" type="glolocType"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:complexType name="mmobj">
+  <xs:complexContent>
+   <xs:extension base="midmatter">
+    <xs:sequence>
+     <xs:choice><xs:group ref="mobj"/></xs:choice>
+    </xs:sequence>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+
+
+ <xs:element name="assertion">
+  <xs:annotation>
+   <xs:documentation>
+    The OMDoc element for all kinds of mathematical assertions irrespective of
+    what is known about them (this is specified by the 'type' attribute). If an
+    assertion is a 'theorem' or 'lemma' or a 'conjecture' then there has to be
+    evidence of a 'proof' for it. Traditionally a 'theorem' is more important than a
+    'lemma' in some respect), and a 'corollary' has a "simple" proof from another
+    assertion.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cfmg">
+     <xs:attribute name="theory" type="xs:NMTOKEN" use="optional"/>
+     <xs:attribute name="type" type="assertiontype" use="optional" default="conjecture"/>
+     <xs:attribute name="proofs" use="optional" type="listOfanyURI">
+      <xs:annotation>
+       <xs:documentation>
+        This points to a list of proofs or counter-examples (the latter only if
+        the 'type' is false-conjecture) that support or discount this assertion.
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+<xs:element name="alternative">
+ <xs:annotation>
+  <xs:documentation>
+     An alternative formulation of a definition or assertion. The attributes 
+     just-by, points to the theorem justifying well-definedness
+     entailed-by, entails, point to other (equivalent definitions
+     entailed-by-thm, entails-thm point to the theorems justifying
+     the entailment relation.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:complexContent>
+   <xs:extension base="withmeta">
+    <xs:sequence>
+     <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+     <xs:choice>
+      <xs:element ref="FMP"/>
+      <xs:element ref="requation" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="om:OMOBJ"/>
+     </xs:choice>
+    </xs:sequence>
+    <xs:attributeGroup ref="idrefmatter"/>
+    <xs:attribute name="type" type="definitionType" use="optional" default="simple"/>
+    <xs:attribute name="theory" type="xs:NMTOKEN" use="required"/>
+    <xs:attribute name="generated-by" type="xs:anyURI" use="optional"/>
+    <xs:attribute name="just-by" type="xs:anyURI" use="optional"/>
+    <xs:attribute name="entailed-by" type="xs:anyURI" use="required"/>
+    <xs:attribute name="entails" type="xs:anyURI" use="required"/>
+    <xs:attribute name="entailed-by-thm" type="xs:anyURI" use="required"/>
+    <xs:attribute name="entails-thm" type="xs:anyURI" use="required"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+</xs:element>
+
+
+ <xs:element name="proof">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element ref="symbol" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+       <xs:element name="metacomment">
+	<xs:annotation>
+	 <xs:documentation>
+          This element can be used for annotating explanatory text in proofs that
+          does not have direct argumentative character.
+         </xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+	 <xs:complexContent>
+	  <xs:extension base="idimatter">
+	   <xs:sequence>
+	    <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+	   </xs:sequence>
+	  </xs:extension>
+	 </xs:complexContent>
+	</xs:complexType>
+       </xs:element>
+       <xs:element name="hypothesis">
+        <xs:annotation>
+         <xs:documentation>
+          A hypothesis is a local assumption in a proof it has to be discharged
+          before the proof is complete. The 'discharged-in' attribute points to
+          the proof step (a 'derive' or 'conclude' element) that discharges it.
+         </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element ref="symbol" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="FMP" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="idmatter"/>
+         <xs:attribute name="discharged-in" type="xs:anyURI" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            This attribute points to the 'derive' or 'conclude' element
+            that discharges this hypothesis. The intended semantics is that the
+            hypothesis will be local in the sub-tree rooted at that.
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="derive" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:complexContent>
+          <xs:extension base="concludeType">
+           <xs:sequence>
+            <xs:element ref="FMP" minOccurs="0"/>
+           </xs:sequence>
+          </xs:extension>
+         </xs:complexContent>
+        </xs:complexType>
+       </xs:element>
+      </xs:choice>
+      <xs:element name="conclude" type="concludeType"/>
+     </xs:sequence>
+     <xs:attributeGroup ref="idrefmatter"/>
+     <xs:attribute name="theory" type="xs:anyURI" use="optional"/>
+     </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:complexType name="concludeType">
+  <xs:sequence>
+   <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+   <xs:element name="method" minOccurs="0">
+    <xs:complexType>
+     <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+       <xs:group ref="mobj"/>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attribute name="xref" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name="premise" minOccurs="0" maxOccurs="unbounded">
+    <xs:complexType>
+     <xs:attribute name="xref" type="xs:anyURI" use="required"/>
+     <xs:attribute name="rank" type="xs:nonNegativeInteger" use="optional"
+             default="0">
+      <xs:annotation>
+       <xs:documentation>
+        The rank of a premise specifies its importance in the inference rule. 
+        Rank 0 (the default) is a real premise, whereas positive rank signifies 
+        side conditions of varying degree.
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+    </xs:complexType>
+   </xs:element>
+   <xs:choice minOccurs="0">
+    <xs:element ref="proof"/>
+    <xs:element ref="proofobject"/>
+   </xs:choice>
+  </xs:sequence>
+  <xs:attributeGroup ref="idmatter"/>
+ </xs:complexType>
+
+ <xs:element name="proofobject">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cm">
+     <xs:sequence>
+      <xs:choice><xs:group ref="mobj"/></xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="idrefmatter"/>
+     <xs:attribute name="theory" type="xs:NMTOKEN" use="optional"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="example">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element ref="symbol" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0"><xs:group ref="mobj"/></xs:choice>
+     </xs:sequence>
+     <xs:attribute name="type" use="optional">
+      <xs:simpleType>
+       <xs:restriction base="xs:string">
+        <xs:enumeration value="for"/>
+        <xs:enumeration value="against"/>
+       </xs:restriction>
+      </xs:simpleType>
+     </xs:attribute>
+     <xs:attributeGroup ref="idrefmatter"/>
+     <xs:attribute name="assertion" type="xs:anyURI" use="optional"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="theory">
+  <xs:annotation>
+   <xs:documentation>An OMDoc element for mathematical theories.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="withmeta">
+     <xs:sequence>
+      <xs:element ref="commonname" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+       <xs:group ref="intheoryitem"/>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="idmatter"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+  <xs:unique name="uniqueSymbolNames">
+   <xs:annotation>
+    <xs:documentation>
+     The  symbols that are introduced in various parts of the 'definition' element
+     must be unique over the theory
+    </xs:documentation>
+   </xs:annotation>
+   <xs:selector xpath="definition/sortdef|
+                       definition/sortdef/constructor|
+                       definition/sortdef/constructor/argument/selector|
+                       definition/sortdef/constructor/recognizer|
+                       definition/objdef"/>
+   <xs:field xpath="@id"/>
+  </xs:unique>
+ </xs:element>
+
+ <xs:element name="imports">
+  <xs:annotation>
+   <xs:documentation>
+    The parent theory this one inherits from. The import can be global or
+    local. In the first case, only the axioms explicitly declared in the
+    parent theory are imported, otherwise axioms from all ancestors are
+    imported. 
+
+    In general theory inheritance (via 'import') can be done modulo a
+    so-called theory morphism. This is a mapping that maps symbols in the
+    current theory to expressions in the 'from' theory, implicitly defining
+    them in terms of the 'from' theory. Note that the symbols in the domain
+    of the morphism have to be visible in the current theory (either
+    explicitly declared by a 'symbol' element or imported from another
+    theory).
+
+    Symbols are imported verbatim (keeping their home theory/CD) from the
+    parent theory and are available in the new theory unless mentioned in
+    the 'hiding' attribute, or they are in the domain of the 'morphism'
+    defined in the import element. 
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element ref="morphism" minOccurs="0" maxOccurs="1"/>
+   </xs:sequence>
+   <xs:attributeGroup ref="frommatter"/>
+   <xs:attribute name="hiding" type="listOfanyURI" use="optional"/>
+   <xs:attribute name="type" use="optional" default="global" type="glolocType"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="morphism">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="requation" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+   <xs:attributeGroup ref="idimatter"/>
+   <xs:attribute name="base" type="xs:anyURI" use="optional">
+    <xs:annotation>
+     <xs:documentation>
+      A morphism can be defined by extension. This points to another morphism
+      this one extends by overwriting in the 'mapsto' elements.
+     </xs:documentation>
+    </xs:annotation>
+   </xs:attribute>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="inclusion">
+  <xs:complexType>
+   <xs:attribute name="via" type="xs:anyURI" use="required">
+    <xs:annotation>
+     <xs:documentation>
+      this attribute points to a 'theory-inclusion' element that is necessary to
+      hold for this to be meaningful.
+     </xs:documentation>
+    </xs:annotation>
+   </xs:attribute>
+   <xs:attributeGroup ref="midmatter"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="theory-inclusion">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cfm">
+     <xs:sequence>
+      <xs:element ref="morphism" minOccurs="0"/>
+     </xs:sequence>
+     <xs:attributeGroup ref="fromtomatter"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+<xs:element name="decomposition">
+ <xs:complexType>
+   <xs:attributeGroup ref="idrefmatter"/>
+   <xs:attribute name="links" type="listOfanyURI" use="required">
+    <xs:annotation>
+     <xs:documentation>
+      This points to a list of 'axiom-inclusions' and 'theory-inclusions' 
+      whose 'morphisms' compose to the overall morphism.
+     </xs:documentation>
+    </xs:annotation>
+   </xs:attribute>
+  </xs:complexType>
+ </xs:element>
+     
+ <xs:element name="axiom-inclusion">
+  <xs:annotation>
+   <xs:documentation>
+    An axiom-inclusion is a local theory inclusion. The target theory includes the
+    axioms and definitions of the source theory (possibly translated by the
+    morphism).
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cfm">
+     <xs:sequence>
+      <xs:element ref="morphism" minOccurs="0"/>
+      <xs:choice>
+       <xs:element name="path-just">
+        <xs:annotation>
+         <xs:documentation>
+          A justification of an axiom inclusion in form of an inclusion path; this
+          of local and global theory inclusions whose morphisms compose to this
+          morphism.
+         </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+         <xs:attributeGroup ref="midmatter"/>
+         <xs:attribute name="local" type="xs:anyURI" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            This points to an 'axiom-inclusion', that serves as the local part
+            of the path.
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="globals" type="listOfanyURI" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            This points to a list of global theory inclusions that form the
+            global part of the path.
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="obligation" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+         <xs:documentation>
+          A justification of an axiom inclusion in form of an assertions.
+         </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+         <xs:attribute name="assertion" type="xs:anyURI" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            This points to an assertion that is the proof obligation induced by
+            the theory assumption specified in the 'induced-by' attribute.
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="induced-by" type="xs:anyURI" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            The axiom or definition that generates this proof obligation.
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+         <xs:attributeGroup ref="midmatter"/>
+        </xs:complexType>
+       </xs:element>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="fromtomatter"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="exercise">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cfm">
+     <xs:sequence>
+      <xs:element ref="hint" minOccurs="0"/>
+      <xs:choice>
+       <xs:element ref="solution" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element name="mc" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element ref="symbol" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="choice" type="cfm"/>
+          <xs:element ref="hint" minOccurs="0"/>
+          <xs:element name="answer">
+           <xs:complexType>
+            <xs:complexContent>
+             <xs:extension base="cfm">
+              <xs:attribute name="verdict" type="truefalseType" use="required"/>
+             </xs:extension>
+            </xs:complexContent>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attributeGroup ref="idimatter"/>
+        </xs:complexType>
+       </xs:element>
+      </xs:choice>
+     </xs:sequence>
+     <xs:attributeGroup ref="idrefmatter"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="hint" type="cfm"/>
+
+ <xs:element name="solution">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="cm">
+     <xs:choice>
+      <xs:element ref="FMP" minOccurs="0"/>
+      <xs:element ref="proof"/>
+     </xs:choice>
+     <xs:attributeGroup ref="idirefmatter"/>
+     <xs:attribute name="for" type="xs:anyURI" use="optional"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="omlet">
+  <xs:annotation>
+   <xs:documentation>The OMDoc equivalent of an applet.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="inCMPtype">
+     <xs:attributeGroup ref="idimatter"/>
+     <xs:attribute name="action" type="xs:NMTOKEN" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+        Specifies the action to be taken when the 'omlet' is activated
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attribute name="type" type="xs:NMTOKEN" use="optional">
+      <xs:annotation>
+       <xs:documentation>Specifies the type of omlet.</xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attribute name="data" type="xs:anyURI" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+        A URIref to data in a private element.
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attribute name="argstr" type="xs:string" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+        A string of arguments supplied to the 'function'
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+     <xs:attribute name="function" type="xs:anyURI" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+         An URIref, points to a 'code' element
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+    <xs:attribute name="width" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="height" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attributeGroup ref="omdocns"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ </xs:element>
+
+ <xs:complexType name="privType">
+  <xs:annotation>
+   <xs:documentation>
+    The attributes of ``private'' elements `private' and `code'. They provide space for
+    application-specific (and domain-specific) data that does not (yet) fit into
+    the OMDoc framework in the 'data' element. This allows the OMDoc format to act
+    as the sole repository format for mathematical services.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+   <xs:extension base="withmeta">
+    <xs:sequence>
+     <xs:element name="data" maxOccurs="unbounded">
+      <xs:annotation>
+       <xs:documentation>
+        The container for application- and domain-specific data. This can either
+        be a URI (specified in the 'href' attribute) to an external file (of type
+        'type') or directly in the element. If the data are XML, then a the usual
+        namespace ('xmlns' attribute) and schema ('xsi:schemaLocation', 'xsi:type',
+        etc) can be used to further enable validation.
+       </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:any processContents="skip"/>
+       </xs:sequence>
+       <xs:attributeGroup ref="midmatter"/>
+       <xs:attribute name="format" type="xs:NMTOKEN" use="optional"/>
+       <xs:attribute name="href" type="xs:anyURI" use="optional"/>
+       <xs:attribute name="size" type="unsignedLong" use="optional"/>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="idmatter"/>
+    <xs:attribute name="for" type="xs:anyURI" use="optional">
+     <xs:annotation>
+      <xs:documentation>
+       Allows to attach the private information to a particular OMDoc element
+      </xs:documentation>
+     </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="theory" type="xs:NMTOKEN" use="optional"/>
+    <xs:attribute name="pto" type="xs:NMTOKENS" use="optional"/>
+    <xs:attribute name="pto-versions" type="xs:NMTOKENS" use="optional"/>
+    <xs:attribute name="requires" type="xs:anyURI" use="optional">
+     <xs:annotation>
+      <xs:documentation>
+       This attribute allows to specify dependency relations among data
+       chunks. For instance if the data is program code that an application needs
+       to load, then this code may call other functions that are defined elsewhere
+       and need to be made accessible to the application in order to function
+       properly.
+      </xs:documentation>
+     </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="type" type="xs:NMTOKEN" use="optional"/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+
+ <xs:element name="private">
+  <xs:annotation>
+   <xs:documentation>
+    This element provides space for application-specific (and domain-specific)
+    data that does not (yet) fit into the OMDoc framework.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="privType">
+     <xs:attribute name="replaces" type="xs:anyURI" use="optional">
+      <xs:annotation>
+       <xs:documentation>
+        A URIref to the omdoc elements that are replaced by the system-specific 
+        information in this element
+       </xs:documentation>
+      </xs:annotation>
+     </xs:attribute>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="code">
+  <xs:annotation>
+   <xs:documentation>
+    This element provides space for application-specific (and domain-specific)
+    program code. The 'input', 'output', 'effect' elements can be used specify the
+    input/output behavior and the side-effects of the program.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="privType">
+     <xs:sequence>
+      <xs:element name="input" type="docType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="output" type="docType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="effect" type="docType" minOccurs="0" maxOccurs="1"/>
+     </xs:sequence>
+    <xs:attribute name="classid" type="xs:string" use="optional"/>
+    <xs:attribute name="codebase" type="xs:anyURI" use="optional"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:complexType name="docType">
+  <xs:sequence>
+   <xs:element ref="CMP" minOccurs="0" maxOccurs="unbounded"/>
+   <xs:element ref="FMP" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="midmatter"/>
+ </xs:complexType>
+
+ <xs:element name="ignore">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:any processContents="skip"/>
+   </xs:sequence>
+   <xs:attribute name="type" type="xs:NMTOKEN" use="optional"/>
+   <xs:attribute name="comment" type="xs:string"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:simpleType name="crossrefType">
+  <xs:annotation>
+   <xs:documentation>
+    A specification of where the cross-references (links) should be added to the
+    symbol presentation.
+    'yes': to the symbol itself.
+    'no': no links should be attached. 
+    'brackets': to the brackets and the separator specified in the 'lbrack',
+    'rbrack', and 'separator' attributes.
+    'lbrack', 'rbrack', 'separator': just to that. 
+    'all': to symbol, brackets, and separator.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="no"/>
+   <xs:enumeration value="yes"/>
+   <xs:enumeration value="brackets"/>
+   <xs:enumeration value="separator"/>
+   <xs:enumeration value="lbrack"/>
+   <xs:enumeration value="rbrack"/>
+   <xs:enumeration value="all"/>
+  </xs:restriction>
+ </xs:simpleType>
+ 
+ <xs:simpleType name="fixityType">
+  <xs:annotation>
+   <xs:documentation>
+    The fixity of a function: if * is 
+    'prefix' then it is written as *(a,b)
+    'infix'  then it is written as a*b (only applies to binary f
+    'postfix' then it is written as (a,b)*
+    'assoc' then it is written as a * b * c * d. 
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="prefix"/>
+   <xs:enumeration value="infix"/>
+   <xs:enumeration value="postfix"/>
+   <xs:enumeration value="assoc"/>
+  </xs:restriction>
+ </xs:simpleType>
+ 
+ <xs:simpleType name="parentType">
+  <xs:annotation>
+   <xs:documentation>
+    The presentation element applies to the situation in which the symbol
+    specified in the 'for' slot appears as a child of this OpenMath Element.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="OMA"/>
+   <xs:enumeration value="OMBIND"/>
+   <xs:enumeration value="OMATTR"/>
+  </xs:restriction>
+ </xs:simpleType>
+ 
+ <xs:simpleType name="bstyleType">
+  <xs:annotation>
+   <xs:documentation>
+    A specification of the style of brackets for function application,
+    'lisp'-style is (f a b) and 'math'-style is f(a,b).
+   </xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="lisp"/>
+   <xs:enumeration value="math"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+<xs:attributeGroup name="stylematter">
+ <xs:attributeGroup ref="idimatter"/>
+ <xs:attribute name="xref" type="xs:anyURI" use="optional"/>
+</xs:attributeGroup>
+
+<xs:attributeGroup name="formatmatter">
+ <xs:attribute name="format" type="xs:NMTOKEN" use="required"/>
+ <xs:attribute name="requires" type="xs:anyURI" use="optional"/>
+ <xs:attribute name="xml:lang" type="language" use="optional"/>
+</xs:attributeGroup>
+ 
+ <xs:element name="presentation">
+  <xs:annotation>
+   <xs:documentation>
+    The element to declare the intended presentation of an OMDoc symbol. The 'for'
+    attribute specifies for which symbol this is. 
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+     <xs:element ref="use"/> 
+     <xs:element ref="xslt"/>
+     <xs:element ref="style"/>
+    </xs:choice>
+   </xs:sequence>
+   <xs:attributeGroup ref="stylematter"/>
+   <xs:attribute name="for" type="xs:anyURI" use="required"/>
+   <xs:attribute name="parent" use="optional" type="parentType"/>
+   <xs:attribute name="fixity" use="optional" type="fixityType" default="prefix"/>
+   <xs:attribute name="lbrack" type="xs:string" use="optional" default="("/>
+   <xs:attribute name="rbrack" type="xs:string" use="optional" default="("/>
+   <xs:attribute name="separator" type="xs:string" use="optional" default=","/>
+   <xs:attribute name="bracket-style" type="bstyleType" use="optional" default="math"/>
+   <xs:attribute name="precedence" type="xs:positiveInteger" use="optional"/>
+   <xs:attribute name="crossref-symbol" type="crossrefType" use="optional" default="yes"/>
+   <xs:attribute name="theory" use="optional" type="xs:NMTOKEN"/>
+  </xs:complexType>
+ </xs:element>
+
+<xs:element name="use">
+ <xs:annotation>
+  <xs:documentation>
+   The use element gives the presentation information for the presentation
+   medium specified in the 'format' attribute.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType mixed="true">
+  <xs:attributeGroup ref="formatmatter"/>
+  <xs:attribute name="bracket-style" type="bstyleType" use="optional"/>
+  <xs:attribute name="fixity" use="optional" type="fixityType"/>
+  <xs:attribute name="lbrack" type="xs:string" use="optional"/>
+  <xs:attribute name="rbrack" type="xs:string" use="optional"/>
+  <xs:attribute name="larg-group" type="xs:string" use="optional"/>
+  <xs:attribute name="rarg-group" type="xs:string" use="optional"/>
+  <xs:attribute name="separator" type="xs:string" use="optional"/>
+  <xs:attribute name="element" type="xs:string" use="optional"/>
+  <xs:attribute name="crossref-symbol" type="crossrefType" use="optional"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="omstyle">
+ <xs:annotation>
+  <xs:documentation>
+   This element allows to specify presentation information for OMDoc elements.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:sequence>
+   <xs:choice minOccurs="1" maxOccurs="unbounded">
+    <xs:element ref="use"/> 
+    <xs:element ref="xslt"/>
+    <xs:element ref="style"/>
+   </xs:choice>
+  </xs:sequence>
+  <xs:attributeGroup ref="stylematter"/>
+  <xs:attribute name="for" type="xs:anyURI" use="optional"/>
+  <xs:attribute name="element" type="xs:anyURI" use="optional"/>
+ </xs:complexType>
+</xs:element>
+ 
+<xs:element name="xslt">
+ <xs:annotation>
+  <xs:documentation>
+   The 'xslt' element allows to specify XSLT templates for the presentation
+   medium specified in the 'format' attribute.
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType mixed="true">
+  <xs:sequence>
+   <xs:any processContents="skip"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="formatmatter"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="style">
+ <xs:annotation>
+  <xs:documentation>
+   This element allows to specify presentation information in a simplified declarative fragment of XSLT. 
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:sequence>
+   <xs:choice minOccurs="1" maxOccurs="unbounded">
+    <xs:element ref="element"/>
+    <xs:element ref="text"/>
+    <xs:element ref="recurse"/>
+    <xs:element ref="value-of"/>
+   </xs:choice>
+  </xs:sequence>
+  <xs:attributeGroup ref="formatmatter"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="element">
+ <xs:annotation>
+  <xs:documentation>
+   Simplified declarative version of the xsl:element element for OMDoc presentation. 
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:sequence>
+   <xs:choice minOccurs="1" maxOccurs="unbounded">
+    <xs:element name="attribute">
+     <xs:annotation>
+      <xs:documentation>
+       Simplified declarative version of the xsl:attribute element for OMDoc presentation. 
+      </xs:documentation>
+     </xs:annotation>
+     <xs:complexType mixed="true">
+      <xs:sequence>
+       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="value-of"/>
+        <xs:element ref="text"/>
+       </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:NMTOKEN" use="required"/>
+     </xs:complexType>
+    </xs:element>
+    <xs:element ref="element"/>
+    <xs:element ref="text"/>
+    <xs:element ref="recurse"/>
+    <xs:element ref="value-of"/>
+   </xs:choice>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:NMTOKEN" use="required"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="text">
+ <xs:annotation>
+  <xs:documentation>
+   Simplified declarative version of the xsl:text element for OMDoc presentation. 
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType mixed="true"/>
+</xs:element>
+
+<xs:element name="value-of">
+ <xs:annotation>
+  <xs:documentation>
+   Simplified declarative version of the xsl:value-of element for OMDoc presentation. 
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:attribute name="select" type="xpathType" use="required"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="recurse">
+ <xs:annotation>
+  <xs:documentation>
+   Simplified declarative version of the xsl:apply-templates element for OMDoc presentation. 
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexType>
+  <xs:attribute name="select" type="xpathType" use="optional"/>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema>
+<!-- todo:
+     - uniqueness requirements can be tightened (do so for proof).
+     - discharged-in is IDREF-like (use unique?)
+     - find out the MathML2 name space substitute for ????
+     - do something about the 'other...' entities in the dtd to allow for extensions
+     - think about modularization (do we need namespaces? for the modules?)
+  -->

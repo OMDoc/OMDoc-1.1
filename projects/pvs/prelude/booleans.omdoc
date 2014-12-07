@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="booleans.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS</Creator>
+    <Date action="created">2001-6-11@2:5:9</Date>
+  </metadata>
+  <theory id="booleans_test">
+    <symbol id="boolean" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="boolean-non-empty" >
+      <CMP>The type boolean is non-empty</CMP>
+    </axiom>
+    <private id="G56555" for="boolean" pto="pvs" pto-version="3.0" replaces="boolean-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <symbol id="bool" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="bool-non-empty" >
+      <CMP>The type bool is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56556" for="bool" pto="pvs" pto-version="3.0" replaces="bool-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="bool" for="bool" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="booleans" name="boolean"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="FALSE" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="booleans" name="bool"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="TRUE" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="booleans" name="bool"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="NOT" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="AND" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="&amp;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="OR" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="IMPLIES" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="=&gt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="WHEN" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="IFF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="&lt;=&gt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+  </theory>
+</omdoc>

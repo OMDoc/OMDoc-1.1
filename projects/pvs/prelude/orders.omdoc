@@ -1,0 +1,1930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="orders.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="orders-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56654" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56655" for="orders" pto="pvs" pto-version="3.0" replaces="orders-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory orders
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="orders_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56656" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="orders-import-parameters" from="orders-parameters"/>
+
+
+
+
+
+    <symbol id="preorder?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="preorder?-def" for="preorder?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="preorder?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;="/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="relations" name="reflexive?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+                <OMA>
+                  <OMS cd="relations" name="transitive?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="preorder_is_reflexive" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="preorder?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relations" name="reflexive?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="preorder_is_reflexive-1" for="preorder_is_reflexive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56657" for="preorder_is_reflexive" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|preorder_is_reflexive|: JUDGEMENT (|preorder?|) SUBTYPE_OF
+          (|reflexive?|[T])]]>
+      </data>
+    </private>
+
+    <assertion id="preorder_is_transitive" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="preorder?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relations" name="transitive?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="preorder_is_transitive-1" for="preorder_is_transitive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED) (( (EXPAND preorder?) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56658" for="preorder_is_transitive" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|preorder_is_transitive|: JUDGEMENT (|preorder?|) SUBTYPE_OF
+          (|transitive?|[T])]]>
+      </data>
+    </private>
+
+    <assertion id="equiv_is_preorder" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="relations" name="equivalence?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="preorder?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="equiv_is_preorder-1" for="equiv_is_preorder" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56659" for="equiv_is_preorder" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|equiv_is_preorder|: JUDGEMENT (|equivalence?|[T]) SUBTYPE_OF (|preorder?|)]]>
+      </data>
+    </private>
+
+    <symbol id="partial_order?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="partial_order?-def" for="partial_order?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="partial_order?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;="/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="orders" name="preorder?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+                <OMA>
+                  <OMS cd="relations" name="antisymmetric?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="po_is_preorder" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="partial_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="preorder?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="po_is_preorder-1" for="po_is_preorder" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56660" for="po_is_preorder" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|po_is_preorder|: JUDGEMENT (|partial_order?|) SUBTYPE_OF (|preorder?|)]]>
+      </data>
+    </private>
+
+    <assertion id="po_is_antisymmetric" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="partial_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relations" name="antisymmetric?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="po_is_antisymmetric-1" for="po_is_antisymmetric" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56661" for="po_is_antisymmetric" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|po_is_antisymmetric|: JUDGEMENT (|partial_order?|) SUBTYPE_OF
+          (|antisymmetric?|[T])]]>
+      </data>
+    </private>
+
+    <symbol id="strict_order?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="strict_order?-def" for="strict_order?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="strict_order?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="relations" name="irreflexive?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="relations" name="transitive?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="strict_is_irreflexive" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="strict_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relations" name="irreflexive?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="strict_is_irreflexive-1" for="strict_is_irreflexive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56662" for="strict_is_irreflexive" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|strict_is_irreflexive|: JUDGEMENT (|strict_order?|) SUBTYPE_OF
+          (|irreflexive?|[T])]]>
+      </data>
+    </private>
+
+    <assertion id="strict_is_transitive" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="strict_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relations" name="transitive?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="strict_is_transitive-1" for="strict_is_transitive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED) (( (EXPAND strict_order?) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56663" for="strict_is_transitive" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|strict_is_transitive|: JUDGEMENT (|strict_order?|) SUBTYPE_OF
+          (|transitive?|[T])]]>
+      </data>
+    </private>
+
+    <symbol id="dichotomous?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="dichotomous?-def" for="dichotomous?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="dichotomous?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;="/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="OR"/>
+                  <OMA>
+                    <OMV name="&lt;="/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="&lt;="/>
+                    <OMV name="y"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="total_order?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="total_order?-def" for="total_order?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="total_order?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;="/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="orders" name="partial_order?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+                <OMA>
+                  <OMS cd="orders" name="dichotomous?"/>
+                  <OMV name="&lt;="/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="total_is_po" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="total_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="partial_order?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="total_is_po-1" for="total_is_po" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56664" for="total_is_po" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|total_is_po|: JUDGEMENT (|total_order?|) SUBTYPE_OF (|partial_order?|)]]>
+      </data>
+    </private>
+
+    <assertion id="total_is_dichotomous" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="total_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="dichotomous?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="total_is_dichotomous-1" for="total_is_dichotomous" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED) (( (EXPAND total_order?) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56665" for="total_is_dichotomous" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|total_is_dichotomous|: JUDGEMENT (|total_order?|) SUBTYPE_OF
+          (|dichotomous?|)]]>
+      </data>
+    </private>
+
+    <symbol id="linear_order?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="linear_order?-def" for="linear_order?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="linear_order?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;="/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="orders" name="total_order?"/>
+                <OMV name="&lt;="/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="linear_is_total" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="linear_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="total_order?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="linear_is_total-1" for="linear_is_total" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56666" for="linear_is_total" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|linear_is_total|: JUDGEMENT (|linear_order?|) SUBTYPE_OF (|total_order?|)]]>
+      </data>
+    </private>
+
+    <assertion id="total_is_linear" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="total_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="linear_order?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="total_is_linear-1" for="total_is_linear" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56667" for="total_is_linear" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|total_is_linear|: JUDGEMENT (|total_order?|) SUBTYPE_OF (|linear_order?|)]]>
+      </data>
+    </private>
+
+    <symbol id="trichotomous?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="trichotomous?-def" for="trichotomous?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="trichotomous?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="OR"/>
+                  <OMA>
+                    <OMV name="&lt;"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="OR"/>
+                    <OMA>
+                      <OMV name="&lt;"/>
+                      <OMV name="y"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="strict_total_order?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="strict_total_order?-def" for="strict_total_order?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="strict_total_order?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="orders" name="strict_order?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="orders" name="trichotomous?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G56668" for="strict_total_is_strict" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|strict_total_is_strict|: JUDGEMENT (|strict_total_order?|) SUBTYPE_OF
+          (|strict_total_order?|)]]>
+      </data>
+    </private>
+
+    <assertion id="strict_total_is_trichotomous" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="strict_total_order?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="trichotomous?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="strict_total_is_trichotomous-1" for="strict_total_is_trichotomous" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED) (( (EXPAND strict_total_order?) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56669" for="strict_total_is_trichotomous" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|strict_total_is_trichotomous|: JUDGEMENT (|strict_total_order?|) SUBTYPE_OF
+          (|trichotomous?|)]]>
+      </data>
+    </private>
+
+    <symbol id="well_founded?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="well_founded?-def" for="well_founded?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="well_founded?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="defined_types" name="pred"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="exists"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="orders" name="T"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMBIND>
+                  <OMBIND>
+                    <OMS cd="pvs" name="exists"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="pvs" name="subtype"/>
+                            <OMV name="p"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMBIND>
+                      <OMS cd="pvs" name="forall"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMA>
+                              <OMS cd="pvs" name="subtype"/>
+                              <OMV name="p"/>
+                            </OMA>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="booleans" name="NOT"/>
+                        <OMA>
+                          <OMV name="&lt;"/>
+                          <OMV name="x"/>
+                          <OMV name="y"/>
+                        </OMA>
+                      </OMA>
+                    </OMBIND>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="well_ordered?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="well_ordered?-def" for="well_ordered?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="well_ordered?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="orders" name="strict_total_order?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="orders" name="well_founded?"/>
+                  <OMV name="&lt;"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="well_ordered_is_strict_total" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="well_ordered?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="strict_total_order?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="well_ordered_is_strict_total-1" for="well_ordered_is_strict_total" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56670" for="well_ordered_is_strict_total" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|well_ordered_is_strict_total|: JUDGEMENT (|well_ordered?|) SUBTYPE_OF
+          (|strict_total_order?|)]]>
+      </data>
+    </private>
+
+    <assertion id="well_ordered_is_well_founded" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders" name="well_ordered?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders" name="well_founded?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="well_ordered_is_well_founded-1" for="well_ordered_is_well_founded" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56671" for="well_ordered_is_well_founded" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|well_ordered_is_well_founded|: JUDGEMENT (|well_ordered?|) SUBTYPE_OF
+          (|well_founded?|)]]>
+      </data>
+    </private>
+
+    <symbol id="nonempty_pred" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="nonempty_pred" for="nonempty_pred" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="T"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="pe"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="&lt;"/>
+                    <OMV name="y"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="orders" name="T"/>
+              <OMS cd="booleans" name="bool"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="orders" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="upper_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="T"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="pe"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="&lt;"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="orders" name="T"/>
+              <OMS cd="booleans" name="bool"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="orders" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="lower_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="T"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="least_upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="upper_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="orders" name="T"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="orders" name="upper_bound?"/>
+                          <OMV name="&lt;"/>
+                        </OMA>
+                        <OMV name="y"/>
+                        <OMV name="pe"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="booleans" name="OR"/>
+                        <OMA>
+                          <OMV name="&lt;"/>
+                          <OMV name="x"/>
+                          <OMV name="y"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMV name="x"/>
+                          <OMV name="y"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="orders" name="T"/>
+              <OMS cd="booleans" name="bool"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="least_upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="orders" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="least_upper_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="T"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="greatest_lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="lower_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="orders" name="T"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="orders" name="lower_bound?"/>
+                          <OMV name="&lt;"/>
+                        </OMA>
+                        <OMV name="y"/>
+                        <OMV name="pe"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="booleans" name="OR"/>
+                        <OMA>
+                          <OMV name="&lt;"/>
+                          <OMV name="y"/>
+                          <OMV name="x"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMV name="x"/>
+                          <OMV name="y"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="orders" name="nonempty_pred"/>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="orders" name="T"/>
+              <OMS cd="booleans" name="bool"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders" name="greatest_lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="&lt;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="orders" name="nonempty_pred"/>
+                    </OMATP>
+                    <OMV name="pe"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="orders" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="orders" name="greatest_lower_bound?"/>
+                      <OMV name="&lt;"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMV name="pe"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_insort">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_insort">
+
+  <adt id="nat-adt" type="free" style="foo">
+    <metadata>
+    <Title>adt-metadata</Title>
+    <Creator role="aut">hf</Creator>
+    <Date>2002-02-22</Date>
+    </metadata>
+    <commonname xml:lang="en">my adt</commonname>
+    <commonname xml:lang="de">meine adt</commonname>
+    <CMP>foo</CMP>
+    <CMP>bar</CMP>
+   <sortdef id="pos-nat" style="foo" scope="global">
+    <commonname>the set of positive natural numbers</commonname>
+    <constructor id="succ">
+     <commonname>The successor function</commonname>
+     <argument sort="nat">
+      <selector total="yes" id="pred">
+       <commonname>The predecessor function</commonname>
+      </selector>
+     </argument>
+    </constructor>
+   </sortdef>
+   <sortdef id="nat">
+    <commonname>the set of natural numbers</commonname>
+    <constructor id="zero"/>
+    <constructor id="testing"/>
+    <insort for="pos-nat"/>
+    <insort for="stilltesting"/>
+   </sortdef> 
+  </adt> 
+
+
+</theory>
+</omdoc>
+

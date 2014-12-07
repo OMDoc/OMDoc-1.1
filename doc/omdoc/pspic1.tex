@@ -1,0 +1,36 @@
+\documentclass{article}
+%%% use ps2epsi pspic1.ps to generate eps file, ps2pdf pspic1.epsi to generate pdf
+\usepackage{pstricks,pst-node}\pagestyle{empty}
+\begin{document}
+\begin{pspicture}(-.5,-0.8)(11,2.7)
+  \rput(2,-0.5){\rnode{th1}{\psframebox{{\tt{th1}}}}}
+  \rput(5,-0.5){\rnode{th2}{\psframebox{{\tt{th2}}}}}
+  \rput(0,1.2){\rnode{a1}{\psframebox{{\tt{a1}}}}}
+  \rput(2,0.65){\rnode{b1}{\psframebox{{\tt{b1}}}}}
+  \rput(1,2){\rnode{c1}{\psframebox{{\tt{c1}}}}}
+  \rput(4,1.2){\rnode{a2}{\psframebox{{\tt{a2}}}}}
+  \rput(6,0.65){\rnode{b2}{\psframebox{{\tt{b2}}}}}
+  \rput(5,2){\rnode{c2}{\psframebox{{\tt{c2}}}}}
+
+  \ncline[linewidth=1.5pt]{->}{th1}{a1}\ncline[linewidth=1.5pt]{->}{th1}{a2}
+  \ncline[linewidth=1.5pt]{->}{th2}{b1}\ncline[linewidth=1.5pt]{->}{th2}{a2}\ncline[linewidth=1.5pt]{->}{th2}{b2}
+  \ncline[linewidth=1.5pt]{->}{a1}{c1}\ncline[linewidth=1.5pt]{->}{a2}{c2}
+  \ncline[linewidth=1.5pt]{->}{b1}{c1}\ncline[linewidth=1.5pt]{->}{b2}{c2}
+
+  \ncline[linestyle=dashed]{->}{a1}{a2}\aput(.6){{\tt{aia}}}
+  \ncline[linestyle=dashed]{->}{b1}{b2}\aput(.8){{\tt{bib}}}
+  \ncline[linestyle=dashed]{->}{c1}{c2}\bput(.6){{\tt{cic}}}
+  \ncarc[linestyle=dashed,arcangle=15,linewidth=1.5pt]{->}{c1}{c2}\aput(.5){{\tt{tic}}}
+  \rput(7,2){\pnode{ti1}}\rput(8,2){\pnode{ti2}}\ncline[linestyle=dashed,linewidth=1.5pt]{->}{ti1}{ti2}
+  \rput(9.5,2){{\tt{theory-inclusion}}}
+  \rput(7,1.5){\pnode{ai1}}\rput(8,1.5){\pnode{ai2}}\ncline[linestyle=dashed]{->}{ai1}{ai2}
+  \rput(9.5,1.5){{\tt{axiom-inclusion}}}
+  \rput(7,1){\pnode{ii1}}\rput(8,1){\pnode{ii2}}\ncline[linewidth=1.5pt]{->}{ii1}{ii2}
+  \rput(9.5,1){{\tt{imports}}}
+\end{pspicture}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

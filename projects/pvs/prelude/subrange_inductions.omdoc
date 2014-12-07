@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="subrange_inductions.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:34
+    </Date>
+  </metadata>
+  <theory id="subrange_inductions-parameters">
+    <symbol id="i" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56975" for="NIL" pto="pvs" pto-version="3.0" replaces="i">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="j" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="integers" name="upfrom"/>
+          <OMS cd="subrange_inductions" name="i"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56976" for="NIL" pto="pvs" pto-version="3.0" replaces="j">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56977" for="subrange_inductions" pto="pvs" pto-version="3.0" replaces="subrange_inductions-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory subrange_inductions
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="subrange_inductions_test">
+    <symbol id="i" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="integers" name="int"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56978" for="NIL" pto="pvs" pto-version="3.0" replaces="i">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="j" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="integers" name="upfrom"/>
+          <OMS cd="subrange_inductions" name="i"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56979" for="NIL" pto="pvs" pto-version="3.0" replaces="j">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="subrange_inductions-import-parameters" from="subrange_inductions-parameters"/>
+
+
+
+    <assertion id="subrange_induction_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMS cd="subrange_inductions" name="i"/>
+              <OMS cd="subrange_inductions" name="i"/>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMS cd="subrange_inductions" name="i"/>
+              <OMS cd="subrange_inductions" name="j"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subrange_induction_TCC1-1" for="subrange_induction_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (ASSERT) (( (TYPEPRED j) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subrange_induction_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="p"/>
+                <OMS cd="subrange_inductions" name="i"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="subrange"/>
+                        <OMS cd="subrange_inductions" name="i"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="k"/>
+                      <OMS cd="subrange_inductions" name="j"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="k"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMS cd="subrange_inductions" name="i"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="k"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="k"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                      <OMS cd="subrange_inductions" name="j"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subrange_induction_TCC2-1" for="subrange_induction_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subrange_induction_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMV name="p"/>
+                <OMS cd="subrange_inductions" name="i"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="subrange"/>
+                        <OMS cd="subrange_inductions" name="i"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMV name="k"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMV name="k"/>
+                      <OMS cd="subrange_inductions" name="j"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMS cd="subrange_inductions" name="i"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="k"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="k"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                      <OMS cd="subrange_inductions" name="j"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subrange_induction_TCC3-1" for="subrange_induction_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subrange_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMS cd="subrange_inductions" name="i"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="integers" name="subrange"/>
+                          <OMS cd="subrange_inductions" name="i"/>
+                          <OMS cd="subrange_inductions" name="j"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="k"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="k"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="p"/>
+                        <OMV name="k"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="k"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="subrange"/>
+                        <OMS cd="subrange_inductions" name="i"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="k"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subrange_induction-1" for="subrange_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA nat_induction)
+ (( (SKOSIMP*)
+   (( (INST -1 lambda (n:nat): n <= j - i IMPLIES p!1(n+i))
+     ((1 (BETA)
+       ((1 (PROP)
+         ((1 (INST -1 k!1 - i) ((1 (ASSERT) NIL NIL)) NIL) (2 (ASSERT) NIL NIL)
+          (3 (SKOSIMP*) ((3 (INST -4 j!1 + i) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOSIMP*) ((2 (ASSERT) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="SUBRANGE_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="subrange"/>
+                        <OMS cd="subrange_inductions" name="i"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="integers" name="subrange"/>
+                            <OMS cd="subrange_inductions" name="i"/>
+                            <OMS cd="subrange_inductions" name="j"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="m"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="m"/>
+                        <OMV name="k"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="p"/>
+                        <OMV name="m"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="k"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="integers" name="subrange"/>
+                        <OMS cd="subrange_inductions" name="i"/>
+                        <OMS cd="subrange_inductions" name="j"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="k"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="SUBRANGE_induction-1" for="SUBRANGE_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (SKOSIMP)
+   (( (LEMMA NAT_induction)
+     (( (INST -1 lambda (n:nat): n <= j - i IMPLIES p!1(n+i))
+       ((1 (SPLIT)
+         ((1 (BETA)
+           ((1 (INST -2 k!1)
+             ((1 (ASSERT) ((1 (SKOSIMP) ((1 (INST -1 m!1-i) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL)
+          (2 (SKOSIMP)
+           ((2 (BETA)
+             ((2 (FLATTEN)
+               ((2 (INST -3 j!1+i)
+                 ((1 (ASSERT) ((1 (SKOSIMP) ((1 (INST -1 m!1-i) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+                   NIL)
+                  (2 (ASSERT) NIL NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOSIMP) ((2 (ASSERT) NIL NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

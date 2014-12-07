@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+<omdoc id="typmml-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+<metadata>
+  <Title>OpenMath Content Dictionary in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase.xsl</Creator>
+  <Creator role="aut">The OpenMath Society</Creator>
+  <Date>1999-06-03</Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/typmml.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds symbols denoting various types of numbers, vectors
+    and similar constructs. Principally these are required for
+    compatibility with MathML.
+  </Description>
+</metadata>
+<theory id="typmml">
+  <symbol id="type">
+    <CMP>
+      A symbol to be used within an OpenMath attribution to convey the type of
+      the object.
+    </CMP>
+    <commonname>type</commonname>
+  </symbol>
+  <presentation for="type" xref="cc.omdoc#pr-type"/>
+
+<example id="type-ex-1" type="for" for="type">
+  <CMP>
+    The variable z is attributed with a type for complex numbers.
+  </CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="typmml" name="type"/>
+	<OMS cd="typmml" name="complex_cartesian_type"/>
+      </OMATP>
+      <OMV name="z"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="integer_type">
+  <CMP>
+    Type of an integer.
+  </CMP>
+  <commonname>type of integers</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="real_type">
+  <CMP>
+    Type of a real number.
+  </CMP>
+  <commonname>type of reals</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="rational_type">
+  <CMP>
+    Type of a rational number.
+  </CMP>
+  <commonname>type of rationals</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="complex_cartesian_type">
+  <CMP>
+    Type of a complex number specified in terms of its real and imaginary
+    parts.
+  </CMP>
+  <commonname>type of complex numbers in cartesian form</commonname>
+</symbol>
+<symbol id="complex_polar_type">
+  <CMP>
+    Type of a complex number specified in terms of its modulus and argument.
+  </CMP>
+  <commonname>type of complex numbers in polar form</commonname>
+</symbol>
+<symbol id="constant_type">
+  <CMP>
+    A type for the common constants, pi ~= 3.1415, e ~= 2.718, i = square
+    root of -1, gamma ~= .5772, NaN, infinity (all in the nums cd), true
+    and false (in the logic cd). Also for MathML variables declared to
+    have type constant, as in &lt;ci type="constant"&gt;x&lt;/ci&gt;.
+  </CMP>
+  <commonname>type of constants</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLNumericType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="vector_type">
+  <CMP>
+    Type of a (column) vector, an n-tuple of entries.
+  </CMP>
+  <commonname>type of vectors</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="list_type">
+  <CMP>
+    Type for a list.
+  </CMP>
+  <commonname>type of lists</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="set_type">
+  <CMP>
+    Type for a set.
+  </CMP>
+  <commonname>type of sets</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="matrix_type">
+  <CMP>
+    Type for a matrix (n tuple of rows, each of which are litss of the
+    same number m of entries).
+  </CMP>
+  <commonname>type of matrices</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<symbol id="fn_type">
+  <CMP>
+    Type for a function name.
+  </CMP>
+  <commonname>type of functions</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="MathMLType"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="fn_type-ex-1" type="for" for="fn_type">
+  <CMP>
+    The variable f is attributed to say it represents a function.
+  </CMP>
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="typmml" name="type"/>
+	<OMS cd="typmml" name="fn_type"/>
+      </OMATP>
+      <OMV name="f"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

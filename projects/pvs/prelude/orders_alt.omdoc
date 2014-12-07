@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="orders_alt.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:19
+    </Date>
+  </metadata>
+  <theory id="orders_alt-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56672" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="pred"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56673" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="pe" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="orders" name="nonempty_pred"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56674" for="NIL" pto="pvs" pto-version="3.0" replaces="pe">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56675" for="orders_alt" pto="pvs" pto-version="3.0" replaces="orders_alt-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory orders_alt
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="orders_alt_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56676" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="defined_types" name="pred"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56677" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="pe" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="orders" name="nonempty_pred"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56678" for="NIL" pto="pvs" pto-version="3.0" replaces="pe">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="orders_alt-import-parameters" from="orders_alt-parameters"/>
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="orders_alt" name="T"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders_alt" name="upper_bound?"/>
+            <OMA>
+              <OMA>
+                <OMS cd="orders" name="upper_bound?"/>
+                <OMS cd="orders_alt" name="&lt;"/>
+              </OMA>
+              <OMS cd="orders_alt" name="pe"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="orders_alt" name="T"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders_alt" name="least_upper_bound?"/>
+            <OMA>
+              <OMA>
+                <OMS cd="orders" name="least_upper_bound?"/>
+                <OMS cd="orders_alt" name="&lt;"/>
+              </OMA>
+              <OMS cd="orders_alt" name="pe"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="orders_alt" name="T"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders_alt" name="lower_bound?"/>
+            <OMA>
+              <OMA>
+                <OMS cd="orders" name="lower_bound?"/>
+                <OMS cd="orders_alt" name="&lt;"/>
+              </OMA>
+              <OMS cd="orders_alt" name="pe"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="orders_alt" name="T"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="orders_alt" name="greatest_lower_bound?"/>
+            <OMA>
+              <OMA>
+                <OMS cd="orders" name="greatest_lower_bound?"/>
+                <OMS cd="orders_alt" name="&lt;"/>
+              </OMA>
+              <OMS cd="orders_alt" name="pe"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="least_upper_bound_is_upper_bound" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders_alt" name="least_upper_bound?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders_alt" name="upper_bound?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="least_upper_bound_is_upper_bound-1" for="least_upper_bound_is_upper_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56679" for="least_upper_bound_is_upper_bound" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|least_upper_bound_is_upper_bound|: JUDGEMENT (|least_upper_bound?|) SUBTYPE_OF
+          (|upper_bound?|)]]>
+      </data>
+    </private>
+
+    <assertion id="greatest_lower_bound_is_lower_bound" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="orders_alt" name="greatest_lower_bound?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="orders_alt" name="lower_bound?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="greatest_lower_bound_is_lower_bound-1" for="greatest_lower_bound_is_lower_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56680" for="greatest_lower_bound_is_lower_bound" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|greatest_lower_bound_is_lower_bound|: JUDGEMENT (|greatest_lower_bound?|) SUBTYPE_OF
+          (|lower_bound?|)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

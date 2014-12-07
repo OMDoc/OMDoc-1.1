@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd" []>
+
+
+<!-- generated from latex2omdoc.tex, do not edit -->
+
+
+<omdoc Ident="latex2omdoc.top">
+
+<metadata>
+ <dc:Contributor role="aut">
+ Contributor 1
+ </dc:Contributor>
+ <dc:Creator role="edt">
+ Creator as the editor
+ </dc:Creator>
+ <dc:Title>
+ The title of the document
+ </dc:Title>
+</metadata>
+
+<omtext Ident="latex2omdoc.intro">
+<rsrelation type="introduction" />
+<CMP xml:lang="eng" format="omtext">
+      We will start out with an introductory text
+  
+</CMP>
+</omtext>
+
+<theory Ident="latex2omdoc.testtheory">
+<commonname xml:lang="deu">Monoid Theorie</commonname>
+<symbol Ident="latex2omdoc.monoid">
+<CMP xml:lang="eng" format="omtext">
+    The monoids that we all know and love
+  
+</CMP>
+<CMP xml:lang="deu" format="omtext">
+    Die Monoide, wie wir sie alle kennen und lieben
+  
+</CMP>
+<commonname xml:lang="deu">plus</commonname>
+<commonname xml:lang="eng">plus</commonname>
+<signature system="POST"><OMOBJ><OMA><OMS cd="mltt" name="funtype"/><OMV name="alpha"/></OMA></OMOBJ></signature>
+</symbol>
+
+<omtext Ident="latex2omdoc.testremark">
+<rsrelation type="introduction" />
+<CMP xml:lang="eng" format="omtext">
+    then we will use an omnote to explain the symbol
+  
+</CMP>
+</omtext>
+
+<definition Ident="latex2omdoc.monoiddef" item="latex2omdoc.monoid">
+<CMP xml:lang="eng" format="omtext">
+    Here comes the definition of  monoids
+  
+</CMP>
+<FMP>
+<OMOBJ>
+<OMA>
+<OMS cd="test" name="sym"/>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMA>
+</OMOBJ>
+</FMP>
+</definition>
+
+<omtext Ident="latex2omdoc.testlinkage">
+<rsrelation type="linkage" for="latex2omdoc.monoiddef" from="latex2omdoc.recursivemonoid"/>
+<CMP xml:lang="eng" format="omtext">
+    then a omlinkage to link the previous definition to the next
+  
+</CMP>
+</omtext>
+
+<definition Ident="latex2omdoc.recursivemonoid" item="latex2omdoc.monoid">
+<CMP xml:lang="eng" format="omtext">
+    Here comes a recursive definition
+  
+</CMP>
+<requation>
+<pattern>
+<OMA>
+<OMS cd="arith1" name="plus"/>
+<OMV name="X"/>
+<OMS cd="arith1" name="zero"/>
+</OMA>
+</pattern><value>
+<OMOBJ>
+<OMV name="X"/>
+</OMOBJ>
+</value></requation>
+</definition>
+
+</theory>
+<assertion type="theorem" Ident="latex2omdoc.testtheorem" theory="latex2omdoc.testtheory">
+<CMP xml:lang="eng" format="omtext">
+    A theorem
+  
+</CMP>
+<FMP>
+<OMOBJ>
+<OMBIND>
+<OMS cd="quant1" name="forall"/>
+<OMBVAR>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMBVAR>
+<OMA>
+<OMS cd="relation" name="eq"/>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMA>
+</OMBIND>
+</OMOBJ>
+</FMP>
+</assertion>
+<assertion type="lemma" Ident="latex2omdoc.testlemma" theory="latex2omdoc.testtheory">
+<CMP xml:lang="eng" format="omtext">
+    Transitivity of equality
+  
+</CMP>
+<assumption Ident="latex2omdoc.A1">
+<CMP xml:lang="eng" format="omtext">
+<OMOBJ>
+<OMV name="X"/>
+</OMOBJ>
+<OMOBJ>
+<OMV name="Y"/>
+</OMOBJ>
+</CMP>
+<FMP>
+<OMOBJ>
+<OMA>
+<OMS cd="relation" name="eq"/>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMA>
+</OMOBJ>
+</FMP>
+</assumption>
+<assumption Ident="latex2omdoc.A2">
+<CMP xml:lang="eng" format="omtext">
+<OMOBJ>
+<OMV name="Y"/>
+</OMOBJ>
+<OMOBJ>
+<OMV name="Z"/>
+</OMOBJ>
+</CMP>
+<FMP>
+<OMOBJ>
+<OMA>
+<OMS cd="relation" name="eq"/>
+<OMV name="Y"/>
+<OMV name="Z"/>
+</OMA>
+</OMOBJ>
+</FMP>
+</assumption>
+<conclusion Ident="latex2omdoc.C1">
+<CMP xml:lang="eng" format="omtext">
+      All objects are equal
+    
+</CMP>
+<FMP>
+<OMOBJ>
+<OMBIND>
+<OMS cd="quant1" name="forall"/>
+<OMBVAR>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMBVAR>
+<OMA>
+<OMS cd="relation" name="eq"/>
+<OMV name="X"/>
+<OMV name="Y"/>
+</OMA>
+</OMBIND>
+</OMOBJ>
+</FMP>
+</conclusion>
+</assertion>
+<proof Ident="latex2omdoc.P1" item="latex2omdoc.testlemma" theory="latex2omdoc.testtheory">
+<CMP xml:lang="eng" format="omtext">
+    A proof with two proof steps  for the lemma above
+  
+</CMP>
+<derive Ident="latex2omdoc.D1">
+<CMP xml:lang="eng" format="omtext">
+      The first proof step consis
+    
+</CMP>
+<assumption Ident="latex2omdoc.D1.A">
+<CMP xml:lang="eng" format="T">
+his proof step makes a local hypothesis
+      
+</CMP>
+</assumption>
+<conclusion Ident="latex2omdoc.D1.C">
+<CMP xml:lang="eng" format="omtext">
+      The assertion of the first proof step
+    
+</CMP>
+<FMP>
+<OMOBJ>
+<OMS cd="test" name="formula"/>
+</OMOBJ>
+</FMP>
+</conclusion>
+</derive>
+
+<derive Ident="latex2omdoc.D2">
+<CMP xml:lang="eng" format="omtext">
+      The second step
+    
+</CMP>
+<conclusion Ident="latex2omdoc.D2.c">
+<FMP>
+<OMOBJ>
+<OMS cd="test" name="formula"/>
+</OMOBJ>
+</FMP>
+</conclusion>
+</derive>
+
+<conclude Ident="latex2omdoc.Conc">
+<CMP xml:lang="eng" format="omtext">
+      The last proof step
+    
+</CMP>
+</conclude>
+</proof>
+</omdoc>

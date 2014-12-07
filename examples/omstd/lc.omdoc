@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="lc-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary lc.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">Olga Caprotti</Creator>
+  <Date> 1999-08-20 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/lc.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>Lambda Calculus </Description>
+</metadata>
+
+<theory id="lc">
+  <symbol id="type">
+    <CMP> Attribution tag to denote type-judgement
+    </CMP>
+    <commonname>type</commonname>
+  </symbol>
+  <presentation id="pr-type" for="type" parent="OMATTR" lbrack="" rbrack="">
+    <use  format="html" element="sub"/>
+    <use  format="pmml" element="msub"/>
+    <use  format="TeX" lbrack="_{" rbrack="}"/>
+  </presentation>
+  <symbol id="typecoerce">
+    <CMP> Attribution tag to denote type-judgement with coercion
+    </CMP>
+    <commonname>typecoerce</commonname>
+  </symbol>
+  <symbol id="PiType">
+    <CMP> The type constructor of dependant function space.
+      It binds the (type-attributed) variables in the body, that is 
+      an OpenMath object.
+    </CMP>
+    <commonname>PiType</commonname>
+  </symbol>
+  <presentation id="pr-PiType" for="PiType">
+    <use  format="TeX">{\Pi}</use>
+    <use  format="html|pmml">&#x003A0;</use>
+  </presentation>
+  <symbol id="mapsto">
+    <CMP> The type constructor of non-dependant function space.
+      The first n-1 children denote the types of the arguments, 
+      the last denotes the return type. Contrary to sts:mapsto, arguments
+      cannot be variables but have to be OpenMath objects that map to ground
+      OpenMath terms (they contain no variables).	
+    </CMP>
+    <commonname>mapsto</commonname>
+  </symbol>
+  <presentation id="pr-mapsto" for="mapsto" parent="OMA" bracket-style="lisp" fixity="postfix">
+    <use  format="TeX">{\mapsto}</use>
+    <use  format="html|pmml">&#x021A6;</use>
+  </presentation>
+  <symbol id="Lambda">
+    <CMP> The abstraction constructor. It is 
+      followed by a list of  variables
+      and an OpenMath object.
+    </CMP>
+    <commonname>Lambda</commonname>
+  </symbol>
+  <presentation id="pr-Lambda" for="Lambda">
+    <use  format="TeX">{\lambda}</use>
+    <use  format="html|pmml">&#x003BB;</use>
+  </presentation>
+</theory>
+</omdoc>

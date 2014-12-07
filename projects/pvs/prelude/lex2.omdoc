@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="lex2.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:38
+    </Date>
+  </metadata>
+  <theory id="lex2_test">
+
+
+
+
+    <assertion id="lex2_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ordinals" name="ordinal?"/>
+                <OMS cd="ordstruct_adt" name="zero"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC1-1" for="lex2_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) (( (GRIND) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="n"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC2-1" for="lex2_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ordinals" name="ordinal?"/>
+                <OMA>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMV name="n"/>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC3-1" for="lex2_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) (( (GRIND) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC4" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="m"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC4-1" for="lex2_TCC4" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC5" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ordinals" name="ordinal?"/>
+                <OMA>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMV name="m"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMI>1</OMI>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                  </OMA>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC5-1" for="lex2_TCC5" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC6" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="m"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC6-1" for="lex2_TCC6" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC7" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="n"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC7-1" for="lex2_TCC7" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lex2_TCC8" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="m"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ordinals" name="ordinal?"/>
+                <OMA>
+                  <OMS cd="ordstruct_adt" name="add"/>
+                  <OMV name="m"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMI>1</OMI>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="n"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_TCC8-1" for="lex2_TCC8" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="lex2" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="ordinals" name="ordinal"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lex2-def" for="lex2" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="lex2" name="lex2"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                  <OMS cd="ordstruct_adt" name="zero"/>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="n"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="m"/>
+                    <OMA>
+                      <OMS cd="ordstruct_adt" name="add"/>
+                      <OMI>1</OMI>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                    </OMA>
+                    <OMS cd="ordstruct_adt" name="zero"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="ordstruct_adt" name="add"/>
+                    <OMV name="m"/>
+                    <OMA>
+                      <OMS cd="ordstruct_adt" name="add"/>
+                      <OMI>1</OMI>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="ordstruct_adt" name="add"/>
+                      <OMV name="n"/>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                      <OMS cd="ordstruct_adt" name="zero"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="lex2_lt" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="ordinals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="lex2" name="lex2"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="lex2" name="lex2"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="i"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="i"/>
+                    <OMV name="m"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="j"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lex2_lt-1" for="lex2_lt" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

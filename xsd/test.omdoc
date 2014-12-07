@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc SYSTEM "../dtd/omdoc.dtd" []>
+<omdoc id="cases" 
+    xmlns="http://www.mathweb.org/omdoc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.cs.cmu.edu/~kohlhase/junk/omdoc.xsd">
+ <metadata>
+  <Title>A case split proof</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Contributor role="aut">Armin Fiedler</Contributor>
+  <Date>1999-08-30</Date>
+ </metadata>
+ <assertion type="theorem" id="t1" theory="sets">
+  <CMP>
+   <OMOBJ>
+    <OMA>
+     <OMS cd="set1" name="in"/>
+     <OMV name="a"/>
+     <OMA>
+      <OMS cd="set1" name="union"/>
+      <OMV name="U"/>
+      <OMV name="V"/>
+     </OMA>
+    </OMA>
+   </OMOBJ>, if
+   <OMOBJ>
+    <OMA>
+     <OMS cd="set1" name="in"/>
+     <OMV name="a"/>
+     <OMV name="U"/>
+    </OMA>
+   </OMOBJ> or <OMOBJ>
+    <OMA>
+     <OMS cd="set1" name="in"/>
+     <OMV name="a"/>
+     <OMV name="U"/>
+    </OMA>
+   </OMOBJ>.</CMP>
+  <FMP>
+   <assumption id="t1-a1">
+    <CMP>
+     <OMOBJ>
+      <OMA>
+       <OMS cd="set1" name="in"/>
+       <OMV name="a"/>
+       <OMV name="U"/>
+      </OMA>
+     </OMOBJ> or <OMOBJ>
+      <OMA>
+       <OMS cd="set1" name="in"/>
+       <OMV name="a"/>
+       <OMV name="U"/>
+      </OMA>
+     </OMOBJ>
+    </CMP>
+    <OMOBJ/>
+   </assumption>
+   <conclusion id="t1-c">
+    <CMP>
+     <OMOBJ>
+      <OMA>
+       <OMS cd="set1" name="in"/>
+       <OMV name="a"/>
+       <OMA>
+        <OMS cd="set1" name="union"/>
+        <OMV name="U"/>
+        <OMV name="V"/>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+    </CMP>
+    <OMOBJ/>
+   </conclusion>
+  </FMP>
+ </assertion>
+ <proof id="t1-p1" for="t1" theory="sets">
+  <conclude id="t1-p1-c">
+   <CMP> We prove the assertion by a case analysis over <ref xref="t1-a1"/>.</CMP>
+   <proof id="t1-p1-c-p" for="t1-p1-c" theory="sets">
+    <derive id="l1">
+     <CMP> If <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMV name="U"/>
+       </OMA>
+      </OMOBJ>, then <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMA>
+         <OMS cd="set1" name="union"/>
+         <OMV name="U"/>
+         <OMV name="V"/>
+        </OMA>
+       </OMA>
+      </OMOBJ>.</CMP>
+     <FMP>
+      <assumption id="l1-A">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMV name="U"/>
+         </OMA>
+        </OMOBJ>
+       </CMP>
+       <OMOBJ/>
+      </assumption>
+      <conclusion id="l1-C">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMA>
+           <OMS cd="set1" name="union"/>
+           <OMV name="U"/>
+           <OMV name="V"/>
+          </OMA>
+         </OMA>
+        </OMOBJ>.</CMP>
+       <OMOBJ/>
+      </conclusion>
+     </FMP>
+     <method xref="#(Method-1@bla)"/>
+     <proof id="l1-p" for="l1" theory="sets">
+      <conclude id="l1-p-d1">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMA>
+           <OMS cd="set1" name="union"/>
+           <OMV name="U"/>
+           <OMV name="V"/>
+          </OMA>
+         </OMA>
+        </OMOBJ> by definition
+   of  <OMOBJ>
+         <OMS cd="set1" name="union"/>
+        </OMOBJ>.</CMP>
+      </conclude>
+     </proof>
+    </derive>
+    <derive id="l2">
+     <CMP>
+      <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMV name="V"/>
+       </OMA>
+      </OMOBJ>, then <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMA>
+         <OMS cd="set1" name="union"/>
+         <OMV name="U"/>
+         <OMV name="V"/>
+        </OMA>
+       </OMA>
+      </OMOBJ>.</CMP>
+     <FMP>
+      <assumption id="l2-A">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMV name="V"/>
+         </OMA>
+        </OMOBJ>
+       </CMP>
+       <OMOBJ/>
+      </assumption>
+      <conclusion id="l2-C">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMA>
+           <OMS cd="set1" name="union"/>
+           <OMV name="U"/>
+           <OMV name="V"/>
+          </OMA>
+         </OMA>
+        </OMOBJ>.</CMP>
+       <OMOBJ/>
+      </conclusion>
+     </FMP>
+     <method xref="#(Method-2@bla)"/>
+     <proof id="l2-p" for="l2" theory="sets">
+      <conclude id="l2-p-d1">
+       <CMP>
+        <OMOBJ>
+         <OMA>
+          <OMS cd="set1" name="in"/>
+          <OMV name="a"/>
+          <OMA>
+           <OMS cd="set1" name="union"/>
+           <OMV name="U"/>
+           <OMV name="V"/>
+          </OMA>
+         </OMA>
+        </OMOBJ>, by definition
+   of  <OMOBJ>
+         <OMS cd="set1" name="union"/>
+        </OMOBJ>.</CMP>
+      </conclude>
+     </proof>
+    </derive>
+    <conclude id="t1-p-c-c1">
+     <CMP> We have considered both cases from <ref xref="t1-a1"/>, so we have
+          <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMV name="U"/>
+       </OMA>
+      </OMOBJ> or <OMOBJ>
+       <OMA>
+        <OMS cd="set1" name="in"/>
+        <OMV name="a"/>
+        <OMV name="U"/>
+       </OMA>
+      </OMOBJ>.
+        </CMP>
+    </conclude>
+   </proof>
+  </conclude>
+ </proof>
+</omdoc>

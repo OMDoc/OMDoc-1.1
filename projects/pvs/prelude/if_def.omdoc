@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="if_def.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:11
+    </Date>
+  </metadata>
+  <theory id="if_def-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56563" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56564" for="if_def" pto="pvs" pto-version="3.0" replaces="if_def-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory if_def
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="if_def_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56565" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="if_def-import-parameters" from="if_def-parameters"/>
+    <assertion id="IF_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="booleans" name="boolean"/>
+                    <OMS cd="if_def" name="T"/>
+                    <OMS cd="if_def" name="T"/>
+                    <OMS cd="if_def" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="IF_TCC1-1" for="IF_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST 1 LAMBDA (x: [boolean, T, T]): PROJ_2(x)) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="IF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="boolean"/>
+          <OMS cd="if_def" name="T"/>
+          <OMS cd="if_def" name="T"/>
+          <OMS cd="if_def" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+  </theory>
+</omdoc>

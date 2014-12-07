@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="list_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:38
+    </Date>
+  </metadata>
+  <theory id="list_props-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57034" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57035" for="list_props" pto="pvs" pto-version="3.0" replaces="list_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory list_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="list_props_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57036" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="list_props-import-parameters" from="list_props-parameters"/>
+
+
+
+
+
+
+
+    <assertion id="length_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="l"/>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="reduce_nat"/>
+                    <OMI>0</OMI>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="list_props" name="T"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="naturalnumbers" name="nat"/>
+                          </OMATP>
+                          <OMV name="n"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="n"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="reduce_nat"/>
+                    <OMI>0</OMI>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="list_props" name="T"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="naturalnumbers" name="nat"/>
+                          </OMATP>
+                          <OMV name="n"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="n"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="length_TCC1-1" for="length_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="length" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="length-def" for="length" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="list_props" name="length"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="l"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMA>
+                        <OMS cd="list_props" name="length"/>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_adt" name="reduce_nat"/>
+          <OMI>0</OMI>
+          <OMBIND>
+            <OMS cd="pvs" name="lambda"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="+"/>
+              <OMV name="n"/>
+              <OMI>1</OMI>
+            </OMA>
+          </OMBIND>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="member_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="hd"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="tl"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="l"/>
+                  <OMA>
+                    <OMS cd="list_adt" name="cons"/>
+                    <OMV name="hd"/>
+                    <OMV name="tl"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="x"/>
+                    <OMV name="hd"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="tl"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="member_TCC1-1" for="member_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="member" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="list_props" name="T"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="member-def" for="member" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="list_props" name="member"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_props" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="l"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMS cd="booleans" name="FALSE"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="hd"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="tl"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMS cd="equalities" name="="/>
+                        <OMV name="x"/>
+                        <OMV name="hd"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="list_props" name="member"/>
+                        <OMV name="x"/>
+                        <OMV name="tl"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_props" name="length"/>
+          <OMV name="l"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="member_null" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="list_props" name="member"/>
+                <OMV name="x"/>
+                <OMV name="l"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="list_adt" name="null?"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="member_null-1" for="member_null" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nth_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="nat_types" name="below"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="n"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="list_adt" name="cons?"/>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nth_TCC1-1" for="nth_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (TYPEPRED n!1) (( (EXPAND length) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nth_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="nat_types" name="below"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="list_adt" name="cons?"/>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nth_TCC2-1" for="nth_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (TYPEPRED n!1) (( (EXPAND length) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nth_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="nat_types" name="below"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="n"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="n"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="list_props" name="length"/>
+                    <OMA>
+                      <OMS cd="list_adt" name="cdr"/>
+                      <OMV name="l"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nth_TCC3-1" for="nth_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l)
+ ((1 (SKOSIMP*) ((1 (TYPEPRED n!1) ((1 (EXPAND length) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+  (2 (SKOSIMP*)
+   ((2 (ASSERT) ((2 (TYPEPRED n!1) ((2 (EXPAND length -1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+   NIL)
+  (3 (SKOSIMP*)
+   ((3 (ASSERT) ((3 (TYPEPRED n!1) ((3 (EXPAND length -1) ((3 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nth_TCC4" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="nat_types" name="below"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMA>
+                    <OMS cd="list_adt" name="cdr"/>
+                    <OMV name="l"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nth_TCC4-1" for="nth_TCC4" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l)
+ ((1 (SKOSIMP*) ((1 (TYPEPRED n!1) ((1 (EXPAND length) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+  (2 (SKOSIMP*) ((2 (EXPAND length 2 2) ((2 (ASSERT) NIL NIL)) NIL)) NIL)
+  (3 (SKOSIMP*) ((3 (TYPEPRED n!1) ((3 (EXPAND length -1) ((3 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nth" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMATTR>
+            <OMATP>
+              <OMS cd="pvs" name="type"/>
+              <OMS cd="list_adt" name="list"/>
+            </OMATP>
+            <OMV name="l"/>
+          </OMATTR>
+          <OMS cd="nat_types" name="below"/>
+          <OMS cd="list_props" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="nth-def" for="nth" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="list_props" name="nth"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="nat_types" name="below"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="car"/>
+                  <OMV name="l"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="nth"/>
+                  <OMA>
+                    <OMS cd="list_adt" name="cdr"/>
+                    <OMV name="l"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="n"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_props" name="length"/>
+          <OMV name="l"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="append_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="l1"/>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l1"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="append_TCC1-1" for="append_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="append" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="list_adt" name="list"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="append-def" for="append" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="list_props" name="append"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="l1"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMV name="l2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="list_adt" name="cons"/>
+                      <OMV name="x"/>
+                      <OMA>
+                        <OMS cd="list_props" name="append"/>
+                        <OMV name="y"/>
+                        <OMV name="l2"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMA>
+          <OMS cd="list_props" name="length"/>
+          <OMV name="l1"/>
+        </OMA>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <symbol id="reverse" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="list_adt" name="list"/>
+          <OMS cd="list_adt" name="list"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="reverse-def" for="reverse" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="list_props" name="reverse"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="list_adt" name="list"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="cases"/>
+                <OMV name="l"/>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="null"/>
+                  <OMV name="l"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="case"/>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="case-lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_adt" name="list"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="list_props" name="append"/>
+                      <OMA>
+                        <OMS cd="list_props" name="reverse"/>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="list_adt" name="cons"/>
+                        <OMV name="x"/>
+                        <OMS cd="list_adt" name="null"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMS cd="list_props" name="length"/>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="append_null" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="append"/>
+                <OMV name="l"/>
+                <OMS cd="list_adt" name="null"/>
+              </OMA>
+              <OMV name="l"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="append_null-1" for="append_null" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l)
+ ((1 (GRIND) NIL NIL)
+  (2 (SKOSIMP) ((2 (EXPAND append +) ((2 (REPLACE -1) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="append_assoc" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l3"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="append"/>
+                <OMA>
+                  <OMS cd="list_props" name="append"/>
+                  <OMV name="l1"/>
+                  <OMV name="l2"/>
+                </OMA>
+                <OMV name="l3"/>
+              </OMA>
+              <OMA>
+                <OMS cd="list_props" name="append"/>
+                <OMV name="l1"/>
+                <OMA>
+                  <OMS cd="list_props" name="append"/>
+                  <OMV name="l2"/>
+                  <OMV name="l3"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="append_assoc-1" for="append_assoc" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l1) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="reverse_append" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="reverse"/>
+                <OMA>
+                  <OMS cd="list_props" name="append"/>
+                  <OMV name="l1"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="list_props" name="append"/>
+                <OMA>
+                  <OMS cd="list_props" name="reverse"/>
+                  <OMV name="l2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="reverse"/>
+                  <OMV name="l1"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="reverse_append-1" for="reverse_append" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l1)
+ ((1 (REWRITE append_null) NIL NIL)
+  (2 (REPLACE -1) ((2 (REWRITE append_assoc DIR RL) NIL NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="reverse_reverse" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="reverse"/>
+                <OMA>
+                  <OMS cd="list_props" name="reverse"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+              <OMV name="l"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="reverse_reverse-1" for="reverse_reverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT l)
+ ((1 (GRIND) NIL NIL)
+  (2 (SKOSIMP)
+   ((2 (EXPAND reverse 1 2)
+     ((2 (REWRITE reverse_append)
+       ((2 (EXPAND reverse 1 1)
+         ((2 (REPLACE -1)
+           ((2 (EXPAND reverse 1 1)
+             ((2 (EXPAND append 1 2)
+               ((2 (EXPAND append 1 1) ((2 (EXPAND append 1 1) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="length_append" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="length"/>
+                <OMA>
+                  <OMS cd="list_props" name="append"/>
+                  <OMV name="l1"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="length"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="length_append-1" for="length_append" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l1) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="length_reverse" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="list_props" name="length"/>
+                <OMA>
+                  <OMS cd="list_props" name="reverse"/>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="list_props" name="length"/>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="length_reverse-1" for="length_reverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l) (( (REWRITE length_append) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+
+
+    <assertion id="list_rep" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_props" name="T"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="pvs" name="list"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+                <OMV name="c"/>
+              </OMA>
+              <OMA>
+                <OMS cd="list_adt" name="cons"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="list_adt" name="cons"/>
+                  <OMV name="b"/>
+                  <OMA>
+                    <OMS cd="list_adt" name="cons"/>
+                    <OMV name="c"/>
+                    <OMS cd="list_adt" name="null"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="list_rep-1" for="list_rep" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (ASSERT) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="every_append" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="P"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMV name="P"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="list_props" name="append"/>
+                  <OMV name="l1"/>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="every"/>
+                    <OMV name="P"/>
+                  </OMA>
+                  <OMV name="l1"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="every"/>
+                    <OMV name="P"/>
+                  </OMA>
+                  <OMV name="l2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="every_append-1" for="every_append" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l1) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="every_disjunct1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="P"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="Q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMV name="P"/>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMV name="P"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="Q"/>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="every_disjunct1-1" for="every_disjunct1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="every_disjunct2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="P"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="Q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMV name="Q"/>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMV name="P"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="Q"/>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="every_disjunct2-1" for="every_disjunct2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="every_conjunct" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="P"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="Q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="list_adt" name="every"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="list_props" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMV name="P"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMA>
+                        <OMV name="Q"/>
+                        <OMV name="x"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+                <OMV name="l"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="every"/>
+                    <OMV name="P"/>
+                  </OMA>
+                  <OMV name="l"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="list_adt" name="every"/>
+                    <OMV name="Q"/>
+                  </OMA>
+                  <OMV name="l"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="every_conjunct-1" for="every_conjunct" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="every_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="list_adt" name="list"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMA>
+                <OMS cd="list_adt" name="every"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="set"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="list_props" name="T"/>
+                      </OMATP>
+                      <OMV name="c"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="list_props" name="member"/>
+                    <OMV name="c"/>
+                    <OMV name="l"/>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMV name="l"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="every_member-1" for="every_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY l) (( (REWRITE every_disjunct2) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_FMP">
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2002-02-03</Date>
+</metadata>                                                                     
+<theory id="test_FMP">
+
+<axiom id="test1">
+<FMP logic="foo">
+    <OMOBJ>
+         <OMA><OMS cd="arith1" name="plus"/><OMI>3</OMI><OMI>3</OMI></OMA>
+             </OMOBJ>
+</FMP>
+</axiom>
+
+<axiom id="test2">
+<FMP>
+<assumption id="as"/>
+<conclusion id="co"/>
+</FMP>
+</axiom>
+
+</theory>
+</omdoc>
+

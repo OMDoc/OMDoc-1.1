@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="typesorts-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary typesorts.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="aut">Olga Caprottis</Creator>
+  <Date> 1999-08-20 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/typesorts.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> Type Sorts as used in the Calculus of Constructions and in its Extensions.</Description>
+</metadata>
+
+<theory id="typesorts">
+  <imports id="typesorts-imports-cc" from="cc.omdoc#cc"/>
+  <imports id="typesorts-imports-logic1" from="logic1.omdoc#logic1"/>
+  <imports id="typesorts-imports-ecc" from="ecc.omdoc#ecc"/>
+  <imports id="typesorts-imports-icc" from="icc.omdoc#icc"/>
+
+<omtext id="CDComment-10" type="introduction">
+  <CMP>        	
+    Definition of type constant for Propositions and Sets
+  </CMP>
+</omtext>
+<symbol id="Prop">
+  <CMP> The type of propositions
+  </CMP>
+  <commonname>Prop</commonname>
+</symbol>
+<example id="Prop-ex-1" type="for" for="Prop">
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="cc" name="type"/>
+	<OMS cd="typesorts" name="Prop"/>
+      </OMATP>
+      <OMS cd="logic1" name="true"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="Type0">
+  <CMP> The type of sets in a hierarchy of types.
+  </CMP>
+  <commonname>Type0</commonname>
+</symbol>
+<example id="Type0-ex-1" type="for" for="Type0">
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="ecc" name="type"/>
+	<OMS cd="typesorts" name="Type0"/>
+      </OMATP>
+      <OMS cd="typesorts" name="Prop"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+<symbol id="Type">
+  <CMP> The cumulative type of the type of sets 
+    in a hierarchy of types.
+  </CMP>
+  <commonname>Type</commonname>
+</symbol>
+<example id="Type-ex-1" type="for" for="Type">
+  <OMOBJ>
+    <OMATTR>
+      <OMATP>
+	<OMS cd="icc" name="type"/>
+	<OMS cd="typesorts" name="Type"/>
+      </OMATP>
+      <OMS cd="typesorts" name="Type0"/>
+    </OMATTR>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

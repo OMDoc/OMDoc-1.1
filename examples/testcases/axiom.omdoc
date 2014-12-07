@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_axiom">
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2002-02-03</Date>
+</metadata>                                                                     
+<theory id="test_axiom">
+
+<axiom id="bar" style="foo" generated-by="hf">
+<metadata>
+<Title>bla</Title>
+</metadata>
+<symbol id="mysym"/>
+<symbol id="mysym2"/>
+<CMP>axiomatic</CMP>
+<CMP xml:lang="de">axiomatisch</CMP>
+<FMP/>
+</axiom>
+
+</theory>
+</omdoc>
+

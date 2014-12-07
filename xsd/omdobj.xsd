@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE xs:schema PUBLIC "-//W3C//DTD XMLSCHEMA 200102//EN" "XMLSchema.dtd" []>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+        xmlns="http://www.openmath.org/OpenMath" 
+        targetNamespace="http://www.openmath.org/OpenMath">
+
+ <xs:annotation>
+  <xs:documentation>
+      An XML Schema for OpenMath Objects in the OMDoc format 
+      Initial Version: Michael Kohlhase 2000-09-07
+      URL: http://www.mathweb.org/omdoc/omdobj.xsd (released)
+      URL: http://www.mathweb.org/src/mathweb/omdoc/xsd/omdobj.xsd (experimental)
+      This Schema is still experimental, it is intended as a basis for discussion.
+      Comments are welcome! (send mail to kohlhase@mathweb.org)
+      See the documentation and examples at http://www.mathweb.org/omdoc
+      (c) 2000,2001 Michael Kohlhase, released under the GNU Public License
+    </xs:documentation>
+ </xs:annotation>
+
+ <xs:group name="omel">
+  <xs:choice> 
+   <xs:element ref="OMS"/>
+   <xs:element ref="OMV"/>
+   <xs:element ref="OMI"/>
+   <xs:element ref="OMB"/>
+   <xs:element ref="OMSTR"/>
+   <xs:element ref="OMF"/>
+   <xs:element ref="OMA"/>
+   <xs:element ref="OMBIND"/>
+   <xs:element ref="OME"/>
+   <xs:element ref="OMATTR"/>
+  </xs:choice>
+ </xs:group>
+
+ <xs:attributeGroup name="idxref">
+  <xs:annotation>
+   <xs:documentation>
+    An abstract type for elements with identity and crossreferencing. The
+    'xref' attribute points to an OpenMath element of the same kind. It is of
+    type IDREF instead of anyURI, since we only want to allow local
+    structure sharing.
+
+    Taking this type as the base for the OpenMath element declarations extends
+    them with coreferences and thus allows structure sharing.
+
+    This extensions is licensed by the OpenMath Standard that says that any
+    extension, from which valid OpenMath can be directly be generated is
+    allowed.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:attribute name="mid" type="xs:anyURI" use="optional"/>
+  <xs:attribute name="id" type="xs:ID" use="optional"/>
+  <xs:attribute name="xref" type="xs:anyURI" use="optional"/>
+ </xs:attributeGroup>
+
+ <xs:element name="OMS">
+  <xs:annotation>
+   <xs:documentation>
+   An OpenMath Symbol. The attribute 'cd' references an OpenMath Content
+   Dictionary and the name points to the OpenMath definition there. Alternatively,
+   the 'cd' can be refer to the 'id' of a theory in an OMDoc document (OpenMath
+   CDs can be generated from them).
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:attribute name="name" type="xs:string" use="optional"/>
+   <xs:attribute name="cd" type="xs:string" use="optional"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMV">
+  <xs:annotation>
+   <xs:documentation>
+    An OpenMath Variable. It is uniquely determined by its 'name'.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:attribute name="name" type="xs:string" use="optional"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:simpleType name="ominteger10">
+  <xs:restriction base="xs:string">
+   <xs:pattern value="?-[0-9]+"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:simpleType name="omintegerhex">
+  <xs:restriction base="xs:string">
+   <xs:pattern value="?-x[0-9A-F]+"/>
+  </xs:restriction>
+ </xs:simpleType>
+
+<xs:simpleType name="ominteger">
+ <xs:union memberTypes="ominteger10 omintegerhex"/>
+</xs:simpleType>
+
+ <xs:element name="OMI">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="ominteger">
+     <xs:attributeGroup ref="idxref"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMB">
+  <xs:annotation>
+   <xs:documentation>An OpenMath Byte String.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="xs:string">
+     <xs:attributeGroup ref="idxref"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMSTR">
+  <xs:annotation>
+   <xs:documentation>An OpenMath String.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:extension base="xs:string">
+     <xs:attributeGroup ref="idxref"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMF">
+  <xs:annotation>
+   <xs:documentation>
+   An OpenMath Floating Point Number, It can be given in decimal or hexadecimal
+   form.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:attributeGroup ref="idxref"/>
+   <xs:attribute name="dec" type="xs:string" use="optional"/>
+   <xs:attribute name="hex" type="xs:string" use="optional"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMA">
+  <xs:annotation>
+   <xs:documentation>
+    An OpenMath Application. The first child of this node is interpreted as a
+    function that is applied to the rest of the children (in order).
+    </xs:documentation>
+   </xs:annotation>
+   <xs:complexType>
+    <xs:sequence>
+     <xs:group ref="omel" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+   <xs:attributeGroup ref="idxref"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMBIND">
+  <xs:annotation>
+   <xs:documentation>
+   An OpenMath Binding Object. The first child of this node is interpreted as a
+   binding symbol (such as forall, lambda, exists, int), the second as a list of
+   bound variables, and the third as the scope of the binding. The CD for the
+   first child should explain the semantics of this binding construct.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:sequence minOccurs="0" maxOccurs="1">
+    <xs:element ref="OMS"/>
+    <xs:element ref="OMBVAR"/>
+    <xs:group ref="omel"/>
+   </xs:sequence>
+   <xs:attributeGroup ref="idxref"/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMBVAR">
+  <xs:annotation>
+   <xs:documentation>
+   A list of bound variables in OpenMath.
+   </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice maxOccurs="unbounded">
+    <xs:element ref="OMV"/>
+    <xs:element ref="OMATTR"/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OME">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="OMS"/>
+    <xs:group ref="omel"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMATTR">
+  <xs:complexType>
+   <xs:sequence minOccurs="0" maxOccurs="1">
+    <xs:element ref="OMATP"/>
+    <xs:group ref="omel"/>
+   </xs:sequence>
+   <xs:attributeGroup ref="idxref"/>
+  </xs:complexType>
+  <xs:unique name="uniquefeature">
+   <xs:selector xpath="OMATP/OMS"/>
+   <xs:field xpath="@cd"/>
+   <xs:field xpath="@name"/>
+   <xs:field xpath="@ref"/>
+  </xs:unique>
+ </xs:element>
+
+ <xs:element name="OMATP">
+  <xs:complexType>
+   <xs:sequence maxOccurs="unbounded">
+    <xs:element ref="OMS"/>
+    <xs:group ref="omel"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="OMOBJ">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+     <xs:group ref="omel"/>
+    </xs:choice>
+   </xs:sequence>
+   <xs:attribute name="xmlns" fixed="http://www.openmath.org/OpenMath"/>
+  </xs:complexType>
+ </xs:element>
+</xs:schema>

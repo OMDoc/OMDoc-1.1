@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="relation_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="relation_props-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56749" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56750" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56751" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56752" for="relation_props" pto="pvs" pto-version="3.0" replaces="relation_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory relation_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="relation_props_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56753" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56754" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56755" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="relation_props-import-parameters" from="relation_props-parameters"/>
+
+
+
+
+
+    <symbol id="O" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="relation_props" name="T1"/>
+            <OMS cd="relation_props" name="T3"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="O-def" for="O" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="relation_props" name="O"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="R2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_props" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="relation_props" name="T3"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="relation_props" name="T2"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMV name="R1"/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="R2"/>
+                      <OMV name="y"/>
+                      <OMV name="z"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="total_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="relation_defs" name="total?"/>
+                  <OMV name="R1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation_defs" name="total?"/>
+                  <OMV name="R2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation_defs" name="total?"/>
+                <OMA>
+                  <OMS cd="relation_props" name="O"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="total_composition-1" for="total_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="onto_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="booleans" name="&amp;"/>
+                <OMA>
+                  <OMS cd="relation_defs" name="onto?"/>
+                  <OMV name="R1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation_defs" name="onto?"/>
+                  <OMV name="R2"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation_defs" name="onto?"/>
+                <OMA>
+                  <OMS cd="relation_props" name="O"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="onto_composition-1" for="onto_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="composition_total" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="relation_defs" name="total?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="relation_defs" name="total?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relation_defs" name="total?"/>
+              <OMA>
+                <OMS cd="relation_props" name="O"/>
+                <OMV name="R1"/>
+                <OMV name="R2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="composition_total-1" for="composition_total" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56756" for="composition_total" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|composition_total|: JUDGEMENT O(R1: (|total?|[T1, T2]),
+                                                      R2: (|total?|[T2, T3]))
+          HAS_TYPE (|total?|[T1, T3])]]>
+      </data>
+    </private>
+
+    <assertion id="composition_onto" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="relation_defs" name="onto?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="relation_defs" name="onto?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="relation_defs" name="onto?"/>
+              <OMA>
+                <OMS cd="relation_props" name="O"/>
+                <OMV name="R1"/>
+                <OMV name="R2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="composition_onto-1" for="composition_onto" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56757" for="composition_onto" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|composition_onto|: JUDGEMENT O(R1: (|onto?|[T1, T2]), R2: (|onto?|[T2, T3]))
+          HAS_TYPE (|onto?|[T1, T3])]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

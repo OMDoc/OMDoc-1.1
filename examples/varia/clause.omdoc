@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="clauselogic">
+
+<metadata>
+  <Title>A first stab at clause logic</Title>
+  <Creator>Michael Kohlhase</Creator>
+  <Creator>Peter Baumgartner</Creator>
+  <Date>2001-9-25</Date>
+</metadata>
+
+<theory id="clauses">
+  <CMP>A first stab at clause logic</CMP>
+  <symbol id="pnclause">
+   <commonname>clause</commonname>
+   <commonname xml:lang="de">Klausel</commonname>
+  </symbol>
+  <presentation for="pnclause" parent="OMA" fixity="infix" lbrack="" rbrack="">
+    <!-- rbrack="&lt;/tt&gt;." lbrack="&lt;tt&gt;">-->
+    <use format="default"  element="tt">:-</use>
+  </presentation>
+
+  <symbol id="poslits"/>
+  <presentation for="poslits" parent="OMA" fixity="assoc" rbrack="" lbrack="">
+    <use format="default">;</use>
+  </presentation>
+
+  <symbol id="neglits"/>
+  <presentation for="neglits" parent="OMA" fixity="assoc"  rbrack="" lbrack="">
+    <use format="default">,</use>
+  </presentation>
+
+
+  <example id="test" for="clause">
+    <CMP>Hier ist ein Beispiel f"ur eine Klausel: 
+      <OMOBJ>
+        <OMA>
+          <OMS cd="clauses" name="pnclause"/>
+          <OMA>
+            <OMS cd="clauses" name="poslits"/>
+            <OMI>1</OMI>
+            <OMI>2</OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="clauses" name="neglits"/>
+            <OMI>1</OMI>
+            <OMI>2</OMI>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      ist das nicht sch"en?
+    </CMP>
+  </example>
+
+  <symbol id="lclause">
+   <commonname>literal clause</commonname>
+   <commonname xml:lang="de">Literal-Klausel</commonname>
+  </symbol>
+
+  <symbol id="poslit"/>
+  <presentation for="poslit" parent="OMA">
+    <use format="default"/>
+  </presentation>
+
+  <symbol id="neglit"/>
+  <presentation for="neglit" parent="OMA">
+    <use format="default"/>
+  </presentation>
+
+  <presentation for="lclause" parent="OMA">
+    <xslt format="default"><![CDATA[
+      <tt>
+        <xsl:for-each select="om:OMA[om:OMS[@name='poslit' and @cd='clauses']]">
+          <xsl:apply-templates select="*[2]"/>
+          <xsl:if test="position()!=last()">
+            <xsl:text>;</xsl:text>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:text>:-</xsl:text>
+        <xsl:for-each select="om:OMA[om:OMS[@name='neglit' and @cd='clauses']]">
+          <xsl:apply-templates select="*[2]"/>
+          <xsl:if test="position()!=last()">
+            <xsl:text>,</xsl:text>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:text>.</xsl:text>
+      </tt>]]>
+    </xslt>
+
+  </presentation>
+  <example id="test2" for="lclause">
+    <CMP>Hier ist ein Beispiel f"ur eine Klausel:</CMP> 
+    <OMOBJ>
+      <OMA>
+        <OMS cd="clauses" name="lclause"/>
+        <OMA>
+          <OMS cd="clauses" name="poslit"/>
+          <OMA><OMS cd="sdf" name="p"/><OMI>1</OMI><OMI>2</OMI></OMA>
+        </OMA>
+        <OMA>
+          <OMS cd="clauses" name="neglit"/>
+          <OMI>2</OMI>
+        </OMA>
+        <OMA>
+          <OMS cd="clauses" name="poslit"/>
+          <OMI>2</OMI>
+        </OMA>
+      </OMA>
+    </OMOBJ>
+  </example>
+</theory>
+</omdoc>

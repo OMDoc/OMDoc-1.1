@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="operator_defs.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="operator_defs-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56767" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56768" for="operator_defs" pto="pvs" pto-version="3.0" replaces="operator_defs-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory operator_defs
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="operator_defs_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56769" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="operator_defs-import-parameters" from="operator_defs-parameters"/>
+
+
+
+
+
+
+    <symbol id="commutative?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="commutative?-def" for="commutative?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="commutative?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMA>
+                    <OMV name="O"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="O"/>
+                    <OMV name="y"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="associative?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="associative?-def" for="associative?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="associative?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMA>
+                    <OMV name="O"/>
+                    <OMA>
+                      <OMV name="O"/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                    <OMV name="z"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="O"/>
+                    <OMV name="x"/>
+                    <OMA>
+                      <OMV name="O"/>
+                      <OMV name="y"/>
+                      <OMV name="z"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="left_identity?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="left_identity?-def" for="left_identity?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="left_identity?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMA>
+                      <OMV name="O"/>
+                      <OMV name="y"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="right_identity?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="right_identity?-def" for="right_identity?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="right_identity?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMA>
+                      <OMV name="O"/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="identity?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="identity?-def" for="identity?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="identity?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMA>
+                        <OMV name="O"/>
+                        <OMV name="x"/>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMA>
+                        <OMV name="O"/>
+                        <OMV name="y"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="has_identity?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="has_identity?-def" for="has_identity?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="has_identity?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMA>
+                    <OMS cd="operator_defs" name="identity?"/>
+                    <OMV name="O"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="zero?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="zero?-def" for="zero?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="zero?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="AND"/>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMA>
+                        <OMV name="O"/>
+                        <OMV name="x"/>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMV name="y"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMA>
+                        <OMV name="O"/>
+                        <OMV name="y"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="has_zero?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="has_zero?-def" for="has_zero?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="has_zero?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMA>
+                    <OMS cd="operator_defs" name="zero?"/>
+                    <OMV name="O"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="inverses?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="operator_defs" name="T"/>
+              <OMS cd="operator_defs" name="T"/>
+            </OMA>
+            <OMA>
+              <OMS cd="pvs" name="funtype"/>
+              <OMS cd="operator_defs" name="T"/>
+              <OMS cd="booleans" name="bool"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="inverses?-def" for="inverses?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="inverses?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="funtype"/>
+                        <OMS cd="operator_defs" name="T"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="-"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="operator_defs" name="T"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="AND"/>
+                      <OMA>
+                        <OMS cd="equalities" name="="/>
+                        <OMA>
+                          <OMV name="O"/>
+                          <OMV name="x"/>
+                          <OMA>
+                            <OMV name="-"/>
+                            <OMV name="x"/>
+                          </OMA>
+                        </OMA>
+                        <OMV name="y"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="equalities" name="="/>
+                        <OMA>
+                          <OMV name="O"/>
+                          <OMA>
+                            <OMV name="-"/>
+                            <OMV name="x"/>
+                          </OMA>
+                          <OMV name="x"/>
+                        </OMA>
+                        <OMV name="y"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="has_inverses?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="has_inverses?-def" for="has_inverses?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="has_inverses?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="funtype"/>
+                        <OMS cd="operator_defs" name="T"/>
+                        <OMS cd="operator_defs" name="T"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="-"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMA>
+                    <OMA>
+                      <OMS cd="operator_defs" name="inverses?"/>
+                      <OMV name="O"/>
+                    </OMA>
+                    <OMV name="-"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="distributive?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+            <OMS cd="operator_defs" name="T"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="distributive?-def" for="distributive?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="operator_defs" name="distributive?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="*"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="O"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="operator_defs" name="T"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMA>
+                    <OMV name="*"/>
+                    <OMV name="x"/>
+                    <OMA>
+                      <OMV name="O"/>
+                      <OMV name="y"/>
+                      <OMV name="z"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMV name="O"/>
+                    <OMA>
+                      <OMV name="*"/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                    <OMA>
+                      <OMV name="*"/>
+                      <OMV name="x"/>
+                      <OMV name="z"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="measure_induction.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:19
+    </Date>
+  </metadata>
+  <theory id="measure_induction-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56686" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="M" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56687" for="NIL" pto="pvs" pto-version="3.0" replaces="M">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="measure_induction" name="T"/>
+          <OMS cd="measure_induction" name="M"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56688" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="orders" name="well_founded?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56689" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56690" for="measure_induction" pto="pvs" pto-version="3.0" replaces="measure_induction-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory measure_induction
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="measure_induction_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56691" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="M" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56692" for="NIL" pto="pvs" pto-version="3.0" replaces="M">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="measure_induction" name="T"/>
+          <OMS cd="measure_induction" name="M"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56693" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="&lt;" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="orders" name="well_founded?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56694" for="NIL" pto="pvs" pto-version="3.0" replaces="&lt;">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="measure_induction-import-parameters" from="measure_induction-parameters"/>
+    <assertion id="measure_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="measure_induction" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="measure_induction" name="T"/>
+                        </OMATP>
+                        <OMV name="y"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="measure_induction" name="&lt;"/>
+                        <OMA>
+                          <OMS cd="measure_induction" name="m"/>
+                          <OMV name="y"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="measure_induction" name="m"/>
+                          <OMV name="x"/>
+                        </OMA>
+                      </OMA>
+                      <OMA>
+                        <OMV name="p"/>
+                        <OMV name="y"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="measure_induction" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="measure_induction-1" for="measure_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA wf_induction[T,(LAMBDA (x, y: T): m(x) < m(y))])
+ ((1 (SKOSIMP*)
+   ((1 (INST -1 p!1)
+     ((1 (SPLIT) ((1 (INST -1 x!1) NIL NIL) (2 (BETA) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+   NIL)
+  (2 (HIDE 2)
+   ((2 (EXPAND well_founded?)
+     ((2 (TYPEPRED <)
+       ((2 (EXPAND well_founded?)
+         ((2 (SKOSIMP*)
+           ((2 (INST -1 (LAMBDA (y:M): (exists (z:T): m(z) = y AND p!1(z))))
+             ((2 (SPLIT)
+               ((1 (SKOSIMP*)
+                 ((1 (TYPEPRED y!2)
+                   ((1 (SKOSIMP*)
+                     ((1 (INST 1 z!1)
+                       ((1 (SKOSIMP*)
+                         ((1 (INST -3 m(x!1))
+                           ((1 (ASSERT) NIL NIL) (2 (INST 1 x!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL)
+                (2 (BETA)
+                 ((2 (INST 2 y!1)
+                   ((2 (SKOSIMP*)
+                     ((2 (INST 1 m(y!1)) ((2 (INST 1 y!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

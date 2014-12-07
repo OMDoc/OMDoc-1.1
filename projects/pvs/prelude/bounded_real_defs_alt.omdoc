@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bounded_real_defs_alt.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:22
+    </Date>
+  </metadata>
+  <theory id="bounded_real_defs_alt-parameters">
+    <symbol id="S" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="sets" name="nonempty?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56775" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56776" for="bounded_real_defs_alt" pto="pvs" pto-version="3.0" replaces="bounded_real_defs_alt-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bounded_real_defs_alt
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bounded_real_defs_alt_test">
+    <symbol id="S" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="subtype"/>
+          <OMS cd="sets" name="nonempty?"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G56777" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bounded_real_defs_alt-import-parameters" from="bounded_real_defs_alt-parameters"/>
+    <assertion id="S_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="S_TCC1-1" for="S_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST 1 singleton(0))
+ (( (EXPAND nonempty?) (( (EXPAND empty?) (( (INST -1 0) (( (GRIND) NIL NIL)) NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs_alt" name="upper_bound?"/>
+            <OMA>
+              <OMS cd="bounded_real_defs" name="upper_bound?"/>
+              <OMS cd="bounded_real_defs_alt" name="S"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs_alt" name="lower_bound?"/>
+            <OMA>
+              <OMS cd="bounded_real_defs" name="lower_bound?"/>
+              <OMS cd="bounded_real_defs_alt" name="S"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs_alt" name="least_upper_bound?"/>
+            <OMA>
+              <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+              <OMS cd="bounded_real_defs_alt" name="S"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs_alt" name="greatest_lower_bound?"/>
+            <OMA>
+              <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+              <OMS cd="bounded_real_defs_alt" name="S"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="lub_is_upper_bound" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs_alt" name="least_upper_bound?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="bounded_real_defs_alt" name="upper_bound?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_is_upper_bound-1" for="lub_is_upper_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56778" for="lub_is_upper_bound" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|lub_is_upper_bound|: JUDGEMENT (|least_upper_bound?|) SUBTYPE_OF
+          (|upper_bound?|)]]>
+      </data>
+    </private>
+
+    <assertion id="glb_is_lower_bound" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs_alt" name="greatest_lower_bound?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="bounded_real_defs_alt" name="lower_bound?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="glb_is_lower_bound-1" for="glb_is_lower_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56779" for="glb_is_lower_bound" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|glb_is_lower_bound|: JUDGEMENT (|greatest_lower_bound?|) SUBTYPE_OF
+          (|lower_bound?|)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

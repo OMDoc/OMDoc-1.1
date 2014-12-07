@@ -1,0 +1,9 @@
+This directory contains home space for projects with OMDoc. 
+
+livrev: Transform the source of journal Living Reviews in Relativity 
+        to OMDoc format
+
+nb:     use Mathematica as input format for OMDoc
+
+ccaps:  use OMDoc as the metadata format for CMU courses (currently in Blackboard
+        format).

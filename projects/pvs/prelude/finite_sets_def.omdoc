@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="finite_sets_def.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:36
+    </Date>
+  </metadata>
+  <theory id="finite_sets_def-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57000" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57001" for="finite_sets_def" pto="pvs" pto-version="3.0" replaces="finite_sets_def-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory finite_sets_def
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="finite_sets_def_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57002" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="finite_sets_def-import-parameters" from="finite_sets_def-parameters"/>
+
+
+
+
+
+    <symbol id="is_finite" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sets" name="set"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="is_finite-def" for="is_finite" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sets_def" name="is_finite"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sets" name="set"/>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="N"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="funtype"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="S"/>
+                        </OMA>
+                        <OMS cd="nat_types" name="below"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="f"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="functions" name="injective?"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="finite_set_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="finite_sets_def" name="is_finite"/>
+            <OMS cd="sets" name="emptyset"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_set_TCC1-1" for="finite_set_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 0 LAMBDA (x:(emptyset[T])): 0)
+   ((1 (SKOLEM-TYPEPRED) ((1 (EXPAND emptyset) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+    (2 (SKOLEM-TYPEPRED) ((2 (EXPAND emptyset) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="finite_set" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="finite_set" for="finite_set" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="finite_sets_def" name="is_finite"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G57003" for="finite_set" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="finite_set-contains">
+      <data><![CDATA[|emptyset|[T]]]>
+      </data>
+    </private>
+    <axiom id="finite_set-contains" >
+      <CMP>Type finite_set contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="non_empty_finite_set" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="non_empty_finite_set" for="non_empty_finite_set" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sets_def" name="finite_set"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="s"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <assertion id="is_finite_surj" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="posnat"/>
+                    </OMATP>
+                    <OMV name="N"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="funtype"/>
+                        <OMS cd="nat_types" name="below"/>
+                        <OMA>
+                          <OMS cd="pvs" name="subtype"/>
+                          <OMV name="S"/>
+                        </OMA>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="f"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="functions" name="surjective?"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMBIND>
+              <OMA>
+                <OMS cd="finite_sets_def" name="is_finite"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+
+
+
+    <assertion id="finite_subset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="S"/>
+                <OMV name="A"/>
+              </OMA>
+              <OMA>
+                <OMS cd="finite_sets_def" name="is_finite"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_subset-1" for="finite_subset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 N!1 lambda (x: (S!1)): f!1(x))
+   ((1 (SKOSIMP)
+     ((1 (BETA)
+       ((1 (INST?)
+         ((1 (ASSERT) NIL NIL) (2 (TYPEPRED x2!1) ((2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL)
+          (3 (TYPEPRED x1!1) ((3 (INST?) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL)
+    (2 (SKOLEM-TYPEPRED) ((2 (INST? -4) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="finite_intersection" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_intersection-1" for="finite_intersection" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 N!1 lambda (x: (intersection(A!1, B!1))): f!1(x))
+   ((1 (BETA)
+     ((1 (SKOLEM-TYPEPRED) ((1 (INST?) ((1 (GRIND) NIL NIL) (2 (GRIND) NIL NIL)) NIL)) NIL)) NIL)
+    (2 (GRIND) NIL NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="finite_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="add"/>
+                <OMV name="x"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_add-1" for="finite_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 N!1 + 1 lambda (x: (add(x!1, A!1))): if x = x!1 then N!1 else f!1(x) endif)
+   ((1 (GRIND IF-MATCH NIL) ((1 (INST -4 x1!1 x2!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+    (2 (GRIND IF-MATCH NIL) NIL NIL) (3 (GRIND IF-MATCH NIL) NIL NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_finite_is_nonempty" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="non_empty_finite_set"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="nonempty?"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_finite_is_nonempty-1" for="nonempty_finite_is_nonempty" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57004" for="nonempty_finite_is_nonempty" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonempty_finite_is_nonempty|: JUDGEMENT |non_empty_finite_set| SUBTYPE_OF
+          (|nonempty?|[T])]]>
+      </data>
+    </private>
+
+    <assertion id="finite_singleton" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="singleton"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_singleton-1" for="finite_singleton" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND is_finite)
+   (( (INST 1 1 lambda (x: (singleton[T](x!1))): 0)
+     (( (EXPAND injective?)
+       (( (SKOLEM-TYPEPRED) (( (EXPAND singleton) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57005" for="finite_singleton" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_singleton|: JUDGEMENT |singleton|(|x|) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_union" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_union-1" for="finite_union" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP*)
+     ((
+       (INST 1 N!1 + N!2
+        lambda (x: (union[T](A!1, B!1))): if A!1(x) then f!1(x) else f!2(x)+N!1 endif)
+       ((1 (EXPAND injective?)
+         ((1 (SKOSIMP*)
+           ((1 (LIFT-IF)
+             ((1 (LIFT-IF)
+               ((1 (PROP)
+                 ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL) (2 (ASSERT) NIL NIL) (3 (ASSERT) NIL NIL)
+                  (4 (INST -3 x1!1 x2!1)
+                   ((1 (ASSERT) NIL NIL)
+                    (2 (ASSERT)
+                     ((2 (TYPEPRED x2!1)
+                       ((2 (EXPAND union) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                       NIL))
+                     NIL)
+                    (3 (TYPEPRED x1!1)
+                     ((3 (EXPAND union) ((3 (EXPAND member) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOSIMP*) ((2 (ASSERT) NIL NIL)) NIL)
+        (3 (SKOSIMP*)
+         ((3 (TYPEPRED x!1)
+           ((3 (EXPAND union) ((3 (EXPAND member) ((3 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+         NIL)
+        (4 (SKOSIMP*) ((4 (ASSERT) NIL NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57006" for="finite_union" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_union|: JUDGEMENT |union|(A, B) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_intersection1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="S"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_intersection1-1" for="finite_intersection1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (INST 1 N!1 lambda (x: (intersection[T](S!1, A!1))): f!1(x))
+       ((1 (EXPAND injective?)
+         ((1 (SKOLEM-TYPEPRED)
+           ((1 (EXPAND intersection)
+             ((1 (EXPAND member) ((1 (FLATTEN) ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOLEM-TYPEPRED)
+         ((2 (EXPAND intersection) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57007" for="finite_intersection1" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_intersection1|: JUDGEMENT |intersection|(S, A) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_intersection2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="A"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_intersection2-1" for="finite_intersection2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (INST 1 N!1 lambda (x: (intersection[T](A!1, S!1))): f!1(x))
+       ((1 (EXPAND injective?)
+         ((1 (SKOSIMP)
+           ((1 (INST?)
+             ((1 (ASSERT) NIL NIL)
+              (2 (TYPEPRED x2!1)
+               ((2 (EXPAND intersection) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL)
+              (3 (TYPEPRED x1!1)
+               ((3 (EXPAND intersection) ((3 (EXPAND member) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOLEM-TYPEPRED)
+         ((2 (EXPAND intersection) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57008" for="finite_intersection2" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_intersection2|: JUDGEMENT |intersection|(A, S) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_difference" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="A"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_difference-1" for="finite_difference" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (INST 1 N!1 lambda (x :(difference[T](A!1, S!1))): f!1(x))
+       ((1 (EXPAND injective?)
+         ((1 (SKOSIMP)
+           ((1 (INST?)
+             ((1 (ASSERT) NIL NIL)
+              (2 (TYPEPRED x2!1)
+               ((2 (EXPAND difference) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+              (3 (TYPEPRED x1!1)
+               ((3 (EXPAND difference) ((3 (EXPAND member) ((3 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOLEM-TYPEPRED)
+         ((2 (EXPAND difference) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57009" for="finite_difference" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_difference|: JUDGEMENT |difference|(A, S) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_finite_union1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="non_empty_finite_set"/>
+                </OMATP>
+                <OMV name="NA"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="sets" name="empty?"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="NA"/>
+                  <OMV name="B"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_finite_union1-1" for="nonempty_finite_union1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57010" for="nonempty_finite_union1" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonempty_finite_union1|: JUDGEMENT |union|(NA, B) HAS_TYPE
+          |non_empty_finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_finite_union2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="non_empty_finite_set"/>
+                </OMATP>
+                <OMV name="NB"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="sets" name="empty?"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="A"/>
+                  <OMV name="NB"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_finite_union2-1" for="nonempty_finite_union2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57011" for="nonempty_finite_union2" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonempty_finite_union2|: JUDGEMENT |union|(A, NB) HAS_TYPE
+          |non_empty_finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_add_finite" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="finite_sets_def" name="is_finite"/>
+                <OMA>
+                  <OMS cd="sets" name="add"/>
+                  <OMV name="x"/>
+                  <OMV name="A"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMA>
+                    <OMS cd="sets" name="add"/>
+                    <OMV name="x"/>
+                    <OMV name="A"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_add_finite-1" for="nonempty_add_finite" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (SPLIT)
+       ((1 (INST 1 N!1+1 lambda (x: (add[T](x!1, A!1))): if x = x!1 then N!1 else f!1(x) endif)
+         ((1 (EXPAND injective?)
+           ((1 (SKOLEM-TYPEPRED)
+             ((1 (LIFT-IF)
+               ((1 (LIFT-IF)
+                 ((1 (PROP)
+                   ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL) (3 (ASSERT) NIL NIL)
+                    (4 (INST -4 x1!1 x2!1)
+                     ((1 (ASSERT) NIL NIL)
+                      (2 (EXPAND add)
+                       ((2 (ASSERT) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)
+                      (3 (EXPAND add) ((3 (EXPAND member) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL)
+          (2 (SKOLEM-TYPEPRED) ((2 (FLATTEN) ((2 (ASSERT) NIL NIL)) NIL)) NIL)
+          (3 (SKOLEM-TYPEPRED)
+           ((3 (FLATTEN)
+             ((3 (ASSERT) ((3 (EXPAND add) ((3 (EXPAND member) ((3 (PROPAX) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (EXPAND empty?)
+         ((2 (INST -1 x!1) ((2 (EXPAND member) ((2 (EXPAND add) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57012" for="nonempty_add_finite" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonempty_add_finite|: JUDGEMENT |add|(|x|, A) HAS_TYPE
+          |non_empty_finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_remove" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="remove"/>
+                <OMV name="x"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_remove-1" for="finite_remove" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (INST 1 N!1 lambda (x: (remove[T](x!1, A!1))): f!1(x))
+       ((1 (EXPAND injective?)
+         ((1 (SKOLEM-TYPEPRED)
+           ((1 (INST?)
+             ((1 (EXPAND remove) ((1 (EXPAND member) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+              (2 (EXPAND remove) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOLEM-TYPEPRED)
+         ((2 (EXPAND remove) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57013" for="finite_remove" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_remove|: JUDGEMENT |remove|(|x|, A) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_rest" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="finite_set"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMA>
+                <OMS cd="sets" name="rest"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_rest-1" for="finite_rest" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND is_finite)
+   (( (SKOSIMP)
+     (( (INST 1 N!1 lambda (x: (rest[T](A!1))): f!1(x))
+       ((1 (EXPAND injective?)
+         ((1 (SKOLEM-TYPEPRED)
+           ((1 (INST?)
+             ((1 (EXPAND rest)
+               ((1 (ASSERT)
+                 ((1 (HIDE -1)
+                   ((1 (PROP)
+                     ((1 (EXPAND empty?)
+                       ((1 (SKOSIMP)
+                         ((1 (EXPAND member)
+                           ((1 (EXPAND remove) ((1 (EXPAND member) ((1 (PROPAX) NIL NIL)) NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL)
+              (2 (EXPAND rest)
+               ((2 (ASSERT)
+                 ((2 (HIDE -2)
+                   ((2 (PROP)
+                     ((2 (EXPAND remove) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOLEM-TYPEPRED)
+         ((2 (EXPAND rest)
+           ((2 (ASSERT)
+             ((2 (PROP) ((2 (EXPAND remove) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57014" for="finite_rest" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_rest|: JUDGEMENT |rest|(A) HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="finite_emptyset" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="finite_sets_def" name="is_finite"/>
+            <OMS cd="sets" name="emptyset"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_emptyset-1" for="finite_emptyset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND is_finite)
+ (( (INST 1 0 LAMBDA (x:(emptyset[T])): 0)
+   ((1 (EXPAND injective?)
+     ((1 (SKOLEM-TYPEPRED) ((1 (EXPAND emptyset) ((1 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)
+    (2 (SKOLEM-TYPEPRED) ((2 (EXPAND emptyset) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57015" for="finite_emptyset" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|finite_emptyset|: JUDGEMENT |emptyset| HAS_TYPE |finite_set|]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_singleton_finite" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sets_def" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="sets" name="empty?"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_singleton_finite-1" for="nonempty_singleton_finite" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G57016" for="nonempty_singleton_finite" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonempty_singleton_finite|: JUDGEMENT |singleton|(|x|) HAS_TYPE
+          |non_empty_finite_set|]]>
+      </data>
+    </private>
+
+    <symbol id="is_finite_type" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="booleans" name="bool"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="is_finite_type-def" for="is_finite_type" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sets_def" name="is_finite_type"/>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="N"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="finite_sets_def" name="T"/>
+                      <OMS cd="nat_types" name="below"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMV name="g"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="finite_full" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="IFF"/>
+            <OMS cd="finite_sets_def" name="is_finite_type"/>
+            <OMA>
+              <OMS cd="finite_sets_def" name="is_finite"/>
+              <OMS cd="sets" name="fullset"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_full-1" for="finite_full" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ ((1 (INST 1 N!1 g!1) ((1 (GRIND) NIL NIL)) NIL) (2 (INST 1 N!1 f!1) ((2 (GRIND) NIL NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="finite_type_set" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMS cd="finite_sets_def" name="is_finite_type"/>
+              <OMA>
+                <OMS cd="finite_sets_def" name="is_finite"/>
+                <OMV name="S"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_type_set-1" for="finite_type_set" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 N!1 g!1) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="finite_complement" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMS cd="finite_sets_def" name="is_finite_type"/>
+              <OMA>
+                <OMS cd="finite_sets_def" name="is_finite"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="finite_complement-1" for="finite_complement" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 N!1 g!1) (( (GRIND IF-MATCH NIL) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

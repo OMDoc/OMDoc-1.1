@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bv_concat_def.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:42
+    </Date>
+  </metadata>
+  <theory id="bv_concat_def-parameters">
+    <symbol id="n" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57080" for="NIL" pto="pvs" pto-version="3.0" replaces="n">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57081" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57082" for="bv_concat_def" pto="pvs" pto-version="3.0" replaces="bv_concat_def-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bv_concat_def
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bv_concat_def_test">
+    <symbol id="n" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57083" for="NIL" pto="pvs" pto-version="3.0" replaces="n">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="m" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57084" for="NIL" pto="pvs" pto-version="3.0" replaces="m">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bv_concat_def-import-parameters" from="bv_concat_def-parameters"/>
+    <assertion id="oh_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMA>
+              <OMS cd="reals" name="+"/>
+              <OMS cd="bv_concat_def" name="n"/>
+              <OMS cd="bv_concat_def" name="m"/>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="+"/>
+              <OMS cd="bv_concat_def" name="m"/>
+              <OMS cd="bv_concat_def" name="n"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="oh_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMS cd="bv_concat_def" name="n"/>
+                      <OMS cd="bv_concat_def" name="m"/>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="nm"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="nm"/>
+                  <OMS cd="bv_concat_def" name="m"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="nm"/>
+                    <OMS cd="bv_concat_def" name="m"/>
+                  </OMA>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="nm"/>
+                    <OMS cd="bv_concat_def" name="m"/>
+                  </OMA>
+                  <OMS cd="bv_concat_def" name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="O" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="O-def" for="O" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_concat_def" name="O"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bvn"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bvm"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMA>
+                          <OMS cd="reals" name="+"/>
+                          <OMS cd="bv_concat_def" name="n"/>
+                          <OMS cd="bv_concat_def" name="m"/>
+                        </OMA>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="nm"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="nm"/>
+                    <OMS cd="bv_concat_def" name="m"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bvm"/>
+                    <OMV name="nm"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bvn"/>
+                    <OMA>
+                      <OMS cd="reals" name="-"/>
+                      <OMV name="nm"/>
+                      <OMS cd="bv_concat_def" name="m"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

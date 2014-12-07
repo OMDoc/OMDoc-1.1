@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="xor_def.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:12
+    </Date>
+  </metadata>
+  <theory id="xor_def_test">
+
+
+    <symbol id="XOR" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="XOR-def" for="XOR" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="xor_def" name="XOR"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="booleans" name="bool"/>
+                  </OMATP>
+                  <OMV name="A"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="booleans" name="bool"/>
+                  </OMATP>
+                  <OMV name="B"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="xor_def" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="xor_def" name="XOR"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="A"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMV name="B"/>
+                </OMA>
+                <OMV name="B"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="xor_def-1" for="xor_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

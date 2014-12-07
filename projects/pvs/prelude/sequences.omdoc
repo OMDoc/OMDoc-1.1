@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="sequences.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:36
+    </Date>
+  </metadata>
+  <theory id="sequences-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57020" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57021" for="sequences" pto="pvs" pto-version="3.0" replaces="sequences-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory sequences
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="sequences_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57022" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="sequences-import-parameters" from="sequences-parameters"/>
+    <symbol id="sequence" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="sequence" for="sequence" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="naturalnumbers" name="nat"/>
+            <OMS cd="sequences" name="T"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+
+
+
+    <symbol id="nth" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="sequences" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="nth-def" for="nth" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="nth"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMV name="seq"/>
+                <OMV name="n"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="suffix" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="suffix-def" for="suffix" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="suffix"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="seq"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="first" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="first-def" for="first" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="first"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="sequences" name="nth"/>
+                <OMV name="seq"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="rest" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="rest-def" for="rest" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="rest"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="sequences" name="suffix"/>
+                <OMV name="seq"/>
+                <OMI>1</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="delete" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="delete-def" for="delete" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="delete"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="seq"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="seq"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="i"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="insert_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="sequence"/>
+                </OMATP>
+                <OMV name="seq"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="i"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="insert_TCC1-1" for="insert_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="insert" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="T"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="insert-def" for="insert" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="insert"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="seq"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="if_def" name="IF"/>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMV name="i"/>
+                      <OMV name="n"/>
+                    </OMA>
+                    <OMV name="x"/>
+                    <OMA>
+                      <OMV name="seq"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMV name="i"/>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="add" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="T"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="sequences" name="sequence"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="add-def" for="add" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="add"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="sequences" name="insert"/>
+                <OMV name="x"/>
+                <OMI>0</OMI>
+                <OMV name="seq"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="insert_delete" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="sequence"/>
+                </OMATP>
+                <OMV name="seq"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sequences" name="insert"/>
+                <OMA>
+                  <OMS cd="sequences" name="nth"/>
+                  <OMV name="seq"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+                <OMA>
+                  <OMS cd="sequences" name="delete"/>
+                  <OMV name="n"/>
+                  <OMV name="seq"/>
+                </OMA>
+              </OMA>
+              <OMV name="seq"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="insert_delete-1" for="insert_delete" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM 1 (n!1 seq!1))
+ (( (EXPAND insert)
+   (( (APPLY-EXTENSIONALITY 1)
+     ((1 (DELETE 2)
+       ((1 (LIFT-IF)
+         ((1 (SPLIT)
+           ((1 (FLATTEN) ((1 (EXPAND delete) ((1 (LIFT-IF) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+            (2 (FLATTEN)
+             ((2 (SPLIT)
+               ((1 (FLATTEN) ((1 (EXPAND nth) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+                (2 (FLATTEN) ((2 (EXPAND delete) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOSIMP*) ((2 (APPLY-EXTENSIONALITY 4) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="add_first_rest" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="sequence"/>
+                </OMATP>
+                <OMV name="seq"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sequences" name="add"/>
+                <OMA>
+                  <OMS cd="sequences" name="first"/>
+                  <OMV name="seq"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sequences" name="rest"/>
+                  <OMV name="seq"/>
+                </OMA>
+              </OMA>
+              <OMV name="seq"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="add_first_rest-1" for="add_first_rest" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM 1 (seq!1))
+ (( (EXPAND add)
+   (( (EXPAND insert)
+     (( (APPLY-EXTENSIONALITY 1)
+       ((1 (DELETE 2)
+         ((1 (LIFT-IF)
+           ((1 (PROP)
+             ((1 (EXPAND first) ((1 (EXPAND nth) ((1 (ASSERT) NIL NIL)) NIL)) NIL)
+              (2 (EXPAND rest) ((2 (EXPAND suffix) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL)
+        (2 (SKOSIMP*) ((2 (APPLY-EXTENSIONALITY 3) NIL NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="every" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sequences" name="sequence"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="every-def" for="every" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="every"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sequences" name="sequence"/>
+                    </OMATP>
+                    <OMV name="seq"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMA>
+                      <OMS cd="sequences" name="nth"/>
+                      <OMV name="seq"/>
+                      <OMV name="n"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="every" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="every-def" for="every" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="every"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="sequences" name="nth"/>
+                    <OMV name="seq"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="some" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="sequences" name="sequence"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="some-def" for="some" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="some"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sequences" name="sequence"/>
+                    </OMATP>
+                    <OMV name="seq"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMBIND>
+                  <OMS cd="pvs" name="exists"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMV name="p"/>
+                    <OMA>
+                      <OMS cd="sequences" name="nth"/>
+                      <OMV name="seq"/>
+                      <OMV name="n"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="some" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="defined_types" name="pred"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="some-def" for="some" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="some"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="pred"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="sequences" name="nth"/>
+                    <OMV name="seq"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="sequence_induction" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="pred"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sequences" name="sequence"/>
+                </OMATP>
+                <OMV name="seq"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="sequences" name="nth"/>
+                    <OMV name="seq"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMA>
+                        <OMS cd="sequences" name="nth"/>
+                        <OMV name="seq"/>
+                        <OMV name="n"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMV name="p"/>
+                      <OMA>
+                        <OMS cd="sequences" name="nth"/>
+                        <OMV name="seq"/>
+                        <OMA>
+                          <OMS cd="reals" name="+"/>
+                          <OMV name="n"/>
+                          <OMI>1</OMI>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="sequences" name="every"/>
+                  <OMV name="p"/>
+                </OMA>
+                <OMV name="seq"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="sequence_induction-1" for="sequence_induction" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA nat_induction)
+ (( (SKOSIMP)
+   (( (INST -1 (lambda (n:nat): p!1(nth(seq!1, n))))
+     (( (BETA)
+       (( (ASSERT)
+         (( (SPLIT)
+           ((1 (ASSERT) ((1 (EXPAND every) ((1 (PROPAX) NIL NIL)) NIL)) NIL) (2 (PROPAX) NIL NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="ascends?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="defined_types" name="PRED"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="ascends?-def" for="ascends?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="ascends?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="PRED"/>
+                  </OMATP>
+                  <OMV name="Trel"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="functions" name="preserves"/>
+                <OMV name="seq"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="i"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;="/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMBIND>
+                <OMV name="Trel"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="descends?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="sequences" name="sequence"/>
+          <OMS cd="defined_types" name="PRED"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="descends?-def" for="descends?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="sequences" name="descends?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="sequences" name="sequence"/>
+                  </OMATP>
+                  <OMV name="seq"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="defined_types" name="PRED"/>
+                  </OMATP>
+                  <OMV name="Trel"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="functions" name="inverts"/>
+                <OMV name="seq"/>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="i"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;="/>
+                    <OMV name="i"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMBIND>
+                <OMV name="Trel"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+  </theory>
+</omdoc>

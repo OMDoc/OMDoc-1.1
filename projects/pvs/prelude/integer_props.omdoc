@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="integer_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:29
+    </Date>
+  </metadata>
+  <theory id="integer_props_test">
+
+
+
+
+
+
+
+
+    <assertion id="integer_pred_ax" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="i"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="integer_pred_ax-1" for="integer_pred_ax" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (CASE i!1 >= 0)
+   ((1 (INST 1 i!1) ((1 (ASSERT) NIL NIL)) NIL)
+    (2 (INST 2 -i!1) ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="div_simple" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="n0j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="int"/>
+                    </OMATP>
+                    <OMV name="k"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="k"/>
+                    <OMV name="n0j"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMA>
+                <OMS cd="integers" name="integer_pred"/>
+                <OMA>
+                  <OMS cd="reals" name="/"/>
+                  <OMV name="i"/>
+                  <OMV name="n0j"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="div_simple-1" for="div_simple" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 2 i!1/n0j!1) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_nat_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="N"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="nonempty?"/>
+              <OMA>
+                <OMS cd="extend" name="extend"/>
+                <OMV name="N"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_nat_TCC1-1" for="lub_nat_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_nat_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="N"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                <OMV name="m"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="N"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="sets" name="nonempty?"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="N"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_nat_TCC2-1" for="lub_nat_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_nat" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="N"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                <OMV name="m"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="N"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                  <OMV name="n"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="N"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_nat-1" for="lub_nat" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT m)
+ ((1 (SKOSIMP*)
+   ((1 (EXPAND upper_bound?)
+     ((1 (TYPEPRED N!1)
+       ((1 (EXPAND nonempty?)
+         ((1 (EXPAND empty?)
+           ((1 (SKOSIMP*)
+             ((1 (EXPAND member)
+               ((1 (INST 1 x!1)
+                 ((1 (EXPAND least_upper_bound?)
+                   ((1 (SPLIT)
+                     ((1 (EXPAND upper_bound?)
+                       ((1 (SKOSIMP*) ((1 (INST -2 s!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)
+                      (2 (SKOSIMP*)
+                       ((2 (EXPAND upper_bound?)
+                         ((2 (INST -1 x!1) ((2 (EXPAND extend) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL)
+  (2 (SKOSIMP*)
+   ((2 (INST -1 N!1)
+     ((2 (ASSERT)
+       ((2 (REPLACE 1)
+         ((2 (ASSERT)
+           ((2 (EXPAND upper_bound?)
+             ((2 (SKOSIMP*)
+               ((2 (INST 2 s!1)
+                 ((1 (EXPAND least_upper_bound?)
+                   ((1 (SPLIT)
+                     ((1 (EXPAND upper_bound?)
+                       ((1 (SKOSIMP*)
+                         ((1 (INST -1 s!2)
+                           ((1 (ASSERT)
+                             ((1 (CASE forall (i, j: int): i < j iff i + 1 <= j)
+                               ((1 (INST -1 s!1 s!2)
+                                 ((1 (ASSERT) NIL NIL)
+                                  (2 (TYPEPRED s!2) ((2 (EXPAND extend) ((2 (PROP) NIL NIL)) NIL))
+                                   NIL)
+                                  (3 (TYPEPRED s!1) ((3 (EXPAND extend) ((3 (PROP) NIL NIL)) NIL))
+                                   NIL))
+                                 NIL)
+                                (2 (SKOSIMP) ((2 (GROUND) NIL NIL)) NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL)
+                      (2 (SKOSIMP) ((2 (EXPAND upper_bound?) ((2 (INST -1 s!1) NIL NIL)) NIL))
+                       NIL))
+                     NIL))
+                   NIL)
+                  (2 (TYPEPRED s!1) ((2 (EXPAND extend) ((2 (PROP) NIL NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL)
+  (3 (HIDE 2)
+   ((3 (SKOSIMP)
+     ((3 (SKOSIMP)
+       ((3 (EXPAND nonempty?)
+         ((3 (EXPAND empty?)
+           ((3 (TYPEPRED N!1)
+             ((3 (EXPAND nonempty?)
+               ((3 (EXPAND empty?)
+                 ((3 (SKOSIMP)
+                   ((3 (INST -3 x!1)
+                     ((3 (EXPAND member) ((3 (EXPAND extend) ((3 (PROPAX) NIL NIL)) NIL)) NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL)
+  (4 (HIDE 2)
+   ((4 (SKOSIMP)
+     ((4 (TYPEPRED N!1)
+       ((4 (EXPAND nonempty?)
+         ((4 (EXPAND empty?)
+           ((4 (SKOSIMP)
+             ((4 (EXPAND member)
+               ((4 (INST -2 x!1) ((4 (EXPAND extend) ((4 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="I"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="nonempty?"/>
+              <OMA>
+                <OMS cd="extend" name="extend"/>
+                <OMV name="I"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_int_TCC1-1" for="lub_int_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_int_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="I"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                <OMV name="i"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="I"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="I"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="sets" name="nonempty?"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="I"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_int_TCC2-1" for="lub_int_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="I"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                <OMV name="i"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="I"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="I"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="I"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_int-1" for="lub_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (TYPEPRED I!1)
+   (( (EXPAND nonempty?)
+     (( (EXPAND empty?)
+       (( (SKOSIMP*)
+         (( (LEMMA lub_nat)
+           (( (EXPAND member)
+             (( (INST - {n|I!1(n+x!1)} i!1-x!1)
+               ((1 (PROP)
+                 ((1 (SKOSIMP*)
+                   ((1 (INST + n!1+x!1)
+                     ((1 (ASSERT)
+                       ((1 (EXPAND least_upper_bound?)
+                         ((1 (PROP)
+                           ((1 (EXPAND upper_bound?)
+                             ((1 (SKOSIMP*)
+                               ((1 (ASSERT)
+                                 ((1 (INST - s!1-x!1)
+                                   ((1 (ASSERT) NIL NIL)
+                                    (2 (ASSERT)
+                                     ((2 (EXPAND extend)
+                                       ((2 (SPLIT 1)
+                                         ((1 (FLATTEN)
+                                           ((1 (TYPEPRED s!1)
+                                             ((1 (EXPAND extend) ((1 (ASSERT) NIL NIL)) NIL)) NIL))
+                                           NIL)
+                                          (2 (FLATTEN)
+                                           ((2 (TYPEPRED s!1)
+                                             ((2 (EXPAND extend)
+                                               ((2 (PROP)
+                                                 ((1 (LEMMA rat_minus_rat_is_rat)
+                                                   ((1 (INST?) NIL NIL)) NIL)
+                                                  (2 (LEMMA int_minus_int_is_int)
+                                                   ((2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                                                 NIL))
+                                               NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL)
+                            (2 (SKOSIMP*)
+                             ((2 (INST - y!1-x!1)
+                               ((2 (ASSERT)
+                                 ((2 (EXPAND upper_bound?)
+                                   ((2 (SKOSIMP*)
+                                     ((2 (INST?) ((2 (EXPAND extend) ((2 (PROPAX) NIL NIL)) NIL))
+                                       NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL)
+                  (2 (EXPAND upper_bound?)
+                   ((2 (SKOSIMP*)
+                     ((2 (TYPEPRED s!1)
+                       ((2 (EXPAND extend -1)
+                         ((2 (PROP)
+                           ((2 (INST - s!1+x!1)
+                             ((1 (ASSERT) NIL NIL)
+                              (2 (EXPAND extend 1)
+                               ((2 (PROP)
+                                 ((1 (LEMMA rat_plus_rat_is_rat) ((1 (INST?) NIL NIL)) NIL)
+                                  (2 (LEMMA int_plus_int_is_int)
+                                   ((2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL)
+                (2 (ASSERT)
+                 ((2 (EXPAND upper_bound?)
+                   ((2 (INST -2 x!1)
+                     ((1 (ASSERT) NIL NIL) (2 (EXPAND extend) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                   NIL))
+                 NIL)
+                (3 (EXPAND nonempty?)
+                 ((3 (EXPAND empty?)
+                   ((3 (INST -1 0) ((3 (EXPAND member) ((3 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="glb_nat" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="N"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMV name="N"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                <OMV name="n"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="N"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="glb_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="I"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                <OMV name="i"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="I"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="I"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="sets" name="nonempty?"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="I"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="glb_int" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="I"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="=&gt;"/>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                <OMV name="i"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMV name="I"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="I"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="extend" name="extend"/>
+                    <OMV name="I"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+</omdoc>

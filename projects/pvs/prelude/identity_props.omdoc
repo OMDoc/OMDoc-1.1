@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="identity_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:18
+    </Date>
+  </metadata>
+  <theory id="identity_props-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56640" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="identity_props" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56641" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56642" for="identity_props" pto="pvs" pto-version="3.0" replaces="identity_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory identity_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="identity_props_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56643" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="identity_props" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56644" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="identity_props-import-parameters" from="identity_props-parameters"/>
+
+    <assertion id="I_preserves" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="identity_props" name="S"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="identity_props" name="S_pred"/>
+              <OMA>
+                <OMS cd="identity" name="I"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="I_preserves-1" for="I_preserves" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56645" for="I_preserves" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|I_preserves|: JUDGEMENT I[T](|x|) HAS_TYPE S]]>
+      </data>
+    </private>
+
+    <assertion id="id_preserves" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="identity_props" name="S"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="identity_props" name="S_pred"/>
+              <OMA>
+                <OMS cd="identity" name="id"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="id_preserves-1" for="id_preserves" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56646" for="id_preserves" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|id_preserves|: JUDGEMENT |id|[T](|x|) HAS_TYPE S]]>
+      </data>
+    </private>
+
+    <assertion id="identity_preserves" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="identity_props" name="S"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="identity_props" name="S_pred"/>
+              <OMA>
+                <OMS cd="identity" name="identity"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="identity_preserves-1" for="identity_preserves" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56647" for="identity_preserves" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|identity_preserves|: JUDGEMENT |identity|[T](|x|) HAS_TYPE S]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

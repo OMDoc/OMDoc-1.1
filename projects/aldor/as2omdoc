@@ -1,0 +1,131 @@
+#!/bin/bash
+
+#
+# 2000/03/24
+# (c) Yannis Chicha - Symbolic Computation Lab - UWO.
+#
+# aldordoc is part of the 'aldordoc' project
+# Version of aldordoc: 0.6
+# 
+# Permission is hereby granted to copy, use, modify this code
+# as long as this copyright notice is retained. Please add
+# your own notice to describe the changes you made so that
+# I don't get credits for what you've done!!!!!
+#
+# If something bad happens because of this piece of code,
+# I am not responsible!
+# If you find a bug, please report to chicha@csd.uwo.ca
+#
+
+#-----------------------------------------------------------
+
+#
+# Purpose of this code:
+# aldordoc script - automatic generation of documentation for aldor libraries.
+# main file of the project.
+#
+
+#-----------------------------------------------------------
+
+
+# ALDORDOCROOT is the shell variable indicating where sit scripts, binaries and java archive files
+# ALDORDOCAR indicates which archive tool to use, default is ar
+#
+# PATH should point to 'axiomxl' and 'java'
+# CLASSPATH should be at least set to the standard Java library
+# this is because Java 1.1 is not able to automatically add a PATH
+# This has been fixed in Java 1.2 fortunately
+
+if ([ "X$ALDORDOCROOT" = "X" ]) then {
+	echo ALDORDOCROOT is not defined;
+	exit 0;
+} fi	
+
+if ([ "X$1" = "X" ]) then { 
+	echo "Usage: $0 {file.as or file.ao or file.al} dirfile";
+	exit 0;
+} fi
+
+if ([ "X$2" = "X" ]) then { 
+	echo "Usage: $0 $1 dirfile";
+	exit 0;
+} fi
+
+SRCFILECOMPLETE=$1
+SRCFILE=`basename $SRCFILECOMPLETE`
+SRCNOAO=`basename $SRCFILE .ao`
+SRCNOAS=`basename $SRCFILE .as`
+SRCNOAL=`basename $SRCFILE .al`
+
+if ([ $SRCNOAL != $SRCFILE ]) then {
+	# generate doc for file.al
+
+	# get dirfile absolute name
+	DIRFILE=$PWD/$2;
+	case $2 in
+		/*) DIRFILE=$2;;
+	esac;
+
+	# get source absolute name
+	ABSSRCFILE=$PWD/$SRCFILECOMPLETE
+	case $SRCFILECOMPLETE in
+		/*) ABSSRCFILE=$SRCFILECOMPLETE;;
+	esac
+	
+	# archive tool
+	if ([ "X$ALDORDOCAR" = "X" ]) then { export ALDORDOCAR=ar; } fi;
+
+	# Get the files from the archive
+	SUFFIX=`date +%Y_%m_%H_%m_%s`;
+	CURRENT=$PWD;
+	mkdir /tmp/$SRCNOAL$SUFFIX;
+	cd /tmp/$SRCNOAL$SUFFIX;
+	$ALDORDOCAR x $ABSSRCFILE;
+
+	# Generate documentation
+	cd $CURRENT;
+	if ([ ! -d Doc_$SRCNOAL ]) then { mkdir Doc_$SRCNOAL; } fi;
+	cd Doc_$SRCNOAL;
+	for i in `ls /tmp/$SRCNOAL$SUFFIX/*.ao`
+	do			
+		$ALDORDOCROOT/aldordoc $i $DIRFILE
+	done;
+
+	# Generate index
+	$ALDORDOCROOT/aldordoc-index "Documentation for $SRCNOAL";
+
+	# Combine reference information
+	$ALDORDOCROOT/aldordoc-combine
+
+	# clean up
+	/bin/rm -rf /tmp/$SRCNOAL$SUFFIX;
+
+} elif ([ -f $SRCFILECOMPLETE ]) then {
+	# generate doc for file.as or file.ao
+
+	echo Documentation generation for $SRCFILE
+
+	# ASY generation
+	axiomxl -Fasy -R /tmp $SRCFILECOMPLETE;
+
+	# Filenames
+	if ([ $SRCNOAO != $SRCFILE ]) then { export PREFIX=$SRCNOAO; } fi;
+	if ([ $SRCNOAS != $SRCFILE ]) then { export PREFIX=$SRCNOAS; } fi;
+	export ASYFILE=$PREFIX.asy;
+	export XMLFILE=$PREFIX.xml;
+
+	# CLASSPATH
+	export SAV_CLASSPATH=$CLASSPATH
+	export CLASSPATH=$ALDORDOCROOT/xml2html.jar:$CLASSPATH
+
+	# XML generation
+	$ALDORDOCROOT/asy2xml /tmp/$ASYFILE > /tmp/$XMLFILE;
+
+	# HTML generation
+	java XMLtoHTML $PREFIX $2 < /tmp/$XMLFILE;
+
+	# clean up
+	#/bin/rm -f /tmp/$ASYFILE /tmp/$XMLFILE;
+	#export CLASSPATH=$SAV_CLASSPATH
+
+} fi

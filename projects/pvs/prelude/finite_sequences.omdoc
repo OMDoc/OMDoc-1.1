@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="finite_sequences.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:37
+    </Date>
+  </metadata>
+  <theory id="finite_sequences-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57028" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57029" for="finite_sequences" pto="pvs" pto-version="3.0" replaces="finite_sequences-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory finite_sequences
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="finite_sequences_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57030" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="finite_sequences-import-parameters" from="finite_sequences-parameters"/>
+    <symbol id="finite_sequence" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="finite_sequence" for="finite_sequence" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="recordtype"/>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMS cd="naturalnumbers" name="nat"/>
+              </OMATP>
+              <OMV name="length"/>
+            </OMATTR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="funtype"/>
+                  <OMS cd="nat_types" name="below"/>
+                  <OMS cd="finite_sequences" name="T"/>
+                </OMA>
+              </OMATP>
+              <OMV name="seq"/>
+            </OMATTR>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="finseq" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="finseq" for="finseq" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="finite_sequences" name="finite_sequence"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+
+
+
+    <assertion id="empty_seq_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="nat_types" name="below"/>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="T"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="booleans" name="TRUE"/>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="empty_seq_TCC1-1" for="empty_seq_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXISTENCE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="empty_seq" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="finite_sequences" name="finseq"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="empty_seq-def" for="empty_seq" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sequences" name="empty_seq"/>
+            <OMA>
+              <OMS cd="pvs" name="record"/>
+              <OMSTR>length</OMSTR>
+              <OMI>0</OMI>
+              <OMSTR>seq</OMSTR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="nat_types" name="below"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="epsilons" name="epsilon"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="finite_sequences" name="T"/>
+                        </OMATP>
+                        <OMV name="t"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMS cd="booleans" name="TRUE"/>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="finseq_appl" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMS cd="finite_sequences" name="finseq"/>
+              </OMATP>
+              <OMV name="fs"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="nat_types" name="below"/>
+            <OMS cd="finite_sequences" name="T"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="finseq_appl-def" for="finseq_appl" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sequences" name="finseq_appl"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="finseq"/>
+                  </OMATP>
+                  <OMV name="fs"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="pvs" name="select-record-field"/>
+                <OMV name="seq"/>
+                <OMV name="fs"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G57031" for="finseq_appl" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |finseq_appl|
+        ]]>
+      </data>
+    </private>
+
+    <assertion id="oh_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="l1"/>
+                <OMA>
+                  <OMS cd="pvs" name="select-record-field"/>
+                  <OMV name="length"/>
+                  <OMV name="fs1"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="nonneg_int"/>
+                    </OMATP>
+                    <OMV name="lsum"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="lsum"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="l1"/>
+                      <OMA>
+                        <OMS cd="pvs" name="select-record-field"/>
+                        <OMV name="length"/>
+                        <OMV name="fs2"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="nat_types" name="below"/>
+                        </OMATP>
+                        <OMV name="n"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="n"/>
+                        <OMV name="l1"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="&lt;"/>
+                        <OMV name="n"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs1"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="oh_TCC1-1" for="oh_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="oh_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="l1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="l1"/>
+                <OMA>
+                  <OMS cd="pvs" name="select-record-field"/>
+                  <OMV name="length"/>
+                  <OMV name="fs1"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="nonneg_int"/>
+                    </OMATP>
+                    <OMV name="lsum"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="lsum"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="l1"/>
+                      <OMA>
+                        <OMS cd="pvs" name="select-record-field"/>
+                        <OMV name="length"/>
+                        <OMV name="fs2"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="nat_types" name="below"/>
+                        </OMATP>
+                        <OMV name="n"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="booleans" name="IMPLIES"/>
+                      <OMA>
+                        <OMS cd="booleans" name="NOT"/>
+                        <OMA>
+                          <OMS cd="reals" name="&lt;"/>
+                          <OMV name="n"/>
+                          <OMV name="l1"/>
+                        </OMA>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="booleans" name="AND"/>
+                        <OMA>
+                          <OMS cd="reals" name="&gt;="/>
+                          <OMA>
+                            <OMS cd="reals" name="-"/>
+                            <OMV name="n"/>
+                            <OMV name="l1"/>
+                          </OMA>
+                          <OMI>0</OMI>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="reals" name="&lt;"/>
+                          <OMA>
+                            <OMS cd="reals" name="-"/>
+                            <OMV name="n"/>
+                            <OMV name="l1"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="pvs" name="select-record-field"/>
+                            <OMV name="length"/>
+                            <OMV name="fs2"/>
+                          </OMA>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="oh_TCC2-1" for="oh_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="O" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="finite_sequences" name="finseq"/>
+          <OMS cd="finite_sequences" name="finseq"/>
+          <OMS cd="finite_sequences" name="finseq"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="O-def" for="O" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sequences" name="O"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="finseq"/>
+                  </OMATP>
+                  <OMV name="fs1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="finseq"/>
+                  </OMATP>
+                  <OMV name="fs2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="l1"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="integers" name="nonneg_int"/>
+                          </OMATP>
+                          <OMV name="lsum"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="pvs" name="record"/>
+                        <OMSTR>length</OMSTR>
+                        <OMV name="lsum"/>
+                        <OMSTR>seq</OMSTR>
+                        <OMBIND>
+                          <OMS cd="pvs" name="lambda"/>
+                          <OMBVAR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="nat_types" name="below"/>
+                              </OMATP>
+                              <OMV name="n"/>
+                            </OMATTR>
+                          </OMBVAR>
+                          <OMA>
+                            <OMS cd="if_def" name="IF"/>
+                            <OMA>
+                              <OMS cd="reals" name="&lt;"/>
+                              <OMV name="n"/>
+                              <OMV name="l1"/>
+                            </OMA>
+                            <OMA>
+                              <OMA>
+                                <OMS cd="pvs" name="select-record-field"/>
+                                <OMV name="seq"/>
+                                <OMV name="fs1"/>
+                              </OMA>
+                              <OMV name="n"/>
+                            </OMA>
+                            <OMA>
+                              <OMA>
+                                <OMS cd="pvs" name="select-record-field"/>
+                                <OMV name="seq"/>
+                                <OMV name="fs2"/>
+                              </OMA>
+                              <OMA>
+                                <OMS cd="reals" name="-"/>
+                                <OMV name="n"/>
+                                <OMV name="l1"/>
+                              </OMA>
+                            </OMA>
+                          </OMA>
+                        </OMBIND>
+                      </OMA>
+                    </OMBIND>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMV name="l1"/>
+                      <OMA>
+                        <OMS cd="pvs" name="select-record-field"/>
+                        <OMV name="length"/>
+                        <OMV name="fs2"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+                <OMA>
+                  <OMS cd="pvs" name="select-record-field"/>
+                  <OMV name="length"/>
+                  <OMV name="fs1"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <assertion id="caret_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tupletype"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMV name="p"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMA>
+                      <OMS cd="pvs" name="proj"/>
+                      <OMI>2</OMI>
+                      <OMV name="p"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;"/>
+                        <OMV name="m"/>
+                        <OMV name="n"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;="/>
+                        <OMV name="m"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMBIND>
+                          <OMS cd="pvs" name="set"/>
+                          <OMBVAR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="integers" name="int"/>
+                              </OMATP>
+                              <OMV name="k"/>
+                            </OMATTR>
+                          </OMBVAR>
+                          <OMA>
+                            <OMS cd="booleans" name="AND"/>
+                            <OMA>
+                              <OMS cd="reals" name="&lt;="/>
+                              <OMV name="k"/>
+                              <OMA>
+                                <OMS cd="reals" name="-"/>
+                                <OMA>
+                                  <OMS cd="reals" name="+"/>
+                                  <OMI>1</OMI>
+                                  <OMV name="n"/>
+                                </OMA>
+                                <OMV name="m"/>
+                              </OMA>
+                            </OMA>
+                            <OMA>
+                              <OMS cd="reals" name="&lt;="/>
+                              <OMV name="k"/>
+                              <OMA>
+                                <OMS cd="reals" name="-"/>
+                                <OMA>
+                                  <OMS cd="pvs" name="select-record-field"/>
+                                  <OMV name="length"/>
+                                  <OMV name="fs"/>
+                                </OMA>
+                                <OMV name="m"/>
+                              </OMA>
+                            </OMA>
+                          </OMA>
+                        </OMBIND>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="len"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="len"/>
+                    <OMA>
+                      <OMS cd="real_defs" name="min"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMV name="n"/>
+                          <OMV name="m"/>
+                        </OMA>
+                        <OMI>1</OMI>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                        <OMV name="m"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&gt;="/>
+                    <OMV name="len"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="caret_TCC1-1" for="caret_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="caret_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tupletype"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="m"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMV name="p"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMA>
+                      <OMS cd="pvs" name="proj"/>
+                      <OMI>2</OMI>
+                      <OMV name="p"/>
+                    </OMA>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;"/>
+                        <OMV name="m"/>
+                        <OMV name="n"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;="/>
+                        <OMV name="m"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMBIND>
+                          <OMS cd="pvs" name="set"/>
+                          <OMBVAR>
+                            <OMATTR>
+                              <OMATP>
+                                <OMS cd="pvs" name="type"/>
+                                <OMS cd="integers" name="int"/>
+                              </OMATP>
+                              <OMV name="k"/>
+                            </OMATTR>
+                          </OMBVAR>
+                          <OMA>
+                            <OMS cd="booleans" name="AND"/>
+                            <OMA>
+                              <OMS cd="reals" name="&lt;="/>
+                              <OMV name="k"/>
+                              <OMA>
+                                <OMS cd="reals" name="-"/>
+                                <OMA>
+                                  <OMS cd="reals" name="+"/>
+                                  <OMI>1</OMI>
+                                  <OMV name="n"/>
+                                </OMA>
+                                <OMV name="m"/>
+                              </OMA>
+                            </OMA>
+                            <OMA>
+                              <OMS cd="reals" name="&lt;="/>
+                              <OMV name="k"/>
+                              <OMA>
+                                <OMS cd="reals" name="-"/>
+                                <OMA>
+                                  <OMS cd="pvs" name="select-record-field"/>
+                                  <OMV name="length"/>
+                                  <OMV name="fs"/>
+                                </OMA>
+                                <OMV name="m"/>
+                              </OMA>
+                            </OMA>
+                          </OMA>
+                        </OMBIND>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="len"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IMPLIES"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="len"/>
+                    <OMA>
+                      <OMS cd="real_defs" name="min"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMV name="n"/>
+                          <OMV name="m"/>
+                        </OMA>
+                        <OMI>1</OMI>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                        <OMV name="m"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMBIND>
+                    <OMS cd="pvs" name="forall"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="nat_types" name="below"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMV name="x"/>
+                        <OMV name="m"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="pvs" name="select-record-field"/>
+                        <OMV name="length"/>
+                        <OMV name="fs"/>
+                      </OMA>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="caret_TCC2-1" for="caret_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS EXPLICIT) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="caret_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tupletype"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="pvs" name="select-record-field"/>
+                <OMV name="length"/>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="booleans" name="OR"/>
+                    <OMA>
+                      <OMS cd="reals" name="&gt;"/>
+                      <OMA>
+                        <OMS cd="pvs" name="proj"/>
+                        <OMI>1</OMI>
+                        <OMV name="p"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="pvs" name="proj"/>
+                        <OMI>2</OMI>
+                        <OMV name="p"/>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&gt;="/>
+                      <OMA>
+                        <OMS cd="pvs" name="proj"/>
+                        <OMI>1</OMI>
+                        <OMV name="p"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="pvs" name="select-record-field"/>
+                        <OMV name="length"/>
+                        <OMV name="fs"/>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                  <OMS cd="finite_sequences" name="empty_seq"/>
+                  <OMA>
+                    <OMS cd="pvs" name="record"/>
+                    <OMSTR>length</OMSTR>
+                    <OMA>
+                      <OMS cd="real_defs" name="min"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMA>
+                            <OMS cd="pvs" name="proj"/>
+                            <OMI>2</OMI>
+                            <OMV name="p"/>
+                          </OMA>
+                          <OMA>
+                            <OMS cd="pvs" name="proj"/>
+                            <OMI>1</OMI>
+                            <OMV name="p"/>
+                          </OMA>
+                        </OMA>
+                        <OMI>1</OMI>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="pvs" name="proj"/>
+                          <OMI>1</OMI>
+                          <OMV name="p"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                    <OMSTR>seq</OMSTR>
+                    <OMBIND>
+                      <OMS cd="pvs" name="lambda"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="nat_types" name="below"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="seq"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="reals" name="+"/>
+                          <OMV name="x"/>
+                          <OMA>
+                            <OMS cd="pvs" name="proj"/>
+                            <OMI>1</OMI>
+                            <OMV name="p"/>
+                          </OMA>
+                        </OMA>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="caret_TCC3-1" for="caret_TCC3" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LIFT-IF)
+   (( (ASSERT)
+     (( (GROUND)
+       ((1 (EXPAND empty_seq) ((1 (ASSERT) NIL NIL)) NIL)
+        (2 (EXPAND empty_seq) ((2 (ASSERT) NIL NIL)) NIL)
+        (3 (EXPAND min) ((3 (LIFT-IF) ((3 (ASSERT) NIL NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="^" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="finite_sequences" name="finseq"/>
+          <OMA>
+            <OMS cd="pvs" name="tupletype"/>
+            <OMS cd="naturalnumbers" name="nat"/>
+            <OMS cd="naturalnumbers" name="nat"/>
+          </OMA>
+          <OMS cd="finite_sequences" name="finseq"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="^-def" for="^" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sequences" name="^"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="finseq"/>
+                  </OMATP>
+                  <OMV name="fs"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="tupletype"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                      <OMS cd="naturalnumbers" name="nat"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="lambda"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="m"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="naturalnumbers" name="nat"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="if_def" name="IF"/>
+                    <OMA>
+                      <OMS cd="booleans" name="OR"/>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;"/>
+                        <OMV name="m"/>
+                        <OMV name="n"/>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="reals" name="&gt;="/>
+                        <OMV name="m"/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                    <OMS cd="finite_sequences" name="empty_seq"/>
+                    <OMA>
+                      <OMBIND>
+                        <OMS cd="pvs" name="lambda"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMA>
+                                <OMS cd="pvs" name="subtype"/>
+                                <OMBIND>
+                                  <OMS cd="pvs" name="set"/>
+                                  <OMBVAR>
+                                    <OMATTR>
+                                      <OMATP>
+                                        <OMS cd="pvs" name="type"/>
+                                        <OMS cd="integers" name="int"/>
+                                      </OMATP>
+                                      <OMV name="k"/>
+                                    </OMATTR>
+                                  </OMBVAR>
+                                  <OMA>
+                                    <OMS cd="booleans" name="AND"/>
+                                    <OMA>
+                                      <OMS cd="reals" name="&lt;="/>
+                                      <OMV name="k"/>
+                                      <OMA>
+                                        <OMS cd="reals" name="-"/>
+                                        <OMA>
+                                          <OMS cd="reals" name="+"/>
+                                          <OMI>1</OMI>
+                                          <OMV name="n"/>
+                                        </OMA>
+                                        <OMV name="m"/>
+                                      </OMA>
+                                    </OMA>
+                                    <OMA>
+                                      <OMS cd="reals" name="&lt;="/>
+                                      <OMV name="k"/>
+                                      <OMA>
+                                        <OMS cd="reals" name="-"/>
+                                        <OMA>
+                                          <OMS cd="pvs" name="select-record-field"/>
+                                          <OMV name="length"/>
+                                          <OMV name="fs"/>
+                                        </OMA>
+                                        <OMV name="m"/>
+                                      </OMA>
+                                    </OMA>
+                                  </OMA>
+                                </OMBIND>
+                              </OMA>
+                            </OMATP>
+                            <OMV name="len"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="pvs" name="record"/>
+                          <OMSTR>length</OMSTR>
+                          <OMV name="len"/>
+                          <OMSTR>seq</OMSTR>
+                          <OMBIND>
+                            <OMS cd="pvs" name="lambda"/>
+                            <OMBVAR>
+                              <OMATTR>
+                                <OMATP>
+                                  <OMS cd="pvs" name="type"/>
+                                  <OMS cd="nat_types" name="below"/>
+                                </OMATP>
+                                <OMV name="x"/>
+                              </OMATTR>
+                            </OMBVAR>
+                            <OMA>
+                              <OMA>
+                                <OMS cd="pvs" name="select-record-field"/>
+                                <OMV name="seq"/>
+                                <OMV name="fs"/>
+                              </OMA>
+                              <OMA>
+                                <OMS cd="reals" name="+"/>
+                                <OMV name="x"/>
+                                <OMV name="m"/>
+                              </OMA>
+                            </OMA>
+                          </OMBIND>
+                        </OMA>
+                      </OMBIND>
+                      <OMA>
+                        <OMS cd="real_defs" name="min"/>
+                        <OMA>
+                          <OMS cd="reals" name="+"/>
+                          <OMA>
+                            <OMS cd="reals" name="-"/>
+                            <OMV name="n"/>
+                            <OMV name="m"/>
+                          </OMA>
+                          <OMI>1</OMI>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMA>
+                            <OMS cd="pvs" name="select-record-field"/>
+                            <OMV name="length"/>
+                            <OMV name="fs"/>
+                          </OMA>
+                          <OMV name="m"/>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+                <OMV name="p"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="extract1_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMBIND>
+                      <OMS cd="pvs" name="set"/>
+                      <OMBVAR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="pvs" name="type"/>
+                            <OMS cd="finite_sequences" name="finseq"/>
+                          </OMATP>
+                          <OMV name="fs"/>
+                        </OMATTR>
+                      </OMBVAR>
+                      <OMA>
+                        <OMS cd="equalities" name="="/>
+                        <OMA>
+                          <OMS cd="pvs" name="select-record-field"/>
+                          <OMV name="length"/>
+                          <OMV name="fs"/>
+                        </OMA>
+                        <OMI>1</OMI>
+                      </OMA>
+                    </OMBIND>
+                  </OMA>
+                </OMATP>
+                <OMV name="fs"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMI>0</OMI>
+              <OMA>
+                <OMS cd="pvs" name="select-record-field"/>
+                <OMV name="length"/>
+                <OMV name="fs"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="extract1_TCC1-1" for="extract1_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="extract1" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="finite_sequences" name="finseq"/>
+                  </OMATP>
+                  <OMV name="fs"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="pvs" name="select-record-field"/>
+                  <OMV name="length"/>
+                  <OMV name="fs"/>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+          <OMS cd="finite_sequences" name="T"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="extract1-def" for="extract1" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="finite_sequences" name="extract1"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="finite_sequences" name="finseq"/>
+                            </OMATP>
+                            <OMV name="fs"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="equalities" name="="/>
+                          <OMA>
+                            <OMS cd="pvs" name="select-record-field"/>
+                            <OMV name="length"/>
+                            <OMV name="fs"/>
+                          </OMA>
+                          <OMI>1</OMI>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="fs"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMA>
+                  <OMS cd="pvs" name="select-record-field"/>
+                  <OMV name="seq"/>
+                  <OMV name="fs"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G57032" for="extract1" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |extract1|
+        ]]>
+      </data>
+    </private>
+
+    <assertion id="o_assoc" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="finite_sequences" name="finseq"/>
+                </OMATP>
+                <OMV name="fs3"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="finite_sequences" name="O"/>
+                <OMV name="fs1"/>
+                <OMA>
+                  <OMS cd="finite_sequences" name="O"/>
+                  <OMV name="fs2"/>
+                  <OMV name="fs3"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="finite_sequences" name="O"/>
+                <OMA>
+                  <OMS cd="finite_sequences" name="O"/>
+                  <OMV name="fs1"/>
+                  <OMV name="fs2"/>
+                </OMA>
+                <OMV name="fs3"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="o_assoc-1" for="o_assoc" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND o)
+   (( (APPLY-EXTENSIONALITY)
+     ((1 (HIDE 2) ((1 (LIFT-IF) ((1 (LIFT-IF) ((1 (GROUND) NIL NIL)) NIL)) NIL)) NIL)
+      (2 (HIDE 2) ((2 (SKOSIMP) ((2 (ASSERT) NIL NIL)) NIL)) NIL)
+      (3 (HIDE 2) ((3 (SKOSIMP) ((3 (ASSERT) NIL NIL)) NIL)) NIL)
+      (4 (HIDE 2) ((4 (SKOSIMP) ((4 (ASSERT) NIL NIL)) NIL)) NIL)
+      (5 (HIDE 2) ((5 (SKOSIMP) ((5 (ASSERT) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

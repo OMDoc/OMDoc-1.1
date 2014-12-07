@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="truth-table.omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Truth Tables.</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020411</Date>
+  <Description>
+   This theory generalizes truth tables.
+  </Description>
+ </metadata>
+
+ <theory id="truth-tables">
+  <symbol id="tt">
+   <CMP> The truth table constructor for a binary (n x m) operator.  It takes n +
+   2 arguments. The first one is the symbol for the defined operator. Then come n
+   values of the second argument (the first row), and finally n rows using the
+   ttrow symbols.</CMP>
+  </symbol>
+  <presentation for="tt" parent="OMA">
+   <style format="html">
+    <element name="table">
+     <element name="tr">
+      <element name="th"><recurse select="*[2]"/></element>
+      <recurse select="*[3]"/>
+     </element>
+     <recurse select="*[position() &gt; 3]"/>
+    </element>
+   </style>
+   <style format="pmml">
+    <element name="mtable">
+     <attribute name="columnlines">solid</attribute>
+     <attribute name="rowlines">solid</attribute>
+     <element name="mtr">
+      <element name="mtd"><recurse select="*[2]"/></element>
+      <recurse select="*[3]"/>
+     </element>
+     <recurse select="*[position() &gt; 3]"/>
+    </element>
+   </style>
+   <xslt format="TeX"><![CDATA[
+    <xsl:text>\begin{array}{c|c</xsl:text>
+    <xsl:for-each select="*[3]/*[position()&gt;2]">
+     <xsl:text>c</xsl:text>
+    </xsl:for-each>
+    <xsl:text>}&#xA;</xsl:text>
+    <xsl:apply-templates select="*[2]"/><xsl:text> &amp; </xsl:text>
+    <xsl:apply-templates select="*[3]"/><xsl:text>\\\hline&#xA;</xsl:text>
+    <xsl:apply-templates select="*[position() &gt; 3]"/>
+    <xsl:text>\end{array}&#xA;</xsl:text>]]>
+   </xslt>
+  </presentation>
+
+  <symbol id="ttrow">
+   <CMP> A row in a (n x m) truth table, the first argument is the first argument,
+   and the rest of the arguments are the m values
+   </CMP>
+  </symbol>
+  <presentation for="ttrow" parent="OMA">
+   <xslt format="html"><![CDATA[<tr>
+    <th><xsl:apply-templates select="*[2]"/></th>
+    <xsl:for-each select="*[position() &gt; 2]">
+     <td><xsl:apply-templates select="."/></td>
+    </xsl:for-each></tr>]]>
+   </xslt>
+   <xslt format="pmml"><![CDATA[
+   <xsl:element name="mtr" namespace="http://www.w3.org/1998/Math/MathML">
+    <xsl:for-each select="*[position() &gt; 1]">
+        <xsl:element name="mtd" namespace="http://www.w3.org/1998/Math/MathML">
+	  <xsl:apply-templates select="."/>
+	</xsl:element>
+    </xsl:for-each>
+    </xsl:element>]]>
+   </xslt>
+   <xslt format="TeX"><![CDATA[
+    <xsl:for-each select="*[position() &gt; 1]">
+     <xsl:apply-templates select="."/>
+     <xsl:if test="position()!=last()"><xsl:text> &amp; </xsl:text></xsl:if>
+    </xsl:for-each>
+    <xsl:text>\\&#xA;</xsl:text>]]>
+   </xslt>
+  </presentation>
+
+  <symbol id="ttargs">
+   <CMP> The vector of second arguments for a binary truth tables.</CMP>
+  </symbol>
+   <presentation for="ttargs" parent="OMA">
+    <xslt format="html"><![CDATA[
+    <xsl:for-each select="*[position() &gt; 1]">
+     <td><xsl:apply-templates select="."/></td>
+    </xsl:for-each>]]>
+   </xslt>
+   <xslt format="pmml"><![CDATA[
+    <xsl:for-each select="*[position() &gt; 1]">
+      <xsl:element name="mtd" namespace="http://www.w3.org/1998/Math/MathML">
+        <xsl:apply-templates select="."/>
+     	</xsl:element>
+    </xsl:for-each>]]>
+   </xslt>
+   <xslt format="TeX"><![CDATA[
+    <xsl:for-each select="*[position() &gt; 1]">
+     <xsl:apply-templates select="."/>
+     <xsl:if test="position()!=last()"><xsl:text> &amp; </xsl:text></xsl:if>
+    </xsl:for-each>]]>
+   </xslt>
+  </presentation>
+
+<example id="and-table" for="table-function">
+  <CMP>The following is the truth table for conjunction</CMP>
+  <OMOBJ>
+   <OMA>
+    <OMS cd="truth-tables" name="tt"/>
+    <OMS cd="pl0" name="and"/>
+    <OMA>
+     <OMS cd="truth-tables" name="ttargs"/>
+     <OMS cd="truthval" name="true"/>
+     <OMS cd="truthval" name="false"/>
+    </OMA>
+    <OMA>
+     <OMS cd="truth-tables" name="ttrow"/>
+     <OMS cd="truthval" name="true"/>
+     <OMS cd="truthval" name="true"/>
+     <OMS cd="truthval" name="false"/>
+    </OMA>   
+    <OMA>
+     <OMS cd="truth-tables" name="ttrow"/>
+     <OMS cd="truthval" name="false"/>
+     <OMS cd="truthval" name="false"/>
+     <OMS cd="truthval" name="false"/>
+    </OMA>   
+   </OMA>
+  </OMOBJ>
+</example>
+
+
+</theory>
+</omdoc>

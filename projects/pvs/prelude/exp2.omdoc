@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="exp2.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:42
+    </Date>
+  </metadata>
+  <theory id="exp2_test">
+
+
+
+
+    <assertion id="exp2_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="n"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="n"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="exp2" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMS cd="integers" name="posnat"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="exp2-def" for="exp2" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="exp2" name="exp2"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMI>1</OMI>
+                <OMA>
+                  <OMS cd="reals" name="*"/>
+                  <OMI>2</OMI>
+                  <OMA>
+                    <OMS cd="exp2" name="exp2"/>
+                    <OMA>
+                      <OMS cd="reals" name="-"/>
+                      <OMV name="n"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMV name="n"/>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="exp2_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMV name="n"/>
+              </OMA>
+              <OMV name="n"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="G57078" for="NIL" pto="pvs" pto-version="3.0">
+      <data><![CDATA[JUDGEMENT |exp2|(|n|: |nat|) HAS_TYPE |above|(|n|)]]>
+      </data>
+    </private>
+
+    <assertion id="exp2_def" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMV name="n"/>
+              </OMA>
+              <OMA>
+                <OMS cd="exponentiation" name="^"/>
+                <OMI>2</OMI>
+                <OMV name="n"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_pos" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMV name="n"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_n" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="n"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMI>2</OMI>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_sum" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="n"/>
+                  <OMV name="m"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="m"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_minus_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="upto"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="n"/>
+                <OMV name="k"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_minus" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="upto"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="exp2" name="exp2"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="n"/>
+                  <OMV name="k"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="k"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_strictpos" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="n"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp2_lt" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="n"/>
+                <OMV name="m"/>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMV name="m"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="exp_prop" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="x2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x1"/>
+                  <OMA>
+                    <OMS cd="exp2" name="exp2"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x2"/>
+                  <OMA>
+                    <OMS cd="exp2" name="exp2"/>
+                    <OMV name="m"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="x1"/>
+                    <OMA>
+                      <OMS cd="exp2" name="exp2"/>
+                      <OMV name="m"/>
+                    </OMA>
+                  </OMA>
+                  <OMV name="x2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="exp2" name="exp2"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="n"/>
+                    <OMV name="m"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+</omdoc>

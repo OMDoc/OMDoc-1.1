@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_use">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_use">
+
+<presentation id="mypre" style="foo" xref="bar" for="bla" parent="OMATTR"
+              fixity="infix" lbrack="[" rbrack="]" separator=";"
+              bracket-style="lisp" precedence="2" crossref-symbol="all"
+              theory="th">
+<use format="bla" requires="foo" xml:lang="de" bracket-style="lisp"
+            fixity="postfix" lbrack="{" rbrack="}" larg-group="a"
+            rarg-group="b" separator="/" element="el" attributes="att"
+            crossref-symbol="separator">
+string for use
+</use>
+</presentation>              
+
+</theory>
+</omdoc>
+

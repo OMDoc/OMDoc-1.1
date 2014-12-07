@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+
+<omdoc id="deussen-catalogue"  catalogue="../omstd/catalogue.omdoc">
+ <metadata>
+  <Title>A Catalogue for Halbgruppen und Automaten</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>2000-09-29</Date>
+  <Description> 
+    This OMDoc file  is a catalogue for Halbgruppen und Auomtaten
+  </Description>
+</metadata>
+
+<catalogue>
+  <loc theory="deussen.chap1" omdoc="chap1.omdoc"/> 
+  <loc theory="deussen.chap2" omdoc="chap2.omdoc"/> 
+  <loc theory="deussen.chap3" omdoc="chap3.omdoc"/> 
+  <loc theory="deussen.chap4" omdoc="chap4.omdoc"/> 
+  <loc theory="deussen.chap5" omdoc="chap5.omdoc"/> 
+  <loc theory="nat.numbers" omdoc="nat.numbers.omdoc"/> 
+  <loc theory="set.theory" omdoc="set.theory.omdoc"/> 
+  <loc theory="basic.algebra" omdoc="basic.algebra.omdoc"/>
+  <loc theory="simpletypes" omdoc="../logics/simpletypes.omdoc"/>
+  <loc theory="pl0" omdoc="../logics/pl0.omdoc"/>
+  <loc theory="truthval" omdoc="../logics/truthval.omdoc"/>
+  <loc theory="ind" omdoc="../logics/ind.omdoc"/>
+</catalogue>
+</omdoc>

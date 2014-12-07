@@ -1,0 +1,2 @@
+distclean::
+	-rm -f $(PKG_INSTALLS_BIN)

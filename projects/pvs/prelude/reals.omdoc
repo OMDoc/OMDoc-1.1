@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="reals.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:22
+    </Date>
+  </metadata>
+  <theory id="reals_test">
+    <symbol id="real" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="real-non-empty" >
+      <CMP>The type real is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56771" for="real" pto="pvs" pto-version="3.0" replaces="real-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="real" for="real" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="numbers" name="number"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="real_pred" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="numbers" name="number"/>
+          <OMS cd="booleans" name="boolean"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <axiom id="real_nonempty" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <symbol id="real?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="numbers" name="number"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="real?-def" for="real?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="reals" name="real?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="numbers" name="number"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="real_pred"/>
+                <OMV name="n"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="nonzero_real_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="notequal" name="/="/>
+            <OMI>1</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonzero_real_TCC1-1" for="nonzero_real_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonzero_real" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonzero_real-non-empty" >
+      <CMP>The type nonzero_real is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56772" for="nonzero_real" pto="pvs" pto-version="3.0" replaces="nonzero_real-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonzero_real" for="nonzero_real" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="r"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMV name="r"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56773" for="nonzero_real" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonzero_real-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="nonzero_real-contains" >
+      <CMP>Type nonzero_real contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="nzreal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nzreal-non-empty" >
+      <CMP>The type nzreal is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56774" for="nzreal" pto="pvs" pto-version="3.0" replaces="nzreal-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nzreal" for="nzreal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="reals" name="nonzero_real"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <symbol id="+" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="-" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="*" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="/" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="nzreal"/>
+          <OMS cd="reals" name="real"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="-" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="&lt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <symbol id="&lt;=" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&lt;=-def" for="&lt;=" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="reals" name="&lt;="/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="&gt;" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&gt;-def" for="&gt;" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="reals" name="&gt;"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="y"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="&gt;=" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="&gt;=-def" for="&gt;=" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="reals" name="&gt;="/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMV name="y"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="reals_totally_ordered" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="orders" name="strict_total_order?"/>
+            <OMS cd="reals" name="&lt;"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="reals_totally_ordered-1" for="reals_totally_ordered" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

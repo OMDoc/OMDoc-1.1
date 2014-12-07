@@ -1,0 +1,408 @@
+\begin{appendix}
+\chapter{Errata to the released Specification}
+Here we track the errata in the {\omdoc} 1.1 specification (see
+{\url{http://www.mathweb.org/omdoc/archive/omdoc1.1.{ps,pdf}}}). These errata have
+been cleared in this version.
+\input{theerrata}
+
+
+\input{changes}
+\chapter{Quick-Reference Table to the {\ifpdf{OMDoc}\else{\omdoc}\fi} Elements}\label{sec:table}
+\def\tabelt#1#2#3#4#5#6{{#1}&\pageref{eldef:#1}&{#2}&{#3}&{#4}&{#5}&{#6}\\\hline}
+\def\generalcat{struct}\def\cfmpcat{stat}\def\mathcat{stat}\def\proofcat{prf}\def\constcat{thy}
+\def\adtcat{adt}\def\cpxtcat{thy}\def\auxcat{aux}\def\metacat{meta}\def\prescat{pres}\def\excat{ex}
+ {\scriptsize
+\begin{longtable}{|>{\tt}p{2.1cm}|l|l|>{\tt}p{2cm}|>{\tt}p{2cm}|c|>{\tt}p{3cm}|}\hline
+{\rm Element}& p. & Type  & {\rm Required}  & {\rm Optional} & D & Content \\\hline
+             & &        & {\rm Attribs}  & {\rm Attribs} & C &        \\\hline\hline
+\tabelt{adt}\adtcat{id}{type, style}{+}{CMP*, commonname*, sortdef+}
+\tabelt{alternative}\mathcat{id, for, theory, entailed-by, entails,
+             entailed-by-thm, entails-thm}{type, generated-by, just-by,
+             style}{+}{CMP*, (FMP| requation*| OMOBJ)}
+\tabelt{answer}\excat{verdict}{id, style}{+}{{\cfm}}
+\tabelt{argument}\adtcat{sort}{}{+}{selector?}
+\tabelt{assertion}\mathcat{id}{type, theory, generated-by, style}{+}{{\cfm}}
+\tabelt{assumption}\cfmpcat{id}{style}{+}{CMP*, OMOBJ?}
+\tabelt{attribute}\prescat{name}{}{--}{(\#PCDATA| value-of| text)*}
+\tabelt{axiom}\constcat{id}{generated-by, style}{+}{{\cfm}}
+\tabelt{axiom-inclusion}\cpxtcat{id, from, to}{style}{+}{morphism?, (path-just| obligation*)}\hline
+\tabelt{choice}\excat{}{id, style}{+}{{\cfm}}
+\tabelt{CMP}\cfmpcat{}{xml:lang}{--}{({\rm text}| OMOBJ| with| omlet)*}
+\tabelt{code}\auxcat{id, theory}{id, for, theory, pto, pto-version, format,
+             requires, type, classid, codebase, width, height, style}{+}{CMP*, input?, output?, effect?, data+}
+\tabelt{commonname}\constcat{}{xml:lang}{--}{{\rm{\element{CMP}}content}}
+\tabelt{conclude}\proofcat{id}{style}{--}{CMP*, \justmatter}
+\tabelt{conclusion}\cfmpcat{id}{style}{+}{CMP*, OMOBJ?}
+\tabelt{constructor}\adtcat{id}{type, scope, style}{+}{commonname*, argument*, recognizer?}
+\tabelt{Contributor}\metacat{}{id, role, style}{--}{{\tt{\%DCperson}}}
+\tabelt{Creator}\metacat{}{id, role, style}{--}{{\tt{\%DCperson}}}\hline
+\tabelt{data}\auxcat{}{format, href, size}{--}{<![CDATA[...]]>}
+\tabelt{Date}\metacat{}{action, who}{--}{{\indextoo{ISO8601}}}
+\tabelt{decomposition}\cpxtcat{links}{}{--}{EMPTY}
+\tabelt{definition}\constcat{id, for}{just-by, type, generated-by, style}{+}{CMP*,
+             (FMP| requation+| OMOBJ)?, measure?, ordering?}
+\tabelt{Description}\metacat{}{xml:lang}{--}{{\rm{\element{CMP}}content}}
+\tabelt{derive}\proofcat{id}{style}{--}{CMP*, FMP?, \justmatter}\hline
+\tabelt{effect}\auxcat{}{}{--}{CMP*}
+\tabelt{element}\prescat{name}{}{--}{(attribute| element| text| recurse)*}
+\tabelt{example}\mathcat{id, for}{type, assertion, proof, style}{+}{symbol*, CMP*| OMOBJ?}
+\tabelt{exercise}\excat{id}{type, for, from, style}{+}{{\cfm}, hint?, (solution*|mc*)}
+\tabelt{extradata}\metacat{}{}{--}{ANY}\hline
+\tabelt{FMP}\cfmpcat{}{logic}{--}{(assumption*, conclusion*)|OMOBJ}
+\tabelt{Format}\metacat{}{}{--}{{\rm fixed:}"xml, x-omdoc"}\hline
+\tabelt{hint}\excat{}{id, style}{+}{{\cfm}}
+\tabelt{hypothesis}\proofcat{id, discharged-in, style}{}{--}{{\cf}}\hline
+\tabelt{Identifier}\metacat{}{scheme}{--}{ANY}
+\tabelt{ignore}\auxcat{}{type, comment}{--}{ANY}
+\tabelt{imports}\cpxtcat{id, from}{type, hiding, style}{--}{CMP*, morphism?}
+\tabelt{inclusion}\cpxtcat{for}{}{--}{}
+\tabelt{input}\auxcat{}{}{--}{CMP*}
+\tabelt{insort}\adtcat{for}{}{--}{}\hline
+\tabelt{Language}\metacat{}{}{--}{{\indextoo{ISO8601}}}\hline
+\tabelt{mc}\excat{}{id, style}{--}{symbol*, choice, hint?, answer}
+\tabelt{measure}\constcat{}{}{--}{OMOBJ}
+\tabelt{metacomment}\proofcat{}{id, style}{--}{CMP*}
+\tabelt{metadata}\metacat{}{inherits}{--}{({\rm dc-element})*, extradata}
+\tabelt{method}\proofcat{xref}{}{--}{OMOBJ*}
+\tabelt{morphism}\cpxtcat{}{id, base, style}{--}{requation*}\hline
+\tabelt{obligation}\cpxtcat{induced-by, assertion}{}{--}{EMPTY}
+\tabelt{omdoc}\generalcat{id}{type, version, style, xmlns, catalogue, xmlns:xsi, xsl:schemaLocation}{+}{({\rm {\omdoc} element})*}
+\tabelt{omgroup}\generalcat{id}{type, for, from, style}{+}{{\rm {\omdoc}element}*}
+\tabelt{omlet}\auxcat{}{id, argstr, type, function, action, data, style}{+}{ANY}
+\tabelt{omstyle}\prescat{element}{for, id, xref, style}{--}{(style|xslt)*}
+\tabelt{omtext}\generalcat{id}{type, for, from, style}{+}{CMP+, FMP?}
+\tabelt{ordering}\constcat{}{}{--}{OMOBJ}
+\tabelt{output}\auxcat{}{}{--}{CMP*}\hline
+\tabelt{path-just}\cpxtcat{local, globals}{}{--}{EMPTY}
+\tabelt{pattern}\constcat{}{}{--}{OMOBJ}
+\tabelt{premise}\proofcat{xref}{}{--}{EMPTY}
+\tabelt{presentation}\prescat{for}{id, xref, fixity, parent, lbrack, rbrack, separator, 
+                        bracket-style, style, precedence, crossref-symbol, theory}
+                        {--}{(use | xslt | style)* }
+\tabelt{private}\auxcat{}{id, for, theory, pto, pto-version, format, requires,
+             type, classid, codebase, width, height, replaces, style}{+}{CMP*, data+}
+\tabelt{proof}\proofcat{id, for, theory}{style}{+}{symbol*, CMP*, (metacomment|
+             derive| hypothesis)*, conclude}
+\tabelt{proofobject}\proofcat{id, for, theory}{style}{+}{CMP*, OMOBJ}
+\tabelt{Publisher}\metacat{}{id, style}{--}{ANY}\hline
+\tabelt{ref}\generalcat{}{xref, type}{--}{ANY}
+\tabelt{recognizer}\adtcat{id}{type, scope, kind, style}{--}{commonname*}
+\tabelt{recurse}\prescat{}{select}{--}{EMPTY}
+\tabelt{Relation}\metacat{}{}{--}{ANY}
+\tabelt{requation}\constcat{}{id, style}{--}{pattern, value}
+\tabelt{Rights}\metacat{}{}{--}{ANY}\hline
+\tabelt{selector}\adtcat{id}{type, scope, kind, total, style}{--}{commonname*}
+\tabelt{solution}\excat{}{id, for, style}{+}{({\cfm}) | proof}
+\tabelt{sortdef}\adtcat{id}{kind, scope, style}{--}{commonname*, (constructor|insort)*}
+\tabelt{Source}\metacat{}{}{--}{ANY}
+\tabelt{style}\prescat{format}{xml:lang, requires}{--}{(element | text | recurse | value-of)*}
+\tabelt{Subject}\metacat{}{xml:lang}{--}{{\rm{\element{CMP}}content}}
+\tabelt{symbol}\constcat{id}{kind, scope, style}{+}{CMP*, (commonname| type| selector)*}\hline
+\tabelt{text}\prescat{}{}{--}{(\#PCDATA)}
+\tabelt{theory}\cpxtcat{id}{style}{+}{commonname*, {\rm statement}*}
+\tabelt{theory-inclusion}\cpxtcat{id, from, to, by, style}{}{+}{(morphism, decomposition?)}
+\tabelt{Title}\metacat{}{xml:lang}{--}{{\rm{\element{CMP}}content}}
+\tabelt{type}\constcat{system}{id, for, style}{--}{CMP*, OMOBJ}
+\tabelt{Type}\metacat{}{}{--}{{\rm fixed:}"Dataset"{\rm or}"Text"}\hline
+\tabelt{use}\prescat{format}{xml:lang, requires, larg-group, rarg-group, fixity,
+             lbrack, rbrack, separator, crossref-symbol, element, attributes}
+                        {--}{(use | xslt | style)* }
+\tabelt{value}\constcat{}{}{--}{OMOBJ}\hline
+\tabelt{value-of}\prescat{select}{}{--}{EMPTY}
+\tabelt{with}\cfmpcat{id}{style}{--}{{\rm {\element{CMP}} content}}
+\tabelt{xslt}\prescat{format}{xml:lang, requires}{--}{CDATA}
+\end{longtable}}
+
+\chapter{Quick-Reference Table to the {\omdoc} Attributes}\label{sec:att-table}
+\def\atabelt#1#2#3#4{{#1}&{#2}&{#3}\\\hline&\multicolumn{2}{|p{9cm}|}{#4}\\\hline\hline}
+{\footnotesize\begin{longtable}{|>{\tt}p{2.5cm}|>{\tt}p{4cm}|>{\tt}p{5cm}|}\hline
+{\rm Attribute} & {\em element} & Values \\\hline\hline
+\atabelt{action}{omlet}{}
+ {specifies the action to be taken when executing the {\tt{omlet}}, the value is
+     application-defined.}
+
+\atabelt{argstring}{omlet}{}
+ {specifies the argument string for the function specified in the {\tt{function}}
+ attribute of  this {\tt{omlet}}}
+
+\atabelt{assertion}{example}{}
+ {specifies the assertion that states that the objects given in the example really have
+   the expected properties.}
+
+\atabelt{assertion}{obligation}{}
+ {specifies the assertion that states that the translation of the statement in the
+  source theory specified by the {\tt{induced-by}} attribute is valid in the
+  target theory.}
+
+\atabelt{attibutes}{use}{}
+ {the attribute string for the start tag of the {\xml} element  substituted for
+ the brackets (this is specified in the {\tt{element}} attribute).}
+\atabelt{base}{morphism}{}
+ {specifies another morphism that should be used as a base for expansion in the
+  definition of this morphism}
+
+\atabelt{bracket-style}{presentation, use}{lisp, math  }
+ {specifies whether a function application is of the form $f(a,b)$ or $(f a b)$}
+
+\atabelt{catalogue}{omdoc}{}
+ {specifies an outside {\omdoc} document that contais catalogue information for
+   this one.}
+
+\atabelt{lbrack}{presentation, use}{}
+ {the left bracket to use in the notation of a function symbol}
+
+\atabelt{cd}{loc}{}
+ {specifies the location of the content dictionary for a theory}
+
+\atabelt{classid, codebase}{code}{}
+ {points to a class identifier and codebase, if the {\tt{code}} contains Java.}
+
+\atabelt{comment}{ignore}{}
+ {specifies a reason why we want to ignore the contents}
+
+\atabelt{crossref-symbol}{presentation, use}
+ {all, brackets, lbrack, no, rbrack, separator, yes}
+ {specifies whether crossreferences to
+  the symbol definition should be generated in the output format.}
+
+\atabelt{data}{omlet}{}
+ {points to a {\tt{private}} element that contains the data for this {\tt{omlet}}}
+
+\atabelt{discharged-in}{hypothesis}{}
+ {specifies the scope of a local hypothesis in a proof. It points to the proof
+  step which discharges it.}
+
+\atabelt{element}{use}{}
+ {the {\xml} element tags to be substituted for the brackets.}
+
+\atabelt{entails, entailed-by}{alternative}{}
+ {specifies the equivalent formulations of a definition or axiom}
+
+\atabelt{entails-thm, entailed-by-thm}{alternative}{}
+ {specifies the entailsment statements for equivalent formulations of a 
+  definition or axiom}
+
+\atabelt{fixity}{presentation}{assoc, infix, postfix, prefix}
+  {specifies where the function symbolof a function application should be 
+   displayed in the output format}
+
+\atabelt{function}{omlet}{}
+ {specifies the function to be called when this {\tt{omlet}} is activated.}
+
+\atabelt{format}{data}{}
+ {specifies the format of the data specified by a {\tt{data}} element. The value should
+  e.g. be a MIME type.}
+
+\atabelt{generated-by}{symbol, axiom, assertion, definition, alternative}{}
+ {points to a higher-level syntax element, that generates this statement.}
+
+\atabelt{for}{*}{}
+ {can be used to reference an element by its unique identifier given in its 
+  {\attribute{id}{*}} attribute.}
+
+\atabelt{format}{use}{cmml, default, html, mathematica, pmml, TeX,}
+ {specifies the output format for which the notation is specified}
+
+\atabelt{globals}{path-just}{}
+ {points to the {\tt{theory-inclusion}s} that is the rest of the inclusion path.}
+
+\atabelt{height}{omlet}{}
+ {specifies the height of the rectangle on the screen taken up by the results of an
+  {\tt{omlet}}}
+
+\atabelt{hiding}{imports}{}
+ {specifies the names of symbols that are not imported from the source theory}
+
+\atabelt{href}{data}{}
+ {a URI to an external file containig the data.}
+
+\atabelt{id}{}{}
+ {associates a unique identifier to an element, which can thus be referenced 
+  by an {\attribute{for}{*}} attribute.}
+
+\atabelt{induced-by}{obligation}{}
+ {points to the statement in the source theory that induces this proof obligation}
+
+\atabelt{just-by}{definition, alternative}{}
+ {points to an assertion that states the well-definedness or termination condition
+  of a definition or the equivalence condition of an alternative definition.}
+
+\atabelt{kind}{symbol}{object, sort, type}
+ {specifies the kind of object defined in this declaration.}
+
+\atabelt{links}{decomposition}{}
+ {specifies a list of theory-  or axiom-inclusions that justify (by decomposition)
+ the {\tt{theory-inclusion}} specified  in the {\tt{for}} attribute.}
+
+\atabelt{local}{path-just}{}
+ {points to the {\tt{axiom-inclusion}} that is the first element in the path.}
+
+\atabelt{logic}{FMP}{{\rm token}}
+ {specifies the logical system used to encode the property.} 
+
+\atabelt{name}{OMS, OMV}{}
+ {the name of a symbol or variable.}
+
+\atabelt{omdoc}{loc}{}
+ {specifies the location of the {\omdoc} document containing the theory.}
+
+\atabelt{omdoc-element}{presentation}{}
+ {specifies the {\omdoc} element the presentation information applies to.}
+
+\atabelt{parent}{presentation}{OMA, OMATTR,OMBIND}
+ {specifies the parent element of the symbol for which notation information is 
+  specified}
+
+\atabelt{precedence}{presentation}{}
+ {the precedence of a function symbol (for elision of brackets)}
+
+\atabelt{proofs}{assertion}{}
+ {specifies a list of URIs to proofs of this assertion.}
+
+\atabelt{pto, pto-version}{private, code}{}
+ {specifies the system and its version this data or code is private to}
+
+\atabelt{replaces}{private}{}
+ {points to a set of  elements whose content is replaced by the content 
+  of the {\tt{private}} element for the system.}
+
+\atabelt{requires}{private, code, use}{}
+ {points to a {\tt{code}} element that is needed for the execution of this data by
+  the system.}
+
+\atabelt{rbrack}{presentation, use}{}
+ {the right bracket  to use in the notation of a function symbol}
+
+\atabelt{role}{Creator, Collaborator}
+ {aft, ant, aqt, aui, aut, clb, edt, ths, trc, trl}
+ {the MARC relator code for the contribution of the individual.}
+
+\atabelt{size}{data}{}
+ {specifies the size the data specified by a {\tt{data}} element. The value should
+  be number of kilobytes}
+
+\atabelt{scope}{symbol}{global, local}
+ {specifies the visibility of the symbol declared. This is a very crude
+  specification, it is better to use theories  and importing to specify symbol 
+  accessibility.}
+
+\atabelt{separator}{presentation, use}{}
+ {the separator for the arguments to use in the notation of a function symbol}
+
+\atabelt{sort}{argument}{}
+ {specifies the argument sort of the constructor}
+
+\atabelt{style}{*}{}
+ {specifies a token for a presentation style to be picked up in a
+ {\tt{presentation}} element.}
+
+\atabelt{system}{use}{pres, xsl}
+ {The transformation system to be used for specification. Use {\tt{'pres'}} for the
+ {\omdoc} metalanguage, and {\tt{'xsl'}} for straight {\xslt}.}
+
+\atabelt{system}{type}{}
+ {A token that specifies the logical type system that governs the type specified
+ in the type element.}
+
+\atabelt{theory}{*}{}
+ {specifies the home theory of an {\omdoc} statement.}
+
+\atabelt{theory}{loc}{}
+ {specifies the theory the {\element{loc}} element locates}
+
+\atabelt{to}{theory-inclusion, axiom-inclusion}{}
+ {specifies the target theory}
+
+\atabelt{total}{selector}{no, yes}
+ {specifies whether the symbol declared here is a total or partial function.}
+
+\atabelt{type}{adt}{free, generated, loose}
+ {defines the semantics of an abstract data type {\tt{free}} = no junk, no confusion,
+ {\tt{generated}} = no junk, {\tt{loose}} is the general case.}
+
+\atabelt{type}{asssertion} 
+ {theorem, lemma, corollary, conjecture, false-conjecture,
+  obligation, postulate, formula, assumption, proposition }
+ {tells you more about the intention of the assertion}
+
+\atabelt{type}{definition}{implicit, inductive, obj, recursive, simple}
+ {specifies the definition principle}
+
+\atabelt{type}{example}{against, for}
+ {specifies whether the objects in this example support or falsify some conjecture}
+
+\atabelt{type}{imports}{global, local}
+ {{\tt{local}} imports only concern the assumptions directly stated in the
+   theory. {\tt{global}} imports also concern the ones the source theory inherits.}
+
+\atabelt{type}{omgroup, omdoc}
+ {alternative, contrast, narrative, dataset, datalabels, datadata, theory-collection}
+ {the first three give the text category, the second three are used for
+                        generalized tables, and the last one for collections of theory.}
+
+\atabelt{type}{omlet}{js, image}
+ {the type of an omlet, e.g. {\tt{'image'}}}
+
+\atabelt{type}{omtext}
+ {abstract, antithesis, comment, conclusion, elaboration, evidence, 
+  introduction,  motivation, thesis}
+ {a specification of the intention of the text fragment, in reference to context.}
+
+\atabelt{verdict}{answer}{}
+ {specifies the truth or falsity of the answer. This can be used e.g. 
+  by a grading application.} 
+
+\atabelt{version}{omdoc}{1.1}
+ {specifies the version of the document, so that the right DTD is used}
+
+\atabelt{via}{inclusion}{}
+ {points to a theory-inclusion that is required for an actualization}
+
+\atabelt{width}{omlet}{}
+ {specifies the width of the rectangle on the screen taken up by the results of an
+  {\tt{omlet}}}
+
+\atabelt{xml:lang}{*}{}
+ {the language the text in the element is expressed in. 
+  This must be a RFC-639 compliant specification of the primary language of the content.} 
+
+\atabelt{xmlns}{omdoc}{{\url{http://www.mathweb.org/omdoc}}}
+ {fixes the {\omdoc} namespace}
+
+\atabelt{xref}{*}{ref, method, premise, presentation, {\rm some {\openmath} elements}}
+ {a uniform resource identifier ({\ttin{URI}}) used for cross-referencing. The
+  element, this URI points to should be in the place of the object containing this
+  attribute.} 
+\end{longtable}}
+
+\chapter{The {\ifpdf{OMDoc}\else{\omdoc}\fi} Document Type Definition}\label{sec:dtd}
+We reprint the current version of the {\omdoc} {\indextoo{document type
+    definition}}. The original can be found at
+{\url{http://www.mathweb.org/omdoc/dtd/omdoc.dtd}}. 
+
+The DTD can be referenced by the {\indextoo{public
+    identifer}}\index{identifier!public} {\tt{-//OMDoc//DTD OMDoc V1.1//EN}}. Thus
+documents that use it have the {\indextoo{document type
+    declaration}}\index{declaration!document type}
+
+{\scriptsize\begin{boxedverbatim}
+<!DOCTYPE omdoc Public "-//OMDoc//DTD OMDoc V1.1//EN" 
+                       "http://www.mathweb.org/omdoc/omdoc.dtd"> 
+\end{boxedverbatim}
+}
+in the preamble of the document. 
+
+The {\indextoo{document type definition}}\index{definition!document type} includes
+a variant document type definition for {\openmath} objects that differs from the
+original (see~\url{http://www.openmath.org}) in that it allows to represent {\openmath} objects as
+directed acyclic graphs. This extension is licensed by the OpenMath Standard that
+says that any extension, from which valid OpenMath can be directly be generated,
+is allowed.
+
+{\scriptsize\listinginput[5]{1}{../../dtd/omdoc.dtd}}
+\end{appendix}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 

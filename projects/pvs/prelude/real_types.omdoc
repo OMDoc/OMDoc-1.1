@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="real_types.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:22
+    </Date>
+  </metadata>
+  <theory id="real_types_test">
+
+    <assertion id="nonneg_real_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&gt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_real_TCC1-1" for="nonneg_real_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonneg_real" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonneg_real-non-empty" >
+      <CMP>The type nonneg_real is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56780" for="nonneg_real" pto="pvs" pto-version="3.0" replaces="nonneg_real-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonneg_real" for="nonneg_real" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMV name="x"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56781" for="nonneg_real" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonneg_real-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonneg_real-contains" >
+      <CMP>Type nonneg_real contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="nonpos_real_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonpos_real_TCC1-1" for="nonpos_real_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonpos_real" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonpos_real-non-empty" >
+      <CMP>The type nonpos_real is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56782" for="nonpos_real" pto="pvs" pto-version="3.0" replaces="nonpos_real-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonpos_real" for="nonpos_real" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMV name="x"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56783" for="nonpos_real" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonpos_real-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonpos_real-contains" >
+      <CMP>Type nonpos_real contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="posreal_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_TCC1-1" for="posreal_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="posreal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="posreal-non-empty" >
+      <CMP>The type posreal is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56784" for="posreal" pto="pvs" pto-version="3.0" replaces="posreal-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="posreal" for="posreal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="real_types" name="nonneg_real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="x"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56785" for="posreal" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="posreal-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="posreal-contains" >
+      <CMP>Type posreal contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="negreal_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_TCC1-1" for="negreal_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="negreal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="negreal-non-empty" >
+      <CMP>The type negreal is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56786" for="negreal" pto="pvs" pto-version="3.0" replaces="negreal-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="negreal" for="negreal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="real_types" name="nonpos_real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="x"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56787" for="negreal" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="negreal-contains">
+      <data><![CDATA[-1]]>
+      </data>
+    </private>
+    <axiom id="negreal-contains" >
+      <CMP>Type negreal contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="nnreal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="nnreal" for="nnreal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="real_types" name="nonneg_real"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="npreal" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="npreal" for="npreal" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="real_types" name="nonpos_real"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <assertion id="posreal_is_nzreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x1"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_is_nzreal-1" for="posreal_is_nzreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56788" for="posreal_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_is_nzreal|: JUDGEMENT |posreal| SUBTYPE_OF |nzreal|]]>
+      </data>
+    </private>
+
+    <assertion id="negreal_is_nzreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x1"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_is_nzreal-1" for="negreal_is_nzreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56789" for="negreal_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negreal_is_nzreal|: JUDGEMENT |negreal| SUBTYPE_OF |nzreal|]]>
+      </data>
+    </private>
+
+
+
+
+
+
+
+
+
+
+
+    <assertion id="nonneg_real_add_closed" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_real_add_closed-1" for="nonneg_real_add_closed" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonpos_real_add_closed" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="npx"/>
+                <OMV name="npy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonpos_real_add_closed-1" for="nonpos_real_add_closed" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="negreal_add_closed" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_add_closed-1" for="negreal_add_closed" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_real_mult_closed" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_real_mult_closed-1" for="nonneg_real_mult_closed" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND)
+ (( (CASE nnx!1 = 0)
+   ((1 (ASSERT) NIL NIL)
+    (2 (CASE nny!1 = 0)
+     ((1 (ASSERT) NIL NIL)
+      (2 (LEMMA posreal_mult_closed) ((2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nzreal_times_nzreal_is_nzreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="nzx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="nzy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nzx"/>
+                <OMV name="nzy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzreal_times_nzreal_is_nzreal-1" for="nzreal_times_nzreal_is_nzreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA posreal_mult_closed)
+ (( (SKOSIMP)
+   (( (CASE nzx!1 > 0)
+     ((1 (CASE nzy!1 > 0)
+       ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL)
+        (2 (INST -2 nzx!1 -nzy!1) ((2 (ASSERT) NIL NIL)) NIL))
+       NIL)
+      (2 (CASE nzy!1 > 0)
+       ((1 (INST -2 -nzx!1 nzy!1) ((1 (ASSERT) NIL NIL)) NIL)
+        (2 (INST -1 -nzx!1 -nzy!1) ((2 (ASSERT) NIL NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56790" for="nzreal_times_nzreal_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzreal_times_nzreal_is_nzreal|: JUDGEMENT *(|nzx|, |nzy|) HAS_TYPE |nzreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nzreal_div_nzreal_is_nzreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="nzx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="nzy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nzx"/>
+                <OMV name="nzy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzreal_div_nzreal_is_nzreal-1" for="nzreal_div_nzreal_is_nzreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA nzreal_times_nzreal_is_nzreal)
+ (( (SKOSIMP)
+   (( (INST -1 nzx!1 1/nzy!1)
+     ((1 (ASSERT) NIL NIL)
+      (2 (ASSERT)
+       ((2 (LEMMA inverse_mult)
+         ((2 (INST?) ((2 (PROP) ((2 (REPLACE -2) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56791" for="nzreal_div_nzreal_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzreal_div_nzreal_is_nzreal|: JUDGEMENT /(|nzx|, |nzy|) HAS_TYPE |nzreal|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_nzreal_is_nzreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="nzx"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="nzx"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_nzreal_is_nzreal-1" for="minus_nzreal_is_nzreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56792" for="minus_nzreal_is_nzreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_nzreal_is_nzreal|: JUDGEMENT -(|nzx|) HAS_TYPE |nzreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nnreal_plus_nnreal_is_nnreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnreal_plus_nnreal_is_nnreal-1" for="nnreal_plus_nnreal_is_nnreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56793" for="nnreal_plus_nnreal_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnreal_plus_nnreal_is_nnreal|: JUDGEMENT +(|nnx|, |nny|) HAS_TYPE |nnreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nnreal_times_nnreal_is_nnreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nnx"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnreal_times_nnreal_is_nnreal-1" for="nnreal_times_nnreal_is_nnreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA posreal_mult_closed)
+   (( (CASE nnx!1 = 0)
+     ((1 (ASSERT) NIL NIL)
+      (2 (CASE nny!1 = 0) ((1 (ASSERT) NIL NIL) (2 (INST?) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56794" for="nnreal_times_nnreal_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnreal_times_nnreal_is_nnreal|: JUDGEMENT *(|nnx|, |nny|) HAS_TYPE |nnreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nnreal_div_posreal_is_nnreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nnx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnreal_div_posreal_is_nnreal-1" for="nnreal_div_posreal_is_nnreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND)
+ (( (LEMMA posreal_mult_closed)
+   (( (CASE nnx!1 = 0)
+     ((1 (ASSERT) NIL NIL)
+      (2 (INST -1 nnx!1 1/py!1)
+       ((2 (ASSERT)
+         ((2 (LEMMA inverse_mult)
+           ((2 (INST -1 py!1)
+             ((2 (ASSERT)
+               ((2 (NAME-REPLACE a 1/py!1)
+                 ((2 (ASSERT)
+                   ((2 (LEMMA posreal_mult_closed)
+                     ((2 (CASE-REPLACE a = 0)
+                       ((1 (ASSERT) NIL NIL) (2 (INST -1 py!1 -a) ((2 (ASSERT) NIL NIL)) NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56795" for="nnreal_div_posreal_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnreal_div_posreal_is_nnreal|: JUDGEMENT /(|nnx|, |py|) HAS_TYPE |nnreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nnreal_div_negreal_is_npreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nnx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnreal_div_negreal_is_npreal-1" for="nnreal_div_negreal_is_npreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA nnreal_div_posreal_is_nnreal) (( (INST -1 nnx!1 -ny!1) (( (ASSERT) NIL NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56796" for="nnreal_div_negreal_is_npreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnreal_div_negreal_is_npreal|: JUDGEMENT /(|nnx|, |ny|) HAS_TYPE |npreal|]]>
+      </data>
+    </private>
+
+    <assertion id="npreal_plus_npreal_is_npreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="npx"/>
+                <OMV name="npy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npreal_plus_npreal_is_npreal-1" for="npreal_plus_npreal_is_npreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56797" for="npreal_plus_npreal_is_npreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npreal_plus_npreal_is_npreal|: JUDGEMENT +(|npx|, |npy|) HAS_TYPE |npreal|]]>
+      </data>
+    </private>
+
+    <assertion id="npreal_times_npreal_is_nnreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npy"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="npx"/>
+                <OMV name="npy"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npreal_times_npreal_is_nnreal-1" for="npreal_times_npreal_is_nnreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA posreal_mult_closed) (( (INST -1 -npx!1 -npy!1) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56798" for="npreal_times_npreal_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npreal_times_npreal_is_nnreal|: JUDGEMENT *(|npx|, |npy|) HAS_TYPE |nnreal|]]>
+      </data>
+    </private>
+
+    <assertion id="npreal_div_posreal_is_npreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="npx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npreal_div_posreal_is_npreal-1" for="npreal_div_posreal_is_npreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA nnreal_div_posreal_is_nnreal) (( (INST -1 -npx!1 py!1) (( (ASSERT) NIL NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56799" for="npreal_div_posreal_is_npreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npreal_div_posreal_is_npreal|: JUDGEMENT /(|npx|, |py|) HAS_TYPE |npreal|]]>
+      </data>
+    </private>
+
+    <assertion id="npreal_div_negreal_is_nnreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonpos_real"/>
+                </OMATP>
+                <OMV name="npx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="npx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npreal_div_negreal_is_nnreal-1" for="npreal_div_negreal_is_nnreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA npreal_div_posreal_is_npreal) (( (INST -1 npx!1 -ny!1) (( (ASSERT) NIL NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56800" for="npreal_div_negreal_is_nnreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npreal_div_negreal_is_nnreal|: JUDGEMENT /(|npx|, |ny|) HAS_TYPE |nnreal|]]>
+      </data>
+    </private>
+
+    <assertion id="posreal_plus_nnreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nny"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="px"/>
+                <OMV name="nny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_plus_nnreal_is_posreal-1" for="posreal_plus_nnreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56801" for="posreal_plus_nnreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_plus_nnreal_is_posreal|: JUDGEMENT +(|px|, |nny|) HAS_TYPE
+          |posreal|]]>
+      </data>
+    </private>
+
+    <assertion id="nnreal_plus_posreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="nnx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nnx"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnreal_plus_posreal_is_posreal-1" for="nnreal_plus_posreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56802" for="nnreal_plus_posreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnreal_plus_posreal_is_posreal|: JUDGEMENT +(|nnx|, |py|) HAS_TYPE
+          |posreal|]]>
+      </data>
+    </private>
+
+    <assertion id="posreal_times_posreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="px"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_times_posreal_is_posreal-1" for="posreal_times_posreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (LEMMA posreal_mult_closed) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56803" for="posreal_times_posreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_times_posreal_is_posreal|: JUDGEMENT *(|px|, |py|) HAS_TYPE
+          |posreal|]]>
+      </data>
+    </private>
+
+    <assertion id="posreal_div_posreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="px"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="py"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="px"/>
+                <OMV name="py"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_div_posreal_is_posreal-1" for="posreal_div_posreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA posreal_mult_closed)
+   (( (INST -1 px!1 1/py!1)
+     (( (ASSERT)
+       (( (LEMMA inverse_mult)
+         (( (INST -1 py!1)
+           (( (LEMMA posreal_mult_closed) (( (INST -1 py!1 -1/py!1) (( (ASSERT) NIL NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56804" for="posreal_div_posreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_div_posreal_is_posreal|: JUDGEMENT /(|px|, |py|) HAS_TYPE |posreal|]]>
+      </data>
+    </private>
+
+    <assertion id="negreal_plus_negreal_is_negreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_plus_negreal_is_negreal-1" for="negreal_plus_negreal_is_negreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56805" for="negreal_plus_negreal_is_negreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negreal_plus_negreal_is_negreal|: JUDGEMENT +(|nx|, |ny|) HAS_TYPE
+          |negreal|]]>
+      </data>
+    </private>
+
+    <assertion id="negreal_times_negreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_times_negreal_is_posreal-1" for="negreal_times_negreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA posreal_mult_closed) (( (INST -1 -nx!1 -ny!1) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56806" for="negreal_times_negreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negreal_times_negreal_is_posreal|: JUDGEMENT *(|nx|, |ny|) HAS_TYPE
+          |posreal|]]>
+      </data>
+    </private>
+
+    <assertion id="negreal_div_negreal_is_posreal" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="nx"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="negreal"/>
+                </OMATP>
+                <OMV name="ny"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="/"/>
+                <OMV name="nx"/>
+                <OMV name="ny"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negreal_div_negreal_is_posreal-1" for="negreal_div_negreal_is_posreal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA posreal_div_posreal_is_posreal)
+ (( (SKOSIMP) (( (INST -1 -nx!1 -ny!1) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56807" for="negreal_div_negreal_is_posreal" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negreal_div_negreal_is_posreal|: JUDGEMENT /(|nx|, |ny|) HAS_TYPE |posreal|]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

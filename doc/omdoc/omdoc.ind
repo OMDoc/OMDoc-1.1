@@ -1,0 +1,1340 @@
+\begin{theindex}
+
+  \item {$\lambda ${\sl  Clam}}, \hyperpage{99}
+  \item {\tt  {-//OMDoc//DTD OMDoc V1.1//EN}}, \hyperpage{139}
+  \item {\tt  {\%cfm;}}, \hyperpage{139}
+  \item {\tt  {\&amp;}}, \hyperpage{12}
+  \item {\tt  {\&gt;}}, \hyperpage{12}
+  \item {\tt  {\&lt;}}, \hyperpage{12}
+  \item \sc Automath, \hyperpage{19}
+  \item {{\sc  Isabelle}}, \hyperpage{46}
+  \item {{\sc  XslT}}, \hyperpage{12}
+  \item {{{\sc  OpenMath}}} object, \hyperpage{14}
+  \item {{{\sc  Xml}}} schema, \hyperpage{94}
+
+  \indexspace
+
+  \item abbreviation
+    \subitem namespace, \hyperpage{11}
+  \item {\tt  {abstract}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item abstract data type, \hyperpage{49}
+  \item {\tt  {action}} attribute in
+    \subitem {\tt  {Date}}, \hyperpage{26}, \hyperpage{141}, 
+		\hyperpage{143}
+    \subitem {\tt  {omlet}}, \hyperpage{142}
+  \item actualization, \hyperpage{61}
+  \item {\tt  {adt}} (element), \hyperpage{36}, \hyperpage{50--52}, 
+		\hyperpage{140, 141}
+  \item advisor
+    \subitem thesis, \hyperpage{29}
+  \item {\tt  {against}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {example}}, \hyperpage{42}
+  \item algebraic specification, \hyperpage{19}
+  \item {\tt  {all}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+  \item {\tt  {\%alsoinCMP}}, \hyperpage{32}
+  \item {\tt  {alternative}} (element), \hyperpage{40, 41}, 
+		\hyperpage{140}
+  \item {\tt  {alternative}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{142}
+  \item {\tt  {alternative-def}} (deprecated in {1.1}), \hyperpage{140}
+  \item {\sc Amaya}, \hyperpage{13}
+  \item {\tt  {annotation-xml}} (element), \hyperpage{13}
+  \item {\tt  {answer}} (element), \hyperpage{74}
+  \item {\tt  {ant}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item antecedent
+    \subitem bibliographic, \hyperpage{29}
+  \item {\tt  {antithesis}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item ANY
+    \subitem content type, \hyperpage{10}
+  \item applet, \hyperpage{71}
+  \item {\tt  {applet}}, \hyperpage{72}
+  \item application, \hyperpage{14}
+    \subitem {\xml}, \hyperpage{9}
+  \item {\tt  {apply}} (element), \hyperpage{14}
+  \item {\tt  {argstr}} attribute in
+    \subitem {\tt  {omlet}}, \hyperpage{72}
+  \item {\tt  {argument}} (element), \hyperpage{51}, \hyperpage{140}
+  \item {\tt  {arith1}}, \hyperpage{17}
+  \item {\tt  {arith1.ocd}}, \hyperpage{16}
+  \item assertion, \hyperpage{43}
+  \item {\tt  {assertion}} (element), \hyperpage{38}, 
+		\hyperpage{40--42}, \hyperpage{46}, \hyperpage{59}, 
+		\hyperpage{141}
+  \item {\tt  {assertion}} attribute in
+    \subitem {\tt  {example}}, \hyperpage{42}
+  \item {\tt  {assertion-just}} (deprecated in {1.1}), 
+		\hyperpage{141, 142}
+  \item {\tt  {assoc}} value for attribue 
+    \subitem {\tt  {fixity}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item assumption
+    \subitem local, \hyperpage{47}
+  \item {\tt  {assumption}} (element), \hyperpage{32}
+  \item {\tt  {assumption}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item attribute, \hyperpage{9}, \hyperpage{11}
+  \item {\tt  {attribute}} (element), \hyperpage{78}, \hyperpage{140}
+  \item attribute-value pair, \hyperpage{78}
+  \item {\tt  {attributes}} attribute in
+    \subitem {\tt  {use}}, \hyperpage{85, 86}, \hyperpage{144}
+  \item {\tt  {aut}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{28}
+  \item Author, \hyperpage{28}
+  \item authoring tool, \hyperpage{113}
+  \item axiom, \hyperpage{18, 19}, \hyperpage{31}
+  \item {\tt  {axiom}} (element), \hyperpage{36}, \hyperpage{51}, 
+		\hyperpage{53}, \hyperpage{56}, \hyperpage{58, 59}, 
+		\hyperpage{140, 141}
+  \item axiom-inclusion, \hyperpage{60}
+  \item {\tt  {axiom-inclusion}} (element), \hyperpage{58--60}, 
+		\hyperpage{63}, \hyperpage{137}, \hyperpage{139}, 
+		\hyperpage{141}
+
+  \indexspace
+
+  \item bare name, \hyperpage{90}, \hyperpage{93}
+  \item {\tt  {base}} attribute in
+    \subitem {\tt  {morphism}}, \hyperpage{56}
+  \item base morphism, \hyperpage{56}
+  \item {\tt  {binary}}, \hyperpage{70}
+  \item binding structure, \hyperpage{14}
+  \item binomial coefficient, \hyperpage{85}
+  \item book
+    \subitem interactive, \hyperpage{97}
+  \item bound variable, \hyperpage{14}
+  \item {\tt  {bracket-style}} attribute in
+    \subitem {\tt  {presentation}}, \hyperpage{82}
+    \subitem {\tt  {use}}, \hyperpage{85}
+  \item {\tt  {brackets}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+  \item browser, \hyperpage{8}, \hyperpage{98}
+  \item bus
+    \subitem software, \hyperpage{1}
+  \item byte array, \hyperpage{14}
+
+  \indexspace
+
+  \item {\tt  {C}}, \hyperpage{14}
+  \item {\tt  {callMint}}, \hyperpage{73}
+  \item cascading style sheet, \hyperpage{138}
+  \item catalogue, \hyperpage{88}
+    \subitem effective, \hyperpage{89}
+  \item {\tt  {catalogue}} (element), \hyperpage{88}
+  \item {\tt  {catalogue}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{89}
+    \subitem {\tt  {omdoc}}, \hyperpage{23}, \hyperpage{88}
+  \item {\tt  {cd}} attribute in
+    \subitem {\tt  {OMS}}, \hyperpage{14, 15}, \hyperpage{88}, 
+		\hyperpage{94}
+  \item {\tt  {cd2omdoc.xsl}}, \hyperpage{98}
+  \item CDATA, \hyperpage{77}
+  \item {\tt  {CDATA}}, \hyperpage{12}, \hyperpage{70}, \hyperpage{80}
+  \item {\tt  {CDDefinition}} (element), \hyperpage{54}
+  \item chain
+    \subitem local, \hyperpage{59}
+  \item chapter, \hyperpage{18}
+  \item {\tt  {choice}} (element), \hyperpage{73, 74}
+  \item choose, \hyperpage{85}
+  \item {\tt  {ci}} (element), \hyperpage{14}
+  \item {\tt  {cite}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {ref}}, \hyperpage{65}
+  \item {\tt  {class}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{138}
+  \item {\tt  {classid}} attribute in
+    \subitem {\tt  {code}}, \hyperpage{141}
+    \subitem {\tt  {private}}, \hyperpage{70}, \hyperpage{143}
+  \item {\tt  {clb}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item {\tt  {cmml}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item {\tt  {CMP}} (element), \hyperpage{15}, \hyperpage{25}, 
+		\hyperpage{30--37}, \hyperpage{41}, \hyperpage{44, 45}, 
+		\hyperpage{47--49}, \hyperpage{58}, \hyperpage{69}, 
+		\hyperpage{71}, \hyperpage{73, 74}, \hyperpage{97}, 
+		\hyperpage{99}, \hyperpage{101}, \hyperpage{136}, 
+		\hyperpage{139}, \hyperpage{141}, \hyperpage{143, 144}, 
+		\hyperpage{146}, \hyperpage{148, 149}
+  \item code
+    \subitem country, \hyperpage{32}, \hyperpage{101}
+  \item {\tt  {code}} (element), \hyperpage{49}, \hyperpage{68}, 
+		\hyperpage{70--72}, \hyperpage{76}, \hyperpage{141}, 
+		\hyperpage{143}
+  \item {\tt  {codebase}} attribute in
+    \subitem {\tt  {code}}, \hyperpage{141}
+    \subitem {\tt  {private}}, \hyperpage{70}, \hyperpage{143}
+  \item coefficient
+    \subitem binomial, \hyperpage{85}
+  \item Collaborator, \hyperpage{29}
+  \item comma, \hyperpage{84}
+  \item comment
+    \subitem {\xml}, \hyperpage{12}, \hyperpage{34}
+    \subitem persistent, \hyperpage{34}
+  \item {\tt  {comment}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item commented mathematical property, \hyperpage{15}
+  \item {\tt  {commonname}} (element), \hyperpage{35}, \hyperpage{51}, 
+		\hyperpage{53}
+  \item communication standard, \hyperpage{96}
+  \item concatenability, \hyperpage{92}
+  \item {\tt  {conclude}} (element), \hyperpage{47}, \hyperpage{49}, 
+		\hyperpage{142}
+  \item {\tt  {conclusion}} (element), \hyperpage{32}, \hyperpage{47}, 
+		\hyperpage{142}
+  \item {\tt  {conclusion}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item conjecture, \hyperpage{38}
+  \item {\tt  {conjecture}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item conservative extension, \hyperpage{19}
+  \item constant
+    \subitem domain, \hyperpage{14}
+  \item constitutive theory   element, \hyperpage{53}
+  \item constructor, \hyperpage{50}
+  \item {\tt  {constructor}} (element), \hyperpage{51}, \hyperpage{136}, 
+		\hyperpage{139}, \hyperpage{141}
+  \item content
+    \subitem dictionary, \hyperpage{14}
+  \item content   dictionary, \hyperpage{17}
+  \item content dictionary, \hyperpage{14, 15}, \hyperpage{54}, 
+		\hyperpage{88}, \hyperpage{98}
+  \item content identifier, \hyperpage{14}
+  \item content markup, \hyperpage{7}, \hyperpage{32}
+  \item content type {\tt  {ANY}}, \hyperpage{10}
+  \item content {{{\sc  MathMl}}}, \hyperpage{13}
+  \item context, \hyperpage{2}
+    \subitem reference by, \hyperpage{88}
+  \item context-free grammar, \hyperpage{9}
+  \item {\tt  {contrast}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{142}
+  \item {\tt  {Contributor}} (element), \hyperpage{25, 26}, 
+		\hyperpage{28}, \hyperpage{141}
+  \item controlled refinement, \hyperpage{97}
+  \item corollary, \hyperpage{38}
+  \item {\tt  {corollary}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item country code, \hyperpage{32}, \hyperpage{101}
+  \item {\tt  {Coverage}} (deprecated in {1.1}), \hyperpage{27}, 
+		\hyperpage{141}
+  \item {\tt  {Creator}} (element), \hyperpage{24--29}, \hyperpage{141}
+  \item {\tt  {crossref-symbol}} attribute in
+    \subitem {\tt  {presentation, use}}, \hyperpage{84}
+  \item CSS, \hyperpage{8}
+  \item {\tt  {csymbol}} (element), \hyperpage{14, 15}, \hyperpage{90}
+
+  \indexspace
+
+  \item DAG, \hyperpage{34}, \hyperpage{43}
+  \item {\tt  {data}} (element), \hyperpage{70, 71}, \hyperpage{141}, 
+		\hyperpage{143}
+  \item {\tt  {data}} attribute in
+    \subitem {\tt  {omlet}}, \hyperpage{142}
+  \item data set, \hyperpage{66}
+  \item data type
+    \subitem abstract, \hyperpage{49}
+  \item {\tt  {Dataset}}, \hyperpage{26}
+  \item {\tt  {dataset}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{65--68}
+  \item {\tt{Dataset}} as Dublin Core Type, \hyperpage{26}
+  \item {\tt{Text}} as Dublin Core Type, \hyperpage{26}
+  \item {\tt  {Date}} (element), \hyperpage{26}, \hyperpage{141}
+  \item {\tt  {date\discretionary {-}{}{}Time}}, \hyperpage{26}
+  \item {\tt  {dc:Date}} (element), \hyperpage{141}, \hyperpage{143}
+  \item {\tt  {de}}, \hyperpage{32}
+  \item declaration
+    \subitem document type, \hyperpage{156}
+    \subitem location, \hyperpage{88}
+    \subitem namespace, \hyperpage{94}
+  \item {\tt  {decomposition}} (element), \hyperpage{60}, 
+		\hyperpage{137}, \hyperpage{139}, \hyperpage{141}, 
+		\hyperpage{143}
+  \item {\tt  {default}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item definition, \hyperpage{1}, \hyperpage{18, 19}, \hyperpage{22}, 
+		\hyperpage{31}
+    \subitem document type, \hyperpage{156}
+  \item {\tt  {definition}} (element), \hyperpage{3}, 
+		\hyperpage{36--38}, \hyperpage{41, 42}, \hyperpage{49}, 
+		\hyperpage{53}, \hyperpage{56}, \hyperpage{58, 59}, 
+		\hyperpage{113}, \hyperpage{136}, \hyperpage{139}, 
+		\hyperpage{141}, \hyperpage{143}
+  \item definitional form, \hyperpage{19}
+  \item {\tt  {definitionURL}} attribute in
+    \subitem {\tt  {csymbol}}, \hyperpage{15}, \hyperpage{90}, 
+		\hyperpage{94}
+  \item {\tt  {derive}} (element), \hyperpage{46--49}, \hyperpage{142}
+  \item {\tt  {Description}} (element), \hyperpage{25}, \hyperpage{68}, 
+		\hyperpage{141}, \hyperpage{143}
+  \item development graph, \hyperpage{58}
+  \item dictionary
+    \subitem content, \hyperpage{14}
+  \item directed     acyclic graph, \hyperpage{34}
+  \item directed acyclic graph, \hyperpage{43}
+  \item {\tt  {discharged-in}} attribute in
+    \subitem {\tt  {hypothesis}}, \hyperpage{2}, \hyperpage{47}, 
+		\hyperpage{142}
+  \item discourse structure, \hyperpage{97}
+  \item {\tt  {DOCTYPE}}, \hyperpage{10}, \hyperpage{94}
+  \item document
+    \subitem legacy, \hyperpage{78}
+    \subitem mathematical, \hyperpage{2}, \hyperpage{17}
+  \item document   tree, \hyperpage{9}
+  \item document preparation language, \hyperpage{97}
+  \item document root, \hyperpage{9}
+  \item document type declaration, \hyperpage{156}
+  \item document type definition, \hyperpage{9}, \hyperpage{156}
+  \item domain constant, \hyperpage{14}
+  \item \dsssl, \hyperpage{8}
+  \item DTD, \hyperpage{9}, \hyperpage{32}, \hyperpage{94}
+    \subitem internal subset, \hyperpage{10}
+    \subitem local subset, \hyperpage{32}, \hyperpage{94}
+  \item Dublin Core, \hyperpage{23}
+  \item DVI, \hyperpage{7}
+  \item {\tt  {dvips}}, \hyperpage{85}
+
+  \indexspace
+
+  \item e-mail, \hyperpage{2}
+  \item Editor, \hyperpage{29}
+  \item {\tt  {edt}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item {\tt  {effect}} (element), \hyperpage{70, 71}
+  \item effective catalogue, \hyperpage{89}
+  \item {\tt<el>},{\tt</el>},{\tt<el/>}, \hyperpage{9}
+  \item {\tt  {elaboration}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item element, \hyperpage{11}
+    \subitem empty, \hyperpage{9}
+  \item {\tt  {element}} (element), \hyperpage{77, 78}, \hyperpage{142}
+  \item {\tt  {element}} attribute in
+    \subitem {\tt  {omstyle}}, \hyperpage{75}
+    \subitem {\tt  {use}}, \hyperpage{85, 86}, \hyperpage{144}
+  \item elements, \hyperpage{9}
+  \item {\tt  {emacs}}, \hyperpage{113}
+  \item empty element, \hyperpage{9}
+  \item {\tt  {emptyset}}, \hyperpage{50}
+  \item {\tt  {en}}, \hyperpage{32}, \hyperpage{137}, \hyperpage{139}
+  \item {\tt  {en}} value for attribue 
+    \subitem {\tt  {xml:lang}} on element
+      \subsubitem {\tt  {*}}, \hyperpage{32}
+  \item {\tt  {entailed-by}} attribute in
+    \subitem {\tt  {alternative}}, \hyperpage{41}
+  \item {\tt  {entailed-by-thm}} attribute in
+    \subitem {\tt  {alternative}}, \hyperpage{41}
+  \item {\tt  {entails}} attribute in
+    \subitem {\tt  {alternative}}, \hyperpage{41}
+  \item {\tt  {entails-thm}} attribute in
+    \subitem {\tt  {alternative}}, \hyperpage{41}
+  \item entity
+    \subitem parameter, \hyperpage{25}, \hyperpage{32}
+  \item entity reference, \hyperpage{13}
+  \item {\tt  {enumerate}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{65}
+  \item equation
+    \subitem recursive, \hyperpage{37}
+  \item error, \hyperpage{14}
+  \item {\xml}   escaping, \hyperpage{12}
+  \item {\tt  {evidence}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item {\tt  {example}} (element), \hyperpage{42}
+  \item examples, \hyperpage{22}, \hyperpage{31}
+  \item {\tt  {exercise}} (element), \hyperpage{73}, \hyperpage{139}
+  \item {\tt  {exincl.xsl}}, \hyperpage{102}
+  \item expansion, \hyperpage{45}
+  \item export, \hyperpage{35}
+  \item {\tt  {expres.xsl}}, \hyperpage{102}
+  \item {\tt  {extradata}} (element), \hyperpage{24}
+
+  \indexspace
+
+  \item {\tt  {false}} value for attribue 
+    \subitem {\tt  {verdict}} on element
+      \subsubitem {\tt  {answer}}, \hyperpage{74}
+  \item {\tt  {false-conjecture}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item file
+    \subitem style, \hyperpage{7}
+  \item {\tt  {fixity}} attribute in
+    \subitem {\tt  {presentation, use}}, \hyperpage{82}
+    \subitem {\tt  {presentation}}, \hyperpage{82}
+    \subitem {\tt  {use}}, \hyperpage{85}
+  \item flatten, \hyperpage{65}
+  \item {\tt  {FMP}} (element), \hyperpage{15, 16}, \hyperpage{31--34}, 
+		\hyperpage{36}, \hyperpage{38}, \hyperpage{45}, 
+		\hyperpage{47--49}, \hyperpage{71}, \hyperpage{73, 74}, 
+		\hyperpage{97}, \hyperpage{136}, \hyperpage{139}, 
+		\hyperpage{142}
+  \item FMP group
+    \subitem multi-logic, \hyperpage{31}, \hyperpage{136}
+  \item {\tt  {for}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{86}, \hyperpage{152}
+    \subitem {\tt  {decomposition}}, \hyperpage{60}, \hyperpage{141}, 
+		\hyperpage{143}
+    \subitem {\tt  {definition}}, \hyperpage{36--38}
+    \subitem {\tt  {example}}, \hyperpage{42}
+    \subitem {\tt  {exercise}}, \hyperpage{139}
+    \subitem {\tt  {insort}}, \hyperpage{51}
+    \subitem {\tt  {omstyle, presentation}}, \hyperpage{75}
+    \subitem {\tt  {omtext}}, \hyperpage{34}, \hyperpage{142}
+    \subitem {\tt  {presentation}}, \hyperpage{80}, \hyperpage{82}
+    \subitem {\tt  {private, code}}, \hyperpage{69}
+    \subitem {\tt  {private}}, \hyperpage{143}
+    \subitem {\tt  {proof}}, \hyperpage{46}, \hyperpage{49}
+    \subitem {\tt  {type}}, \hyperpage{35}, \hyperpage{143}
+  \item {\tt  {for}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {example}}, \hyperpage{42}
+  \item {\tt  {forall}}, \hyperpage{85}
+  \item form, \hyperpage{6}
+  \item formal mathematical property, \hyperpage{15}
+  \item {\tt  {Format}} (element), \hyperpage{26}
+  \item {\tt  {format}}, \hyperpage{102}
+  \item {\tt  {format}} attribute in
+    \subitem {\tt  {data}}, \hyperpage{70}, \hyperpage{141}, 
+		\hyperpage{143}
+    \subitem {\tt  {use, xslt, style}}, \hyperpage{76}, \hyperpage{84}
+  \item {\tt  {formula}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item {\tt  {fr}}, \hyperpage{32}
+  \item free, \hyperpage{50}
+  \item {\tt  {free}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {adt}}, \hyperpage{51}
+  \item {\tt  {from}} attribute in
+    \subitem {\tt  {imports}}, \hyperpage{54}
+    \subitem {\tt  {omtext}}, \hyperpage{142}
+    \subitem {\tt  {theory-inclusion}}, \hyperpage{58}
+  \item {\tt  {frozen}} value for attribue 
+    \subitem {\tt  {action}} on element
+      \subsubitem {\tt  {Date}}, \hyperpage{26}
+  \item function, \hyperpage{6}
+    \subitem recursive, \hyperpage{49}
+    \subitem total/partial, \hyperpage{51}
+  \item {\tt  {function}} attribute in
+    \subitem {\tt  {omlet}}, \hyperpage{72}
+
+  \indexspace
+
+  \item generated, \hyperpage{50}
+  \item {\tt  {generated}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {adt}}, \hyperpage{51}
+  \item {\tt  {generated-by}} attribute in
+    \subitem {\tt  {alternative}}, \hyperpage{140}
+    \subitem {\tt  {assertion}}, \hyperpage{141}
+    \subitem {\tt  {axiom}}, \hyperpage{36}, \hyperpage{52}, 
+		\hyperpage{141}
+    \subitem {\tt  {definition}}, \hyperpage{141}
+    \subitem {\tt  {symbol}}, \hyperpage{143}
+  \item global, \hyperpage{88}
+  \item {\tt  {global}} value for attribue 
+    \subitem {\tt  {scope}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {imports}}, \hyperpage{54}
+  \item {\tt  {globals}} attribute in
+    \subitem {\tt  {path-just}}, \hyperpage{59}
+  \item grammar
+    \subitem context-free, \hyperpage{9}
+  \item graph, \hyperpage{58}
+    \subitem directed, acyclic, \hyperpage{34}, \hyperpage{43}
+  \item {\tt  {group}}, \hyperpage{35}, \hyperpage{55, 56}, 
+		\hyperpage{58}
+
+  \indexspace
+
+  \item {\tt  {height}} attribute in
+    \subitem {\tt  {omlet}}, \hyperpage{72}, \hyperpage{141--143}
+  \item {\tt  {hiding}} attribute in
+    \subitem {\tt  {morphism}}, \hyperpage{57}
+  \item {\tt  {hint}} (element), \hyperpage{73}
+  \item home theory, \hyperpage{53}
+  \item {\tt  {hpothesis}} (element), \hyperpage{2}
+  \item {\tt  {href}} attribute in
+    \subitem {\tt  {data}}, \hyperpage{70}, \hyperpage{141}
+  \item \html, \hyperpage{8}
+  \item {\tt  {html}}, \hyperpage{73}, \hyperpage{102}
+  \item {\tt  {html}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item {\tt  {hyperref.sty}}, \hyperpage{84}
+  \item Hypertext Markup Language, \hyperpage{8}
+  \item {\tt  {hypothesis}} (element), \hyperpage{47}, \hyperpage{140}, 
+		\hyperpage{142}
+
+  \indexspace
+
+  \item {\tt  {ID}}, \hyperpage{92}
+  \item {\tt  {id}}, \hyperpage{34}
+  \item {\tt  {id}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{49}, \hyperpage{75}, \hyperpage{86}, 
+		\hyperpage{91--93}, \hyperpage{103}, \hyperpage{138}, 
+		\hyperpage{151}
+    \subitem {\tt  {Creator}}, \hyperpage{25}
+    \subitem {\tt  {assertion}}, \hyperpage{42}
+    \subitem {\tt  {axiom}}, \hyperpage{36}
+    \subitem {\tt  {dc:*}}, \hyperpage{141}
+    \subitem {\tt  {decomposition}}, \hyperpage{141}
+    \subitem {\tt  {derive}}, \hyperpage{49}
+    \subitem {\tt  {metacomment}}, \hyperpage{47}
+    \subitem {\tt  {om:*}}, \hyperpage{33}, \hyperpage{136}
+    \subitem {\tt  {omdoc}}, \hyperpage{23}
+    \subitem {\tt  {omgroup}}, \hyperpage{68}
+    \subitem {\tt  {omtext}}, \hyperpage{66}
+    \subitem {\tt  {presentation}}, \hyperpage{142}
+    \subitem {\tt  {private, code}}, \hyperpage{68}, \hyperpage{70}
+    \subitem {\tt  {proof}}, \hyperpage{46}
+    \subitem {\tt  {sortdef}}, \hyperpage{143}
+    \subitem {\tt  {style}}, \hyperpage{144}
+    \subitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}, 
+		\hyperpage{53}
+    \subitem {\tt  {theory}}, \hyperpage{53, 54}, \hyperpage{93}
+    \subitem {\tt  {type}}, \hyperpage{143}
+    \subitem {\tt  {with}}, \hyperpage{32}, \hyperpage{144}
+  \item identification, \hyperpage{88}
+  \item identification mapping, \hyperpage{92}
+  \item {\tt  {Identifier}} (element), \hyperpage{27}
+  \item identifier
+    \subitem content, \hyperpage{14}
+    \subitem mathematical, \hyperpage{13}
+    \subitem public, \hyperpage{156}
+  \item {\tt  {ignore}} (element), \hyperpage{34}
+  \item {\tt  {image/gif}}, \hyperpage{70}
+  \item {\tt  {image/jpeg}}, \hyperpage{70}
+  \item {\tt  {implicit}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{38}
+  \item {\tt  {imported}} value for attribue 
+    \subitem {\tt  {action}} on element
+      \subsubitem {\tt  {Date}}, \hyperpage{26}
+  \item {\tt  {imports}} (element), \hyperpage{53, 54}, \hyperpage{56}, 
+		\hyperpage{58}, \hyperpage{60}, \hyperpage{63}, 
+		\hyperpage{137}
+  \item {\tt  {include}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {ref}}, \hyperpage{65}
+  \item {\tt  {inclusion}} (element), \hyperpage{63}
+  \item inconsistency, \hyperpage{19}
+  \item individualized book, \hyperpage{97}
+  \item {\tt  {induced-by}} attribute in
+    \subitem {\tt  {obligation}}, \hyperpage{59}
+  \item {\tt  {inductive}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{37}
+  \item {\tt  {infix}} value for attribue 
+    \subitem {\tt  {fixity}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item information
+    \subitem style, \hyperpage{75}
+  \item inherited, \hyperpage{56}
+  \item {\tt  {inherits}} attribute in
+    \subitem {\tt  {metadata}}, \hyperpage{142}
+  \item injective, \hyperpage{92}
+  \item ink-on-paper, \hyperpage{5, 6}
+  \item {\tt  {input}} (element), \hyperpage{70}
+  \item {\tt  {insert}}, \hyperpage{50}
+  \item {\tt  {insort}} (element), \hyperpage{51}
+  \item instance
+    \subitem {\xml} schema, \hyperpage{11}
+    \subitem theory, \hyperpage{60}
+  \item integer, \hyperpage{14}
+  \item integrity condition, \hyperpage{41}
+  \item interlingua, \hyperpage{98}
+  \item internal subset, \hyperpage{10}
+  \item internationalization, \hyperpage{101}
+  \item {\msie}, \hyperpage{13}, \hyperpage{98}
+  \item Internet Explorer, \hyperpage{12, 13}, \hyperpage{98}, 
+		\hyperpage{127}
+  \item interpretation
+    \subitem theory, \hyperpage{58}
+  \item {\tt  {introduction}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item {\tt  {inv}}, \hyperpage{55}, \hyperpage{58}
+  \item inverse
+    \subitem partial, \hyperpage{92}
+  \item ISBN, \hyperpage{27}
+  \item {\tt  {isbn}} value for attribue 
+    \subitem {\tt  {scheme}} on element
+      \subsubitem {\tt  {Identifier}}, \hyperpage{27}
+  \item ISO 639, \hyperpage{27}, \hyperpage{32}, \hyperpage{101}
+  \item ISO 8601, \hyperpage{26}, \hyperpage{30}
+  \item ISO8601, \hyperpage{146, 147}
+  \item ISSN, \hyperpage{27}
+  \item {\tt  {item\discretionary {-}{}{}ize}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{65}
+
+  \indexspace
+
+  \item Java, \hyperpage{70, 71}
+  \item {\tt  {js}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omlet}}, \hyperpage{72}
+  \item {\tt  {just-by}} attribute in
+    \subitem {\tt  {definition}}, \hyperpage{37, 38}
+
+  \indexspace
+
+  \item K-12, \hyperpage{12}
+  \item {\tt  {kind}} attribute in
+    \subitem {\tt  {ref}}, \hyperpage{143}
+    \subitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}, 
+		\hyperpage{136}
+  \item knowledge
+    \subitem mathematical, \hyperpage{1}, \hyperpage{17}
+  \item knowledge base, \hyperpage{97}
+  \item Knuth, \hyperpage{7}
+
+  \indexspace
+
+  \item {\tt  {labeled-dataset}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{66}
+  \item {\tt  {Language}} (element), \hyperpage{27}
+  \item language
+    \subitem natural, \hyperpage{31}
+  \item languages
+    \subitem multiple, \hyperpage{32}, \hyperpage{34}, \hyperpage{101}
+  \item {\tt  {larg-group}} attribute in
+    \subitem {\tt  {use}}, \hyperpage{84}
+  \item \protect{\LaTeX}, \hyperpage{7}
+  \item {\tt  {lbrack}} attribute in
+    \subitem {\tt  {presentation, use}}, \hyperpage{83}, \hyperpage{85}
+    \subitem {\tt  {presentation}}, \hyperpage{84}
+    \subitem {\tt  {use}}, \hyperpage{86}
+  \item {\tt  {lbrack}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+  \item legacy documents, \hyperpage{78}
+  \item lemma, \hyperpage{38}
+  \item {\tt  {lemma}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item letter, \hyperpage{2}
+  \item line-feed, \hyperpage{11}
+  \item {\tt  {link}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omlet}}, \hyperpage{71}
+  \item {\tt  {links}} attribute in
+    \subitem {\tt  {decomposition}}, \hyperpage{60}
+  \item {\tt  {LISP}}, \hyperpage{82}
+  \item {\tt  {lisp}} value for attribue 
+    \subitem {\tt  {bracket-style}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item {\tt  {List}}, \hyperpage{63}
+  \item list
+    \subitem ordered, \hyperpage{63}
+  \item {\tt  {list}}, \hyperpage{63}
+  \item {\tt  {loc}} (element), \hyperpage{88}, \hyperpage{154}
+  \item local, \hyperpage{56}
+  \item {\tt  {local}} attribute in
+    \subitem {\tt  {path-just}}, \hyperpage{59}
+  \item {\tt  {local}} value for attribue 
+    \subitem {\tt  {scope}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {imports}}, \hyperpage{63}
+  \item local assumption, \hyperpage{47}
+  \item local chain, \hyperpage{59}
+  \item local subset, \hyperpage{32}, \hyperpage{94}
+  \item {\tt{locale}} ({\xslt}   parameter), \hyperpage{101}
+  \item localization, \hyperpage{101}
+  \item location, \hyperpage{88}
+    \subitem reference by, \hyperpage{88}
+  \item location declaration, \hyperpage{88}
+  \item {\tt  {logic}} attribute in
+    \subitem {\tt  {FMP}}, \hyperpage{31}, \hyperpage{136}
+  \item logical system, \hyperpage{31}
+  \item logical variable, \hyperpage{14}
+  \item loose, \hyperpage{50}
+  \item {\tt  {loose}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {adt}}, \hyperpage{51}
+
+  \indexspace
+
+  \item machine-readable, \hyperpage{14}
+  \item mapping
+    \subitem identification, \hyperpage{92}
+  \item markup, \hyperpage{6}
+    \subitem content, \hyperpage{7}, \hyperpage{32}
+    \subitem presentation, \hyperpage{7}
+  \item {\tt  {math}} (element), \hyperpage{10}
+  \item {\tt  {math}} value for attribue 
+    \subitem {\tt  {bracket-style}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item \mathematica, \hyperpage{12}
+  \item {\tt  {mathematica}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item mathematical
+    \subitem document, \hyperpage{17}
+    \subitem knowledge, \hyperpage{17}
+    \subitem statement, \hyperpage{17}, \hyperpage{22}, \hyperpage{31}
+    \subitem vernacular, \hyperpage{31}
+  \item mathematical document, \hyperpage{2}
+  \item mathematical identifier, \hyperpage{13}
+  \item mathematical knowledge, \hyperpage{1}
+  \item mathematical knowledge base, \hyperpage{97}
+  \item mathematical operator, \hyperpage{13}
+  \item mathematical services, \hyperpage{1}
+  \item mathematical software bus, \hyperpage{1}
+  \item mathematical statement, \hyperpage{18}
+  \item mathematical text, \hyperpage{25}
+  \item mathematical theory, \hyperpage{2}, \hyperpage{18}, 
+		\hyperpage{52}
+  \item mathematical vernacular'', \hyperpage{45}
+  \item {\mathml}, \hyperpage{12}, \hyperpage{85}
+  \item mathweb, \hyperpage{21}
+  \item {\mathweb}, \hyperpage{1}
+  \item {\tt  {mc}} (element), \hyperpage{73}
+  \item {\tt  {measure}} (element), \hyperpage{37, 38}, 
+		\hyperpage{141, 142}
+  \item measure function, \hyperpage{37}
+  \item meta-mathematical object, \hyperpage{17}
+  \item {\tt  {metacomment}} (element), \hyperpage{47}
+  \item metadata, \hyperpage{8}, \hyperpage{22, 23}
+  \item {\tt  {metadata}} (element), \hyperpage{23--28}, 
+		\hyperpage{33, 34}, \hyperpage{66}, \hyperpage{68}, 
+		\hyperpage{70}, \hyperpage{141--143}
+  \item method, \hyperpage{45}
+  \item {\tt  {method}} (element), \hyperpage{49}, \hyperpage{142}
+  \item {\tt  {mi}} (element), \hyperpage{13, 14}
+  \item Microsoft, \hyperpage{6}, \hyperpage{12}
+    \subitem Internet Explorer, \hyperpage{13}, \hyperpage{98}, 
+		\hyperpage{127}
+  \item MIME, \hyperpage{70}
+  \item MIME type, \hyperpage{26}
+  \item {\tt  {mo}} (element), \hyperpage{13}
+  \item monography, \hyperpage{18}
+  \item monoid, \hyperpage{35}
+  \item {\tt  {monoid}}, \hyperpage{55, 56}
+  \item morphism, \hyperpage{56}
+    \subitem base, \hyperpage{56}
+    \subitem theory, \hyperpage{58}
+  \item {\tt  {morphism}} (element), \hyperpage{56}, \hyperpage{58}
+  \item {\tt  {motivation}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item {\mozilla}, \hyperpage{13}, \hyperpage{98}
+  \item {\tt  {mrow}} (element), \hyperpage{13}
+  \item MS
+    \subitem  Internet Explorer, \hyperpage{13}, \hyperpage{98}, 
+		\hyperpage{127}
+  \item multi-logic, \hyperpage{36}
+  \item multi-logic {\tt  {FMP}} group, \hyperpage{31}, \hyperpage{136}
+  \item multilingual, \hyperpage{36}
+  \item multilingual   support, \hyperpage{32}, \hyperpage{34}, 
+		\hyperpage{101}
+  \item multilingual group, \hyperpage{35}
+  \item Multiple-choice exercise, \hyperpage{73}
+
+  \indexspace
+
+  \item name
+    \subitem qualified, \hyperpage{11}, \hyperpage{75}, \hyperpage{77}
+  \item {\tt  {name}} attribute in
+    \subitem {\tt  {OMS}}, \hyperpage{14}, \hyperpage{88}, 
+		\hyperpage{94}
+    \subitem {\tt  {OMV}}, \hyperpage{14}
+    \subitem {\tt  {attribute}}, \hyperpage{78}
+    \subitem {\tt  {element}}, \hyperpage{78}
+  \item named anchors, \hyperpage{90}
+  \item namespace, \hyperpage{10}, \hyperpage{75}, \hyperpage{77}, 
+		\hyperpage{94}
+  \item namespace abbreviation, \hyperpage{11}
+  \item namespace declaration, \hyperpage{94}
+  \item namespace URI for {{{\sc  OMDoc}}}, \hyperpage{22, 23}
+  \item {\tt  {narrative}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{137}, \hyperpage{142}
+  \item {\tt  {Nat}}, \hyperpage{50}
+  \item {\tt  {nat}}, \hyperpage{63}
+  \item {\tt  {nat-adt}}, \hyperpage{51}
+  \item {\tt  {nat-list}}, \hyperpage{63}
+  \item {\tt  {nats}}, \hyperpage{51}
+  \item natural language, \hyperpage{31}
+  \item Navigator, \hyperpage{12}
+    \subitem Netscape, \hyperpage{13}, \hyperpage{98}, \hyperpage{129}
+  \item Netscape, \hyperpage{12}
+  \item {\netscape}, \hyperpage{13}, \hyperpage{98}
+  \item {Netscape Navigator}, \hyperpage{13}, \hyperpage{98}, 
+		\hyperpage{129}
+  \item {\tt  {neut}}, \hyperpage{55}
+  \item {\tt  {new}} value for attribue 
+    \subitem {\tt  {action}} on element
+      \subsubitem {\tt  {Date}}, \hyperpage{26}
+  \item {\tt  {nl}}, \hyperpage{32}
+  \item {\tt  {no}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+    \subitem {\tt  {total}} on element
+      \subsubitem {\tt  {selector}}, \hyperpage{51}, \hyperpage{143}
+  \item non-constitutive, \hyperpage{53}
+  \item normative precedence, \hyperpage{9}
+  \item {\tt  {normed}} value for attribue 
+    \subitem {\tt  {action}} on element
+      \subsubitem {\tt  {Date}}, \hyperpage{26}
+
+  \indexspace
+
+  \item {\tt  {obj}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{136}, \hyperpage{139}
+  \item object
+    \subitem {\openmath}, \hyperpage{14}
+  \item {\tt  {object}} value for attribue 
+    \subitem {\tt  {kind}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}
+  \item objects{meta-mathematical}, \hyperpage{17}
+  \item obligation, \hyperpage{60}
+  \item {\tt  {obligation}} (element), \hyperpage{59}, 
+		\hyperpage{141, 142}
+  \item {\tt  {obligation}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item {\tt  {OMA}} (element), \hyperpage{14}, \hyperpage{33}, 
+		\hyperpage{82}
+  \item {\tt  {OMA}} value for attribue 
+    \subitem {\tt  {parent}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item {\tt  {OMATP}} (element), \hyperpage{15}
+  \item {\tt  {OMATTR}} (element), \hyperpage{15}, \hyperpage{33}
+  \item {\tt  {OMATTR}} value for attribue 
+    \subitem {\tt  {parent}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item {\tt  {OMB}} (element), \hyperpage{14}
+  \item {\tt  {OMBIND}} (element), \hyperpage{14}, \hyperpage{33}, 
+		\hyperpage{79}, \hyperpage{82}
+  \item {\tt  {OMBIND}} value for attribue 
+    \subitem {\tt  {parent}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item {\tt  {OMBVAR}} (element), \hyperpage{14}, \hyperpage{79}
+  \item {\omdoc}   namespace URI, \hyperpage{23}
+  \item {\omdoc} namespace URI, \hyperpage{22}
+  \item {\tt  {omdoc}} (element), \hyperpage{9--11}, \hyperpage{23--27}, 
+		\hyperpage{34}, \hyperpage{65}, \hyperpage{88, 89}
+  \item {\tt  {omdoc}} attribute in
+    \subitem {\tt  {loc}}, \hyperpage{88, 89}
+  \item {\tt  {omdoc1.0adapt1.1.xsl}}, \hyperpage{98}
+  \item {\tt  {omdoc2html.xsl}}, \hyperpage{101, 102}
+  \item {\tt  {omdoc2pvs.xsl}}, \hyperpage{99}
+  \item {\tt  {omdoc2share.xsl}}, \hyperpage{101}
+  \item {\tt  {omdoc2sys.xsl}}, \hyperpage{99}
+  \item {\tt  {omdoc2tex.xsl}}, \hyperpage{101}
+  \item {\tt  {OME}} (element), \hyperpage{14}
+  \item {\tt  {OMF}} (element), \hyperpage{14}
+  \item {\tt  {omgroup}} (element), \hyperpage{34}, \hyperpage{64--68}, 
+		\hyperpage{142}
+  \item {\tt  {OMI}} (element), \hyperpage{14}
+  \item {\tt  {omlet}} (element), \hyperpage{32}, \hyperpage{71--73}, 
+		\hyperpage{78}, \hyperpage{141--143}
+  \item {\tt  {OMOBJ}} (element), \hyperpage{14}, \hyperpage{25}, 
+		\hyperpage{32, 33}, \hyperpage{49}, \hyperpage{78}, 
+		\hyperpage{103}, \hyperpage{136}, \hyperpage{142}
+  \item {\tt  {OMS}} (element), \hyperpage{14, 15}, \hyperpage{53}, 
+		\hyperpage{87, 88}, \hyperpage{138}
+  \item {\tt  {OMSTR}} (element), \hyperpage{14}, \hyperpage{142}
+  \item {\tt  {omstyle}} (element), \hyperpage{75--78}, \hyperpage{82}, 
+		\hyperpage{142--144}
+  \item {\tt  {omtext}} (element), \hyperpage{34}, \hyperpage{64}, 
+		\hyperpage{142}
+  \item {\tt  {OMV}} (element), \hyperpage{14}
+  \item {\tt  {op}}, \hyperpage{54, 55}
+  \item Open eBook, \hyperpage{28}
+  \item {\openmath} elements
+    \subitem    extra attributes {\tt{id}} and {\tt{xref}}, 
+		\hyperpage{33}
+  \item operator
+    \subitem mathematical, \hyperpage{13}
+  \item ordered lists, \hyperpage{63}
+  \item ordering, \hyperpage{37}
+  \item {\tt  {ordering}} (element), \hyperpage{37, 38}, 
+		\hyperpage{141, 142}
+  \item {\tt  {output}} (element), \hyperpage{70, 71}
+  \item overhead slide, \hyperpage{2}
+
+  \indexspace
+
+  \item {\tt  {param}}, \hyperpage{63}
+  \item parameter, \hyperpage{49}, \hyperpage{60}, \hyperpage{101}
+    \subitem {\xslt}, \hyperpage{101}
+  \item {\tt  {parameter}} (deprecated in {1.1}), \hyperpage{142}
+  \item parameter entity, \hyperpage{10}, \hyperpage{25}
+  \item parametric   theory, \hyperpage{60}
+  \item {\tt  {paramter}} (element), \hyperpage{142}
+  \item {\tt  {parent}} attribute in
+    \subitem {\tt  {presentation}}, \hyperpage{82}, \hyperpage{86}
+  \item parser
+    \subitem {\xml}, \hyperpage{12}, \hyperpage{34}, \hyperpage{98}
+  \item partial function, \hyperpage{51}
+  \item partial inverse, \hyperpage{92}
+  \item {\tt  {path-just}} (element), \hyperpage{59}
+  \item {\tt  {pattern}} (element), \hyperpage{37}, \hyperpage{56}, 
+		\hyperpage{142}
+  \item persistent comments, \hyperpage{34}
+  \item pickling, \hyperpage{105}
+  \item pixel-on-screen, \hyperpage{6}
+  \item plug-in, \hyperpage{71}
+  \item {\tt  {plus}} (element), \hyperpage{14}
+  \item {\tt  {pmml}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item {\tt  {pos}}, \hyperpage{51}
+  \item {\tt  {pos-nats}}, \hyperpage{51}
+  \item {\tt  {postfix}} value for attribue 
+    \subitem {\tt  {fixity}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item \postscript, \hyperpage{7}
+  \item {\tt  {postulate}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item {\tt  {pre\discretionary {-}{}{}sen\discretionary {-}{}{}ta\discretionary {-}{}{}tion}} (element), 
+		\hyperpage{82}
+  \item precedence
+    \subitem normative, \hyperpage{9}
+  \item {\tt  {precedence}} attribute in
+    \subitem {\tt  {presentation}}, \hyperpage{83}, \hyperpage{139}
+  \item {\tt  {pred}}, \hyperpage{50, 51}
+  \item predicate, \hyperpage{51}
+  \item {\tt  {prefix}} value for attribue 
+    \subitem {\tt  {fixity}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{82}
+  \item {\tt  {premise}} (element), \hyperpage{49}, \hyperpage{142}
+  \item presentation, \hyperpage{100}
+  \item {\tt  {presentation}}, \hyperpage{15}
+  \item {\tt  {presentation}} (element), \hyperpage{75}, 
+		\hyperpage{80--83}, \hyperpage{85, 86}, 
+		\hyperpage{102}, \hyperpage{139}, \hyperpage{142--144}
+  \item presentation markup, \hyperpage{7}
+  \item presentation {{{\sc  MathMl}}}, \hyperpage{13}
+  \item {\tt  {preslink}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omlet}}, \hyperpage{71}
+  \item principle of conservative extension, \hyperpage{19}
+  \item priority-union, \hyperpage{27}
+  \item {\tt  {private}} (element), \hyperpage{49}, \hyperpage{68--70}, 
+		\hyperpage{140--143}
+  \item problem, \hyperpage{38}
+  \item program, \hyperpage{68}
+  \item Prolog, \hyperpage{83}
+  \item proof, \hyperpage{1}, \hyperpage{18}, \hyperpage{22}, 
+		\hyperpage{43}
+  \item {\tt  {proof}} (element), \hyperpage{46}, \hyperpage{49}, 
+		\hyperpage{59}, \hyperpage{73}, \hyperpage{137}, 
+		\hyperpage{139}, \hyperpage{143}
+  \item proof method, \hyperpage{45}
+  \item proof obligation, \hyperpage{60}
+  \item proof presentation, \hyperpage{45}, \hyperpage{97}
+  \item {\tt  {proofobject}} (element), \hyperpage{44}, \hyperpage{73}, 
+		\hyperpage{137}, \hyperpage{143}
+  \item {\tt  {proofobjects}} (element), \hyperpage{139}
+  \item {\tt  {proofs}} attribute in
+    \subitem {\tt  {assertion}}, \hyperpage{141}
+  \item {\tt  {proposition}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item {\tt  {pto}} attribute in
+    \subitem {\tt  {private, code}}, \hyperpage{69, 70}
+  \item {\tt  {pto-version}} attribute in
+    \subitem {\tt  {private, code}}, \hyperpage{70}
+  \item public identifer, \hyperpage{156}
+  \item public identifier, \hyperpage{139}
+  \item publication, \hyperpage{2}
+  \item {\tt  {Publisher}} (element), \hyperpage{26}, \hyperpage{141}
+
+  \indexspace
+
+  \item qualified name, \hyperpage{11}, \hyperpage{75}, \hyperpage{77}
+
+  \indexspace
+
+  \item {\tt  {rank}} attribute in
+    \subitem {\tt  {premise}}, \hyperpage{142}
+  \item {\tt  {rarg-group}} attribute in
+    \subitem {\tt  {use}}, \hyperpage{84}
+  \item {\tt  {rbrack}} attribute in
+    \subitem {\tt  {presentation, use}}, \hyperpage{85}
+    \subitem {\tt  {presentation}}, \hyperpage{83, 84}
+    \subitem {\tt  {use}}, \hyperpage{86}
+  \item {\tt  {rbrack}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+  \item RDF, \hyperpage{23}
+  \item {\tt  {recognizer}} (element), \hyperpage{51}, \hyperpage{136}, 
+		\hyperpage{139}, \hyperpage{141}, \hyperpage{143}
+  \item {\tt  {recurse}} (element), \hyperpage{77, 78}, \hyperpage{143}
+  \item {\tt  {recursive}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{37}
+  \item recursive equation, \hyperpage{37}
+  \item recursive function, \hyperpage{49}
+  \item {\tt  {ref}} (element), \hyperpage{32}, \hyperpage{65}, 
+		\hyperpage{91, 92}, \hyperpage{142, 143}
+  \item reference, \hyperpage{88}
+    \subitem entity, \hyperpage{13}
+  \item referencing, \hyperpage{88}
+  \item {\tt  {Relation}} (element), \hyperpage{27}
+  \item renumbering, \hyperpage{7}
+  \item {\tt  {replaces}} attribute in
+    \subitem {\tt  {private}}, \hyperpage{70}, \hyperpage{143}
+  \item representation theorem, \hyperpage{18}
+  \item {\tt  {requation}} (element), \hyperpage{37}, \hyperpage{56}
+  \item {\tt  {requires}} attribute in
+    \subitem {\tt  {private, code}}, \hyperpage{70}
+    \subitem {\tt  {use, xslt, style}}, \hyperpage{76}, \hyperpage{84}
+  \item resource description format, \hyperpage{23}
+  \item reuse, \hyperpage{19}
+  \item {\tt  {Rights}} (element), \hyperpage{27}
+  \item rigorous, \hyperpage{31}
+  \item {\tt  {role}} attribute in
+    \subitem {\tt  {Contributor}}, \hyperpage{25}
+    \subitem {\tt  {Creator, Contributor}}, \hyperpage{28}
+    \subitem {\tt  {dc:*}}, \hyperpage{25}, \hyperpage{28}, 
+		\hyperpage{141}
+
+  \indexspace
+
+  \item {\tt  {saxon}}, \hyperpage{98}
+  \item schema
+    \subitem {\xml}, \hyperpage{9}
+  \item schema instance, \hyperpage{11}
+  \item {\tt  {scheme}} attribute in
+    \subitem {\tt  {Identifier}}, \hyperpage{27}
+  \item Scientific antecedent, \hyperpage{29}
+  \item {\tt  {scope}} attribute in
+    \subitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}
+  \item section, \hyperpage{18}
+  \item {\tt  {select}} attribute in
+    \subitem {\tt  {recurse}}, \hyperpage{78}
+    \subitem {\tt  {value-of}}, \hyperpage{78}
+  \item selector, \hyperpage{50}
+  \item {\tt  {selector}} (element), \hyperpage{51}, \hyperpage{143}
+  \item {\tt  {semantics}} (element), \hyperpage{13}, \hyperpage{15}
+  \item {\tt  {semigroup}}, \hyperpage{54}
+  \item {\tt  {separator}} attribute in
+    \subitem {\tt  {presentation, use}}, \hyperpage{84}
+    \subitem {\tt  {presentation}}, \hyperpage{84}
+  \item {\tt  {separator}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+  \item {\tt  {sequence}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{65}, \hyperpage{142}
+  \item sequent, \hyperpage{34}, \hyperpage{49}
+  \item sequents, \hyperpage{32}
+  \item service
+    \subitem mathematical, \hyperpage{1}
+  \item {\tt  {set}}, \hyperpage{54, 55}
+  \item {\tt  {signature}} (deprecated in {1.1}), \hyperpage{143}
+  \item {\tt  {signature}} (element), \hyperpage{140}
+  \item {\tt  {simple}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {definition}}, \hyperpage{36, 37}, 
+		\hyperpage{136}
+  \item Simple Generalized Markup Language, \hyperpage{8}
+  \item {\tt  {size}} attribute in
+    \subitem {\tt  {data}}, \hyperpage{70}, \hyperpage{141}
+  \item software bus, \hyperpage{1}
+  \item {\tt  {solution}} (element), \hyperpage{73}, \hyperpage{137}, 
+		\hyperpage{139}
+  \item sort, \hyperpage{50, 51}
+  \item {\tt  {sort}} attribute in
+    \subitem {\tt  {argument}}, \hyperpage{140}
+  \item {\tt  {sort}} value for attribue 
+    \subitem {\tt  {kind}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}, 
+		\hyperpage{136}
+  \item {\tt  {sortdef}} (element), \hyperpage{51}, \hyperpage{136}, 
+		\hyperpage{139, 140}, \hyperpage{143}
+  \item {\tt  {Source}} (element), \hyperpage{27}
+  \item source theory, \hyperpage{54}
+  \item specification, \hyperpage{19}
+  \item statement
+    \subitem mathematical, \hyperpage{17, 18}, \hyperpage{22}, 
+		\hyperpage{31}
+  \item {\tt  {stlye}} attribute in
+    \subitem {\tt  {presentation}}, \hyperpage{76}
+  \item string, \hyperpage{14}
+  \item structure
+    \subitem discourse, \hyperpage{97}
+  \item style, \hyperpage{7}, \hyperpage{12}
+    \subitem file, \hyperpage{7}
+  \item {\tt  {style}} (element), \hyperpage{76, 77}, 
+		\hyperpage{80, 81}, \hyperpage{84}, \hyperpage{137}, 
+		\hyperpage{139}, \hyperpage{143, 144}
+  \item {\tt  {style}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{75}, \hyperpage{138}
+    \subitem {\tt  {omstyle, presentation}}, \hyperpage{75}, 
+		\hyperpage{82}
+    \subitem {\tt  {with}}, \hyperpage{32}
+  \item style file, \hyperpage{13}
+  \item style information, \hyperpage{75}
+  \item style sheet, \hyperpage{12}, \hyperpage{74}, \hyperpage{97}
+  \item {\tt  {Subject}} (element), \hyperpage{25}
+  \item {\tt  {suc}}, \hyperpage{50}
+  \item {\tt  {succ}}, \hyperpage{51}
+  \item support
+    \subitem multilingual, \hyperpage{32}, \hyperpage{34}, 
+		\hyperpage{101}
+  \item symbol, \hyperpage{14}, \hyperpage{31}, \hyperpage{51}
+    \subitem declaration, \hyperpage{18}
+    \subitem export, \hyperpage{35}
+  \item {\tt  {symbol}} (element), \hyperpage{35, 36}, \hyperpage{49}, 
+		\hyperpage{51}, \hyperpage{53, 54}, \hyperpage{79}, 
+		\hyperpage{136}, \hyperpage{143}
+  \item system
+    \subitem logical, \hyperpage{31}
+  \item {\tt  {system}} attribute in
+    \subitem {\tt  {type}}, \hyperpage{35}
+    \subitem {\tt  {use}}, \hyperpage{86}
+
+  \indexspace
+
+  \item table, \hyperpage{66}
+  \item target theory, \hyperpage{58}
+  \item {\tt  {TargetLanguage}}, \hyperpage{101}
+  \item templates, \hyperpage{12}, \hyperpage{74}
+  \item {\tt  {TeX}} value for attribue 
+    \subitem {\tt  {format}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{76}
+  \item \protect{\TeX}, \hyperpage{7}
+  \item {\TeX}, \hyperpage{12}
+  \item {\tt  {Text}}, \hyperpage{26}
+  \item text
+    \subitem mathematical, \hyperpage{25}
+  \item {\tt  {text}} (element), \hyperpage{77}, \hyperpage{143}
+  \item {\tt  {text/plain}}, \hyperpage{70}
+  \item textbook, \hyperpage{18}
+  \item theorem, \hyperpage{1}, \hyperpage{18, 19}, \hyperpage{22}, 
+		\hyperpage{31}, \hyperpage{38}
+    \subitem representattion, \hyperpage{18}
+  \item {\tt  {theorem}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {assertion}}, \hyperpage{40}
+  \item theory, \hyperpage{2}, \hyperpage{18}, \hyperpage{88}
+    \subitem home, \hyperpage{53}
+    \subitem interpretation, \hyperpage{58}
+    \subitem mathematical, \hyperpage{18}, \hyperpage{52}
+    \subitem morphism, \hyperpage{58}
+    \subitem parametric, \hyperpage{60}
+    \subitem reuse, \hyperpage{19}
+    \subitem source, \hyperpage{54}
+    \subitem target, \hyperpage{58}
+  \item {\tt  {theory}} (element), \hyperpage{34}, \hyperpage{52--54}, 
+		\hyperpage{82}, \hyperpage{91--93}, \hyperpage{137}, 
+		\hyperpage{139}, \hyperpage{142, 143}
+  \item {\tt  {theory}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{92, 93}
+    \subitem {\tt  {loc}}, \hyperpage{88, 89}
+    \subitem {\tt  {presentation}}, \hyperpage{82}, \hyperpage{142}
+    \subitem {\tt  {private, code}}, \hyperpage{68}
+    \subitem {\tt  {proof}}, \hyperpage{46}, \hyperpage{143}
+    \subitem {\tt  {statement}}, \hyperpage{54}
+  \item theory element
+    \subitem constitutive, \hyperpage{53}
+  \item theory inclusion, \hyperpage{56}, \hyperpage{58}
+  \item theory instance, \hyperpage{60}
+  \item {\tt  {theory-collection}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omgroup}}, \hyperpage{65}
+  \item theory-constitutive, \hyperpage{53}, \hyperpage{89}
+  \item theory-inclusion, \hyperpage{60}
+  \item {\tt  {theory-inclusion}} (element), \hyperpage{58--60}, 
+		\hyperpage{137}, \hyperpage{139}, \hyperpage{141}, 
+		\hyperpage{143}
+  \item {\tt  {theoryNSD}}, \hyperpage{94}
+  \item {\tt  {thesis}} value for attribue 
+    \subitem {\tt  {type}} on element
+      \subsubitem {\tt  {omtext}}, \hyperpage{34}
+  \item Thesis advisor, \hyperpage{29}
+  \item {\tt  {ths}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item {\tt  {times}} (element), \hyperpage{14}
+  \item {\tt  {Title}} (element), \hyperpage{24, 25}, \hyperpage{66}
+  \item {\tt  {to}} attribute in
+    \subitem {\tt  {theory-inclusion}}, \hyperpage{58}
+  \item top-level, \hyperpage{23}, \hyperpage{35}, \hyperpage{53}, 
+		\hyperpage{58}, \hyperpage{60}, \hyperpage{65}
+  \item {\tt  {total}} attribute in
+    \subitem {\tt  {selector}}, \hyperpage{51}, \hyperpage{143}
+  \item total function, \hyperpage{51}
+  \item Transcriber, \hyperpage{29}
+  \item Translator, \hyperpage{29}
+  \item {\tt  {Translator}} (deprecated in {1.1}), \hyperpage{141}
+  \item {\tt  {trc}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item tree, \hyperpage{43}
+    \subitem document, \hyperpage{9}
+  \item {\tt  {trl}} value for attribue 
+    \subitem {\tt  {role}} on element
+      \subsubitem {\tt  {Contributor}}, \hyperpage{25}
+      \subsubitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+  \item {\tt  {true}} value for attribue 
+    \subitem {\tt  {verdict}} on element
+      \subsubitem {\tt  {answer}}, \hyperpage{74}
+  \item Turing, \hyperpage{13}
+  \item {\tt  {Type}} (element), \hyperpage{26}
+  \item type
+    \subitem MIME, \hyperpage{26}
+  \item {\tt  {type}} (element), \hyperpage{35}, \hyperpage{53}, 
+		\hyperpage{143}
+  \item {\tt  {type}} attribute in
+    \subitem {\tt  {adt}}, \hyperpage{51}
+    \subitem {\tt  {assertion}}, \hyperpage{40}, \hyperpage{141}
+    \subitem {\tt  {definition}}, \hyperpage{36}
+    \subitem {\tt  {example}}, \hyperpage{42}
+    \subitem {\tt  {imports}}, \hyperpage{54}, \hyperpage{63}
+    \subitem {\tt  {kind}}, \hyperpage{143}
+    \subitem {\tt  {omdoc}}, \hyperpage{23}, \hyperpage{65}
+    \subitem {\tt  {omgroup}}, \hyperpage{65}, \hyperpage{67}, 
+		\hyperpage{142}
+    \subitem {\tt  {omlet}}, \hyperpage{72}, \hyperpage{142}
+    \subitem {\tt  {omtext}}, \hyperpage{34}, \hyperpage{142}
+    \subitem {\tt  {private, code}}, \hyperpage{70}
+    \subitem {\tt  {ref}}, \hyperpage{65}
+    \subitem {\tt  {selector}}, \hyperpage{143}
+  \item {\tt  {type}} value for attribue 
+    \subitem {\tt  {kind}} on element
+      \subsubitem {\tt  {symbol}}, \hyperpage{35}, \hyperpage{51}
+  \item type system, \hyperpage{35}
+
+  \indexspace
+
+  \item uniform   resource locator, \hyperpage{90}
+  \item uniform resource identifier, \hyperpage{10}, \hyperpage{23}
+  \item uniform resource locator, \hyperpage{11}
+  \item {\tt  {updated}} value for attribue 
+    \subitem {\tt  {action}} on element
+      \subsubitem {\tt  {Date}}, \hyperpage{26}
+  \item URI, \hyperpage{10}, \hyperpage{23}, \hyperpage{27}, 
+		\hyperpage{87}, \hyperpage{90}
+  \item {\tt  {URI}}, \hyperpage{155}
+  \item URL, \hyperpage{11}, \hyperpage{90}
+  \item {\tt  {use}} (element), \hyperpage{76}, \hyperpage{81}, 
+		\hyperpage{83--87}, \hyperpage{137}, \hyperpage{139}, 
+		\hyperpage{144}
+
+  \indexspace
+
+  \item validating {{{\sc  Xml}}} parser, \hyperpage{9}
+  \item validity, \hyperpage{9}
+  \item {\tt  {value}} (element), \hyperpage{37}, \hyperpage{56}
+  \item {\tt  {value-of}} (element), \hyperpage{78}, \hyperpage{144}
+  \item variable, \hyperpage{14}
+    \subitem bound, \hyperpage{14}
+    \subitem logical, \hyperpage{14}
+  \item {\tt  {verdict}} attribute in
+    \subitem {\tt  {answer}}, \hyperpage{74}
+  \item vernacular
+    \subitem mathematical, \hyperpage{31}, \hyperpage{45}
+  \item {\tt  {version}} attribute in
+    \subitem {\tt  {omdoc}}, \hyperpage{23}
+  \item {\tt  {via}} attribute in
+    \subitem {\tt  {inclusion}}, \hyperpage{63}
+
+  \indexspace
+
+  \item whitespace, \hyperpage{11}
+  \item {\tt  {who}} attribute in
+    \subitem {\tt  {Date}}, \hyperpage{26}, \hyperpage{141}
+  \item {\tt  {width}} attribute in
+    \subitem {\tt  {omlet}}, \hyperpage{72}, \hyperpage{141--143}
+  \item {\tt  {with}} (element), \hyperpage{32}, \hyperpage{76--78}, 
+		\hyperpage{144}
+  \item Wolfram Research, \hyperpage{12}
+  \item Word
+    \subitem Microsoft, \hyperpage{6}
+  \item WYSIWYG, \hyperpage{6}
+
+  \indexspace
+
+  \item {\tt  {xalan}}, \hyperpage{98}
+  \item {\xml}, \hyperpage{9}
+    \subitem comment, \hyperpage{12}, \hyperpage{34}
+    \subitem escaping, \hyperpage{12}
+    \subitem parser, \hyperpage{12}, \hyperpage{34}
+  \item {\xml}   schema, \hyperpage{9}
+  \item {\xml} application, \hyperpage{9}
+  \item {\xml} namespace, \hyperpage{10}
+  \item {\xml} parser, \hyperpage{98}
+  \item {\tt  {xml:base}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{91}
+  \item {\tt  {xml:lang}}, \hyperpage{32}
+  \item {\tt  {xml:lang}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{32}
+    \subitem {\tt  {CMP}}, \hyperpage{32}
+    \subitem {\tt  {Contributor}}, \hyperpage{25}
+    \subitem {\tt  {Creator, Contributor}}, \hyperpage{29}
+    \subitem {\tt  {Description}}, \hyperpage{25}
+    \subitem {\tt  {Subject}}, \hyperpage{25}
+    \subitem {\tt  {Title}}, \hyperpage{25}
+    \subitem {\tt  {commonname}}, \hyperpage{35}
+    \subitem {\tt  {use, xslt, style}}, \hyperpage{76}, \hyperpage{84}, 
+		\hyperpage{139}
+    \subitem {\tt  {use,xslt,style}}, \hyperpage{137}
+  \item {\tt  {xmlns}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{11}
+    \subitem {\tt  {omdoc}}, \hyperpage{11}, \hyperpage{23}
+  \item {\tt  {xref}} attribute in
+    \subitem {\tt  {*}}, \hyperpage{86}
+    \subitem {\tt  {method}}, \hyperpage{49}, \hyperpage{142}
+    \subitem {\tt  {om:*}}, \hyperpage{33}, \hyperpage{136}
+    \subitem {\tt  {omstyle, presentation}}, \hyperpage{75}
+    \subitem {\tt  {premise}}, \hyperpage{49}, \hyperpage{142}
+    \subitem {\tt  {presentation}}, \hyperpage{82}, \hyperpage{142}
+    \subitem {\tt  {ref}}, \hyperpage{65}
+  \item {\tt  {xsi}}, \hyperpage{11}
+  \item {\tt  {xsi:schemaLocation}} attribute in
+    \subitem {\tt  {omdoc}}, \hyperpage{11}
+  \item {\tt  {xsl}} value for attribue 
+    \subitem {\tt  {system}} on element
+      \subsubitem {\tt  {use}}, \hyperpage{86}
+  \item {\tt  {xslt}} (element), \hyperpage{76, 77}, \hyperpage{80, 81}, 
+		\hyperpage{84}, \hyperpage{137}, \hyperpage{139}, 
+		\hyperpage{144}
+
+  \indexspace
+
+  \item {\tt  {yes}} value for attribue 
+    \subitem {\tt  {crossref-symbol}} on element
+      \subsubitem {\tt  {presentation}}, \hyperpage{84}
+    \subitem {\tt  {total}} on element
+      \subsubitem {\tt  {selector}}, \hyperpage{51}, \hyperpage{143}
+
+  \indexspace
+
+  \item {\tt  {zero}}, \hyperpage{50, 51}
+
+\end{theindex}

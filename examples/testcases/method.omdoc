@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_method">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_method">
+
+<proof id="myproof" theory="foo" for="bar" style="la">
+<conclude id="concl" style="foo">
+<method xref="reference">
+  <OMOBJ><OMSTR>set[any] -> (any -> any -> any) -> any -> bool</OMSTR></OMOBJ> 
+  <OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</method>
+<proof id="subproof" theory="theo" for="something">
+  <conclude id="xyz"/>
+</proof>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bv_bitwise.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:42
+    </Date>
+  </metadata>
+  <theory id="bv_bitwise-parameters">
+    <symbol id="N" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57085" for="NIL" pto="pvs" pto-version="3.0" replaces="N">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57086" for="bv_bitwise" pto="pvs" pto-version="3.0" replaces="bv_bitwise-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bv_bitwise
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bv_bitwise_test">
+    <symbol id="N" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57087" for="NIL" pto="pvs" pto-version="3.0" replaces="N">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bv_bitwise-import-parameters" from="bv_bitwise-parameters"/>
+
+    <symbol id="OR" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="OR-def" for="OR" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_bitwise" name="OR"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bv_bitwise" name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="OR"/>
+                  <OMA>
+                    <OMV name="bv1"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bv2"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="AND" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="AND-def" for="AND" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_bitwise" name="AND"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bv_bitwise" name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMV name="bv1"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bv2"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="IFF" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="IFF-def" for="IFF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_bitwise" name="IFF"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bv_bitwise" name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IFF"/>
+                  <OMA>
+                    <OMV name="bv1"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bv2"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="NOT" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="NOT-def" for="NOT" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_bitwise" name="NOT"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bv_bitwise" name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMV name="bv"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="XOR" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+          <OMS cd="bv" name="bvec"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="XOR-def" for="XOR" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_bitwise" name="XOR"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv2"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMS cd="bv_bitwise" name="N"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="i"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="xor_def" name="XOR"/>
+                  <OMA>
+                    <OMV name="bv1"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="bv2"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+
+    <assertion id="bv_OR" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_bitwise" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_bitwise" name="OR"/>
+                  <OMV name="bv1"/>
+                  <OMV name="bv2"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv1"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv2"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_AND" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_bitwise" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_bitwise" name="AND"/>
+                  <OMV name="bv1"/>
+                  <OMV name="bv2"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv1"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv2"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_IFF" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_bitwise" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_bitwise" name="IFF"/>
+                  <OMV name="bv1"/>
+                  <OMV name="bv2"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="IFF"/>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv1"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv2"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_XOR" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_bitwise" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_bitwise" name="XOR"/>
+                  <OMV name="bv1"/>
+                  <OMV name="bv2"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="xor_def" name="XOR"/>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv1"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv2"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_NOT" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_bitwise" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_bitwise" name="NOT"/>
+                  <OMV name="bv"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="bv" name="^"/>
+                  <OMV name="bv"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+</omdoc>

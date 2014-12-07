@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+<omdoc id="record-calc-omdoc" catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Record Calculus Types</Title>
+   <Creator role="aut">Michael Kohlhase</Creator>
+   <Date>20020416</Date>
+   <Description>Untyped Record Calculus.</Description>
+  </metadata>
+  <catalogue/>
+
+ <theory id="record-calc">
+
+ <symbol id="record" kind="object" scope="global">
+   <CMP>The record expression constructor. It takes an even number of
+   arguments, the ones at even position are the record fields and the ones at
+   the odd positions their values.</CMP>
+ </symbol>
+ <presentation id="pr-record" for="record" parent="OMA">
+  <xslt format="pvs"><![CDATA[
+    <xsl:text>(# </xsl:text>
+     <xsl:for-each select="*">
+       <xsl:if test="(position() mod 2) = 0">
+        <xsl:variable name="next" select="position()+1"/>
+        <xsl:value-of select="."/>
+        <xsl:text>:= </xsl:text>
+        <xsl:apply-templates select="../*[$next]"/>
+        <xsl:if test="position()!=last()-1"><xsl:text>, </xsl:text></xsl:if>
+      </xsl:if>
+     </xsl:for-each>
+    <xsl:text> #)</xsl:text>]]>
+  </xslt>
+ </presentation>
+
+ <symbol id="select"> 
+  <CMP>The record selector constant. The first argument is a record, 
+    the second a record, from which the value for this feature is selected.</CMP>
+ </symbol>
+ <presentation for="select"  fixity="infix">
+  <use format="default">.</use>
+ </presentation>
+
+<symbol id="record-beta-equal">
+ <CMP>Record beta equaltiy</CMP>
+</symbol>
+
+<axiom id="record-beta-ax">
+ <CMP>Selecting a feature from a record gives the appropriate value:
+ <OMOBJ>
+  <OMA>
+   <OMS cd="record-calc" name="record-beta-equal"/>
+    <OMA>   
+     <OMS cd="record-calc" name="select"/>
+     <OMA>
+      <OMS cd="record-calc" name="record"/>
+      <OMS cd="record-calc" name="ellipsis"/>
+      <OMS cd="record-calc" name="ellipsis"/>
+      <OMV name="F"/>
+      <OMV name="V"/>
+      <OMS cd="record-calc" name="ellipsis"/>
+      <OMS cd="record-calc" name="ellipsis"/>
+     </OMA>
+     <OMV name="F"/>
+    </OMA>
+    <OMV name="V"/>
+   </OMA>
+  </OMOBJ>
+ </CMP>
+</axiom>
+
+<symbol id="ellipsis">
+  <CMP>This is a meta-symbol that is used for record ellipsis, it should not be
+    used in formal content.</CMP>
+</symbol>
+
+<presentation for="ellipsis">
+  <use format="default">...</use>
+  <use format="TeX">{\ldots}</use>
+</presentation>
+    
+ <symbol id="tuple">
+   <CMP>The tuple expression constructor.</CMP>
+ </symbol>
+ <presentation id="pr-tuple" for="tuple" parent="OMA">
+  <use format="pvs" lbrack="( " rbrack=" )"/>
+ </presentation>
+
+
+ <symbol id="proj" kind="object" scope="global">
+   <CMP xml:lang="en">The tuple projection function. It takes a number
+   expression N and a tuple as input and returns the N-th component, if the
+   first argument evaluates to N.</CMP>
+ </symbol>
+ <presentation id="pr-proj" for="proj" parent="OMA" fixity="infix">
+  <use format="pvs" lbrack="" rbrack="">`</use>
+ </presentation>
+
+</theory>
+
+
+</omdoc>

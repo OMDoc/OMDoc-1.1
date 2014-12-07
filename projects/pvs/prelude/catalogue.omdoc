@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="prelude-catalogue">
+ <metadata>
+  <Title>A Catalogue the PVS Prelude</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>2001-05-18</Date>
+  <Description>This OMDoc file  is a catalogue for the PVS Prelude theories</Description>
+</metadata>
+
+<catalogue>
+  <!-- first the PVS logic -->
+  <loc theory="pvs" omdoc="../pvs.omdoc"/>
+  <!-- then the Prelude theories proper -->
+  <loc theory="booleans" omdoc="booleans.omdoc"/>
+  <loc theory="equalities" omdoc="equalities.omdoc"/>
+  <loc theory="notequal" omdoc="notequal.omdoc"/>
+  <loc theory="if_def" omdoc="if_def.omdoc"/>
+  <loc theory="boolean_props" omdoc="boolean_props.omdoc"/>
+  <loc theory="xor_def" omdoc="xor_def.omdoc"/>
+  <loc theory="quantifier_props" omdoc="quantifier_props.omdoc"/>
+  <loc theory="defined_types" omdoc="defined_types.omdoc"/>
+  <loc theory="exists1" omdoc="exists1.omdoc"/>
+  <loc theory="equality_props" omdoc="equality_props.omdoc"/>
+  <loc theory="if_props" omdoc="if_props.omdoc"/>
+  <loc theory="functions" omdoc="functions.omdoc"/>
+  <loc theory="functions_alt" omdoc="functions_alt.omdoc"/>
+  <loc theory="restrict" omdoc="restrict.omdoc"/>
+  <loc theory="extend" omdoc="extend.omdoc"/>
+  <loc theory="extend_bool" omdoc="extend_bool.omdoc"/>
+  <loc theory="K_conversion" omdoc="K_conversion.omdoc"/>
+  <loc theory="K_props" omdoc="K_props.omdoc"/>
+  <loc theory="identity" omdoc="identity.omdoc"/>
+  <loc theory="identity_props" omdoc="identity_props.omdoc"/>
+  <loc theory="relations" omdoc="relations.omdoc"/>
+  <loc theory="orders" omdoc="orders.omdoc"/>
+  <loc theory="orders_alt" omdoc="orders_alt.omdoc"/>
+  <loc theory="wf_induction" omdoc="wf_induction.omdoc"/>
+  <loc theory="measure_induction" omdoc="measure_induction.omdoc"/>
+  <loc theory="epsilons" omdoc="epsilons.omdoc"/>
+  <loc theory="sets" omdoc="sets.omdoc"/>
+  <loc theory="sets_lemmas" omdoc="sets_lemmas.omdoc"/>
+  <loc theory="function_inverse" omdoc="function_inverse.omdoc"/>
+  <loc theory="function_image" omdoc="function_image.omdoc"/>
+  <loc theory="function_props" omdoc="function_props.omdoc"/>
+  <loc theory="function_props2" omdoc="function_props2.omdoc"/>
+  <loc theory="relation_defs" omdoc="relation_defs.omdoc"/>
+  <loc theory="relation_props" omdoc="relation_props.omdoc"/>
+  <loc theory="relation_props2" omdoc="relation_props2.omdoc"/>
+  <loc theory="operator_defs" omdoc="operator_defs.omdoc"/>
+  <loc theory="numbers" omdoc="numbers.omdoc"/>
+  <loc theory="reals" omdoc="reals.omdoc"/>
+  <loc theory="real_axioms" omdoc="real_axioms.omdoc"/>
+  <loc theory="bounded_real_defs" omdoc="bounded_real_defs.omdoc"/>
+  <loc theory="bounded_real_defs_alt" omdoc="bounded_real_defs_alt.omdoc"/>
+  <loc theory="real_types" omdoc="real_types.omdoc"/>
+  <loc theory="rationals" omdoc="rationals.omdoc"/>
+  <loc theory="integers" omdoc="integers.omdoc"/>
+  <loc theory="naturalnumbers" omdoc="naturalnumbers.omdoc"/>
+  <loc theory="min_nat" omdoc="min_nat.omdoc"/>
+  <loc theory="real_defs" omdoc="real_defs.omdoc"/>
+  <loc theory="real_props" omdoc="real_props.omdoc"/>
+  <loc theory="rational_props" omdoc="rational_props.omdoc"/>
+  <loc theory="integer_props" omdoc="integer_props.omdoc"/>
+  <loc theory="floor_ceil" omdoc="floor_ceil.omdoc"/>
+  <loc theory="exponentiation" omdoc="exponentiation.omdoc"/>
+  <loc theory="euclidean_division" omdoc="euclidean_division.omdoc"/>
+  <loc theory="divides" omdoc="divides.omdoc"/>
+  <loc theory="modulo_arithmetic" omdoc="modulo_arithmetic.omdoc"/>
+  <loc theory="subrange_inductions" omdoc="subrange_inductions.omdoc"/>
+  <loc theory="bounded_int_inductions" omdoc="bounded_int_inductions.omdoc"/>
+  <loc theory="bounded_nat_inductions" omdoc="bounded_nat_inductions.omdoc"/>
+  <loc theory="subrange_type" omdoc="subrange_type.omdoc"/>
+  <loc theory="int_types" omdoc="int_types.omdoc"/>
+  <loc theory="nat_types" omdoc="nat_types.omdoc"/>
+  <loc theory="finite_sets_def" omdoc="finite_sets_def.omdoc"/>
+  <loc theory="function_iterate" omdoc="function_iterate.omdoc"/>
+  <loc theory="sequences" omdoc="sequences.omdoc"/>
+  <loc theory="seq_functions" omdoc="seq_functions.omdoc"/>
+  <loc theory="finite_sequences" omdoc="finite_sequences.omdoc"/>
+  <loc theory="ordinals" omdoc="ordinals.omdoc"/>
+  <loc theory="lex2" omdoc="lex2.omdoc"/>
+  <loc theory="list_props" omdoc="list_props.omdoc"/>
+  <loc theory="map_props" omdoc="map_props.omdoc"/>
+  <loc theory="filters" omdoc="filters.omdoc"/>
+  <loc theory="list2finseq" omdoc="list2finseq.omdoc"/>
+  <loc theory="list2set" omdoc="list2set.omdoc"/>
+  <loc theory="disjointness" omdoc="disjointness.omdoc"/>
+  <loc theory="strings" omdoc="strings.omdoc"/>
+  <loc theory="mucalculus" omdoc="mucalculus.omdoc"/>
+  <loc theory="ctlops" omdoc="ctlops.omdoc"/>
+  <loc theory="fairctlops" omdoc="fairctlops.omdoc"/>
+  <loc theory="Fairctlops" omdoc="Fairctlops.omdoc"/>
+  <loc theory="bit" omdoc="bit.omdoc"/>
+  <loc theory="bv" omdoc="bv.omdoc"/>
+  <loc theory="exp2" omdoc="exp2.omdoc"/>
+  <loc theory="bv_cnv" omdoc="bv_cnv.omdoc"/>
+  <loc theory="bv_concat_def" omdoc="bv_concat_def.omdoc"/>
+  <loc theory="bv_bitwise" omdoc="bv_bitwise.omdoc"/>
+  <loc theory="bv_nat" omdoc="bv_nat.omdoc"/>
+  <loc theory="empty_bv" omdoc="empty_bv.omdoc"/>
+  <loc theory="bv_caret" omdoc="bv_caret.omdoc"/>
+</catalogue>
+</omdoc>

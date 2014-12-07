@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="restrict.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:15
+    </Date>
+  </metadata>
+  <theory id="restrict-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56599" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="restrict" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56600" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56601" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56602" for="restrict" pto="pvs" pto-version="3.0" replaces="restrict-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory restrict
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="restrict_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56603" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="S" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="S" for="S" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="restrict" name="T"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56604" for="NIL" pto="pvs" pto-version="3.0" replaces="S">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56605" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="restrict-import-parameters" from="restrict-parameters"/>
+
+
+    <symbol id="restrict" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="restrict" name="T"/>
+            <OMS cd="restrict" name="R"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="restrict" name="S"/>
+            <OMS cd="restrict" name="R"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="restrict-def" for="restrict" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="restrict" name="restrict"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="restrict" name="T"/>
+                      <OMS cd="restrict" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="restrict" name="S"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="s"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <private id="G56606" for="restrict" pto="pvs" pto-version="3.0">
+      <data><![CDATA[CONVERSION |restrict|
+        ]]>
+      </data>
+    </private>
+
+    <assertion id="injective_restrict" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="restrict" name="T"/>
+                    <OMS cd="restrict" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMA>
+                  <OMS cd="restrict" name="restrict"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="injective_restrict-1" for="injective_restrict" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND injective?) (( (SKOSIMP*) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="restrict_of_inj_is_inj" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="injective?"/>
+              <OMA>
+                <OMS cd="restrict" name="restrict"/>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="restrict_of_inj_is_inj-1" for="restrict_of_inj_is_inj" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56607" for="restrict_of_inj_is_inj" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|restrict_of_inj_is_inj|: JUDGEMENT |restrict|(|f|: (|injective?|[T, R]))
+          HAS_TYPE (|injective?|[S, R])]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

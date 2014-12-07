@@ -1,0 +1,48 @@
+This directory contains a set of OMDoc files, that use all OMDoc 
+elements. They   is intended as an  example of proper OMDoc usage 
+and as a torture test for OMDoc tools. The material is split into 
+multiple files, to  test cross-referencing between files. 
+
+Initial Version: Michael Kohlhase 2000-07-02
+URL: http://www.mathweb.org/src/mathweb/omdoc/examples/usesall/*
+Comments are welcome! (send mail to kohlhase@mathweb.org)
+
+(c) 2000 Michael Kohlhase, released under the GNU Public License
+
+-----------------------------------------------------------------
+Contents:
+========
+
+README        this file 
+Makefile      to generate all derived files.
+
+all.omdoc     is the top level file
+poset.omdoc   contains an isolated theory 
+
+
+COMPLETED:
+==========
+omdoc.dtd:  
+  all done EXCEPT: omgroup, ref
+
+metadata.dtd
+ - metadata, generated all fields for dublin core, did not generate multiple ones
+
+omdoctheory.dtd
+  all done EXCEPT: signature missing, only simple definitions
+
+omdocmath.dtd
+  
+omdocaux.dtd
+ presentation
+
+TODO:
+=====
+depends-on metadata
+
+re-generate from MBase to obtain mids.
+
+TODO-MAYBE:
+===========
+multiple dc metadata fields with different roles
+

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd">
+<omdoc id="lambda-calc-omdoc" catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Lambda Calculus</Title>
+   <Creator role="aut">Michael Kohlhase</Creator>
+   <Date>20020416</Date>
+   <Description>The Theory of untyped Lambda Calculus.</Description>
+  </metadata>
+  <catalogue/>
+
+ <theory id="lambda-calc">
+ <imports id="subst-import" from="subst"/>
+ 
+ <symbol id="lambda" kind="object" scope="global">
+  <CMP>
+    This symbol is used to represent anonymous functions as lambda expansions. 
+    It is used in a binder that takes two further arguments, the first of which
+    is a list of variables, and the second of which is an expression, and it
+    forms the function which is the lambda extraction of the expression
+   </CMP>
+  <commonname>lambda</commonname>
+ </symbol>
+ <presentation id="pr-lambda" for="lambda">
+  <use format="TeX">{\lambda}</use>
+  <use format="pmml|html">&#x003BB;</use>
+  <use format="pvs">LAMBDA</use>
+  <use format="post">lam</use>
+ </presentation>
+
+<example id="lambda-id-ex" for="lambda">
+ <CMP>The following is a representation of the identity function:
+  <OMOBJ>
+   <OMBIND>
+    <OMS cd="lambda-calc" name="lambda"/>
+    <OMBVAR><OMV name="X"/></OMBVAR>
+    <OMV name="X"/>
+   </OMBIND>
+  </OMOBJ>
+ </CMP>
+</example>
+
+<symbol id="alpha-equal">
+  <CMP>The relation of alphabetic equality</CMP>
+</symbol>
+<presentation for="alpha-equal" fixity="infix" parent="OMA" precedence="700">
+ <use format="TeX">=_\alpha</use>
+ <use format="html">=&lt;sub&gt;&#x003B1;&lt;/sub&gt;</use>
+ <use format="pmml">&lt;msub&gt;&#x003B1;&lt;/msub&gt;</use>
+</presentation>
+<axiom id="alpha-ax">
+ <CMP>Bound Variables can be renamed, i.e. 
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="alpha-equal"/>
+    <OMBIND>
+     <OMS cd="lambda-calc" name="lambda"/>
+     <OMBVAR><OMV name="X"/></OMBVAR>
+     <OMV name="X"/>
+    </OMBIND>
+    <OMBIND>
+     <OMS cd="lambda-calc" name="lambda"/>
+     <OMBVAR><OMV name="Y"/></OMBVAR>
+     <OMV name="Y"/>
+    </OMBIND>
+   </OMA>
+  </OMOBJ>.
+ </CMP> 
+ </axiom>
+
+<symbol id="beta-equal">
+  <CMP>The relation of beta equality</CMP>
+</symbol>
+<presentation for="beta-equal" fixity="infix" parent="OMA" precedence="700">
+ <use format="TeX">=_\beta</use>
+ <use format="html">=&lt;sub&gt;&#x003B2;&lt;/sub&gt;</use>
+ <use format="pmml">&lt;msub&gt;&#x003B2;&lt;/msub&gt;</use>
+</presentation>
+<axiom id="beta-axiom">
+ <CMP>For all lambda-terms <OMOBJ><OMV name="A"/></OMOBJ> and
+  <OMOBJ><OMV name="B"/></OMOBJ> we have
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-equal"/>
+    <OMA>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMV name="B"/>
+     </OMBIND>
+     <OMV name="A"/>
+    </OMA>
+    <OMA>
+     <OMS cd="substitution" name="substitute"/>
+     <OMV name="A"/>
+     <OMV name="X"/>
+     <OMV name="B"/>
+    </OMA>
+   </OMA>
+  </OMOBJ>.
+ </CMP> 
+ </axiom>
+
+<example id="beta-axiom-ex" for="beta-axiom">
+ <CMP>  
+  <OMOBJ>
+   <OMBIND>
+    <OMS cd="lambda-calc" name="lambda"/>
+    <OMBVAR><OMV name="X"/></OMBVAR>
+    <OMV name="X"/>
+   </OMBIND>
+  </OMOBJ>
+   acts as the identity function:
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-equal"/>
+    <OMA>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMV name="X"/>
+     </OMBIND>
+     <OMV name="Y"/>
+    </OMA>
+    <OMV name="Y"/>
+   </OMA>
+  </OMOBJ>
+ </CMP>
+</example>
+
+<symbol id="beta-reduces">
+  <CMP>The relation of beta reduction</CMP>
+</symbol>
+<presentation for="beta-reduces" fixity="infix" parent="OMA" precedence="700">
+ <use format="TeX">\rightarrow_\beta</use>
+ <use format="html">&#x02192;&lt;sub&gt;&#x003B2;&lt;/sub&gt;</use>
+ <use format="pmml">&lt;msub&gt;&#x02192;&#x003B2;&lt;/msub&gt;</use>
+</presentation>
+<axiom id="beta-reduction-axiom">
+ <CMP>For all lambda-terms <OMOBJ><OMV name="A"/></OMOBJ> and
+  <OMOBJ><OMV name="B"/></OMOBJ> we have
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-reduces"/>
+    <OMA>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMV name="B"/>
+     </OMBIND>
+     <OMV name="A"/>
+    </OMA>
+    <OMA>
+     <OMS cd="substitution" name="substitute"/>
+     <OMV name="A"/>
+     <OMV name="X"/>
+     <OMV name="B"/>
+    </OMA>
+   </OMA>
+  </OMOBJ>.
+ </CMP> 
+ </axiom>
+
+<example id="beta-reduces-id" for="beta-reduces">
+ <CMP>Beta equality need not be terminating in general:
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-reduces"/>
+    <OMA>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMA><OMV name="X"/><OMV name="X"/></OMA>
+     </OMBIND>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMA><OMV name="X"/><OMV name="X"/></OMA>
+     </OMBIND>
+    </OMA>
+    <OMA>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMA><OMV name="X"/><OMV name="X"/></OMA>
+     </OMBIND>
+     <OMBIND>
+      <OMS cd="lambda-calc" name="lambda"/>
+      <OMBVAR><OMV name="X"/></OMBVAR>
+      <OMA><OMV name="X"/><OMV name="X"/></OMA>
+     </OMBIND>
+    </OMA>
+   </OMA>
+  </OMOBJ>
+ </CMP>
+</example>
+
+<symbol id="eta-equal">
+  <CMP>The relation of eta equality, this is a restricted form of extensionality</CMP>
+</symbol>
+<presentation for="eta-equal" fixity="infix" parent="OMA" precedence="700">
+ <use format="TeX">=_\eta</use>
+ <use format="html">=&lt;sub&gt;&#x003B7;&lt;/sub&gt;</use>
+ <use format="pmml">&lt;msub&gt;&#x003B7;&lt;/msub&gt;</use>
+</presentation>
+<axiom id="eta-axiom">
+ <CMP>For all lambda-terms <OMOBJ><OMV name="B"/></OMOBJ> such that 
+  <OMOBJ><OMV name="X"/></OMOBJ> is not free in <OMOBJ><OMV name="B"/></OMOBJ> we have
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-equal"/>
+    <OMBIND>
+     <OMS cd="lambda-calc" name="lambda"/>
+     <OMBVAR><OMV name="X"/></OMBVAR>
+     <OMA><OMV name="B"/><OMV name="X"/></OMA>
+    </OMBIND>
+    <OMV name="B"/>
+   </OMA>
+  </OMOBJ>.
+ </CMP> 
+ </axiom>
+
+<symbol id="eta-reduces">
+  <CMP>The relation of eta reduction</CMP>
+</symbol>
+<presentation for="eta-reduces" fixity="infix" parent="OMA" precedence="700">
+ <use format="TeX">\rightarrow_\eta</use>
+ <use format="html">&#x02192;&lt;sub&gt;&#x003B7;&lt;/sub&gt;</use>
+ <use format="pmml">&lt;msub&gt;&#x02192;&#x003B7;&lt;/msub&gt;</use>
+</presentation>
+<axiom id="eta-axiom">
+ <CMP>For all lambda-terms <OMOBJ><OMV name="B"/></OMOBJ> such that 
+  <OMOBJ><OMV name="X"/></OMOBJ> is not free in <OMOBJ><OMV name="B"/></OMOBJ> we have
+  <OMOBJ>
+   <OMA>
+    <OMS cd="lambda-calc" name="beta-reduces"/>
+    <OMBIND>
+     <OMS cd="lambda-calc" name="lambda"/>
+     <OMBVAR><OMV name="X"/></OMBVAR>
+     <OMA><OMV name="B"/><OMV name="X"/></OMA>
+    </OMBIND>
+    <OMV name="B"/>
+   </OMA>
+  </OMOBJ>.
+ </CMP> 
+ </axiom>
+
+</theory>
+</omdoc>

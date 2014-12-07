@@ -1,0 +1,1451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="function_inverse.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:20
+    </Date>
+  </metadata>
+  <theory id="function_inverse-parameters">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="D-non-empty" >
+      <CMP>The type D is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56709" for="D" pto="pvs" pto-version="3.0" replaces="D-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <private id="G56710" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56711" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <assertion id="D_TCC1" type="assumption">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+
+  <private id="G56712" for="function_inverse" pto="pvs" pto-version="3.0" replaces="function_inverse-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory function_inverse
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="function_inverse_test">
+    <symbol id="D" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="D-non-empty" >
+      <CMP>The type D is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56713" for="D" pto="pvs" pto-version="3.0" replaces="D-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <private id="G56714" for="NIL" pto="pvs" pto-version="3.0" replaces="D">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="R" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56715" for="NIL" pto="pvs" pto-version="3.0" replaces="R">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="function_inverse-import-parameters" from="function_inverse-parameters"/>
+
+
+
+
+    <symbol id="inverse" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="D"/>
+            <OMS cd="function_inverse" name="R"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="R"/>
+            <OMS cd="function_inverse" name="D"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="inverse-def" for="inverse" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="function_inverse" name="inverse"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_inverse" name="D"/>
+                      <OMS cd="function_inverse" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="function_inverse" name="R"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="epsilons" name="epsilon"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="lambda"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMS cd="function_inverse" name="D"/>
+                        </OMATP>
+                        <OMV name="x"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="equalities" name="="/>
+                      <OMA>
+                        <OMV name="f"/>
+                        <OMV name="x"/>
+                      </OMA>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMBIND>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="unique_bijective_inverse" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMV name="f"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMV name="y"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="unique_bijective_inverse-1" for="unique_bijective_inverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (GRIND IF-MATCH NIL)
+   (( (INST? -2)
+     (( (SKOSIMP)
+       (( (REPLACE -2 DIR RL)
+         (( (USE epsilon_ax[D])
+           (( (BETA) (( (SPLIT) ((1 (PROPAX) NIL NIL) (2 (INST 1 x!1) NIL NIL)) NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56716" for="unique_bijective_inverse" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|unique_bijective_inverse|: JUDGEMENT |inverse|(|f|: (|bijective?|[D, R]))
+                                                                    (|y|)
+          HAS_TYPE {|x|: D | |f|(|x|) = |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="bijective_inverse_is_bijective" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="bijective?"/>
+              <OMA>
+                <OMS cd="function_inverse" name="inverse"/>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="bijective_inverse_is_bijective-1" for="bijective_inverse_is_bijective" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (GRIND IF-MATCH NIL)
+   ((1 (INST 1 f!1(y!1))
+     ((1 (USE epsilon_ax[D])
+       ((1 (BETA)
+         ((1 (ASSERT)
+           ((1 (SPLIT) ((1 (INST? -2) ((1 (ASSERT) NIL NIL)) NIL) (2 (INST?) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL)
+    (2 (USE epsilon_ax[D])
+     ((2 (BETA)
+       ((2 (SPLIT)
+         ((1 (LEMMA epsilon_ax[D])
+           ((1 (INST -1 lambda (x: D): f!1(x) = x2!1)
+             ((1 (BETA) ((1 (SPLIT) ((1 (ASSERT) NIL NIL) (2 (INST -3 x2!1) NIL NIL)) NIL)) NIL))
+             NIL))
+           NIL)
+          (2 (INST -2 x1!1) NIL NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56717" for="bijective_inverse_is_bijective" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|bijective_inverse_is_bijective|: JUDGEMENT |inverse|(|f|:
+                                                                           (|bijective?|[D, R]))
+          HAS_TYPE (|bijective?|[R, D])]]>
+      </data>
+    </private>
+
+    <assertion id="surjective_inverse" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="surjective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="y"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="surjective_inverse-1" for="surjective_inverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND inverse)
+   (( (LEMMA epsilon_ax[D])
+     (( (INST -1 LAMBDA (x:D): f!1(x) = y!1)
+       (( (BETA)
+         (( (PROP)
+           ((1 (REPLACE -2) ((1 (REPLACE -1) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+            (2 (TYPEPRED f!1) ((2 (EXPAND surjective?) ((2 (INST?) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="injective_inverse" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="y"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="injective_inverse-1" for="injective_inverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND inverse)
+   (( (TYPEPRED f!1)
+     (( (EXPAND injective?)
+       (( (LEMMA epsilon_ax[D])
+         (( (INST -1 LAMBDA (x:D): f!1(x) = y!1)
+           (( (PROP)
+             ((1 (BETA)
+               ((1 (REPLACE -3) ((1 (INST?) ((1 (REPLACE -1) ((1 (PROP) NIL NIL)) NIL)) NIL)) NIL))
+               NIL)
+              (2 (BETA) ((2 (INST?) ((2 (REPLACE -2) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="bijective_inverse" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="y"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="bijective_inverse-1" for="bijective_inverse" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (SPLIT)
+   ((1 (REWRITE surjective_inverse)
+     ((1 (TYPEPRED f!1) ((1 (EXPAND bijective?) ((1 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)
+    (2 (REWRITE injective_inverse)
+     ((2 (TYPEPRED f!1) ((2 (EXPAND bijective?) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="bij_inv_is_bij" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_inverse" name="D"/>
+                    <OMS cd="function_inverse" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="functions" name="bijective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="bijective?"/>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="bij_inv_is_bij-1" for="bij_inv_is_bij" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (EXPAND bijective?)
+   (( (EXPAND injective?)
+     (( (EXPAND surjective?)
+       (( (FLATTEN)
+         (( (SPLIT)
+           ((1 (SKOSIMP*)
+             ((1 (LEMMA bijective_inverse)
+               ((1 (INST?)
+                 ((1 (ASSERT)
+                   ((1 (EXPAND inverse -1)
+                     ((1 (LEMMA epsilon_ax[D])
+                       ((1 (INST?)
+                         ((1 (BETA)
+                           ((1 (SPLIT) ((1 (ASSERT) NIL NIL) (2 (INST -4 x2!1) NIL NIL)) NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL)
+                  (2 (EXPAND bijective?)
+                   ((2 (EXPAND injective?)
+                     ((2 (ASSERT)
+                       ((2 (REPLACE -2) ((2 (EXPAND surjective?) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL)
+            (2 (SKOSIMP*)
+             ((2 (INST 1 f!1(y!1))
+               ((2 (REWRITE injective_inverse) ((2 (EXPAND injective?) ((2 (PROPAX) NIL NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="left_inverse?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="R"/>
+            <OMS cd="function_inverse" name="D"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="D"/>
+            <OMS cd="function_inverse" name="R"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="left_inverse?-def" for="left_inverse?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="function_inverse" name="left_inverse?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_inverse" name="R"/>
+                      <OMS cd="function_inverse" name="D"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_inverse" name="D"/>
+                      <OMS cd="function_inverse" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="function_inverse" name="D"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMA>
+                    <OMV name="g"/>
+                    <OMA>
+                      <OMV name="f"/>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="right_inverse?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="R"/>
+            <OMS cd="function_inverse" name="D"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_inverse" name="D"/>
+            <OMS cd="function_inverse" name="R"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="right_inverse?-def" for="right_inverse?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="function_inverse" name="right_inverse?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_inverse" name="R"/>
+                      <OMS cd="function_inverse" name="D"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="g"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_inverse" name="D"/>
+                      <OMS cd="function_inverse" name="R"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="function_inverse" name="R"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMA>
+                      <OMV name="g"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="surj_right" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_inverse" name="D"/>
+                    <OMS cd="function_inverse" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="functions" name="surjective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="function_inverse" name="right_inverse?"/>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="surj_right-1" for="surj_right" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND)
+ (( (LEMMA epsilon_ax[D])
+   (( (INST?) (( (BETA) (( (SPLIT) ((1 (PROPAX) NIL NIL) (2 (INST?) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="inj_left" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_inverse" name="D"/>
+                    <OMS cd="function_inverse" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="function_inverse" name="left_inverse?"/>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inj_left-1" for="inj_left" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (PROP)
+   ((1 (GRIND)
+     ((1 (LEMMA epsilon_ax[D])
+       ((1 (INST?) ((1 (BETA) ((1 (ASSERT) ((1 (INST 1 x!1) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+     NIL)
+    (2 (EXPAND left_inverse?)
+     ((2 (EXPAND inverse)
+       ((2 (EXPAND injective?)
+         ((2 (SKOSIMP)
+           ((2 (INST-CP -1 x1!1)
+             ((2 (INST -1 x2!1) ((2 (ASSERT) ((2 (REPLACE -3) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="inj_inv" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_inverse" name="D"/>
+                    <OMS cd="function_inverse" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="functions" name="surjective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inj_inv-1" for="inj_inv" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND surjective?)
+   (( (EXPAND injective?)
+     (( (EXPAND inverse)
+       (( (SKOSIMP)
+         (( (INST-CP -1 x1!1)
+           (( (INST -1 x2!1)
+             (( (SKOSIMP)
+               (( (SKOSIMP)
+                 (( (LEMMA epsilon_ax[D])
+                   (( (INST-CP -1 LAMBDA (x:D): f!1(x)=x1!1)
+                     (( (INST -1 LAMBDA (x:D): f!1(x)=x2!1)
+                       (( (BETA)
+                         (( (PROP)
+                           ((1 (REPLACE -5) ((1 (REPLACE -1) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+                            (2 (INST?) NIL NIL) (3 (INST?) NIL NIL) (4 (INST?) NIL NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="surj_inv" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_inverse" name="D"/>
+                    <OMS cd="function_inverse" name="R"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="functions" name="injective?"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="surjective?"/>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="surj_inv-1" for="surj_inv" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND surjective?)
+   (( (EXPAND injective?)
+     (( (SKOSIMP)
+       (( (EXPAND inverse)
+         (( (INST -1 y!1 _)
+           (( (INST 1 f!1(y!1))
+             (( (INST -1 (epsilon ! (x_5: D): f!1(x_5) = f!1(y!1)))
+               (( (PROP)
+                 ((1 (REPLACE -1)
+                   ((1 (REPLACE -1 DIR RL) ((1 (REPLACE -1 DIR RL) ((1 (PROPAX) NIL NIL)) NIL))
+                     NIL))
+                   NIL)
+                  (2 (LEMMA epsilon_ax[D])
+                   ((2 (INST?)
+                     ((2 (BETA)
+                       ((2 (PROP)
+                         ((1 (REPLACE -1) ((1 (PROPAX) NIL NIL)) NIL) (2 (INST 1 y!1) NIL NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="inv_inj_is_surj" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="surjective?"/>
+              <OMA>
+                <OMS cd="function_inverse" name="inverse"/>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inv_inj_is_surj-1" for="inv_inj_is_surj" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST 1 f!1(y!1))
+   (( (INST? -1)
+     (( (ASSERT)
+       (( (LEMMA epsilon_ax[D])
+         (( (INST?) (( (BETA) (( (ASSERT) (( (INST 1 y!1) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56718" for="inv_inj_is_surj" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|inv_inj_is_surj|: JUDGEMENT |inverse|(|f|: (|injective?|[D, R])) HAS_TYPE
+          (|surjective?|[R, D])]]>
+      </data>
+    </private>
+
+    <assertion id="inv_surj_is_inj" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="surjective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="injective?"/>
+              <OMA>
+                <OMS cd="function_inverse" name="inverse"/>
+                <OMV name="f"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inv_surj_is_inj-1" for="inv_surj_is_inj" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (INST-CP -1 x1!1)
+   (( (INST -1 x2!1)
+     (( (SKOSIMP*)
+       (( (LEMMA epsilon_ax[D])
+         (( (LEMMA epsilon_ax[D])
+           (( (INST?)
+             (( (INST -2 LAMBDA (x: D): f!1(x) = x2!1)
+               (( (BETA)
+                 (( (ASSERT)
+                   (( (PROP)
+                     ((1 (ASSERT) NIL NIL) (2 (INST 1 x!1) NIL NIL) (3 (INST 1 x!2) NIL NIL)
+                      (4 (INST 1 x!1) NIL NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56719" for="inv_surj_is_inj" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|inv_surj_is_inj|: JUDGEMENT |inverse|(|f|: (|surjective?|[D, R])) HAS_TYPE
+          (|injective?|[R, D])]]>
+      </data>
+    </private>
+
+    <assertion id="comp_inverse_right_surj" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="surjective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMV name="f"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMV name="y"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="comp_inverse_right_surj-1" for="comp_inverse_right_surj" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (USE epsilon_ax[D]) (( (BETA) (( (ASSERT) (( (INST? -1) NIL NIL)) NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="comp_inverse_left_inj" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="comp_inverse_left_inj-1" for="comp_inverse_left_inj" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL)
+ (( (USE epsilon_ax[D])
+   (( (BETA) (( (SPLIT) ((1 (INST?) ((1 (ASSERT) NIL NIL)) NIL) (2 (INST 1 x!1) NIL NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="comp_inverse_right" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="R"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMV name="f"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_inverse" name="inverse"/>
+                    <OMV name="f"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMV name="y"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="comp_inverse_right-1" for="comp_inverse_right" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (LEMMA comp_inverse_right_surj)
+   (( (INST?) (( (TYPEPRED f!1) (( (EXPAND bijective?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="comp_inverse_left" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_inverse" name="D"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_inverse" name="inverse"/>
+                  <OMV name="f"/>
+                </OMA>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="comp_inverse_left-1" for="comp_inverse_left" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (EXPAND bijective?)
+   (( (LEMMA comp_inverse_left_inj) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

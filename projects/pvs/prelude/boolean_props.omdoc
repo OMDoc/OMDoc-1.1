@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="boolean_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:11
+    </Date>
+  </metadata>
+  <theory id="boolean_props_test">
+
+
+    <assertion id="bool_exclusive" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="NOT"/>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMS cd="booleans" name="FALSE"/>
+              <OMS cd="booleans" name="TRUE"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="bool_exclusive-1" for="bool_exclusive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (IFF) (( (PROP) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="bool_inclusive" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="OR"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="A"/>
+                <OMS cd="booleans" name="FALSE"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="A"/>
+                <OMS cd="booleans" name="TRUE"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="bool_inclusive-1" for="bool_inclusive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (PROP) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="not_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMV name="A"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="A"/>
+                <OMS cd="booleans" name="FALSE"/>
+                <OMS cd="booleans" name="TRUE"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="not_def-1" for="not_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="and_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+                <OMS cd="booleans" name="FALSE"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="and_def-1" for="and_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="syand_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="booleans" name="&amp;"/>
+            <OMS cd="booleans" name="AND"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="syand_def-1" for="syand_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (PROPAX) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="or_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="A"/>
+                <OMS cd="booleans" name="TRUE"/>
+                <OMV name="B"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="or_def-1" for="or_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="implies_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+                <OMS cd="booleans" name="TRUE"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="implies_def-1" for="implies_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="syimplies_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="booleans" name="=&gt;"/>
+            <OMS cd="booleans" name="IMPLIES"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="syimplies_def-1" for="syimplies_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (PROPAX) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="when_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMV name="B"/>
+                <OMV name="A"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="IMPLIES"/>
+                <OMV name="B"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="when_def-1" for="when_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iff_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="B"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="booleans" name="IFF"/>
+                <OMV name="A"/>
+                <OMV name="B"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMV name="A"/>
+                  <OMV name="B"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMV name="A"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="booleans" name="NOT"/>
+                    <OMV name="B"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iff_def-1" for="iff_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="syiff_def" type="postulate">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="booleans" name="&lt;=&gt;"/>
+            <OMS cd="booleans" name="IFF"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="syiff_def-1" for="syiff_def" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (PROPAX) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="excluded_middle" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="booleans" name="bool"/>
+                </OMATP>
+                <OMV name="A"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="OR"/>
+              <OMV name="A"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMV name="A"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="excluded_middle-1" for="excluded_middle" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

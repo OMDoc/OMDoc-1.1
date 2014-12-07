@@ -1,0 +1,47 @@
+\documentclass[11pt,]{article}
+\usepackage{url,acronyms,ags-bib}
+\makeindex
+\usepackage[a4paper=true,  bookmarks=true, linkcolor=black,
+citecolor=black,urlcolor=black,colorlinks=true,pagecolor=black,
+breaklinks=true, bookmarksopen=true]{hyperref}
+\def\omdoc{OMDoc}
+\title{Errata to the OMDoc 1.1 Specification}
+\author{Michael Kohlhase\\
+  Computer Science, Carnegie Mellon University\\
+  Pittsburgh, Pa 15213, USA\\
+  {\url{http://www.cs.cmu.edu/~kohlhase}}}
+\newif\ifpdf\pdffalse
+%% \ifx\pdfoutput\undefined
+%% \pdffalse % we are not running PDFLaTeX
+%% \else\pdfoutput=1 % we are running PDFLaTeX
+%% \pdftrue\fi
+
+\def\ttin#1{{\tt{#1}}}
+\def\indextoo#1{#1\index{#1}}
+\def\attribute#1#2{{\tt{#1}}\index{#1@{\tt{#1}} attribute in!{\tt{#2}}}}
+\def\element#1{{\tt{#1}}\index{#1@{\tt{#1}} (element)}}
+\def\openmath{{\sc OpenMath}}
+\def\attval#1#2#3{{\tt{'#1'}}%
+\index{#1@{\tt{#1}}  value for attribue !{\tt{#2}} on element!{\tt{#3}}}}
+\def\ttin#1{{\tt{#1}}\index{#1@{\tt{#1}}}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  This document tracks the errata in the OMDoc 1.1 specification (see
+  {\url{http://www.mathweb.org/omdoc/archive/omdoc1.1.{ps,pdf}}}). We will keep a
+    corrected version available at
+    {\url{http://www.mathweb.org/omdoc/omdoc.{ps.pdf}}}
+\end{abstract}
+\input{theerrata}
+\newpage 
+\bibliographystyle{ags-alpha} 
+\bibliography{omdoc}
+\newpage
+{\small\input{\jobname.ind}}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

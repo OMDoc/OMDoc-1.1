@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE xs:schema PUBLIC "-//W3C//DTD XMLSCHEMA 200102//EN" "XMLSchema.dtd" [
+ <!ENTITY % schemaAttrs "xmlns:omdoc CDATA #IMPLIED">]>
+
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://purl.org/DC" 
+  xmlns:omdoc="http://www.mathweb.org/omdoc" 
+  targetNamespace="http://purl.org/DC"
+  elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation>
+      An XML Schema for the Dublin Core Metadata in the OMDoc format 
+      Initial Version: Michael Kohlhase 2000-09-07
+      URL: http://www.mathweb.org/omdoc/dcomdoc.xsd (released)
+      URL: http://www.mathweb.org/src/mathweb/omdoc/xsd/dcomdoc.xsd (experimental)
+      This Schema is still experimental, it is intended as a basis for discussion.
+      Comments are welcome! (send mail to kohlhase@mathweb.org)
+      See the documentation and examples at http://www.mathweb.org/omdoc
+      (c) 2000-2002 Michael Kohlhase, released under the GNU Public License
+    </xs:documentation>
+  </xs:annotation>
+
+<xs:attributeGroup name="dcns">
+ <xs:attribute name="xmlns" type="xs:string" fixed="http://purl.org/DC"/>
+</xs:attributeGroup>
+
+<xs:attributeGroup name="dcidi">
+ <xs:attributeGroup ref="dcns"/>
+ <xs:attribute name="id" use="optional" type="xs:ID"/>
+</xs:attributeGroup>
+
+<xs:attributeGroup name="dcrole">
+ <xs:attributeGroup ref="dcidi"/>
+ <xs:attribute name="role" use="optional" default="aut">
+  <xs:simpleType>
+   <xs:restriction base="xs:string">
+    <xs:enumeration value="aut"/>
+    <xs:enumeration value="aqt"/>
+    <xs:enumeration value="aft"/>
+    <xs:enumeration value="aui"/>
+    <xs:enumeration value="ant"/>
+    <xs:enumeration value="clb"/>
+    <xs:enumeration value="edt"/>
+    <xs:enumeration value="ths"/>
+    <xs:enumeration value="trc"/>
+    <xs:enumeration value="trl"/>
+   </xs:restriction>
+  </xs:simpleType>
+ </xs:attribute>
+</xs:attributeGroup>
+
+<xs:complexType name="DCRest" mixed="true">
+ <xs:annotation>
+  <xs:documentation>
+   The type of DC metadata in OMDoc
+  </xs:documentation>
+ </xs:annotation>
+ <xs:sequence>
+  <xs:any processContents="lax"/>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DCperson" mixed="true">
+ <xs:annotation>
+  <xs:documentation>
+   The type of a person mentioned in the DC metadata in OMDoc
+  </xs:documentation>
+ </xs:annotation>
+ <xs:complexContent>
+  <xs:extension base="DCRest">
+   <xs:attributeGroup ref="dcrole"/>
+  </xs:extension>
+ </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="DClang" mixed="true">
+ <xs:annotation>
+  <xs:documentation>
+   The type of a multilingual DC metadata element in  OMDoc
+  </xs:documentation>
+ </xs:annotation>
+ <xs:choice minOccurs="0" maxOccurs="unbounded">
+  <xs:group ref="omdoc:inCMP"/>
+ </xs:choice>
+ <xs:attributeGroup ref="dcns"/>
+ <xs:attribute name="xml:lang" use="optional" default="en" type="language"/>
+</xs:complexType>
+
+<xs:group name="dcmditems">
+ <xs:choice minOccurs="0" maxOccurs="unbounded">
+  <xs:element name="Contributor" type="DCperson"/>
+  <xs:element name="Creator" type="DCPerson"/>
+  <xs:element name="Title" type="DClang"/>
+  <xs:element name="Subject" type="DClang"/>
+  <xs:element name="Description" type="DClang"/>
+  <xs:element name="Publisher">
+   <xs:complexType>
+    <xs:sequence>
+     <xs:any processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="dcidi"/>
+   </xs:complexType>
+  </xs:element>
+  <xs:element name="Type" type="DCRest"/>
+  <xs:element name="Format" type="DCRest"/>
+  <xs:element name="Source" type="DCRest"/>
+  <xs:element name="Language" type="DCRest"/>
+  <xs:element name="Relation" type="DCRest"/>
+  <xs:element name="Rights" type="DCRest"/>
+  <xs:element name="Date">
+   <xs:complexType>
+    <xs:complexContent>
+     <xs:extension base="xs:dateTime">
+      <xs:attributeGroup ref="dcns"/>
+      <xs:attribute name="action" type="NMTOKEN" use="optional"/>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+  </xs:element>
+  <xs:element name="Identifier">
+   <xs:complexType>
+    <xs:complexContent>
+     <xs:extension base="DCRest">
+      <xs:attribute name="scheme" type="NMTOKEN" use="optional" default="ISBN"/>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+  </xs:element>
+ </xs:choice>
+</xs:group>
+
+
+</xs:schema>

@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="function_iterate.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:36
+    </Date>
+  </metadata>
+  <theory id="function_iterate-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57017" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57018" for="function_iterate" pto="pvs" pto-version="3.0" replaces="function_iterate-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory function_iterate
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="function_iterate_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G57019" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="function_iterate-import-parameters" from="function_iterate-parameters"/>
+
+
+
+
+    <assertion id="iterate_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="n"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_TCC1-1" for="iterate_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iterate_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="n"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="n"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_TCC2-1" for="iterate_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="iterate" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_iterate" name="T"/>
+            <OMS cd="function_iterate" name="T"/>
+          </OMA>
+          <OMS cd="naturalnumbers" name="nat"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_iterate" name="T"/>
+            <OMS cd="function_iterate" name="T"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="iterate-def" for="iterate" type="recursive">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="function_iterate" name="iterate"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_iterate" name="T"/>
+                      <OMS cd="function_iterate" name="T"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="naturalnumbers" name="nat"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="function_iterate" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="if_def" name="IF"/>
+                  <OMA>
+                    <OMS cd="equalities" name="="/>
+                    <OMV name="n"/>
+                    <OMI>0</OMI>
+                  </OMA>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMA>
+                      <OMA>
+                        <OMS cd="function_iterate" name="iterate"/>
+                        <OMV name="f"/>
+                        <OMA>
+                          <OMS cd="reals" name="-"/>
+                          <OMV name="n"/>
+                          <OMI>1</OMI>
+                        </OMA>
+                      </OMA>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+      <measure>
+        <OMOBJ>
+        <OMV name="n"/>
+      </OMOBJ>
+      </measure>
+    </definition>
+
+    <assertion id="iterate_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_iterate" name="T"/>
+                    <OMS cd="function_iterate" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="function_iterate" name="iterate"/>
+                <OMV name="f"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_add-1" for="iterate_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT m)
+ ((1 (SKOSIMP)
+   ((1 (EXPAND iterate 1 1) ((1 (EXPAND o) ((1 (APPLY-EXTENSIONALITY) NIL NIL)) NIL)) NIL)) NIL)
+  (2 (SKOSIMP)
+   ((2 (SKOSIMP)
+     ((2 (EXPAND iterate 1 1)
+       ((2 (EXPAND iterate 1 3)
+         ((2 (INST -1 f!1 n!1)
+           ((2 (EXPAND o)
+             ((2 (APPLY-EXTENSIONALITY)
+               ((2 (REPLACE -1 DIR RL) ((2 (BETA) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iterate_add_applied" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_iterate" name="T"/>
+                    <OMS cd="function_iterate" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_iterate" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_iterate" name="iterate"/>
+                    <OMV name="f"/>
+                    <OMV name="n"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="m"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_add_applied-1" for="iterate_add_applied" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY m) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iterate_add_one" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_iterate" name="T"/>
+                    <OMS cd="function_iterate" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_iterate" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="n"/>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_add_one-1" for="iterate_add_one" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT-AND-SIMPLIFY n) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iterate_mult" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_iterate" name="T"/>
+                    <OMS cd="function_iterate" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="function_iterate" name="iterate"/>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+              <OMA>
+                <OMS cd="function_iterate" name="iterate"/>
+                <OMV name="f"/>
+                <OMA>
+                  <OMS cd="reals" name="*"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_mult-1" for="iterate_mult" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT m)
+ ((1 (INDUCT n)
+   ((1 (SKOSIMP) ((1 (EXPAND iterate) ((1 (PROPAX) NIL NIL)) NIL)) NIL)
+    (2 (SKOSIMP)
+     ((2 (SKOSIMP)
+       ((2 (INST?)
+         ((2 (EXPAND iterate 1 1)
+           ((2 (APPLY-EXTENSIONALITY)
+             ((2 (REPLACE -1) ((2 (EXPAND iterate 1) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL)
+  (2 (SKOSIMP)
+   ((2 (INDUCT n NAME NAT_induction)
+     ((2 (SKOSIMP)
+       ((2 (SKOSIMP)
+         ((2 (CASE j!2 = 0)
+           ((1 (REPLACE -1)
+             ((1 (EXPAND iterate 1 1) ((1 (EXPAND iterate 1) ((1 (PROPAX) NIL NIL)) NIL)) NIL))
+             NIL)
+            (2 (EXPAND iterate 2 1)
+             ((2 (EXPAND iterate 2 4)
+               ((2 (APPLY-EXTENSIONALITY 2)
+                 ((2 (HIDE 3)
+                   ((2 (INST-CP -1 j!2-1)
+                     ((2 (ASSERT)
+                       ((2 (INST? -2)
+                         ((2 (REPLACE -2)
+                           ((2 (LEMMA iterate_add)
+                             ((2 (INST -1 f!1 1+j!1 -1 - j!1 + j!1 * j!2 + j!2)
+                               ((1 (EXPAND o)
+                                 ((1
+                                   (CASE iterate(f!1, 1 + j!1)(iterate(f!1, -1 - j!1 + j!1 * j!2 + j!2)(x!1)) = iterate(f!1, j!1 * j!2 + j!2)(x!1))
+                                   ((1 (HIDE -2)
+                                     ((1 (REPLACE -1)
+                                       ((1 (EXPAND iterate 1 1) ((1 (PROPAX) NIL NIL)) NIL)) NIL))
+                                     NIL)
+                                    (2 (REPLACE -1 DIR RL) ((2 (BETA) ((2 (PROPAX) NIL NIL)) NIL))
+                                     NIL)
+                                    (3 (HIDE -1 -2 -3 -4 2)
+                                     ((3 (CASE j!1 * j!2 >= j!1)
+                                       ((1 (ASSERT) NIL NIL)
+                                        (2 (ASSERT)
+                                         ((2 (CASE j!1 = 0)
+                                           ((1 (ASSERT) NIL NIL)
+                                            (2 (LEMMA div_mult_pos_ge2)
+                                             ((2 (INST -1 j!1 j!2 j!1) ((2 (ASSERT) NIL NIL)) NIL))
+                                             NIL))
+                                           NIL))
+                                         NIL))
+                                       NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL)
+                                (2 (HIDE -1 -2 -3 2)
+                                 ((2 (CASE j!1 * j!2 >= j!1)
+                                   ((1 (ASSERT) NIL NIL)
+                                    (2 (LEMMA div_mult_pos_ge2)
+                                     ((2 (INST -1 j!1 j!2 j!1)
+                                       ((1 (ASSERT) NIL NIL) (2 (ASSERT) NIL NIL)) NIL))
+                                     NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="iterate_invariant" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_iterate" name="T"/>
+                    <OMS cd="function_iterate" name="T"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="function_iterate" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMV name="f"/>
+                <OMA>
+                  <OMA>
+                    <OMS cd="function_iterate" name="iterate"/>
+                    <OMV name="f"/>
+                    <OMV name="n"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMA>
+                  <OMS cd="function_iterate" name="iterate"/>
+                  <OMV name="f"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="iterate_invariant-1" for="iterate_invariant" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INDUCT n) ((1 (SKOSIMP*) ((1 (GRIND) NIL NIL)) NIL) (2 (GRIND) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="rational_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:29
+    </Date>
+  </metadata>
+  <theory id="rational_props_test">
+
+
+
+
+
+    <axiom id="rational_pred_ax" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="nzint"/>
+                  </OMATP>
+                  <OMV name="n0j"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="r"/>
+                <OMA>
+                  <OMS cd="reals" name="/"/>
+                  <OMV name="i"/>
+                  <OMV name="n0j"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <assertion id="density_positive" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMI>0</OMI>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="rationals" name="rat"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="x"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="r"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="density_positive-1" for="density_positive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (ASSERT)
+   (( (LEMMA archimedean (px y!1 - x!1))
+     (( (SKOLEM!)
+       (( (LEMMA posreal_mult_closed (x y!1 y n!1))
+         (( (GROUND)
+           (( (LEMMA wf_nat)
+             (( (EXPAND well_founded?)
+               (( (INST -1 LAMBDA (n : nat) : y!1 * n!1 <= n)
+                 (( (REDUCE IF-MATCH NIL)
+                   ((1 (AUTO-REWRITE div_mult_pos_lt1 div_mult_pos_lt2)
+                     ((1 (INST + (y!2 - 1)/n!1)
+                       ((1 (ASSERT) ((1 (INST - y!2 -1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                     NIL)
+                    (2 (LEMMA axiom_of_archimedes (x y!1 * n!1))
+                     ((2 (SKOLEM!) ((2 (ASSERT) ((2 (INST + i!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="density" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="rationals" name="rat"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="x"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="reals" name="&lt;"/>
+                    <OMV name="r"/>
+                    <OMV name="y"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="density-1" for="density" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA density_positive)
+ (( (SKOSIMP)
+   (( (CASE x!1 >= 0)
+     ((1 (INST? -) ((1 (ASSERT) NIL NIL)) NIL)
+      (2 (LEMMA axiom_of_archimedes (x -x!1))
+       ((2 (SKOSIMP)
+         ((2 (INST -2 i!1 + x!1 i!1 + y!1)
+           ((2 (ASSERT) ((2 (SKOSIMP) ((2 (INST 2 r!1 - i!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_mc">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_mc">
+
+<exercise id="myex2" for="foo">
+<mc id="mymc" style="blabla">
+<symbol id="mba"/>
+<symbol id="mbb"/>
+<choice id="mych" style="something">
+<metadata>
+<Title>metadata for choice</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-02-25</Date>
+</metadata>
+<symbol id="mca"/>
+<symbol id="mcb"/>
+<CMP>choice</CMP>
+<CMP xml:lang="zh">xuanze</CMP>
+<FMP/>
+</choice>
+<hint id="subhint"/>
+<answer verdict="true" id="myans" style="good">
+<metadata>
+<Title>metadata for answer</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-02-25</Date>
+</metadata>
+<symbol id="mda"/>
+<symbol id="mdb"/>
+<CMP>answer</CMP>
+<CMP xml:lang="zh">dafu</CMP>
+<FMP/>
+</answer>
+</mc>
+</exercise>
+
+</theory>
+</omdoc>
+

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="limit1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary limit1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/limit1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD holds the basic notion of the limits of unary functions
+    whilst its variable tend (either from above, below or both
+    sides) to a particular value.
+  </Description>
+</metadata>
+
+<theory id="limit1">
+
+<imports id="limit1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="limit1-imports-fns1" from="fns1.omdoc#fns1"/>
+<imports id="limit1-imports-transc1" from="transc1.omdoc#transc1"/>
+
+<symbol id="limit">
+  <CMP>
+    This symbol is used to denote the limit of a unary function. It
+    takes 3 arguments: the limiting value of the argument, the method of
+    approach (either null, above, below or both_sides) and the function.
+  </CMP>
+  <commonname>limit</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="NumericalValue" cd="sts"/>
+	<OMV name="TendsTo"/>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	  <OMS name="NumericalValue" cd="sts"/>
+	</OMA>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="limit" parent="OMA">
+  <xslt format="html"><![CDATA[
+  <xsl:text>lim</xsl:text>
+  <xsl:element name="sub">
+    <xsl:value-of select="*[4]/*[2]/*[1]/@name"/>
+    <xsl:choose>
+      <xsl:when test="*[3]/@name='both_sides'"><xsl:text>&#8594;</xsl:text></xsl:when>
+      <xsl:when test="*[3]/@name='above'"><xsl:text>&#8595;</xsl:text></xsl:when>
+      <xsl:when test="*[3]/@name='below'"><xsl:text>&#8593;</xsl:text></xsl:when>
+    </xsl:choose>
+    <xsl:apply-templates select="*[2]"/>
+  </xsl:element>
+  <xsl:apply-templates select="*[4]/*[3]"/>]]>
+</xslt>
+<xslt format="TeX"><![CDATA[
+<xsl:text>\lim_{</xsl:text>
+<xsl:value-of select="*[4]/*[2]/*[1]/@name"/>
+<xsl:choose>
+  <xsl:when test="*[3]/@name='both_sides'"><xsl:text>\rightarrow</xsl:text></xsl:when>
+  <xsl:when test="*[3]/@name='above'"><xsl:text>\downarrow</xsl:text></xsl:when>
+  <xsl:when test="*[3]/@name='below'"><xsl:text>\uparrow</xsl:text></xsl:when>
+</xsl:choose>
+<xsl:apply-templates select="*[2]"/>
+<xsl:text>}</xsl:text>
+<xsl:apply-templates select="*[4]/*[3]"/>]]>
+</xslt>
+<xslt format="pmml"><![CDATA[
+<element name="mrow">
+  <element name="munderover">
+    <text>lim</text>
+    <element name="mrow">
+      <element name="mi"><value-of select="*[4]/*[2]/*[1]/@name"/></element>
+      <xsl:choose>
+	<xsl:when test="*[3]/@name='both_sides'"><xsl:text>&#8594;</xsl:text></xsl:when>
+	<xsl:when test="*[3]/@name='above'"><xsl:text>&#8595;</xsl:text></xsl:when>
+	<xsl:when test="*[3]/@name='below'"><xsl:text>&#8593;</xsl:text></xsl:when>
+      </xsl:choose>
+      <xsl:apply-templates select="*[2]"/>
+    </element>
+    <element name="mrow"><recurse select="*[2]/*[3]"/></element>
+  </element>
+  <recurse select="*[4]"/>
+</element>]]>
+</xslt>
+</presentation>
+<presentation for="sum">
+  <use format="cmml" element="sum"/>
+  <use  format="default">lim</use>
+</presentation>
+<example id="limit-ex-1" type="for" for="limit">
+  <CMP>The limit of sin(x) as x tends to 0</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="both_sides"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="transc1" name="sin"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="both_sides">
+  <CMP> 
+    This symbol is used within a limit construct to show the limit is
+    being approached from both sides. It takes no arguments.
+  </CMP>
+  <commonname>both sides</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="TendsTo"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="both_sides-ex-1" type="for" for="both_sides">
+  <CMP>The limit of sin(x) as x tends to 0 from either direction</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="both_sides"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="transc1" name="sin"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="above">
+  <CMP> 
+    This symbol is used within a limit construct to show the limit is
+    being approached from above. It takes no arguments.
+  </CMP>
+  <commonname>above</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="TendsTo"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="above-ex-1" type="for" for="above">
+  <CMP>The limit of sin(x) as x tends to 0 from above</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="above"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="transc1" name="sin"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="below">
+  <CMP>
+    This symbol is used within a limit construct to show the limit is
+    being approached from below. It takes no arguments.
+  </CMP>
+  <commonname>below</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="TendsTo"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="below-ex-1" type="for" for="below">
+  <CMP>The limit of sin(x) as x tends to 0 from below</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="below"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="transc1" name="sin"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="null">
+  <CMP>
+    This symbol is used within a limit construct to avoid specifying the method of
+    approach to the limit. It takes no arguments.
+  </CMP>
+  <commonname>null</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="TendsTo"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="null-ex-1" type="for" for="null">
+  <CMP>The limit of sin(x) as x tends to 0</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="limit1" name="limit"/>
+      <OMI> 0 </OMI>
+      <OMS cd="limit1" name="null"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="transc1" name="sin"/>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+</theory>
+</omdoc>

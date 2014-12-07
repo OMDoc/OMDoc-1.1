@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="bigfloat1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary bigfloat1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">James Davenport</Creator>
+  <Date> 1999-07-13</Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/bigfloat.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD provides a common representation of "bigfloats" in a mantissa/
+    radix/exponent format.
+    There is a further version, which provides an opportunity to state a
+    precision (only required in a different radix).
+    No operations are defined here -- see arith and alg.
+  </Description>
+</metadata>
+
+<theory id="bigfloat1">
+
+<imports id="bigfloat1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="bigfloat1-imports-setname1" from="setname1.omdoc#setname1"/>
+<imports id="bigfloat1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="bigfloat1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="bigfloat1-imports-rounding1" from="rounding1.omdoc#rounding1"/>
+<imports id="bigfloat1-imports-transc1" from="transc1.omdoc#transc1"/>
+
+<omtext id="CDComment-10" type="introduction">
+  <CMP>
+
+bigfloatprec added 1999-07-21.
+</CMP>
+</omtext>
+<symbol id="bigfloat">
+  <CMP> 
+    The bigfloat constructor takes three arguments, a mantissa, a base and the
+    exponent.
+  </CMP>
+  <commonname>bigfloat</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMV name="BigFloat"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<assertion id="bigfloat-prop-1" type="lemma">
+  <CMP> bigfloat(m,r,e)=m*r^e </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="bigfloat1" name="bigfloat"/>
+	  <OMV name="m"/>
+	  <OMV name="r"/>
+	  <OMV name="e"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="times"/>
+	  <OMV name="m"/>
+	  <OMA>
+	    <OMS cd="arith1" name="power"/>
+	    <OMV name="r"/>
+	    <OMV name="e"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="bigfloatprec">
+  <CMP> 
+    The bigfloat "with precision specified in (another) radix" constructor. Takes 
+    3 arguments, the first argument is a floating point number constructed with the
+    bigfloat constructor, the second is the new radix, whilst the third specifies 
+    how many digits are significant.
+  </CMP>
+  <commonname>bigfloatprec</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="BigFloat"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMS name="Z" cd="setname1"/>
+	<OMV name="BigFloat"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<assertion id="bigfloatprec-prop-1" type="lemma">
+  <CMP> bigfloatprec(f,r,p)=f 
+    However, if converted to radix r, only p digits in that radix are significant.
+    This usually means that it originated in radix r, and has since
+    (e.g. for display purposes) been converted into its current radix. For 
+    exposition, $f = m*r^e$.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="bigfloat1" name="bigfloatprec"/>
+	  <OMA>
+	    <OMS cd="bigfloat1" name="bigfloat"/>
+	    <OMV name="m"/>
+	    <OMV name="r"/>
+	    <OMV name="e"/>
+	  </OMA>
+	  <OMV name="r"/>
+	  <OMA>
+	    <OMS cd="rounding1" name="ceiling"/>
+	    <OMA>
+	      <OMS cd="transc1" name="log"/>
+	      <OMV name="r"/>
+	      <OMV name="m"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="bigfloat1" name="bigfloat"/>
+	  <OMV name="m"/>
+	  <OMV name="r"/>
+	  <OMV name="e"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+</theory>
+</omdoc>

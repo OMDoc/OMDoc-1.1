@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<!--  An example of a simple fully formal proof.  -->
+
+
+<omdoc id="andcom" catalogue="../omstd/catalogue.omdoc">
+
+<metadata>
+<Title>A proof of the commutativity of conjunction</Title>
+<Creator role="aut">Michael Kohlhase</Creator> 
+<Date>1999-9-1</Date>
+</metadata>
+
+<omtext id="intro" type="introduction">
+  <CMP> This document shows a simple formal proof in Gentzens natural deduction
+  calculus, as an example for the communication of theorems and proofs between
+  deduction systems. 
+  </CMP>
+</omtext>
+
+<assertion type="theorem" id="t1" theory="base">
+   <FMP>
+     <OMOBJ>
+       <OMBIND>
+         <OMS cd="quant1" name="forall"/>
+         <OMBVAR>
+            <OMV name="X"/>
+            <OMV name="Y"/>
+         </OMBVAR>
+         <OMA>
+           <OMS cd="logic1" name="implies"/>
+  	   <OMA>
+	     <OMS cd="logic1" name="and"/>
+	     <OMV name="X"/>
+	     <OMV name="Y"/>
+           </OMA>
+	   <OMA>
+	     <OMS cd="logic1" name="and"/>
+	     <OMV name="Y"/>
+	     <OMV name="X"/>
+           </OMA>
+         </OMA>
+       </OMBIND>
+     </OMOBJ>
+   </FMP>
+</assertion>
+
+<proof for="t1" id="p1" theory="base">
+  <derive id="D1">
+    <FMP>
+      <assumption id="A1">
+        <OMOBJ>
+          <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMV name="X"/>
+	    <OMV name="Y"/>
+          </OMA>
+        </OMOBJ>
+    </assumption>
+    <conclusion id="C1">
+        <OMOBJ>
+          <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMV name="Y"/>
+	    <OMV name="X"/>
+          </OMA>
+        </OMOBJ>
+      </conclusion>
+      </FMP>
+  <proof id="D1.p" for="D1" theory="base">
+      <derive id="D1.1">
+	  <FMP><conclusion id="D1.C">
+	      <OMOBJ><OMV name="X"/></OMOBJ>
+	    </conclusion>
+	  </FMP>
+        <method xref="#byctx(andel@ND)"/>
+        <premise xref="A1"/>
+      </derive>
+      <derive id="D1.2">
+        <FMP>
+	  <conclusion id="D1.2.C">
+	    <OMOBJ><OMV name="Y"/></OMOBJ>
+	  </conclusion></FMP>
+       <method xref="#byctx(ander@ND)"/>
+       <premise xref="A1"/>
+      </derive>
+      <conclude id="D3">
+        <method xref="#byctx(andi@ND)"/>
+        <premise xref="D1.1"/>
+        <premise xref="D1.2"/>
+      </conclude>
+    </proof>
+  </derive>
+  <derive id="D2">
+    <FMP>
+      <OMOBJ>
+        <OMA>
+	  <OMS cd="logic1" name="implies"/>
+       	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMV name="X"/>
+	    <OMV name="Y"/>
+          </OMA>
+       	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMV name="Y"/>
+	    <OMV name="X"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+    </FMP>
+    <method xref="#byctx(impi@ND)"/>
+    <premise xref="D1"/>
+  </derive>
+  <conclude id="C">
+    <method xref="#byctx(foralli-star@ND)">
+       <OMOBJ><OMV name="X"/></OMOBJ>
+       <OMOBJ><OMV name="Y"/></OMOBJ>
+    </method>
+    <premise xref="D2"/>
+  </conclude>
+</proof>
+
+<omtext id="concl" type="conclusion">
+  <CMP>The examples shows, that even though the OMDoc format is rather verbose, the
+  structure of proofs is equivalent to other proof representations. In particular,
+  the explicit management of proof structure by premise links allows to encode the
+  proof as a directed acyclic graph rather than a tree.
+
+  Note that the restriction to ND calculus is arbitrary for this example, the
+  method slots could contain arbitrary tactics.
+  </CMP>
+</omtext>
+
+</omdoc>

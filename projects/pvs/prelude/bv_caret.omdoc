@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bv_caret.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:42
+    </Date>
+  </metadata>
+  <theory id="bv_caret-parameters">
+    <symbol id="N" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57091" for="NIL" pto="pvs" pto-version="3.0" replaces="N">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G57092" for="bv_caret" pto="pvs" pto-version="3.0" replaces="bv_caret-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory bv_caret
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="bv_caret_test">
+    <symbol id="N" scope="local" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMS cd="naturalnumbers" name="nat"/>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <private id="G57093" for="NIL" pto="pvs" pto-version="3.0" replaces="N">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="bv_caret-import-parameters" from="bv_caret-parameters"/>
+    <assertion id="caret_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="dependent-tupletype"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="below"/>
+                          <OMS cd="bv_caret" name="N"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="i1"/>
+                    </OMATTR>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="upto"/>
+                      <OMS cd="bv_caret" name="i1"/>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="sp"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMV name="sp"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>2</OMI>
+                    <OMV name="sp"/>
+                  </OMA>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="caret_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="dependent-tupletype"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="below"/>
+                          <OMS cd="bv_caret" name="N"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="i1"/>
+                    </OMATTR>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="upto"/>
+                      <OMS cd="bv_caret" name="i1"/>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="sp"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMV name="sp"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>2</OMI>
+                    <OMV name="sp"/>
+                  </OMA>
+                </OMA>
+                <OMI>1</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMI>1</OMI>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>2</OMI>
+                    <OMV name="sp"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="pvs" name="proj"/>
+                  <OMI>1</OMI>
+                  <OMV name="sp"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="caret_TCC3" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="dependent-tupletype"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="below"/>
+                          <OMS cd="bv_caret" name="N"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="i1"/>
+                    </OMATTR>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="upto"/>
+                      <OMS cd="bv_caret" name="i1"/>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="sp"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMA>
+                          <OMS cd="pvs" name="proj"/>
+                          <OMI>1</OMI>
+                          <OMV name="sp"/>
+                        </OMA>
+                        <OMA>
+                          <OMS cd="pvs" name="proj"/>
+                          <OMI>2</OMI>
+                          <OMV name="sp"/>
+                        </OMA>
+                      </OMA>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="ii"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="ii"/>
+                <OMA>
+                  <OMS cd="pvs" name="proj"/>
+                  <OMI>2</OMI>
+                  <OMV name="sp"/>
+                </OMA>
+              </OMA>
+              <OMS cd="bv_caret" name="N"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <symbol id="^" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="tupletype"/>
+                  <OMS cd="bv" name="bvec"/>
+                  <OMA>
+                    <OMS cd="pvs" name="dependent-tupletype"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMA>
+                          <OMS cd="naturalnumbers" name="below"/>
+                          <OMS cd="bv_caret" name="N"/>
+                        </OMA>
+                      </OMATP>
+                      <OMV name="i1"/>
+                    </OMATTR>
+                    <OMA>
+                      <OMS cd="naturalnumbers" name="upto"/>
+                      <OMS cd="bv_caret" name="i1"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATP>
+              <OMV name="d"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMS cd="bv" name="bvec"/>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="^-def" for="^" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bv_caret" name="^"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="bv" name="bvec"/>
+                  </OMATP>
+                  <OMV name="bv"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="dependent-tupletype"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="naturalnumbers" name="below"/>
+                            <OMS cd="bv_caret" name="N"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="i1"/>
+                      </OMATTR>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="upto"/>
+                        <OMS cd="bv_caret" name="i1"/>
+                      </OMA>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="sp"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="naturalnumbers" name="below"/>
+                        <OMA>
+                          <OMS cd="reals" name="+"/>
+                          <OMA>
+                            <OMS cd="reals" name="-"/>
+                            <OMA>
+                              <OMS cd="pvs" name="proj"/>
+                              <OMI>1</OMI>
+                              <OMV name="sp"/>
+                            </OMA>
+                            <OMA>
+                              <OMS cd="pvs" name="proj"/>
+                              <OMI>2</OMI>
+                              <OMV name="sp"/>
+                            </OMA>
+                          </OMA>
+                          <OMI>1</OMI>
+                        </OMA>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="ii"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="bv"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMV name="ii"/>
+                    <OMA>
+                      <OMS cd="pvs" name="proj"/>
+                      <OMI>2</OMI>
+                      <OMV name="sp"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+    <assertion id="bv_caret_all_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="IMPLIES"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMS cd="bv_caret" name="N"/>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMS cd="bv_caret" name="N"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMS cd="bv_caret" name="N"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMS cd="bv_caret" name="N"/>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_all_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="IMPLIES"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMS cd="bv_caret" name="N"/>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMI>0</OMI>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMS cd="bv_caret" name="N"/>
+                <OMI>1</OMI>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_all" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMS cd="bv_caret" name="N"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="bv_caret" name="^"/>
+                  <OMV name="bv"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tuple"/>
+                    <OMA>
+                      <OMS cd="reals" name="-"/>
+                      <OMS cd="bv_caret" name="N"/>
+                      <OMI>1</OMI>
+                    </OMA>
+                    <OMI>0</OMI>
+                  </OMA>
+                </OMA>
+                <OMV name="bv"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_ii_0_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMV name="i"/>
+              <OMV name="i"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_ii_0_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMI>0</OMI>
+              <OMI>1</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_ii_0" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_caret" name="^"/>
+                  <OMV name="bv"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tuple"/>
+                    <OMV name="i"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMV name="bv"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_elim_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="upto"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMV name="i"/>
+                        <OMV name="j"/>
+                      </OMA>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMI>1</OMI>
+                  <OMV name="i"/>
+                </OMA>
+                <OMV name="j"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_elim_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="upto"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMA>
+                      <OMS cd="reals" name="+"/>
+                      <OMA>
+                        <OMS cd="reals" name="-"/>
+                        <OMV name="i"/>
+                        <OMV name="j"/>
+                      </OMA>
+                      <OMI>1</OMI>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="j"/>
+                <OMV name="k"/>
+              </OMA>
+              <OMS cd="bv_caret" name="N"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+    <assertion id="bv_caret_elim" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="bv" name="bvec"/>
+                </OMATP>
+                <OMV name="bv"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMS cd="bv_caret" name="N"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="upto"/>
+                    <OMV name="i"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="naturalnumbers" name="below"/>
+                    <OMA>
+                      <OMS cd="reals" name="-"/>
+                      <OMA>
+                        <OMS cd="reals" name="+"/>
+                        <OMI>1</OMI>
+                        <OMV name="i"/>
+                      </OMA>
+                      <OMV name="j"/>
+                    </OMA>
+                  </OMA>
+                </OMATP>
+                <OMV name="k"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMA>
+                  <OMS cd="bv_caret" name="^"/>
+                  <OMV name="bv"/>
+                  <OMA>
+                    <OMS cd="pvs" name="tuple"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMV name="k"/>
+              </OMA>
+              <OMA>
+                <OMS cd="bv" name="^"/>
+                <OMV name="bv"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="j"/>
+                  <OMV name="k"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+  </theory>
+</omdoc>

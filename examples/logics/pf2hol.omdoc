@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="pf2hol-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+ <metadata>
+  <Title>Two-valued higher-order logic with partial functions</Title>
+  <Creator role="aut">Michael Kohlhase</Creator>
+  <Date>20020227</Date>
+  <Description>
+   Two-valued higher-order logic with partial functions
+  </Description>
+ </metadata>
+
+ <theory id="pf2hol">
+  <imports id="pf2hol-imports-sthol" from="sthol"/>
+  <imports id="pf2hol-imports-undefined" from="undefined"/>
+
+</theory>
+</omdoc>

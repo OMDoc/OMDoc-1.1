@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_hypothesis">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_hypothesis">
+
+<proof id="myproof" for="something">
+<hypothesis id="myhypo" style="foo" discharged-in="bla">
+<symbol id="asymbol"/>
+<symbol id="anothersym"/>
+<CMP xml:lang="de">zweiundvierzig</CMP>
+<CMP xml:lang="zh">si shi er</CMP>
+<FMP/>
+</hypothesis>
+<conclude>
+<proofobject id="pobj" style="bla" for="foo" theory="bar">
+<OMOBJ><OMSTR>set[any] -> bool</OMSTR></OMOBJ> 
+</proofobject>
+</conclude>
+</proof>
+
+</theory>
+</omdoc>
+

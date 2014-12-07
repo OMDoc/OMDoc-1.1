@@ -1,0 +1,278 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (X11; I; Linux 2.2.12-20 i686) [Netscape]">
+</head>
+<body>
+
+<center><b><font size=+1>Aldordoc User Guide</font></b>
+<br>
+<hr WIDTH="100%"></center>
+
+<p><font size=+1>This document describes the tool and its usage. I usually
+don't like reading</font>
+<br><font size=+1>manuals, so I'll try to keep this one relatively <b>short</b>!
+:)</font>
+<p><font color="#3333FF"><font size=+1>What is <b>aldordoc</b> anyway?</font></font>
+<p><font color="#000000"><font size=+1>'aldordoc' is a javadoc-like tool
+for Aldor. It takes an Aldor source file (or a .ao</font></font>
+<br><font color="#000000"><font size=+1>or a .al) and generates a corresponding
+HTML documentation.</font></font>
+<br><font color="#000000"><font size=+1>If you don't know about Aldor,
+you don't need this tool!</font></font>
+<p><font color="#000000"><font size=+1>The current version of this tool
+is v0.6.</font></font>
+<br>&nbsp;
+<p><font color="#3333FF"><font size=+1>What are the tools?</font></font>
+<p><font color="#000000"><font size=+1>There are three tools you can use:</font></font>
+<blockquote>
+<blockquote>
+<ul>
+<li>
+<font color="#000000"><font size=+1>aldordoc</font></font></li>
+
+<li>
+<font color="#000000"><font size=+1>aldordoc-combine</font></font></li>
+
+<li>
+<font color="#000000"><font size=+1>aldordoc-index</font></font></li>
+</ul>
+</blockquote>
+</blockquote>
+<font color="#3333FF"><font size=+1>Setup</font></font>
+<p><font color="#000000"><font size=+1><b>Very important!!! </b>If you
+read one thing in this doc, read this.</font></font>
+<ul>
+<li><font color="#000000"><font size=+1>You need to create an environment
+variable called 'ALDORDOCROOT'</font></font>
+<br><font color="#000000"><font size=+1>containing the directory where
+the tools are installed.</font></font>
+<li><font color="#000000"><font size=+1>Your PATH needs to point to the 
+aldor compiler (axiomxl) and the 'java' executable</font></font>
+<li><font color="#000000"><font size=+1>(with java 1.1 only) Your CLASSPATH
+must at least point to the standard Java classes.
+</ul>
+<p><font color="#000000"><font size=+1>Example:</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>Let's assume the tools
+are installed in /usr/local/aldordoc,</font></font>
+<br><font color="#000000"><font size=+1>your ALDORDOCROOT variable should
+contain '/usr/local/aldordoc'</font></font>
+<br><font color="#000000"><font size=+1>(without the quotes).</font></font>
+<br><font color="#000000"><font size=+1>Also add this directory to your PATH
+to be able to access the tools</font></font>
+<br><font color="#000000"><font size=+1>from anywhere. Add the directory
+containing the aldor compiler executable</font></font>
+<br><font color="#000000"><font size=+1>and the 'java' executable to your 
+PATH.</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>You can also create an 'ALDORDOCAR'
+variable which will contain the</font></font>
+<br><font color="#000000"><font size=+1>name of the 'ar' tool you wish
+to use in case you give a .al (archive) file as an input.</font></font>
+<br><font color="#000000"><font size=+1>By default, <b>ar</b> is used.</font></font>
+<p><font color="#3333FF"><font size=+1>'aldordoc' tool</font></font>
+<p><font color="#000000"><font size=+1>It is a shell script which takes
+two arguments: an input Aldor file and a text file.</font></font>
+<br><font color="#000000"><font size=+1>Example:</font></font>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc <i>input.asdirfile</i></font></font></blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>The text file contains a list of directories
+for the hyperlinks (see aldordoc-combine).</font></font>
+<br><font color="#000000"><font size=+1>The input file can be a .as file,
+a .ao file or even a .al file.</font></font>
+<br><font color="#000000"><font size=+1>With a .ao or a .al file, the tool
+will generate the documentation in the current directory.</font></font>
+<br><font color="#000000"><font size=+1>With a .al file, it will be in
+a subdirectory 'Doc_</font><i>NameOfFileWithoutExtension</i><font size=+1>'
+of the current</font></font>
+<br><font color="#000000"><font size=+1>directory.</font></font>
+<br><font color="#000000"><font size=+1>An extra file is generated for
+each source file. This file (with a .doctoc extension) will</font></font>
+<br><font color="#000000"><font size=+1>list the entities described in
+the generated documentation. See next paragraph to</font></font>
+<br><font color="#000000"><font size=+1>understand why this file is useful.</font></font>
+<p><font color="#3333FF"><font size=+1>'aldordoc-combine' tool</font></font>
+<p><font color="#000000"><font size=+1>This tool will take all the .doctoc
+files of the current directory and combine them</font></font>
+<br><font color="#000000"><font size=+1>together to create a 'combine-doctoc.ref'
+file. This file will contain references</font></font>
+<br><font color="#000000"><font size=+1>(HTML filename and ID of the anchor
+in this file) to access the documentation of</font></font>
+<br><font color="#000000"><font size=+1>a particular entity (usually type
+or function).</font></font>
+<br><font color="#000000"><font size=+1>This file is useful when we call
+the 'aldordoc' tool, which is then able to create</font></font>
+<br><font color="#000000"><font size=+1>hyperlinks for the types involved
+in its documentation.</font></font>
+<p><font color="#000000"><font size=+1>A problem with this (please send
+an email to chicha@csd.uwo.ca if you see how</font></font>
+<br><font color="#000000"><font size=+1>to solve it) is that when we start
+from scratch, we need to generate twice the</font></font>
+<br><font color="#000000"><font size=+1>documentation. Here are the steps
+for a single source file (for a .al file, just skip</font></font>
+<br><font color="#000000"><font size=+1>the 'aldordoc-combine' step which
+is done automatically):</font></font>
+<blockquote>
+<blockquote>
+<ul>
+<li>
+<font color="#000000"><font size=+1>call 'aldordoc' to generate .html and
+.doctoc (HTML files are not hyperlinked together because no information
+is available).</font></font></li>
+
+<li>
+<font color="#000000"><font size=+1>call 'aldordoc-combine' to combine
+doctoc files.</font></font></li>
+
+<li>
+<font color="#000000"><font size=+1>call 'aldordoc' a second time to generate
+hyperlinked HTML files as now information is available to do so.</font></font></li>
+</ul>
+</blockquote>
+</blockquote>
+
+<p><br><font color="#3333FF"><font size=+1>'aldordoc-index' tool</font></font>
+<p><font color="#000000"><font size=+1>This tool simply creates an 'index.html'
+file which will be the table of contents</font></font>
+<br><font color="#000000"><font size=+1>for all HTML files of the current
+directory.</font></font>
+<p>
+<hr WIDTH="100%">
+<p><b><font size=+1>Step by step examples</font></b>
+<p><font color="#000000"><font size=+1>If you feel comfortable enough to
+try out the tool, go ahead and please don't forget</font></font>
+<br><font color="#000000"><font size=+1>to send bug reports to chicha@csd.uwo.ca.</font></font>
+<br><font color="#000000"><font size=+1>This section shows a step-by-step
+generation of an HTML documentation for</font></font>
+<br><font color="#000000"><font size=+1>Aldor sources.</font></font>
+<br><font size=+1><font color="#000000">First of all read the '</font><font color="#3333FF">setup</font><font color="#000000">'
+section to create the proper environment variables.</font></font>
+<p><font color="#000000"><font size=+1><b>Example 1</b>: just one file</font></font>
+<p><font color="#000000"><font size=+1>Step 1: Choose the file for which
+you want a documentation. Let's call it <i>mysource.as</i></font></font>
+<br><font color="#000000"><font size=+1>(this would also work with <i>mysource.ao</i>).</font></font>
+<p><font color="#000000"><font size=+1>Step 2: Create a 'dirfile' containing
+a list of directories to use for hyperlinking types</font></font>
+<br><font color="#000000"><font size=+1>used in mysource.as. In this example,
+there is none so just create the file <i>dirfile </i>(any</font></font>
+<br><font color="#000000"><font size=+1>name would do) with a dot (.) as
+its single entry.</font></font>
+<p><font color="#000000"><font size=+1>Step 3: Call aldordoc</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc mysource.as
+dirfile</font></font>
+<p><font color="#000000"><font size=+1>Now we have a mysource.html file</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 4: That's it you are done! Hyperlinks
+exist for types defined within mysource.as.</font></font>
+<p><font color="#000000"><font size=+1><b>Example 2</b>: all the files
+of a directory</font></font>
+<p><font color="#000000"><font size=+1>Once you have created a whole bunch
+of source files, you would like to have the</font></font>
+<br><font color="#000000"><font size=+1>documentation for all of them (note:
+you should also seriously consider creating</font></font>
+<br><font color="#000000"><font size=+1>a library (.al and .a) for these
+files). Here is how to proceed:</font></font>
+<p><font color="#000000"><font size=+1>Step 1: Create a directory where
+you want to put your documentation</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ mkdir ~/mydoc</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 2: Go to this directory</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ cd ~/mydoc</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 3: Create a 'dirfile' containing
+the current directory as an entry</font></font>
+<br><font color="#000000"><font size=+1>(if ~ represents /users/chicha).</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ echo '/users/chicha/mydoc'
+> dirfile</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 4: Use a loop calling 'aldordoc'
+to generate the documentation for all your source</font></font>
+<br><font color="#000000"><font size=+1>files (we will assume these files
+are in ~/mysrc). Here is an example of a loop with bash.</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ for i in ~/mysrc/*</font></font>
+<br><font color="#000000"><font size=+1>> do</font></font>
+<br><font color="#000000"><font size=+1>> aldordoc $i dirfile</font></font>
+<br><font color="#000000"><font size=+1>> done</font></font>
+<p><font color="#000000"><font size=+1>Non hyperlinked HTML files and doctoc
+files are created. You can stop here if you don't care about hyperlinks
+between your files. Go to step 7</font></font>
+<br><font color="#000000"><font size=+1>if you want an index in this directory.</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step5: We need to hyperlink your files
+now. We use 'aldordoc-combine':</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc-combine</font></font>
+<p><font color="#000000"><font size=+1>The file 'combine-doctoc.ref' is
+created.</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 6: We just need to repeat the
+step 4 to recreate HTML files now that we have</font></font>
+<br><font color="#000000"><font size=+1>the proper information.</font></font>
+<p><font color="#000000"><font size=+1>Step 7: We now create an index file</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc-index</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 8: You are done!</font></font>
+<p><font color="#000000"><font size=+1><b>Example 3</b>: an archive file</font></font>
+<p><font color="#000000"><font size=+1>Here we show how to generate HTML
+documentation from a .al file.</font></font>
+<br><font color="#000000"><font size=+1>Let's assume this file is called
+<i>mysources.al
+</i>and
+is in the directory ~/mylibs</font></font>
+<br><font color="#000000"><font size=+1>We want to generate the documentation
+in the directory ~/mydocs</font></font>
+<p><font color="#000000"><font size=+1>Step 1: Creation of the documentation
+directory</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ mkdir ~/mydocs</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 2: Change the current directory</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ cd ~/mydocs</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 3: Create 'dirfile'. The documentation
+will be created in a Doc_mysources</font></font>
+<br><font color="#000000"><font size=+1>subdirectory so the 'dirfile' file
+will contain /users/chicha/mydocs/Doc_mysources</font></font>
+<br><font color="#000000"><font size=+1>(if ~ represents /users/chicha):</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ echo '/users/chicha/mydocs/Doc_mysources'
+> dirfile</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 4: Generate the documentation
+(we will assume the .al file is in ~/mysrc)</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc ~/mysrc/mysources.al
+dirfile</font></font>
+<p><font color="#000000"><font size=+1>Now the entire documentation for
+all the files included in mysources.al</font></font>
+<br><font color="#000000"><font size=+1>has been generated. A 'combine-doctoc.ref'
+has been automatically generated. An index file has also been created for
+you.</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 5: Hyperlink your files. To do
+that just run the generation a second time.</font></font>
+<blockquote>
+<blockquote><font color="#000000"><font size=+1>$ aldordoc ~/mysrc/mysources.al
+dirfile</font></font></blockquote>
+</blockquote>
+<font color="#000000"><font size=+1>Step 6: You are done! Enjoy!</font></font>
+<p>
+<hr WIDTH="100%">
+<p><font color="#000000">(C) Yannis Chicha - 2000/03/24</font>
+<br><font color="#000000">Please send any request or question to chicha@csd.uwo.ca</font>
+</body>
+</html>

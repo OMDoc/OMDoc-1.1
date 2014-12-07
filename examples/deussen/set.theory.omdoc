@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="set.theory-omdoc" catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title xml:lang="en">Set Theory</Title>
+  <Title xml:lang="de">Set Theory</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+<theory id="set.theory">
+
+<metadata>
+  <Title xml:lang="en">Set-Theory</Title>
+  <Creator role="ant">Barbara Schuett Kerber</Creator>
+  <Creator role="aut">Michael Kohlhase</Creator>
+</metadata>
+
+
+<symbol id="injective" kind="object" scope="global">
+<commonname  xml:lang="de">injektiv</commonname>
+<commonname> injective</commonname>
+</symbol>
+
+<definition id="injective.def" for="injective" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="implies"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/></OMA>
+<OMA><OMV name="F"/><OMV name="Y"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="surjective" kind="object" scope="global">
+<commonname  xml:lang="de">surjektiv</commonname>
+<commonname> surjective</commonname>
+</symbol>
+
+<definition id="surjective.def" for="surjective" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="H"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="G"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="F"/><OMV name="X"/></OMA><OMV name="Y"/></OMA></OMBIND></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="bijective" kind="object" scope="global">
+<commonname  xml:lang="de">bijektiv</commonname>
+<commonname>bijective</commonname>
+</symbol>
+
+<definition id="bijective.def" for="bijective" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="G"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="H"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="G"/><OMV name="H"/></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="set.theory" name="injective"/><OMV name="G"/><OMV name="H"/><OMV name="F"/></OMA>
+<OMA><OMS cd="set.theory" name="surjective"/><OMV name="G"/><OMV name="H"/><OMV name="F"/></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="first-n-nats" kind="object" scope="global">
+<commonname  xml:lang="de">Menge der ersten $n$</commonname>
+<commonname> set of the first n numbers</commonname>
+</symbol>
+
+<definition id="first-n-nats.def" for="first-n-nats" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="ind" name="ind"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="X"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="nat.numbers" name="nat"/><OMV name="X"/></OMA>
+<OMA><OMS cd="nat.numbers" name="smaller-or-equal"/><OMV name="X"/><OMV name="N"/></OMA></OMA>
+<OMA><OMS cd="nat.numbers" name="smaller-or-equal"/><OMI>1</OMI><OMV name="X"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="finite" kind="object" scope="global">
+<commonname  xml:lang="de">endliche Menge S</commonname>
+<commonname> finite</commonname>
+</symbol>
+
+<definition id="finite.def" for="finite" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="S"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA><OMS cd="set.theory" name="bijective"/>
+<OMA><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="S"/></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="intersection" kind="object" scope="global">
+<commonname  xml:lang="de">$X \cap Y$</commonname>
+<commonname>intersection $X \cap Y$</commonname>
+</symbol>
+
+<definition id="intersection.def" for="intersection" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="A"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="intersection"/><OMV name="X"/><OMV name="Y"/></OMA><OMV name="A"/></OMA>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="X"/><OMV name="A"/></OMA>
+<OMA><OMV name="Y"/><OMV name="A"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="fam-intersection" kind="object" scope="global">
+<commonname  xml:lang="de">$\cap _{i \in J} U_i$</commonname>
+<commonname> intersection $\bigcap \limits _{i \in J} U_i$</commonname>
+</symbol>
+
+<definition id="fam-intersection.def" for="fam-intersection" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="B"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="B"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="fam-intersection"/><OMV name="J"/><OMV name="U"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA>
+<OMA><OMV name="U"/><OMS cd="ind" name="ind"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-intersection" kind="object" scope="global">
+<commonname  xml:lang="de">$\cap _{i=1}^{n} U_i$</commonname>
+<commonname> intersection $\bigcap \limits _{i=1}^{n} U_i$</commonname>
+</symbol>
+
+<definition id="n-intersection.def" for="n-intersection" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR>
+<OMA><OMS cd="set.theory" name="fam-intersection"/>
+<OMA><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="U"/></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="union" kind="object" scope="global">
+<commonname  xml:lang="de">$X \cup Y$</commonname>
+<commonname>union $X \cup Y$</commonname>
+</symbol>
+
+<definition id="union.def" for="union" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="A"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="union"/><OMV name="X"/><OMV name="Y"/></OMA><OMV name="A"/></OMA>
+<OMA><OMS cd="logic1" name="or"/>
+<OMA><OMV name="X"/><OMV name="A"/></OMA>
+<OMA><OMV name="Y"/><OMV name="A"/></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="fam-union" kind="object" scope="global">
+<commonname  xml:lang="de">$\cup _{i \in J} U_i$</commonname>
+<commonname> union $\bigcup \limits _{i \in J} U_i$</commonname>
+</symbol>
+
+<definition id="fam-union.def" for="fam-union" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="J"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="B"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="J"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="B"/></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="fam-union"/><OMV name="J"/><OMV name="U"/></OMA><OMV name="X"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="J"/></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA>
+<OMA><OMV name="U"/><OMS cd="ind" name="ind"/></OMA><OMV name="X"/></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-union" kind="object" scope="global">
+<commonname  xml:lang="de">$\cup _{i=1}^{n} U_i$</commonname>
+<commonname> union $\bigcup \limits _{i=1}^{n} U_i$</commonname>
+</symbol>
+
+<definition id="n-union.def" for="n-union" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="U"/></OMATTR></OMBVAR>
+<OMA><OMS cd="set.theory" name="fam-union"/>
+<OMA><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="U"/></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="pair" kind="object" scope="global">
+<CMP>The pair $(x,y)(x,y \in A)$ is defined as a mapping from $set(1,2)$ to $A$ by $( (pairxy)1 ) = x$ and $( (pairxy)2) = y$ The other alternative would be to define the pair by the axiom: $(a,b) = (c,d) \Leftrightarrow a = c \wedge b =d$ We have not made this choice, since then we would have an additional axiom. </CMP>
+</symbol>
+
+
+<definition id="pair.def" for="pair" type="simple">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR>
+<OMA><OMS cd="logic1" name="and"/>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="X"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="pair"/><OMV name="X"/><OMV name="Y"/></OMA><OMI>1</OMI></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="Y"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="pair"/><OMV name="X"/><OMV name="Y"/></OMA>
+<OMA><OMS cd="nat.numbers" name="suc"/><OMI>1</OMI></OMA></OMA></OMA></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="cart-prod" kind="object" scope="global">
+<CMP> The cartesian product of two sets <OMOBJ><OMV name="x"/></OMOBJ> and <OMOBJ><OMV name="y"/></OMOBJ> $(X,Y \subset (OA) )$ is defined as a mapping from $set(1,2)$ to $(OA)$ by $a \in X \times Y$ $\Leftrightarrow  \exists x \in X  \vee  \exists y \in Y$ with $a = (x,y)  \forall a \in A$ </CMP>
+</symbol>
+
+
+<definition id="cart-prod.def" for="cart-prod" type="implicit">
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="Y"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="nat.numbers" name="suc"/><OMI>1</OMI></OMA></OMA><OMV name="A"/></OMA></OMATP><OMV name="A"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="cart-prod"/><OMV name="X"/><OMV name="Y"/></OMA><OMV name="A"/></OMA>
+<OMBIND>
+  <OMS cd="quant1" name="exists"/>
+  <OMBVAR>
+    <OMATTR>
+     <OMATP>
+       <OMS cd="simpletypes" name="type"/>
+       <OMV name="X"/>
+     </OMATP>
+     <OMV name="X"/>
+    </OMATTR>
+    <OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="Y"/></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/><OMV name="A"/>
+<OMA><OMS cd="set.theory" name="pair"/><OMV name="X"/><OMV name="Y"/></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-tuple" kind="object" scope="global">
+<CMP>Like the pair it's possible to define the n-tuple by the projection mappings to the different components. It's useful to have the definition of the n-tuple although <OMOBJ><OMV name="x"/></OMOBJ> as mapping is already an n-tuple! One consequence of the definition is that two n-tuples could only be equal iff they have the same length and each component is identical.</CMP>
+</symbol>
+
+
+<definition id="n-tuple.def" for="n-tuple" type="simple">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="fns1" name="lambda"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="A"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="N"/><OMS cd="set.theory" name="first-n-nats"/></OMA></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMV name="X"/><OMS cd="ind" name="ind"/></OMA>
+<OMA>
+<OMA><OMS cd="set.theory" name="n-tuple"/><OMV name="N"/><OMV name="X"/></OMA><OMS cd="ind" name="ind"/></OMA></OMA></OMBIND></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-cart-prod" kind="object" scope="global">
+<CMP>In analogy to the definition of the cartesian product of two sets we can also define the cartesian product of n sets $X_1 \times X_2 \times ...\times X_n$. </CMP>
+</symbol>
+
+<definition id="n-cart-prod.def" for="n-cart-prod" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="truthval" name="bool"/><OMV name="A"/></OMA></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="A"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="n-cart-prod"/><OMV name="N"/><OMV name="X"/></OMA><OMV name="A"/></OMA>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="N"/><OMS cd="set.theory" name="first-n-nats"/></OMA></OMATP><OMV name="I"/></OMATTR></OMBVAR><OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="A"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA>
+<OMA><OMV name="X"/><OMS cd="ind" name="ind"/></OMA>
+<OMA><OMV name="X"/><OMS cd="ind" name="ind"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="A"/>
+<OMA><OMS cd="set.theory" name="n-tuple"/><OMV name="N"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="n-same-cart-product" kind="object" scope="global">
+<commonname  xml:lang="de">$X \times X \times ...\times X$ (n-mal)</commonname>
+</symbol>
+
+
+<symbol id="n-same-cart-prod" kind="object" scope="global">
+<CMP> Here we will define the cartesian product of only one set <OMOBJ><OMV name="x"/></OMOBJ> with itself, that is $X \times X \times ...\times X$ (n-times). </CMP>
+</symbol>
+
+<definition id="n-same-cart-prod.def" for="n-same-cart-prod" type="implicit">
+
+ <FMP><OMOBJ>  
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMV name="A"/></OMATP><OMV name="A"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA>
+<OMA><OMS cd="set.theory" name="n-same-cart-prod"/><OMV name="N"/><OMV name="X"/></OMA><OMV name="A"/></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMA><OMS cd="simpletypes" name="funtype"/><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="A"/></OMA></OMATP><OMV name="X"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="and"/>
+<OMA><OMV name="X"/>
+<OMA><OMV name="X"/><OMS cd="ind" name="ind"/></OMA></OMA>
+<OMA><OMS cd="relation1" name="eq"/><OMV name="A"/>
+<OMA><OMS cd="set.theory" name="n-tuple"/><OMV name="N"/><OMV name="X"/></OMA></OMA></OMA></OMBIND></OMA></OMBIND>
+  </OMOBJ></FMP>
+</definition>
+
+<symbol id="card" kind="object" scope="global">
+<commonname  xml:lang="de">Kardinalit"at</commonname>
+<commonname> axiom of the cardinality</commonname>
+</symbol>
+
+<definition id="card.def" for="card" type="simple">
+
+ <FMP><OMOBJ>  
+<OMA><OMS cd="logic1" name="and"/>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="X"/></OMATTR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="A"/><OMS cd="truthval" name="bool"/></OMA></OMATP><OMV name="Y"/></OMATTR></OMBVAR><OMA><OMS cd="logic1" name="equivalent"/>
+<OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="card"/><OMV name="X"/></OMA>
+<OMA><OMS cd="set.theory" name="card"/><OMV name="Y"/></OMA></OMA>
+<OMBIND><OMS cd="quant1" name="exists"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMA><OMS cd="simpletypes" name="funtype"/><OMV name="X"/><OMV name="Y"/></OMA></OMATP><OMV name="F"/></OMATTR></OMBVAR><OMA><OMS cd="set.theory" name="bijective"/><OMV name="X"/><OMV name="Y"/><OMV name="F"/></OMA></OMBIND></OMA></OMBIND>
+<OMBIND><OMS cd="quant1" name="forall"/><OMBVAR><OMATTR><OMATP><OMS cd="simpletypes" name="type"/><OMS cd="nat.numbers" name="nat"/></OMATP><OMV name="N"/></OMATTR></OMBVAR><OMA><OMS cd="relation1" name="eq"/>
+<OMA><OMS cd="set.theory" name="card"/>
+<OMA><OMS cd="set.theory" name="first-n-nats"/><OMV name="N"/></OMA><OMV name="N"/></OMA></OMA></OMBIND></OMA>
+  </OMOBJ></FMP>
+</definition>
+
+</theory>
+</omdoc>

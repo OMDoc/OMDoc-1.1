@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="linalg1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary linalg1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/linalg1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>Operations on Matrices (independent of the matrix representation).</Description>
+</metadata>
+
+<theory id="linalg1">
+
+<imports id="linalg1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="linalg1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="linalg1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="linalg1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="linalg1-imports-transc1" from="transc1.omdoc#transc1"/>
+<imports id="linalg1-imports-linalg2" from="linalg2.omdoc#linalg2"/>
+<imports id="linalg1-imports-alg1" from="alg1.omdoc#alg1"/>
+
+<symbol id="vectorproduct">
+  <CMP>
+    This symbol represents the vector product function. It takes two
+    three dimensional vector arguments and returns a three dimensional
+    vector. It is defined as follows: if we write a as $[a_1,a_2,a_3]$ and
+    b as $[b_1,b_2,b_3]$ then the vector product denoted 
+    $a \times b = [a_2b_3 - a_3b_2 , a_3b_1 - a_1b_3 , a_1b_2 - a_2b_1]$.
+    Note that the vector product is often referred to as the cross product.
+  </CMP>
+  <commonname>vectorproduct</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="3Vector"/>
+	<OMV name="3Vector"/>
+	<OMV name="3Vector"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="vectorproduct"><use format="cmml" element="vectorproduct"/></presentation>
+<assertion id="vectorproduct-prop-1" type="lemma">
+  <CMP>
+    if we write a as $[a_1,a_2,a_3]$ and
+    b as $[b_1,b_2,b_3]$ then the vector product denoted 
+    $a\times b = [a_2b_3 - a_3b_2 , a_3b_1 - a_1b_3 , a_1b_2 - a_2b_1]$.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="linalg1" name="vectorproduct"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="arith1" name="minus"/>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 2 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 3 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 3 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 2 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="arith1" name="minus"/>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 3 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 1 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 1 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 3 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="arith1" name="minus"/>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 1 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 2 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="arith1" name="times"/>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 2 </OMI>
+		<OMV name="A"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="linalg1" name="vector_selector"/>
+		<OMI> 1 </OMI>
+		<OMV name="B"/>
+	      </OMA>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="scalarproduct">
+  <CMP>
+    This symbol represents the scalar product function. It takes two
+    vector arguments and returns a scalar value. The scalar product of two
+    vectors a, b is defined as $|a| * |b| * cos(\theta)$, where $\theta$ is
+    the angle between the two vectors and |.| is a euclidean size
+    function. Note that the scalar product is often referred to as the dot
+    product.
+  </CMP>
+  <commonname>scalarproduct</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Vector"/>
+	<OMV name="Vector"/>
+	<OMV name="Scalar"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="scalarproduct"><use format="cmml" element="scalarproduct"/></presentation>
+<assertion id="scalarproduct-prop-1" type="lemma">
+  <CMP>
+    $a\cdot b = |a| * |b| * cos(\theta)$, where $\theta$ is the angle between the
+    two vectors that is $|atan(a_2/a_1)-atan(b_2/b_1)|$.
+    N.B. The FMP displays the two dimensional case only.
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="linalg1" name="scalarproduct"/>
+	  <OMV name="a"/>
+	  <OMV name="b"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="times"/>
+	  <OMA>
+	    <OMS cd="arith1" name="root"/>
+	    <OMA>
+	      <OMS cd="arith1" name="plus"/>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMA>
+		  <OMS cd="linalg1" name="vector_selector"/>
+		  <OMI> 1 </OMI>
+		  <OMV name="a"/>
+		</OMA>
+		<OMI> 2 </OMI>
+	      </OMA>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMA>
+		  <OMS cd="linalg1" name="vector_selector"/>
+		  <OMI> 2 </OMI>
+		  <OMV name="a"/>
+		</OMA>
+		<OMI> 2 </OMI>
+	      </OMA>
+	    </OMA>
+	    <OMI> 2 </OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="arith1" name="root"/>
+	    <OMA>
+	      <OMS cd="arith1" name="plus"/>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMA>
+		  <OMS cd="linalg1" name="vector_selector"/>
+		  <OMI> 1 </OMI>
+		  <OMV name="b"/>
+		</OMA>
+		<OMI> 2 </OMI>
+	      </OMA>
+	      <OMA>
+		<OMS cd="arith1" name="power"/>
+		<OMA>
+		  <OMS cd="linalg1" name="vector_selector"/>
+		  <OMI> 2 </OMI>
+		  <OMV name="b"/>
+		</OMA>
+		<OMI> 2 </OMI>
+	      </OMA>
+	    </OMA>
+	    <OMI> 2 </OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="transc1" name="cos"/>
+	    <OMA>
+	      <OMS cd="arith1" name="abs"/>
+	      <OMA>
+		<OMS cd="arith1" name="minus"/>
+		<OMA>
+		  <OMS cd="transc1" name="arctan"/>
+		  <OMA>
+		    <OMS cd="arith1" name="divide"/>
+		    <OMA>
+		      <OMS cd="linalg1" name="vector_selector"/>
+		      <OMI> 2 </OMI>
+		      <OMV name="a"/>
+		    </OMA>
+		    <OMA>
+		      <OMS cd="linalg1" name="vector_selector"/>
+		      <OMI> 1 </OMI>
+		      <OMV name="a"/>
+		    </OMA>
+		  </OMA>
+		</OMA>
+		<OMA>
+		  <OMS cd="transc1" name="arctan"/>
+		  <OMA>
+		    <OMS cd="arith1" name="divide"/>
+		    <OMA>
+		      <OMS cd="linalg1" name="vector_selector"/>
+		      <OMI> 2 </OMI>
+		      <OMV name="b"/>
+		    </OMA>
+		    <OMA>
+		      <OMS cd="linalg1" name="vector_selector"/>
+		      <OMI> 1 </OMI>
+		      <OMV name="b"/>
+		    </OMA>
+		  </OMA>
+		</OMA>
+	      </OMA>
+	    </OMA>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="outerproduct">
+  <CMP>
+    This symbol represents the outer product function. It takes two vector
+    arguments and returns a matrix. It is defined as follows: if we write
+    the {i,j}'th element of the matrix to be returned as $m_{i,j}$, then:
+    $m_{i,j}=a_i * b_j$ where $a_i,b_j$ are the i'th and j'th elements of a, b
+    respectively.
+  </CMP>
+  <commonname>outerproduct</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Vector"/>
+	<OMV name="Vector"/>
+	<OMV name="Matrix"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="outerproduct"><use format="cmml" element="outerproduct"/></presentation>
+<assertion id="outerproduct-prop-1" type="lemma">
+  <CMP> <OMOBJ xref="outerproduct-prop-1.1"/>
+  </CMP>
+  <FMP>
+    <OMOBJ id="outerproduct-prop-1.1">
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="linalg1" name="matrix_selector"/>
+	  <OMV name="i"/>
+	  <OMV name="j"/>
+	  <OMA>
+	    <OMS cd="linalg1" name="outerproduct"/>
+	    <OMV name="a"/>
+	    <OMV name="b"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="arith1" name="times"/>
+	  <OMA>
+	    <OMS cd="linalg1" name="vector_selector"/>
+	    <OMV name="i"/>
+	    <OMV name="a"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="linalg1" name="vector_selector"/>
+	    <OMV name="j"/>
+	    <OMV name="b"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="transpose">
+  <CMP> 
+    This symbol represents a unary function that denotes the transpose of
+    the given matrix or vector
+  </CMP>
+  <commonname>transpose</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Matrix"/>
+	<OMV name="Matrix"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-transpose" for="transpose" parent="OMA" fixity="postfix">
+  <use  format="TeX">^T</use>
+  <use  format="html">&lt;sup&gt;T&lt;/sup&gt;</use>
+  <use  format="pmml" element="msup" bracket-style="lisp">T</use>
+</presentation>
+<presentation for="transpose"><use format="cmml" element="transpose"/></presentation>
+<example id="transpose-ex-1" type="for" for="transpose">
+  <CMP>A representation of the equation 
+    transpose matrix([0,1],[2,3]) = matrix([0,2],[1,3])
+    N.B. in this example the row oriented view of matrix construction is being 
+    assumed.
+  </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="linalg1" name="transpose"/>
+	<OMA>
+	  <OMS cd="linalg2" name="matrix"/>
+	  <OMA>
+	    <OMS cd="linalg2" name="matrixrow"/>
+	    <OMI> 0 </OMI>
+	    <OMI> 1 </OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="linalg2" name="matrixrow"/>
+	    <OMI> 2 </OMI>
+	    <OMI> 3 </OMI>
+	  </OMA>
+	</OMA>
+      </OMA>
+      <OMA>
+	<OMS cd="linalg2" name="matrix"/>
+	<OMA>
+	  <OMS cd="linalg2" name="matrixrow"/>
+	  <OMI> 0 </OMI>
+	  <OMI> 2 </OMI>
+	</OMA>
+	<OMA>
+	  <OMS cd="linalg2" name="matrixrow"/>
+	  <OMI> 1 </OMI>
+	  <OMI> 3 </OMI>
+	</OMA>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="determinant">
+  <CMP> 
+    This symbol denotes the unary function which returns the determinant
+    of its argument, the argument should be a square matrix.
+  </CMP>
+  <commonname>determinant</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="SquareMatrix"/>
+	<OMS name="NumericalValue" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-determinant" for="determinant" parent="OMA" crossref-symbol="brackets">
+  <use  format="default" lbrack="|" rbrack="|"/>
+</presentation>
+<presentation for="determinant"><use format="cmml" element="determinant"/></presentation>
+<assertion id="determinant-prop-1" type="lemma">
+  <CMP>The determinant of an identity matrix is 1</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMA>
+	      <OMS cd="relation1" name="neq"/>
+	      <OMV name="i"/>
+	      <OMV name="j"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMA>
+		<OMS cd="linalg1" name="matrix_selector"/>
+		<OMV name="i"/>
+		<OMV name="j"/>
+		<OMV name="M"/>
+	      </OMA>
+	      <OMS cd="alg1" name="zero"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMV name="i"/>
+	      <OMV name="j"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMA>
+		<OMS cd="linalg1" name="matrix_selector"/>
+		<OMV name="i"/>
+		<OMV name="j"/>
+		<OMV name="M"/>
+	      </OMA>
+	      <OMS cd="alg1" name="one"/>
+	    </OMA>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="linalg1" name="determinant"/>
+	    <OMV name="M"/>
+	  </OMA>
+	  <OMS cd="alg1" name="one"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="vector_selector">
+  <CMP>
+    This symbol represents the function which allows individual entries to
+    be selected from a vector, or a matrixrow. It takes two arguments. The
+    first argument is the position in the vector (or matrixrow) of the
+    required entry, the second argument is the vector (or matrixrow) in
+    question. The indexing is one based, i.e. the first element is indexed by one.
+  </CMP>
+  <commonname>vector selector</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="PositiveInteger"/>
+	<OMS name="Object" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="vector_selector"><use format="cmml" element="selector"/></presentation>
+<example id="vector_selector-ex-1" type="for" for="vector_selector">
+  <CMP>
+    Representation of a specification of selection of the second element of the
+    specific vector [3,6,9].
+    N.B. in this example the row oriented view of vector construction is being 
+    assumed
+  </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="linalg1" name="vector_selector"/>
+      <OMI>2</OMI>
+      <OMA>
+	<OMS cd="linalg2" name="vector"/>
+	<OMI> 3 </OMI>
+	<OMI> 6 </OMI>
+	<OMI> 9 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+<example id="vector_selector-ex-2" type="for" for="vector_selector">
+  <CMP>
+    Representation of a specification of selection of the second element of the
+    specific matrixrow [0,1,0].
+    N.B. in this example the row oriented view of matrixrow construction is being 
+    assumed</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="linalg1" name="vector_selector"/>
+      <OMI>2</OMI>
+      <OMA>
+	<OMS cd="linalg2" name="matrixrow"/>
+	<OMI> 0 </OMI>
+	<OMI> 1 </OMI>
+	<OMI> 0 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="matrix_selector">
+  <CMP>
+    This symbol represents the function which allows individual entries to
+    be selected from a matrix. It takes three arguments, the first is the
+    index of the row and the second is the index of the column of the
+    required element, the third argument is the matrix in question. The
+    indexing is one based, i.e. the element in the top left hand corner is
+    indexed by (1,1).
+  </CMP>
+  <commonname>matrix selector</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="PositiveInteger"/>
+	<OMV name="PositiveInteger"/>
+	<OMV name="Matrix"/>
+	<OMS name="Object" cd="sts"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<example id="matrix_selector-ex-1" type="for" for="matrix_selector">
+  <CMP>
+    Representation of a specification of selection of the top left hand entry to
+    the matrix M.
+    <OMOBJ>
+      <OMA>
+	<OMS cd="linalg1" name="matrix_selector"/>
+	<OMI> 1 </OMI>
+	<OMI> 1 </OMI>
+	<OMV name="M"/>
+      </OMA>
+    </OMOBJ>
+  </CMP>
+</example>
+</theory>
+</omdoc>

@@ -1,0 +1,2724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="integers.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:23
+    </Date>
+  </metadata>
+  <theory id="integers_test">
+    <symbol id="integer" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="integer-non-empty" >
+      <CMP>The type integer is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56853" for="integer" pto="pvs" pto-version="3.0" replaces="integer-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="integer" for="integer" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="rationals" name="rational"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="integer_pred" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="rationals" name="rational"/>
+          <OMS cd="booleans" name="boolean"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <axiom id="integer_nonempty" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="integer"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <symbol id="int" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="int-non-empty" >
+      <CMP>The type int is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56854" for="int" pto="pvs" pto-version="3.0" replaces="int-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="int" for="int" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="integers" name="integer"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="integer?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="numbers" name="number"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="integer?-def" for="integer?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="integers" name="integer?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="numbers" name="number"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="real_pred"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="AND"/>
+                  <OMA>
+                    <OMS cd="rationals" name="rational_pred"/>
+                    <OMV name="n"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="integers" name="integer_pred"/>
+                    <OMV name="n"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="nonzero_integer_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="notequal" name="/="/>
+            <OMI>1</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonzero_integer_TCC1-1" for="nonzero_integer_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonzero_integer" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonzero_integer-non-empty" >
+      <CMP>The type nonzero_integer is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56855" for="nonzero_integer" pto="pvs" pto-version="3.0" replaces="nonzero_integer-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonzero_integer" for="nonzero_integer" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMV name="i"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56856" for="nonzero_integer" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonzero_integer-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="nonzero_integer-contains" >
+      <CMP>Type nonzero_integer contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="nzint" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nzint-non-empty" >
+      <CMP>The type nzint is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56857" for="nzint" pto="pvs" pto-version="3.0" replaces="nzint-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nzint" for="nzint" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="integers" name="nonzero_integer"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <private id="G56858" for="nzint_is_nzrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzint_is_nzrat|: JUDGEMENT |nonzero_integer| SUBTYPE_OF |nonzero_rational|]]>
+      </data>
+    </private>
+
+
+
+
+
+    <axiom id="closed_plus" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_minus" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_times" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom id="closed_neg" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <assertion id="upfrom_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMV name="i"/>
+              <OMV name="i"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="upfrom_TCC1-1" for="upfrom_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="upfrom" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="upfrom-non-empty" >
+      <CMP>The type upfrom is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56859" for="upfrom" pto="pvs" pto-version="3.0" replaces="upfrom-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="upfrom" for="upfrom" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMV name="s"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56860" for="upfrom" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="upfrom-contains">
+      <data><![CDATA[|i|]]>
+      </data>
+    </private>
+    <axiom id="upfrom-contains" >
+      <CMP>Type upfrom contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="above_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="integers" name="integer_pred"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="i"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="reals" name="+"/>
+                  <OMV name="i"/>
+                  <OMI>1</OMI>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="above_TCC1-1" for="above_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_plus) (( (SKOSIMP) (( (INST?) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="above" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="above-non-empty" >
+      <CMP>The type above is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56861" for="above" pto="pvs" pto-version="3.0" replaces="above-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="above" for="above" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="s"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56862" for="above" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="above-contains">
+      <data><![CDATA[|i| + 1]]>
+      </data>
+    </private>
+    <axiom id="above-contains" >
+      <CMP>Type above contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="int_plus_int_is_int" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_plus_int_is_int-1" for="int_plus_int_is_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_plus) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56863" for="int_plus_int_is_int" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_plus_int_is_int|: JUDGEMENT +(|i|, |j|) HAS_TYPE |int|]]>
+      </data>
+    </private>
+
+    <assertion id="int_minus_int_is_int" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_minus_int_is_int-1" for="int_minus_int_is_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_minus) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56864" for="int_minus_int_is_int" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_minus_int_is_int|: JUDGEMENT -(|i|, |j|) HAS_TYPE |int|]]>
+      </data>
+    </private>
+
+    <assertion id="int_times_int_is_int" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="i"/>
+                <OMV name="j"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_times_int_is_int-1" for="int_times_int_is_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_times) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56865" for="int_times_int_is_int" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_times_int_is_int|: JUDGEMENT *(|i|, |j|) HAS_TYPE |int|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_int_is_int" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="integer_pred"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_int_is_int-1" for="minus_int_is_int" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA closed_neg) (( (PROPAX) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56866" for="minus_int_is_int" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_int_is_int|: JUDGEMENT -(|i|) HAS_TYPE |int|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_nzint_is_nzint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="n0i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="n0i"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_nzint_is_nzint-1" for="minus_nzint_is_nzint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56867" for="minus_nzint_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_nzint_is_nzint|: JUDGEMENT -(|n0i|) HAS_TYPE |nzint|]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&gt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_int_TCC1-1" for="nonneg_int_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonneg_int" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonneg_int-non-empty" >
+      <CMP>The type nonneg_int is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56868" for="nonneg_int" pto="pvs" pto-version="3.0" replaces="nonneg_int-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonneg_int" for="nonneg_int" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMV name="i"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56869" for="nonneg_int" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonneg_int-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonneg_int-contains" >
+      <CMP>Type nonneg_int contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="nonpos_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="reals" name="&lt;="/>
+            <OMI>0</OMI>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonpos_int_TCC1-1" for="nonpos_int_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="nonpos_int" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="nonpos_int-non-empty" >
+      <CMP>The type nonpos_int is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56870" for="nonpos_int" pto="pvs" pto-version="3.0" replaces="nonpos_int-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="nonpos_int" for="nonpos_int" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;="/>
+                <OMV name="i"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56871" for="nonpos_int" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="nonpos_int-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="nonpos_int-contains" >
+      <CMP>Type nonpos_int contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="posint_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMI>1</OMI>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_TCC1-1" for="posint_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="posint" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="posint-non-empty" >
+      <CMP>The type posint is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56872" for="posint" pto="pvs" pto-version="3.0" replaces="posint-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="posint" for="posint" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="nonneg_int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="i"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56873" for="posint" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="posint-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="posint-contains" >
+      <CMP>Type posint contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="negint_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="booleans" name="AND"/>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMI>1</OMI>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negint_TCC1-1" for="negint_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="negint" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="negint-non-empty" >
+      <CMP>The type negint is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56874" for="negint" pto="pvs" pto-version="3.0" replaces="negint-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="negint" for="negint" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="nonpos_int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="i"/>
+                <OMI>0</OMI>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56875" for="negint" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="negint-contains">
+      <data><![CDATA[-1]]>
+      </data>
+    </private>
+    <axiom id="negint-contains" >
+      <CMP>Type negint contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <symbol id="posnat" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="posnat-non-empty" >
+      <CMP>The type posnat is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56876" for="posnat" pto="pvs" pto-version="3.0" replaces="posnat-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="posnat" for="posnat" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMS cd="integers" name="posint"/>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+
+
+
+
+
+
+
+
+    <private id="G56877" for="nnint_is_nnrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnint_is_nnrat|: JUDGEMENT |nonneg_int| SUBTYPE_OF |nonneg_rat|]]>
+      </data>
+    </private>
+
+
+    <private id="G56878" for="npint_is_nprat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npint_is_nprat|: JUDGEMENT |nonpos_int| SUBTYPE_OF |nonpos_rat|]]>
+      </data>
+    </private>
+
+
+    <private id="G56879" for="posint_is_posrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_is_posrat|: JUDGEMENT |posint| SUBTYPE_OF |posrat|]]>
+      </data>
+    </private>
+
+
+    <private id="G56880" for="negint_is_negrat" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negint_is_negrat|: JUDGEMENT |negint| SUBTYPE_OF |negrat|]]>
+      </data>
+    </private>
+
+    <assertion id="posint_is_nzint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_is_nzint-1" for="posint_is_nzint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56881" for="posint_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_is_nzint|: JUDGEMENT |posint| SUBTYPE_OF |nzint|]]>
+      </data>
+    </private>
+
+    <assertion id="negint_is_nzint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="negint"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negint_is_nzint-1" for="negint_is_nzint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56882" for="negint_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negint_is_nzint|: JUDGEMENT |negint| SUBTYPE_OF |nzint|]]>
+      </data>
+    </private>
+
+    <assertion id="nzint_times_nzint_is_nzint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="n0i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="n0j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="n0i"/>
+                <OMV name="n0j"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzint_times_nzint_is_nzint-1" for="nzint_times_nzint_is_nzint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56883" for="nzint_times_nzint_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzint_times_nzint_is_nzint|: JUDGEMENT *(|n0i|, |n0j|) HAS_TYPE |nzint|]]>
+      </data>
+    </private>
+
+
+    <private id="G56884" for="minus_nzint_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_nzint_is_nzint|: JUDGEMENT -(|n0i|) HAS_TYPE |nzint|]]>
+      </data>
+    </private>
+
+    <assertion id="nnint_plus_nnint_is_nnint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nni"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nnj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nni"/>
+                <OMV name="nnj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnint_plus_nnint_is_nnint-1" for="nnint_plus_nnint_is_nnint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56885" for="nnint_plus_nnint_is_nnint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnint_plus_nnint_is_nnint|: JUDGEMENT +(|nni|, |nnj|) HAS_TYPE |nonneg_int|]]>
+      </data>
+    </private>
+
+    <assertion id="nnint_times_nnint_is_nnint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nni"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nnj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="nni"/>
+                <OMV name="nnj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnint_times_nnint_is_nnint-1" for="nnint_times_nnint_is_nnint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56886" for="nnint_times_nnint_is_nnint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnint_times_nnint_is_nnint|: JUDGEMENT *(|nni|, |nnj|) HAS_TYPE
+          |nonneg_int|]]>
+      </data>
+    </private>
+
+    <assertion id="npint_plus_npint_is_npint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonpos_int"/>
+                </OMATP>
+                <OMV name="npi"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonpos_int"/>
+                </OMATP>
+                <OMV name="npj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;="/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="npi"/>
+                <OMV name="npj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npint_plus_npint_is_npint-1" for="npint_plus_npint_is_npint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56887" for="npint_plus_npint_is_npint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npint_plus_npint_is_npint|: JUDGEMENT +(|npi|, |npj|) HAS_TYPE |nonpos_int|]]>
+      </data>
+    </private>
+
+    <assertion id="npint_times_npint_is_nnint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonpos_int"/>
+                </OMATP>
+                <OMV name="npi"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonpos_int"/>
+                </OMATP>
+                <OMV name="npj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;="/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="npi"/>
+                <OMV name="npj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="npint_times_npint_is_nnint-1" for="npint_times_npint_is_nnint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56888" for="npint_times_npint_is_nnint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|npint_times_npint_is_nnint|: JUDGEMENT *(|npi|, |npj|) HAS_TYPE
+          |nonneg_int|]]>
+      </data>
+    </private>
+
+    <assertion id="posint_plus_nnint_is_posint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nnj"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="pi"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="pi"/>
+                <OMV name="nnj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_plus_nnint_is_posint-1" for="posint_plus_nnint_is_posint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56889" for="posint_plus_nnint_is_posint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_plus_nnint_is_posint|: JUDGEMENT +(|pi|, |nnj|) HAS_TYPE |posint|]]>
+      </data>
+    </private>
+
+    <assertion id="nnint_plus_posint_is_posint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nonneg_int"/>
+                </OMATP>
+                <OMV name="nni"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="pj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="nni"/>
+                <OMV name="pj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nnint_plus_posint_is_posint-1" for="nnint_plus_posint_is_posint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56890" for="nnint_plus_posint_is_posint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nnint_plus_posint_is_posint|: JUDGEMENT +(|nni|, |pj|) HAS_TYPE |posint|]]>
+      </data>
+    </private>
+
+    <assertion id="posint_times_posint_is_posint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="pi"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="pj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="pi"/>
+                <OMV name="pj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_times_posint_is_posint-1" for="posint_times_posint_is_posint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56891" for="posint_times_posint_is_posint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_times_posint_is_posint|: JUDGEMENT *(|pi|, |pj|) HAS_TYPE |posint|]]>
+      </data>
+    </private>
+
+    <assertion id="negint_plus_negint_is_negint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="negint"/>
+                </OMATP>
+                <OMV name="ni"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="negint"/>
+                </OMATP>
+                <OMV name="nj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&lt;"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="ni"/>
+                <OMV name="nj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negint_plus_negint_is_negint-1" for="negint_plus_negint_is_negint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56892" for="negint_plus_negint_is_negint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negint_plus_negint_is_negint|: JUDGEMENT +(|ni|, |nj|) HAS_TYPE |negint|]]>
+      </data>
+    </private>
+
+    <assertion id="negint_times_negint_is_posint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="negint"/>
+                </OMATP>
+                <OMV name="ni"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="negint"/>
+                </OMATP>
+                <OMV name="nj"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="reals" name="&gt;"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="ni"/>
+                <OMV name="nj"/>
+              </OMA>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="negint_times_negint_is_posint-1" for="negint_times_negint_is_posint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56893" for="negint_times_negint_is_posint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|negint_times_negint_is_posint|: JUDGEMENT *(|ni|, |nj|) HAS_TYPE |posint|]]>
+      </data>
+    </private>
+
+    <symbol id="subrange" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="subrange" for="subrange" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="k"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMV name="k"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="k"/>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="even?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="integers" name="int"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="even?-def" for="even?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="integers" name="even?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="int"/>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="*"/>
+                    <OMV name="j"/>
+                    <OMI>2</OMI>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="odd?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="integers" name="int"/>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="odd?-def" for="odd?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="integers" name="odd?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="integers" name="int"/>
+                  </OMATP>
+                  <OMV name="i"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="integers" name="int"/>
+                    </OMATP>
+                    <OMV name="j"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="reals" name="+"/>
+                    <OMA>
+                      <OMS cd="reals" name="*"/>
+                      <OMV name="j"/>
+                      <OMI>2</OMI>
+                    </OMA>
+                    <OMI>1</OMI>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="even_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="integers" name="even?"/>
+            <OMI>0</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_int_TCC1-1" for="even_int_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND even?) (( (INST 1 0) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="even_int" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="even_int-non-empty" >
+      <CMP>The type even_int is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56894" for="even_int" pto="pvs" pto-version="3.0" replaces="even_int-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="even_int" for="even_int" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="integers" name="even?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56895" for="even_int" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="even_int-contains">
+      <data><![CDATA[0]]>
+      </data>
+    </private>
+    <axiom id="even_int-contains" >
+      <CMP>Type even_int contains the element XXXX
+      </CMP>
+    </axiom>
+
+    <assertion id="odd_int_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="integers" name="odd?"/>
+            <OMI>1</OMI>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_int_TCC1-1" for="odd_int_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND odd?) (( (INST 1 0) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="odd_int" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="nonempty-type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <axiom id="odd_int-non-empty" >
+      <CMP>The type odd_int is non-empty
+      </CMP>
+    </axiom>
+    <private id="G56896" for="odd_int" pto="pvs" pto-version="3.0" replaces="odd_int-non-empty">
+      <metadata><Description>PVS does not need this axiom
+      </Description></metadata>
+      <data/>
+    </private>
+
+    <definition id="odd_int" for="odd_int" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="integers" name="odd?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <private id="G56897" for="odd_int" pto="pvs" pto-version="3.0" type="type-eq-decl" replaces="odd_int-contains">
+      <data><![CDATA[1]]>
+      </data>
+    </private>
+    <axiom id="odd_int-contains" >
+      <CMP>Type odd_int contains the element XXXX
+      </CMP>
+    </axiom>
+
+
+
+
+
+    <assertion id="odd_is_nzint" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="notequal" name="/="/>
+              <OMV name="x"/>
+              <OMI>0</OMI>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_is_nzint-1" for="odd_is_nzint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56898" for="odd_is_nzint" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_is_nzint|: JUDGEMENT |odd_int| SUBTYPE_OF |nzint|]]>
+      </data>
+    </private>
+
+    <assertion id="even_plus_even_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="e1"/>
+                <OMV name="e2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_plus_even_is_even-1" for="even_plus_even_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 + j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56899" for="even_plus_even_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|even_plus_even_is_even|: JUDGEMENT +(|e1|, |e2|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="even_minus_even_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="e1"/>
+                <OMV name="e2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_minus_even_is_even-1" for="even_minus_even_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 - j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56900" for="even_minus_even_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|even_minus_even_is_even|: JUDGEMENT -(|e1|, |e2|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="odd_plus_odd_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="o1"/>
+                <OMV name="o2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_plus_odd_is_even-1" for="odd_plus_odd_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 1 + j!1 + j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56901" for="odd_plus_odd_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_plus_odd_is_even|: JUDGEMENT +(|o1|, |o2|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="odd_minus_odd_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="o1"/>
+                <OMV name="o2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_minus_odd_is_even-1" for="odd_minus_odd_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 - j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56902" for="odd_minus_odd_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_minus_odd_is_even|: JUDGEMENT -(|o1|, |o2|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="odd_plus_even_is_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="o1"/>
+                <OMV name="e2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_plus_even_is_odd-1" for="odd_plus_even_is_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 + j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56903" for="odd_plus_even_is_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_plus_even_is_odd|: JUDGEMENT +(|o1|, |e2|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+    <assertion id="odd_minus_even_is_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="o1"/>
+                <OMV name="e2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_minus_even_is_odd-1" for="odd_minus_even_is_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!2 - j!1) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56904" for="odd_minus_even_is_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_minus_even_is_odd|: JUDGEMENT -(|o1|, |e2|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+    <assertion id="even_plus_odd_is_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="+"/>
+                <OMV name="e1"/>
+                <OMV name="o2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_plus_odd_is_odd-1" for="even_plus_odd_is_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 + j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56905" for="even_plus_odd_is_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|even_plus_odd_is_odd|: JUDGEMENT +(|e1|, |o2|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+    <assertion id="even_minus_odd_id_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="e1"/>
+                <OMV name="o2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_minus_odd_id_odd-1" for="even_minus_odd_id_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 -1 + j!1 - j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56906" for="even_minus_odd_id_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|even_minus_odd_id_odd|: JUDGEMENT -(|e1|, |o2|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+    <assertion id="even_times_int_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="e1"/>
+                <OMV name="i"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="even_times_int_is_even-1" for="even_times_int_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 i!1 * j!1) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56907" for="even_times_int_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|even_times_int_is_even|: JUDGEMENT *(|e1|, |i|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="int_times_even_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="i"/>
+                <OMV name="e2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_times_even_is_even-1" for="int_times_even_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 i!1 * j!1) NIL NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56908" for="int_times_even_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_times_even_is_even|: JUDGEMENT *(|i|, |e2|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="odd_times_odd_is_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="*"/>
+                <OMV name="o1"/>
+                <OMV name="o2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="odd_times_odd_is_odd-1" for="odd_times_odd_is_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 j!1 + j!2 + 2 * j!1 * j!2) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56909" for="odd_times_odd_is_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|odd_times_odd_is_odd|: JUDGEMENT *(|o1|, |o2|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_even_is_even" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="even_int"/>
+                </OMATP>
+                <OMV name="e1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="even?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="e1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_even_is_even-1" for="minus_even_is_even" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 -j!1) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56910" for="minus_even_is_even" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_even_is_even|: JUDGEMENT -(|e1|) HAS_TYPE |even_int|]]>
+      </data>
+    </private>
+
+    <assertion id="minus_odd_is_odd" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="odd_int"/>
+                </OMATP>
+                <OMV name="o1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="integers" name="odd?"/>
+              <OMA>
+                <OMS cd="reals" name="-"/>
+                <OMV name="o1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="minus_odd_is_odd-1" for="minus_odd_is_odd" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND IF-MATCH NIL) (( (INST 1 -1 - j!1) (( (ASSERT) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56911" for="minus_odd_is_odd" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|minus_odd_is_odd|: JUDGEMENT -(|o1|) HAS_TYPE |odd_int|]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

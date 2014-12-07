@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="bounded_real_defs.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:22
+    </Date>
+  </metadata>
+  <theory id="bounded_real_defs_test">
+
+
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="S"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="s"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="reals" name="real"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="upper_bound?-def" for="upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="S"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="x"/>
+                  <OMV name="s"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="reals" name="real"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="lower_bound?-def" for="lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="reals" name="real"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                      <OMV name="y"/>
+                      <OMV name="S"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMV name="x"/>
+                      <OMV name="y"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="least_upper_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="reals" name="real"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="least_upper_bound?-def" for="least_upper_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="pvs" name="forall"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="pvs" name="type"/>
+                        <OMS cd="reals" name="real"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="booleans" name="IMPLIES"/>
+                    <OMA>
+                      <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                      <OMV name="y"/>
+                      <OMV name="S"/>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="reals" name="&lt;="/>
+                      <OMV name="y"/>
+                      <OMV name="x"/>
+                    </OMA>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="greatest_lower_bound?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="reals" name="real"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="greatest_lower_bound?-def" for="greatest_lower_bound?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <axiom id="real_complete" >
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                  <OMV name="y"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                  <OMV name="y"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <assertion id="real_lower_complete" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="sets" name="nonempty?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="S"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                  <OMV name="y"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="real_lower_complete-1" for="real_lower_complete" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (LEMMA real_complete)
+ (( (SKOSIMP)
+   (( (INST -1 {x: real | S!1(-x)})
+     ((1 (SKOSIMP)
+       ((1 (SPLIT)
+         ((1 (SKOSIMP)
+           ((1 (EXPAND least_upper_bound?)
+             ((1 (INST 1 -y!2)
+               ((1 (EXPAND greatest_lower_bound?)
+                 ((1 (HIDE -2)
+                   ((1 (PROP)
+                     ((1 (EXPAND upper_bound?)
+                       ((1 (EXPAND lower_bound?)
+                         ((1 (SKOSIMP) ((1 (INST -1 -s!1) ((1 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                       NIL)
+                      (2 (SKOSIMP)
+                       ((2 (INST -3 -y!3)
+                         ((2 (HIDE -2)
+                           ((2 (EXPAND lower_bound?)
+                             ((2 (EXPAND upper_bound?)
+                               ((2 (SPLIT)
+                                 ((1 (ASSERT) NIL NIL)
+                                  (2 (SKOSIMP) ((2 (INST -1 -s!1) ((2 (ASSERT) NIL NIL)) NIL))
+                                   NIL))
+                                 NIL))
+                               NIL))
+                             NIL))
+                           NIL))
+                         NIL))
+                       NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL)
+          (2 (HIDE 2)
+           ((2 (INST 1 -y!1)
+             ((2 (EXPAND upper_bound?)
+               ((2 (SKOSIMP)
+                 ((2 (EXPAND lower_bound?) ((2 (INST -1 -s!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (TYPEPRED S!1)
+       ((2 (HIDE -2 2)
+         ((2 (EXPAND nonempty?)
+           ((2 (EXPAND empty?)
+             ((2 (SKOSIMP)
+               ((2 (EXPAND member) ((2 (INST -2 -x!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="bounded_above?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="bounded_above?-def" for="bounded_above?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="bounded_above?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="upper_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="bounded_below?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="bounded_below?-def" for="bounded_below?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="bounded_below?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="reals" name="real"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="lower_bound?"/>
+                  <OMV name="x"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="bounded?" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="sets" name="nonempty?"/>
+          </OMA>
+          <OMS cd="booleans" name="bool"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="bounded?-def" for="bounded?" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="bounded_real_defs" name="bounded?"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMS cd="sets" name="nonempty?"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="S"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="bounded_above?"/>
+                  <OMV name="S"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="bounded_below?"/>
+                  <OMV name="S"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <symbol id="bounded_set" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="bounded_set" for="bounded_set" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMS cd="bounded_real_defs" name="bounded?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="lub_exists" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs" name="bounded_above?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="SA"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                <OMV name="x"/>
+                <OMV name="SA"/>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_exists-1" for="lub_exists" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM-TYPEPRED)
+ (( (USE real_complete)
+   (( (ASSERT)
+     (( (REPLACE 1) (( (ASSERT) (( (EXPAND bounded_above?) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="lub_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="sigmatype"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="pvs" name="subtype"/>
+                            <OMS cd="bounded_real_defs" name="bounded_above?"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="SA"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="reals" name="real"/>
+                            </OMATP>
+                            <OMV name="x"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                          <OMV name="x"/>
+                          <OMS cd="bounded_real_defs" name="SA"/>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_TCC1-1" for="lub_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (USE real_complete)
+ (( (INST 1 LAMBDA (S:(bounded_above?)): epsilon! (x:real): least_upper_bound?(x, S))
+   (( (SKOSIMP)
+     (( (USE epsilon_ax[real])
+       (( (BETA)
+         (( (ASSERT)
+           (( (INST? -1)
+             (( (TYPEPRED S!1)
+               (( (SPLIT)
+                 ((1 (PROPAX) NIL NIL) (2 (EXPAND bounded_above?) ((2 (PROPAX) NIL NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="lub" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="subtype"/>
+                  <OMS cd="bounded_real_defs" name="bounded_above?"/>
+                </OMA>
+              </OMATP>
+              <OMV name="SA"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                <OMV name="x"/>
+                <OMS cd="bounded_real_defs" name="SA"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <assertion id="lub_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs" name="bounded_above?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="SA"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="lub"/>
+                  <OMV name="SA"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="least_upper_bound?"/>
+                <OMV name="x"/>
+                <OMV name="SA"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="lub_lem-1" for="lub_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (TYPEPRED lub(SA!1))
+   (( (ASSERT)
+     (( (PROP)
+       ((1 (ASSERT) NIL NIL)
+        (2 (GRIND IF-MATCH NIL)
+         ((2 (INST -2 lub(SA!1))
+           ((2 (INST -4 x!1) ((2 (REPLACE -1) ((2 (REPLACE -3) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+
+    <assertion id="glb_exists" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs" name="bounded_below?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="SB"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="pvs" name="exists"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                <OMV name="x"/>
+                <OMV name="SB"/>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="glb_exists-1" for="glb_exists" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (USE real_lower_complete)
+   (( (ASSERT)
+     (( (SPLIT)
+       ((1 (PROPAX) NIL NIL)
+        (2 (TYPEPRED SB!1) ((2 (EXPAND bounded_below?) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="glb_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="exists"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMBIND>
+                    <OMS cd="pvs" name="sigmatype"/>
+                    <OMBVAR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="pvs" name="type"/>
+                          <OMA>
+                            <OMS cd="pvs" name="subtype"/>
+                            <OMS cd="bounded_real_defs" name="bounded_below?"/>
+                          </OMA>
+                        </OMATP>
+                        <OMV name="SB"/>
+                      </OMATTR>
+                    </OMBVAR>
+                    <OMA>
+                      <OMS cd="pvs" name="subtype"/>
+                      <OMBIND>
+                        <OMS cd="pvs" name="set"/>
+                        <OMBVAR>
+                          <OMATTR>
+                            <OMATP>
+                              <OMS cd="pvs" name="type"/>
+                              <OMS cd="reals" name="real"/>
+                            </OMATP>
+                            <OMV name="x"/>
+                          </OMATTR>
+                        </OMBVAR>
+                        <OMA>
+                          <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                          <OMV name="x"/>
+                          <OMS cd="bounded_real_defs" name="SB"/>
+                        </OMA>
+                      </OMBIND>
+                    </OMA>
+                  </OMBIND>
+                </OMATP>
+                <OMV name="x1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMS cd="booleans" name="TRUE"/>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="glb_TCC1-1" for="glb_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (INST 1 LAMBDA (S:(bounded_below?)): epsilon! (x:real): greatest_lower_bound?(x, S))
+ (( (SKOLEM-TYPEPRED)
+   (( (USE epsilon_ax[real])
+     (( (BETA)
+       (( (ASSERT)
+         (( (EXPAND bounded_below?)
+           (( (USE real_lower_complete)
+             (( (ASSERT) (( (REPLACE -3) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="glb" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="subtype"/>
+                  <OMS cd="bounded_real_defs" name="bounded_below?"/>
+                </OMA>
+              </OMATP>
+              <OMV name="SB"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                <OMV name="x"/>
+                <OMS cd="bounded_real_defs" name="SB"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <assertion id="glb_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="bounded_real_defs" name="bounded_below?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="SB"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="bounded_real_defs" name="glb"/>
+                  <OMV name="SB"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="bounded_real_defs" name="greatest_lower_bound?"/>
+                <OMV name="x"/>
+                <OMV name="SB"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="glb_lem-1" for="glb_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (TYPEPRED glb(SB!1))
+   (( (PROP)
+     ((1 (ASSERT) NIL NIL)
+      (2 (GRIND IF-MATCH NIL)
+       ((2 (INST -2 glb(SB!1)) ((2 (INST -4 x!1) ((2 (PROP) ((2 (ASSERT) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

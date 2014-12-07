@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="alg1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary alg1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/alg1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description> 
+    A CD of basic algebraic concepts
+
+At present this CD only holds definitions of zero and one. They are
+deliberately defined here without specifying any particular structure
+(e.g. a group) to which they correspond.
+</Description>
+</metadata>
+
+<theory id="alg1">
+
+<imports id="alg1-imports-quant1" from="quant1.omdoc#quant1"/>
+<imports id="alg1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="alg1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="alg1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="alg1-imports-set1" from="set1.omdoc#set1"/>
+<imports id="alg1-imports-setname1" from="setname1.omdoc#setname1"/>
+
+<symbol id="zero">
+  <CMP>This symbol represents the additive identity element.</CMP>
+  <commonname>zero</commonname>
+  <type system="sts">
+    <OMOBJ><OMV name="AbelianMonoid"/></OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-zero" for="zero">
+  <use  format="default">0</use>
+  <use format="cmml" element="zero"/>
+</presentation>
+<assertion id="zero-prop-1" type="lemma">
+  <CMP> for all a | a + 0 = a </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="a"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="arith1" name="plus"/>
+	    <OMV name="a"/>
+	    <OMS cd="alg1" name="zero"/>
+	  </OMA>
+	  <OMV name="a"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="zero-prop-3" type="lemma">
+  <CMP> for all a | 0 * a = 0 </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="a"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMS cd="alg1" name="zero"/>
+	    <OMV name="a"/>
+	  </OMA>
+	  <OMS cd="alg1" name="zero"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="zero-prop-5" type="lemma">
+  <CMP>The zero of the integers is 0</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="logic1" name="implies"/>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMA>
+	      <OMS cd="set1" name="in"/>
+	      <OMV name="x"/>
+	      <OMS cd="setname1" name="Z"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMV name="x"/>
+	      <OMS cd="alg1" name="zero"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="eq"/>
+	    <OMV name="x"/>
+	    <OMI>0</OMI>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="one">
+  <CMP>This symbol represents the multiplicative identity element.</CMP>
+  <commonname>one</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="Monoid"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-one" for="one">
+  <use  format="default">1</use>
+  <use  format="cmml" element="one"/>
+</presentation>
+<assertion id="one-prop-1" type="lemma">
+  <CMP> for all a | 1 * a = a </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="a"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMS cd="alg1" name="one"/>
+	    <OMV name="a"/>
+	  </OMA>
+	  <OMV name="a"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="one-prop-3" type="lemma">
+  <CMP> for all a | a * 1 = a </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="a"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMV name="a"/>
+	    <OMS cd="alg1" name="one"/>
+	  </OMA>
+	  <OMV name="a"/>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="one-prop-5" type="lemma">
+  <CMP>The one of the integers is 1</CMP>
+  <FMP>
+    <OMOBJ>
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="logic1" name="implies"/>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMA>
+	      <OMS cd="set1" name="in"/>
+	      <OMV name="x"/>
+	      <OMS cd="setname1" name="Z"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="relation1" name="eq"/>
+	      <OMV name="x"/>
+	      <OMS cd="alg1" name="one"/>
+	    </OMA>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="eq"/>
+	    <OMV name="x"/>
+	    <OMI>1</OMI>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</assertion>
+</theory>
+</omdoc>

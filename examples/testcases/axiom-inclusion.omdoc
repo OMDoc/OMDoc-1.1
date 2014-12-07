@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_axiom-inclusion">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+
+<axiom-inclusion id="myai1" style="foo" from="a" to="b">
+<metadata>
+<Title>metadata for axiom-inclusion</Title>
+</metadata>
+<symbol id="myai_a"/>
+<symbol id="myai_b"/>
+<CMP>axiom inclusion</CMP>
+<CMP xml:lang="de">Axiom Inklusion</CMP>
+<FMP/>
+<morphism id="mymorph"/>
+<path-just local="foo" globals="bar"/>
+</axiom-inclusion>
+
+<axiom-inclusion id="myai2" from="c" to="d">
+<obligation induced-by="some" assertion="other"/>
+<obligation induced-by="one" assertion="two"/>
+</axiom-inclusion>
+
+</omdoc>
+

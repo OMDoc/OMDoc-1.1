@@ -1,0 +1,25 @@
+\documentclass{article}
+%%% use ps2epsi pspic1.ps to generate eps file, ps2pdf pspic1.epsi to generate pdf
+\usepackage{pstricks,pst-node}
+\pagestyle{empty}
+\begin{document}
+\psset{unit=2cm}
+  \begin{pspicture}(-1.6,-0.2)(3,1.4)
+    \rput(-1,0){\rnode{nat}{\psframebox{{\Large nat}}}}
+    \rput(2,0){\rnode{elt}{\psframebox{{\Large param}}}}
+    \rput(-1,1){\rnode{natlist}{\psframebox{{\Large nat-list}}}}
+    \rput(2,1){\rnode{list}{\psframebox{{\Large list}}}}
+    \ncline[linestyle=dashed]{->}{elt}{nat}\aput(.5){{\tt{inclusion}}}\bput(.2){\pnode{dectarget}}
+    \ncline{->}{nat}{natlist}\bput(.5){{\tt{imports}}}
+    \ncline{->}{list}{natlist}\aput(.6){{\tt{imports}}}
+    \ncline{->}{elt}{list}\bput(.5){{\tt{imports}}}
+    \ncarc[arcangle=15,linestyle=dashed,linewidth=1.5pt]{<-}{natlist}{list}\bput(.7){\pnode{decsource}}
+    \ncline[nodesep=0pt,linestyle=dotted]{->}{decsource}{dectarget}
+  \end{pspicture}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,11 @@
+The plays of Shakespeare have been marked up by Jon Bosak. This xmltex 
+package attempts to typeset them. The plays themselves can be got from
+  http://www.oasis-open.org/cover/bosakShakespeare200.html
+
+You will also need the `play' latex class, from CTAN.
+
+This is an experimental package. Feel free to improve it as you see fit.
+There are a number of shortcomings with this package (but I'm not going to 
+tell you what they are and spoil the fun!).  Let me know how you get on.
+
+	James <mapdn@csv.warwick.ac.uk>

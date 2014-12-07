@@ -1,0 +1,2641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="real_defs.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:24
+    </Date>
+  </metadata>
+  <theory id="real_defs_test">
+
+
+    <symbol id="sgn" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMS cd="reals" name="real"/>
+          <OMS cd="integers" name="int"/>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="sgn-def" for="sgn" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="real_defs" name="sgn"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMI>1</OMI>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMI>1</OMI>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="abs_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="m"/>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="m"/>
+                  </OMA>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="reals" name="-"/>
+                    <OMV name="m"/>
+                  </OMA>
+                  <OMV name="m"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="abs_TCC1-1" for="abs_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="abs_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="m"/>
+                  <OMV name="m"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="abs_TCC2-1" for="abs_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="abs" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMS cd="reals" name="real"/>
+              </OMATP>
+              <OMV name="m"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="real_types" name="nonneg_real"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMV name="n"/>
+                <OMS cd="real_defs" name="m"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="abs-def" for="abs" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="real_defs" name="abs"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="m"/>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="-"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMV name="m"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="nonzero_abs_is_pos" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonzero_abs_is_pos-1" for="nonzero_abs_is_pos" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56925" for="nonzero_abs_is_pos" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonzero_abs_is_pos|: JUDGEMENT |abs|(|x|: |nzreal|) HAS_TYPE
+          {|y|: |posreal| | |y| >= |x|}]]>
+      </data>
+    </private>
+
+    <assertion id="rat_abs_is_nonneg" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="rationals" name="rational_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="q"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="abs"/>
+                    <OMV name="q"/>
+                  </OMA>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="abs"/>
+                    <OMV name="q"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_abs_is_nonneg-1" for="rat_abs_is_nonneg" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND abs) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56926" for="rat_abs_is_nonneg" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_abs_is_nonneg|: JUDGEMENT |abs|(|q|: |rat|) HAS_TYPE
+          {|r|: |nonneg_rat| | |r| >= |q|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzrat_abs_is_pos" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="q"/>
+                </OMA>
+                <OMV name="q"/>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="q"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzrat_abs_is_pos-1" for="nzrat_abs_is_pos" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56927" for="nzrat_abs_is_pos" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_abs_is_pos|: JUDGEMENT |abs|(|q|: |nzrat|) HAS_TYPE
+          {|r|: |posrat| | |r| >= |q|}]]>
+      </data>
+    </private>
+
+    <assertion id="int_abs_is_nonneg" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="integers" name="integer_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="abs"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMI>0</OMI>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="abs"/>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMV name="i"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_abs_is_nonneg-1" for="int_abs_is_nonneg" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND abs) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56928" for="int_abs_is_nonneg" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_abs_is_nonneg|: JUDGEMENT |abs|(|i|: |int|) HAS_TYPE
+          {|j|: |nonneg_int| | |j| >= |i|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzint_abs_is_pos" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMV name="i"/>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="abs"/>
+                  <OMV name="i"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzint_abs_is_pos-1" for="nzint_abs_is_pos" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56929" for="nzint_abs_is_pos" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzint_abs_is_pos|: JUDGEMENT |abs|(|i|: |nzint|) HAS_TYPE
+          {|j|: |posint| | |j| >= |i|}]]>
+      </data>
+    </private>
+
+    <assertion id="max_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&lt;"/>
+                <OMV name="m"/>
+                <OMV name="n"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="n"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="n"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="max_TCC1-1" for="max_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="max_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="m"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="max_TCC2-1" for="max_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="max" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="tupletype"/>
+                  <OMS cd="reals" name="real"/>
+                  <OMS cd="reals" name="real"/>
+                </OMA>
+              </OMATP>
+              <OMV name="d"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMS cd="real_defs" name="d"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>2</OMI>
+                    <OMS cd="real_defs" name="d"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="max-def" for="max" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="real_defs" name="max"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+                <OMV name="m"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="min_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMV name="m"/>
+                <OMV name="n"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="n"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="n"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="min_TCC1-1" for="min_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="min_TCC2" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="real"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="m"/>
+                  <OMV name="m"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="min_TCC2-1" for="min_TCC2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <symbol id="min" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMBIND>
+          <OMS cd="pvs" name="sigmatype"/>
+          <OMBVAR>
+            <OMATTR>
+              <OMATP>
+                <OMS cd="pvs" name="type"/>
+                <OMA>
+                  <OMS cd="pvs" name="tupletype"/>
+                  <OMS cd="reals" name="real"/>
+                  <OMS cd="reals" name="real"/>
+                </OMA>
+              </OMATP>
+              <OMV name="d"/>
+            </OMATTR>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="pvs" name="subtype"/>
+            <OMBIND>
+              <OMS cd="pvs" name="set"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>1</OMI>
+                    <OMS cd="real_defs" name="d"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="p"/>
+                  <OMA>
+                    <OMS cd="pvs" name="proj"/>
+                    <OMI>2</OMI>
+                    <OMS cd="real_defs" name="d"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="min-def" for="min" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="real_defs" name="min"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMS cd="reals" name="real"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="if_def" name="IF"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;"/>
+                  <OMV name="m"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+                <OMV name="m"/>
+              </OMA>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="nzreal_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzreal_max-1" for="nzreal_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND max) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56930" for="nzreal_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzreal_max|: JUDGEMENT |max|(|x|, |y|: |nzreal|) HAS_TYPE
+          {|z|: |nzreal| | |z| >= |x| AND |z| >= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzreal_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="reals" name="nzreal"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzreal_min-1" for="nzreal_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND min) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56931" for="nzreal_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzreal_min|: JUDGEMENT |min|(|x|, |y|: |nzreal|) HAS_TYPE
+          {|z|: |nzreal| | |z| <= |x| AND |z| <= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_real_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_real_max-1" for="nonneg_real_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56932" for="nonneg_real_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_real_max|: JUDGEMENT |max|(|x|, |y|: |nonneg_real|) HAS_TYPE
+          {|z|: |nonneg_real| | |z| >= |x| AND |z| >= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_real_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="nonneg_real"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_real_min-1" for="nonneg_real_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND min) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56933" for="nonneg_real_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_real_min|: JUDGEMENT |min|(|x|, |y|: |nonneg_real|) HAS_TYPE
+          {|z|: |nonneg_real| | |z| <= |x| AND |z| <= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="posreal_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_max-1" for="posreal_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56934" for="posreal_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_max|: JUDGEMENT |max|(|x|, |y|: |posreal|) HAS_TYPE
+          {|z|: |posreal| | |z| >= |x| AND |z| >= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="posreal_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="real_types" name="posreal"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="x"/>
+                    <OMV name="y"/>
+                  </OMA>
+                  <OMV name="y"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="x"/>
+                  <OMV name="y"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posreal_min-1" for="posreal_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56935" for="posreal_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posreal_min|: JUDGEMENT |min|(|x|, |y|: |posreal|) HAS_TYPE
+          {|z|: |posreal| | |z| <= |x| AND |z| <= |y|}]]>
+      </data>
+    </private>
+
+    <assertion id="rat_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="rationals" name="rational_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_max-1" for="rat_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND max) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56936" for="rat_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_max|: JUDGEMENT |max|(|q|, |r|: |rat|) HAS_TYPE
+          {|s|: |rat| | |s| >= |q| AND |s| >= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="rat_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="rat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="rationals" name="rational_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rat_min-1" for="rat_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND min) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56937" for="rat_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|rat_min|: JUDGEMENT |min|(|q|, |r|: |rat|) HAS_TYPE
+          {|s|: |rat| | |s| <= |q| AND |s| <= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzrat_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzrat_max-1" for="nzrat_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56938" for="nzrat_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_max|: JUDGEMENT |max|(|q|, |r|: |nzrat|) HAS_TYPE
+          {|s|: |nzrat| | |s| >= |q| AND |s| >= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzrat_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nzrat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzrat_min-1" for="nzrat_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56939" for="nzrat_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzrat_min|: JUDGEMENT |min|(|q|, |r|: |nzrat|) HAS_TYPE
+          {|s|: |nzrat| | |s| <= |q| AND |s| <= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_rat_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_rat_max-1" for="nonneg_rat_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56940" for="nonneg_rat_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_rat_max|: JUDGEMENT |max|(|q|, |r|: |nonneg_rat|) HAS_TYPE
+          {|s|: |nonneg_rat| | |s| >= |q| AND |s| >= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="nonneg_rat_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="nonneg_rat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonneg_rat_min-1" for="nonneg_rat_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56941" for="nonneg_rat_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nonneg_rat_min|: JUDGEMENT |min|(|q|, |r|: |nonneg_rat|) HAS_TYPE
+          {|s|: |nonneg_rat| | |s| <= |q| AND |s| <= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&gt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_max-1" for="posrat_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56942" for="posrat_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_max|: JUDGEMENT |max|(|q|, |r|: |posrat|) HAS_TYPE
+          {|s|: |posrat| | |s| >= |q| AND |s| >= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="posrat_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="q"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="rationals" name="posrat"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="q"/>
+                  <OMV name="r"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="q"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="q"/>
+                    <OMV name="r"/>
+                  </OMA>
+                  <OMV name="r"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posrat_min-1" for="posrat_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56943" for="posrat_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posrat_min|: JUDGEMENT |min|(|q|, |r|: |posrat|) HAS_TYPE
+          {|s|: |posrat| | |s| <= |q| AND |s| <= |r|}]]>
+      </data>
+    </private>
+
+    <assertion id="int_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="integers" name="integer_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_max-1" for="int_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND max) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56944" for="int_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_max|: JUDGEMENT |max|(|i|, |j|: |int|) HAS_TYPE
+          {|k|: |int| | |i| <= |k| AND |j| <= |k|}]]>
+      </data>
+    </private>
+
+    <assertion id="int_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="int"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="integers" name="integer_pred"/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="int_min-1" for="int_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP) (( (EXPAND min) (( (LIFT-IF) (( (ASSERT) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56945" for="int_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|int_min|: JUDGEMENT |min|(|i|, |j|: |int|) HAS_TYPE
+          {|k|: |int| | |k| <= |i| AND |k| <= |j|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzint_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzint_max-1" for="nzint_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56946" for="nzint_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzint_max|: JUDGEMENT |max|(|i|, |j|: |nzint|) HAS_TYPE
+          {|k|: |nzint| | |i| <= |k| AND |j| <= |k|}]]>
+      </data>
+    </private>
+
+    <assertion id="nzint_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="nzint"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nzint_min-1" for="nzint_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56947" for="nzint_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nzint_min|: JUDGEMENT |min|(|i|, |j|: |nzint|) HAS_TYPE
+          {|k|: |nzint| | |k| <= |i| AND |k| <= |j|}]]>
+      </data>
+    </private>
+
+    <assertion id="nat_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nat_max-1" for="nat_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56948" for="nat_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nat_max|: JUDGEMENT |max|(|i|, |j|: |nat|) HAS_TYPE
+          {|k|: |nat| | |i| <= |k| AND |j| <= |k|}]]>
+      </data>
+    </private>
+
+    <assertion id="nat_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="naturalnumbers" name="nat"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="reals" name="&gt;="/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nat_min-1" for="nat_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56949" for="nat_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|nat_min|: JUDGEMENT |min|(|i|, |j|: |nat|) HAS_TYPE
+          {|k|: |nat| | |k| <= |i| AND |k| <= |j|}]]>
+      </data>
+    </private>
+
+    <assertion id="posint_max" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="max"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="i"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMV name="j"/>
+                  <OMA>
+                    <OMS cd="real_defs" name="max"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_max-1" for="posint_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56950" for="posint_max" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_max|: JUDGEMENT |max|(|i|, |j|: |posint|) HAS_TYPE
+          {|k|: |posint| | |i| <= |k| AND |j| <= |k|}]]>
+      </data>
+    </private>
+
+    <assertion id="posint_min" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="i"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="integers" name="posint"/>
+                </OMATP>
+                <OMV name="j"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="AND"/>
+              <OMA>
+                <OMS cd="reals" name="&gt;"/>
+                <OMA>
+                  <OMS cd="real_defs" name="min"/>
+                  <OMV name="i"/>
+                  <OMV name="j"/>
+                </OMA>
+                <OMI>0</OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="i"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="reals" name="&lt;="/>
+                  <OMA>
+                    <OMS cd="real_defs" name="min"/>
+                    <OMV name="i"/>
+                    <OMV name="j"/>
+                  </OMA>
+                  <OMV name="j"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="posint_min-1" for="posint_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56951" for="posint_min" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|posint_min|: JUDGEMENT |min|(|i|, |j|: |posint|) HAS_TYPE
+          {|k|: |posint| | |k| <= |i| AND |k| <= |j|}]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

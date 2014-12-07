@@ -1,0 +1,34 @@
+file-name			function		person in charge/creator
+==================================================================================
+Transformers for Humans (HTML,TeX/LaTeX, Mathematica Notebooks)
+==================================================================================
+omdoc2html.xsl         transforms omdoc to html for any browser (kohlhase, cullrich)
+omdoc2latex.xsl        tries to be a partial inverse to                  (kohlhase)
+                       latex2omdoc.sty  
+omdoc2tex.xsl                  OpenMath --> TeX (needs renovation)       (kohlhase)
+omdoc2nb.xsl           mathematica notbooks                              (kohlhase)
+omdoc2share.xsl        common basis for the stylesheets above            (kohlhase)
+expres.xsl             extracts a style sheet xxx-yyy.xsl for xxx.omdoc
+                       using the presentation elements  		 (kohlhase)
+xxx-yyy.xsl            style-sheet specialized for transforming 
+                       xxx.omdoc to format yyy                           (expres.xsl)
+locale.xml             contains the localized keywords for omdoc2yyy.xsl (kohlhase)
+localeView.xsl         converts locale.xml into a html table             (libbrecht)
+omobj-pmml.xsl         converts OpenMath objects to Presentation         (carlisle
+                       MathML                                             caprotti)
+==================================================================================
+Transformers to OpenMath
+==================================================================================
+omdoc2cd.xsl                extracts content dictionaries from omdoc    (kohlhase)
+cd2omdoc.xsl                the other way around,                       (kohlhase)
+			    needs some handling of defmps
+omdoc2defmp.xsl             extracts content dictionaries from omdoc    (kohlhase)
+omdoc2sigpost.xsl           extracts signature files                    (kohlhase)
+                            (of the POST type system)
+==================================================================================
+Transformers to input syntax for mathematical services
+==================================================================================
+omdoc2post.xsl              extracts POST, the OMEGA representation      (pollet)
+omdoc2dgrl.xsl              extracts DGRL, the INKA representation       (autexier)
+omdoc2tps.xsl               extracts TPS logic                           (kohlhase)
+omdoc2lclam.xsl             extracts LambdaClam logic                    (kohlhase)

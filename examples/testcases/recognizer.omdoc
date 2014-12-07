@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_recognizer">
+
+<metadata>
+  <Title>test</Title>
+  <Creator role="aut">hf</Creator>
+  <Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_recognizer">
+
+  <adt id="nat-adt" type="free" style="foo">
+    <sortdef id="pos-nat" style="foo" scope="global">
+      <constructor id="succ" style="foo" kind="sort" scope="local">
+	<commonname xml:lang="en">The successor function</commonname>
+	<commonname xml:lang="de">Die Nachfolger Funktion</commonname>
+	<argument sort="nat">
+	  <selector total="yes" id="pred">
+	    <commonname>The predecessor function</commonname>
+	  </selector>
+	</argument>
+	<argument sort="bla"/>
+      </constructor>
+      <recognizer id="myrecognizer" style="bar" kind="type" scope="global">
+	<commonname>recognize</commonname>
+	<commonname xml:lang="de">erkennen</commonname>
+      </recognizer>
+    </sortdef>
+  </adt> 
+
+
+</theory>
+</omdoc>
+

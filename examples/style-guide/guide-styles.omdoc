@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="styleguide.omdoc">
+ <metadata>
+  <Creator role="aut">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-03T0703</Date>
+  <Description>
+   A style guide for OMDoc. This discusses a set of paradigmatic examples of how
+   to encode mathematical knowledge into OMDoc. 
+  </Description>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+
+
+<omstyle element="with" style="acronym">
+ <style format="TeX"><text>{\sc{</text><recurse/><text>}}</text></style>
+ <style format="html|pmml"><recurse/></style>
+</omstyle>
+
+<omstyle element="with" style="element">
+ <style format="TeX"><text>{\tt{</text><recurse/><text>}}</text></style>
+ <style format="html|pmml"><element name="tt"><recurse/></element></style>
+</omstyle>
+
+</omdoc>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="defined_types.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:14
+    </Date>
+  </metadata>
+  <theory id="defined_types-parameters">
+    <symbol id="t" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56569" for="NIL" pto="pvs" pto-version="3.0" replaces="t">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56570" for="defined_types" pto="pvs" pto-version="3.0" replaces="defined_types-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory defined_types
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="defined_types_test">
+    <symbol id="t" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56571" for="NIL" pto="pvs" pto-version="3.0" replaces="t">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="defined_types-import-parameters" from="defined_types-parameters"/>
+    <symbol id="pred" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="pred" for="pred" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="PRED" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="PRED" for="PRED" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="predicate" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="predicate" for="predicate" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="PREDICATE" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="PREDICATE" for="PREDICATE" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="setof" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="setof" for="setof" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+    <symbol id="SETOF" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <definition id="SETOF" for="SETOF" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="defined_types" name="t"/>
+            <OMS cd="booleans" name="bool"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+  </theory>
+</omdoc>

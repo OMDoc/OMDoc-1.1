@@ -1,0 +1,51 @@
+\chapter{Conclusion}\label{sec:concl}\label{sec:future}
+
+With {\omdoc} we have proposed a content-based markup format that
+allows to represent mathematical knowledge at various levels. As a
+consequence the format allows to capture the semantics and structure
+of various kinds of mathematical documents, including articles,
+textbooks, interactive books, and courses. 
+
+We have argued that the problem of representing mathematical knowledge
+has to be addressed at three levels, corresponding to the three levels
+of structure found in documents.
+\begin{description}
+\item[The formula level] is concerned with representing mathematical objects as
+  mathematical/logical formulae. {\omdoc} leverages the existing {\openmath} and
+  {\mathml} standards for this.
+\item[The statement level] consists of statements about the mathematical objects,
+  like definitions, theorems and proofs. On this level, {\omdoc} supplies original
+  markup schemes that allow structured representations of the mathematical content
+  (including both formal and informal elements of representation).
+\item[The theory level] allows to group statements to conceptual units according
+  to the assumptions on the mathematical objects they describe. An inheritance
+  mechanism allows to specify the acessibility and scoping of symbols, and re-use
+  flexibly parts of specifications. The theory level even allows to structure
+  collections of theories by theory-inclusions and transport theories and proof
+  methods along these relations.
+\end{description}
+We have motivated and described version 1.1 of the {\omdoc} language
+and presented an {\xml} document type definition for it. We have
+surveyed a set of transformation tools that generate
+presentation-oriented documents for human consumption and
+machine-oriented documents for communication with mathematical
+software systems.
+
+We have developed first {\indextoo{authoring tool}s} for {\omdoc} that
+try to simplify generating {\omdoc} documents for the working
+mathematician. There is a simple {\omdoc} mode for {\ttin{emacs}}, and
+a {\LaTeX} style~\cite{Kohlhase:corfl00} that can be used to generate
+{\omdoc} representations from {\LaTeX} sources and thus help migrate
+existing mathematical documents. A second step will be to integrate
+the {\LaTeX} to {\openmath} conversion tools. 
+
+The next steps in the development will be to develop {\omdoc} version
+2.0 including more disruptive changes to the language, including a
+re-organization of central {\omdoc} elements like
+{\element{definition}}.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "omdoc"
+%%% End: 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "http://www.mathweb.org/omdoc/dtd/omdoc.dtd" 
+ [<!ENTITY % theoryNSD "xmlns:omstd CDATA #IMPLIED xmlns:bourbaki CDATA #IMPLIED">]>
+
+<omdoc id="algebra1.omdoc"
+       xmlns:omstd="http://www.mathweb.org/omdoc/src/mathweb/examples/omstd/omdoc/catalogue.omdoc"
+       xmlns:bourbaki="background.omdoc">
+ <metadata>
+  <Title>The Background for Bourbaki's Algebra</Title>
+  <Creator role="trl">Michael Kohlhase</Creator> 
+  <Date action="created">2002-01-07T1310ZEST</Date>
+  <Description>
+   The Background for Bourbaki's Algebra, 
+  </Description>
+  <Source>Nicolas Bourbaki, Algebra, Springer Verlag 1974</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+</metadata>
+      
+<theory id="functions">
+
+<symbol id="pattern-defined">
+ <CMP>A symbol for definition of functions by patterns</CMP>
+</symbol>
+<presentation for="top" parent="OMA" fixity="infix">
+ <use format="TeX"><![CDATA[\mapsto]]></use>
+</presentation>
+
+</theory>
+</omdoc>

@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="function_props.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:21
+    </Date>
+  </metadata>
+  <theory id="function_props-parameters">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56725" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56726" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56727" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56728" for="function_props" pto="pvs" pto-version="3.0" replaces="function_props-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory function_props
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="function_props_test">
+    <symbol id="T1" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56729" for="NIL" pto="pvs" pto-version="3.0" replaces="T1">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T2" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56730" for="NIL" pto="pvs" pto-version="3.0" replaces="T2">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <symbol id="T3" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56731" for="NIL" pto="pvs" pto-version="3.0" replaces="T3">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="function_props-import-parameters" from="function_props-parameters"/>
+
+
+
+
+
+
+
+    <symbol id="O" scope="global" kind="object">
+      <type system="pvs">
+        <OMOBJ>
+        <OMA>
+          <OMS cd="pvs" name="funtype"/>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_props" name="T2"/>
+            <OMS cd="function_props" name="T3"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_props" name="T1"/>
+            <OMS cd="function_props" name="T2"/>
+          </OMA>
+          <OMA>
+            <OMS cd="pvs" name="funtype"/>
+            <OMS cd="function_props" name="T1"/>
+            <OMS cd="function_props" name="T3"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+      </type>
+    </symbol>
+
+    <definition id="O-def" for="O" type="simple">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMS cd="function_props" name="O"/>
+            <OMBIND>
+              <OMS cd="pvs" name="lambda"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_props" name="T2"/>
+                      <OMS cd="function_props" name="T3"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f2"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="pvs" name="type"/>
+                    <OMA>
+                      <OMS cd="pvs" name="funtype"/>
+                      <OMS cd="function_props" name="T1"/>
+                      <OMS cd="function_props" name="T2"/>
+                    </OMA>
+                  </OMATP>
+                  <OMV name="f1"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMBIND>
+                <OMS cd="pvs" name="lambda"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="function_props" name="T1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMV name="f2"/>
+                  <OMA>
+                    <OMV name="f1"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMBIND>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </definition>
+
+    <assertion id="composition_injective" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="injective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="injective?"/>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMV name="f2"/>
+                <OMV name="f1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="composition_injective-1" for="composition_injective" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56732" for="composition_injective" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|composition_injective|: JUDGEMENT O(|f2|: (|injective?|[T2, T3]),
+                                                          |f1|: (|injective?|[T1, T2]))
+          HAS_TYPE (|injective?|[T1, T3])]]>
+      </data>
+    </private>
+
+    <assertion id="composition_surjective" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="surjective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="surjective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="surjective?"/>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMV name="f2"/>
+                <OMV name="f1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="composition_surjective-1" for="composition_surjective" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56733" for="composition_surjective" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|composition_surjective|: JUDGEMENT O(|f2|: (|surjective?|[T2, T3]),
+                                                           |f1|: (|surjective?|[T1, T2]))
+          HAS_TYPE (|surjective?|[T1, T3])]]>
+      </data>
+    </private>
+
+    <assertion id="composition_bijective" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="subtype"/>
+                    <OMS cd="functions" name="bijective?"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="functions" name="bijective?"/>
+              <OMA>
+                <OMS cd="function_props" name="O"/>
+                <OMV name="f2"/>
+                <OMV name="f1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="composition_bijective-1" for="composition_bijective" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SUBTYPE-TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+
+    <private id="G56734" for="composition_bijective" pto="pvs" pto-version="3.0">
+      <data><![CDATA[|composition_bijective|: JUDGEMENT O(|f2|: (|bijective?|[T2, T3]),
+                                                          |f1|: (|bijective?|[T1, T2]))
+          HAS_TYPE (|bijective?|[T1, T3])]]>
+      </data>
+    </private>
+
+    <assertion id="image_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="X"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T1"/>
+                    <OMS cd="function_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T2"/>
+                    <OMS cd="function_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="function_image" name="image"/>
+                <OMV name="f2"/>
+                <OMA>
+                  <OMS cd="function_image" name="image"/>
+                  <OMV name="f1"/>
+                  <OMV name="X"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="function_image" name="image"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f2"/>
+                  <OMV name="f1"/>
+                </OMA>
+                <OMV name="X"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="image_composition-1" for="image_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="preserves_composition" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R3"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T1"/>
+                    <OMS cd="function_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T2"/>
+                    <OMS cd="function_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="functions" name="preserves"/>
+                  <OMV name="f1"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="functions" name="preserves"/>
+                  <OMV name="f2"/>
+                  <OMV name="R2"/>
+                  <OMV name="R3"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="preserves"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f2"/>
+                  <OMV name="f1"/>
+                </OMA>
+                <OMV name="R1"/>
+                <OMV name="R3"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="preserves_composition-1" for="preserves_composition" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="inverts_composition1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R3"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T1"/>
+                    <OMS cd="function_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T2"/>
+                    <OMS cd="function_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="functions" name="preserves"/>
+                  <OMV name="f1"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="functions" name="inverts"/>
+                  <OMV name="f2"/>
+                  <OMV name="R2"/>
+                  <OMV name="R3"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="inverts"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f2"/>
+                  <OMV name="f1"/>
+                </OMA>
+                <OMV name="R1"/>
+                <OMV name="R3"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inverts_composition1-1" for="inverts_composition1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="inverts_composition2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="defined_types" name="PRED"/>
+                </OMATP>
+                <OMV name="R3"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T1"/>
+                    <OMS cd="function_props" name="T2"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMA>
+                    <OMS cd="pvs" name="funtype"/>
+                    <OMS cd="function_props" name="T2"/>
+                    <OMS cd="function_props" name="T3"/>
+                  </OMA>
+                </OMATP>
+                <OMV name="f2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="functions" name="inverts"/>
+                  <OMV name="f1"/>
+                  <OMV name="R1"/>
+                  <OMV name="R2"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="functions" name="preserves"/>
+                  <OMV name="f2"/>
+                  <OMV name="R2"/>
+                  <OMV name="R3"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="functions" name="inverts"/>
+                <OMA>
+                  <OMS cd="function_props" name="O"/>
+                  <OMV name="f2"/>
+                  <OMV name="f1"/>
+                </OMA>
+                <OMV name="R1"/>
+                <OMV name="R3"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="inverts_composition2-1" for="inverts_composition2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:9
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

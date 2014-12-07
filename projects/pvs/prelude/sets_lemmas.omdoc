@@ -1,0 +1,4393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc SYSTEM "../../../dtd/omdoc.dtd">
+<omdoc id="sets_lemmas.omdoc" catalogue="catalogue.omdoc">
+  <metadata>
+    <Creator>PVS
+    </Creator>
+    <Date action="created">2001-6-11@2:5:19
+    </Date>
+  </metadata>
+  <theory id="sets_lemmas-parameters">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56706" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+  </theory>
+
+  <private id="G56707" for="sets_lemmas" pto="pvs" pto-version="3.0" replaces="sets_lemmas-parameters">
+    <metadata><Description>PVS does not need this theory, it goes to the parameter declarations of theory sets_lemmas
+    </Description></metadata>
+    <data/>
+  </private>
+  <theory id="sets_lemmas_test">
+    <symbol id="T" scope="global" kind="type">
+      <type system="pvs">
+        <OMOBJ>
+          <OMS cd="pvs" name="type"/>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <private id="G56708" for="NIL" pto="pvs" pto-version="3.0" replaces="T">
+      <metadata><Description>PVS does not need this declaration, it goes into the theory parameters
+      </Description></metadata>
+      <data/>
+    </private>
+    <imports id="sets_lemmas-import-parameters" from="sets_lemmas-parameters"/>
+
+
+
+
+
+    <assertion id="extensionality" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMBIND>
+                <OMS cd="pvs" name="forall"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets_lemmas" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="booleans" name="IFF"/>
+                  <OMA>
+                    <OMS cd="sets" name="member"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="sets" name="member"/>
+                    <OMV name="x"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="extensionality-1" for="extensionality" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (FLATTEN)
+   (( (APPLY-EXTENSIONALITY)
+     (( (INST?) (( (EXPAND member) (( (IFF) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="emptyset_is_empty?" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="sets" name="empty?"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="emptyset_is_empty?-1" for="emptyset_is_empty?" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOLEM!)
+ (( (EXPAND empty?)
+   (( (EXPAND emptyset)
+     (( (EXPAND member)
+       (( (PROP)
+         ((1 (APPLY-EXTENSIONALITY) ((1 (INST?) NIL NIL)) NIL)
+          (2 (SKOLEM!) ((2 (REPLACE -1) ((2 (BETA) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="empty_no_members" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="empty_no_members-1" for="empty_no_members" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="emptyset_min" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="emptyset_min-1" for="emptyset_min" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) (( (INST?) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="sets" name="nonempty?"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMS cd="sets_lemmas" name="T"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_member-1" for="nonempty_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="fullset_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="member"/>
+              <OMV name="x"/>
+              <OMS cd="sets" name="fullset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="fullset_member-1" for="fullset_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="fullset_max" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMS cd="sets" name="fullset"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="fullset"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="fullset_max-1" for="fullset_max" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) (( (INST?) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_exists" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="sets" name="nonempty?"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="pvs" name="exists"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="pvs" name="type"/>
+                      <OMA>
+                        <OMS cd="pvs" name="subtype"/>
+                        <OMV name="a"/>
+                      </OMA>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMS cd="booleans" name="TRUE"/>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_exists-1" for="nonempty_exists" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND nonempty?)
+ (( (EXPAND empty?)
+   (( (EXPAND member)
+     (( (SKOSIMP*)
+       (( (SPLIT)
+         ((1 (SKOSIMP*) ((1 (INST * x!1) NIL NIL)) NIL)
+          (2 (FLATTEN) ((2 (SKOLEM * x!1) ((2 (INST * x!1) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_reflexive" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMV name="a"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_reflexive-1" for="subset_reflexive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_antisymmetric" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="b"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_antisymmetric-1" for="subset_antisymmetric" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND subset?)
+   (( (EXPAND member)
+     (( (APPLY-EXTENSIONALITY)
+       (( (INST?)
+         (( (INST?)
+           (( (PROP) ((1 (IFF) ((1 (PROP) NIL NIL)) NIL) (2 (IFF) ((2 (PROP) NIL NIL)) NIL)) NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_transitive" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="a"/>
+                <OMV name="c"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_transitive-1" for="subset_transitive" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_partial_order" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="orders" name="partial_order?"/>
+            <OMS cd="sets" name="subset?"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_partial_order-1" for="subset_partial_order" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND partial_order?)
+ (( (EXPAND preorder?)
+   (( (EXPAND reflexive?)
+     (( (PROP)
+       ((1 (SKOSIMP) ((1 (EXPAND subset?) ((1 (EXPAND member) ((1 (SKOSIMP) NIL NIL)) NIL)) NIL))
+         NIL)
+        (2 (EXPAND transitive?)
+         ((2 (SKOSIMP)
+           ((2 (EXPAND subset?)
+             ((2 (SKOSIMP) ((2 (INST?) ((2 (INST?) ((2 (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+           NIL))
+         NIL)
+        (3 (EXPAND antisymmetric?)
+         ((3 (SKOSIMP)
+           ((3 (EXPAND subset?)
+             ((3 (APPLY-EXTENSIONALITY)
+               ((3 (INST?)
+                 ((3 (INST?) ((3 (EXPAND member) ((3 (IFF) ((3 (PROP) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_emptyset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMS cd="sets" name="emptyset"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_emptyset-1" for="subset_emptyset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_fullset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMV name="a"/>
+              <OMS cd="sets" name="fullset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_fullset-1" for="subset_fullset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_idempotent" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_idempotent-1" for="union_idempotent" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND union)
+   (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_commutative" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="b"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_commutative-1" for="union_commutative" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND union) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_associative" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="c"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_associative-1" for="union_associative" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND union)
+   (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_empty" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_empty-1" for="union_empty" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND union)
+   (( (APPLY-EXTENSIONALITY)
+     (( (EXPAND member) (( (EXPAND emptyset) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_full" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="fullset"/>
+              </OMA>
+              <OMS cd="sets" name="fullset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_full-1" for="union_full" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND fullset)
+   (( (EXPAND union) (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_subset1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_subset1-1" for="union_subset1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND subset?)
+   (( (EXPAND union) (( (SKOSIMP) (( (EXPAND member) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_subset2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_subset2-1" for="union_subset2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND subset?)
+   (( (EXPAND union)
+     (( (APPLY-EXTENSIONALITY)
+       (( (INST?) (( (IFF) (( (EXPAND member) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_upper_bound" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="a"/>
+                  <OMV name="c"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="c"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_upper_bound-1" for="union_upper_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_difference" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="difference"/>
+                  <OMV name="b"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_difference-1" for="union_difference" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_diff_subset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMA>
+                    <OMS cd="sets" name="difference"/>
+                    <OMV name="b"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_diff_subset-1" for="union_diff_subset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_idempotent" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_idempotent-1" for="intersection_idempotent" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_commutative" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="b"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_commutative-1" for="intersection_commutative" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_associative" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="c"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_associative-1" for="intersection_associative" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_empty" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_empty-1" for="intersection_empty" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND emptyset)
+     (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_full" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="fullset"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_full-1" for="intersection_full" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND fullset) (( (EXPAND member) (( (APPLY-EXTENSIONALITY) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_subset1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_subset1-1" for="intersection_subset1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND subset?) (( (SKOSIMP) (( (EXPAND member) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_subset2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_subset2-1" for="intersection_subset2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND subset?)
+     (( (APPLY-EXTENSIONALITY)
+       (( (EXPAND member) (( (INST?) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="intersection_lower_bound" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="c"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="subset?"/>
+                  <OMV name="c"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="c"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="intersection_lower_bound-1" for="intersection_lower_bound" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="distribute_intersection_union" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="distribute_intersection_union-1" for="distribute_intersection_union" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND union)
+     (( (EXPAND member) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="distribute_union_intersection" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="distribute_union_intersection-1" for="distribute_union_intersection" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND intersection)
+   (( (EXPAND union)
+     (( (EXPAND member) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="complement_emptyset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMA>
+              <OMS cd="sets" name="complement"/>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+            <OMS cd="sets" name="fullset"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="complement_emptyset-1" for="complement_emptyset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND complement)
+ (( (EXPAND emptyset) (( (EXPAND fullset) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="complement_fullset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="equalities" name="="/>
+            <OMA>
+              <OMS cd="sets" name="complement"/>
+              <OMS cd="sets" name="fullset"/>
+            </OMA>
+            <OMS cd="sets" name="emptyset"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="complement_fullset-1" for="complement_fullset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (EXPAND complement)
+ (( (EXPAND emptyset) (( (EXPAND fullset) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="complement_complement" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="complement"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="complement_complement-1" for="complement_complement" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND complement)
+   (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_complement" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMV name="b"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_complement-1" for="subset_complement" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND complement)
+   (( (EXPAND subset?)
+     (( (EXPAND member)
+       (( (PROP)
+         ((1 (SKOSIMP) ((1 (INST?) ((1 (PROP) NIL NIL)) NIL)) NIL)
+          (2 (SKOSIMP) ((2 (INST?) ((2 (PROP) NIL NIL)) NIL)) NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="demorgan1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="complement"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="demorgan1-1" for="demorgan1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (GRIND) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="demorgan2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="complement"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="demorgan2-1" for="demorgan2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (GRIND) NIL NIL)) NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_emptyset1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_emptyset1-1" for="difference_emptyset1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND emptyset) (( (EXPAND member) (( (APPLY-EXTENSIONALITY) NIL NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_emptyset2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMS cd="sets" name="emptyset"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_emptyset2-1" for="difference_emptyset2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference) (( (EXPAND emptyset) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_fullset1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMS cd="sets" name="fullset"/>
+              </OMA>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_fullset1-1" for="difference_fullset1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND emptyset) (( (EXPAND fullset) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_fullset2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMS cd="sets" name="fullset"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="complement"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_fullset2-1" for="difference_fullset2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND fullset)
+     (( (EXPAND complement)
+       (( (APPLY-EXTENSIONALITY) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_intersection" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="intersection"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="complement"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_intersection-1" for="difference_intersection" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND intersection)
+     (( (EXPAND complement) (( (EXPAND member) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_difference1" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMA>
+                  <OMS cd="sets" name="difference"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="c"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_difference1-1" for="difference_difference1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND member)
+     (( (EXPAND union)
+       (( (EXPAND member) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_difference2" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="difference"/>
+                  <OMV name="b"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMA>
+                  <OMS cd="sets" name="difference"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="c"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_difference2-1" for="difference_difference2" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND difference)
+   (( (EXPAND union)
+     (( (EXPAND intersection)
+       (( (EXPAND member) (( (APPLY-EXTENSIONALITY) (( (IFF) (( (PROP) NIL NIL)) NIL)) NIL)) NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_subset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_subset-1" for="difference_subset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="difference_disjoint" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="disjoint?"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="b"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="difference_disjoint-1" for="difference_disjoint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="diff_union_inter" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="b"/>
+                <OMA>
+                  <OMS cd="sets" name="intersection"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="diff_union_inter-1" for="diff_union_inter" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="nonempty_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="NOT"/>
+              <OMA>
+                <OMS cd="sets" name="empty?"/>
+                <OMA>
+                  <OMS cd="sets" name="add"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="nonempty_add-1" for="nonempty_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="member_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="add"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="member_add-1" for="member_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (EXPAND add)
+   (( (APPLY-EXTENSIONALITY)
+     (( (HIDE 2) (( (IFF) (( (EXPAND member) (( (GROUND) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="member_remove" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="member_remove-1" for="member_remove" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (APPLY-EXTENSIONALITY)
+   (( (HIDE 3)
+     (( (EXPAND remove) (( (EXPAND member) (( (IFF) (( (GROUND) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="add_remove_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="add"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="remove"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="add_remove_member-1" for="add_remove_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="remove_add_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="add"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="remove_add_member-1" for="remove_add_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="sets" name="add"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_add-1" for="subset_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="add_as_union" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="add"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="union"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="add_as_union-1" for="add_as_union" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="singleton_as_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="singleton"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="add"/>
+                <OMV name="x"/>
+                <OMS cd="sets" name="emptyset"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="singleton_as_add-1" for="singleton_as_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="subset_remove" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMA>
+                <OMS cd="sets" name="remove"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="subset_remove-1" for="subset_remove" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="remove_as_difference" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="remove"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="difference"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="remove_as_difference-1" for="remove_as_difference" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="remove_member_singleton" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="remove"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="remove_member_singleton-1" for="remove_member_singleton" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_rest_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="nonempty?"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_rest_TCC1-1" for="choose_rest_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_rest" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="add"/>
+                  <OMA>
+                    <OMS cd="sets" name="choose"/>
+                    <OMV name="a"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="sets" name="rest"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_rest-1" for="choose_rest" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (APPLY-EXTENSIONALITY)
+   ((1 (HIDE 3)
+     ((1 (EXPAND add)
+       ((1 (HIDE 2)
+         ((1 (IFF)
+           ((1 (SPLIT)
+             ((1 (FLATTEN)
+               ((1 (EXPAND member)
+                 ((1 (SPLIT)
+                   ((1 (ASSERT) NIL NIL)
+                    (2 (EXPAND rest)
+                     ((2 (EXPAND remove)
+                       ((2 (FLATTEN) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+                     NIL))
+                   NIL))
+                 NIL))
+               NIL)
+              (2 (FLATTEN)
+               ((2 (EXPAND member)
+                 ((2 (EXPAND rest)
+                   ((2 (EXPAND remove) ((2 (EXPAND member) ((2 (ASSERT) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL)
+    (2 (EXPAND nonempty?) ((2 (PROPAX) NIL NIL)) NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMA>
+                  <OMS cd="sets" name="choose"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_member-1" for="choose_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (REWRITE epsilon_ax[T]) ((1 (INST?) NIL NIL) (2 (INST 1 x!1) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_not_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMA>
+                    <OMS cd="sets" name="choose"/>
+                    <OMV name="a"/>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="sets" name="rest"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_not_member-1" for="choose_not_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (EXPAND member)
+   (( (EXPAND rest) (( (ASSERT) (( (EXPAND remove) (( (PROPAX) NIL NIL)) NIL)) NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="rest_not_equal" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="notequal" name="/="/>
+                <OMA>
+                  <OMS cd="sets" name="rest"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rest_not_equal-1" for="rest_not_equal" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP)
+ (( (EXPAND rest)
+   (( (REPLACE 1)
+     (( (EXPAND remove)
+       (( (EXPAND empty?)
+         (( (SKOSIMP)
+           (( (EXPAND member)
+             (( (TYPEPRED choose(a!1))
+               ((1 (REPLACE -3 -1 DIR RL)
+                 ((1 (BETA) ((1 (FLATTEN) ((1 (REPLACE -2) ((1 (PROPAX) NIL NIL)) NIL)) NIL)) NIL))
+                 NIL)
+                (2 (GRIND) NIL NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="rest_member" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="sets" name="rest"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rest_member-1" for="rest_member" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="rest_subset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="subset?"/>
+              <OMA>
+                <OMS cd="sets" name="rest"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rest_subset-1" for="rest_subset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_add" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="OR"/>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="choose"/>
+                  <OMA>
+                    <OMS cd="sets" name="add"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMA>
+                  <OMS cd="sets" name="choose"/>
+                  <OMA>
+                    <OMS cd="sets" name="add"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_add-1" for="choose_add" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND)
+ (( (TYPEPRED  choose(add(x!1, a!1)))
+   (( (EXPAND add -1 1) (( (EXPAND member) (( (EXPAND choose) (( (PROPAX) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_rest_or_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="sets" name="member"/>
+                    <OMV name="x"/>
+                    <OMA>
+                      <OMS cd="sets" name="rest"/>
+                      <OMV name="a"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="nonempty?"/>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_rest_or_TCC1-1" for="choose_rest_or_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_rest_or" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="booleans" name="OR"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="rest"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="equalities" name="="/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="choose"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_rest_or-1" for="choose_rest_or" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_singleton_TCC1" type="obligation">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="sets" name="nonempty?"/>
+              <OMA>
+                <OMS cd="sets" name="singleton"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_singleton_TCC1-1" for="choose_singleton_TCC1" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (TCC DEFS !) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="choose_singleton" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="choose"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="choose_singleton-1" for="choose_singleton" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (TYPEPRED choose(singleton(x!1)))
+   ((1 (EXPAND singleton) ((1 (PROPAX) NIL NIL)) NIL) (2 (HIDE 2) ((2 (GRIND) NIL NIL)) NIL)) NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="rest_singleton" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="equalities" name="="/>
+              <OMA>
+                <OMS cd="sets" name="rest"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMS cd="sets" name="emptyset"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rest_singleton-1" for="rest_singleton" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (APPLY-EXTENSIONALITY)
+   (( (HIDE 2)
+     (( (EXPAND rest)
+       (( (EXPAND singleton)
+         (( (EXPAND remove)
+           (( (LIFT-IF)
+             (( (EXPAND emptyset)
+               (( (PROP)
+                 ((1 (EXPAND empty?)
+                   ((1 (INST -1 x!1) ((1 (EXPAND member) ((1 (PROPAX) NIL NIL)) NIL)) NIL)) NIL)
+                  (2 (ASSERT) ((2 (EXPAND member) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="singleton_subset" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IFF"/>
+              <OMA>
+                <OMS cd="sets" name="member"/>
+                <OMV name="x"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="subset?"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="singleton_subset-1" for="singleton_subset" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="rest_empty_lem" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="booleans" name="NOT"/>
+                  <OMA>
+                    <OMS cd="sets" name="empty?"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="empty?"/>
+                  <OMA>
+                    <OMS cd="sets" name="rest"/>
+                    <OMV name="a"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="extend" name="extend"/>
+                  <OMA>
+                    <OMS cd="sets" name="singleton"/>
+                    <OMA>
+                      <OMS cd="sets" name="choose"/>
+                      <OMV name="a"/>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="rest_empty_lem-1" for="rest_empty_lem" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (SKOSIMP*)
+ (( (EXPAND extend)
+   (( (APPLY-EXTENSIONALITY)
+     ((1 (HIDE 3)
+       ((1 (LIFT-IF)
+         ((1 (EXPAND singleton)
+           ((1 (EXPAND empty?)
+             ((1 (SKOSIMP*)
+               ((1 (EXPAND member)
+                 ((1 (SPLIT)
+                   ((1 (FLATTEN)
+                     ((1 (TYPEPRED choose(a!1))
+                       ((1 (INST -4 x!1)
+                         ((1 (EXPAND rest)
+                           ((1 (EXPAND remove) ((1 (EXPAND member) ((1 (ASSERT) NIL NIL)) NIL))
+                             NIL))
+                           NIL))
+                         NIL)
+                        (2 (HIDE -1 -2 -3 2) ((2 (GRIND) NIL NIL)) NIL))
+                       NIL))
+                     NIL)
+                    (2 (FLATTEN) NIL NIL))
+                   NIL))
+                 NIL))
+               NIL))
+             NIL))
+           NIL))
+         NIL))
+       NIL)
+      (2 (SKOSIMP*) ((2 (EXPAND nonempty?) ((2 (PROPAX) NIL NIL)) NIL)) NIL))
+     NIL))
+   NIL))
+ NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="singleton_disjoint" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="NOT"/>
+                <OMA>
+                  <OMS cd="sets" name="member"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="disjoint?"/>
+                <OMA>
+                  <OMS cd="sets" name="singleton"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="a"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="singleton_disjoint-1" for="singleton_disjoint" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="disjoint_remove_left" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="disjoint?"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="disjoint?"/>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMV name="a"/>
+                </OMA>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="disjoint_remove_left-1" for="disjoint_remove_left" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="disjoint_remove_right" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="sets" name="disjoint?"/>
+                <OMV name="a"/>
+                <OMV name="b"/>
+              </OMA>
+              <OMA>
+                <OMS cd="sets" name="disjoint?"/>
+                <OMV name="a"/>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMV name="b"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="disjoint_remove_right-1" for="disjoint_remove_right" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) NIL NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_disj_remove_left" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="disjoint?"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMV name="a"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMA>
+                    <OMS cd="sets" name="remove"/>
+                    <OMV name="x"/>
+                    <OMV name="a"/>
+                  </OMA>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="union"/>
+                    <OMV name="a"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_disj_remove_left-1" for="union_disj_remove_left" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+    <assertion id="union_disj_remove_right" type="lemma">
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="pvs" name="forall"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets" name="set"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="pvs" name="type"/>
+                  <OMS cd="sets_lemmas" name="T"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="booleans" name="IMPLIES"/>
+              <OMA>
+                <OMS cd="booleans" name="AND"/>
+                <OMA>
+                  <OMS cd="sets" name="disjoint?"/>
+                  <OMV name="a"/>
+                  <OMV name="b"/>
+                </OMA>
+                <OMA>
+                  <OMV name="b"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="equalities" name="="/>
+                <OMA>
+                  <OMS cd="sets" name="union"/>
+                  <OMV name="a"/>
+                  <OMA>
+                    <OMS cd="sets" name="remove"/>
+                    <OMV name="x"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="sets" name="remove"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="sets" name="union"/>
+                    <OMV name="a"/>
+                    <OMV name="b"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </assertion>
+
+
+    <private id="union_disj_remove_right-1" for="union_disj_remove_right" pto="pvs" pto-version="3.0" type="proofscript">
+      <metadata>
+        <Date action="created">2001-3-14@21:34:8
+        </Date>
+      </metadata>
+      <data><![CDATA[( (GRIND) (( (APPLY-EXTENSIONALITY HIDE? T) (( (GRIND) NIL NIL)) NIL)) NIL)]]>
+      </data>
+    </private>
+
+  </theory>
+</omdoc>

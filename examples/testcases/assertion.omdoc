@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_assertion">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+<theory id="test_assertion">
+
+<assertion id="assert" style="foo" generated-by="someone" theory="bla" type="theorem" proofs="bar">
+  <metadata>
+  <Title>assertion-metadata</Title>
+  <Creator role="aut">hf</Creator>
+  <Date>2001-02-22</Date>
+  </metadata>
+  <symbol id="first"/>
+  <symbol id="second"/>
+  <CMP>one</CMP>
+  <CMP>two</CMP>
+  <FMP>
+     <OMOBJ>
+        <OMA><OMS cd="arith1" name="plus"/><OMI>3</OMI><OMI>3</OMI></OMA>
+     </OMOBJ>
+  </FMP>                                                                       
+</assertion>
+
+</theory>
+</omdoc>
+

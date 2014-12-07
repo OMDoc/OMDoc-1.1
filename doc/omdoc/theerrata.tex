@@ -1,0 +1,175 @@
+\section*{1 Introduction}
+
+No errata known.
+\section*{2 Mathematical Markup Schemes}
+No errata known.
+\section*{3 OMDoc Elements}
+No errata known.
+\subsection*{3.1 Metadata for Mathematical Elements}
+No errata known.
+
+\subsection*{3.2 Mathematical Statements}
+
+\subsubsection*{3.2.1 Specifying Mathematical Properties}
+\begin{itemize}
+\item The text fails to make clear for the
+  {\attribute{id}{om:*}}/{\attribute{xref}{om:*}} to {\openmath} objects are only
+  allowed, if the referencing element has the same name as the referenced one. In
+  particular, there are no implicit conversions.
+  
+\item The text fails to mention the {\attribute{logic}{FMP}} attribute of the
+  {\element{FMP}} element. We need to add ``{\element{FMP}}s always appear in
+  groups, which can differ in the value of their {\attribute{logic}{FMP}}
+  attribute, which specifies the logical formalism. The value of this attribute
+  specifies the logical system used in formalizing the content. All members of the
+  {\indextoo{multi-logic {\tt{FMP}} group}}\index{FMP group!multi-logic} have to
+  formalize the same mathematical object or property, i.e. they have to be
+  translations of each other.''
+\end{itemize}
+
+\subsubsection*{3.2.2 Symbols, Definitions, and Axioms}
+\begin{enumerate}
+\item The values {\attval{obj}{type}{definition}} and
+  {\attval{simple}{type}{definition}} were overlapping, and the role of the
+  {\element{FMP}} and {\element{OMOBJ}} children of the {\element{definition}} was
+  unclear. The value {\attval{obj}{type}{definition}} has been dropped and we have
+  clarified that in simple definitions, the {\element{OMOBJ}} is the substitution
+  element whereas the {\element{FMP}} captures the meaning of the {\element{CMP}}
+  group in Logic.
+\item The attribute {\attribute{kind}{symbol}} of the {\element{symbol}} element
+  can also have the value {\attval{sort}{kind}{symbol}} for sets that are
+  inductively built up from constructor symbols
+\end{enumerate}
+
+\subsubsection*{3.2.3 Assertions and Alternatives}
+No errata known.
+\subsubsection*{3.2.4 Mathematical Examples in {\ifpdf{OMDoc}\else{\omdoc}\fi}}
+No errata known.
+\subsubsection*{3.2.5 Representing Proofs in {\ifpdf{OMDoc}\else{\omdoc}\fi}}
+No errata known.
+\subsubsection*{3.2.6 Abstract Data Types}
+The optional {\element{recognizer}} element should be a child of
+{\element{sortdef}}, and not of the {\element{constructor}} element. The
+specification text and examples are correct, but the quick reference table is
+incorrect.
+
+\subsection*{3.3 Theories as Mathematical Contexts}
+\subsubsection*{3.3.1 Simple Inheritance}
+The content model for {\element{theory}} in Figure 3.22 is incorrect. It should
+read {\tt{commonname*, CMP*, ({\rm statement} | inclusion, imports)*}}. Moreover,
+the attribute model has a spurious comma. Furthermore, the text should make clear
+that {\omdoc}1.1 does not allow theories to nest and that theories can include
+{\element{imports}} statements.
+
+\subsubsection*{3.3.2 Inheritance via Translations}
+No errata known.
+
+\subsubsection*{3.3.3 Statements about Theories}
+The text does not make this clear, but the elements {\element{theory-inclusion}},
+{\element{axiom-inclusion}} and {\element{decomposition}} may not occur in a
+{\element{theory}} element. Worse, the document type definition allows this as
+well. 
+
+\subsubsection*{3.3.4 Parametric theories in {\ifpdf{OMDoc}\else{\omdoc}\fi}}
+No errata known.
+
+\subsection*{3.4 Auxiliary Elements}
+
+\subsubsection*{3.4.1 Preservation of Text Structure}
+\begin{description}
+\item[Figure 3.29:] Specifying Tables with {\tt{<omgroup type="dataset">}} The first
+label for the second axis is ``{\tt{b11}}''. Should be ``{\tt{b1}}''.
+\item[omgroup] The DTD did not contain value {\attval{narrative}{type}{omgroup}} that was present in
+  the specification.
+\end{description}
+
+\subsection*{3.4.4 Exercises}
+In the {\element{solution}} element, where {\element{proof}} was allowed, we have
+to allow {\element{proofobject}} as well. 
+
+\subsection*{3.5 Adding Presentation Information to \ifpdf{OMDoc}\else{\omdoc}\fi}
+\begin{enumerate}
+\item It should be made clear that the {\attribute{xml:lang}{use,xslt,style}} attribute of the
+  {\element{use}}, {\element{xslt}} and {\element{style}} elements does not have the default
+  value {\ttin{en}}.
+\item {\omdoc}1.1 uses the {\attribute{style}{*}} attribute for all elements that
+  have an {\attribute{id}{*}} attribute to specify generic style classes for the
+  {\omdoc} elements.  This is based on a misunderstanding of the {\xml}
+  {\indextoo{cascading style sheet}} ({\css}) mechanism~\cite{BosHak:css98}, which
+  uses the {\attribute{class}{*}} attribute to specify this information and uses the
+  {\attribute{style}{*}} attribute to specify {\css} directives that override the class
+  information. 
+  
+  {\sf Even though this is a grave error (it severely limits the usefulness) we
+    will not change it in the {\omdoc} 1.1 specification and wait for the release
+    of {\omdoc} 1.2 to fix this, the renaming of the {\attribute{style}{*}}
+    attribute to {\attribute{class}{*}} would break existing implementations.}
+\end{enumerate}
+
+\subsubsection{3.5.2 Specifying the Notation of Mathematical Symbols}
+\begin{description}
+\item[Figure 3.44] the example still uses the {\omdoc}1.0 version of specifying
+  {\xslt} content via the {\attribute{system}{use}} attribute, in {\omdoc}1.1 the
+  element {\element{xslt}} should be used. 
+\end{description}
+
+
+\subsection*{3.6 Identifying and Referencing {\ifpdf{OMDoc}\else{\omdoc}\fi} Elements}
+
+\subsection*{Locating {\ifpdf{OMS}\else{\element{OMS}}\fi} elements by the {\ifpdf{OMDoc}\else{\omdoc}\fi} Catalogue}
+No errata known.
+
+\subsection*{A URI-based Mechanism for Element Reference}
+The text does not make it clear that the namespace prefixes for theory collections
+can be declared in any element that dominates the referencing element. The DTD
+does not allow this either. We will not change this in the DTD, since the changes
+are too disruptive and {\omdoc}1.2 is coming up soon. 
+
+\subsection*{Uniqueness Constraints and Relative URI references}
+No errata known.
+\section*{4 OMDoc Applications, Tools,  and Projects}
+No errata known.
+
+\section*{B Changes}
+  No errata known.
+\section*{C Quick-Reference for OMDoc Elements}
+No errata known.
+\section*{D Quick-Reference for OMDoc Attributes}
+No errata known.
+\section*{E OMDoc DTD}
+We use the following {\indextoo{public identifier}} for DTDs: {\ttin{-//OMDoc//DTD OMDoc V1.1//EN}}
+\begin{enumerate}
+\item The {\attribute{xml:lang}{use, xslt, style}} attribute of the {\element{use}},
+  {\element{xslt}} and {\element{style}} elements should not have the default value
+  {\ttin{en}}.
+\item The elements {\element{theory-inclusion}}, {\element{axiom-inclusion}} and
+  {\element{decomposition}} may not occur in a {\element{theory}} element.
+\item The content model for {\element{solution}} should make the {\element{FMP}},
+  {\element{proof}}, and {\element{proofobjects}} elements optional.
+\item the attribute {\attribute{for}{exercise}} should have been optional
+\item the optional {\element{recognizer}} element should be a child of {\element{sortdef}},
+  and not of the {\element{constructor}} element.
+\item the {\element{exercise}} element should allow multiple mathematical objects,
+  not at most one.
+\item the {\ttin{\%cfm;}} parameter entity in the DTD did not allow for multiple
+  FMPs, even though the spefication says that they appear in multi-logic groups.
+\item the default {\attribute{precedence}{presentation}} attribute of the
+  {\element{presentation}} element should have the default value 1000. 
+\item the content model of the {\element{definition}} element had to be adapted to
+  the clarification in the specification. The old version only allowed
+  {\element{CMP}}-only content with {\tt{rxp}}. The value
+  {\attval{obj}{type}{definition}} has also been dropped.
+\item the content model for the {\element{omdoc}} element prescribed at least one
+  omdoc item. This is not intended, since we want to allow catalogue-only
+  documents for administrative purposes. 
+\item the theory attribute for the {\element{assertion}} {\element{alernative}},
+  {\element{proof}} and {\element{proofobject}} elements should be of type
+  {\tt{CDATA}}, after all it contains a URI that points to an external theory.
+\item the specification mentions type {\attval{comment}{type}{omtext}}, but the
+  DTD did not allow this.
+\end{enumerate}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "errata"
+%%% End: 

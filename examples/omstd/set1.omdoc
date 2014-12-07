@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+
+<omdoc id="set1-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+       http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="catalogue.omdoc">
+
+<metadata>
+  <Title>The OpenMath Content Dictionary set1.ocd  in OMDoc form</Title>
+  <Creator role="trl">Michael Kohlhase</Creator>
+  <Creator role="ant">The OpenMath Society</Creator>
+  <Date> 2001-03-12 </Date>
+  <Source>Derived from the OpenMath CD http://www.openmath.org/cd/set1.ocd.</Source>
+  <Type>Text</Type>
+  <Format>application/omdoc+xml</Format>
+  <Rights>Copyright (c) 2000-2002 Michael Kohlhase;
+    This OMDoc content dictionary is released under the OpenMath license:
+    http://monet.nag.co.uk/openmath/cdfiles/license.html
+  </Rights>
+  <Description>
+    This CD defines the set functions and constructors for basic
+    set theory. It is intended to be `compatible' with the
+    corresponding elements in MathML.
+  </Description>
+</metadata>
+
+<theory id="set1">
+
+<imports id="set1-imports-sts" from="sts.omdoc#sts"/>
+<imports id="set1-imports-relation1" from="relation1.omdoc#relation1"/>
+<imports id="set1-imports-alg1" from="alg1.omdoc#alg1"/>
+<imports id="set1-imports-fns1" from="fns1.omdoc#fns1"/>
+<imports id="set1-imports-arith1" from="arith1.omdoc#arith1"/>
+<imports id="set1-imports-interval1" from="interval1.omdoc#interval1"/>
+<imports id="set1-imports-setname1" from="setname1.omdoc#setname1"/>
+<imports id="set1-imports-nums1" from="nums1.omdoc#nums1"/>
+<imports id="set1-imports-setname2" from="setname2.omdoc#setname2"/>
+<imports id="set1-imports-logic1" from="logic1.omdoc#logic1"/>
+<imports id="set1-imports-quant1" from="quant1.omdoc#quant1"/>
+
+<symbol id="cartesian_product">
+  <CMP>
+    This symbol represents an n-ary construction function for constructing
+    the Cartesian product of sets. It takes n set arguments in order to
+    construct their Cartesian product.
+  </CMP>
+  <commonname>cartesian product</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS cd="sts" name="mapsto"/>
+	<OMA>
+	  <OMS cd="sts" name="nary"/>
+	  <OMA>
+	    <OMS cd="sts" name="structure"/>
+	    <OMV name="Set"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="sts" name="structure"/>
+	  <OMV name="Set1"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation for="cartesian_product" xref="multiset1.omdoc#pr-cartesian_product"/>
+<example id="cartesian_product-ex-1" type="for" for="cartesian_product">
+  <CMP>An example to show the representation of the Cartesian product of sets: AxBxC.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="set1" name="cartesian_product"/>
+      <OMV name="A"/>
+      <OMV name="B"/>
+      <OMV name="C"/>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="emptyset">
+  <CMP>
+    This symbol is used to represent the empty set, that is the set which
+    contains no members. It takes no parameters.
+  </CMP>
+  <commonname>emptyset</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMV name="Set"/>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-emptyset" xref="multiset1.omdoc#pr-emptyset" for="emptyset"/>
+<assertion id="emptyset-prop-1" type="lemma">
+  <CMP> The intersection of A with the emptyset is the emptyset </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="set1" name="intersect"/>
+	  <OMV name="A"/>
+	  <OMS cd="set1" name="emptyset"/>
+	</OMA>
+	<OMS cd="set1" name="emptyset"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="emptyset-prop-3" type="lemma">
+  <CMP> The union of A with the emptyset is A </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="set1" name="union"/>
+	  <OMV name="A"/>
+	  <OMS cd="set1" name="emptyset"/>
+	</OMA>
+	<OMV name="A"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="emptyset-prop-5" type="lemma">
+  <CMP> the size of the empty set is zero </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="set1" name="size"/>
+	  <OMS cd="set1" name="emptyset"/>
+	</OMA>
+	<OMS cd="alg1" name="zero"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="map">
+  <CMP>
+    This symbol represents a mapping function which may be used to
+    construct sets, it takes as arguments a function from X to Y and a
+    set over X in that order. The value that is returned is a set of
+    values in Y. The argument list may be a set or an integer_interval.
+  </CMP>
+  <commonname>map</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS cd="sts" name="mapsto"/>
+	<OMA>
+	  <OMS cd="sts" name="mapsto"/>
+	  <OMS cd="sts" name="Object"/>
+	  <OMS cd="sts" name="Object"/>
+	</OMA>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="set1_pr_map" for="map" parent="OMA">
+  <style format="default">
+    <recurse select="*[2]"/><text>(</text><recurse select="*[3]"/><text>)</text>
+  </style>
+  <style format="pmml">
+    <element name="mrow">
+      <recurse select="*[2]"/>
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>(</text>
+      </element>
+      <recurse select="*[3]"/>
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>)</text>
+      </element>
+    </element>
+  </style>
+</presentation>
+<example id="map-ex-1" type="for" for="map">
+  <CMP>
+    The set of even values between 0 and 20, that is the values 2x, where
+    x ranges over the integral interval [0,10]. </CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="set1" name="map"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="arith1" name="times"/>
+	  <OMI> 2 </OMI>
+	  <OMV name="x"/>
+	</OMA>
+      </OMBIND>
+      <OMA>
+	<OMS cd="interval1" name="integer_interval"/>
+	<OMI> 0 </OMI>
+	<OMI> 10 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="size">
+  <CMP> 
+    This symbol is used to denote the number of elements in a set. It is
+    either a non-negative integer, or an infinite cardinal number. The
+    symbol infinity may be used for an unspecified infinite cardinal.
+  </CMP>
+  <commonname>size</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="CardinalNumber"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-size" xref="multiset1.omdoc#pr-size" for="size"/>
+<example id="size-ex-1" type="for" for="size">
+  <CMP>The size of the set{3,6,9} = 3</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="set1" name="size"/>
+      <OMA>
+	<OMS cd="set1" name="set"/>
+	<OMI> 3 </OMI>
+	<OMI> 6 </OMI>
+	<OMI> 9 </OMI>
+      </OMA>
+    </OMA>
+    <OMI> 3 </OMI>
+  </OMA>
+</OMOBJ>
+</example>
+<example id="size-ex-2" type="for" for="size">
+  <CMP>The size of the set of integers is infinite</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA>
+	<OMS cd="set1" name="size"/>
+	<OMS cd="setname1" name="Z"/>
+      </OMA>
+      <OMS cd="nums1" name="infinity"/>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="suchthat">
+  <CMP>
+    This symbol represents the suchthat function which may be used to
+    construct sets, it takes two arguments. The first argument should be the
+    set which contains the elements of the set we wish to represent, the
+    second argument should be a predicate, that is a function from the set
+    to the booleans which describes if an element is to be in the set returned.
+  </CMP>
+  <commonname>suchthat</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS cd="sts" name="mapsto"/>
+	<OMA>
+	  <OMS name="structure" cd="sts"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMA>
+	  <OMS name="mapsto" cd="sts"/>
+	  <OMV name="Set"/>
+	  <OMS name="Boolean" cd="setname2"/>
+	</OMA>
+	<OMA>
+	  <OMS name="structure" cd="sts"/>
+	  <OMV name="Set"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pr-suchthat" for="suchthat" parent="OMA" fixity="infix">
+  <use  format="html" lbrack="{x&#x02208;" rbrack="(x)}">|</use>
+  <use  format="TeX" lbrack="\{x\in " rbrack="(x)\}">|</use>
+  <style  format="pmml">
+    <element name="mrow">
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>{</text>
+      </element>
+      <element name="mi">
+	<recurse select="om:OMBIND[position()=2]/om:OMBVAR/*[1]"/>  
+      </element>
+      <text>&#x02208;</text>
+      <recurse select="*[2]"/>
+      <element name="mo"><text>|</text></element>
+      <recurse select="om:OMBIND[position()=2]/*[3]"/>  
+      <element name="mo">
+	<attribute name="fence"><text>true</text></attribute>
+	<text>}</text>
+      </element>
+    </element>
+  </style>
+</presentation>
+<example id="suchthat-ex-1" type="for" for="suchthat">
+  <CMP>
+    This example shows how to construct the set of even integers, using
+    the suchthat constructor.</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="set1" name="suchthat"/>
+      <OMS cd="setname1" name="Z"/>
+      <OMBIND>
+	<OMS cd="fns1" name="lambda"/>
+	<OMBVAR>
+	  <OMV name="x"/>
+	</OMBVAR>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMA>
+	    <OMS cd="arith1" name="divide"/>
+	    <OMV name="x"/>
+	    <OMI> 2 </OMI>
+	  </OMA>
+	  <OMS cd="setname1" name="Z"/>
+	</OMA>
+      </OMBIND>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="set">
+  <CMP> 
+    This symbol represents the set constructor. It is an n-ary function. The
+    set entries are given explicitly. There is no implied ordering to the
+    elements of a set. 
+  </CMP>
+  <commonname>set</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nary" cd="sts"/>
+	  <OMS name="Object" cd="sts"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="multiset1.omdoc#pr-set" for="set" fixity="assoc" crossref-symbol="brackets">
+  <use format="default" lbrack="{" rbrack="}"/>
+  <use format="TeX" lbrack="\{" rbrack="\}"/>
+</presentation>
+<example id="set-ex-1" type="for" for="set">
+  <CMP>The set {3, 6, 9}</CMP>
+  <OMOBJ>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 3 </OMI>
+      <OMI> 6 </OMI>
+      <OMI> 9 </OMI>
+    </OMA>
+  </OMOBJ>
+</example>
+<symbol id="intersect">
+  <CMP> 
+    This symbol is used to denote the n-ary intersection of sets. It takes
+    sets as arguments, and denotes the set that contains all the
+    elements that occur in all of them.
+  </CMP>
+  <commonname>intersect</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nassoc" cd="sts"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-intersect" xref="multiset1.omdoc#pr-intersect" for="intersect"/>
+<assertion id="intersect-prop-1" type="lemma">
+  <CMP>
+    (A intersect B) is a subset of A and (A intersect B) is a subset of B
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="and"/>
+	<OMA>
+	  <OMS cd="set1" name="subset"/>
+	  <OMA>
+	    <OMS cd="set1" name="intersect"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMV name="A"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="subset"/>
+	  <OMA>
+	    <OMS cd="set1" name="intersect"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMV name="B"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="union">
+  <CMP> 
+    This symbol is used to denote the n-ary union of sets. It takes
+    sets as arguments, and denotes the set that contains all the
+    elements that occur in any of them.
+  </CMP>
+  <commonname>union</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMA>
+	  <OMS name="nassoc" cd="sts"/>
+	  <OMV name="Set"/>
+	</OMA>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-union" xref="multiset1.omdoc#pr-union" for="union"/>
+<assertion id="union-prop-1" type="lemma">
+  <CMP> A is a subset of (A union B) and B is a subset of (A union B) </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="and"/>
+	<OMA>
+	  <OMS cd="set1" name="subset"/>
+	  <OMV name="A"/>
+	  <OMA>
+	    <OMS cd="set1" name="union"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="subset"/>
+	  <OMV name="B"/>
+	  <OMA>
+	    <OMS cd="set1" name="union"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<assertion id="union-prop-3" type="lemma">
+  <CMP>
+    for all sets A,B and C
+
+union(A,intersect(B,C)) = intersect(union(A,B),union(A,C))
+</CMP>
+<FMP>
+  <OMOBJ>
+    <OMBIND>
+      <OMS cd="quant1" name="forall"/>
+      <OMBVAR>
+	<OMV name="A"/>
+	<OMV name="B"/>
+	<OMV name="C"/>
+      </OMBVAR>
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA>
+	  <OMS cd="set1" name="union"/>
+	  <OMV name="A"/>
+	  <OMA>
+	    <OMS cd="set1" name="intersect"/>
+	    <OMV name="B"/>
+	    <OMV name="C"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="intersect"/>
+	  <OMA>
+	    <OMS cd="set1" name="union"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="union"/>
+	    <OMV name="A"/>
+	    <OMV name="C"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMBIND>
+  </OMOBJ>
+</FMP>
+</assertion>
+<symbol id="setdiff">
+  <CMP> 
+    This symbol is used to denote the set difference of two sets. It takes
+    two sets as arguments, and denotes the set that contains all the
+    elements that occur in the first set, but not in the second.
+  </CMP>
+  <commonname>setdiff</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-setdiff" xref="multiset1.omdoc#pr-setdiff" for="setdiff"/>
+<assertion id="setdiff-prop-1" type="lemma">
+  <CMP>
+    the difference of A and B is a subset of A
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="set1" name="subset"/>
+	<OMA>
+	  <OMS cd="set1" name="setdiff"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMV name="A"/>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="subset">
+  <CMP>
+    This symbol has two (set) arguments. It is used to denote that the
+    first set is a subset of the second.
+  </CMP>
+  <commonname>subset</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-subset" xref="multiset1.omdoc#pr-subset" for="subset"/>
+<assertion id="subset-prop-1" type="lemma">
+  <CMP>
+    if B is a subset of A and C is a subset of B then C is a subset of A
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="set1" name="subset"/>
+	    <OMV name="B"/>
+	    <OMV name="A"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="subset"/>
+	    <OMV name="C"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="subset"/>
+	  <OMV name="C"/>
+	  <OMV name="A"/>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="in">
+  <CMP> 
+    This symbol has two arguments, an element and a set. It is used to
+    denote that the element is in the given set.
+  </CMP>
+  <commonname>in</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-in" xref="multiset1.omdoc#pr-in" for="in"/>
+<assertion id="in-prop-1" type="lemma">
+  <CMP>
+    if a is in A and a is in B then a is in A intersect B
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="set1" name="in"/>
+	    <OMV name="a"/>
+	    <OMV name="A"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="set1" name="in"/>
+	    <OMV name="a"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMV name="a"/>
+	  <OMA>
+	    <OMS cd="set1" name="intersect"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<symbol id="notin">
+  <CMP> 
+    This symbol has two arguments, an element and a set. It is used to
+    denote that the element is not in the given set.
+  </CMP>
+  <commonname>notin</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMS name="Object" cd="sts"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-notin" xref="multiset1.omdoc#pr-notin" for="notin"/>
+<assertion id="notin-prop-1" type="lemma">
+  <CMP>
+    if a is a member of a then it is not true that a is not a member of A
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="set1" name="in"/>
+	  <OMV name="a"/>
+	  <OMV name="A"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="not"/>
+	  <OMA>
+	    <OMS cd="set1" name="notin"/>
+	    <OMV name="a"/>
+	    <OMV name="A"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="notin-ex-3" type="for" for="notin">
+  <CMP> 4 is not in {1,2,3}</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="set1" name="notin"/>
+    <OMI> 4 </OMI>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 1 </OMI>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMA>
+</OMOBJ>
+</example>
+<symbol id="prsubset">
+  <CMP> 
+    This symbol has two (set) arguments. It is used to denote that the
+    first set is a proper subset of the second, that is a subset of the
+    second set but not actually equal to it.
+  </CMP>
+  <commonname>prsubset</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-prsubset" xref="multiset1.omdoc#pr-prsubset" for="prsubset"/>
+<assertion id="prsubset-prop-1" type="lemma">
+  <CMP>
+    A is a proper subset of B implies that A is a subset of B and A not= B
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="set1" name="prsubset"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="and"/>
+	  <OMA>
+	    <OMS cd="set1" name="subset"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="relation1" name="neq"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="prsubset-ex-3" type="for" for="prsubset">
+  <CMP>  {2,3} is a proper subset of {1,2,3}</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="set1" name="prsubset"/>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 1 </OMI>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMA>
+</OMOBJ>
+</example>
+<symbol id="notsubset">
+  <CMP> 
+    This symbol has two (set) arguments. It is used to denote that the
+    first set is not a subset of the second.
+  </CMP>
+  <commonname>notsubset</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-notsubset" xref="multiset1.omdoc#pr-notsubset" for="notsubset"/>
+<assertion id="notsubset-prop-1" type="lemma">
+  <CMP>
+    if A is not a subset of B then 
+    there exists an x in B s.t. x is not a member of B
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="set1" name="notsubset"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMBIND>
+	  <OMS cd="quant1" name="exists"/>
+	  <OMBVAR>
+	    <OMV name="x"/>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="logic1" name="and"/>
+	    <OMA>
+	      <OMS cd="set1" name="in"/>
+	      <OMV name="x"/>
+	      <OMV name="B"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="set1" name="notin"/>
+	      <OMV name="x"/>
+	      <OMV name="A"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="notsubset-ex-3" type="for" for="notsubset">
+  <CMP>  {2,3,4} is not a subset of {1,2,3}</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="set1" name="notsubset"/>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+      <OMI> 4 </OMI>
+    </OMA>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 1 </OMI>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMA>
+</OMOBJ>
+</example>
+<symbol id="notprsubset">
+  <CMP> 
+    This symbol has two (set) arguments. It is used to denote that the
+    first set is not a proper subset of the second. A proper subset of a
+    set is a subset of the set but not actually equal to it.
+  </CMP>
+  <commonname>notprsubset</commonname>
+  <type system="sts">
+    <OMOBJ>
+      <OMA>
+	<OMS name="mapsto" cd="sts"/>
+	<OMV name="Set"/>
+	<OMV name="Set"/>
+	<OMS cd="setname2" name="Boolean"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</symbol>
+<presentation id="pres-notprsubset" xref="multiset1.omdoc#pr-notprsubset" for="notprsubset"/>
+<assertion id="notprsubset-prop-1" type="lemma">
+  <CMP>
+    A is not a proper subset of B implies 
+    that it is not true that A is a proper subset of B
+  </CMP>
+  <FMP>
+    <OMOBJ>
+      <OMA>
+	<OMS cd="logic1" name="implies"/>
+	<OMA>
+	  <OMS cd="set1" name="notprsubset"/>
+	  <OMV name="A"/>
+	  <OMV name="B"/>
+	</OMA>
+	<OMA>
+	  <OMS cd="logic1" name="not"/>
+	  <OMA>
+	    <OMS cd="set1" name="prsubset"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </FMP>
+</assertion>
+<example id="notprsubset-ex-3" type="for" for="notprsubset">
+  <CMP>{1,2,3} is not a proper subset of {1,2,3}</CMP>
+
+<OMOBJ>
+  <OMA>
+    <OMS cd="set1" name="notprsubset"/>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 1 </OMI>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+    <OMA>
+      <OMS cd="set1" name="set"/>
+      <OMI> 1 </OMI>
+      <OMI> 2 </OMI>
+      <OMI> 3 </OMI>
+    </OMA>
+  </OMA>
+</OMOBJ>
+</example>
+</theory>
+</omdoc>

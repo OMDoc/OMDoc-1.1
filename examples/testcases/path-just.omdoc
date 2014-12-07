@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.1//EN"
+                 "../../dtd/omdoc.dtd" []>
+
+<omdoc id="test_path-just">
+
+<metadata>
+<Title>test</Title>
+<Creator role="aut">hf</Creator>
+<Date>2001-12-12</Date>
+</metadata>                                                                     
+
+<axiom-inclusion id="myai" style="foo" from="a" to="b">
+<path-just local="foo" globals="bar"/>
+</axiom-inclusion>
+
+</omdoc>
+
